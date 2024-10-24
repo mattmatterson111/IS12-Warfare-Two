@@ -14,6 +14,7 @@
 	reload_sound 	= 'sound/weapons/guns/interact/rev_magin.ogg'
 	bulletinsert_sound 	= 'sound/weapons/guns/interact/rev_magin.ogg'
 	fire_sound = "revolver_fire"
+	fire_delay = 0
 
 /obj/item/gun/projectile/revolver/cpt
 	name = "Captain's Special"
@@ -136,3 +137,77 @@
 	caliber = ".44"
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
 	ammo_type = /obj/item/ammo_casing/c44
+
+/obj/item/gun/projectile/revolver/manual/
+	var/primed = FALSE
+	var/open = FALSE
+
+/obj/item/gun/projectile/revolver/manual/load_ammo(obj/item/A, mob/user)
+	if(!open)
+		return
+	. = ..()
+
+/obj/item/gun/projectile/revolver/manual/unload_ammo(obj/item/A, mob/user)
+	if(!open)
+		return
+	. = ..()
+
+/obj/item/gun/projectile/revolver/manual/proc/open(mob/user)
+	if(!open)
+		open = TRUE
+		playsound(get_turf(src), 'sound/weapons/guns/interact/revolver_open.ogg', 85, 1)
+	update_icon()
+
+/obj/item/gun/projectile/revolver/manual/proc/close(mob/user)
+	if(open)
+		open = FALSE
+		playsound(get_turf(src), 'sound/weapons/guns/interact/revolver_close.ogg', 70, 1)
+	update_icon()
+
+/obj/item/gun/projectile/revolver/manual/proc/handle_dryfire(mob/user)
+	playsound(get_turf(src), 'sound/weapons/guns/interact/revolver_dryfire.ogg', 50, 1)
+	user.show_message(SPAN_DANGER("*Click..*"))
+
+/obj/item/gun/projectile/revolver/manual/MouseDrop(obj/over_object)
+	if(!open)
+		open(usr)
+		return
+	. = ..() // WHY WONT YOU FUCKING UNL OAD D? ? ? ? ? ? ??!!!? WHAT???
+		//unload_ammo(usr, allow_dump=TRUE)
+
+/obj/item/gun/projectile/revolver/manual/update_icon()
+	. = ..()
+	/*if(open)
+		icon_state = "[icon_state]_open"
+	else
+		icon_state = initial(icon_state)
+*/
+/obj/item/gun/projectile/revolver/manual/proc/prime(mob/user, var/fast)
+	if(!primed)
+		playsound(get_turf(src), 'sound/weapons/guns/interact/revolver_prime.ogg', 100, 1)
+		user.show_message(SPAN_DANGER("You cock the hammer."))
+		primed = TRUE
+	else
+		playsound(get_turf(src), 'sound/weapons/guns/interact/revolver_unprime.ogg', 100, 1)
+		user.show_message(SPAN_NOTICE("You uncock the hammer."))
+		primed = FALSE
+
+/obj/item/gun/projectile/revolver/manual/attack_self(mob/user, var/fast)
+	if(!fast) // for fanning action down the line B)
+		switch(user.a_intent)
+			if(I_DISARM) fast = TRUE
+			else if(I_HURT) fast = TRUE
+			else fast = FALSE
+	if(!open)
+		prime(user, fast)
+	else
+		close(user)
+
+// CHANGING THE /ATTACK CODE DOESNT WORK SO I HAVE TO PUT IT HERE?? WHAT THE FUCK?!!
+/obj/item/gun/projectile/revolver/manual/Fire(atom/target, mob/living/user, clickparams, pointblank, reflex)
+	if(!primed)
+		handle_dryfire(user)
+		return
+	else
+		. = ..()
+		primed = FALSE
