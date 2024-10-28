@@ -474,6 +474,8 @@ SUBSYSTEM_DEF(jobs)
 		if(equipped)
 			var/obj/item/clothing/glasses/G = H.glasses
 			G.prescription = 7
+	if(job.possible_backstories.len && H.client.prefs.backstory)
+		pick_backstory(job.possible_backstories, H)
 
 	H.set_squad_huds()
 	BITSET(H.hud_updateflag, ID_HUD)

@@ -299,7 +299,7 @@
 	silenced = launcher.silenced
 
 	if(launcher.damage_modifier)
-		damage += launcher.damage_modifier
+		damage *= launcher.damage_modifier
 
 	return launch_projectile(target, target_zone, user, params, angle_override, forced_spread)
 

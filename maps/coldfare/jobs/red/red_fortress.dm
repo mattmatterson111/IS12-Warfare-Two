@@ -47,6 +47,8 @@
 	lmg_skill = 0
 	smg_skill = 0
 
+	possible_backstories = list(/datum/backstory/disgruntledprac, /datum/backstory/frontier_medic, /datum/backstory/idealistic, /datum/backstory/scholar)
+
 	equip(var/mob/living/carbon/human/H)
 		..()
 		H.set_trait(new/datum/trait/death_tolerant())

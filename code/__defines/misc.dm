@@ -16,6 +16,9 @@
 #define SPAN_BNOTICE(X) "<span class='bnotice'>[X]</span>"
 #define SPAN_BOLD(X) "<span class='bold'>[X]</span>"
 
+#define SPAN_YELLOW(X) "<span class='yel'>[X]</span>"
+#define SPAN_YELLOW_LARGE(X) "<span class='yelBig'>[X]</span>"
+
 #define FONT_SMALL(X) "<font size='1'>[X]</font>"
 #define FONT_NORMAL(X) "<font size='2'>[X]</font>"
 #define FONT_LARGE(X) "<font size='3'>[X]</font>"

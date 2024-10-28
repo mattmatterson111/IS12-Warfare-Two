@@ -252,7 +252,7 @@ its easier to just keep the beam vertical.
 			f_name += "oil-stained [name][infix]."
 
 	if(!isobserver(user))
-		user.visible_message("<font size=1>[user.name] looks at [src].</font>")
+		user.visible_message(FONT_SMALL("[user.name] looks at [src]."))
 
 		if(get_dist(user,src) > 5)//Don't get descriptions of things far away.
 			to_chat(user, "<span class='info'>It's too far away to see clearly.</span>")

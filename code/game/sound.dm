@@ -117,6 +117,7 @@ GLOBAL_LIST_INIT(far_rifle,list('sound/effects/weapons/gun/semi_farfire1.ogg','s
 GLOBAL_LIST_INIT(eat_food, list('sound/effects/eating/eat1.ogg', 'sound/effects/eating/eat2.ogg', 'sound/effects/eating/eat3.ogg', 'sound/effects/eating/eat4.ogg', 'sound/effects/eating/eat5.ogg'))
 GLOBAL_LIST_INIT(drink_sound, list('sound/effects/eating/drink1.ogg','sound/effects/eating/drink2.ogg','sound/effects/eating/drink3.ogg','sound/effects/eating/drink4.ogg','sound/effects/eating/drink5.ogg'))
 GLOBAL_LIST_INIT(revolver_fire, list('sound/weapons/gunshot/revolverfire1.ogg','sound/weapons/gunshot/revolverfire2.ogg','sound/weapons/gunshot/revolverfire3.ogg'))
+GLOBAL_LIST_INIT(revolver_reload, list('sound/weapons/guns/interact/revolverload1.ogg','sound/weapons/guns/interact/revolverload2.ogg','sound/weapons/guns/interact/revolverload3.ogg'))
 GLOBAL_LIST_INIT(concrete_metal_scrape, list('sound/effects/metalconcrete1.ogg','sound/effects/metalconcrete2.ogg','sound/effects/metalconcrete3.ogg'))
 
 
@@ -301,6 +302,7 @@ var/const/FALLOFF_SOUNDS = 0.5
 			if ("eat") soundin = pick(GLOB.eat_food)
 			if ("drink") soundin = pick(GLOB.drink_sound)
 			if ("revolver_fire") soundin = pick(GLOB.revolver_fire)
+			if ("revolver_reload") soundin = pick(GLOB.revolver_reload)
 			if ("concrete_metal_scrape") soundin = pick(GLOB.concrete_metal_scrape)
 	return soundin
 

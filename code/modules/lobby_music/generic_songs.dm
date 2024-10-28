@@ -27,10 +27,20 @@
 	song = 'sound/music/lobby8.ogg'
 */
 /lobby_music/lobby1
-	song = 'sound/music/twofare_lobby.ogg' // Credit to MechaDH for composing this
+	song = 'sound/music/warfare/1Deathloop.ogg' // Credit to MechaDH for composing this
 /lobby_music/lobby2
-	song = 'sound/music/suns.ogg' // Credit to MechaDH for composing this
+	song = 'sound/music/warfare/2Pyrrhic.ogg' // Credit to MechaDH for composing this
 /lobby_music/lobby3
-	song = 'sound/music/lightingbugs.ogg' // Credit to MechaDH for composing this
+	song = 'sound/music/warfare/3flx4.ogg' // Credit to MechaDH for composing this
 /lobby_music/lobby4
-	song = 'sound/music/deathloopnovocals.ogg' // Credit to MechaDH for composing this
+	song = 'sound/music/warfare/4suns.ogg' // Credit to MechaDH for composing this
+/lobby_music/lobby5
+	song = 'sound/music/warfare/5Brigand.ogg' // Credit to MechaDH for composing this
+/lobby_music/lobby6
+	song = 'sound/music/warfare/6crushdisease.ogg' // Credit to MechaDH for composing this
+/lobby_music/lobby7
+	song = 'sound/music/warfare/7MasV.ogg' // Credit to MechaDH for composing this
+/lobby_music/lobby8
+	song = 'sound/music/warfare/8Esperanto.ogg' // Credit to MechaDH for composing this
+/lobby_music/lobby9
+	song = 'sound/music/warfare/9Dirge.ogg' // Credit to MechaDH for composing this

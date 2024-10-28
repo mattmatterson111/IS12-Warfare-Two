@@ -173,6 +173,8 @@
 	sniper_skill = 10
 	open_when_dead = TRUE
 
+	possible_backstories = list(/datum/backstory/nepotismcaptain)
+
 	announced = FALSE
 
 	equip(var/mob/living/carbon/human/H)

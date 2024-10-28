@@ -1,5 +1,4 @@
 #define MAX_FIELDS 50
-
 /*
  * Paper
  * also scraps of paper
@@ -32,6 +31,8 @@
 	var/list/offset_y[0] //usage by the photocopier
 	var/rigged = 0
 	var/spam_flag = 0
+
+	var/is_bordered = FALSE
 
 	var/paperbg = "paper.png"
 
@@ -73,14 +74,16 @@
 	else
 		to_chat(user, "<span class='notice'>You have to go closer if you want to read it.</span>")
 
-/obj/item/paper/proc/show_content(mob/user, forceshow)
+/obj/item/paper/proc/show_content(mob/user, forceshow, writing)
 	var/can_read = (istype(user, /mob/living/carbon/human) || isghost(user) || istype(user, /mob/living/silicon)) || forceshow
 	if(!forceshow && istype(user,/mob/living/silicon/ai))
 		var/mob/living/silicon/ai/AI = user
 		can_read = get_dist(src, AI.camera) < 2
-	user << browse("<HTML><HEAD><TITLE>[name]</TITLE></HEAD><BODY bgcolor='[color]' style='background-image:url([paperbg])';>[can_read ? info : stars(info)][stamps]</BODY></HTML>", "window=[name]")
+	var/text_z = info
+	if(!can_read)
+		text_z = stars(info)
+	user << browse("<HTML><HEAD><TITLE>[name]</TITLE></HEAD><BODY bgcolor='[color]' style='background-image:url([paperbg])';><a onfocus ='this.blur()' href='byond://?src=\ref[src];toggletitle=1'>X</a></p>[writing ? info_links : text_z][stamps]</BODY></HTML>", "window=[name];can_close=1;can_resize=1;border=[is_bordered];titlebar=[is_bordered]")
 	onclose(user, "[name]")
-
 /obj/item/paper/verb/rename()
 	set name = "Rename paper"
 	set category = "Object"
@@ -264,8 +267,17 @@
 
 /obj/item/paper/Topic(href, href_list)
 	..()
+	var/haspen
+	if(usr.get_active_hand())
+		var/obj/item/i = usr.get_active_hand() // Check to see if he still got that darn pen, also check if he's using a crayon or pen.
+		if(istype(i, /obj/item/pen))
+			haspen = TRUE
+
 	if(!usr || (usr.stat || usr.restrained()))
 		return
+	if(href_list["toggletitle"])
+		is_bordered = !is_bordered
+		usr << browse(null, "window=[name]")
 
 	if(href_list["write"])
 		var/id = href_list["write"]
@@ -310,9 +322,10 @@
 		update_space(t)
 		playsound(get_turf(src), "sound/effects/paper/sign[rand(1,4)].ogg", 75, 0.25)
 
-		usr << browse("<HTML><HEAD><TITLE>[name]</TITLE></HEAD><BODY bgcolor='[color]' style='background-image:url([paperbg])';>[info_links][stamps]</BODY></HTML>", "window=[name]") // Update the window
-
 		update_icon()
+
+	show_content(usr, writing=haspen)
+	return TOPIC_REFRESH
 
 
 /obj/item/paper/attackby(obj/item/P as obj, mob/user as mob)
@@ -360,7 +373,7 @@
 		if ( istype(RP) && RP.mode == 2 )
 			RP.RenamePaper(user,src)
 		else
-			user << browse("<HTML><HEAD><TITLE>[name]</TITLE></HEAD><BODY bgcolor='[color]' style='background-image:url([paperbg])'>[info_links][stamps]</BODY></HTML>", "window=[name]")
+			show_content(usr, writing=TRUE)
 		return
 
 	else if(istype(P, /obj/item/stamp) || istype(P, /obj/item/clothing/ring/seal))

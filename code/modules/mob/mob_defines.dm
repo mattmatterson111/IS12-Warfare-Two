@@ -84,6 +84,7 @@
 	var/sleeping = 0		//Carbon
 	var/resting = 0			//Carbon
 	var/in_trench = 0       //For /mob/living/Bump stuff.
+	var/doing_something = FALSE
 	var/lying = 0
 	var/lying_prev = 0
 	var/commiting_trench_kiss = 0

@@ -19,6 +19,7 @@
 		"browserOutput.css"	       = 'code/modules/goonchat/browserassets/css/browserOutput.css',
 		"browserOutput_white.css"  = 'code/modules/goonchat/browserassets/css/browserOutput_white.css',
 		"browserOutput_override.css"  = 'code/modules/goonchat/browserassets/css/browserOutput_override.css',
+		"background.png" = 'code/modules/goonchat/browserassets/img/bg.png',
 	)
 
 /datum/asset/simple/fontawesome

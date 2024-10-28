@@ -6,6 +6,8 @@ datum/preferences
 	var/spawnpoint = "Default" 			//where this character will spawn (0-2).
 	var/metadata = ""
 	var/religion = "None"
+	var/backstory = 0
+	var/penal = 0
 
 /datum/category_item/player_setup_item/general/basic
 	name = "Basic"
@@ -19,6 +21,8 @@ datum/preferences
 	S["spawnpoint"]				>> pref.spawnpoint
 	S["OOC_Notes"]				>> pref.metadata
 	S["religion"]				>> pref.religion
+	S["backstory"]				>> pref.backstory
+	S["penal"]					>> pref.penal
 
 /datum/category_item/player_setup_item/general/basic/save_character(var/savefile/S)
 	S["real_name"]				<< pref.real_name
@@ -28,6 +32,8 @@ datum/preferences
 	S["spawnpoint"]				<< pref.spawnpoint
 	S["OOC_Notes"]				<< pref.metadata
 	S["religion"]				<< pref.religion
+	S["backstory"]				<< pref.backstory
+	S["penal"]					<< pref.penal
 
 /datum/category_item/player_setup_item/general/basic/sanitize_character()
 	var/datum/species/S = all_species[pref.species ? pref.species : SPECIES_HUMAN]
@@ -62,6 +68,8 @@ datum/preferences
 	if(GLOB.using_map.map_lore)
 		. += "<b>Map Objective:</b><br>"
 		. += "[GLOB.using_map.map_lore]<br>"//Put the map lore here if there is any.
+
+	. += "<br><b>Enable backstories:</b> <a onfocus ='this.blur()' href='?src=\ref[src];backstory=1'><b>["[pref.backstory == 1 ? "Yes" : "No"]"]</b></a><br>"
 
 	if(user.client.holder)//it's user not usr Bombany.
 		. += "<p style='position: absolute;right: 50px; bottom: 30px;'><a onfocus='this.blur()' href='byond://?src=\ref[user];observe=1' class='active'><b>Observe()</a></p>"
@@ -105,6 +113,10 @@ datum/preferences
 		if(new_age && CanUseTopic(user))
 			pref.age = max(min(round(text2num(new_age)), S.max_age), S.min_age)
 			return TOPIC_REFRESH
+
+	else if(href_list["backstory"])
+		pref.backstory = !pref.backstory
+		return TOPIC_REFRESH
 
 	else if(href_list["spawnpoint"])
 		var/list/spawnkeys = list()

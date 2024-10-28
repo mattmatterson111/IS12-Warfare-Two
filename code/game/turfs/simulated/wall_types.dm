@@ -14,7 +14,7 @@
 	icon_state = "concrete0"
 	walltype = "concrete"
 	mineral = "rust"
-	plane = ABOVE_HUMAN_PLANE
+	plane = WALL_PLANE
 	integrity = 500 //Tough bois
 
 /turf/simulated/wall/concrete/New()
@@ -40,7 +40,7 @@
 	icon_state = "perspecticrete0"
 	walltype = "perspecticrete"
 	mineral = "rust"
-	plane = ABOVE_HUMAN_PLANE
+	plane = WALL_PLANE
 	integrity = 500 //Tough bois
 
 /turf/simulated/wall/concrete/strong/oldcrete

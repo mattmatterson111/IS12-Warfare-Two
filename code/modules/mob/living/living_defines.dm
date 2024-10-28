@@ -61,7 +61,6 @@
 	var/religion = "Nothing" //Leftover from anther time.
 	var/datum/trait/trait = null
 	var/fast_stripper = FALSE //whether or not you can turbostrip
-	var/doing_something = FALSE
 
 	//This is for the screen. Yes I hate this. Yes I know it needs a refactor. No I don't care at the moment.
 	var/obj/screen/plane_master/blur/human_blur/HB = new

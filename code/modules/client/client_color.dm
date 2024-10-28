@@ -82,4 +82,4 @@
 
 /datum/client_color/berserk
 	client_color = "#af111c"
-	priority = 100 
+	priority = 100

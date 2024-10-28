@@ -68,9 +68,10 @@
 /obj/item/ammo_magazine/handful/revolver
 	name = "\improper handful of revolver ammo"
 	desc = "Why use a quickloader, when you can be a quicker loader?"
-	icon_state = "revolver-handful"
+	icon_state = "revvy"//"revolver-handful"
 	ammo_type = /obj/item/ammo_casing/a357
 	max_ammo = 6
+	center_of_mass = "x=16;y=7"
 
 /obj/item/ammo_magazine/handful/revolver/two
 	initial_ammo = 2
