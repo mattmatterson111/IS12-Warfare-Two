@@ -826,7 +826,8 @@
 	var/open
 	var/busy
 	var/obj/structure/warfare/tray/tray // instead of deleting and adding it, we can re-use the same tray object :>
-	var/mob/inside
+	var/mob/living/carbon/human/inside
+	var/obj/item/stack/teeth/other_stuff_inside
 	var/goredinside
 
 /obj/structure/warfare/thehatch/New()
@@ -869,6 +870,10 @@
 		tray.forceMove(get_step(src, dir))
 		if(inside)
 			inside.forceMove(get_turf(tray)) // aww..
+			inside = null
+		if(other_stuff_inside)
+			other_stuff_inside.forceMove(get_turf(tray))
+			other_stuff_inside = null
 		if(goredinside)
 			new/obj/effect/gibspawner/human(get_turf(tray))
 			goredinside = FALSE
@@ -910,6 +915,23 @@
 				sleep(3)
 				playsound(get_turf(user), 'sound/effects/hatchknock.ogg',75,0.5)
 				if(inside)
+					var/total_teeth = 0
+					for(var/obj/item/organ/O in inside.organs)
+						if(O.status & ORGAN_CUT_AWAY)
+							continue
+						else
+							if(istype(O, /obj/item/organ/external))
+								if(istype(O, /obj/item/organ/external/head/))
+									var/obj/item/organ/external/head/H = O
+									total_teeth += H.get_teeth()
+								total_teeth += 1
+								continue
+							else
+								total_teeth += 2
+								continue
+					other_stuff_inside = new/obj/item/stack/teeth/human()
+					other_stuff_inside.amount = total_teeth
+					other_stuff_inside.update_icon()
 					if(inside.stat == DEAD)
 						sleep(rand(20,40))
 						playsound(get_turf(src), 'sound/effects/hatchknock.ogg',35,0.25, override_env = SEWER_PIPE)
@@ -917,7 +939,6 @@
 						playsound(get_turf(src), 'sound/effects/hatchknock.ogg',35,0.25, override_env = SEWER_PIPE)
 						qdel(inside)
 						inside = null
-						GLOB.hatched++
 						busy = FALSE
 					else
 						sleep(rand(15,30))
@@ -930,7 +951,6 @@
 						inside.ghostize(FALSE)
 						qdel(inside)
 						inside = null
-						GLOB.hatched++
 						goredinside = TRUE
 						busy = FALSE
 				else

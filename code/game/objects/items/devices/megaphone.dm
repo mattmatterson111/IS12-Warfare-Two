@@ -104,7 +104,7 @@
 			for(var/mob/O in (viewers(world.view + 6, user))) // idea: increase the range of the sounda nd the rnage of this in general?
 				if(!O.stat == UNCONSCIOUS || !O.is_deaf() || !O.stat == DEAD) // such a hacky way of doing this.
 					//O.hear_say(message, "broadcasts", lang, null, 0, user, null, null, 6)
-					to_chat(O,FONT_LARGE("<span class='warning'><font color='[message_color]'>[user] broadcasts,</font>\n[FONT_GIANT("<span class='danger' style='text-shadow: 0 0 7px #[message_color];'><font color='[message_color]'>\"[message]\"</font></span></span>")]"))
+					to_chat(O,FONT_LARGE("<span class='warning'><font color='[message_color]'>[user] broadcasts,</font>\n[FONT_GIANT("<span class='danger' style='text-shadow: 0 0 7px [message_color];'><font color='[message_color]'>\"[message]\"</font></span></span>")]"))
 					if(O.client)
 						rec |= O.client
 			//soundoverlay(user, newplane = EFFECTS_ABOVE_LIGHTING_PLANE)

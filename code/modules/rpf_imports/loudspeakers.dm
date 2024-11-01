@@ -104,7 +104,7 @@
 	var/list/clients = list()
 	var/this_sound = null
 	if(additional_talk_sound)
-		this_sound = pick(additional_talk_sound)
+		this_sound = pick(shuffle(additional_talk_sound))
 	for(var/obj/structure/announcementspeaker/s in world)
 		if(id == s.id)
 			for(var/mob/living/carbon/m in view(world.view + broadcast_range, get_turf(s)))

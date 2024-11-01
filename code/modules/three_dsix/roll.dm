@@ -102,9 +102,9 @@ GLOBAL_DATUM_INIT(success_roll, /datum/roll_result/success, new)
 /datum/roll_result/proc/create_tooltip(body)
 	if(!skill_type_used)
 		if(outcome >= SUCCESS)
-			body = span_statsgood(body)
+			body = SPAN_STATSGOOD(body)
 		else
-			body = span_statsbad(body)
+			body = SPAN_STATSBAD(body)
 		return body
 
 	var/prob_string
@@ -141,10 +141,10 @@ GLOBAL_DATUM_INIT(success_roll, /datum/roll_result/success, new)
 	var/prefix
 	if(outcome >= SUCCESS)
 		prefix = "<span style='font-style: italic;color: #03fca1'>[uppertext(initial(skill_type_used.name))]</span>"
-		body = span_statsgood(body)
+		body = SPAN_STATSGOOD(body)
 	else
 		prefix = "<span style='font-style: italic;color: #fc4b32'>[uppertext(initial(skill_type_used.name))]</span>"
-		body = span_statsbad(body)
+		body = SPAN_STATSBAD(body)
 
 	var/color = (outcome >= SUCCESS) ? "#03fca1" : "#fc4b32"
 	var/tooltip_html = "[success_prob]% | Result: <span style='font-weight: bold;color: [color]'><b>[roll]</b></span> | Check: <b>[requirement]</b>"
@@ -158,13 +158,13 @@ GLOBAL_DATUM_INIT(success_roll, /datum/roll_result/success, new)
 	crit_success_prob = 0
 	roll = 18
 	requirement = 3
-
+/*
 /mob/living/verb/testroll()
 	name = "testroll"
 
 	var/datum/roll_result/result = stat_roll(11, /datum/rpg_skill/skirmish)
 	to_chat(usr, result.create_tooltip("This message is a test, and not indicative of the final product."))
-
+*/
 /// Returns a number between 0 and 100 to roll the desired value when rolling the given dice.
 /proc/dice_probability(num, sides, desired)
 	var/static/list/outcomes_cache = new /list(0, 0)

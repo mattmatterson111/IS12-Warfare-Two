@@ -13,8 +13,8 @@
 #define FOOTSTEP_CONCRETE	"concrete"
 #define ARMOR_FOOTSTEP_CONCRETE "armorcrete"
 #define ARMOR_FOOTSTEP_CONCRETE_CROUCHING "armorcretecrouch"
-#define ARMOR_FOOTSTEP_WOOD "armorwood"
-#define ARMOR_FOOTSTEP_WOOD_CROUCHING "armorwoodcrouch"
+#define ARMOR_FOOTSTEP_BRIDGE "armorwood"
+#define ARMOR_FOOTSTEP_BRIDGE_CROUCHING "armorwoodcrouch"
 #define ARMOR_FOOTSTEP_DIRT "armordirtcrouch"
 #define ARMOR_FOOTSTEP_DIRT_CROUCHING "armordirtcrouch"
 #define ARMOR_FOOTSTEP_WATER "armorwatercrouch"
@@ -199,12 +199,11 @@
 
 /turf/simulated/open/get_footstep_sound()
 	return safepick(footstep_sounds[FOOTSTEP_BLANK])
-
 /turf/simulated/floor/wood/get_footstep_sound(crouching, wearingarmor)
 	if(wearingarmor)
 		if(crouching)
-			return safepick(footstep_sounds[ARMOR_FOOTSTEP_WOOD_CROUCHING])
-		return safepick(footstep_sounds[ARMOR_FOOTSTEP_WOOD])
+			return safepick(footstep_sounds[ARMOR_FOOTSTEP_BRIDGE_CROUCHING])
+		return safepick(footstep_sounds[ARMOR_FOOTSTEP_BRIDGE])
 	return safepick(footstep_sounds[FOOTSTEP_WOOD])
 
 

@@ -405,7 +405,6 @@
 "nm" = (/turf/simulated/mineral,/turf/simulated/open,/area/space)
 "nn" = (/obj/machinery/light/caged{pixel_y = 30; pixel_x = 0},/obj/effect/floor_decal/trench,/turf/simulated/floor/trenches/underground{icon_state = "trench"; color = "#ffffff"},/area/warfare/battlefield/capture_point/blue/two)
 "np" = (/obj/structure/trench_wall,/turf/simulated/mineral,/area/warfare/battlefield/trench_section/underground)
-"nr" = (/obj/structure/banner/red/small{pixel_y = 32},/obj/structure/announcementspeaker/red{pixel_x = 0; dir = 1},/obj/structure/closet/secure_closet/warfare/newver,/turf/simulated/floor/concrete/random,/area/warfare/homebase/red)
 "nt" = (/obj/effect/floor_decal/trench,/obj/structure/trench_wall/innercorners{pixel_x = -32; pixel_y = 31},/obj/structure/trench_wall{dir = 4; pixel_x = -32; pixel_y = 0},/turf/simulated/floor/trenches/underground{icon_state = "trench"; color = "#ffffff"},/area/warfare/battlefield/capture_point/red/two)
 "nv" = (/obj/structure/closet/secure_closet/warfare/practicioner,/turf/simulated/floor/wood,/area/warfare/battlefield/trench_section)
 "nw" = (/obj/machinery/light/small/bunker{pixel_x = 0; pixel_y = 32},/turf/simulated/floor/concrete/random,/area/warfare/battlefield/capture_point/red/two)
@@ -1123,7 +1122,7 @@ aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabababbgababaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabadaeIhqLabaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaadYabababblbmafcqabababababababababababababaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaadYabiQbqJLdndnJLnrvhababBibuFDJLJXGOdndnabaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaadYabiQbqJLdndnJLbqvhababBibuFDJLJXGOdndnabaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaadYabBidndndndndndnBcababBibudnjTdndndndnabaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaadYabohmfdnzBzBdnmfIXababohmfdnzBzBdnmfIXabaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaadYabHTbCdnababdnyBQlababpdbFdnababdnpdbGabaaaa
