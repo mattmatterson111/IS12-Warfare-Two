@@ -254,7 +254,7 @@
 	var/S = T.get_footstep_sound(src.crouching, wearingarmor)
 	if(S)
 		var/range = -(world.view - 2)
-		var/armor_range = -(world.view - 2)
+		//var/armor_range = -(world.view - 2)
 		var/volume = 50
 		if(m_intent == "walk")
 			volume -= 45

@@ -80,7 +80,7 @@
 				msg = replacetext(msg, " im ", " I'm ")
 				msg = replacetext(msg, " u ", " you ")
 				msg = add_shout_append(capitalize(msg))//So that if they end in an ! it gets bolded
-				var/spkrname = ageAndGender2Desc(M.age, M.gender)
+				//var/spkrname = ageAndGender2Desc(M.age, M.gender)
 				msg = replace_characters(msg, list("&#34;" = "\""))
 				transmitmessage(M.GetVoice(), msg, verb)
 /*

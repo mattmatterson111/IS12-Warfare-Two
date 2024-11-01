@@ -914,7 +914,7 @@
 	if(stat != DEAD && vomit_score > 25 && prob(10))
 		spawn vomit(1, vomit_score, vomit_score/25)
 
-	var/area/A = get_area(src)
+	//var/area/A = get_area(src)
 	//if(client && world.time >= client.played + 600) // TWOFARE EDIT - This broke ambiences.. but in return.. it was our greatest hero.. random ambience noises.. we will miss you..
 	//	A.play_ambience(src)
 	if(stat == UNCONSCIOUS && world.time - l_move_time < 5 && prob(10))
