@@ -387,7 +387,7 @@
 	if(prob(50))
 		belt = /obj/item/gun/projectile/warfare
 	else
-		belt = /obj/item/gun/projectile/revolver/manual
+		belt = /obj/item/gun/projectile/revolver
 	if(aspect_chosen(/datum/aspect/nightfare))
 		backpack_contents += list(/obj/item/ammo_box/flares/blue = 1, /obj/item/torch/self_lit = 1)
 	if(aspect_chosen(/datum/aspect/trenchmas))

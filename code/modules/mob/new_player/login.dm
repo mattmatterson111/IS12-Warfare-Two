@@ -6,7 +6,6 @@
 	name = "Interstation12"
 	desc = "This shouldn't be read."
 	screen_loc = "WEST,NORTH-3"
-	plane = EFFECTS_ABOVE_LIGHTING_PLANE
 	mouse_opacity = FALSE
 
 /obj/effect/workinprogress/Initialize()
@@ -18,7 +17,6 @@
 	name = "Interstation12"
 	desc = "This shouldn't be read."
 	screen_loc = "WEST,SOUTH"
-	plane = EFFECTS_ABOVE_LIGHTING_PLANE
 	mouse_opacity = FALSE
 
 /obj/effect/lobby_image/Initialize()

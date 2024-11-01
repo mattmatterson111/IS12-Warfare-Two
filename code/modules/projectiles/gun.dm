@@ -92,7 +92,6 @@
 	var/broken = FALSE //weapon broken or no
 	var/jammed_icon
 	var/gun_type = "generic"
-	var/bayonet_icon
 
 	var/next_fire_time = 0
 
@@ -782,14 +781,8 @@
 	client?.update_cursor(client?.hovered_obj)
 
 /obj/item/gun/proc/add_bayonet()
-	var/this_fuck = 'icons/obj/gun.dmi'
-	var/this_swear = "bayonett"
-	if(bayonet_icon)
-		this_fuck = bayonet_icon
-		this_swear = "[icon_state]_bt"
-	var/image/I =  image(this_fuck, this_swear)
-	if(!bayonet_icon)
-		I.pixel_x += 5
+	var/image/I =  image('icons/obj/gun.dmi', "bayonett")
+	I.pixel_x += 5
 	src.overlays += I
 	hitsound = "bayonet_stab"
 	can_have_bayonet = FALSE

@@ -44,7 +44,7 @@
 		density = TRUE
 		return
 	else if(prob(15)) // biiig shroom
-		icon_state = safepick(list("bro1","bro2","bro3","bro4","bro5","dead"))
+		icon_state = safepick(list("bro1","bro2","bro3","dead"))
 		density = TRUE
 		return
 	else if(prob(20))

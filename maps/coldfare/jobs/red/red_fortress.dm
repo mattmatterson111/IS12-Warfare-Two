@@ -68,12 +68,5 @@
 	belt = /obj/item/storage/belt/medical/full
 	pda_type = null
 	id_type = /obj/item/card/id/dog_tag/red
-	backpack_contents = null
+	backpack_contents = list(/obj/item/ammo_magazine/handful/revolver = 1, /obj/item/gun/projectile/revolver/cpt = 1)
 	//backpack_contents = list(/obj/item/reagent_containers/hypospray/autoinjector/blood = 1, /obj/item/reagent_containers/hypospray/autoinjector/revive = 2, /obj/item/reagent_containers/hypospray/autoinjector/pain = 2, /obj/item/suture = 1, /obj/item/wirecutters = 1)
-
-/decl/hierarchy/outfit/job/medical/doctor/red/equip()
-	if(prob(50))
-		backpack_contents = list(/obj/item/ammo_magazine/handful/revolver = 1, /obj/item/gun/projectile/revolver/manual = 1)
-	else
-		backpack_contents = list(/obj/item/gun/projectile/warfare = 1, /obj/item/ammo_magazine/c45m/warfare = 2)
-	..()

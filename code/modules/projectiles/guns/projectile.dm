@@ -45,7 +45,6 @@
 	var/wielded_unloaded_icon
 	var/casingsound = 'sound/weapons/guns/misc/casingfall1.ogg'
 	var/load_delay = 5
-	var/condition_icon = 'icons/obj/gun.dmi'
 	fire_sound = 'sound/weapons/guns/fire/pistol_fire.ogg'
 	far_fire_sound = "far_fire"
 
@@ -103,8 +102,8 @@
 	. = ..()
 	overlays.Remove(rust_overlay)
 	var/icon/I = new/icon(icon, icon_state)
-	I.Blend(new /icon(condition_icon,rgb(255,255,255)), ICON_MULTIPLY)
-	I.Blend(new /icon(condition_icon, icon_state = "[get_condition_icon()]"), ICON_ADD)
+	I.Blend(new /icon('icons/obj/gun.dmi',rgb(255,255,255)), ICON_MULTIPLY)
+	I.Blend(new /icon('icons/obj/gun.dmi', icon_state = "[get_condition_icon()]"), ICON_ADD)
 	rust_overlay = image(I)
 	rust_overlay.color = "#773d28"
 	overlays += rust_overlay

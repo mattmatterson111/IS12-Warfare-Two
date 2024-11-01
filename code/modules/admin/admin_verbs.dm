@@ -30,7 +30,6 @@ var/list/admin_verbs_admin = list(
 	/client/proc/cmd_admin_pm_context,	//right-click adminPM interface,
 	/client/proc/cmd_admin_pm_panel,	//admin-pm list,
 	/client/proc/cmd_admin_subtle_message,	//send an message to somebody as a 'voice in their head',
-	/client/proc/cmd_admin_subtle_message_disco,
 	/client/proc/cmd_admin_delete,		//delete an instance/object/mob/etc,
 	/client/proc/cmd_admin_check_contents,	//displays the contents of an instance,
 	/datum/admins/proc/access_news_network,	//allows access of newscasters,
@@ -244,8 +243,6 @@ var/list/admin_verbs_hideable = list(
 	/datum/admins/proc/view_txt_log,
 	/datum/admins/proc/view_atk_log,
 	/client/proc/cmd_admin_subtle_message,
-	/client/proc/cmd_admin_subtle_message_disco,
-	/client/proc/cmd_admin_roll_disco,
 	/client/proc/cmd_admin_check_contents,
 	/datum/admins/proc/access_news_network,
 	/client/proc/admin_call_shuttle,
@@ -314,8 +311,6 @@ var/list/admin_verbs_mod = list(
 	/datum/admins/proc/show_player_panel,
 	/client/proc/check_antagonists,
 	/client/proc/cmd_admin_subtle_message, // send an message to somebody as a 'voice in their head',
-	/client/proc/cmd_admin_subtle_message_disco,
-	/client/proc/cmd_admin_roll_disco, // hehehe
 	/datum/admins/proc/sendFax
 
 )
