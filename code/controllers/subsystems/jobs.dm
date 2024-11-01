@@ -213,20 +213,20 @@ SUBSYSTEM_DEF(jobs)
 				if(age < job.minimum_character_age) // Nope.
 					continue
 
-				switch(age)
-					if(job.minimum_character_age to (job.minimum_character_age+10))
-						weightedCandidates[V] = 3 // Still a bit young.
-					if((job.minimum_character_age+10) to (job.ideal_character_age-10))
-						weightedCandidates[V] = 6 // Better.
-					if((job.ideal_character_age-10) to (job.ideal_character_age+10))
-						weightedCandidates[V] = 10 // Great.
-					if((job.ideal_character_age+10) to (job.ideal_character_age+20))
-						weightedCandidates[V] = 6 // Still good.
-					if((job.ideal_character_age+20) to INFINITY)
-						weightedCandidates[V] = 3 // Geezer.
-					else
+				if(age >= job.minimum_character_age && age <= job.minimum_character_age + 10)
+					weightedCandidates[V] = 3 // Still a bit young.
+				else if(age > job.minimum_character_age + 10 && age <= job.ideal_character_age - 10)
+					weightedCandidates[V] = 6 // Better.
+				else if(age > job.ideal_character_age - 10 && age <= job.ideal_character_age + 10)
+					weightedCandidates[V] = 10 // Great.
+				else if(age > job.ideal_character_age + 10 && age <= job.ideal_character_age + 20)
+					weightedCandidates[V] = 6 // Still good.
+				else if(age > job.ideal_character_age + 20)
+					weightedCandidates[V] = 3 // Geezer.
+
+				else
 						// If there's ABSOLUTELY NOBODY ELSE
-						if(candidates.len == 1) weightedCandidates[V] = 1
+					if(candidates.len == 1) weightedCandidates[V] = 1
 
 
 			var/mob/new_player/candidate = pickweight(weightedCandidates)
@@ -476,8 +476,8 @@ SUBSYSTEM_DEF(jobs)
 			G.prescription = 7
 	if(job.possible_backstories.len && H.client.prefs.backstory)
 		pick_backstory(job.possible_backstories, H)
+		H.set_squad_huds()
 
-	H.set_squad_huds()
 	BITSET(H.hud_updateflag, ID_HUD)
 	BITSET(H.hud_updateflag, IMPLOYAL_HUD)
 	BITSET(H.hud_updateflag, SPECIALROLE_HUD)

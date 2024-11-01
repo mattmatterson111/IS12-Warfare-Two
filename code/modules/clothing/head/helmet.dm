@@ -19,7 +19,7 @@
 	max_heat_protection_temperature = HELMET_MAX_HEAT_PROTECTION_TEMPERATURE
 	siemens_coefficient = 0.7
 	w_class = ITEM_SIZE_NORMAL
-	var/health = 100
+	health = 100
 	var/can_be_damaged = FALSE
 	var/damaged_worldicons = list()
 	var/engraved = FALSE
