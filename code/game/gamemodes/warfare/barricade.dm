@@ -9,7 +9,7 @@
 	atom_flags = ATOM_FLAG_CHECKS_BORDER
 	var/health = 300
 	var/maxhealth = 300
-	var/secured = FALSE
+	var/secured
 
 /obj/structure/defensive_barrier/Initialize()
 	. = ..()
@@ -155,8 +155,7 @@
 	if(damage)
 		playsound(src.loc, 'sound/effects/bang.ogg', 75, 1)
 		damage = round(damage * 0.5)
-		if(damage)
-			..()
+
 
 /obj/structure/defensive_barrier/proc/check_cover(obj/item/projectile/P, turf/from)
 	var/turf/cover = get_turf(src)
