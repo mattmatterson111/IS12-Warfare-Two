@@ -138,6 +138,8 @@
 	ammo_type = /obj/item/ammo_casing/c44
 
 /obj/item/gun/projectile/revolver/manual/
+	name = "Trenchman revolver"
+	desc = "The <b>WRC Trenchman</b> is built just as its name suggests for the muck of the trenches.\nIts worn wooden grip feels solid, and the steel frame has a hefty weight to it.\nI mostly remember seeing it holstered on the captain’s hip, though some of the “pracs” carry it too.\nIt’ll just about put down anything in its path. Unlike its jumpy sibling models, the Trenchman’s action is solid, so there’s little chance of it misfiring if bumped. \nThat said, <i>I wouldn’t push my luck.</i>"
 	var/primed = FALSE
 	var/open = FALSE
 	icon = 'icons/obj/gun.dmi'

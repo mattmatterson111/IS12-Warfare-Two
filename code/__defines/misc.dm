@@ -27,6 +27,11 @@
 
 #define text_starts_with(text, start) (copytext(text, 1, length(start) + 1) == start)
 
+// disco shit
+#define SPAN_STATSBAD(str) ("<span class='statsBad'>" + str + "</span>")
+#define SPAN_STATSGOOD(str) ("<span class='statsGood'>" + str + "</span>")
+#define SPAN_MINDVOICE(str) ("<span class='headSpeak'>" + str + "</span>")
+
 //Misc text define. Does 4 spaces. Used as a makeshift tabulator.
 #define FOURSPACES "&nbsp;&nbsp;&nbsp;&nbsp;"
 

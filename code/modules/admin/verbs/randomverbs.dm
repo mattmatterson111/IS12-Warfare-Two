@@ -62,6 +62,107 @@
 	log_and_message_staff(" - SubtleMessage -> [key_name_admin(M)] : [msg]")
 	feedback_add_details("admin_verb","SMS") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
+/client/proc/cmd_admin_subtle_message_disco(mob/M as mob in SSmobs.mob_list)
+	set category = "Special Verbs"
+	set name = "Subtle Message - Disco Elysium"
+
+	if(!ismob(M))	return
+	if (!holder)
+		to_chat(src, "Only administrators may use this command.")
+		return
+	var/list/COLOR = list("bad_stat","good_stat","mind_voice")
+	var/list/VOICES = list('sound/effects/skill/skills-leveling-01.ogg','sound/effects/skill/interface-skill-passiveFYS-03-01.ogg','sound/effects/skill/interface-skill-passiveINT-04-01.ogg','sound/effects/skill/interface-skill-passiveMOT-04-01.ogg','sound/effects/skill/interface-skill-passivePSY-04-02.ogg', null)
+
+	var/msg = sanitize(input("Message:", text("Subtle PM to [M.key]")) as text)
+	var/span = input("The appearance.") as null|anything in COLOR
+	var/the_sound = input("The sound.") as null|anything in VOICES
+
+	if (!msg)
+		return
+	if(usr)
+		if (usr.client)
+			if(usr.client.holder)
+				switch(span)
+					if("bad_stat") to_chat(M,  SPAN_STATSBAD(msg))
+					if("good_stat") to_chat(M,  SPAN_STATSGOOD(msg))
+					if("mind_voice") to_chat(M,  SPAN_MINDVOICE(msg))
+				sound_to(M,the_sound)
+
+	log_and_message_staff(" - SubtleMessage -> [key_name_admin(M)] : [msg]")
+	feedback_add_details("admin_verb","DISCO") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+
+/client/proc/cmd_admin_roll_disco(mob/M as mob in SSmobs.mob_list)
+	set category = "Special Verbs"
+	set name = "Make a roll - Disco Elysium"
+
+	if(!ishuman(M)) return
+	if(!holder)
+		to_chat(src, "Only administrators may use this command.")
+		return
+	if(!M.stats) // Check if stats exist
+		return
+
+	var/list/stat_list = list()
+	stat_list |= M.stats.stats
+	stat_list |= M.stats.skills
+
+	var/to_roll = input("The statistic.") as null|anything in stat_list
+	if(!to_roll)
+		return
+	if(usr)
+		if (usr.client)
+			if(usr.client.holder)
+				var/difficulty = input("The difficulty of the roll, 3-18") as num
+				var/datum/roll_result/result = M.stat_roll(difficulty, to_roll)
+				var/result_but_text = "NO_RESULT"
+				switch(result.outcome)
+					if(CRIT_FAILURE) result_but_text = "||CRITICAL FAILURE||"
+					if(FAILURE) result_but_text = "||FAILURE||"
+					if(SUCCESS) result_but_text = "||SUCCESS||"
+					if(CRIT_SUCCESS) result_but_text = "||CRITICAL SUCCESS||"
+
+				var/msg = sanitize(input("The result is a [result_but_text]", text("Subtle PM to [M.key]")) as text)
+				var/response = alert(src, "Are you sure you want to send the message?","ARE YOU FUCKING SURE?","No","Yes")
+				if(response == "No") return
+				if (!msg)
+					return
+				switch(result.outcome)
+					if(CRIT_FAILURE)
+						sound_to(M, sound('sound/effects/skill/interface-diceroll-fail-02-01.ogg', volume = 100))
+						if(M != usr)
+							sound_to(usr, sound('sound/effects/skill/interface-diceroll-fail-02-01.ogg', volume = 100))
+						sleep(10)
+						to_chat(M, result.create_tooltip(msg))
+						if(M != usr)
+							to_chat(usr, result.create_tooltip(msg))
+					if(FAILURE)
+						sound_to(M, sound('sound/effects/skill/interface-diceroll-fail-02-01.ogg', volume = 100))
+						if(M != usr)
+							sound_to(usr, sound('sound/effects/skill/interface-diceroll-fail-02-01.ogg', volume = 100))
+						sleep(10)
+						to_chat(M, result.create_tooltip(msg))
+						if(M != usr)
+							to_chat(usr, result.create_tooltip(msg))
+					if(SUCCESS)
+						sound_to(M, sound('sound/effects/skill/interface-diceroll-success-02-01.ogg', volume = 100))
+						if(M != usr)
+							sound_to(usr, sound('sound/effects/skill/interface-diceroll-success-02-01.ogg', volume = 100))
+						sleep(10)
+						to_chat(M, result.create_tooltip(msg))
+						if(M != usr)
+							to_chat(usr, result.create_tooltip(msg))
+					if(CRIT_SUCCESS)
+						sound_to(M, sound('sound/effects/skill/interface-diceroll-success-02-01.ogg', volume = 100))
+						if(M != usr)
+							sound_to(usr, sound('sound/effects/skill/interface-diceroll-success-02-01.ogg', volume = 100))
+						sleep(10)
+						to_chat(M, result.create_tooltip(msg))
+						if(M != usr)
+							to_chat(usr, result.create_tooltip(msg))
+
+				log_and_message_staff(" - DISCO-ROLL-MESSAGE - [result_but_text] -> [key_name_admin(M)] : [msg]")
+				feedback_add_details("admin_verb","DISCO_ROLL") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+
 /client/proc/cmd_mentor_check_new_players()	//Allows mentors / admins to determine who the newer players are.
 	set category = "Admin"
 	set name = "Check new Players"

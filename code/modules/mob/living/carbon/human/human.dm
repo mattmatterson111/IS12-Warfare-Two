@@ -1178,7 +1178,7 @@
 
 	update_lighting() // warftwo change - children no longer see mat_fullbright 1
 	clear_fullscreen("fademob")
-	overlay_fullscreen("fademob", /obj/screen/fullscreen/fadewaketest)
+	overlay_fullscreen("fademob", /obj/screen/fullscreen/fadeoutok)
 
 	return 1
 

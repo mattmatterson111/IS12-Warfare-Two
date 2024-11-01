@@ -1052,22 +1052,25 @@
 	icon_state = "blackbook"
 	item_state = "blackbook"
 	w_class = ITEM_SIZE_TINY
-	var/list/listed_people = list()
 
 //Examining for names
 /obj/item/black_book/examine(mob/user) //NOTE - WHEN I ADD THE OFFICER, MAKE THIS EXCLUSIVE TO THE OFFICER
 	. = ..()
-	to_chat(user,SPAN_WARNING("There are [listed_people.len] names in the book."))
+	to_chat(user,SPAN_WARNING("There are [GLOB.bright_futures.len] names in the book."))
+	if(LAZYLEN(GLOB.bright_futures))
+		to_chat(user,SPAN_DANGER("To be specific:"))
+		for(var/mob/living/M in GLOB.bright_futures)
+			to_chat(user, SPAN_WARNING("- <i>[M.real_name]</i>"))
 
 //Adding names to the book
 /obj/item/black_book/proc/add_name(mob/target as mob, mob/user as mob) //Adding people to the book
-	listed_people.Add(target)
+	GLOB.bright_futures.Add(target)
 	to_chat(user,SPAN_NOTICE("You add [target.name] to the lists of the book."))
 	user.visible_message(SPAN_WARNING("[user.name] writes down something in their little black book..."))
 
 //Checking for duplicates - causes a whole heap of shitcode issues if done outside of a proc
 /obj/item/black_book/proc/check_for_duplicate(mob/target as mob, mob/user as mob)
-	if(target in listed_people)
+	if(target in GLOB.bright_futures)
 		to_chat(user,SPAN_WARNING("They're already destined for a bright future. To add them again would be pointless."))
 		return 1
 	return 0
@@ -1185,3 +1188,15 @@
 			playsound(src.loc, activation_sound, 75, 1)
 		update_icon()
 		return
+	// goodbye easteregg, one too many.
+	/*
+	if(!prob(15))
+		return
+	if(!ishuman(user))
+		return
+	if(user.stats.cooldown_finished("voice"))
+		user.stats.set_cooldown("voice", INFINITY) // only once
+		// never again, noone will believe you
+		sound_to(user, sound('sound/effects/skill/interface-skill-passiveINT-04-01.ogg', volume = 100))
+		to_chat(user, span_mindvoice("A wave of satisfaction washes over you- You feel proud of what you've accomplished."))
+*/

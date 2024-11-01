@@ -2,15 +2,19 @@
 /obj/item/gun/projectile/shotgun/pump/boltaction/shitty
 	name = "\improper Mark I Stormrider"
 	desc = "This piece is practically held together by rust and spite, jams half the time, and looks older than I am. They don’t actually expect me to fight with this, do they?"//"The much, much older brother of the sleeker, better, Mark II. Kind of a piece of shit."
-	icon_state = "boltaction"
-	item_state = "boltaction"
+	icon = 'icons/obj/gun32x64.dmi'
+	condition_icon = 'icons/obj/gun32x64.dmi'
+	icon_state = "lever2"
+	bayonet_icon ='icons/obj/gun32x64.dmi'
+	//icon_state = "boltaction"
+	//item_state = "boltaction"
 	wielded_item_state = "boltaction-wielded"
 	condition = 75
 	fire_sound = "brifle"
 	caliber = "763"
 	ammo_type = /obj/item/ammo_casing/brifle
 	one_hand_penalty = 20 //FIRE THIS THING WITH BOTH FUCKING HANDS.
-	empty_icon = "boltaction-e"
+	//empty_icon = "boltaction-e"
 	far_fire_sound = "sniper_fire"
 	gun_type = GUN_BOLTIE //So engineers can't shoot this shit.
 	can_have_bayonet = TRUE
@@ -42,15 +46,19 @@
 /obj/item/gun/projectile/shotgun/pump/boltaction/shitty/leverchester
 	name = "\improper Mark I Snapper"
 	desc = "The lever action on this thing’s grimy, hasn’t seen grease in years. Still, it’s smoother than the bolt on the Stormrider, though it’s slapped together from the same junk parts. Feels like it could seize up any second."
-	icon_state = "leverchester"
-	item_state = "leverchester"
+	icon = 'icons/obj/gun32x64.dmi'
+	condition_icon = 'icons/obj/gun32x64.dmi'
+	icon_state = "lever1"
+	bayonet_icon ='icons/obj/gun32x64.dmi'
+	//icon_state = "leverchester"
+	//item_state = "leverchester"
 	wielded_item_state = "leverchester-wielded"
 	fire_sound = 'sound/weapons/guns/fire/la_fire.ogg'
 	bulletinsert_sound = 'sound/weapons/guns/interact/la_insert.ogg'
 	pumpsound = 'sound/weapons/guns/interact/la_cock.ogg'
 	backsound = 'sound/weapons/guns/interact/la_back.ogg'
 	forwardsound = 'sound/weapons/guns/interact/la_forward.ogg'
-	empty_icon = "leverchester-e"
+	//empty_icon = "leverchester-e"
 	can_have_bayonet = TRUE
 
 
@@ -89,13 +97,17 @@
 /obj/item/gun/projectile/shotgun/pump/shitty
 	name = "\improper WTX Frontier Special"
 	desc = "Five in the tube, one in the chamber… yeah, that’s right. I remember a trench raider who swore by one of these. Said it was all he’d ever need. Poor bastard didn’t make it past the first shelling. Every time I hold it, though, I still hear his voice."
-	icon_state = "winchester"
-	item_state = "winchester"
+	icon = 'icons/obj/gun32x64.dmi'
+	condition_icon = 'icons/obj/gun32x64.dmi'
+	icon_state = "shot1"
+	bayonet_icon ='icons/obj/gun32x64.dmi'
+	//icon_state = "winchester"
+	//item_state = "winchester"
 	wielded_item_state = "winchester-wielded"
 	condition = 75
 	ammo_type = /obj/item/ammo_casing/shotgun/pellet
 	one_hand_penalty = 20 //FIRE THIS THING WITH BOTH FUCKING HANDS AS WELL
-	empty_icon = "winchester-e"
+	//empty_icon = "winchester-e"
 	can_have_bayonet = TRUE
 
 /obj/item/gun/projectile/shotgun/pump/shitty/attackby(obj/item/W, mob/user)
@@ -522,14 +534,20 @@
 /obj/item/gun/projectile/automatic/machinepistol/wooden
 	name = "Mk.1 Soulburn SMG"
 	desc = "A prototype of what? I have no clue. It feels relatively new, and I’ve been told its high fire rate puts rounds downrange faster than any machine gun. those early production parts are practically exposed. I'm not an engineer but  I think this thing is going to malfunction."
-	icon_state = "schmeiser"
-	item_state = "schmeiser"
+	icon = 'icons/obj/gun32x64.dmi'
+	condition_icon = 'icons/obj/gun32x64.dmi'
+	icon_state = "auto1"
+	loaded_icon = "auto1"
+	unloaded_icon = "auto1"
+	bayonet_icon ='icons/obj/gun32x64.dmi'
+	//icon_state = "schmeiser"
+	//item_state = "schmeiser"
 	wielded_item_state = "schmeiser-wielded"
 
-	loaded_icon = "schmeiser"
+	//loaded_icon = "schmeiser"
 	unwielded_loaded_icon = "schmeiser"
 	wielded_loaded_icon = "schmeiser-wielded"
-	unloaded_icon = "schmeiser-e"
+	//unloaded_icon = "schmeiser-e"
 	unwielded_unloaded_icon = "schmeiser-e"
 	wielded_unloaded_icon = "schmeiser-e"
 

@@ -1,7 +1,11 @@
 /obj/item/gun/projectile/heavysniper
 	name = "PTSD 41"
 	desc = "Every time I see this thing, I can’t help but wonder why it exists. A massive scope and an elongated barrel with a high caliber bore it turns heads to mush and limbs into paste. Sure, it’s got armor piercing capabilities, but we don’t wear armor, and neither does the enemy. I doubt I can even shoot without looking through the scope. But what’s the point? It feels like this weapon is meant for a fight that shouldn’t be happening at all. What am I really supposed to do with this?"
-	icon_state = "heavysniper"
+	icon = 'icons/obj/gun32x64.dmi'
+	condition_icon = 'icons/obj/gun32x64.dmi'
+	icon_state = "ptsd"
+	bayonet_icon ='icons/obj/gun32x64.dmi'
+	//icon_state = "heavysniper"
 	item_state = "heavysniper"
 	w_class = ITEM_SIZE_HUGE
 	force = 10
@@ -25,10 +29,10 @@
 
 /obj/item/gun/projectile/heavysniper/update_icon()
 	..()
-	if(bolt_open)
-		icon_state = "heavysniper-open"
-	else
-		icon_state = "heavysniper"
+	//if(bolt_open)
+	//	icon_state = "heavysniper-open"
+	//else
+	//	icon_state = "heavysniper"
 
 /obj/item/gun/projectile/heavysniper/examine(mob/user, distance)
 	. = ..()
