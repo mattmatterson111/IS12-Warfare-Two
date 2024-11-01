@@ -27,8 +27,10 @@
 			client.mouse_pointer_icon = 'icons/misc/pointer_cursor.dmi'
 
 /client/proc/update_cursor(atom/object)
-	var/currenthand
 	mob.update_aim_icon()
+	if(!object)
+		return
+	var/currenthand
 	switch(mob.hand)
 		if(0)
 			currenthand = mob.r_hand

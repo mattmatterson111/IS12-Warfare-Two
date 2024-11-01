@@ -122,7 +122,8 @@
 	var/sound/b_side
 
 /obj/item/device/cassette/New()
-	icon_state = "cassette_[rand(0,12)]"
+	icon_state = "cassette_[rand(0,4)]"
+	world_icons = list("[icon_state]_onworld")
 
 /obj/item/device/cassette/attack_self(mob/user)
 	. = ..()

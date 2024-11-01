@@ -371,6 +371,7 @@ GLOBAL_LIST_EMPTY(phone_list)
 	desc = "The height of our technology- A rotary phone!"
 	icon_state = "rotaryphone"
 	base_state = "rotaryphone"
+	anchored = TRUE
 
 /obj/structure/phone/rotary/attack_hand(mob/user)
 	if(phonemounted)

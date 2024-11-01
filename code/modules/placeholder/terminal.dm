@@ -217,10 +217,8 @@
 	)
 
 /datum/terminal_page/test3/load()
-	add_line("[type]", 25, 'sound/effects/computer/floppy_access.ogg')
-	for(var/entry in available_pages)
-		add_line("[entry["code"]] - [entry["name"]]", 25, 'sound/effects/computer/floppy_access.ogg')
-	toggle_input(50, 'sound/effects/computer/floppy_access.ogg')
+	add_line("PAGE TEST 3", 25, 'sound/effects/computer/floppy_access.ogg')
+	add_line("IF YOU ARE READING THIS, IT WORKED!! YAY!!", 25, 'sound/effects/computer/floppy_access.ogg')
 
 /obj/machinery/kaos/test_terminal
 	icon = 'icons/obj/old_computers.dmi'

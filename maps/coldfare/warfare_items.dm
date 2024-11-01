@@ -30,11 +30,11 @@
 
 
 /obj/item/clothing/suit/child_coat/red
-	icon_state = "child_redcoat"
+	icon_state = "redcoatnew_child"
 	warfare_team = RED_TEAM
 
 /obj/item/clothing/suit/child_coat/blue
-	icon_state = "child_bluecoat"
+	icon_state = "bluecoatnew_child"
 	warfare_team = BLUE_TEAM
 
 
@@ -62,6 +62,7 @@
 	icon_state = "sniper"
 	item_state = "sniper"
 	worldicons = list("sniperworld1","sniperworld2")
+	canremove = FALSE
 	var/hood
 
 /obj/item/clothing/suit/armor/sniper/RightClick(mob/user)
@@ -79,9 +80,12 @@
 	if(user.get_equipped_item(slot_head))
 		if(!istype(user.get_equipped_item(slot_head), /obj/item/clothing/head/sniper))
 			return
+	if(user.get_equipped_item(slot_wear_suit))
+		if(!istype(user.get_equipped_item(slot_wear_suit), src))
+			return
 	if(!hood)
 		icon_state = "sniper_hood"
-		canremove = FALSE
+		//canremove = FALSE
 		hood = TRUE
 		var/obj/augh = new/obj/item/clothing/head/sniper(src)
 		user.equip_to_slot_or_del(augh, slot_head)
@@ -93,7 +97,7 @@
 				qdel(hood)
 		icon_state = "sniper"
 		hood = FALSE
-		canremove = TRUE
+		//canremove = TRUE
 	update_clothing_icon()
 
 /obj/item/clothing/head/helmet/redhelmet/sniper
@@ -125,11 +129,11 @@
 
 /obj/item/clothing/under/child_jumpsuit/warfare/red
 	warfare_team = RED_TEAM
-	icon_state = "red_child_uniform"
+	icon_state = "redgrunt_child"
 
 /obj/item/clothing/under/child_jumpsuit/warfare/blue
 	warfare_team = BLUE_TEAM
-	icon_state = "blue_child_uniform"
+	icon_state = "bluegrunt_child"
 
 //Red shit
 /obj/item/clothing/suit/armor/redcoat
@@ -225,6 +229,30 @@
 	helmet_vision = TRUE
 	worldicons = list("sniperworld")
 
+/obj/item/clothing/mask/gas/sniper/penal1
+	icon_state = "penal1"
+	item_state = "penal1"
+	flags_inv = HIDEEARS|HIDEEYES|HIDEFACE|BLOCKHEADHAIR
+	body_parts_covered = FACE|EYES
+	helmet_vision = TRUE
+	worldicons = list("penal1_onworld")
+
+/obj/item/clothing/mask/gas/sniper/penal2
+	icon_state = "penal2"
+	item_state = "penal2"
+	flags_inv = HIDEEARS|HIDEEYES|HIDEFACE|BLOCKHEADHAIR
+	body_parts_covered = FACE|EYES
+	helmet_vision = TRUE
+	worldicons = list("penal1_onworld")
+
+/obj/item/clothing/mask/gas/sniper/penal3
+	icon_state = "penal3"
+	item_state = "penal3"
+	flags_inv = HIDEEARS|HIDEEYES|HIDEFACE|BLOCKHEADHAIR
+	body_parts_covered = FACE|EYES
+	helmet_vision = TRUE
+	worldicons = list("penal3_onworld")
+
 /obj/item/clothing/mask/gas/flamer
 	icon_state = "sniper"
 	item_state = "sniper"
@@ -276,8 +304,8 @@
 	item_state = "namgloves"
 
 /obj/item/clothing/gloves/thick/swat/combat/warfare
-	icon_state = "warfare_gloves"
-	item_state = "warfare_gloves"
+	icon_state = "redgloves"
+	item_state = "redgloves"
 	equipsound = 'sound/effects/wear_gloves.ogg'
 
 /obj/item/clothing/gloves/thick/swat/combat/warfare/red
@@ -291,10 +319,9 @@
 	desc = "The proud jacket of the Bluecoats!"
 	icon_state = "bluecoatnew"
 	warfare_team = BLUE_TEAM
-	allowed = list(/obj/item/ammo_magazine,/obj/item/ammo_casing)
-	//starting_accessories = list(/obj/item/clothing/accessory/blue_outline)
 	cold_protection = UPPER_TORSO | LOWER_TORSO | LEGS | FEET | ARMS | HANDS
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
+	worldicons = list("bluecoatworld1","bluecoatworld2","bluecoatworld3")
 
 /obj/item/clothing/suit/armor/bluecoat/New()
 	..()
@@ -324,7 +351,9 @@
 	item_state = "blue_sentry_helmet"
 
 /obj/item/clothing/suit/armor/bluecoat/leader
-	icon_state = "captain_blue"
+	icon_state = "captaincoat"
+	//item_state = "captaincoat"
+	worldicons = list("captaincoatworld1","captaincoatworld2","captaincoatworld3")
 
 /obj/item/clothing/suit/armor/bluecoat/medic
 	icon_state = "bluecoat_medic"
@@ -333,9 +362,11 @@
 //Uniform.
 /obj/item/clothing/under/blue_uniform
 	name = "Blue's uniform"
-	desc = "It's not the best, but it's not the worst."
-	icon_state = "blue_uniform"
-	worn_state = "blue_uniform"
+	desc = "It's not the best. But it's not the worst."
+	icon_state = "bluegrunt"
+	worn_state = "bluegrunt_m"
+	warfare_team = BLUE_TEAM
+	worldicons = list("blueuniworld1","blueuniworld2","blueuniworld3")
 
 /obj/item/clothing/under/blue_uniform/equipped(mob/user)
 	. = ..()
@@ -358,23 +389,36 @@
 /obj/item/clothing/head/warfare_officer/blueofficer
 	name = "Blue Officer\'s Cap"
 	desc = "Fit for an officer of just your ranking. And nothing more."
-	icon_state = "blue_captain_hat"
-	item_state = "blue_captain_hat"
+	icon_state = "redcaptain"
+	item_state = "redcaptain"
+	worldicons = list("captainhatworld1","captainhatworld2")
 	warfare_team = BLUE_TEAM
 
 //Helmets
+/obj/item/clothing/head/helmet/redhelmet
+	name = "Red's Helmet"
+	desc = "Sometimes protects your head from bullets and blows."
+	icon_state = "redhelmet"
+	warfare_team = RED_TEAM
+	worldicons = list("redhelmet_world")
+	can_be_damaged = TRUE
+	damaged_worldicons = list("redhelmet_world_dam")
+
 /obj/item/clothing/head/helmet/bluehelmet
 	name = "Blue's Helmet"
 	desc = "Sometimes protects your head from bullets and blows."
 	icon_state = "bluehelmet"
 	warfare_team = BLUE_TEAM
+	worldicons = list("bluehelmet_world")
+	can_be_damaged = TRUE
+	damaged_worldicons = list("bluehelmet_world_dam")
 
 /obj/item/clothing/head/helmet/bluehelmet/medic
 	icon_state = "bluehelmet_medic"
 
 /obj/item/clothing/gloves/thick/swat/combat/warfare/blue
-	icon_state = "blue_gloves"
-	item_state = "blue_gloves"
+	icon_state = "redgloves"
+	item_state = "redgloves"
 	warfare_team = BLUE_TEAM
 
 /obj/item/clothing/mask/gas/
@@ -1008,22 +1052,25 @@
 	icon_state = "blackbook"
 	item_state = "blackbook"
 	w_class = ITEM_SIZE_TINY
-	var/list/listed_people = list()
 
 //Examining for names
 /obj/item/black_book/examine(mob/user) //NOTE - WHEN I ADD THE OFFICER, MAKE THIS EXCLUSIVE TO THE OFFICER
 	. = ..()
-	to_chat(user,SPAN_WARNING("There are [listed_people.len] names in the book."))
+	to_chat(user,SPAN_WARNING("There are [GLOB.bright_futures.len] names in the book."))
+	if(LAZYLEN(GLOB.bright_futures))
+		to_chat(user,SPAN_DANGER("To be specific:"))
+		for(var/mob/living/M in GLOB.bright_futures)
+			to_chat(user, SPAN_WARNING("- <i>[M.real_name]</i>"))
 
 //Adding names to the book
 /obj/item/black_book/proc/add_name(mob/target as mob, mob/user as mob) //Adding people to the book
-	listed_people.Add(target)
+	GLOB.bright_futures.Add(target)
 	to_chat(user,SPAN_NOTICE("You add [target.name] to the lists of the book."))
 	user.visible_message(SPAN_WARNING("[user.name] writes down something in their little black book..."))
 
 //Checking for duplicates - causes a whole heap of shitcode issues if done outside of a proc
 /obj/item/black_book/proc/check_for_duplicate(mob/target as mob, mob/user as mob)
-	if(target in listed_people)
+	if(target in GLOB.bright_futures)
 		to_chat(user,SPAN_WARNING("They're already destined for a bright future. To add them again would be pointless."))
 		return 1
 	return 0
@@ -1056,6 +1103,14 @@
 
 //CLicking on peopple from a distance to add to the book
 /obj/item/black_book/afterattack(mob/living/carbon/human/target, mob/user)
+	if(user.a_intent == I_HURT && user.Adjacent(target) && user.zone_sel.selecting == BP_HEAD)
+		playsound(get_turf(src), 'sound/effects/slap.ogg', 100, 1)
+		target.ear_deaf += 15
+		target.ear_damage += 5
+		target.apply_damage(10, BRUTE, BP_HEAD, target.run_armor_check(BP_HEAD, "melee"))
+		target.flash_pain()
+		user.visible_message(SPAN_WARNING("[user.name] slams the [name] shut, aiming for [target.name]'s head and delivering a swift smack to the side of it."))
+		return
 	if((istype(target,/mob/living/carbon/human)) && !check_for_duplicate(target,user) && check_for_the_pen(user))
 		user.visible_message(SPAN_WARNING("[user.name] begins to open and flip through the pages of the [name]"))
 		var/confirmation = alert("Are you sure [target.name] should be added to the book?", "Political Morale Duties", "Yes", "No")
@@ -1073,3 +1128,75 @@
 //Morale Officer Spawn
 /obj/effect/landmark/start/morale_officer
 	name = "Morale Officer"
+
+/obj/item/device/megaphone/red
+	name = "megaphone"
+	desc = "A device used to project your voice. Loudly."
+	icon_state = "megaphone_red"
+	worldicons = list("megaphone_red_world")
+
+	message_color = "#d33434"
+
+/obj/item/device/megaphone/blue
+	name = "megaphone"
+	desc = "A device used to project your voice. Loudly."
+	icon_state = "megaphone_blue"
+	worldicons = list("megaphone_blue_world")
+
+	message_color = "#3466d3"
+
+/obj/item/device/flashlight/lamp/captain
+	desc = "A classic gooseneck desk lamp."
+	icon_state = "caplamp"
+	item_state = "caplamp"
+	plane = ABOVE_HUMAN_PLANE
+	anchored = TRUE
+	on = FALSE
+	brightness_on = 8
+	light_power = 5
+	power_rang
+	light_color = "#e6c2a1"
+	var/examined
+
+/obj/item/device/flashlight/lamp/captain/examine(mob/user, distance)
+	. = ..()
+	if(!ishuman(user))
+		return
+	if(user.stats.cooldown_finished("hurt_eyes") && prob(15) && !examined && on)
+		var/datum/roll_result/result = user.stat_roll(6, /datum/rpg_skill/handicraft)
+		user.stats.set_cooldown("hurt_eyes", INFINITY) // only once
+		examined = TRUE
+		// never again, noone will believe you
+		switch(result.outcome)
+			if(FAILURE)
+				sound_to(user, sound('sound/effects/skill/interface-diceroll-fail-02-01.ogg', volume = 100))
+				sleep(10)
+				to_chat(user, result.create_tooltip("You immediately closed your eyes, it is as if a laser struck your retinas and hit the nerves within your very brain. You recoil, your eyes searing in pain."))
+			if(SUCCESS)
+				sound_to(user, sound('sound/effects/skill/interface-diceroll-success-02-01.ogg', volume = 100))
+				sleep(10)
+				to_chat(user, result.create_tooltip("Ugh- that light is a bit too bright for you to look at, isn't it? You managed to look away- but your eyes still hurt.."))
+			if(CRIT_SUCCESS)
+				sound_to(user, sound('sound/effects/skill/interface-diceroll-success-02-01.ogg', volume = 100))
+				sleep(10)
+				to_chat(user, result.create_tooltip("You look away just in time, your eyes are saved from the wrath of a thousand suns."))
+
+/obj/item/device/flashlight/lamp/captain/attack_hand(mob/user)
+	if(CanPhysicallyInteract(user))
+		on = !on
+		if(activation_sound)
+			playsound(src.loc, activation_sound, 75, 1)
+		update_icon()
+		return
+	// goodbye easteregg, one too many.
+	/*
+	if(!prob(15))
+		return
+	if(!ishuman(user))
+		return
+	if(user.stats.cooldown_finished("voice"))
+		user.stats.set_cooldown("voice", INFINITY) // only once
+		// never again, noone will believe you
+		sound_to(user, sound('sound/effects/skill/interface-skill-passiveINT-04-01.ogg', volume = 100))
+		to_chat(user, span_mindvoice("A wave of satisfaction washes over you- You feel proud of what you've accomplished."))
+*/

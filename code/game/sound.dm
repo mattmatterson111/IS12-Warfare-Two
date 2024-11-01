@@ -119,6 +119,7 @@ GLOBAL_LIST_INIT(drink_sound, list('sound/effects/eating/drink1.ogg','sound/effe
 GLOBAL_LIST_INIT(revolver_fire, list('sound/weapons/gunshot/revolverfire1.ogg','sound/weapons/gunshot/revolverfire2.ogg','sound/weapons/gunshot/revolverfire3.ogg'))
 GLOBAL_LIST_INIT(revolver_reload, list('sound/weapons/guns/interact/revolverload1.ogg','sound/weapons/guns/interact/revolverload2.ogg','sound/weapons/guns/interact/revolverload3.ogg'))
 GLOBAL_LIST_INIT(concrete_metal_scrape, list('sound/effects/metalconcrete1.ogg','sound/effects/metalconcrete2.ogg','sound/effects/metalconcrete3.ogg'))
+GLOBAL_LIST_INIT(megaphone, list('sound/effects/megaphone_01.ogg','sound/effects/megaphone_02.ogg', 'sound/effects/megaphone_05.ogg'))
 
 
 /proc/playsound(atom/source, soundin, vol as num, vary, extrarange as num, falloff, is_global, frequency, is_ambiance = 0,  ignore_walls = TRUE, zrange = 2, override_env, envdry, envwet)
@@ -304,6 +305,7 @@ var/const/FALLOFF_SOUNDS = 0.5
 			if ("revolver_fire") soundin = pick(GLOB.revolver_fire)
 			if ("revolver_reload") soundin = pick(GLOB.revolver_reload)
 			if ("concrete_metal_scrape") soundin = pick(GLOB.concrete_metal_scrape)
+			if ("loudspeaker") soundin = pick(GLOB.megaphone)
 	return soundin
 
 

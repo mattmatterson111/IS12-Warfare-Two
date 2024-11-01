@@ -1,5 +1,7 @@
 /* ------- THIS FILE IS FOR OBJECTS THAT INTERACT WITH KEYPRESSES OR SCROLLWHEEL STUFF, I WANT TO DIE ----- */
 
+/atom/proc/keyPress(key as text, mob/user)
+	return
 
 /client
 	verb
@@ -21,32 +23,29 @@
 					if("Numpad7") key = "7"
 					if("Numpad8") key = "8"
 					if("Numpad9") key = "9"
-				var/obj/item/I = src.mob.get_active_hand() // for items we hold
-
-
-				/*if(istype(hovered_obj, /obj/structure/phone)) // if it's a phone..
-					var/obj/structure/phone/phone = hovered_obj
-					phone.inputnumber(key, src.mob)
-					return
-				*/ // ^^ hover over object to input, we're not gonna use that
-
-				if(istype(I, /obj/item/phone))
-					var/obj/item/phone/phone = I
-					phone.tophone(key, src.mob)
-					return
-
-				if(key == "1")
-					usr.a_intent_change(I_HELP)
-					return
-				if(key == "2")
-					usr.a_intent_change(I_DISARM)
-					return
-				if(key == "3")
-					usr.a_intent_change(I_GRAB)
-					return
-				if(key == "4")
-					usr.a_intent_change(I_HURT)
-					return
+				var/atom/A = mob.get_active_hand()
+				if(A)
+					if(A.keyPress(key, mob)) // for items we hold
+						A.keyPress(key, mob)
+						return TRUE
+				for(var/atom/C in view(1, mob))
+					if(C.keyPress(key, mob))
+						C.keyPress(key, mob)
+						return TRUE
+					continue
+				switch(key)
+					if("1")
+						usr.a_intent_change(I_HELP)
+						return
+					if("2")
+						usr.a_intent_change(I_DISARM)
+						return
+					if("3")
+						usr.a_intent_change(I_GRAB)
+						return
+					if("4")
+						usr.a_intent_change(I_HURT)
+						return
 			/* // Was used for debugging
 			if(istype(I, /obj/item))
 				I.showoff(src.mob)

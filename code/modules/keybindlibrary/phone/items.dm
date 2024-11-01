@@ -31,6 +31,11 @@
 			playsound(linked_phone, 'code/modules/keybindlibrary/phone/sound/rotaryphone/putdown1.ogg',100,0)
 		else
 			playsound(linked_phone, 'code/modules/keybindlibrary/phone/sound/phones/phone_slam.ogg',100,0)
+
+/obj/item/phone/keyPress(key as text, mob/user)
+	tophone(key, user)
+	return TRUE
+
 /obj/item/phone/wield(mob/user)
 	if(wielded)
 		return

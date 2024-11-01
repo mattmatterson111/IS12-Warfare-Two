@@ -9,6 +9,8 @@
 		add_to_dead_mob_list()
 	else
 		add_to_living_mob_list()
+	stats = new(src)
+
 
 //mob verbs are faster than object verbs. See mob/verb/examine.
 /mob/living/proc/pulled(atom/movable/AM as mob|obj in oview(1))
@@ -895,6 +897,7 @@ default behaviour is:
 	if(auras)
 		for(var/a in auras)
 			remove_aura(a)
+	QDEL_NULL(stats)
 	return ..()
 
 

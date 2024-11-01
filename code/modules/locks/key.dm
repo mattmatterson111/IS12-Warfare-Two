@@ -4,6 +4,8 @@
 	icon = 'icons/obj/items.dmi'
 	icon_state = "keys"
 	w_class = 1
+	grab_sound = 'sound/effects/key_pickup.ogg'
+	drop_sound = 'sound/effects/key_drop.ogg'
 	var/key_data = ""
 
 /obj/item/key/New(var/newloc,var/data)

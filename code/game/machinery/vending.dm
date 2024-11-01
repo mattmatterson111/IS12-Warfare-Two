@@ -1107,7 +1107,7 @@
 
 /obj/machinery/vending/soldier
 	name = "Sold-o-mat"
-	desc = "A Redistanian vending machine powering their war machine."
+	desc = "A Redistani vending machine powering their war machine."
 	product_slogans = "Go kill those other guys!"
 	icon_state = "soldiervend"
 	vend_delay = 6

@@ -51,14 +51,14 @@
 #define ui_dropbutton "SOUTH+3,WEST-3"
 #define ui_drop_throw "SOUTH+2,WEST-2"
 #define ui_pull "SOUTH+2,WEST-3"
-#define ui_jmp_kck "SOUTH+3,WEST-1"
+#define ui_jmp_kck "SOUTH+3,WEST-0.975"
 #define ui_atk "SOUTH-1, 14"//atk_intents
-#define ui_resist "SOUTH+2,WEST-1"
+#define ui_resist "NORTH-12.175,WEST-0.975"
 #define ui_acti "SOUTH+3,WEST-3"
 #define ui_combat "SOUTH-2,14"//COMBAT MODE!
 #define ui_combat_intent "SOUTH+3,WEST-2" // parry/dodge
-#define ui_intent "SOUTH+4.35, WEST-2.9"
-#define ui_movi "SOUTH+3,WEST-3"
+#define ui_intent "NORTH-9.975, WEST-2.975"
+#define ui_movi "SOUTH-2,WEST-2"
 #define ui_zonesel "EAST+1, NORTH-2"
 #define ui_acti_alt "SOUTH-2,9" //alternative intent switcher for when the interface is hidden (F12)
 
@@ -106,7 +106,7 @@
 #define ui_alien_oxygen "14:28,11:25"
 
 //Middle right (status indicators)
-#define ui_stamina "SOUTH+1,WEST-3"
+#define ui_stamina "SOUTH,WEST-3"
 #define ui_temp "EAST+1, NORTH-12"
 #define ui_health "EAST+1, NORTH-13"
 #define ui_happiness "EAST+1, NORTH-4"

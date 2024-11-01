@@ -14,8 +14,8 @@
 /obj/item/clothing/shoes/jackboots
 	name = "jackboots"
 	desc = "Tall synthleather boots with an artificial shine."
-	icon_state = "jackboots"
-	item_state = "jackboots"
+	icon_state = "redboots"
+	item_state = "redboots"
 	force = 3
 	armor = list(melee = 30, bullet = 10, laser = 10, energy = 15, bomb = 20, bio = 0, rad = 0)
 	siemens_coefficient = 0.7
@@ -29,9 +29,9 @@
 /obj/item/clothing/shoes/jackboots/New()
 	..()
 	if(can_hold_knife)
-		if(prob(75))
-			knife = new
-			update_icon()
+		//if(prob(75))
+		knife = new
+		update_icon()
 
 /obj/item/clothing/shoes/jackboots/attackby(obj/item/I, mob/user)
 	. = ..()
@@ -57,23 +57,20 @@
 
 /obj/item/clothing/shoes/jackboots/update_icon()
 	..()
-	if(can_hold_knife)
+	if(!isworld(loc))
 		if(knife)
-			if(!isworld(loc))
-				icon_state = "[initial(icon_state)]_strap_knife"
-				initialicon = icon_state
-				return
-			else
-				initialicon = "[initial(icon_state)]_strap_knife"
+			icon_state = "[initial(icon_state)]_strap_knife"
+			initialicon = icon_state
+			return
 		else
 			if(!isworld(loc))
 				initialicon = "[initial(icon_state)]_strap"
 				icon_state = "[initial(icon_state)]_strap"
 			else
 				initialicon = "[initial(icon_state)]_strap"
-	else
-		initialicon = initial(icon_state)
-		icon_state = initial(icon_state)
+		if(!can_hold_knife)
+			initialicon = initial(icon_state)
+			icon_state = initial(icon_state)
 /*
 /obj/item/clothing/shoes/jackboots/update_icon()
 	..()//I am aware this breaks the blood overlay, however I'm not particularly worried about that. We can fix that later. - Matt
