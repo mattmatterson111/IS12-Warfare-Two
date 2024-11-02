@@ -233,15 +233,17 @@
 	spread_step = 10
 	range = 7
 
-/obj/item/projectile/bullet/pellet/flak
+/obj/item/projectile/bullet/pellet/shotgun/flak
 	name = "flak"
 	fire_sound = 'sound/weapons/gunshot/shotgun.ogg'
-	damage = 46
-	base_spread = 95	//lower means the pellets spread more across body parts. If zero then this is considered a shrapnel explosion instead of a shrapnel cone
-	pellets = 20
-	range_step = 6 // this should fuck you
-	spread_step = 10
-	range = 20
+	pellets = 12
+	damage = 40
+	spread_step = 15
+
+
+
+
+
 
 /* "Rifle" rounds */
 

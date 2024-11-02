@@ -100,10 +100,10 @@
 
 /obj/item/ammo_casing/flak
 	name = "flak  shell"
-	desc = "A 12 gauge shell."
+	desc = "A Flah shell that somehow holds flak rounds."
 	icon_state = "gshell"
 	spent_icon = "gshell-spent"
-	projectile_type = /obj/item/projectile/bullet/pellet/flak
+	projectile_type = /obj/item/projectile/bullet/pellet/shotgun/flak
 
 	matter = list(DEFAULT_WALL_MATERIAL = 360)
 
