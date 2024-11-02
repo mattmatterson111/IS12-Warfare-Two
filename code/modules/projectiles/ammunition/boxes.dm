@@ -284,7 +284,7 @@
 	name = "LMG mag"
 	icon_state = "hmg"
 
-/obj/item/ammo_magazine/box/a556/hmg
+/obj/item/ammo_magazine/box/a145/hmg
 	name = "HMG mag"
 	icon_state = "hmg"
 	caliber = "14.5mm"

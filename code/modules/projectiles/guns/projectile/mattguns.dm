@@ -496,6 +496,45 @@
 	gun_type = GUN_LMG
 	condition = 200 //Enough for two clean mags.
 
+
+/obj/item/gun/projectile/automatic/hmg
+	name = "HMG Gravedigger"
+	desc = "Words can’t capture the horror of this thing I’m looking at. It’s barely alive, held together by streaks of grease on its belts and bolts, and that massive barrel? That’s the only part of it that’s truly ready, more prepared than my entire platoon. This beast has seen every battle and somehow crawled out. There’s a reason we don’t pick fights with our own sentries. They can throw mortars, smoke, but if that sentry is still breathing, still spitting rounds, they’re not going anywhere. this thing reminds me that Flesh is fragile, and bones are weak."
+	icon = 'icons/obj/gun.dmi'
+	icon_state = "hmg"
+	item_state = "hmg"
+	str_requirement = 18
+	w_class = ITEM_SIZE_HUGE
+	force = 10
+	slot_flags = SLOT_BACK|SLOT_S_STORE
+	max_shells = 50
+	caliber = "flak"
+	origin_tech = list(TECH_COMBAT = 6, TECH_MATERIAL = 1, TECH_ILLEGAL = 2)
+	ammo_type = /obj/item/ammo_casing/flak
+	load_method = MAGAZINE
+	magazine_type = /obj/item/ammo_magazine/box/a145/hmg
+	allowed_magazines = /obj/item/ammo_magazine/box/a145/hmg
+	one_hand_penalty = 50
+	wielded_item_state = "hmg-wielded"
+	fire_sound = 'sound/weapons/gunshot/harbinger.ogg'
+	unload_sound 	= 'sound/weapons/guns/interact/ltrifle_magout.ogg'
+	reload_sound 	= 'sound/weapons/guns/interact/ltrifle_magin.ogg'
+	cock_sound 		= 'sound/weapons/guns/interact/ltrifle_cock.ogg'
+	loaded_icon = "mg08"
+	unwielded_loaded_icon = "hmg"
+	wielded_loaded_icon = "hmg-wielded"
+	unloaded_icon = "mg08_empty"
+	unwielded_unloaded_icon = "hmg-e"
+	wielded_unloaded_icon = "hmg-wielded-e"
+	fire_delay=2
+	dispersion=list(0.0, 0.8, 1.5)
+	burst=1
+	move_delay=12
+	one_hand_penalty=8
+	automatic = 2
+	firemodes = list()
+	gun_type = GUN_LMG
+	condition = 200 //Enough for two clean mags.
 /obj/item/gun/projectile/automatic/lmg
 	name = "LMG harbinger "
 	desc = "A coveted LMG. Lighter and more portable then most of the lmgs but just as deadly!"
