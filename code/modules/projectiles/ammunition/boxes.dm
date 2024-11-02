@@ -252,6 +252,20 @@
 /obj/item/ammo_magazine/a75/empty
 	initial_ammo = 0
 
+/obj/item/ammo_magazine/box/flak
+	name = "magazine drum (CV-9015)"
+	icon_state = "flak"
+	origin_tech = list(TECH_COMBAT = 2)
+	mag_type = MAGAZINE
+	caliber = "flak"
+	matter = list(DEFAULT_WALL_MATERIAL = 4500)
+	ammo_type = /obj/item/ammo_casing/flak
+	max_ammo = 50
+	multiple_sprites = 1
+
+/obj/item/ammo_magazine/box/flak/attack_self(mob/user) //Don't empty ur ammo
+	return
+
 /obj/item/ammo_magazine/box/a556
 	name = "magazine box (5.56mm)"
 	icon_state = "a762"

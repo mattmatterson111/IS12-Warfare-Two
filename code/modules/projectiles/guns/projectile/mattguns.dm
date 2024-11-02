@@ -418,9 +418,9 @@
 
 
 /obj/item/gun/projectile/automatic/mg08
-	name = "LMG Harbinger"
-	desc = "Named for the death it brings."
-	//icon = 'icons/obj/gunx35.dmi'
+	name = "HMG Cultivator"
+	desc = "I can plant a seed in the ground the same way i plant a corpse the roaring of this  metatlic greased machine of death brings the bodies to dirt i know the life is."
+	icon = 'icons/obj/gun.dmi'
 	icon_state = "hmg"
 	item_state = "hmg"
 	str_requirement = 18
@@ -428,12 +428,12 @@
 	force = 10
 	slot_flags = SLOT_BACK|SLOT_S_STORE
 	max_shells = 50
-	caliber = "a556"
+	caliber = "flak"
 	origin_tech = list(TECH_COMBAT = 6, TECH_MATERIAL = 1, TECH_ILLEGAL = 2)
-	ammo_type = /obj/item/ammo_casing/a556
+	ammo_type = /obj/item/ammo_casing/flak
 	load_method = MAGAZINE
-	magazine_type = /obj/item/ammo_magazine/box/a556/mg08
-	allowed_magazines = /obj/item/ammo_magazine/box/a556/mg08
+	magazine_type = /obj/item/ammo_magazine/box/flak
+	allowed_magazines = /obj/item/ammo_magazine/box/flak
 	one_hand_penalty = 50
 	wielded_item_state = "hmg-wielded"
 	fire_sound = 'sound/weapons/gunshot/harbinger.ogg'
@@ -447,6 +447,7 @@
 	unwielded_unloaded_icon = "hmg-e"
 	wielded_unloaded_icon = "hmg-wielded-e"
 	fire_delay=2
+	dispersion=list(0.0, 0.8, 1.5)
 	burst=1
 	move_delay=12
 	one_hand_penalty=8
@@ -454,6 +455,7 @@
 	firemodes = list()
 	gun_type = GUN_LMG
 	condition = 300 //Enough for two clean mags.
+
 
 
 /obj/item/gun/projectile/automatic/gpmg
