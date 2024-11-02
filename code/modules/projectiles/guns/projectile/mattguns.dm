@@ -418,35 +418,35 @@
 
 
 /obj/item/gun/projectile/automatic/mg08
-	name = "LMG Harbinger"
-	desc = "Named for the death it brings."
-	//icon = 'icons/obj/gunx35.dmi'
-	icon_state = "hmg"
-	item_state = "hmg"
+	name = "HMG Gravedigger"
+	desc = "I know it all too well. The belts are oiled, the feed polished, and the links chained tight. The barrel’s thick as my wrist and long enough to feel like it’s staring down the horizon. It’s heavy heavy enough that just lifting it feels like a fight. This beast could take on the entire war by itself, so long as the sentry keeps it fed."
+	icon = 'icons/obj/gunx35.dmi'
+	icon_state = "knight-mg08"
+	item_state = "knight-mg08"
 	str_requirement = 18
 	w_class = ITEM_SIZE_HUGE
 	force = 10
 	slot_flags = SLOT_BACK|SLOT_S_STORE
 	max_shells = 50
-	caliber = "a556"
+	caliber = "a145"
 	origin_tech = list(TECH_COMBAT = 6, TECH_MATERIAL = 1, TECH_ILLEGAL = 2)
-	ammo_type = /obj/item/ammo_casing/a556
+	ammo_type = /obj/item/ammo_casing/a145
 	load_method = MAGAZINE
-	magazine_type = /obj/item/ammo_magazine/box/a556/mg08
-	allowed_magazines = /obj/item/ammo_magazine/box/a556/mg08
+	magazine_type =/obj/item/ammo_magazine/box/a556/hmg
+	allowed_magazines = /obj/item/ammo_magazine/box/a556/hmg
 	one_hand_penalty = 50
 	wielded_item_state = "hmg-wielded"
 	fire_sound = 'sound/weapons/gunshot/harbinger.ogg'
 	unload_sound 	= 'sound/weapons/guns/interact/ltrifle_magout.ogg'
 	reload_sound 	= 'sound/weapons/guns/interact/ltrifle_magin.ogg'
 	cock_sound 		= 'sound/weapons/guns/interact/ltrifle_cock.ogg'
-	loaded_icon = "hmg"
+	loaded_icon = "knight-mg08"
 	unwielded_loaded_icon = "hmg"
 	wielded_loaded_icon = "hmg-wielded"
-	unloaded_icon = "hmg-e"
+	unloaded_icon = "knight-mg08-e"
 	unwielded_unloaded_icon = "hmg-e"
 	wielded_unloaded_icon = "hmg-wielded-e"
-	fire_delay=2
+	fire_delay=3
 	burst=1
 	move_delay=12
 	one_hand_penalty=8
@@ -477,8 +477,8 @@
 	origin_tech = list(TECH_COMBAT = 6, TECH_MATERIAL = 1, TECH_ILLEGAL = 2)
 	ammo_type = /obj/item/ammo_casing/a556
 	load_method = MAGAZINE
-	magazine_type = /obj/item/ammo_magazine/box/a556/mg08
-	allowed_magazines = /obj/item/ammo_magazine/box/a556/mg08
+	magazine_type = /obj/item/ammo_magazine/box/a556/hmg
+	allowed_magazines = /obj/item/ammo_magazine/box/a556/hmg
 	one_hand_penalty = 50
 	fire_sound = 'sound/weapons/gunshot/harbinger.ogg'
 	unload_sound 	= 'sound/weapons/guns/interact/ltrifle_magout.ogg'
