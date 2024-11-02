@@ -272,7 +272,7 @@
 
 /obj/item/ammo_magazine/box/a556/hmg
 	name = "HMG mag"
-	icon_state = mg08
+	icon_state = "mg08"
 	ammo_type = /obj/item/ammo_casing/a145
 	caliber = "a145"
 
