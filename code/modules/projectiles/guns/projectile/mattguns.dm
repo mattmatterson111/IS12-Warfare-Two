@@ -419,7 +419,7 @@
 
 /obj/item/gun/projectile/automatic/mg08
 	name = "HMG Cultivator"
-	desc = "I can plant a seed in the ground the same way i plant a corpse the roaring of this  metatlic greased machine of death brings the bodies to dirt i know the life is."
+	desc = "I can plant a seed in the ground the same way i plant a corpse the roaring of this  metatlic greased machine of death brings the bodies to dirt Life is fleeting, and with this HMG, I don’t take lives  I’m sowing them into the earth like crops in a field. Each pull of the trigger scatters flesh and bone, transforming souls into fertilizer for the soil. I’m just a gardener, tending to a harvest   watching the ground grow rich with the remnants of those who dared to stand in my way."
 	icon = 'icons/obj/gunx35.dmi'
 	icon_state = "mg08"
 	item_state = "mg08"
@@ -457,10 +457,48 @@
 	condition = 300 //Enough for two clean mags.
 
 
+/obj/item/gun/projectile/automatic/mg08
+	name = "HMG Cultivator"
+	desc = "I can plant a seed in the ground the same way i plant a corpse the roaring of this  metatlic greased machine of death brings the bodies to dirt Life is fleeting, and with this HMG, I don’t take lives  I’m sowing them into the earth like crops in a field. Each pull of the trigger scatters flesh and bone, transforming souls into fertilizer for the soil. I’m just a gardener, tending to a harvest   watching the ground grow rich with the remnants of those who dared to stand in my way."
+	icon = 'icons/obj/gunx35.dmi'
+	icon_state = "mg08"
+	item_state = "mg08"
+	str_requirement = 18
+	w_class = ITEM_SIZE_HUGE
+	force = 10
+	slot_flags = SLOT_BACK|SLOT_S_STORE
+	max_shells = 50
+	caliber = "flak"
+	origin_tech = list(TECH_COMBAT = 6, TECH_MATERIAL = 1, TECH_ILLEGAL = 2)
+	ammo_type = /obj/item/ammo_casing/flak
+	load_method = MAGAZINE
+	magazine_type = /obj/item/ammo_magazine/box/flak
+	allowed_magazines = /obj/item/ammo_magazine/box/flak
+	one_hand_penalty = 50
+	wielded_item_state = "hmg-wielded"
+	fire_sound = 'sound/weapons/gunshot/harbinger.ogg'
+	unload_sound 	= 'sound/weapons/guns/interact/ltrifle_magout.ogg'
+	reload_sound 	= 'sound/weapons/guns/interact/ltrifle_magin.ogg'
+	cock_sound 		= 'sound/weapons/guns/interact/ltrifle_cock.ogg'
+	loaded_icon = "mg08"
+	unwielded_loaded_icon = "hmg"
+	wielded_loaded_icon = "hmg-wielded"
+	unloaded_icon = "mg08_empty"
+	unwielded_unloaded_icon = "hmg-e"
+	wielded_unloaded_icon = "hmg-wielded-e"
+	fire_delay=2
+	dispersion=list(0.0, 0.8, 1.5)
+	burst=1
+	move_delay=12
+	one_hand_penalty=8
+	automatic = 2
+	firemodes = list()
+	gun_type = GUN_LMG
+	condition = 200 //Enough for two clean mags.
 
-/obj/item/gun/projectile/automatic/gpmg
-	name = "GPMG Requiem"
-	desc = "A coveted LMG. Lighter than the Harbingers of the old war, but still just as deadly!"
+/obj/item/gun/projectile/automatic/lmg
+	name = "LMG harbinger "
+	desc = "A coveted LMG. Lighter and more portable then most of the lmgs but just as deadly!"
 	icon_state = "lmg"
 	item_state = "lmg"
 	wielded_item_state = "lmg-wielded"
@@ -479,8 +517,8 @@
 	origin_tech = list(TECH_COMBAT = 6, TECH_MATERIAL = 1, TECH_ILLEGAL = 2)
 	ammo_type = /obj/item/ammo_casing/a556
 	load_method = MAGAZINE
-	magazine_type = /obj/item/ammo_magazine/box/a556/mg08
-	allowed_magazines = /obj/item/ammo_magazine/box/a556/mg08
+	magazine_type = /obj/item/ammo_magazine/box/a556/lmg
+	allowed_magazines = /obj/item/ammo_magazine/box/a556/lmg
 	one_hand_penalty = 50
 	fire_sound = 'sound/weapons/gunshot/harbinger.ogg'
 	unload_sound 	= 'sound/weapons/guns/interact/ltrifle_magout.ogg'

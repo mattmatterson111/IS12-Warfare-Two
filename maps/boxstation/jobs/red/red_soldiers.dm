@@ -337,7 +337,7 @@
 	head = /obj/item/clothing/head/helmet/sentryhelm/red
 	suit_store = /obj/item/gun/projectile/automatic/gpmg
 	belt = /obj/item/melee/trench_axe
-	backpack_contents = list(/obj/item/ammo_magazine/box/a556/mg08 = 3, /obj/item/grenade/smokebomb = 1)
+	backpack_contents = list(/obj/item/ammo_magazine/box/a556/lmg = 3, /obj/item/grenade/smokebomb = 1)
 
 /decl/hierarchy/outfit/job/redsoldier/sentry/equip()
 	if(aspect_chosen(/datum/aspect/nightfare))

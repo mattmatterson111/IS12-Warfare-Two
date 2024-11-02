@@ -280,9 +280,16 @@
 /obj/item/ammo_magazine/box/a556/empty
 	initial_ammo = 0
 
-/obj/item/ammo_magazine/box/a556/mg08
+/obj/item/ammo_magazine/box/a556/lmg
 	name = "LMG mag"
 	icon_state = "hmg"
+
+/obj/item/ammo_magazine/box/a556/hmg
+	name = "HMG mag"
+	icon_state = "hmg"
+	caliber = "14.5mm"
+	ammo_type = /obj/item/ammo_casing/a145
+
 
 /obj/item/ammo_magazine/c556
 	name = "magazine (5.56mm)"
