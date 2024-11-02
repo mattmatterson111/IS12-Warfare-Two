@@ -420,9 +420,9 @@
 /obj/item/gun/projectile/automatic/mg08
 	name = "HMG Cultivator"
 	desc = "I can plant a seed in the ground the same way i plant a corpse the roaring of this  metatlic greased machine of death brings the bodies to dirt i know the life is."
-	icon = 'icons/obj/gun.dmi'
-	icon_state = "hmg"
-	item_state = "hmg"
+	icon = 'icons/obj/gunx35.dmi'
+	icon_state = "mg08"
+	item_state = "mg08"
 	str_requirement = 18
 	w_class = ITEM_SIZE_HUGE
 	force = 10
@@ -440,10 +440,10 @@
 	unload_sound 	= 'sound/weapons/guns/interact/ltrifle_magout.ogg'
 	reload_sound 	= 'sound/weapons/guns/interact/ltrifle_magin.ogg'
 	cock_sound 		= 'sound/weapons/guns/interact/ltrifle_cock.ogg'
-	loaded_icon = "hmg"
+	loaded_icon = "mg08"
 	unwielded_loaded_icon = "hmg"
 	wielded_loaded_icon = "hmg-wielded"
-	unloaded_icon = "hmg-e"
+	unloaded_icon = "mg08_empty"
 	unwielded_unloaded_icon = "hmg-e"
 	wielded_unloaded_icon = "hmg-wielded-e"
 	fire_delay=2
