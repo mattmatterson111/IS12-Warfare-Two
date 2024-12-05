@@ -300,7 +300,7 @@
 	icon_state = "lmg-old-e"
 	item_state = "lmg-old-u"
 	wielded_item_state = "lmg-old-h"
-	fire_sound = 'sound/weapons/guns/fire/lmg_fire.ogg'
+	fire_sound = 'sound/weapons/guns/fire/old_lmg.ogg'
 	unload_sound = 'sound/weapons/guns/interact/ak_magout.ogg'
 	reload_sound = 'sound/weapons/guns/interact/ak_magin.ogg'
 	cock_sound = 'sound/weapons/guns/interact/ak_cock.ogg'
