@@ -953,6 +953,12 @@
 		for(var/x, x<4, x++)
 			new /obj/item/ammo_magazine/autoshotty(src)
 
+/obj/item/storage/backpack/satchel/warfare/chestrig/red/oldlmg
+	New()
+		..()
+		for(var/x, x<4, x++)
+			new /obj/item/ammo_magazine/c45rifle/flat(src)
+
 
 //BLUE STORAGE ITEMS
 /obj/item/storage/backpack/satchel/warfare/blue
@@ -1005,6 +1011,12 @@
 		..()
 		for(var/x, x<4, x++)
 			new /obj/item/ammo_magazine/autoshotty(src)
+
+obj/item/storage/backpack/satchel/warfare/chestrig/blue/oldlmg
+	New()
+		..()
+		for(var/x, x<4, x++)
+			new /obj/item/ammo_magazine/c45rifle/flat(src)
 
 
 /obj/item/clothing/shoes/jackboots/warfare/red

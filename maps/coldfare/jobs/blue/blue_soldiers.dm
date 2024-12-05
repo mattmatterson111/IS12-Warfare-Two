@@ -301,11 +301,16 @@
 	if(prob(1))
 		suit_store = /obj/item/gun/projectile/shotgun/pump/shitty/sawn
 		r_pocket = /obj/item/ammo_box/shotgun
-	else if(prob(50))
+	else if(prob(40))
 		suit_store = /obj/item/gun/projectile/automatic/m22/warmonger/fully_auto/nemesis
 		r_pocket = /obj/item/grenade/smokebomb
 		backpack_contents = list(/obj/item/clothing/mask/gas/ancient = 1)
 		//chest_holster = /obj/item/storage/backpack/satchel/warfare/chestrig/blue/soldier
+	else if(prob(60)) //I am light weapons guy. And this is my weapon.
+		suit_store = /obj/item/gun/projectile/automatic/m22/warmonger/fully_auto/oldlmg
+		r_pocket = /obj/item/grenade/smokebomb
+		backpack_contents = list(/obj/item/clothing/mask/gas/ancient = 1)
+		chest_holster = /obj/item/storage/backpack/satchel/warfare/chestrig/blue/oldlmg
 	else
 		suit_store =/obj/item/gun/projectile/automatic/m22/warmonger/m14/battlerifle
 		r_pocket = /obj/item/grenade/smokebomb

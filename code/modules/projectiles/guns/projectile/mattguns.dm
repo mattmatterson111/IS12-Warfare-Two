@@ -294,6 +294,53 @@
 	max_ammo = 20
 	icon_state = "autorifle"
 
+/obj/item/gun/projectile/automatic/m22/warmonger/fully_auto/oldlmg
+	name = "Mk.4 Warmonger"
+	desc = "This is the cousin of the Mk.5 Warmonger. It was designed to cut costs from equipment issuing but ultimately ended up being used less than the Mk.5 Warmonger due to its weird design. It's often called the Trench Sweeper due to its very tight spread and fast firerate."
+	icon_state = "lmg-old-e"
+	item_state = "lmg-old-u"
+	wielded_item_state = "lmg-old-h"
+	fire_sound = 'sound/weapons/guns/fire/lmg_fire.ogg'
+	unload_sound = 'sound/weapons/guns/interact/ak_magout.ogg'
+	reload_sound = 'sound/weapons/guns/interact/ak_magin.ogg'
+	cock_sound = 'sound/weapons/guns/interact/ak_cock.ogg'
+	far_fire_sound = 'sound/effects/weapons/gun/ak_farfire.ogg'
+	condition = 200
+
+	loaded_icon = "lmg-old"
+	unwielded_loaded_icon = "lmg-old-u"
+	wielded_loaded_icon = "lmg-old-h"
+	unloaded_icon = "lmg-old-e"
+	unwielded_unloaded_icon = "lmg-old-u"
+	wielded_unloaded_icon = "lmg-old-h"
+
+	magazine_type = /obj/item/ammo_magazine/c45rifle/flat
+	allowed_magazines = /obj/item/ammo_magazine/c45rifle/flat
+	w_class = ITEM_SIZE_HUGE
+	gun_type = GUN_AUTOMATIC
+	screen_shake = 0.75
+
+	burst=1
+	fire_delay=0
+	move_delay=0
+	one_hand_penalty=10
+	burst_accuracy=list(0,-1,-1)
+	dispersion=list(0.0, 2, 3)
+	automatic = 1.5
+
+/obj/item/gun/projectile/automatic/m22/warmonger/fully_auto/oldlmg/examine(mob/user)
+	. = ..()
+	if(get_dist(user, src) > 1)
+		return
+	to_chat(user,SPAN_BOLD("You notice a steel plate with some words stamped into them on the stock:"))
+	to_chat(user,SPAN_BOLD("To win one hundred victories in one hundred battles is not the acme of skill. To subdue the enemy without fighting is the acme of skill."))
+
+
+/obj/item/ammo_magazine/c45rifle/flat
+	name = "Warmonger flat magazine"
+	desc = "A pancake- Wait a minute! This is just a steel drum magazine!"
+	max_ammo = 45
+	icon_state = "lmg-oldmag"
 
 /obj/item/gun/projectile/automatic/m22/warmonger/sks //GAAAAAAAAAAAAH
 	name = "Mk.1 Headhunter"
