@@ -305,7 +305,7 @@
 	reload_sound = 'sound/weapons/guns/interact/ak_magin.ogg'
 	cock_sound = 'sound/weapons/guns/interact/ak_cock.ogg'
 	far_fire_sound = 'sound/effects/weapons/gun/ak_farfire.ogg'
-	condition = 200
+	condition = 150
 
 	loaded_icon = "lmg-old"
 	unwielded_loaded_icon = "lmg-old-u"
