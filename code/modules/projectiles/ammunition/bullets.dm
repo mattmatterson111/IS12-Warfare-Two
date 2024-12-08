@@ -56,7 +56,7 @@
 	spent_icon = "r-casing-spent"
 
 /obj/item/ammo_casing/c45
-	desc = "A warmonger bullet casing."
+	desc = "A .45 bullet casing."
 	caliber = ".45"
 	projectile_type = /obj/item/projectile/bullet/pistol/medium
 
