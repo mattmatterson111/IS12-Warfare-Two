@@ -147,7 +147,7 @@
 	matter = list(DEFAULT_WALL_MATERIAL = 90, "glass" = 90)
 
 /obj/item/ammo_casing/a556
-	desc = "A 5.56mm bullet casing."
+	desc = "A warmonger bullet casing."
 	caliber = "a556"
 	projectile_type = /obj/item/projectile/bullet/rifle/a556
 	icon_state = "ar1"
