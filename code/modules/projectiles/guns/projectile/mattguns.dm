@@ -195,8 +195,8 @@
 	wielded_unloaded_icon = "autorifle-wielded-e"
 	condition = 75
 
-	magazine_type = /obj/item/ammo_magazine/c45rifle/akarabiner
-	allowed_magazines = /obj/item/ammo_magazine/c45rifle/akarabiner
+	magazine_type = /obj/item/ammo_magazine/c556rifle/akarabiner
+	allowed_magazines = /obj/item/ammo_magazine/c556rifle/akarabiner
 	fire_delay = 0
 	firemodes = list()
 	w_class = ITEM_SIZE_HUGE
@@ -314,8 +314,8 @@
 	unwielded_unloaded_icon = "lmg-old-u"
 	wielded_unloaded_icon = "lmg-old-h"
 
-	magazine_type = /obj/item/ammo_magazine/c45rifle/flat
-	allowed_magazines = /obj/item/ammo_magazine/c45rifle/flat
+	magazine_type = /obj/item/ammo_magazine/c556rifle/flat
+	allowed_magazines = /obj/item/ammo_magazine/c556rifle/flat
 	w_class = ITEM_SIZE_HUGE
 	gun_type = GUN_AUTOMATIC
 	screen_shake = 0.75
@@ -336,7 +336,7 @@
 	to_chat(user,SPAN_BOLD("To win one hundred victories in one hundred battles is not the acme of skill. To subdue the enemy without fighting is the acme of skill."))
 
 
-/obj/item/ammo_magazine/c45rifle/flat
+/obj/item/ammo_magazine/c556rifle/flat
 	name = "Warmonger flat magazine"
 	desc = "A pancake- Wait a minute! This is just a steel drum magazine!"
 	max_ammo = 45
@@ -415,7 +415,7 @@
 	fire_sound = 'sound/weapons/guns/fire/fal_fire.ogg'
 
 	magazine_type = /obj/item/ammo_magazine/a762/m14/battlerifle_mag
-	allowed_magazines = list(/obj/item/ammo_magazine/a762/m14/battlerifle_mag, /obj/item/ammo_magazine/c45rifle/akarabiner)
+	allowed_magazines = list(/obj/item/ammo_magazine/a762/m14/battlerifle_mag, /obj/item/ammo_magazine/c556rifle/akarabiner)
 
 	loaded_icon = "battlerifle"
 	unwielded_loaded_icon = "battlerifle"
@@ -459,8 +459,8 @@
 	desc = "An advanced design from post war days, with a rock solid frame and firm parts. It’s got a selective fire switch, and it might even hit what you're aiming at."
 	icon_state = "combatrifle"
 	item_state ="combatrifle"
-	magazine_type = /obj/item/ammo_magazine/c45rifle/combatrifle
-	allowed_magazines = /obj/item/ammo_magazine/c45rifle/combatrifle
+	magazine_type = /obj/item/ammo_magazine/c556rifle/combatrifle
+	allowed_magazines = /obj/item/ammo_magazine/c556rifle/combatrifle
 	one_hand_penalty = 5
 	wielded_item_state = "combatrifle-wielded"
 	fire_sound = 'sound/weapons/guns/fire/combatrifle_fire.ogg'

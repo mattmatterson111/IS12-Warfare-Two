@@ -115,12 +115,12 @@
 	item_state = "arifle"
 	w_class = ITEM_SIZE_HUGE
 	force = 10
-	caliber = ".45"
+	caliber = "a556"
 	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 2, TECH_ILLEGAL = 8)
 	slot_flags = SLOT_BACK|SLOT_S_STORE
 	load_method = MAGAZINE
-	magazine_type = /obj/item/ammo_magazine/c45rifle
-	allowed_magazines = /obj/item/ammo_magazine/c45rifle
+	magazine_type = /obj/item/ammo_magazine/c556rifle
+	allowed_magazines = /obj/item/ammo_magazine/c556rifle
 	one_hand_penalty = 4
 	wielded_item_state = "arifle-wielded"
 	unload_sound 	= 'sound/weapons/guns/interact/sfrifle_magout.ogg'
