@@ -86,24 +86,24 @@
 /obj/item/ammo_magazine/c45uzi/empty
 	initial_ammo = 0
 
-/obj/item/ammo_magazine/c45rifle
-	name = "rifle magazine (.45)"
+/obj/item/ammo_magazine/c556rifle
+	name = "rifle magazine (5.56)"
 	icon_state = "rifle"
 	mag_type = MAGAZINE
-	ammo_type = /obj/item/ammo_casing/c45
+	ammo_type = /obj/item/ammo_casing/a556
 	matter = list(DEFAULT_WALL_MATERIAL = 1500)
-	caliber = ".45"
+	caliber = "a556"
 	max_ammo = 30
 	multiple_sprites = 1
 
 
-/obj/item/ammo_magazine/c45rifle/akarabiner
-	name = "Warmonger magazine (.45)"
+/obj/item/ammo_magazine/c556rifle/akarabiner
+	name = "Warmonger magazine (5.56)"
 	icon_state = "autorifle"
 
 
-/obj/item/ammo_magazine/c45rifle/combatrifle
-	name = "Nightfall magazine (.45)"
+/obj/item/ammo_magazine/c556rifle/combatrifle
+	name = "Nightfall magazine (5.56)"
 	icon_state = "akarabiner"
 
 

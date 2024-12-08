@@ -933,7 +933,7 @@
 	New()
 		..()
 		for(var/x, x<4, x++)
-			new /obj/item/ammo_magazine/c45rifle/akarabiner(src)
+			new /obj/item/ammo_magazine/c556rifle/akarabiner(src)
 
 /obj/item/storage/backpack/satchel/warfare/chestrig/red/sl
 	New()
@@ -957,7 +957,7 @@
 	New()
 		..()
 		for(var/x, x<4, x++)
-			new /obj/item/ammo_magazine/c45rifle/flat(src)
+			new /obj/item/ammo_magazine/c556rifle/flat(src)
 
 
 //BLUE STORAGE ITEMS
@@ -968,7 +968,7 @@
 	New()
 		..()
 		for(var/x, x<4, x++)
-			new /obj/item/ammo_magazine/c45rifle/akarabiner(src)
+			new /obj/item/ammo_magazine/c556rifle/akarabiner(src)
 
 /obj/item/storage/backpack/satchel/warfare/blue/medical
 	icon_state = "medic_satchel_blue"
@@ -983,7 +983,7 @@
 	New()
 		..()
 		for(var/x, x<4, x++)
-			new /obj/item/ammo_magazine/c45rifle/akarabiner(src)
+			new /obj/item/ammo_magazine/c556rifle/akarabiner(src)
 
 /obj/item/storage/backpack/satchel/warfare/chestrig/blue/medical
 	icon_state = "medic_chestrigblue"
@@ -1016,7 +1016,7 @@ obj/item/storage/backpack/satchel/warfare/chestrig/blue/oldlmg
 	New()
 		..()
 		for(var/x, x<4, x++)
-			new /obj/item/ammo_magazine/c45rifle/flat(src)
+			new /obj/item/ammo_magazine/c556rifle/flat(src)
 
 
 /obj/item/clothing/shoes/jackboots/warfare/red

@@ -413,7 +413,7 @@
 /decl/hierarchy/outfit/job/redsoldier/medic
 	suit = /obj/item/clothing/suit/armor/redcoat/medic
 	belt = /obj/item/storage/belt/medical/full
-	r_pocket = /obj/item/ammo_magazine/c45rifle/akarabiner
+	r_pocket = /obj/item/ammo_magazine/c556rifle/akarabiner
 	l_pocket = /obj/item/stack/medical/bruise_pack
 	suit_store = /obj/item/gun/projectile/automatic/m22/warmonger
 	gloves = /obj/item/clothing/gloves/latex
@@ -422,8 +422,8 @@
 /decl/hierarchy/outfit/job/redsoldier/medic/equip()
 	if(prob(50))
 		suit_store = /obj/item/gun/projectile/automatic/m22/warmonger
-		r_pocket = /obj/item/ammo_magazine/c45rifle/akarabiner
-		backpack_contents = list( /obj/item/ammo_magazine/c45rifle/akarabiner = 3, /obj/item/grenade/smokebomb = 1)
+		r_pocket = /obj/item/ammo_magazine/c556rifle/akarabiner
+		backpack_contents = list( /obj/item/ammo_magazine/c556rifle/akarabiner = 3, /obj/item/grenade/smokebomb = 1)
 
 	else
 		suit_store = /obj/item/gun/projectile/shotgun/pump/boltaction/shitty
