@@ -8,8 +8,7 @@ SUBSYSTEM_DEF(processing)
 
 	var/list/processing = list()
 	var/list/current_run = list()
-	var/process_proc = /datum/proc/Process
-
+	var/process_proc = PROC_BY_TYPE(/datum, Process)
 	var/debug_last_thing
 	var/debug_original_process_proc // initial() does not work with procs
 

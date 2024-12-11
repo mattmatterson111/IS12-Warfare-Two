@@ -269,40 +269,36 @@
 	// Hot air hurts :(
 	if((breath.temperature < species.cold_level_1 || breath.temperature > species.heat_level_1) && !(COLD_RESISTANCE in owner.mutations))
 		var/damage = 0
+		//if(prob(20))
+		//	to_chat(owner, "<span class='danger'>You feel your face freezing and icicles forming in your lungs!</span>")
+		//switch(breath.temperature)
+		//	if(species.cold_level_3 to species.cold_level_2)
+		//		damage = COLD_GAS_DAMAGE_LEVEL_3
+		//	if(species.cold_level_2 to species.cold_level_1)
+		//		damage = COLD_GAS_DAMAGE_LEVEL_2
+		//	else
+		//		damage = COLD_GAS_DAMAGE_LEVEL_1
 
-		if(breath.temperature <= species.cold_level_1)
-			//if(prob(20))
-			//	to_chat(owner, "<span class='danger'>You feel your face freezing and icicles forming in your lungs!</span>")
-			//switch(breath.temperature)
-			//	if(species.cold_level_3 to species.cold_level_2)
-			//		damage = COLD_GAS_DAMAGE_LEVEL_3
-			//	if(species.cold_level_2 to species.cold_level_1)
-			//		damage = COLD_GAS_DAMAGE_LEVEL_2
-			//	else
-			//		damage = COLD_GAS_DAMAGE_LEVEL_1
+		//if(prob(20))
+		//	owner.apply_damage(damage, BURN, BP_HEAD, used_weapon = "Excessive Cold")
+		//else
+		//	src.damage += damage
+		owner.fire_alert = 1
+		if(prob(20))
+			to_chat(owner, "<span class='danger'>You feel your face burning and a searing heat in your lungs!</span>")
 
-			//if(prob(20))
-			//	owner.apply_damage(damage, BURN, BP_HEAD, used_weapon = "Excessive Cold")
-			//else
-			//	src.damage += damage
-			owner.fire_alert = 1
-		else if(breath.temperature >= species.heat_level_1)
-			if(prob(20))
-				to_chat(owner, "<span class='danger'>You feel your face burning and a searing heat in your lungs!</span>")
+		if (breath.temperature >= species.heat_level_1 && breath.temperature < species.heat_level_2)
+			damage = HEAT_GAS_DAMAGE_LEVEL_1
+		else if (breath.temperature >= species.heat_level_2 && breath.temperature < species.heat_level_3)
+			damage = HEAT_GAS_DAMAGE_LEVEL_2
+		else if (breath.temperature >= species.heat_level_3)
+			damage = HEAT_GAS_DAMAGE_LEVEL_3
 
-			switch(breath.temperature)
-				if(species.heat_level_1 to species.heat_level_2)
-					damage = HEAT_GAS_DAMAGE_LEVEL_1
-				if(species.heat_level_2 to species.heat_level_3)
-					damage = HEAT_GAS_DAMAGE_LEVEL_2
-				else
-					damage = HEAT_GAS_DAMAGE_LEVEL_3
-
-			if(prob(20))
-				owner.apply_damage(damage, BURN, BP_HEAD, used_weapon = "Excessive Heat")
-			else
-				src.damage += damage
-			owner.fire_alert = 2
+		if(prob(20))
+			owner.apply_damage(damage, BURN, BP_HEAD, used_weapon = "Excessive Heat")
+		else
+			src.damage += damage
+		owner.fire_alert = 2
 		/*
 		//breathing in hot/cold air also heats/cools you a bit
 		var/temp_adj = breath.temperature - owner.bodytemperature
