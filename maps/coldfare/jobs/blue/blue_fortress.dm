@@ -37,7 +37,7 @@
 	social_class = SOCIAL_CLASS_MED
 	medical_skill = 10
 	surgery_skill = 10
-	ranged_skill = 0
+	ranged_skill = 1
 	engineering_skill = 0
 	melee_skill = 0
 	auto_rifle_skill = 0
