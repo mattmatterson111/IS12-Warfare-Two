@@ -312,7 +312,7 @@
 		backpack_contents = list(/obj/item/clothing/mask/gas/ancient = 1)
 		r_pocket = /obj/item/grenade/smokebomb
 		//chest_holster = /obj/item/storage/backpack/satchel/warfare/chestrig/red
-	else if(prob(60)) //I am light weapons guy. And this is my weapon.
+	else if(prob(10)) //I am light weapons guy. And this is my weapon.
 		suit_store = /obj/item/gun/projectile/automatic/m22/warmonger/fully_auto/oldlmg
 		r_pocket = /obj/item/grenade/smokebomb
 		backpack_contents = list(/obj/item/clothing/mask/gas/ancient = 1)
