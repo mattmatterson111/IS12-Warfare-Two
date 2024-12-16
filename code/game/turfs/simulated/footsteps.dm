@@ -214,6 +214,13 @@
 		return safepick(footstep_sounds[ARMOR_FOOTSTEP_CONCRETE])
 	return safepick(footstep_sounds[FOOTSTEP_CONCRETE])
 
+/turf/simulated/floor/urban/get_footstep_sound(crouching, wearingarmor)
+	if(wearingarmor)
+		if(crouching)
+			return safepick(footstep_sounds[ARMOR_FOOTSTEP_CONCRETE_CROUCHING])
+		return safepick(footstep_sounds[ARMOR_FOOTSTEP_CONCRETE])
+	return safepick(footstep_sounds[FOOTSTEP_CONCRETE])
+
 /turf/simulated/floor/stones/get_footstep_sound(crouching, wearingarmor)
 	if(wearingarmor)
 		if(crouching)

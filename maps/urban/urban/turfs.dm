@@ -1,0 +1,101 @@
+/turf/simulated/floor/urban/urban_pavement_brick
+	name = "pavement"
+	icon = 'icons/turf/urban/urban_outside.dmi'
+	icon_state = "pv_brick"
+
+/turf/simulated/floor/urban/urban_pavement_pattern
+	name = "pavement"
+	icon = 'icons/turf/urban/urban_outside.dmi'
+	icon_state = "pv_pattern"
+
+/turf/simulated/floor/urban/urban_pavement_soft
+	name = "concrete"
+	icon = 'icons/turf/urban/urban_outside.dmi'
+	icon_state = "pv_soft"
+
+/turf/simulated/floor/urban/urban_pavement_harsh
+	name = "concrete"
+	icon = 'icons/turf/urban/urban_outside.dmi'
+	icon_state = "pv_harsh"
+
+/turf/simulated/floor/urban/concrete
+	name = "concrete"
+	icon = 'icons/turf/floors.dmi'
+	icon_state = "concrete"
+	atom_flags = ATOM_FLAG_CLIMBABLE
+
+/turf/simulated/floor/urban/concrete/New()
+	. = ..()
+	dir = pick(GLOB.alldirs)
+	if(prob(15))
+		icon_state = "concrete_cracked"
+		dir = pick(GLOB.alldirs)
+
+
+//[[-- Decals --]]
+
+/obj/effect/floor_decal/urban
+	icon = 'icons/turf/urban/urban_outside.dmi'
+	alpha = 255
+	mouse_opacity = FALSE
+
+/obj/effect/floor_decal/urban/trim1
+	icon_state = "pv_trim"
+
+/obj/effect/floor_decal/urban/trim2
+	icon_state = "building_trim_end"
+
+/obj/effect/floor_decal/urban/trim3
+	icon_state = "building_trim_outer"
+
+/obj/effect/floor_decal/urban/pv_light
+	icon_state = "pv_light"
+
+/obj/effect/floor_decal/urban/pv_inner_c
+	icon_state = "pv_inner_c"
+
+/obj/effect/floor_decal/urban/pv_outer_c
+	icon_state = "pv_outer_c"
+
+/obj/effect/floor_decal/urban/cracks
+	icon = 'icons/obj/urban/32x32deco.dmi'
+	icon_state = "pv_cracks"
+
+/obj/effect/floor_decal/urban/cracks/alt
+	icon_state = "pv_cracks_sequel"
+
+//	atom_flags = ATOM_FLAG_CLIMBABLE
+
+
+/*
+/turf/simulated/floor/concrete/can_climb(mob/living/user, post_climb_check)
+	if(locate(/obj/structure/bridge, get_turf(user)))
+		return FALSE
+	if (!(atom_flags & ATOM_FLAG_CLIMBABLE) || !can_touch(user))
+		return FALSE
+
+	if (!user.Adjacent(src))
+		to_chat(user, "<span class='danger'>You can't climb there, the way is blocked.</span>")
+		return FALSE
+
+	return TRUE
+
+
+
+/turf/simulated/floor/concrete/update_icon()
+	overlays.Cut()
+	for(var/direction in GLOB.cardinal)
+		var/turf/turf_to_check = get_step(src,direction)
+		if(istype(turf_to_check, src))
+			continue
+
+		else
+			var/image/dirt = image('icons/turf/flooring/decals.dmi', "concrete_trim", dir = turn(direction, 180))
+			dirt.plane = src.plane
+			dirt.layer = src.layer+2
+			//dirt.color = "#877a8b"
+			//dirt.alpha = 200
+
+			overlays += dirt
+
+*/

@@ -174,10 +174,8 @@
 
 	return TRUE
 
-
-
 /turf/simulated/floor/concrete/update_icon()
-	overlays.Cut()
+	. = ..()
 	for(var/direction in GLOB.cardinal)
 		var/turf/turf_to_check = get_step(src,direction)
 		if(istype(turf_to_check, src))
@@ -191,7 +189,6 @@
 			//dirt.alpha = 200
 
 			overlays += dirt
-
 
 
 

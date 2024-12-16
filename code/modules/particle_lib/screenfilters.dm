@@ -51,7 +51,7 @@
 /obj/screenfilter/raindrop
 	mouse_opacity = 0
 	screen_loc = "CENTER"
-	particles = new/particles/storm
+	particles = new/particles/raindrop
 
 /obj/screenfilter/raindrop/Fade()
 	animate(src, alpha=0, time=10)

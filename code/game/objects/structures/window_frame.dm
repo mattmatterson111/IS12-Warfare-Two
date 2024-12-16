@@ -38,7 +38,7 @@
 		shatter()
 	else
 		if(sound_effect)
-			playsound(loc, 'sound/effects/Glasshit.ogg', 100, 1)
+			playsound(src.loc, pick('sound/effects/Glasshit.ogg','sound/effects/Glasshit1.ogg','sound/effects/Glasshit2.ogg'), 80, 1)
 		if(health <= HALF_HEALTH)
 			update_icon()
 	return
@@ -116,7 +116,7 @@
 			if(H.species.can_shred(H))
 				attack_generic(H,25)
 				return
-		playsound(src.loc, 'sound/effects/glassknock.ogg', 80, 1)
+		playsound(src.loc, pick('sound/effects/Glasshit.ogg','sound/effects/Glasshit1.ogg','sound/effects/Glasshit2.ogg'), 80, 1)
 		usr.visible_message("<span class='danger'>\The [usr] bangs against \the [src]!</span>",
 							"<span class='danger'>You bang against \the [src]!</span>",
 							"You hear a banging sound.")
@@ -169,7 +169,7 @@
 	if(W.damtype == BRUTE || W.damtype == BURN)
 		hit(W.force)
 	else
-		playsound(loc, 'sound/effects/Glasshit.ogg', 75, 1)
+		playsound(src.loc, pick('sound/effects/Glasshit.ogg','sound/effects/Glasshit1.ogg','sound/effects/Glasshit2.ogg'), 80, 1)
 	..()
 
 
@@ -191,16 +191,17 @@
 	. = ..()
 
 /obj/structure/window_frame/update_icon()
+	var/state = copytext(icon_state, 1, length(icon_state))
 	if(glass)
 		if(health <= HALF_HEALTH)
-			icon_state = "window2"
+			icon_state = state+"2"
 		else
-			icon_state = "window1"
+			icon_state = state+"1"
 	else
 		if(shattered)
-			icon_state = "window3"
+			icon_state = state+"3"
 		else
-			icon_state = "window4"
+			icon_state = state+"4"
 	return
 
 /obj/structure/window_frame/fire_act(datum/gas_mixture/air, exposed_temperature, exposed_volume)

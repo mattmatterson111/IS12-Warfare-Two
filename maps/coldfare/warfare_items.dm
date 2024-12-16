@@ -1267,7 +1267,7 @@ obj/item/storage/backpack/satchel/warfare/chestrig/blue/oldlmg
 	on = FALSE
 	brightness_on = 8
 	light_power = 5
-	power_rang
+	light_range = 10
 	light_color = "#e6c2a1"
 	var/examined
 

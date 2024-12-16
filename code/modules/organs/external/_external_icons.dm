@@ -68,11 +68,10 @@ var/list/limb_icon_cache = list()
 	if(species.use_gendered_parts)
 		if(gendered_icon)
 			gender = "_m"
-		//else if (dna && dna.GetUIState(DNA_UI_GENDER))
+		//if(dna && dna.GetUIState(DNA_UI_GENDER)) // Commented out due to issues in the character creation menu. The dummy didn't have DNA for some reason, making it default to male???
 		//	gender = "_f"
-		else if(owner && owner.gender == FEMALE)
+		if(owner?.gender == FEMALE)
 			gender = "_f"
-
 	icon_state = "[icon_name][gender]"
 	if(species.base_skin_colours && !isnull(species.base_skin_colours[s_base]))
 		icon_state += species.base_skin_colours[s_base]
