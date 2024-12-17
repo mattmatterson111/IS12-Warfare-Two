@@ -2907,12 +2907,6 @@
 "uA" = (
 /turf/simulated/open,
 /area/warfare/battlefield/capture_point/red/two)
-"uG" = (
-/turf/simulated/floor/tiled/ramp{
-	dir = 4;
-	icon_state = "ramptop"
-	},
-/area/warfare/homebase/blue)
 "uJ" = (
 /obj/effect/floor_decal/urban/pv_outer_c{
 	dir = 5
@@ -3258,12 +3252,6 @@
 	},
 /turf/simulated/floor/stones,
 /area/warfare/battlefield/no_mans_land)
-"wH" = (
-/turf/simulated/floor/tiled/ramp{
-	dir = 4;
-	icon_state = "ramptop"
-	},
-/area/warfare/homebase/red)
 "wJ" = (
 /obj/machinery/light/small/bunker{
 	dir = 8
@@ -44195,8 +44183,8 @@ wj
 XM
 XM
 wj
-wH
-wH
+wj
+wj
 wj
 bH
 jI
@@ -44511,8 +44499,8 @@ zI
 zI
 vo
 vo
-uG
-uG
+vo
+vo
 vo
 vo
 vo
