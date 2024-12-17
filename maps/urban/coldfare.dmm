@@ -120,7 +120,7 @@
 	pixel_y = 0
 	},
 /turf/simulated/floor/urban/concrete,
-/area/space)
+/area/warfare/battlefield/trench_section/underground)
 "aW" = (
 /obj/machinery/light/small/bunker{
 	dir = 8
@@ -229,7 +229,7 @@
 	pixel_x = 0
 	},
 /turf/simulated/floor/dirty/tough,
-/area/space)
+/area/warfare/battlefield/trench_section/underground)
 "bA" = (
 /obj/structure/table/rack/shelf/red,
 /obj/machinery/light/small/bunker{
@@ -394,7 +394,7 @@
 /area/warfare/battlefield/trench_section/underground)
 "cl" = (
 /turf/simulated/floor/tiled/ramp/bottom,
-/area/space)
+/area/warfare/battlefield/trench_section/underground)
 "cm" = (
 /obj/effect/landmark/start{
 	name = "Blue Practitioner"
@@ -802,7 +802,7 @@
 /obj/structure/table/rack/shelf/red,
 /obj/item/gun/projectile/automatic/m22/warmonger/fully_auto/nemesis,
 /turf/simulated/floor/urban/concrete,
-/area/space)
+/area/warfare/battlefield/trench_section/underground)
 "fp" = (
 /obj/effect/floor_decal/newcorner/blue/solid,
 /obj/structure/curtain/tarp,
@@ -842,7 +842,7 @@
 "fO" = (
 /obj/structure/anti_tank,
 /turf/simulated/floor/urban/concrete,
-/area/space)
+/area/warfare/battlefield/trench_section/underground)
 "fY" = (
 /obj/structure/announcementspeaker/blue{
 	pixel_x = 0;
@@ -936,7 +936,7 @@
 "gK" = (
 /obj/machinery/door/unpowered/simple/doubledoor,
 /turf/simulated/floor/urban/concrete,
-/area/space)
+/area/warfare/battlefield/trench_section/underground)
 "gN" = (
 /obj/effect/floor_decal/newcorner/yellow/solid,
 /obj/structure/curtain/tarp,
@@ -1063,7 +1063,7 @@
 "hV" = (
 /obj/structure/ladder/up,
 /turf/simulated/floor/urban/concrete,
-/area/space)
+/area/warfare/battlefield/trench_section/underground)
 "hW" = (
 /obj/effect/floor_decal/newcorner/blue/diagonal,
 /obj/structure/torchwall{
@@ -1299,7 +1299,7 @@
 /obj/structure/closet/secure_closet/warfare/newver,
 /obj/item/crowbar/red,
 /turf/simulated/floor/urban/concrete,
-/area/space)
+/area/warfare/battlefield/trench_section/underground)
 "jU" = (
 /obj/structure/iv_drip,
 /obj/machinery/light/small/bunker{
@@ -1312,13 +1312,13 @@
 	id = "armoury2"
 	},
 /turf/simulated/floor/urban/concrete,
-/area/space)
+/area/warfare/battlefield/trench_section/underground)
 "ke" = (
 /obj/structure/railing{
 	dir = 8
 	},
 /turf/simulated/floor/urban/concrete,
-/area/space)
+/area/warfare/battlefield/trench_section/underground)
 "kh" = (
 /turf/simulated/wall/perspecticrete,
 /area/warfare/battlefield/no_mans_land)
@@ -1363,7 +1363,7 @@
 /obj/hammereditor/playerclip,
 /obj/hammereditor/bulletclip,
 /turf/simulated/floor/urban/concrete,
-/area/space)
+/area/warfare/battlefield/trench_section/underground)
 "kn" = (
 /obj/structure/bed/chair/red{
 	pixel_x = 6;
@@ -1469,7 +1469,7 @@
 /area/warfare/homebase/blue)
 "kM" = (
 /turf/simulated/floor/urban/concrete,
-/area/space)
+/area/warfare/battlefield/trench_section/underground)
 "kN" = (
 /obj/structure/dirt_wall,
 /turf/simulated/floor/dirty/tough,
@@ -1745,7 +1745,7 @@
 	pixel_x = 7
 	},
 /turf/simulated/floor/urban/concrete,
-/area/space)
+/area/warfare/battlefield/trench_section/underground)
 "mf" = (
 /obj/structure/table/rack/shelf/red,
 /obj/item/grenade/frag/warfare{
@@ -1756,7 +1756,7 @@
 	pixel_y = 3
 	},
 /turf/simulated/floor/urban/concrete,
-/area/space)
+/area/warfare/battlefield/trench_section/underground)
 "mg" = (
 /obj/machinery/light/small/bunker{
 	pixel_x = 0;
@@ -1804,7 +1804,7 @@
 "mj" = (
 /obj/structure/ladder/up,
 /turf/simulated/floor/dirty/tough,
-/area/space)
+/area/warfare/battlefield/trench_section/underground)
 "mm" = (
 /obj/structure/table/rack/shelf/red,
 /obj/machinery/light/caged{
@@ -1813,7 +1813,7 @@
 	pixel_y = 0
 	},
 /turf/simulated/floor/urban/concrete,
-/area/space)
+/area/warfare/battlefield/trench_section/underground)
 "mo" = (
 /obj/effect/floor_decal/stones{
 	dir = 1
@@ -2063,7 +2063,7 @@
 	pixel_y = -5
 	},
 /turf/simulated/floor/urban/concrete,
-/area/space)
+/area/warfare/battlefield/trench_section/underground)
 "pb" = (
 /obj/structure/table/rack,
 /obj/item/storage/firstaid/adv,
@@ -2144,11 +2144,11 @@
 	},
 /obj/item/crowbar/red,
 /turf/simulated/floor/urban/concrete,
-/area/space)
+/area/warfare/battlefield/trench_section/underground)
 "pR" = (
 /obj/structure/window_frame/urban_crete,
 /turf/simulated/floor/urban/concrete,
-/area/space)
+/area/warfare/battlefield/trench_section/underground)
 "pS" = (
 /obj/structure/bed/chair/gray{
 	dir = 8
@@ -2315,7 +2315,7 @@
 "qW" = (
 /obj/structure/barbwire,
 /turf/simulated/floor/urban/concrete,
-/area/space)
+/area/warfare/battlefield/trench_section/underground)
 "qX" = (
 /obj/machinery/light/small/bunker{
 	pixel_x = 0;
@@ -2526,7 +2526,7 @@
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /turf/simulated/floor/urban/concrete,
-/area/space)
+/area/warfare/battlefield/trench_section/underground)
 "sD" = (
 /obj/structure/bed/chair/wheelchair,
 /turf/simulated/floor/concrete/random,
@@ -2935,7 +2935,7 @@
 	pixel_y = 0
 	},
 /turf/simulated/floor/urban/concrete,
-/area/space)
+/area/warfare/battlefield/trench_section/underground)
 "vh" = (
 /obj/structure/window_frame/urban_crete/eastwest,
 /turf/simulated/floor/stones,
@@ -2977,7 +2977,7 @@
 	pixel_x = 0
 	},
 /turf/simulated/floor/urban/concrete,
-/area/space)
+/area/warfare/battlefield/trench_section/underground)
 "vt" = (
 /obj/item/spacecash/bundle/c10,
 /obj/structure/storage/cabinet{
@@ -3125,7 +3125,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/urban/concrete,
-/area/space)
+/area/warfare/battlefield/trench_section/underground)
 "vW" = (
 /obj/effect/floor_decal/newcorner/blue/diagonal,
 /obj/structure/curtain/tarp{
@@ -3203,7 +3203,7 @@
 	pixel_x = 0
 	},
 /turf/simulated/floor/urban/concrete,
-/area/space)
+/area/warfare/battlefield/trench_section/underground)
 "wA" = (
 /obj/effect/landmark/start{
 	name = "Blue Soldier"
@@ -3771,7 +3771,7 @@
 	pixel_x = 0
 	},
 /turf/simulated/floor/dirty/tough,
-/area/space)
+/area/warfare/battlefield/trench_section/underground)
 "AD" = (
 /obj/machinery/vending/medical{
 	req_access = newlist()
@@ -4111,7 +4111,7 @@
 /obj/hammereditor/bulletclip,
 /obj/hammereditor/playerclip,
 /turf/simulated/floor/urban/concrete,
-/area/space)
+/area/warfare/battlefield/trench_section/underground)
 "CE" = (
 /obj/structure/bed/chair/gray{
 	dir = 4
@@ -4541,7 +4541,7 @@
 "Fm" = (
 /obj/effect/water,
 /turf/simulated/floor/dirty/tough,
-/area/space)
+/area/warfare/battlefield/trench_section/underground)
 "Fp" = (
 /obj/effect/landmark/start{
 	name = "Red Engineer"
@@ -4851,7 +4851,7 @@
 	name = "Open Bottom"
 	},
 /turf/simulated/floor/urban/concrete,
-/area/space)
+/area/warfare/battlefield/trench_section/underground)
 "Hl" = (
 /obj/structure/railing{
 	dir = 4
@@ -5227,7 +5227,7 @@
 "Js" = (
 /obj/structure/dirt_wall,
 /turf/simulated/floor/dirty/tough,
-/area/space)
+/area/warfare/battlefield/trench_section/underground)
 "Jt" = (
 /obj/machinery/chemical_dispenser/bar_coffee/full,
 /obj/structure/table/rack/nosmooth/wood,
@@ -6199,7 +6199,7 @@
 "PC" = (
 /obj/structure/landmine,
 /turf/simulated/floor/urban/concrete,
-/area/space)
+/area/warfare/battlefield/trench_section/underground)
 "PE" = (
 /obj/structure/table/rack/shelf/red,
 /obj/machinery/light/caged{
@@ -6403,7 +6403,7 @@
 /obj/effect/water,
 /obj/effect/water,
 /turf/simulated/floor/dirty/tough,
-/area/space)
+/area/warfare/battlefield/trench_section/underground)
 "Rj" = (
 /obj/item/reagent_containers/spray/cleaner/warfare/red,
 /obj/item/reagent_containers/spray/cleaner/warfare/red,
@@ -6672,7 +6672,7 @@
 /obj/hammereditor/playerclip,
 /obj/hammereditor/bulletclip,
 /turf/simulated/floor/dirty/tough,
-/area/space)
+/area/warfare/battlefield/trench_section/underground)
 "SP" = (
 /obj/effect/floor_decal/stones{
 	dir = 4
@@ -7118,7 +7118,7 @@
 /area/warfare/battlefield/no_mans_land)
 "Vt" = (
 /turf/simulated/floor/dirty/tough,
-/area/space)
+/area/warfare/battlefield/trench_section/underground)
 "Vv" = (
 /obj/structure/table/rack/nosmooth/wood{
 	dir = 10
@@ -9092,11 +9092,11 @@ ln
 ln
 ln
 ln
-GC
-GC
-GC
-GC
-GC
+ET
+ET
+ET
+ET
+ET
 ln
 ln
 ln
@@ -9351,11 +9351,11 @@ ln
 ln
 ln
 ln
-GC
+ET
 kM
 jT
 kM
-GC
+ET
 ln
 ln
 ln
@@ -9610,11 +9610,11 @@ ln
 ln
 ln
 ln
-GC
+ET
 wx
 kM
 kM
-GC
+ET
 ln
 ln
 ln
@@ -9869,11 +9869,11 @@ ln
 ln
 ln
 ln
-GC
+ET
 kM
 kM
 kM
-GC
+ET
 ln
 ln
 ln
@@ -10117,33 +10117,33 @@ ln
 ln
 ln
 ln
-GC
-GC
-GC
-GC
-GC
-GC
-GC
-GC
-GC
-GC
-GC
-GC
+ET
+ET
+ET
+ET
+ET
+ET
+ET
+ET
+ET
+ET
+ET
+ET
 qW
 qW
 qW
-GC
-GC
-GC
-GC
-GC
-GC
-GC
-GC
-GC
-GC
-GC
-GC
+ET
+ET
+ET
+ET
+ET
+ET
+ET
+ET
+ET
+ET
+ET
+ET
 ln
 ln
 ln
@@ -10376,7 +10376,7 @@ ln
 ln
 ln
 ln
-GC
+ET
 kM
 kM
 kM
@@ -10402,7 +10402,7 @@ kM
 kM
 kM
 kM
-GC
+ET
 ln
 ln
 ln
@@ -10635,7 +10635,7 @@ ln
 ln
 ln
 ln
-GC
+ET
 kM
 Fm
 Fm
@@ -10661,7 +10661,7 @@ Fm
 Fm
 Fm
 kM
-GC
+ET
 ln
 ln
 ln
@@ -10894,7 +10894,7 @@ ln
 ln
 ln
 ln
-GC
+ET
 kM
 Fm
 Fm
@@ -10920,7 +10920,7 @@ Fm
 Fm
 Fm
 kM
-GC
+ET
 ln
 ln
 ln
@@ -11153,7 +11153,7 @@ ln
 ln
 ln
 ln
-GC
+ET
 kM
 Fm
 Fm
@@ -11179,7 +11179,7 @@ Fm
 Fm
 Fm
 kM
-GC
+ET
 ln
 ln
 ln
@@ -11412,7 +11412,7 @@ ln
 ln
 ln
 ln
-GC
+ET
 kM
 Fm
 Fm
@@ -11438,7 +11438,7 @@ kM
 kM
 kM
 kM
-GC
+ET
 ln
 ln
 ln
@@ -11671,33 +11671,33 @@ ln
 ln
 ln
 ln
-GC
+ET
 kM
 kM
 kM
 kM
 kM
-GC
-GC
-GC
-GC
-GC
-GC
-GC
-GC
-GC
-GC
-GC
-GC
-GC
-GC
-GC
+ET
+ET
+ET
+ET
+ET
+ET
+ET
+ET
+ET
+ET
+ET
+ET
+ET
+ET
+ET
 kM
 kM
 kM
 kM
 kM
-GC
+ET
 ln
 ln
 ln
@@ -11930,13 +11930,13 @@ ln
 ln
 ln
 ln
-GC
+ET
 kM
 kM
 kM
 kM
 kM
-GC
+ET
 ln
 ln
 ln
@@ -11947,16 +11947,16 @@ ln
 ln
 ln
 ln
-GC
-GC
-GC
-GC
+ET
+ET
+ET
+ET
 kM
 Js
 Js
 Js
 PC
-GC
+ET
 ln
 ln
 ln
@@ -12189,13 +12189,13 @@ ln
 ln
 ln
 ln
-GC
+ET
 kM
 Fm
 Fm
 Fm
 kM
-GC
+ET
 ln
 ln
 ln
@@ -12206,7 +12206,7 @@ ln
 ln
 ln
 ln
-GC
+ET
 kM
 kM
 qW
@@ -12215,7 +12215,7 @@ Fm
 Fm
 Fm
 kM
-GC
+ET
 ln
 ln
 ln
@@ -12448,13 +12448,13 @@ ln
 ln
 ln
 ln
-GC
+ET
 kM
 Fm
 Fm
 Fm
 kM
-GC
+ET
 Fm
 ln
 ln
@@ -12465,7 +12465,7 @@ ln
 ln
 ln
 ln
-GC
+ET
 wx
 kM
 qW
@@ -12474,7 +12474,7 @@ Fm
 Fm
 Fm
 kM
-GC
+ET
 ln
 ln
 ln
@@ -12707,7 +12707,7 @@ ln
 ln
 ln
 ln
-GC
+ET
 kM
 Fm
 Fm
@@ -12724,7 +12724,7 @@ ln
 ln
 ln
 ln
-GC
+ET
 pO
 kM
 qW
@@ -12733,7 +12733,7 @@ Fm
 Fm
 Fm
 kM
-GC
+ET
 ln
 ln
 ln
@@ -12966,13 +12966,13 @@ ln
 ln
 ln
 ln
-GC
+ET
 kM
 Fm
 Fm
 Fm
 kM
-GC
+ET
 Fm
 ln
 ln
@@ -12983,16 +12983,16 @@ ln
 ln
 ln
 ln
-GC
-GC
-GC
-GC
+ET
+ET
+ET
+ET
 kM
 Fm
 Fm
 Fm
 qW
-GC
+ET
 ln
 ln
 ln
@@ -13225,13 +13225,13 @@ ln
 ln
 ln
 ln
-GC
+ET
 kM
 Fm
 Fm
 Fm
 kM
-GC
+ET
 AA
 ln
 ln
@@ -13245,14 +13245,14 @@ ln
 ln
 ln
 ln
-GC
+ET
 kM
 Fm
 Fm
 Fm
 PC
-GC
-GC
+ET
+ET
 ln
 ln
 ln
@@ -13484,7 +13484,7 @@ ln
 ln
 ln
 ln
-GC
+ET
 kM
 Fm
 Fm
@@ -13504,14 +13504,14 @@ ln
 ln
 ln
 ln
-GC
+ET
 PC
 Fm
 Fm
 Fm
 fO
 PC
-GC
+ET
 ln
 ln
 ln
@@ -13743,13 +13743,13 @@ ln
 ln
 ln
 ln
-GC
+ET
 kM
 Fm
 Fm
 Fm
 kM
-GC
+ET
 ln
 ln
 ln
@@ -13763,14 +13763,14 @@ ln
 ln
 ln
 ln
-GC
+ET
 qW
 Fm
 Fm
 Fm
 kM
 fO
-GC
+ET
 ln
 ln
 ln
@@ -14002,13 +14002,13 @@ ln
 ln
 ln
 ln
-GC
+ET
 kM
 Fm
 Fm
 Fm
 kM
-GC
+ET
 ln
 ln
 ln
@@ -14022,14 +14022,14 @@ ln
 ln
 ln
 ln
-GC
+ET
 fO
 qW
 Fm
 Fm
 kM
 vs
-GC
+ET
 ln
 ln
 ln
@@ -14255,19 +14255,19 @@ ln
 ln
 ln
 ln
-GC
-GC
-GC
-GC
-GC
-GC
-GC
+ET
+ET
+ET
+ET
+ET
+ET
+ET
 kM
 Fm
 Fm
 Fm
 kM
-GC
+ET
 ln
 ln
 ln
@@ -14277,18 +14277,18 @@ ln
 ln
 ln
 ln
-GC
-GC
-GC
-GC
-GC
+ET
+ET
+ET
+ET
+ET
 kM
 fO
 ke
 ke
 kM
 kM
-GC
+ET
 ln
 ln
 ln
@@ -14511,10 +14511,10 @@ ln
 ln
 ln
 ln
-GC
-GC
-GC
-GC
+ET
+ET
+ET
+ET
 Fm
 Fm
 Fm
@@ -14526,17 +14526,17 @@ Fm
 Fm
 Fm
 kM
-GC
+ET
 ln
 ln
 ln
 ln
 ln
 ln
-GC
-GC
-GC
-GC
+ET
+ET
+ET
+ET
 kM
 mm
 kM
@@ -14547,7 +14547,7 @@ kM
 kM
 kM
 kM
-GC
+ET
 ln
 ln
 ln
@@ -14770,43 +14770,43 @@ ln
 ln
 ln
 ln
-GC
+ET
 bz
 Fm
 Fm
 Fm
 Fm
-GC
-GC
-GC
-GC
+ET
+ET
+ET
+ET
 kM
 Fm
 Fm
 Fm
 kM
-GC
+ET
 ln
 ln
 ln
 ln
 ln
 ln
-GC
+ET
 cl
 kM
 kb
 fO
 kM
 kM
-GC
+ET
 kM
 kM
 kM
 kM
 kM
 kM
-GC
+ET
 ln
 ln
 ln
@@ -15029,43 +15029,43 @@ ln
 ln
 ln
 ln
-GC
-GC
-GC
-GC
-GC
-GC
-GC
+ET
+ET
+ET
+ET
+ET
+ET
+ET
 ln
 ln
-GC
+ET
 kM
 Fm
 Fm
 Fm
 kM
-GC
+ET
 ln
 ln
 ln
 ln
 ln
 ln
-GC
+ET
 cl
 kM
 kb
 kM
 fO
 kM
-GC
+ET
 kM
 fO
 vT
 vT
 kM
 kM
-GC
+ET
 ln
 ln
 ln
@@ -15297,34 +15297,34 @@ ln
 ln
 ln
 ln
-GC
+ET
 kM
 Fm
 Fm
 Fm
 kM
-GC
+ET
 ln
 ln
 ln
 ln
 ln
 ln
-GC
-GC
+ET
+ET
 pR
-GC
+ET
 fO
 kM
 fl
-GC
+ET
 fO
 qW
 Fm
 Fm
 kM
 vs
-GC
+ET
 ln
 ln
 ln
@@ -15556,34 +15556,34 @@ ln
 ln
 ln
 ln
-GC
+ET
 kM
 kM
 kM
 kM
 kM
-GC
+ET
 ln
 ln
 ln
 ln
 ln
 ln
-GC
+ET
 Hk
 fO
 kM
 kM
 kM
 oW
-GC
+ET
 qW
 Fm
 Fm
 Fm
 kM
 kM
-GC
+ET
 ln
 ln
 ln
@@ -15815,34 +15815,34 @@ ln
 ln
 ln
 ln
-GC
+ET
 kM
 kM
 kM
 kM
 kM
-GC
+ET
 ln
 ln
 ln
 ln
 ln
 ln
-GC
+ET
 wx
 kM
 fO
 kM
 kM
 sC
-GC
+ET
 kM
 Fm
 Fm
 Fm
 kM
 fO
-GC
+ET
 ln
 ln
 ln
@@ -16074,34 +16074,34 @@ ln
 ln
 ln
 ln
-GC
+ET
 kM
 Fm
 Fm
 Fm
 kM
-GC
+ET
 ln
 ln
 ln
 ln
 ln
 ln
-GC
+ET
 kM
 kM
 kM
 mf
 kM
 kM
-GC
+ET
 kM
 Fm
 Fm
 Fm
 fO
 PC
-GC
+ET
 ln
 ln
 ln
@@ -16333,34 +16333,34 @@ ln
 ln
 ln
 ln
-GC
+ET
 kM
 Fm
 Fm
 Fm
 kM
-GC
+ET
 ln
 ln
 ln
 ln
 ln
 ln
-GC
-GC
-GC
-GC
-GC
-GC
-GC
-GC
+ET
+ET
+ET
+ET
+ET
+ET
+ET
+ET
 kM
 Fm
 Fm
 Fm
 PC
-GC
-GC
+ET
+ET
 ln
 ln
 ln
@@ -16592,13 +16592,13 @@ ln
 ln
 ln
 ln
-GC
+ET
 kM
 Fm
 Fm
 Fm
 kM
-GC
+ET
 ln
 ln
 ln
@@ -16612,13 +16612,13 @@ ln
 ln
 ln
 ln
-GC
+ET
 kM
 Fm
 Fm
 Fm
 qW
-GC
+ET
 ln
 ln
 ln
@@ -16851,13 +16851,13 @@ ln
 ln
 ln
 ln
-GC
+ET
 kM
 Fm
 Fm
 Fm
 kM
-GC
+ET
 ln
 ln
 ln
@@ -16871,13 +16871,13 @@ ln
 ln
 ln
 ln
-GC
+ET
 kM
 Fm
 Fm
 Fm
 kM
-GC
+ET
 ln
 ln
 ln
@@ -17110,13 +17110,13 @@ ln
 ln
 ln
 ln
-GC
+ET
 kM
 Fm
 Fm
 Fm
 kM
-GC
+ET
 ln
 ln
 ln
@@ -17130,13 +17130,13 @@ ln
 ln
 ln
 ln
-GC
+ET
 kM
 Fm
 Fm
 Fm
 kM
-GC
+ET
 ln
 ln
 ln
@@ -17369,13 +17369,13 @@ ln
 ln
 ln
 ln
-GC
+ET
 kM
 Fm
 Fm
 Fm
 kM
-GC
+ET
 ln
 ln
 ln
@@ -17389,13 +17389,13 @@ ln
 ln
 ln
 ln
-GC
+ET
 kM
 Fm
 Fm
 Fm
 kM
-GC
+ET
 ln
 ln
 ln
@@ -17628,13 +17628,13 @@ ln
 ln
 ln
 ln
-GC
+ET
 kM
 Fm
 Fm
 Fm
 kM
-GC
+ET
 ln
 ln
 ln
@@ -17648,13 +17648,13 @@ ln
 ln
 ln
 ln
-GC
+ET
 kM
 Js
 Js
 Js
 kM
-GC
+ET
 ln
 ln
 ln
@@ -17887,13 +17887,13 @@ ln
 ln
 ln
 ln
-GC
+ET
 kM
 Fm
 Fm
 Fm
 kM
-GC
+ET
 ln
 ln
 ln
@@ -17907,13 +17907,13 @@ ln
 ln
 ln
 ln
-GC
+ET
 kM
 kM
 kM
 kM
 kM
-GC
+ET
 ln
 ln
 ln
@@ -18146,13 +18146,13 @@ ln
 ln
 ln
 ln
-GC
+ET
 kM
 Fm
 Fm
 Fm
 kM
-GC
+ET
 ln
 ln
 ln
@@ -18166,13 +18166,13 @@ ln
 ln
 ln
 ln
-GC
+ET
 kM
 kM
 kM
 kM
 kM
-GC
+ET
 ln
 ln
 ln
@@ -18405,13 +18405,13 @@ ln
 ln
 ln
 ln
-GC
+ET
 kM
 Fm
 Fm
 Fm
 kM
-GC
+ET
 ln
 ln
 ln
@@ -18425,13 +18425,13 @@ ln
 ln
 ln
 ln
-GC
+ET
 kM
 Fm
 Fm
 Fm
 kM
-GC
+ET
 ln
 ln
 ln
@@ -18664,13 +18664,13 @@ ln
 ln
 ln
 ln
-GC
+ET
 kM
 Fm
 Fm
 Fm
 kM
-GC
+ET
 ln
 ln
 ln
@@ -18684,13 +18684,13 @@ ln
 ln
 ln
 ln
-GC
+ET
 kM
 Fm
 Fm
 Fm
 kM
-GC
+ET
 ln
 ln
 ln
@@ -18923,13 +18923,13 @@ ln
 ln
 ln
 ln
-GC
+ET
 kM
 Fm
 Fm
 Fm
 kM
-GC
+ET
 ln
 ln
 ln
@@ -18943,13 +18943,13 @@ ln
 ln
 ln
 ln
-GC
+ET
 kM
 Fm
 Fm
 Fm
 kM
-GC
+ET
 ln
 ln
 ln
@@ -19182,33 +19182,33 @@ ln
 ln
 ln
 ln
-GC
+ET
 kM
 Fm
 Fm
 Fm
 vs
-GC
-GC
-GC
-GC
-GC
-GC
-GC
-GC
-GC
-GC
-GC
-GC
-GC
-GC
-GC
+ET
+ET
+ET
+ET
+ET
+ET
+ET
+ET
+ET
+ET
+ET
+ET
+ET
+ET
+ET
 kM
 Fm
 Fm
 Fm
 kM
-GC
+ET
 ln
 ln
 ln
@@ -19441,7 +19441,7 @@ ln
 ln
 ln
 ln
-GC
+ET
 kM
 kM
 kM
@@ -19467,7 +19467,7 @@ Fm
 Fm
 Fm
 kM
-GC
+ET
 ln
 ln
 ln
@@ -19700,7 +19700,7 @@ ln
 ln
 ln
 ln
-GC
+ET
 wx
 Vt
 Vt
@@ -19726,7 +19726,7 @@ Fm
 Fm
 Fm
 kM
-GC
+ET
 ln
 ln
 ln
@@ -19959,7 +19959,7 @@ ln
 ln
 ln
 ln
-GC
+ET
 kM
 Vt
 mj
@@ -19985,7 +19985,7 @@ Fm
 Fm
 Fm
 kM
-GC
+ET
 ln
 ln
 ln
@@ -20218,7 +20218,7 @@ ln
 ln
 ln
 ln
-GC
+ET
 wx
 Vt
 Vt
@@ -20244,7 +20244,7 @@ Fm
 Fm
 Fm
 kM
-GC
+ET
 ln
 ln
 ln
@@ -20477,7 +20477,7 @@ ln
 ln
 ln
 ln
-GC
+ET
 kM
 kM
 kM
@@ -20503,7 +20503,7 @@ kM
 kM
 kM
 kM
-GC
+ET
 ln
 ln
 ln
@@ -20736,33 +20736,33 @@ ln
 ln
 ln
 ln
-GC
+ET
 kM
 Fm
 Fm
 Fm
 vs
-GC
-GC
-GC
-GC
-GC
-GC
-GC
-GC
-GC
-GC
-GC
-GC
-GC
-GC
-GC
-GC
-GC
-GC
-GC
-GC
-GC
+ET
+ET
+ET
+ET
+ET
+ET
+ET
+ET
+ET
+ET
+ET
+ET
+ET
+ET
+ET
+ET
+ET
+ET
+ET
+ET
+ET
 ln
 ln
 ln
@@ -20995,13 +20995,13 @@ ln
 ln
 ln
 ln
-GC
+ET
 kM
 Fm
 Fm
 Fm
 kM
-GC
+ET
 ln
 ln
 ln
@@ -21254,13 +21254,13 @@ ln
 ln
 ln
 ln
-GC
+ET
 kM
 Fm
 Fm
 Fm
 kM
-GC
+ET
 ln
 ln
 ln
@@ -21513,13 +21513,13 @@ ln
 ln
 ln
 ln
-GC
+ET
 kM
 Fm
 Fm
 Fm
 kM
-GC
+ET
 ln
 ln
 ln
@@ -21772,13 +21772,13 @@ ln
 ln
 ln
 ln
-GC
+ET
 kM
 Fm
 Fm
 Fm
 kM
-GC
+ET
 ln
 ln
 ln
@@ -22025,19 +22025,19 @@ ln
 Fm
 Fm
 ln
-GC
-GC
-GC
-GC
-GC
-GC
-GC
+ET
+ET
+ET
+ET
+ET
+ET
+ET
 kM
 Fm
 Fm
 Fm
 kM
-GC
+ET
 ln
 ln
 ln
@@ -22284,7 +22284,7 @@ ln
 Fm
 Fm
 Fm
-GC
+ET
 kM
 va
 kM
@@ -22296,7 +22296,7 @@ Fm
 Fm
 Fm
 kM
-GC
+ET
 ln
 ln
 ln
@@ -22555,7 +22555,7 @@ Fm
 Fm
 Fm
 kM
-GC
+ET
 ln
 ln
 ln
@@ -22814,7 +22814,7 @@ Fm
 Fm
 Fm
 kM
-GC
+ET
 ln
 ln
 ln
@@ -23073,7 +23073,7 @@ Fm
 Fm
 Fm
 kM
-GC
+ET
 ln
 ln
 ln
@@ -23320,7 +23320,7 @@ Fm
 Fm
 Fm
 Fm
-GC
+ET
 me
 aQ
 kM
@@ -23332,7 +23332,7 @@ kM
 kM
 kM
 kM
-GC
+ET
 ln
 ln
 ln
@@ -23579,19 +23579,19 @@ Fm
 Fm
 Fm
 ln
-GC
-GC
-GC
-GC
-GC
-GC
-GC
-GC
-GC
-GC
-GC
-GC
-GC
+ET
+ET
+ET
+ET
+ET
+ET
+ET
+ET
+ET
+ET
+ET
+ET
+ET
 ln
 ln
 ln
