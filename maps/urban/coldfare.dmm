@@ -779,10 +779,6 @@
 /obj/item/suture,
 /turf/simulated/floor/concrete/random,
 /area/warfare/battlefield/trench_section/underground)
-"eL" = (
-/obj/structure/anti_tank,
-/turf/simulated/floor/stones,
-/area/warfare/battlefield/trench_section/underground)
 "eN" = (
 /obj/effect/landmark/start{
 	name = "Red Soldier"
@@ -2035,6 +2031,10 @@
 	},
 /turf/simulated/floor/concrete/random,
 /area/warfare/battlefield/capture_point/blue/one)
+"oy" = (
+/obj/structure/anti_tank,
+/turf/simulated/floor/stones,
+/area/warfare/battlefield/trench_section/underground)
 "oz" = (
 /obj/structure/table/rack/nosmooth/metal,
 /obj/item/reagent_containers/food/drinks/coffee{
@@ -3542,7 +3542,7 @@
 /obj/effect/floor_decal/urban/trim3,
 /turf/simulated/floor/urban/urban_pavement_brick,
 /area/warfare/battlefield/no_mans_land)
-"zd" = (
+"zh" = (
 /obj/structure/anti_tank,
 /turf/simulated/floor/concrete/random,
 /area/warfare/battlefield/trench_section/underground)
@@ -3974,14 +3974,6 @@
 "BI" = (
 /turf/simulated/floor/trenches,
 /area/warfare/homebase/blue)
-"BK" = (
-/obj/machinery/light/small/bunker{
-	pixel_x = 0;
-	pixel_y = 32
-	},
-/obj/structure/anti_tank,
-/turf/simulated/floor/stones,
-/area/warfare/battlefield/trench_section/underground)
 "BL" = (
 /obj/machinery/vending/medical{
 	req_access = newlist()
@@ -4550,9 +4542,6 @@
 	},
 /turf/simulated/floor/dirty/indestructable,
 /area/warfare/battlefield/no_mans_land)
-"Fi" = (
-/turf/simulated/mineral,
-/area/warfare/battlefield/trench_section/underground)
 "Fk" = (
 /obj/structure/closet/secure_closet/warfare/newver,
 /turf/simulated/floor/wood,
@@ -7087,6 +7076,14 @@
 	},
 /turf/simulated/floor/wood,
 /area/warfare/battlefield/trench_section/underground)
+"Vk" = (
+/obj/machinery/light/small/bunker{
+	pixel_x = 0;
+	pixel_y = 32
+	},
+/obj/structure/anti_tank,
+/turf/simulated/floor/stones,
+/area/warfare/battlefield/trench_section/underground)
 "Vo" = (
 /obj/effect/floor_decal/carpet/orange,
 /obj/effect/floor_decal/carpet/orange{
@@ -9606,7 +9603,7 @@ ln
 ln
 ln
 ln
-Fi
+ln
 ln
 ln
 ln
@@ -41266,7 +41263,7 @@ eH
 HS
 Wp
 ET
-zd
+zh
 NQ
 ET
 ET
@@ -41525,7 +41522,7 @@ XN
 HS
 qI
 qI
-zd
+zh
 NQ
 kD
 ET
@@ -41785,7 +41782,7 @@ HS
 Wp
 ET
 Zz
-eL
+oy
 NQ
 ET
 ET
@@ -42043,7 +42040,7 @@ HS
 HS
 Wp
 ET
-BK
+Vk
 NQ
 NQ
 NQ
