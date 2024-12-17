@@ -223,9 +223,8 @@
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/blue)
 "bz" = (
-/obj/structure/ladder,
-/obj/structure/catwalk,
-/turf/simulated/open,
+/obj/structure/anti_tank,
+/turf/simulated/floor/stones,
 /area/warfare/battlefield/trench_section/underground)
 "bA" = (
 /obj/structure/table/rack/shelf/red,
@@ -340,6 +339,11 @@
 	},
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/blue)
+"bY" = (
+/obj/effect/water,
+/obj/structure/ladder/up,
+/turf/simulated/floor/dirty/tough,
+/area/warfare/battlefield/trench_section/underground)
 "bZ" = (
 /obj/structure/table/steel,
 /turf/simulated/floor/concrete/random,
@@ -454,6 +458,14 @@
 	name = "curtain"
 	},
 /turf/simulated/floor/wood,
+/area/warfare/battlefield/trench_section/underground)
+"cS" = (
+/obj/effect/water,
+/obj/machinery/light/caged{
+	pixel_y = 30;
+	pixel_x = 0
+	},
+/turf/simulated/floor/dirty/tough,
 /area/warfare/battlefield/trench_section/underground)
 "cT" = (
 /obj/effect/floor_decal/urban/pv_light{
@@ -800,14 +812,6 @@
 /obj/item/gun/projectile/automatic/m22/warmonger/fully_auto/nemesis,
 /turf/simulated/floor/urban/concrete,
 /area/warfare/battlefield/trench_section/underground)
-"fo" = (
-/obj/machinery/light/caged{
-	pixel_y = 30;
-	pixel_x = 0
-	},
-/obj/effect/water,
-/turf/simulated/floor/dirty/tough,
-/area/warfare/battlefield/trench_section/underground)
 "fp" = (
 /obj/effect/floor_decal/newcorner/blue/solid,
 /obj/structure/curtain/tarp,
@@ -847,6 +851,14 @@
 "fO" = (
 /obj/structure/anti_tank,
 /turf/simulated/floor/urban/concrete,
+/area/warfare/battlefield/trench_section/underground)
+"fS" = (
+/obj/machinery/light/caged{
+	pixel_y = 30;
+	pixel_x = 0
+	},
+/obj/effect/water,
+/turf/simulated/floor/dirty/tough,
 /area/warfare/battlefield/trench_section/underground)
 "fY" = (
 /obj/structure/announcementspeaker/blue{
@@ -2316,8 +2328,12 @@
 /turf/simulated/floor/stones,
 /area/warfare/homebase/blue)
 "qW" = (
+/obj/machinery/light/small/bunker{
+	pixel_x = 0;
+	pixel_y = 32
+	},
 /obj/structure/anti_tank,
-/turf/simulated/floor/concrete/random,
+/turf/simulated/floor/stones,
 /area/warfare/battlefield/trench_section/underground)
 "qX" = (
 /obj/machinery/light/small/bunker{
@@ -2595,6 +2611,11 @@
 "sR" = (
 /turf/simulated/floor/dirty/indestructable,
 /area/warfare/battlefield/capture_point/red/two)
+"sS" = (
+/obj/structure/ladder,
+/obj/structure/catwalk,
+/turf/simulated/open,
+/area/warfare/battlefield/trench_section/underground)
 "sU" = (
 /obj/structure/closet/crate/freezer,
 /obj/item/organ/external/arm/robo_arm,
@@ -3343,6 +3364,10 @@
 "xN" = (
 /obj/structure/table/rack/shelf/red,
 /turf/simulated/floor/carpet/orange,
+/area/warfare/battlefield/trench_section/underground)
+"xQ" = (
+/obj/structure/anti_tank,
+/turf/simulated/floor/concrete/random,
 /area/warfare/battlefield/trench_section/underground)
 "xR" = (
 /obj/structure/closet/crate,
@@ -5137,14 +5162,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/warfare/battlefield/trench_section/underground)
-"IS" = (
-/obj/machinery/light/small/bunker{
-	pixel_x = 0;
-	pixel_y = 32
-	},
-/obj/structure/anti_tank,
-/turf/simulated/floor/stones,
-/area/warfare/battlefield/trench_section/underground)
 "IU" = (
 /obj/machinery/door/unpowered/simple/woodalt,
 /turf/simulated/floor/tiled,
@@ -5750,11 +5767,6 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/stones,
-/area/warfare/battlefield/trench_section/underground)
-"MA" = (
-/obj/effect/water,
-/obj/structure/ladder/up,
-/turf/simulated/floor/dirty/tough,
 /area/warfare/battlefield/trench_section/underground)
 "MC" = (
 /obj/item/flame/candle,
@@ -7083,10 +7095,6 @@
 	name = "curtain"
 	},
 /turf/simulated/floor/wood,
-/area/warfare/battlefield/trench_section/underground)
-"Vn" = (
-/obj/structure/anti_tank,
-/turf/simulated/floor/stones,
 /area/warfare/battlefield/trench_section/underground)
 "Vo" = (
 /obj/effect/floor_decal/carpet/orange,
@@ -14535,7 +14543,7 @@ ET
 ET
 ET
 ET
-Fm
+cS
 Fm
 Fm
 Fm
@@ -14786,7 +14794,7 @@ ln
 ln
 ln
 ET
-fo
+fS
 Fm
 Fm
 Fm
@@ -15822,7 +15830,7 @@ ln
 ln
 ln
 ET
-MA
+bY
 ET
 ln
 ln
@@ -39392,7 +39400,7 @@ Zz
 ET
 hq
 ew
-bz
+sS
 ET
 ju
 EA
@@ -41267,7 +41275,7 @@ eH
 HS
 Wp
 ET
-qW
+xQ
 NQ
 ET
 ET
@@ -41526,7 +41534,7 @@ XN
 HS
 qI
 qI
-qW
+xQ
 NQ
 kD
 ET
@@ -41786,7 +41794,7 @@ HS
 Wp
 ET
 Zz
-Vn
+bz
 NQ
 ET
 ET
@@ -42044,7 +42052,7 @@ HS
 HS
 Wp
 ET
-IS
+qW
 NQ
 NQ
 NQ
