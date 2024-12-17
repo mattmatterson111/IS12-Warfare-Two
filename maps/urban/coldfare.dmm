@@ -2220,6 +2220,9 @@
 	},
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/red)
+"qn" = (
+/turf/simulated/mineral,
+/area/warfare/battlefield/trench_section/underground)
 "qt" = (
 /obj/structure/effect/urban/drain{
 	dir = 4;
@@ -3387,6 +3390,10 @@
 	dir = 1
 	},
 /turf/simulated/floor/wood,
+/area/warfare/battlefield/trench_section/underground)
+"yg" = (
+/obj/structure/anti_tank,
+/turf/simulated/floor/concrete/random,
 /area/warfare/battlefield/trench_section/underground)
 "yh" = (
 /obj/machinery/light/small/bunker{
@@ -4839,6 +4846,14 @@
 	},
 /turf/simulated/floor/wood,
 /area/space)
+"Hj" = (
+/obj/machinery/light/small/bunker{
+	pixel_x = 0;
+	pixel_y = 32
+	},
+/obj/structure/anti_tank,
+/turf/simulated/floor/stones,
+/area/warfare/battlefield/trench_section/underground)
 "Hk" = (
 /obj/machinery/button/remote/blast_door/lever{
 	pixel_x = -30;
@@ -5164,6 +5179,10 @@
 	dir = 4
 	},
 /turf/simulated/floor/wood,
+/area/warfare/battlefield/trench_section/underground)
+"Jc" = (
+/obj/structure/anti_tank,
+/turf/simulated/floor/stones,
 /area/warfare/battlefield/trench_section/underground)
 "Jh" = (
 /obj/effect/floor_decal/urban/pv_outer_c{
@@ -9587,7 +9606,7 @@ ln
 ln
 ln
 ln
-ln
+qn
 ln
 ln
 ln
@@ -41247,7 +41266,7 @@ eH
 HS
 Wp
 ET
-Zz
+yg
 NQ
 ET
 ET
@@ -41507,7 +41526,7 @@ HS
 qI
 qI
 Zz
-NQ
+Jc
 kD
 ET
 ET
@@ -41766,7 +41785,7 @@ HS
 Wp
 ET
 Zz
-NQ
+Jc
 NQ
 ET
 ET
@@ -42024,7 +42043,7 @@ HS
 HS
 Wp
 ET
-Be
+Hj
 NQ
 NQ
 NQ
