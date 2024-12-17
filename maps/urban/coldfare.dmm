@@ -994,8 +994,7 @@
 /area/warfare/battlefield/trench_section/underground)
 "hh" = (
 /obj/structure/ladder,
-/obj/structure/catwalk,
-/turf/simulated/open,
+/turf/simulated/floor/trench/tough,
 /area/warfare/battlefield/no_mans_land)
 "hk" = (
 /obj/structure/closet/secure_closet/medical1/warfare,
@@ -3251,6 +3250,10 @@
 	dir = 6
 	},
 /turf/simulated/floor/stones,
+/area/warfare/battlefield/no_mans_land)
+"wH" = (
+/obj/structure/ladder,
+/turf/simulated/floor/dirty/indestructable,
 /area/warfare/battlefield/no_mans_land)
 "wJ" = (
 /obj/machinery/light/small/bunker{
@@ -46391,7 +46394,7 @@ Yn
 Yn
 TL
 Yn
-Yn
+wH
 Yn
 DZ
 Yn
