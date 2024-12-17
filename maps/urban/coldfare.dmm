@@ -779,6 +779,10 @@
 /obj/item/suture,
 /turf/simulated/floor/concrete/random,
 /area/warfare/battlefield/trench_section/underground)
+"eL" = (
+/obj/structure/anti_tank,
+/turf/simulated/floor/stones,
+/area/warfare/battlefield/trench_section/underground)
 "eN" = (
 /obj/effect/landmark/start{
 	name = "Red Soldier"
@@ -2220,9 +2224,6 @@
 	},
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/red)
-"qn" = (
-/turf/simulated/mineral,
-/area/warfare/battlefield/trench_section/underground)
 "qt" = (
 /obj/structure/effect/urban/drain{
 	dir = 4;
@@ -3391,10 +3392,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/warfare/battlefield/trench_section/underground)
-"yg" = (
-/obj/structure/anti_tank,
-/turf/simulated/floor/concrete/random,
-/area/warfare/battlefield/trench_section/underground)
 "yh" = (
 /obj/machinery/light/small/bunker{
 	pixel_x = 0;
@@ -3545,6 +3542,10 @@
 /obj/effect/floor_decal/urban/trim3,
 /turf/simulated/floor/urban/urban_pavement_brick,
 /area/warfare/battlefield/no_mans_land)
+"zd" = (
+/obj/structure/anti_tank,
+/turf/simulated/floor/concrete/random,
+/area/warfare/battlefield/trench_section/underground)
 "zj" = (
 /obj/effect/floor_decal/stones,
 /turf/simulated/floor/dirty/indestructable,
@@ -3973,6 +3974,14 @@
 "BI" = (
 /turf/simulated/floor/trenches,
 /area/warfare/homebase/blue)
+"BK" = (
+/obj/machinery/light/small/bunker{
+	pixel_x = 0;
+	pixel_y = 32
+	},
+/obj/structure/anti_tank,
+/turf/simulated/floor/stones,
+/area/warfare/battlefield/trench_section/underground)
 "BL" = (
 /obj/machinery/vending/medical{
 	req_access = newlist()
@@ -4541,6 +4550,9 @@
 	},
 /turf/simulated/floor/dirty/indestructable,
 /area/warfare/battlefield/no_mans_land)
+"Fi" = (
+/turf/simulated/mineral,
+/area/warfare/battlefield/trench_section/underground)
 "Fk" = (
 /obj/structure/closet/secure_closet/warfare/newver,
 /turf/simulated/floor/wood,
@@ -4846,14 +4858,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/space)
-"Hj" = (
-/obj/machinery/light/small/bunker{
-	pixel_x = 0;
-	pixel_y = 32
-	},
-/obj/structure/anti_tank,
-/turf/simulated/floor/stones,
-/area/warfare/battlefield/trench_section/underground)
 "Hk" = (
 /obj/machinery/button/remote/blast_door/lever{
 	pixel_x = -30;
@@ -5179,10 +5183,6 @@
 	dir = 4
 	},
 /turf/simulated/floor/wood,
-/area/warfare/battlefield/trench_section/underground)
-"Jc" = (
-/obj/structure/anti_tank,
-/turf/simulated/floor/stones,
 /area/warfare/battlefield/trench_section/underground)
 "Jh" = (
 /obj/effect/floor_decal/urban/pv_outer_c{
@@ -9606,7 +9606,7 @@ ln
 ln
 ln
 ln
-qn
+Fi
 ln
 ln
 ln
@@ -41266,7 +41266,7 @@ eH
 HS
 Wp
 ET
-yg
+zd
 NQ
 ET
 ET
@@ -41525,8 +41525,8 @@ XN
 HS
 qI
 qI
-Zz
-Jc
+zd
+NQ
 kD
 ET
 ET
@@ -41785,7 +41785,7 @@ HS
 Wp
 ET
 Zz
-Jc
+eL
 NQ
 ET
 ET
@@ -42043,7 +42043,7 @@ HS
 HS
 Wp
 ET
-Hj
+BK
 NQ
 NQ
 NQ
