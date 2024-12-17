@@ -3356,7 +3356,7 @@
 /area/warfare/battlefield/trench_section/underground)
 "xQ" = (
 /obj/structure/anti_tank,
-/turf/simulated/floor/concrete/random,
+/turf/simulated/floor/wood,
 /area/warfare/battlefield/trench_section/underground)
 "xR" = (
 /obj/structure/closet/crate,
@@ -14813,7 +14813,7 @@ ET
 cl
 kM
 kb
-fO
+kM
 kM
 kM
 ET
@@ -15073,7 +15073,7 @@ cl
 kM
 kb
 kM
-fO
+kM
 kM
 ET
 kM
@@ -15331,7 +15331,7 @@ ET
 ET
 pR
 ET
-fO
+kM
 kM
 fl
 ET
@@ -38118,7 +38118,7 @@ HA
 HS
 HS
 HS
-HS
+xQ
 ET
 ET
 ET
@@ -38376,7 +38376,7 @@ Wn
 HA
 HS
 HS
-HS
+xQ
 HS
 yu
 aZ
@@ -38894,7 +38894,7 @@ kh
 ET
 HS
 HS
-HS
+xQ
 ET
 ET
 ET
@@ -41005,7 +41005,7 @@ HS
 HS
 Wp
 ET
-Be
+qW
 NQ
 ET
 pz
@@ -41264,8 +41264,8 @@ eH
 HS
 Wp
 ET
-xQ
-NQ
+Zz
+bz
 ET
 ET
 Zz
@@ -41523,7 +41523,7 @@ XN
 HS
 qI
 qI
-xQ
+Zz
 NQ
 kD
 ET
