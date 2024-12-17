@@ -394,7 +394,8 @@
 /turf/simulated/floor/concrete/random,
 /area/warfare/battlefield/trench_section/underground)
 "cl" = (
-/turf/simulated/floor/tiled/ramp/bottom,
+/obj/structure/stairs/north,
+/turf/simulated/floor/urban/concrete,
 /area/warfare/battlefield/trench_section/underground)
 "cm" = (
 /obj/effect/landmark/start{
