@@ -135,14 +135,6 @@
 	},
 /turf/simulated/floor/dirty/indestructable,
 /area/warfare/battlefield/trench_section/underground)
-"aZ" = (
-/obj/machinery/light/caged{
-	pixel_y = 30;
-	pixel_x = 0
-	},
-/obj/structure/table/rack/nosmooth/wood,
-/turf/simulated/floor/wood,
-/area/warfare/battlefield/trench_section/underground)
 "bb" = (
 /obj/structure/table/rack/nosmooth/metal,
 /obj/machinery/light/small/bunker{
@@ -351,6 +343,12 @@
 /obj/structure/table/steel,
 /turf/simulated/floor/concrete/random,
 /area/warfare/battlefield/trench_section/underground)
+"ca" = (
+/obj/effect/floor_decal/urban/trim2{
+	dir = 1
+	},
+/turf/simulated/floor/urban/urban_pavement_brick,
+/area/warfare/battlefield/trench_section/underground)
 "cc" = (
 /obj/structure/curtain/open/bed{
 	name = "curtain"
@@ -394,10 +392,12 @@
 /turf/simulated/floor/concrete/random,
 /area/warfare/battlefield/trench_section/underground)
 "cl" = (
-/obj/effect/floor_decal/urban/trim2{
-	dir = 1
+/obj/machinery/light/caged{
+	pixel_y = 30;
+	pixel_x = 0
 	},
-/turf/simulated/floor/urban/urban_pavement_brick,
+/obj/structure/table/rack/nosmooth/wood,
+/turf/simulated/floor/wood,
 /area/warfare/battlefield/trench_section/underground)
 "cm" = (
 /obj/effect/landmark/start{
@@ -6238,7 +6238,7 @@
 /obj/structure/table/rack/nosmooth/metal{
 	dir = 8
 	},
-/obj/item/modular_computer/laptop,
+/obj/item/modular_computer/laptop/preset/custom_loadout/cheap,
 /turf/simulated/floor/concrete/random,
 /area/warfare/battlefield/trench_section/underground)
 "PK" = (
@@ -6280,7 +6280,7 @@
 /obj/structure/table/rack/nosmooth/metal{
 	dir = 6
 	},
-/obj/item/modular_computer/laptop,
+/obj/item/modular_computer/laptop/preset/custom_loadout/cheap,
 /turf/simulated/floor/wood,
 /area/warfare/battlefield/trench_section/underground)
 "Qd" = (
@@ -40713,7 +40713,7 @@ wJ
 HS
 HS
 IU
-cl
+ca
 mt
 ET
 Np
@@ -44588,7 +44588,7 @@ MI
 MI
 Yn
 ET
-aZ
+cl
 HS
 fj
 ET
