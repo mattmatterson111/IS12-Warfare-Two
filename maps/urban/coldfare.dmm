@@ -223,12 +223,9 @@
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/blue)
 "bz" = (
-/obj/effect/water,
-/obj/machinery/light/caged{
-	pixel_y = 30;
-	pixel_x = 0
-	},
-/turf/simulated/floor/dirty/tough,
+/obj/structure/ladder,
+/obj/structure/catwalk,
+/turf/simulated/open,
 /area/warfare/battlefield/trench_section/underground)
 "bA" = (
 /obj/structure/table/rack/shelf/red,
@@ -803,6 +800,14 @@
 /obj/item/gun/projectile/automatic/m22/warmonger/fully_auto/nemesis,
 /turf/simulated/floor/urban/concrete,
 /area/warfare/battlefield/trench_section/underground)
+"fo" = (
+/obj/machinery/light/caged{
+	pixel_y = 30;
+	pixel_x = 0
+	},
+/obj/effect/water,
+/turf/simulated/floor/dirty/tough,
+/area/warfare/battlefield/trench_section/underground)
 "fp" = (
 /obj/effect/floor_decal/newcorner/blue/solid,
 /obj/structure/curtain/tarp,
@@ -1359,9 +1364,7 @@
 /turf/simulated/floor/dirty/indestructable,
 /area/warfare/battlefield/no_mans_land)
 "km" = (
-/obj/structure/grille,
-/obj/hammereditor/playerclip,
-/obj/hammereditor/bulletclip,
+/obj/structure/barbwire,
 /turf/simulated/floor/urban/concrete,
 /area/warfare/battlefield/trench_section/underground)
 "kn" = (
@@ -2031,10 +2034,6 @@
 	},
 /turf/simulated/floor/concrete/random,
 /area/warfare/battlefield/capture_point/blue/one)
-"oy" = (
-/obj/structure/anti_tank,
-/turf/simulated/floor/stones,
-/area/warfare/battlefield/trench_section/underground)
 "oz" = (
 /obj/structure/table/rack/nosmooth/metal,
 /obj/item/reagent_containers/food/drinks/coffee{
@@ -2317,8 +2316,8 @@
 /turf/simulated/floor/stones,
 /area/warfare/homebase/blue)
 "qW" = (
-/obj/structure/barbwire,
-/turf/simulated/floor/urban/concrete,
+/obj/structure/anti_tank,
+/turf/simulated/floor/concrete/random,
 /area/warfare/battlefield/trench_section/underground)
 "qX" = (
 /obj/machinery/light/small/bunker{
@@ -3542,10 +3541,6 @@
 /obj/effect/floor_decal/urban/trim3,
 /turf/simulated/floor/urban/urban_pavement_brick,
 /area/warfare/battlefield/no_mans_land)
-"zh" = (
-/obj/structure/anti_tank,
-/turf/simulated/floor/concrete/random,
-/area/warfare/battlefield/trench_section/underground)
 "zj" = (
 /obj/effect/floor_decal/stones,
 /turf/simulated/floor/dirty/indestructable,
@@ -5142,6 +5137,14 @@
 	},
 /turf/simulated/floor/tiled,
 /area/warfare/battlefield/trench_section/underground)
+"IS" = (
+/obj/machinery/light/small/bunker{
+	pixel_x = 0;
+	pixel_y = 32
+	},
+/obj/structure/anti_tank,
+/turf/simulated/floor/stones,
+/area/warfare/battlefield/trench_section/underground)
 "IU" = (
 /obj/machinery/door/unpowered/simple/woodalt,
 /turf/simulated/floor/tiled,
@@ -5747,6 +5750,11 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/stones,
+/area/warfare/battlefield/trench_section/underground)
+"MA" = (
+/obj/effect/water,
+/obj/structure/ladder/up,
+/turf/simulated/floor/dirty/tough,
 /area/warfare/battlefield/trench_section/underground)
 "MC" = (
 /obj/item/flame/candle,
@@ -7076,11 +7084,7 @@
 	},
 /turf/simulated/floor/wood,
 /area/warfare/battlefield/trench_section/underground)
-"Vk" = (
-/obj/machinery/light/small/bunker{
-	pixel_x = 0;
-	pixel_y = 32
-	},
+"Vn" = (
 /obj/structure/anti_tank,
 /turf/simulated/floor/stones,
 /area/warfare/battlefield/trench_section/underground)
@@ -10145,9 +10149,9 @@ ET
 ET
 ET
 ET
-qW
-qW
-qW
+km
+km
+km
 ET
 ET
 ET
@@ -12225,7 +12229,7 @@ ln
 ET
 kM
 kM
-qW
+km
 PC
 Fm
 Fm
@@ -12484,7 +12488,7 @@ ln
 ET
 wx
 kM
-qW
+km
 kM
 Fm
 Fm
@@ -12743,7 +12747,7 @@ ln
 ET
 pO
 kM
-qW
+km
 kM
 Fm
 Fm
@@ -13007,7 +13011,7 @@ kM
 Fm
 Fm
 Fm
-qW
+km
 ET
 ln
 ln
@@ -13780,7 +13784,7 @@ ln
 ln
 ln
 ET
-qW
+km
 Fm
 Fm
 Fm
@@ -14040,7 +14044,7 @@ ln
 ln
 ET
 fO
-qW
+km
 Fm
 Fm
 kM
@@ -14522,11 +14526,11 @@ ln
 ln
 ln
 ln
-ln
-ln
-ln
-ln
-ln
+ET
+ET
+ET
+ET
+ET
 ET
 ET
 ET
@@ -14781,13 +14785,13 @@ ln
 ln
 ln
 ln
-ln
-ln
-ln
-ln
-ln
 ET
-bz
+fo
+Fm
+Fm
+Fm
+Fm
+Fm
 Fm
 Fm
 Fm
@@ -15040,11 +15044,11 @@ ln
 ln
 ln
 ln
-ln
-ln
-ln
-ln
-ln
+ET
+Fm
+ET
+ET
+ET
 ET
 ET
 ET
@@ -15299,9 +15303,9 @@ ln
 ln
 ln
 ln
-ln
-ln
-ln
+ET
+Fm
+ET
 ln
 ln
 ln
@@ -15335,7 +15339,7 @@ kM
 fl
 ET
 fO
-qW
+km
 Fm
 Fm
 kM
@@ -15558,9 +15562,9 @@ ln
 ln
 ln
 ln
-ln
-ln
-ln
+ET
+Fm
+ET
 ln
 ln
 ln
@@ -15593,7 +15597,7 @@ kM
 kM
 oW
 ET
-qW
+km
 Fm
 Fm
 Fm
@@ -15817,9 +15821,9 @@ ln
 ln
 ln
 ln
-ln
-ln
-ln
+ET
+MA
+ET
 ln
 ln
 ln
@@ -16076,9 +16080,9 @@ ln
 ln
 ln
 ln
-ln
-ln
-ln
+ET
+ET
+ET
 ln
 ln
 ln
@@ -16633,7 +16637,7 @@ kM
 Fm
 Fm
 Fm
-qW
+km
 ET
 ln
 ln
@@ -39388,7 +39392,7 @@ Zz
 ET
 hq
 ew
-Zz
+bz
 ET
 ju
 EA
@@ -41263,7 +41267,7 @@ eH
 HS
 Wp
 ET
-zh
+qW
 NQ
 ET
 ET
@@ -41522,7 +41526,7 @@ XN
 HS
 qI
 qI
-zh
+qW
 NQ
 kD
 ET
@@ -41782,7 +41786,7 @@ HS
 Wp
 ET
 Zz
-oy
+Vn
 NQ
 ET
 ET
@@ -42040,7 +42044,7 @@ HS
 HS
 Wp
 ET
-Vk
+IS
 NQ
 NQ
 NQ
