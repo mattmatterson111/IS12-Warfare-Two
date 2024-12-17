@@ -136,9 +136,12 @@
 /turf/simulated/floor/dirty/indestructable,
 /area/warfare/battlefield/trench_section/underground)
 "aZ" = (
-/turf/simulated/floor/tiled/ramp{
-	icon_state = "ramptop"
+/obj/machinery/light/caged{
+	pixel_y = 30;
+	pixel_x = 0
 	},
+/obj/structure/table/rack/nosmooth/wood,
+/turf/simulated/floor/wood,
 /area/warfare/battlefield/trench_section/underground)
 "bb" = (
 /obj/structure/table/rack/nosmooth/metal,
@@ -348,9 +351,6 @@
 /obj/structure/table/steel,
 /turf/simulated/floor/concrete/random,
 /area/warfare/battlefield/trench_section/underground)
-"ca" = (
-/turf/simulated/open,
-/area/warfare/battlefield/trench_section/underground)
 "cc" = (
 /obj/structure/curtain/open/bed{
 	name = "curtain"
@@ -394,8 +394,10 @@
 /turf/simulated/floor/concrete/random,
 /area/warfare/battlefield/trench_section/underground)
 "cl" = (
-/obj/structure/stairs/north,
-/turf/simulated/floor/urban/concrete,
+/obj/effect/floor_decal/urban/trim2{
+	dir = 1
+	},
+/turf/simulated/floor/urban/urban_pavement_brick,
 /area/warfare/battlefield/trench_section/underground)
 "cm" = (
 /obj/effect/landmark/start{
@@ -1194,10 +1196,6 @@
 	},
 /turf/simulated/floor/stones,
 /area/warfare/battlefield/trench_section/underground)
-"iI" = (
-/obj/structure/table/rack/nosmooth/metal,
-/turf/simulated/floor/concrete/random,
-/area/warfare/battlefield/no_mans_land)
 "iL" = (
 /obj/effect/floor_decal/newcorner/blue/diagonal,
 /obj/structure/curtain/tarp{
@@ -1843,7 +1841,7 @@
 	dir = 6
 	},
 /turf/simulated/floor/urban/urban_pavement_brick,
-/area/warfare/battlefield/no_mans_land)
+/area/warfare/battlefield/trench_section/underground)
 "mw" = (
 /obj/machinery/light/small/bunker{
 	dir = 1
@@ -2052,7 +2050,7 @@
 	pixel_y = 7
 	},
 /turf/simulated/floor/concrete/random,
-/area/warfare/battlefield/no_mans_land)
+/area/warfare/battlefield/trench_section/underground)
 "oK" = (
 /obj/structure/curtain,
 /turf/simulated/floor/concrete/random,
@@ -3253,7 +3251,8 @@
 /area/warfare/battlefield/no_mans_land)
 "wH" = (
 /obj/structure/ladder,
-/turf/simulated/floor/dirty/indestructable,
+/obj/structure/catwalk,
+/turf/simulated/open,
 /area/warfare/battlefield/no_mans_land)
 "wJ" = (
 /obj/machinery/light/small/bunker{
@@ -5067,7 +5066,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/concrete/random,
-/area/warfare/battlefield/no_mans_land)
+/area/warfare/battlefield/trench_section/underground)
 "Ir" = (
 /obj/structure/table/rack/shelf/red,
 /obj/machinery/light/small/bunker{
@@ -5080,7 +5079,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/concrete/random,
-/area/warfare/battlefield/no_mans_land)
+/area/warfare/battlefield/trench_section/underground)
 "Iv" = (
 /obj/machinery/light/small/bunker{
 	dir = 4
@@ -5324,7 +5323,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/urban/urban_pavement_brick,
-/area/warfare/battlefield/no_mans_land)
+/area/warfare/battlefield/trench_section/underground)
 "Ka" = (
 /turf/simulated/floor/tiled/white,
 /area/warfare/battlefield/trench_section/underground)
@@ -10149,9 +10148,9 @@ ET
 ET
 ET
 ET
-km
-km
-km
+kM
+kM
+kM
 ET
 ET
 ET
@@ -12229,7 +12228,7 @@ ln
 ET
 kM
 kM
-km
+kM
 PC
 Fm
 Fm
@@ -12488,7 +12487,7 @@ ln
 ET
 wx
 kM
-km
+kM
 kM
 Fm
 Fm
@@ -12747,7 +12746,7 @@ ln
 ET
 pO
 kM
-km
+kM
 kM
 Fm
 Fm
@@ -13529,7 +13528,7 @@ PC
 Fm
 Fm
 Fm
-fO
+kM
 PC
 ET
 ln
@@ -14813,7 +14812,7 @@ ln
 ln
 ln
 ET
-cl
+hV
 kM
 kb
 kM
@@ -15072,7 +15071,7 @@ ln
 ln
 ln
 ET
-cl
+hV
 kM
 kb
 kM
@@ -16119,7 +16118,7 @@ kM
 Fm
 Fm
 Fm
-fO
+kM
 PC
 ET
 ln
@@ -37855,9 +37854,9 @@ ET
 HS
 HS
 Ia
-Wn
-Wn
-Wn
+Zz
+Zz
+Zz
 Ia
 HS
 HS
@@ -37866,7 +37865,7 @@ HS
 HS
 HS
 HS
-HS
+HW
 ET
 ET
 ET
@@ -38115,8 +38114,8 @@ lm
 HS
 HA
 Iq
-Wn
-Wn
+Zz
+Zz
 HA
 HS
 HS
@@ -38374,16 +38373,16 @@ HS
 HS
 HA
 oz
-Wn
-Wn
+Zz
+Zz
 HA
 HS
 HS
 xQ
 HS
 yu
-aZ
-ca
+va
+sS
 ET
 ET
 eH
@@ -38633,16 +38632,16 @@ PV
 Yi
 ET
 Is
-Wn
-iI
+Zz
+Mi
 ET
 HS
 HS
 HS
 HS
 yu
-aZ
-ca
+aQ
+sS
 ET
 ET
 PE
@@ -38893,10 +38892,10 @@ ET
 ET
 ET
 ET
-kh
+ET
 ET
 HS
-HS
+qQ
 xQ
 ET
 ET
@@ -40714,7 +40713,7 @@ wJ
 HS
 HS
 IU
-dW
+cl
 mt
 ET
 Np
@@ -40974,7 +40973,7 @@ HS
 HS
 ET
 ET
-Vf
+zY
 ET
 QE
 if
@@ -44589,9 +44588,9 @@ MI
 MI
 Yn
 ET
-Hb
+aZ
 HS
-HS
+fj
 ET
 Hb
 HS
@@ -45108,7 +45107,7 @@ Yn
 Yn
 ET
 ET
-fj
+HS
 HS
 ET
 KW
