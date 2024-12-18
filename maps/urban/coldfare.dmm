@@ -1011,10 +1011,6 @@
 /obj/item/storage/firstaid/adv,
 /turf/simulated/floor/concrete/random,
 /area/warfare/battlefield/trench_section/underground)
-"hh" = (
-/obj/structure/ladder,
-/turf/simulated/floor/trench/tough,
-/area/warfare/battlefield/no_mans_land)
 "hk" = (
 /obj/structure/closet/secure_closet/medical1/warfare,
 /obj/item/clothing/suit/surgeon_apron,
@@ -43581,8 +43577,8 @@ MI
 MI
 MI
 MI
-hh
-MI
+wH
+Yn
 Yn
 Yn
 Yn
@@ -43841,7 +43837,7 @@ MI
 MI
 MI
 MI
-MI
+Yn
 Yn
 Yn
 Yn
