@@ -63,6 +63,29 @@
 /obj/structure/poster/blue,
 /turf/simulated/wall/perspecticrete,
 /area/warfare/homebase/blue)
+"au" = (
+/obj/structure/effect/urban/trashcan{
+	dir = 1;
+	pixel_x = 9;
+	pixel_y = 18
+	},
+/obj/machinery/light/caged{
+	dir = 8;
+	pixel_x = 19;
+	pixel_y = 0
+	},
+/obj/structure/effect/urban/trashcan{
+	pixel_x = -4;
+	pixel_y = 4;
+	dir = 4
+	},
+/obj/structure/effect/urban/trash{
+	pixel_y = 26;
+	pixel_x = 10
+	},
+/obj/item/mop,
+/turf/simulated/floor/urban/concrete,
+/area/warfare/battlefield/trench_section/underground)
 "aw" = (
 /obj/structure/table/rack/nosmooth/wood{
 	dir = 5
@@ -585,6 +608,10 @@
 	},
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/blue)
+"dv" = (
+/obj/machinery/door/airlock/bunker/green,
+/turf/simulated/floor/urban/concrete,
+/area/warfare/battlefield/trench_section/underground)
 "dB" = (
 /obj/item/flame/candle,
 /obj/item/wirecutters,
@@ -1011,16 +1038,13 @@
 /turf/simulated/floor/concrete/random,
 /area/warfare/battlefield/trench_section/underground)
 "hh" = (
-/obj/effect/water,
 /obj/machinery/light/caged{
 	dir = 4;
 	pixel_x = -19;
 	pixel_y = 0
 	},
-/turf/simulated/floor/trenches/underground{
-	icon_state = "trench";
-	color = "#ffffff"
-	},
+/obj/structure/reagent_dispensers/watertank/red,
+/turf/simulated/floor/urban/concrete,
 /area/warfare/battlefield/trench_section/underground)
 "hk" = (
 /obj/structure/closet/secure_closet/medical1/warfare,
@@ -2781,6 +2805,10 @@
 	},
 /turf/simulated/floor/wood,
 /area/warfare/homebase/blue)
+"tJ" = (
+/obj/structure/window_frame/urban_crete/perspective,
+/turf/simulated/floor/urban/concrete,
+/area/warfare/battlefield/trench_section/underground)
 "tK" = (
 /obj/effect/lighting_dummy/daylight,
 /turf/simulated/floor/concrete/random,
@@ -3681,12 +3709,13 @@
 /turf/simulated/floor/stones,
 /area/warfare/battlefield/trench_section/underground)
 "zF" = (
-/obj/structure/ladder/up,
-/obj/effect/water,
-/turf/simulated/floor/trenches/underground{
-	icon_state = "trench";
-	color = "#ffffff"
+/obj/machinery/light/caged{
+	dir = 4;
+	pixel_x = -19;
+	pixel_y = 0
 	},
+/obj/structure/mopbucket,
+/turf/simulated/floor/urban/concrete,
 /area/warfare/battlefield/trench_section/underground)
 "zI" = (
 /obj/effect/landmark/start{
@@ -6562,6 +6591,26 @@
 	dir = 8
 	},
 /turf/simulated/floor/concrete/random,
+/area/warfare/battlefield/trench_section/underground)
+"RQ" = (
+/obj/structure/ladder/up,
+/obj/effect/water,
+/turf/simulated/floor/trenches/underground{
+	icon_state = "trench";
+	color = "#ffffff"
+	},
+/area/warfare/battlefield/trench_section/underground)
+"RT" = (
+/obj/effect/water,
+/obj/machinery/light/caged{
+	dir = 4;
+	pixel_x = -19;
+	pixel_y = 0
+	},
+/turf/simulated/floor/trenches/underground{
+	icon_state = "trench";
+	color = "#ffffff"
+	},
 /area/warfare/battlefield/trench_section/underground)
 "RU" = (
 /obj/structure/table/rack/nosmooth/wood/alt{
@@ -16428,12 +16477,12 @@ ln
 ln
 ln
 ln
-ln
-ln
-ln
-ln
-ln
-ln
+ET
+ET
+ET
+ET
+ET
+ET
 ln
 ln
 ln
@@ -16687,12 +16736,12 @@ ln
 ln
 ln
 ln
-ln
-ln
-ln
-ln
-ln
-ln
+ET
+zF
+kM
+kM
+hh
+ET
 ln
 ln
 ln
@@ -16946,12 +16995,12 @@ ln
 ln
 ln
 ln
-ln
-ln
-ln
-ln
-ln
-ln
+ET
+kM
+kM
+kM
+kM
+ET
 ln
 ln
 ln
@@ -17205,12 +17254,12 @@ ln
 ln
 ln
 ln
-ln
-ln
-ln
-ln
-ln
-ln
+ET
+kM
+kM
+kM
+kM
+ET
 ln
 ln
 ln
@@ -17464,12 +17513,12 @@ ET
 ET
 ET
 ET
-ln
-ln
-ln
-ln
-ln
-ln
+ET
+kM
+kM
+kM
+kM
+ET
 ln
 ln
 ln
@@ -17723,12 +17772,12 @@ gM
 gM
 gM
 ET
-ln
-ln
-ln
-ln
-ln
-ln
+ET
+au
+kM
+kM
+kM
+ET
 ln
 ln
 ln
@@ -17984,9 +18033,9 @@ gM
 ET
 ET
 ET
-ET
-ET
-ET
+dv
+tJ
+tJ
 ET
 ET
 ET
@@ -18250,7 +18299,7 @@ gM
 gM
 gM
 gM
-hh
+RT
 ET
 ln
 ln
@@ -18768,7 +18817,7 @@ ln
 ln
 ln
 ET
-zF
+RQ
 ET
 ln
 ln
