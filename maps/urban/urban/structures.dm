@@ -134,3 +134,10 @@
 /obj/structure/effect/urban/graf_red
 	icon = 'icons/obj/urban/32x32deco.dmi'
 	icon_state = "red_grafitti_1"
+
+
+// grille
+
+/obj/structure/grille/sewer
+	icon = 'icons/obj/urban/32x32deco.dmi'
+	health = 75 // tough.
