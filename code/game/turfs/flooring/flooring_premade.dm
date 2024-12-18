@@ -205,10 +205,10 @@
 /turf/simulated/floor/concrete/random/New()
 	. = ..()
 	dir = pick(GLOB.alldirs)
-	var/turf/crackedcrete = new/turf/simulated/floor/concrete/(src)
+	//var/turf/crackedcrete = new/turf/simulated/floor/concrete/(src)
 	if(prob(15))
-		crackedcrete.icon_state = "concrete_cracked"
-	crackedcrete.dir = pick(GLOB.alldirs)
+		icon_state = "concrete_cracked"
+	dir = pick(GLOB.alldirs)
 
 /turf/simulated/floor/reinforced/airless
 	initial_gas = null

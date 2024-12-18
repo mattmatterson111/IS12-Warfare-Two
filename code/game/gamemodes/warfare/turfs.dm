@@ -314,6 +314,7 @@
 	var/has_light = TRUE
 	atom_flags = ATOM_FLAG_CLIMBABLE
 	add_mask = TRUE
+	var/tmp/obj/water = /obj/effect/water/
 
 /turf/simulated/floor/exoplanet/water/shallow/update_dirt()
 	return
@@ -428,7 +429,7 @@
 	new /obj/effect/water/bottom(src)//Put it right on top of the water so that they look like they're the same.
 	new /obj/effect/water/top(src)
 	*/
-	new /obj/effect/water(src)
+	new water(src)
 
 	spawn(5)
 		update_icon()
@@ -455,10 +456,6 @@
 
 /turf/simulated/floor/exoplanet/water/shallow/Destroy()
 	. = ..()
-	for(var/obj/effect/water/bottom/B in src)
-		qdel(B)
-	for(var/obj/effect/water/top/T in src)
-		qdel(T)
 
 /turf/simulated/floor/exoplanet/water/shallow/attackby(obj/item/O, mob/user)
 	if(istype(O, /obj/item/reagent_containers))

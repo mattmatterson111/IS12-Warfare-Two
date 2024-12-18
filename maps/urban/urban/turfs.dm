@@ -99,3 +99,40 @@
 			overlays += dirt
 
 */
+
+
+// water FUCK
+
+/turf/simulated/floor/exoplanet/water/shallow/lightless/urban
+	icon = 'icons/turf/floors.dmi'
+	icon_state = "concrete"
+	water = /obj/effect/water/sewerwater
+
+/turf/simulated/floor/exoplanet/water/shallow/lightless/urban/New()
+	. = ..()
+	if(prob(15))
+		icon_state = "concrete_cracked"
+	dir = pick(GLOB.alldirs)
+
+/turf/simulated/floor/exoplanet/water/shallow/lightless/urban/update_icon()
+
+	overlays.Cut()
+	for(var/direction in GLOB.cardinal)
+		var/turf/turf_to_check = get_step(src,direction)
+		if(istype(turf_to_check, /turf/simulated/floor/exoplanet/water/shallow))
+			continue
+
+		else if(istype(turf_to_check, /turf/simulated))
+			var/image/water_side = image('icons/turf/urban/urban_sewer.dmi', "border", dir = direction)//turn(direction, 180))
+			water_side.plane = src.plane
+			water_side.layer = src.layer+2
+			water_side.color = "#877a8b"
+
+			overlays += water_side
+		var/image/wave_overlay = image('icons/obj/warfare.dmi', "waves")
+		overlays += wave_overlay
+
+/obj/effect/water/sewerwater
+	name = "water"
+	icon = 'icons/turf/urban/urban_sewer.dmi'
+	icon_state = "stillwater"
