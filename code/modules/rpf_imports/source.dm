@@ -144,7 +144,7 @@
 		if(sound_env)
 			A.sound_env = sound_env
 		if (ambience)
-			A.forced_ambience = ambience
+			A.ambience = ambience
 		if (music)
 			if(music == "none")
 				A.music = null

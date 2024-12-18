@@ -107,9 +107,11 @@
 	icon = 'icons/turf/floors.dmi'
 	icon_state = "concrete"
 	water = /obj/effect/water/sewerwater
+	color = "#A9A900"
 
 /turf/simulated/floor/exoplanet/water/shallow/lightless/urban/New()
 	. = ..()
+	color = "#FFFFFF"
 	if(prob(15))
 		icon_state = "concrete_cracked"
 	dir = pick(GLOB.alldirs)

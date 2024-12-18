@@ -503,6 +503,7 @@
 	density = FALSE
 	var/armed = FALSE//Whether or not it will blow up.
 	var/can_be_armed = TRUE//Whether or not it can be armed to blow up. Disarmed mines won't blow.
+	var/mob/stepper = null // This prevents people that lay down or die on a landmine from making others think that they won't blow it if walk over it since it's already primed.
 
 /obj/structure/landmine/New()
 	..()
@@ -544,6 +545,7 @@
 				GLOB.mines_disarmed++
 				playsound(src, 'sound/items/Wirecutter.ogg', 100, FALSE)
 				update_icon()
+				stepper = null
 				return
 			blow()
 	if(istype(W, /obj/item/shovel))
@@ -560,15 +562,26 @@
 		var/mob/living/carbon/human/H = M
 		if(H.isChild())//Kids don't set off landmines.
 			return
-		if(!M.throwing && !armed && can_be_armed)
-			to_chat(M, "<span class='danger'>You hear a sickening click!</span>")
-			playsound(src, 'sound/effects/mine_arm.ogg', 100, FALSE)
-			armed = TRUE
+		if(!armed && can_be_armed)
+			if(M.throwing)
+				sleep(3)
+				if(!locate(M) in src.loc)
+					return FALSE
+				to_chat(M, "<span class='danger'>You hear a sickening click!</span>")
+				playsound(src, 'sound/effects/mine_arm.ogg', 100, FALSE)
+				armed = TRUE
+				stepper = M
+			else
+				to_chat(M, "<span class='danger'>You hear a sickening click!</span>")
+				playsound(src, 'sound/effects/mine_arm.ogg', 100, FALSE)
+				armed = TRUE
+				stepper = M
 
 /obj/structure/landmine/Uncrossed(var/mob/living/M as mob)
 	if(istype(M))
 		if(armed)
-			blow()
+			if(M == stepper) // HAH
+				blow()
 
 
 

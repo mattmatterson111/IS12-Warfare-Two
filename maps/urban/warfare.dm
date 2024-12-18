@@ -13,6 +13,7 @@
 	#include "warfare_items.dm"
 	#include "urban/structures.dm"
 	#include "urban/turfs.dm"
+	#include "urban/areas.dm"
 	#include "../shared/items/clothing.dm"
 	#include "../shared/items/cards_ids.dm"
 
