@@ -867,7 +867,6 @@
 	pixel_x = 0
 	},
 /obj/effect/water,
-/obj/hammereditor/sound_probe/basement,
 /turf/simulated/floor/trenches/underground{
 	icon_state = "trench";
 	color = "#ffffff"
@@ -914,18 +913,6 @@
 	dir = 8
 	},
 /turf/simulated/floor/stones,
-/area/warfare/battlefield/trench_section/underground)
-"gz" = (
-/obj/effect/water,
-/obj/machinery/light/caged{
-	dir = 4;
-	pixel_x = -19;
-	pixel_y = 0
-	},
-/turf/simulated/floor/trenches/underground{
-	icon_state = "trench";
-	color = "#ffffff"
-	},
 /area/warfare/battlefield/trench_section/underground)
 "gC" = (
 /obj/machinery/door/blast/shutters/open{
@@ -1024,13 +1011,16 @@
 /turf/simulated/floor/concrete/random,
 /area/warfare/battlefield/trench_section/underground)
 "hh" = (
-/obj/structure/closet/secure_closet/warfare/newver,
-/obj/item/ammo_box/flares,
-/obj/item/crowbar/red,
-/obj/item/wirecutters{
-	pixel_y = 4
+/obj/effect/water,
+/obj/machinery/light/caged{
+	dir = 4;
+	pixel_x = -19;
+	pixel_y = 0
 	},
-/turf/simulated/floor/urban/concrete,
+/turf/simulated/floor/trenches/underground{
+	icon_state = "trench";
+	color = "#ffffff"
+	},
 /area/warfare/battlefield/trench_section/underground)
 "hk" = (
 /obj/structure/closet/secure_closet/medical1/warfare,
@@ -1851,7 +1841,6 @@
 /area/warfare/battlefield/capture_point/red/two)
 "mj" = (
 /obj/structure/ladder/up,
-/obj/hammereditor/sound_probe/basement,
 /turf/simulated/floor/dirty/tough,
 /area/warfare/battlefield/trench_section/underground)
 "mm" = (
@@ -3692,8 +3681,12 @@
 /turf/simulated/floor/stones,
 /area/warfare/battlefield/trench_section/underground)
 "zF" = (
-/obj/hammereditor/sound_probe/basement,
-/turf/simulated/floor/urban/concrete,
+/obj/structure/ladder/up,
+/obj/effect/water,
+/turf/simulated/floor/trenches/underground{
+	icon_state = "trench";
+	color = "#ffffff"
+	},
 /area/warfare/battlefield/trench_section/underground)
 "zI" = (
 /obj/effect/landmark/start{
@@ -4305,14 +4298,6 @@
 	dir = 4
 	},
 /turf/simulated/floor/concrete/random,
-/area/warfare/battlefield/trench_section/underground)
-"Ds" = (
-/obj/structure/ladder/up,
-/obj/effect/water,
-/turf/simulated/floor/trenches/underground{
-	icon_state = "trench";
-	color = "#ffffff"
-	},
 /area/warfare/battlefield/trench_section/underground)
 "Du" = (
 /turf/simulated/open,
@@ -5322,12 +5307,13 @@
 /turf/simulated/floor/urban/urban_pavement_brick,
 /area/warfare/battlefield/capture_point/mid)
 "JF" = (
-/obj/effect/water,
-/obj/hammereditor/sound_probe/basement,
-/turf/simulated/floor/trenches/underground{
-	icon_state = "trench";
-	color = "#ffffff"
+/obj/structure/closet/secure_closet/warfare/newver,
+/obj/item/ammo_box/flares,
+/obj/item/crowbar/red,
+/obj/item/wirecutters{
+	pixel_y = 4
 	},
+/turf/simulated/floor/urban/concrete,
 /area/warfare/battlefield/trench_section/underground)
 "JH" = (
 /obj/effect/landmark/start{
@@ -9690,7 +9676,7 @@ ln
 ln
 ET
 wx
-zF
+kM
 kM
 ET
 ln
@@ -10975,7 +10961,7 @@ ln
 ET
 kM
 gM
-JF
+gM
 gM
 gM
 kM
@@ -12545,7 +12531,7 @@ ln
 ln
 ET
 wx
-zF
+kM
 kM
 kM
 gM
@@ -15398,7 +15384,7 @@ fl
 ET
 fO
 km
-JF
+gM
 gM
 kM
 vs
@@ -18268,7 +18254,7 @@ gM
 gM
 gM
 gM
-gz
+hh
 ET
 ln
 ln
@@ -18786,7 +18772,7 @@ ln
 ln
 ln
 ET
-Ds
+zF
 ET
 ln
 ln
@@ -20060,7 +20046,7 @@ gM
 gM
 gM
 gM
-JF
+gM
 gM
 kM
 ET
@@ -21607,7 +21593,7 @@ ln
 ln
 ET
 kM
-hh
+JF
 kM
 ET
 ln
@@ -22885,7 +22871,7 @@ gM
 hV
 gM
 gM
-JF
+gM
 gM
 gM
 gM
