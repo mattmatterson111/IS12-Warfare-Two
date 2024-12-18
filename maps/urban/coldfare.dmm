@@ -121,6 +121,15 @@
 	},
 /turf/simulated/floor/urban/concrete,
 /area/warfare/battlefield/trench_section/underground)
+"aV" = (
+/obj/structure/closet/secure_closet/warfare/newver,
+/obj/item/ammo_box/flares,
+/obj/item/crowbar/red,
+/obj/item/wirecutters{
+	pixel_y = 4
+	},
+/turf/simulated/floor/urban/concrete,
+/area/warfare/battlefield/trench_section/underground)
 "aW" = (
 /obj/machinery/light/small/bunker{
 	dir = 8
@@ -1011,6 +1020,14 @@
 /obj/item/storage/firstaid/adv,
 /turf/simulated/floor/concrete/random,
 /area/warfare/battlefield/trench_section/underground)
+"hh" = (
+/obj/structure/ladder/up,
+/obj/effect/water,
+/turf/simulated/floor/trenches/underground{
+	icon_state = "trench";
+	color = "#ffffff"
+	},
+/area/warfare/battlefield/trench_section/underground)
 "hk" = (
 /obj/structure/closet/secure_closet/medical1/warfare,
 /obj/item/clothing/suit/surgeon_apron,
@@ -1326,6 +1343,7 @@
 "jT" = (
 /obj/structure/closet/secure_closet/warfare/newver,
 /obj/item/crowbar/red,
+/obj/item/ammo_box/flares,
 /turf/simulated/floor/urban/concrete,
 /area/warfare/battlefield/trench_section/underground)
 "jU" = (
@@ -2170,6 +2188,7 @@
 	pixel_y = 4
 	},
 /obj/item/crowbar/red,
+/obj/item/ammo_box/flares,
 /turf/simulated/floor/urban/concrete,
 /area/warfare/battlefield/trench_section/underground)
 "pR" = (
@@ -4621,7 +4640,9 @@
 	pixel_x = 19;
 	pixel_y = 0
 	},
-/turf/simulated/floor/stones,
+/obj/structure/ladder,
+/obj/structure/catwalk,
+/turf/simulated/open,
 /area/warfare/battlefield/trench_section/underground)
 "Fz" = (
 /obj/machinery/light/caged{
@@ -17701,12 +17722,12 @@ Js
 kM
 ET
 ln
-ln
-ln
-ln
-ln
-ln
-ln
+gM
+gM
+gM
+gM
+gM
+gM
 ln
 ln
 ln
@@ -17960,12 +17981,12 @@ kM
 kM
 ET
 ln
+cS
 ln
 ln
 ln
 ln
-ln
-ln
+gM
 ln
 ln
 ln
@@ -18219,23 +18240,23 @@ kM
 kM
 ET
 ln
+gM
 ln
 ln
 ln
 ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
+cS
+gM
+gM
+gM
+gM
+gM
+gM
+gM
+gM
+gM
+gM
+gM
 ln
 ln
 ln
@@ -18476,7 +18497,9 @@ gM
 gM
 gM
 kM
-ET
+gM
+gM
+gM
 ln
 ln
 ln
@@ -18492,9 +18515,7 @@ ln
 ln
 ln
 ln
-ln
-ln
-ln
+gM
 ln
 ln
 ln
@@ -18735,7 +18756,7 @@ gM
 gM
 gM
 kM
-ET
+gM
 ln
 ln
 ln
@@ -18753,7 +18774,7 @@ ln
 ln
 ln
 ln
-ln
+hh
 ln
 ln
 ln
@@ -20796,9 +20817,9 @@ ET
 ET
 ET
 ET
-ET
-ET
-ET
+kM
+kM
+kM
 ET
 ET
 ET
@@ -21054,11 +21075,11 @@ ln
 ln
 ln
 ln
-ln
-ln
-ln
-ln
-ln
+ET
+kM
+kM
+kM
+ET
 ln
 ln
 ln
@@ -21313,11 +21334,11 @@ ln
 ln
 ln
 ln
-ln
-ln
-ln
-ln
-ln
+ET
+kM
+kM
+kM
+ET
 ln
 ln
 ln
@@ -21572,11 +21593,11 @@ ln
 ln
 ln
 ln
-ln
-ln
-ln
-ln
-ln
+ET
+kM
+aV
+kM
+ET
 ln
 ln
 ln
@@ -21831,11 +21852,11 @@ ln
 ln
 ln
 ln
-ln
-ln
-ln
-ln
-ln
+ET
+ET
+ET
+ET
+ET
 ln
 ln
 ln
