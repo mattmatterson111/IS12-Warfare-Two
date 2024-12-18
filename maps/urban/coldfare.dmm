@@ -6563,10 +6563,6 @@
 	},
 /turf/simulated/floor/concrete/random,
 /area/warfare/battlefield/trench_section/underground)
-"RT" = (
-/obj/structure/filingcabinet/chestdrawer,
-/turf/simulated/floor/stones,
-/area/warfare/battlefield/trench_section/underground)
 "RU" = (
 /obj/structure/table/rack/nosmooth/wood/alt{
 	dir = 6
@@ -42343,8 +42339,8 @@ rM
 gE
 NQ
 Fy
-RT
-RT
+NQ
+NQ
 Wp
 ET
 NQ
