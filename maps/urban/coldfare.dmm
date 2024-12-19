@@ -83,7 +83,7 @@
 	pixel_y = 26;
 	pixel_x = 10
 	},
-/obj/item/mop,
+/obj/structure/effect/urban/trash_decal/alt,
 /turf/simulated/floor/concrete/random,
 /area/warfare/battlefield/trench_section/underground/bunker)
 "aw" = (
@@ -1310,6 +1310,10 @@
 	},
 /turf/simulated/floor/concrete/random,
 /area/warfare/battlefield/trench_section/underground)
+"iU" = (
+/obj/structure/bridge/mapping/large,
+/turf/simulated/floor/exoplanet/water/shallow/lightless/urban,
+/area/warfare/battlefield/trench_section/underground/stormsystem)
 "iZ" = (
 /obj/effect/floor_decal/newcorner/yellow/diagonal,
 /obj/structure/table/rack/nosmooth/wood{
@@ -2067,6 +2071,10 @@
 /obj/structure/storage/cabinet,
 /turf/simulated/floor/stones,
 /area/warfare/battlefield/trench_section/underground)
+"nI" = (
+/obj/structure/grille/sewer,
+/turf/simulated/floor/concrete/random,
+/area/warfare/battlefield/trench_section/underground/stormsystem)
 "nL" = (
 /obj/structure/closet/crate,
 /obj/random/drinkbottle,
@@ -2481,6 +2489,13 @@
 "rj" = (
 /turf/simulated/floor/concrete/random,
 /area/warfare/battlefield/trench_section/underground/stormsystem/hall)
+"rt" = (
+/obj/machinery/light/caged{
+	pixel_y = 30;
+	pixel_x = 0
+	},
+/turf/simulated/floor/exoplanet/water/shallow/lightless/urban,
+/area/warfare/battlefield/trench_section/underground/stormsystem)
 "rv" = (
 /obj/item/flame/candle,
 /obj/item/storage/box/matches,
@@ -2888,7 +2903,9 @@
 /turf/simulated/floor/wood,
 /area/warfare/homebase/blue)
 "tJ" = (
-/obj/structure/window_frame/urban_crete/perspective,
+/obj/structure/window_frame/urban_crete/eastwest{
+	dir = 8
+	},
 /turf/simulated/floor/concrete/random,
 /area/warfare/battlefield/trench_section/underground/stormsystem)
 "tK" = (
@@ -3055,6 +3072,14 @@
 	},
 /turf/simulated/floor/trenches,
 /area/warfare/battlefield/trench_section/underground)
+"uE" = (
+/obj/machinery/light/caged{
+	dir = 4;
+	pixel_x = -19;
+	pixel_y = 0
+	},
+/turf/simulated/floor/exoplanet/water/shallow/lightless/urban,
+/area/warfare/battlefield/trench_section/underground/stormsystem)
 "uJ" = (
 /obj/effect/floor_decal/urban/pv_outer_c{
 	dir = 5
@@ -3845,6 +3870,7 @@
 	pixel_y = 0
 	},
 /obj/structure/mopbucket,
+/obj/item/mop,
 /turf/simulated/floor/concrete/random,
 /area/warfare/battlefield/trench_section/underground/bunker)
 "zI" = (
@@ -5052,6 +5078,12 @@
 "GY" = (
 /turf/simulated/floor/trench/tough,
 /area/warfare/battlefield/trench_section/underground)
+"GZ" = (
+/obj/structure/bridge/mapping/large{
+	dir = 1
+	},
+/turf/simulated/floor/exoplanet/water/shallow/lightless/urban,
+/area/warfare/battlefield/trench_section/underground/stormsystem)
 "Ha" = (
 /obj/effect/floor_decal/newcorner/blue/solid,
 /obj/structure/table/rack/nosmooth/metal{
@@ -5409,6 +5441,12 @@
 	},
 /turf/simulated/floor/wood,
 /area/warfare/battlefield/trench_section/underground)
+"Jd" = (
+/obj/structure/bridge/mapping/large{
+	dir = 4
+	},
+/turf/simulated/floor/exoplanet/water/shallow/lightless/urban,
+/area/warfare/battlefield/trench_section/underground/stormsystem)
 "Jh" = (
 /obj/effect/floor_decal/urban/pv_outer_c{
 	dir = 4
@@ -6272,6 +6310,10 @@
 /obj/random/cash,
 /turf/simulated/floor/stones,
 /area/warfare/battlefield/trench_section/underground)
+"NU" = (
+/obj/structure/grille/sewer,
+/turf/simulated/floor/exoplanet/water/shallow/lightless/urban,
+/area/warfare/battlefield/trench_section/underground/stormsystem)
 "NW" = (
 /obj/structure/table/gamblingtable,
 /obj/effect/floor_decal/newcorner/blue/diagonal,
@@ -6407,6 +6449,12 @@
 /obj/hammereditor/playerclip,
 /turf/simulated/floor/urban/urban_pavement_brick,
 /area/warfare/battlefield/capture_point/mid)
+"OS" = (
+/obj/structure/bridge/mapping/large{
+	dir = 6
+	},
+/turf/simulated/floor/exoplanet/water/shallow/lightless/urban,
+/area/warfare/battlefield/trench_section/underground/stormsystem)
 "Pc" = (
 /obj/effect/floor_decal/urban/pv_inner_c{
 	dir = 8
@@ -6646,6 +6694,12 @@
 	},
 /turf/simulated/floor/stones,
 /area/warfare/battlefield/trench_section/underground)
+"Qv" = (
+/obj/structure/window_frame/urban_crete/eastwest{
+	dir = 4
+	},
+/turf/simulated/floor/concrete/random,
+/area/warfare/battlefield/trench_section/underground/stormsystem)
 "Qy" = (
 /obj/effect/lighting_dummy/daylight,
 /turf/simulated/floor/concrete/random,
@@ -6707,6 +6761,12 @@
 	},
 /turf/simulated/floor/concrete/random,
 /area/warfare/battlefield/trench_section/underground)
+"QV" = (
+/obj/structure/bridge/mapping/large{
+	dir = 8
+	},
+/turf/simulated/floor/exoplanet/water/shallow/lightless/urban,
+/area/warfare/battlefield/trench_section/underground/stormsystem)
 "QY" = (
 /obj/structure/reagent_dispensers/watertank,
 /turf/simulated/floor/concrete/random,
@@ -6908,6 +6968,12 @@
 	},
 /turf/simulated/floor/urban/urban_pavement_brick,
 /area/warfare/battlefield/capture_point/mid)
+"Sn" = (
+/obj/structure/bridge/mapping/large{
+	dir = 10
+	},
+/turf/simulated/floor/exoplanet/water/shallow/lightless/urban,
+/area/warfare/battlefield/trench_section/underground/stormsystem)
 "So" = (
 /obj/effect/floor_decal/carpet/purple{
 	dir = 1
@@ -7808,6 +7874,12 @@
 "Xc" = (
 /turf/simulated/floor/tiled/ramp,
 /area/warfare/battlefield/trench_section/underground)
+"Xd" = (
+/obj/machinery/light/small/red{
+	dir = 8
+	},
+/turf/simulated/floor/exoplanet/water/shallow/lightless/urban,
+/area/warfare/battlefield/trench_section/underground/stormsystem)
 "Xf" = (
 /obj/effect/floor_decal/urban/pv_light{
 	dir = 9
@@ -8138,6 +8210,12 @@
 /obj/structure/grille/sewer,
 /obj/hammereditor/bulletclip,
 /obj/hammereditor/playerclip,
+/turf/simulated/floor/exoplanet/water/shallow/lightless/urban,
+/area/warfare/battlefield/trench_section/underground/stormsystem)
+"YY" = (
+/obj/structure/bridge/mapping/large{
+	dir = 5
+	},
 /turf/simulated/floor/exoplanet/water/shallow/lightless/urban,
 /area/warfare/battlefield/trench_section/underground/stormsystem)
 "Za" = (
@@ -11068,8 +11146,8 @@ Ri
 Ri
 Ri
 Ri
-km
-km
+Ri
+Ri
 Ri
 Ri
 Ri
@@ -11327,8 +11405,8 @@ Ri
 Ri
 Ri
 Ri
-km
-km
+Ri
+Ri
 Ri
 Ri
 Ri
@@ -11586,8 +11664,8 @@ Ri
 Ri
 Ri
 Ri
-km
-km
+Ri
+Ri
 Ri
 Ri
 Ri
@@ -11851,6 +11929,7 @@ km
 km
 km
 km
+YY
 km
 km
 km
@@ -11860,10 +11939,9 @@ km
 km
 km
 km
-km
-km
-km
-km
+Ri
+Ri
+Ri
 km
 hj
 ln
@@ -12100,17 +12178,17 @@ ln
 ln
 hj
 km
+Ri
+Ri
+Ri
 km
-km
-km
-km
 hj
 hj
 hj
 hj
 hj
 hj
-hj
+Ri
 hj
 hj
 hj
@@ -12359,18 +12437,18 @@ ln
 ln
 hj
 km
-km
-km
-km
+Ri
+Ri
+Ri
 km
 hj
 ln
 ln
 ln
 ln
-ln
-ln
-ln
+hj
+Ri
+hj
 ln
 ln
 ln
@@ -12627,9 +12705,9 @@ ln
 ln
 ln
 ln
-ln
-ln
-ln
+hj
+Ri
+hj
 ln
 ln
 ln
@@ -12877,18 +12955,18 @@ ln
 ln
 hj
 km
-Ri
-Ri
-Ri
+QV
+QV
+QV
 km
 vT
 AA
 ln
 ln
 ln
-ln
-ln
-ln
+hj
+Ri
+hj
 ln
 ln
 ln
@@ -13136,18 +13214,18 @@ ln
 ln
 hj
 km
-Ri
-Ri
-Ri
+Jd
+Jd
+Jd
 km
 CC
 AA
 tU
 AA
 AA
-ln
-ln
-ln
+hj
+Ri
+hj
 ln
 ln
 ln
@@ -13404,9 +13482,9 @@ gK
 ln
 ln
 AA
-ln
-ln
-ln
+hj
+Ri
+hj
 ln
 ln
 ln
@@ -13663,9 +13741,9 @@ AA
 ln
 ln
 ln
-ln
-ln
-ln
+hj
+Ri
+hj
 ln
 ln
 ln
@@ -13922,9 +14000,9 @@ AA
 AA
 ln
 ln
-ln
-ln
-ln
+hj
+Ri
+hj
 ln
 ln
 ln
@@ -14181,9 +14259,9 @@ ln
 ln
 ln
 ln
-ln
-ln
-ln
+hj
+Ri
+hj
 ln
 ln
 ln
@@ -14438,11 +14516,11 @@ km
 hj
 ln
 ln
-ln
-ln
-ln
-ln
-ln
+hj
+hj
+hj
+Ri
+hj
 ln
 ln
 ln
@@ -14697,11 +14775,11 @@ km
 hj
 ln
 ln
-ln
-ln
-ln
-ln
-ln
+hj
+Xd
+Ri
+Ri
+hj
 ln
 ln
 VS
@@ -14947,7 +15025,7 @@ rj
 rj
 rj
 rj
-AC
+nI
 km
 Ri
 Ri
@@ -14956,10 +15034,10 @@ km
 hj
 ln
 ln
-ln
-ln
-ln
-ln
+hj
+Ri
+hj
+hj
 VS
 VS
 VS
@@ -15215,9 +15293,9 @@ km
 hj
 ln
 ln
-ln
-ln
-ln
+hj
+Ri
+hj
 ln
 VS
 hV
@@ -15474,9 +15552,9 @@ km
 hj
 ln
 ln
-ln
-ln
-ln
+hj
+Ri
+hj
 ln
 VS
 hV
@@ -15733,9 +15811,9 @@ km
 hj
 ln
 ln
-ln
-ln
-ln
+hj
+Ri
+hj
 ln
 VS
 VS
@@ -15985,16 +16063,16 @@ ln
 ln
 hj
 km
-km
-km
-km
+Ri
+Ri
+Ri
 km
 hj
 ln
 ln
-ln
-ln
-ln
+hj
+Ri
+hj
 ln
 VS
 Hk
@@ -16244,16 +16322,16 @@ ln
 ln
 hj
 km
-km
-km
-km
+Ri
+Ri
+Ri
 km
 hj
 ln
 ln
-ln
-ln
-ln
+hj
+Ri
+hj
 ln
 VS
 xq
@@ -16510,9 +16588,9 @@ km
 hj
 ln
 ln
-ln
-ln
-ln
+hj
+Ri
+hj
 ln
 VS
 qY
@@ -16769,10 +16847,10 @@ km
 hj
 ln
 ln
-ln
-ln
-ln
-ln
+hj
+Ri
+hj
+hj
 VS
 VS
 VS
@@ -17028,17 +17106,17 @@ km
 hj
 ln
 ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
+hj
+Ri
+Ri
+Ri
+uE
+Ri
+Ri
+Ri
+Ri
+Ri
+Ri
 hj
 km
 Ri
@@ -17287,17 +17365,17 @@ km
 hj
 ln
 ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
+hj
+hj
+hj
+hj
+Ri
+Ri
+Ri
+Ri
+Ri
+Ri
+Ri
 hj
 km
 Ri
@@ -17544,19 +17622,19 @@ Ri
 Ri
 km
 hj
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
+hj
+hj
+hj
+hj
+hj
+Ri
+Ri
+Ri
+Ri
+Ri
+Ri
+Ri
+Ri
 hj
 km
 Ri
@@ -17802,20 +17880,20 @@ Ri
 Ri
 Ri
 km
-hj
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
+km
+km
+km
+km
+km
+km
+Ri
+Ri
+Ri
+Ri
+Ri
+Ri
+Ri
+Wq
 hj
 km
 Ri
@@ -18062,19 +18140,19 @@ Ri
 Ri
 km
 hj
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
+hj
+hj
+hj
+hj
+hj
+Ri
+Ri
+Ri
+Ri
+Ri
+Ri
+Ri
+Ri
 hj
 km
 Js
@@ -18325,15 +18403,15 @@ ln
 ln
 ln
 ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
+hj
+hj
+Ri
+Ri
+Ri
+Ri
+Ri
+Ri
+Ri
 hj
 km
 km
@@ -18353,7 +18431,7 @@ hj
 hj
 dv
 tJ
-tJ
+Qv
 hj
 hj
 hj
@@ -18585,19 +18663,19 @@ ln
 ln
 ln
 ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
+hj
+rt
+Ri
+Ri
+Ri
+Ri
+Ri
+Ri
 hj
 km
-km
-km
-km
+Ri
+Ri
+Ri
 km
 km
 hj
@@ -18844,14 +18922,14 @@ ln
 ln
 ln
 ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
+hj
+hj
+hj
+hj
+hj
+Ri
+Ri
+Ri
 hj
 km
 Ri
@@ -19107,10 +19185,10 @@ ln
 ln
 ln
 ln
-ln
-ln
-ln
-ln
+hj
+Ri
+Ri
+Ri
 hj
 km
 Ri
@@ -19366,10 +19444,10 @@ ln
 ln
 ln
 ln
-ln
-ln
-ln
-ln
+hj
+Ri
+Ri
+Ri
 hj
 km
 Ri
@@ -19626,9 +19704,9 @@ hj
 hj
 hj
 hj
-hj
-hj
-hj
+NU
+NU
+NU
 hj
 km
 Ri
@@ -19885,9 +19963,9 @@ km
 km
 km
 km
-km
-km
-km
+OS
+Sn
+OS
 km
 km
 Ri
@@ -20143,12 +20221,12 @@ Ri
 Ri
 Ri
 Ri
-km
-km
 Ri
 Ri
 Ri
 Ri
+GZ
+iU
 Ri
 Ri
 Ri
@@ -20402,12 +20480,12 @@ Ri
 Ri
 Ri
 Ri
-km
-km
 Ri
 Ri
 Ri
 Ri
+GZ
+iU
 Ri
 Ri
 Ri
@@ -20661,12 +20739,12 @@ Ri
 Ri
 Ri
 Ri
-km
-km
 Ri
 Ri
 Ri
 Ri
+GZ
+iU
 Ri
 Ri
 Ri
