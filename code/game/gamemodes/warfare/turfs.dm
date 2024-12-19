@@ -378,6 +378,8 @@
 		return ..()
 
 /turf/simulated/floor/exoplanet/water/shallow/Cross(var/atom/A)//People who are on fire go out.
+	if(locate(/obj/structure/bridge) in src)
+		return
 	if(isliving(A))
 		var/mob/living/L = A
 		L.ExtinguishMob()

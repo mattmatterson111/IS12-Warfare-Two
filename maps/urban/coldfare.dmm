@@ -314,6 +314,12 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/warfare/homebase/blue)
+"bQ" = (
+/obj/effect/floor_decal/urban/pv_outer_c{
+	dir = 5
+	},
+/turf/simulated/floor/urban/urban_pavement_brick,
+/area/warfare/battlefield/capture_point/mid)
 "bS" = (
 /obj/item/device/flashlight/lamp/captain/urban_streetlamp{
 	pixel_x = -7;
@@ -371,6 +377,7 @@
 /obj/effect/floor_decal/urban/trim2{
 	dir = 1
 	},
+/obj/effect/floor_decal/urban/trim1,
 /turf/simulated/floor/urban/urban_pavement_brick,
 /area/warfare/battlefield/trench_section/underground)
 "cc" = (
@@ -435,6 +442,12 @@
 /area/warfare/homebase/blue)
 "cn" = (
 /obj/effect/floor_decal/urban/trim2{
+	dir = 4
+	},
+/obj/effect/floor_decal/urban/pv_light{
+	dir = 6
+	},
+/obj/effect/floor_decal/urban/trim1{
 	dir = 4
 	},
 /turf/simulated/floor/urban/urban_pavement_brick,
@@ -614,6 +627,15 @@
 /obj/machinery/door/airlock/bunker/green,
 /turf/simulated/floor/concrete/random,
 /area/warfare/battlefield/trench_section/underground/stormsystem)
+"dz" = (
+/obj/effect/floor_decal/urban/pv_outer_c{
+	dir = 8
+	},
+/obj/effect/floor_decal/urban/trim1{
+	dir = 4
+	},
+/turf/simulated/floor/urban/urban_pavement_brick,
+/area/warfare/battlefield/no_mans_land)
 "dB" = (
 /obj/item/flame/candle,
 /obj/item/wirecutters,
@@ -699,9 +721,8 @@
 /turf/simulated/floor/concrete/random,
 /area/space)
 "dT" = (
-/obj/item/device/flashlight/lamp/captain/urban_streetlamp{
-	pixel_x = -11;
-	pixel_y = -5
+/obj/effect/floor_decal/urban/pv_light{
+	dir = 6
 	},
 /turf/simulated/floor/urban/urban_pavement_brick,
 /area/warfare/battlefield/no_mans_land)
@@ -1332,6 +1353,16 @@
 	},
 /turf/simulated/floor/stones,
 /area/warfare/homebase/blue)
+"jo" = (
+/obj/effect/floor_decal/urban/pv_outer_c{
+	dir = 5
+	},
+/obj/item/device/flashlight/lamp/captain/urban_streetlamp{
+	pixel_x = 9;
+	pixel_y = 19
+	},
+/turf/simulated/floor/urban/urban_pavement_brick,
+/area/warfare/battlefield/no_mans_land)
 "jt" = (
 /obj/machinery/door/unpowered/simple/doubledoor,
 /turf/simulated/floor/stones,
@@ -3503,6 +3534,12 @@
 /obj/structure/table/rack/shelf/red,
 /turf/simulated/floor/carpet/orange,
 /area/warfare/battlefield/trench_section/underground)
+"xO" = (
+/obj/effect/floor_decal/urban/pv_inner_c{
+	dir = 1
+	},
+/turf/simulated/floor/urban/urban_pavement_brick,
+/area/warfare/battlefield/capture_point/mid)
 "xQ" = (
 /obj/structure/anti_tank,
 /turf/simulated/floor/wood,
@@ -4068,6 +4105,16 @@
 	},
 /turf/simulated/floor/dirty/indestructable,
 /area/warfare/homebase/blue)
+"Br" = (
+/obj/effect/floor_decal/urban/pv_outer_c{
+	dir = 6
+	},
+/obj/item/device/flashlight/lamp/captain/urban_streetlamp{
+	pixel_x = -6;
+	pixel_y = 20
+	},
+/turf/simulated/floor/urban/urban_pavement_brick,
+/area/warfare/battlefield/no_mans_land)
 "Bs" = (
 /obj/effect/landmark/start{
 	name = "Red Practitioner"
@@ -4725,7 +4772,7 @@
 	dir = 4;
 	icon_state = "torchwall0"
 	},
-/turf/simulated/floor/dirty/indestructable,
+/turf/simulated/floor/urban/urban_pavement_brick,
 /area/warfare/battlefield/no_mans_land)
 "Fk" = (
 /obj/structure/closet/secure_closet/warfare/newver,
@@ -4880,6 +4927,12 @@
 	},
 /turf/simulated/floor/concrete/random,
 /area/space)
+"Gl" = (
+/obj/effect/floor_decal/urban/pv_outer_c{
+	dir = 8
+	},
+/turf/simulated/floor/urban/urban_pavement_brick,
+/area/warfare/battlefield/no_mans_land)
 "Gn" = (
 /obj/machinery/light/caged{
 	pixel_y = -14;
@@ -5511,6 +5564,10 @@
 	pixel_y = 15;
 	dir = 4
 	},
+/obj/structure/effect/urban/trash{
+	pixel_x = -6;
+	pixel_y = 13
+	},
 /turf/simulated/floor/urban/urban_pavement_brick,
 /area/warfare/battlefield/trench_section/underground)
 "Ka" = (
@@ -5668,6 +5725,7 @@
 	pixel_x = -8;
 	pixel_y = -1
 	},
+/obj/hammereditor/playerclip,
 /turf/simulated/floor/urban/urban_pavement_brick,
 /area/warfare/battlefield/no_mans_land)
 "KW" = (
@@ -5712,10 +5770,11 @@
 /turf/simulated/floor/urban/urban_pavement_brick,
 /area/warfare/battlefield/no_mans_land)
 "Li" = (
-/obj/structure/bed/chair/comfy/captain{
-	desc = "Damn, that ass really can fart.";
+/obj/structure/bed/chair/torture{
 	dir = 1;
-	name = "chair"
+	pixel_x = 0;
+	pixel_y = 8;
+	buckle_pixel_shift = "x=0;y=8"
 	},
 /turf/simulated/floor/wood,
 /area/warfare/battlefield/trench_section/underground)
@@ -5740,6 +5799,10 @@
 "Lp" = (
 /turf/simulated/floor/dirty/tough,
 /area/warfare/battlefield/capture_point/red/two)
+"Lr" = (
+/obj/effect/floor_decal/urban/pv_outer_c,
+/turf/simulated/floor/urban/urban_pavement_brick,
+/area/warfare/battlefield/no_mans_land)
 "Lu" = (
 /turf/simulated/floor/concrete/random,
 /area/warfare/battlefield/capture_point/blue/one)
@@ -5789,7 +5852,8 @@
 	},
 /obj/structure/effect/urban/trash{
 	pixel_x = 1;
-	pixel_y = -8
+	pixel_y = -8;
+	dir = 1
 	},
 /obj/structure/effect/urban/trashcan{
 	pixel_x = 11;
@@ -5797,10 +5861,15 @@
 	dir = 1
 	},
 /obj/structure/effect/urban/trashcan{
-	pixel_x = 8;
+	pixel_x = 3;
 	pixel_y = -16;
 	dir = 4
 	},
+/obj/structure/effect/urban/trash{
+	pixel_x = 12;
+	pixel_y = -16
+	},
+/obj/hammereditor/playerclip,
 /turf/simulated/floor/urban/urban_pavement_brick,
 /area/warfare/battlefield/capture_point/mid)
 "LF" = (
@@ -5825,6 +5894,14 @@
 "LL" = (
 /obj/effect/floor_decal/urban/trim1{
 	dir = 6
+	},
+/turf/simulated/floor/urban/urban_pavement_brick,
+/area/warfare/battlefield/no_mans_land)
+"LM" = (
+/obj/structure/effect/urban/graf_red{
+	layer = 3;
+	pixel_y = 32;
+	dir = 8
 	},
 /turf/simulated/floor/urban/urban_pavement_brick,
 /area/warfare/battlefield/no_mans_land)
@@ -6229,12 +6306,11 @@
 /turf/simulated/floor/dirty/tough,
 /area/warfare/battlefield/capture_point/red/two)
 "Oi" = (
-/obj/item/device/flashlight/lamp/captain/urban_streetlamp{
-	pixel_x = 11;
-	pixel_y = -6
+/obj/effect/floor_decal/urban/trim1{
+	dir = 8
 	},
 /turf/simulated/floor/urban/urban_pavement_brick,
-/area/warfare/battlefield/no_mans_land)
+/area/warfare/battlefield/capture_point/mid)
 "Oj" = (
 /obj/structure/announcementspeaker/blue{
 	pixel_y = 0;
@@ -6328,15 +6404,19 @@
 /obj/effect/floor_decal/urban/pv_inner_c{
 	dir = 4
 	},
-/obj/structure/statue/verina{
-	pixel_x = 1;
-	pixel_y = 25
-	},
-/obj/effect/floor_decal/urban/pv_outer_c{
-	dir = 5
-	},
+/obj/hammereditor/playerclip,
 /turf/simulated/floor/urban/urban_pavement_brick,
 /area/warfare/battlefield/capture_point/mid)
+"Pc" = (
+/obj/effect/floor_decal/urban/pv_inner_c{
+	dir = 8
+	},
+/obj/item/device/flashlight/lamp/captain/urban_streetlamp{
+	pixel_x = -16;
+	pixel_y = -9
+	},
+/turf/simulated/floor/urban/urban_pavement_brick,
+/area/warfare/battlefield/no_mans_land)
 "Pd" = (
 /obj/structure/sign/redcross,
 /turf/simulated/wall/perspecticrete,
@@ -6518,6 +6598,11 @@
 "Qi" = (
 /obj/effect/floor_decal/urban/cracks{
 	dir = 10
+	},
+/obj/structure/effect/urban/trash{
+	pixel_x = 1;
+	pixel_y = -8;
+	dir = 1
 	},
 /turf/simulated/floor/urban/urban_pavement_brick,
 /area/warfare/battlefield/no_mans_land)
@@ -6818,6 +6903,9 @@
 /obj/effect/floor_decal/urban/pv_light{
 	dir = 6
 	},
+/obj/effect/floor_decal/urban/trim1{
+	dir = 4
+	},
 /turf/simulated/floor/urban/urban_pavement_brick,
 /area/warfare/battlefield/capture_point/mid)
 "So" = (
@@ -6895,6 +6983,12 @@
 	},
 /turf/simulated/floor/carpet/purple,
 /area/warfare/battlefield/trench_section/underground)
+"SD" = (
+/obj/effect/floor_decal/urban/pv_light{
+	dir = 5
+	},
+/turf/simulated/floor/urban/urban_pavement_brick,
+/area/warfare/battlefield/no_mans_land)
 "SE" = (
 /obj/effect/floor_decal/carpet/purple,
 /turf/simulated/floor/carpet/purple,
@@ -7042,8 +7136,10 @@
 /turf/simulated/floor/carpet/orange,
 /area/warfare/battlefield/trench_section/underground)
 "Tv" = (
-/obj/effect/floor_decal/urban/pv_inner_c,
-/obj/effect/floor_decal/urban/pv_outer_c,
+/obj/effect/floor_decal/urban/pv_inner_c{
+	pixel_x = 0;
+	pixel_y = 0
+	},
 /obj/structure/effect/urban/graf_red{
 	layer = 3;
 	pixel_y = 32
@@ -7305,9 +7401,6 @@
 "Vc" = (
 /obj/effect/floor_decal/urban/pv_inner_c{
 	dir = 1
-	},
-/obj/effect/floor_decal/urban/pv_outer_c{
-	dir = 4
 	},
 /obj/structure/effect/urban/graf_red{
 	layer = 3;
@@ -7715,6 +7808,12 @@
 "Xc" = (
 /turf/simulated/floor/tiled/ramp,
 /area/warfare/battlefield/trench_section/underground)
+"Xf" = (
+/obj/effect/floor_decal/urban/pv_light{
+	dir = 9
+	},
+/turf/simulated/floor/urban/urban_pavement_brick,
+/area/warfare/battlefield/no_mans_land)
 "Xg" = (
 /obj/effect/landmark/start{
 	name = "Red Soldier"
@@ -7771,6 +7870,18 @@
 /obj/structure/table/rack/shelf/red,
 /turf/simulated/floor/tiled,
 /area/warfare/battlefield/trench_section/underground)
+"Xy" = (
+/obj/effect/floor_decal/urban/trim2{
+	dir = 4
+	},
+/obj/effect/floor_decal/urban/pv_outer_c{
+	dir = 8
+	},
+/obj/effect/floor_decal/urban/trim1{
+	dir = 4
+	},
+/turf/simulated/floor/urban/urban_pavement_brick,
+/area/warfare/battlefield/no_mans_land)
 "XD" = (
 /obj/effect/floor_decal/newcorner/red,
 /turf/simulated/floor/concrete/random,
@@ -7780,6 +7891,12 @@
 	dir = 1
 	},
 /obj/structure/railing/urban,
+/obj/structure/vague_statue/random{
+	pixel_x = 0;
+	pixel_y = 28;
+	anchored = 1;
+	name = "damaged statue"
+	},
 /turf/simulated/floor/urban/urban_pavement_brick,
 /area/warfare/battlefield/capture_point/mid)
 "XF" = (
@@ -7846,9 +7963,7 @@
 /obj/effect/floor_decal/urban/pv_inner_c{
 	dir = 8
 	},
-/obj/effect/floor_decal/urban/pv_outer_c{
-	dir = 6
-	},
+/obj/hammereditor/playerclip,
 /turf/simulated/floor/urban/urban_pavement_brick,
 /area/warfare/battlefield/capture_point/mid)
 "Yb" = (
@@ -7993,6 +8108,16 @@
 	},
 /turf/simulated/floor/concrete/random,
 /area/warfare/battlefield/trench_section/underground)
+"YN" = (
+/obj/effect/floor_decal/urban/pv_inner_c{
+	dir = 8
+	},
+/obj/item/device/flashlight/lamp/captain/urban_streetlamp{
+	pixel_x = -16;
+	pixel_y = -9
+	},
+/turf/simulated/floor/urban/urban_pavement_brick,
+/area/warfare/battlefield/capture_point/mid)
 "YO" = (
 /obj/machinery/door/unpowered/simple/doubledoor,
 /turf/simulated/floor/concrete/random,
@@ -41008,7 +41133,7 @@ HS
 Fz
 HW
 ET
-Vf
+LM
 ET
 fF
 iL
@@ -41779,8 +41904,8 @@ DQ
 mE
 Im
 Im
-Im
-Im
+Oi
+Oi
 Im
 Im
 DQ
@@ -42800,8 +42925,8 @@ MI
 Yn
 Yn
 Yn
-Yn
-Yn
+Vf
+Vf
 Fh
 Vf
 Vf
@@ -43059,9 +43184,9 @@ MI
 Yn
 Yn
 Yn
-Yn
-Yn
-Yn
+Vf
+Vf
+Vf
 Vf
 Vf
 Vf
@@ -43318,9 +43443,9 @@ Yn
 Yn
 Yn
 kU
-Yn
-Yn
-Yn
+Vf
+Vf
+Vf
 Vf
 Vf
 Vf
@@ -43577,18 +43702,18 @@ Yn
 Yn
 kU
 IX
-Yn
-Yn
-Yn
+Lr
+uJ
 Vf
 Vf
 Vf
+Lr
+uJ
 Vf
 Vf
 Vf
-Vf
-Im
-Im
+ot
+bQ
 Im
 Im
 Im
@@ -43836,18 +43961,18 @@ MI
 MI
 wH
 Yn
-Yn
-Yn
-Yn
-Vf
-Vf
-Vf
-Vf
-Vf
-Vf
-Vf
-KY
-KY
+Pc
+Um
+Xf
+SD
+SD
+Pc
+Um
+SD
+SD
+SD
+YN
+xO
 di
 di
 KY
@@ -44095,16 +44220,16 @@ MI
 MI
 MI
 Yn
-Yn
-Yn
-Yn
-Vf
-Vf
+dz
+Gl
+dT
+Gl
+Gl
 cn
-Vf
-Vf
-cn
-Vf
+Gl
+dT
+Xy
+Gl
 Vp
 YC
 Vp
@@ -46449,20 +46574,20 @@ Pe
 DU
 FV
 Vf
-Yn
-Yn
-Yn
-Yn
-Yn
-Yn
-Yn
-Yn
-Yn
-Yn
-YB
-YB
-YB
-YB
+Vf
+Vf
+Vf
+Vf
+Vf
+Vf
+Vf
+Vf
+Vf
+Vf
+Vf
+Vf
+Vf
+Vf
 ET
 Yt
 NQ
@@ -46706,8 +46831,8 @@ Id
 On
 WT
 ti
-Lh
-dT
+Br
+Vf
 ET
 ET
 ET
@@ -46720,8 +46845,8 @@ ET
 ET
 ET
 ET
-YB
-YB
+Vf
+Vf
 ET
 IL
 NQ
@@ -46979,8 +47104,8 @@ Zz
 Zz
 Zz
 ET
-YB
-YB
+Vf
+Vf
 ET
 HS
 ET
@@ -47238,8 +47363,8 @@ Zz
 Zz
 Zz
 ET
-YB
-YB
+Vf
+Vf
 ET
 HS
 Xc
@@ -47497,8 +47622,8 @@ Zz
 Zz
 Zz
 ET
-YB
-YB
+Vf
+Vf
 ET
 ET
 ET
@@ -47742,8 +47867,8 @@ la
 Ff
 OM
 HO
-uJ
-Oi
+jo
+Vf
 ET
 lU
 NQ
@@ -47756,8 +47881,8 @@ Zz
 Zz
 gG
 ET
-Yn
-Yn
+Vf
+Vf
 ET
 WP
 ET

@@ -104,13 +104,15 @@
 // water FUCK
 
 /turf/simulated/floor/exoplanet/water/shallow/lightless/urban
-	icon = 'icons/turf/floors.dmi'
-	icon_state = "concrete"
+	icon = 'icons/turf/urban/urban_sewer.dmi'
+	icon_state = "stillwater"
 	water = /obj/effect/water/sewerwater
 	color = "#A9A900"
 
 /turf/simulated/floor/exoplanet/water/shallow/lightless/urban/New()
 	. = ..()
+	icon = 'icons/turf/floors.dmi'
+	icon_state = "concrete"
 	color = "#FFFFFF"
 	if(prob(15))
 		icon_state = "concrete_cracked"

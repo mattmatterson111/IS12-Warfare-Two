@@ -129,6 +129,12 @@
 /obj/structure/effect/urban/trash
 	icon_state = "trash_single"
 
+/obj/structure/effect/urban/trash_decal
+	icon_state = "trash_decal"
+
+/obj/structure/effect/urban/trash_decal/alt
+	icon_state = "trash_decal_alt"
+
 // grafitti
 
 /obj/structure/effect/urban/graf_red
@@ -141,3 +147,29 @@
 /obj/structure/grille/sewer
 	icon = 'icons/obj/urban/32x32deco.dmi'
 	health = 75 // tough.
+
+/obj/structure/vague_statue
+	icon = 'icons/obj/urban/the_statue.dmi'
+	icon_state = "statue_ambiguous"
+	plane = ABOVE_HUMAN_PLANE
+
+/obj/structure/vague_statue/ex_act(severity)
+	return FALSE
+
+/obj/structure/vague_statue/bullet_act(obj/item/projectile/P, def_zone)
+	return FALSE
+
+/obj/structure/vague_statue/red
+	icon_state = "statue_red"
+
+/obj/structure/vague_statue/blue
+	icon_state = "statue_blue"
+
+/obj/structure/vague_statue/random/New()
+	. = ..()
+	icon_state = "statue_[pick("ambiguous","red","blue")]"
+
+/obj/structure/bed/chair/torture
+	icon_state = "torturechair_preview"
+	color = "#FFFFFF"
+	base_icon = "torturechair"
