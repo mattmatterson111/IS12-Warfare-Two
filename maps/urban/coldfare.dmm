@@ -1920,10 +1920,6 @@
 /obj/item/ammo_magazine/a762/sks,
 /turf/simulated/floor/concrete/random,
 /area/warfare/battlefield/capture_point/red/two)
-"mj" = (
-/obj/structure/ladder/up,
-/turf/simulated/floor/dirty/tough,
-/area/warfare/battlefield/trench_section/underground/stormsystem)
 "mm" = (
 /obj/structure/table/rack/shelf/red,
 /obj/machinery/light/caged{
@@ -7558,9 +7554,6 @@
 	},
 /turf/simulated/floor/urban/urban_pavement_brick,
 /area/warfare/battlefield/no_mans_land)
-"Vt" = (
-/turf/simulated/floor/dirty/tough,
-/area/warfare/battlefield/trench_section/underground/stormsystem)
 "Vv" = (
 /obj/structure/table/rack/nosmooth/wood{
 	dir = 10
@@ -19688,10 +19681,10 @@ ln
 ln
 ln
 hj
-km
-Ri
-Ri
-Ri
+vE
+QV
+QV
+QV
 vs
 hj
 hj
@@ -19948,9 +19941,9 @@ ln
 ln
 hj
 km
-km
-km
-km
+Jd
+Jd
+Jd
 km
 km
 km
@@ -20206,12 +20199,12 @@ ln
 ln
 ln
 hj
-vE
-Vt
-Vt
-Vt
 km
 Ri
+Ri
+Ri
+GZ
+iU
 Ri
 Ri
 Ri
@@ -20466,11 +20459,11 @@ ln
 ln
 hj
 km
-Vt
-mj
-Vt
-km
 Ri
+Ri
+Ri
+GZ
+iU
 Ri
 Ri
 Ri
@@ -20724,12 +20717,12 @@ ln
 ln
 ln
 hj
-vE
-Vt
-Vt
-Vt
 km
 Ri
+Ri
+Ri
+GZ
+iU
 Ri
 Ri
 Ri
@@ -20984,9 +20977,9 @@ ln
 ln
 hj
 km
-km
-km
-km
+QV
+QV
+QV
 km
 km
 km
@@ -21242,10 +21235,10 @@ ln
 ln
 ln
 hj
-km
-Ri
-Ri
-Ri
+vE
+Jd
+Jd
+Jd
 vs
 hj
 hj
@@ -44037,7 +44030,7 @@ MI
 MI
 MI
 MI
-wH
+MI
 Yn
 Pc
 Um
