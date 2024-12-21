@@ -1,241 +1,252 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "a" = (
-/obj/effect/lighting_dummy/daylight,
+/obj/effect/lighting_dummy/yellowlight,
 /turf/unsimulated/floor/hammereditor/dev1,
-/area/warfare)
+/area/warfare/map)
+"b" = (
+/obj/effect/lighting_dummy/yellowlight,
+/obj/machinery/door/unpowered/simple/interiorglass,
+/turf/unsimulated/floor/hammereditor/dev1,
+/area/warfare/map)
+"c" = (
+/obj/effect/lighting_dummy/yellowlight,
+/obj/structure/table/rack/shelf/red,
+/turf/unsimulated/floor/hammereditor/dev1,
+/area/warfare/map)
+"d" = (
+/obj/effect/landmark/start{
+	name = "Red Soldier"
+	},
+/obj/effect/lighting_dummy/yellowlight,
+/obj/item/bombdefusal,
+/obj/effect/landmark/start{
+	name = "Red Engineer"
+	},
+/turf/unsimulated/floor/hammereditor/dev1,
+/area/warfare/ctspawn)
 "f" = (
-/obj/effect/lighting_dummy/daylight,
+/obj/effect/lighting_dummy/yellowlight,
+/obj/structure/warfare/barricade/concrete_barrier{
+	dir = 8
+	},
+/turf/unsimulated/floor/hammereditor/dev22,
+/area/warfare/map)
+"g" = (
+/obj/effect/lighting_dummy/yellowlight,
 /obj/structure/warfare/barricade/concrete_barrier{
 	dir = 4
 	},
 /turf/unsimulated/floor/hammereditor/dev22,
 /area/warfare/bombsite)
-"g" = (
-/obj/effect/lighting_dummy/daylight,
-/obj/structure/statue/verina{
-	density = 0;
-	pixel_x = -16;
-	pixel_y = 1
-	},
-/turf/unsimulated/floor/hammereditor/dev22,
+"j" = (
+/obj/effect/lighting_dummy/yellowlight,
+/turf/unsimulated/wall/hammereditor/dev2,
 /area/warfare/bombsite)
 "k" = (
 /obj/effect/landmark/start{
 	name = "Red Soldier"
 	},
-/obj/effect/lighting_dummy/daylight,
-/obj/item/bombdefusal,
+/obj/effect/lighting_dummy/yellowlight,
 /obj/effect/landmark/start{
 	name = "Red Engineer"
 	},
 /turf/unsimulated/floor/hammereditor/dev1,
-/area/warfare)
+/area/warfare/ctspawn)
 "l" = (
 /obj/effect/landmark/start{
 	name = "Blue Soldier"
 	},
 /obj/item/plastique/keypad/blue/defuse,
-/obj/effect/lighting_dummy/daylight,
+/obj/effect/lighting_dummy/yellowlight,
 /obj/effect/landmark/start{
 	name = "Blue Engineer"
 	},
 /turf/unsimulated/floor/hammereditor/dev1,
-/area/warfare)
+/area/space)
 "n" = (
-/obj/effect/lighting_dummy/daylight,
+/obj/effect/lighting_dummy/yellowlight,
 /turf/unsimulated/floor/hammereditor/dev22,
-/area/warfare)
+/area/warfare/map)
 "q" = (
 /obj/effect/landmark/start{
 	name = "Blue Soldier"
 	},
-/obj/effect/lighting_dummy/daylight,
+/obj/effect/lighting_dummy/yellowlight,
 /obj/effect/landmark/start{
 	name = "Blue Engineer"
 	},
 /turf/unsimulated/floor/hammereditor/dev1,
-/area/warfare)
+/area/space)
 "r" = (
 /obj/effect/landmark/test/space_turf,
-/obj/effect/lighting_dummy/daylight,
+/obj/effect/lighting_dummy/yellowlight,
 /turf/unsimulated/wall/hammereditor/dev2,
-/area/warfare)
+/area/warfare/map)
 "u" = (
 /obj/effect/landmark/map_data,
-/obj/effect/lighting_dummy/daylight,
+/obj/effect/lighting_dummy/yellowlight,
 /turf/unsimulated/wall/hammereditor/dev2,
-/area/warfare)
+/area/warfare/map)
 "v" = (
-/obj/effect/lighting_dummy/daylight,
+/obj/effect/lighting_dummy/yellowlight,
 /turf/unsimulated/wall/hammereditor/dev3,
-/area/warfare)
+/area/warfare/map)
 "w" = (
 /obj/structure/ore_box,
-/obj/effect/lighting_dummy/daylight,
+/obj/effect/lighting_dummy/yellowlight,
 /turf/unsimulated/floor/hammereditor/dev1,
-/area/warfare)
+/area/warfare/map)
 "y" = (
 /obj/effect/landmark/start{
 	name = "Red Soldier"
 	},
-/obj/effect/lighting_dummy/daylight,
+/obj/effect/lighting_dummy/yellowlight,
 /obj/item/bombdefusal,
 /obj/effect/landmark/start{
 	name = "Red Engineer"
 	},
 /turf/unsimulated/floor/hammereditor/dev22,
-/area/warfare)
-"z" = (
-/obj/effect/lighting_dummy/daylight,
-/obj/machinery/telecomms/allinone{
-	intercept = 1
-	},
-/turf/unsimulated/wall/hammereditor/dev2,
-/area/warfare)
+/area/warfare/ctspawn)
 "A" = (
 /obj/effect/landmark/test/safe_turf,
-/obj/effect/lighting_dummy/daylight,
+/obj/effect/lighting_dummy/yellowlight,
 /turf/unsimulated/wall/hammereditor/dev2,
-/area/warfare)
+/area/warfare/map)
 "C" = (
-/obj/effect/lighting_dummy/daylight,
+/obj/effect/lighting_dummy/yellowlight,
 /obj/structure/table/rack/shelf/red,
 /obj/item/storage/fancy/cigarettes/carcinomas,
 /obj/item/storage/fancy/cigarettes/carcinomas,
 /obj/item/storage/fancy/cigarettes/jerichos,
 /obj/item/flame/lighter/zippo,
 /turf/unsimulated/floor/hammereditor/dev1,
-/area/warfare)
-"E" = (
-/obj/effect/lighting_dummy/daylight,
-/obj/structure/table/rack/shelf/red,
-/turf/unsimulated/floor/hammereditor/dev1,
-/area/warfare)
+/area/warfare/map)
+"D" = (
+/obj/effect/lighting_dummy/yellowlight,
+/turf/unsimulated/wall/hammereditor/dev2,
+/area/warfare/map)
 "F" = (
-/obj/effect/lighting_dummy/daylight,
-/obj/structure/ore_box,
+/obj/effect/lighting_dummy/yellowlight,
+/obj/machinery/door/unpowered/simple/interiorroom,
 /turf/unsimulated/floor/hammereditor/dev1,
-/area/warfare)
+/area/warfare/map)
 "G" = (
-/obj/effect/lighting_dummy/daylight,
+/obj/effect/lighting_dummy/yellowlight,
 /turf/unsimulated/floor/hammereditor/dev22,
 /area/warfare/bombsite)
 "H" = (
-/obj/effect/lighting_dummy/daylight,
+/obj/effect/lighting_dummy/yellowlight,
 /turf/unsimulated/wall/hammereditor/dev2,
 /area/warfare)
 "I" = (
-/obj/effect/lighting_dummy/daylight,
-/obj/structure/warfare/barricade/concrete_barrier{
-	dir = 8
+/obj/effect/lighting_dummy/yellowlight,
+/obj/machinery/telecomms/allinone{
+	intercept = 1
+	},
+/turf/unsimulated/wall/hammereditor/dev2,
+/area/warfare/map)
+"L" = (
+/obj/effect/lighting_dummy/yellowlight,
+/obj/structure/statue/verina{
+	density = 0;
+	pixel_x = -16;
+	pixel_y = 1
 	},
 /turf/unsimulated/floor/hammereditor/dev22,
-/area/warfare/bombsite)
-"K" = (
-/obj/effect/lighting_dummy/daylight,
-/obj/machinery/door/unpowered/simple/interiorglass,
-/turf/unsimulated/floor/hammereditor/dev1,
-/area/warfare)
+/area/warfare/map)
+"N" = (
+/obj/effect/lighting_dummy/yellowlight,
+/obj/structure/warfare/barricade/concrete_barrier{
+	dir = 4
+	},
+/turf/unsimulated/floor/hammereditor/dev22,
+/area/warfare/map)
 "O" = (
-/obj/effect/lighting_dummy/daylight,
-/turf/unsimulated/wall/hammereditor/dev2,
-/area/warfare/bombsite)
+/obj/effect/lighting_dummy/yellowlight,
+/obj/structure/warfare/barricade/concrete_barrier,
+/turf/unsimulated/floor/hammereditor/dev22,
+/area/warfare/map)
 "P" = (
-/obj/effect/landmark/start{
-	name = "Red Soldier"
-	},
-/obj/effect/lighting_dummy/daylight,
-/obj/effect/landmark/start{
-	name = "Red Engineer"
-	},
+/obj/effect/lighting_dummy/yellowlight,
+/obj/structure/ore_box,
 /turf/unsimulated/floor/hammereditor/dev1,
-/area/warfare)
-"S" = (
-/obj/effect/lighting_dummy/daylight,
-/obj/machinery/door/unpowered/simple/interiorroom,
-/turf/unsimulated/floor/hammereditor/dev1,
-/area/warfare)
+/area/warfare/map)
 "T" = (
 /obj/effect/landmark/start,
-/obj/effect/lighting_dummy/daylight,
+/obj/effect/lighting_dummy/yellowlight,
 /turf/unsimulated/wall/hammereditor/dev2,
-/area/warfare)
+/area/warfare/map)
 "U" = (
 /obj/effect/landmark/start{
 	name = "Blue Soldier"
 	},
-/obj/effect/lighting_dummy/daylight,
+/obj/effect/lighting_dummy/yellowlight,
 /obj/effect/landmark/start{
 	name = "Blue Engineer"
 	},
 /turf/unsimulated/floor/hammereditor/dev22,
-/area/warfare)
+/area/space)
 "V" = (
 /obj/hammereditor/playerclip/defuse,
-/obj/effect/lighting_dummy/daylight,
+/obj/effect/lighting_dummy/yellowlight,
 /turf/unsimulated/floor/hammereditor/dev12,
-/area/warfare)
+/area/warfare/map)
 "W" = (
 /obj/effect/landmark{
 	name = "tdome1"
 	},
-/obj/effect/lighting_dummy/daylight,
+/obj/effect/lighting_dummy/yellowlight,
 /turf/unsimulated/floor/hammereditor/dev1,
-/area/warfare)
+/area/warfare/map)
 "X" = (
 /obj/effect/landmark{
 	name = "JoinLate"
 	},
-/obj/effect/lighting_dummy/daylight,
+/obj/effect/lighting_dummy/yellowlight,
 /turf/unsimulated/floor/hammereditor/dev1,
-/area/warfare)
-"Y" = (
-/obj/effect/lighting_dummy/daylight,
-/obj/structure/warfare/barricade/concrete_barrier,
-/turf/unsimulated/floor/hammereditor/dev22,
-/area/warfare/bombsite)
+/area/warfare/map)
 
 (1,1,1) = {"
-H
-H
-H
-H
-H
-H
-H
-H
-H
-H
-H
-H
-H
-H
-H
-H
-H
-H
-H
-H
-H
-H
-H
-H
-H
-H
-H
-H
-H
-H
-H
+D
+D
+D
+D
+D
+D
+D
+D
+D
+D
+D
+D
+D
+D
+D
+D
+D
+D
+D
+D
+D
+D
+D
+D
+D
+D
+D
+D
+D
+D
+D
 A
 "}
 (2,1,1) = {"
-H
-H
-H
-H
-H
-H
+D
+D
+D
+D
+D
+D
 a
 a
 a
@@ -264,12 +275,12 @@ W
 r
 "}
 (3,1,1) = {"
-H
+D
 q
 q
 q
 q
-H
+D
 a
 a
 a
@@ -283,22 +294,22 @@ a
 a
 a
 a
-H
-H
-H
-S
-H
-H
-H
-H
-H
+D
+D
+D
+F
+D
+D
+D
+D
+D
 W
 W
 W
 u
 "}
 (4,1,1) = {"
-H
+D
 q
 q
 q
@@ -317,22 +328,22 @@ a
 a
 a
 a
-H
-F
-F
+D
+P
+P
 a
 a
 a
 a
 a
-H
+D
 W
 W
 W
 T
 "}
 (5,1,1) = {"
-H
+D
 q
 q
 l
@@ -351,27 +362,27 @@ a
 a
 a
 a
-H
+D
 C
 G
 G
 G
-F
+P
 a
 a
-K
+b
 X
 X
 X
-H
+D
 "}
 (6,1,1) = {"
-H
+D
 q
 q
 q
 q
-H
+D
 a
 a
 a
@@ -385,27 +396,27 @@ a
 a
 a
 a
-H
-E
+D
+c
 G
 G
 G
 a
 a
 a
-H
+D
 X
 X
 X
-H
+D
 "}
 (7,1,1) = {"
-H
-H
-H
-H
-H
-H
+D
+D
+D
+D
+D
+D
 a
 a
 a
@@ -416,25 +427,25 @@ a
 a
 a
 a
-H
-H
-H
-H
-H
-O
-f
-f
+D
+D
+D
+D
+D
+j
+g
+g
 a
 a
 a
-H
+D
 X
 X
 X
-H
+D
 "}
 (8,1,1) = {"
-H
+D
 a
 a
 a
@@ -442,7 +453,7 @@ a
 a
 a
 a
-H
+D
 a
 a
 a
@@ -452,23 +463,23 @@ a
 a
 a
 a
-H
-E
-F
-F
-F
+D
+c
+P
+P
+P
 a
 a
 a
 a
-H
+D
 a
 a
 a
-H
+D
 "}
 (9,1,1) = {"
-H
+D
 a
 a
 a
@@ -476,7 +487,7 @@ a
 a
 a
 a
-H
+D
 a
 a
 a
@@ -486,8 +497,8 @@ a
 a
 a
 a
-H
-E
+D
+c
 a
 a
 a
@@ -495,14 +506,14 @@ a
 a
 a
 a
-H
+D
 a
 a
 a
-H
+D
 "}
 (10,1,1) = {"
-H
+D
 a
 a
 a
@@ -510,7 +521,7 @@ a
 a
 a
 a
-H
+D
 a
 a
 a
@@ -520,8 +531,8 @@ a
 a
 a
 a
-H
-E
+D
+c
 a
 a
 a
@@ -529,14 +540,14 @@ a
 a
 a
 a
-H
+D
 a
 a
 a
-H
+D
 "}
 (11,1,1) = {"
-H
+D
 a
 a
 a
@@ -544,7 +555,7 @@ a
 a
 a
 a
-H
+D
 a
 a
 a
@@ -554,23 +565,23 @@ a
 a
 a
 w
-H
-H
-H
-S
-H
-H
-H
-H
-H
-H
+D
+D
+D
+F
+D
+D
+D
+D
+D
+D
 a
 a
 a
-H
+D
 "}
 (12,1,1) = {"
-H
+D
 a
 a
 a
@@ -588,7 +599,7 @@ a
 a
 w
 w
-H
+D
 a
 a
 a
@@ -601,10 +612,10 @@ v
 a
 a
 a
-H
+D
 "}
 (13,1,1) = {"
-H
+D
 a
 a
 a
@@ -612,7 +623,7 @@ a
 a
 a
 a
-H
+D
 a
 a
 a
@@ -622,7 +633,7 @@ a
 a
 w
 w
-H
+D
 a
 a
 a
@@ -631,14 +642,14 @@ a
 a
 a
 a
-H
+D
 a
 a
 a
-H
+D
 "}
 (14,1,1) = {"
-H
+D
 a
 a
 a
@@ -646,17 +657,17 @@ a
 a
 a
 a
-H
+D
 a
 a
 a
 a
 a
-H
-H
-H
-H
-H
+D
+D
+D
+D
+D
 a
 a
 a
@@ -665,14 +676,14 @@ a
 a
 a
 a
-H
+D
 a
 a
 a
-H
+D
 "}
 (15,1,1) = {"
-H
+D
 a
 a
 a
@@ -680,15 +691,7 @@ a
 a
 a
 a
-H
-a
-a
-a
-a
-a
-a
-a
-a
+D
 a
 a
 a
@@ -699,14 +702,22 @@ a
 a
 a
 a
-H
 a
 a
 a
-H
+a
+a
+a
+a
+a
+D
+a
+a
+a
+D
 "}
 (16,1,1) = {"
-H
+D
 a
 a
 a
@@ -714,15 +725,7 @@ a
 a
 a
 a
-H
-a
-a
-a
-a
-a
-a
-a
-a
+D
 a
 a
 a
@@ -733,14 +736,22 @@ a
 a
 a
 a
-H
 a
 a
 a
-H
+a
+a
+a
+a
+a
+D
+a
+a
+a
+D
 "}
 (17,1,1) = {"
-H
+D
 a
 a
 a
@@ -748,10 +759,10 @@ a
 a
 a
 a
-H
-H
-H
-H
+D
+D
+D
+D
 a
 a
 a
@@ -764,17 +775,17 @@ a
 a
 a
 a
-H
-H
-H
-H
+D
+D
+D
+D
 a
 a
 a
-H
+D
 "}
 (18,1,1) = {"
-H
+D
 a
 a
 a
@@ -805,10 +816,10 @@ a
 a
 a
 a
-H
+D
 "}
 (19,1,1) = {"
-H
+D
 a
 a
 a
@@ -819,7 +830,7 @@ a
 a
 a
 a
-H
+D
 a
 a
 a
@@ -839,23 +850,21 @@ a
 a
 a
 a
-H
+D
 "}
 (20,1,1) = {"
-H
+D
 a
-H
-H
-H
-H
-H
-a
-a
+D
+D
+D
+D
+D
 a
 a
-H
 a
 a
+D
 a
 a
 a
@@ -873,19 +882,17 @@ a
 a
 a
 a
-H
+a
+a
+D
 "}
 (21,1,1) = {"
-H
+D
 a
 a
 a
-F
-H
-a
-a
-a
-a
+P
+D
 a
 a
 a
@@ -907,78 +914,14 @@ a
 a
 a
 a
-H
+a
+a
+a
+a
+D
 "}
 (22,1,1) = {"
-H
-a
-a
-a
-a
-a
-a
-a
-I
-G
-Y
-a
-a
-a
-a
-H
-H
-H
-H
-H
-H
-H
-a
-a
-a
-a
-a
-a
-a
-a
-a
-H
-"}
-(23,1,1) = {"
-H
-a
-a
-a
-a
-a
-a
-a
-G
-g
-Y
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-H
-"}
-(24,1,1) = {"
-H
+D
 a
 a
 a
@@ -987,8 +930,42 @@ a
 a
 a
 f
-G
-Y
+n
+O
+a
+a
+a
+a
+D
+D
+D
+D
+D
+D
+D
+a
+a
+a
+a
+a
+a
+a
+a
+a
+D
+"}
+(23,1,1) = {"
+D
+a
+a
+a
+a
+a
+a
+a
+n
+L
+O
 a
 a
 a
@@ -1009,10 +986,44 @@ a
 a
 a
 a
-H
+D
+"}
+(24,1,1) = {"
+D
+a
+a
+a
+a
+a
+a
+a
+N
+n
+O
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+D
 "}
 (25,1,1) = {"
-H
+D
 a
 a
 a
@@ -1043,21 +1054,18 @@ a
 a
 a
 a
-H
+D
 "}
 (26,1,1) = {"
-H
+D
 a
 a
-H
-H
+D
+D
 a
 a
-H
-H
-a
-a
-a
+D
+D
 a
 a
 a
@@ -1077,10 +1085,13 @@ a
 a
 a
 a
-H
+a
+a
+a
+D
 "}
 (27,1,1) = {"
-H
+D
 a
 a
 a
@@ -1092,7 +1103,7 @@ a
 a
 a
 a
-H
+D
 a
 a
 a
@@ -1106,19 +1117,19 @@ a
 a
 a
 a
-H
-H
-H
-H
-H
-z
+D
+D
+D
+D
+D
+I
 "}
 (28,1,1) = {"
-H
+D
 a
 a
 a
-H
+D
 a
 a
 a
@@ -1126,7 +1137,7 @@ a
 a
 a
 w
-H
+D
 a
 a
 a
@@ -1140,19 +1151,19 @@ a
 a
 a
 a
-H
+D
+d
 k
-P
-P
-P
-H
+k
+k
+D
 "}
 (29,1,1) = {"
-H
+D
 a
 a
 a
-H
+D
 a
 a
 a
@@ -1160,7 +1171,7 @@ a
 a
 w
 w
-H
+D
 a
 a
 a
@@ -1176,25 +1187,25 @@ a
 n
 V
 y
-P
-P
-P
-H
+k
+k
+k
+D
 "}
 (30,1,1) = {"
-H
+D
 a
 a
-H
-H
+D
+D
 a
 a
 a
-H
-H
-H
-H
-H
+D
+D
+D
+D
+D
 a
 a
 a
@@ -1210,13 +1221,13 @@ a
 n
 V
 y
-P
-P
-P
-H
+k
+k
+k
+D
 "}
 (31,1,1) = {"
-H
+D
 a
 a
 a
@@ -1242,12 +1253,12 @@ a
 a
 a
 a
-H
+D
+d
 k
-P
-P
-P
-H
+k
+k
+D
 "}
 (32,1,1) = {"
 H
@@ -1256,30 +1267,30 @@ H
 H
 H
 H
-H
-H
-H
-H
-H
-H
-H
-H
-H
-H
-H
-H
-H
-H
-H
-H
-H
-H
-H
-H
-H
-H
-H
-H
-H
-H
+D
+D
+D
+D
+D
+D
+D
+D
+D
+D
+D
+D
+D
+D
+D
+D
+D
+D
+D
+D
+D
+D
+D
+D
+D
+D
 "}

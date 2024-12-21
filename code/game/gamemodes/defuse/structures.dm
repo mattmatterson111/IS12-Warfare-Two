@@ -1128,12 +1128,13 @@
 	forceMove(get_turf(relay))
 	alpha = 0
 	mouse_opacity = 0 // god this is such a shitty way to do it
-
 	//if(!ticker.current_state == GAME_STATE_FINISHED)
 	SSwarfare.bombwentoff = TRUE
+	playsound(get_turf(src), 'sound/effects/c4_explode.ogg', 75, 0)
+	sleep(16)
+	explosion(target, 16, 10, 7, 4, particles = TRUE, autosize = TRUE)
 	SSwarfare.end_warfare(RED_TEAM)//really simple I know.
 
-	explosion(target, 16, 10, 7, 4, particles = TRUE, autosize = TRUE)
 	qdel(relay)
 	relay = null
 
@@ -1256,9 +1257,23 @@
 		return 1
 
 /area/warfare/bombsite
+	icon = 'icons/turf/defuse/areas.dmi'
+	icon_state = "site"
+
+/area/warfare/ctspawn
+	icon = 'icons/turf/defuse/areas.dmi'
+	icon_state = "ct"
+
+/area/warfare/tspawn
+	icon = 'icons/turf/defuse/areas.dmi'
+	icon_state = "t"
+
+/area/warfare/map
+	icon = 'icons/turf/defuse/areas.dmi'
+	icon_state = "map"
 
 /obj/item/bombdefusal
 	name = "Bomb Defusal Kit"
-	desc = "STATE OF THE ART!"
+	desc = "Put this in your satchel, and keep it there.<br>This provides a passive bonus to defusal times."
 	icon = 'icons/obj/clothing/masks.dmi'
 	icon_state = "sniperworld"

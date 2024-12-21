@@ -11,10 +11,11 @@
 	#include "jobs/red/red_fortress.dm"
 	#include "jobs/red/red_soldiers.dm"
 	#include "defuse_items.dm"
+	#include "defuse_turfs.dm"
 	#include "../shared/items/clothing.dm"
 	#include "../shared/items/cards_ids.dm"
 
-	#include "de_test.dmm"
+	#include "de_dust2.dmm"
 	//#include "../astrafare/warfare-2.dmm"
 
 	#include "../../code/modules/lobby_music/generic_songs.dm"

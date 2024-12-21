@@ -1,120 +1,245 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "a" = (
-/obj/effect/lighting_dummy/daylight,
-/turf/unsimulated/floor/hammereditor/dev12,
-/area/warfare)
+/obj/effect/lighting_dummy/yellowlight,
+/turf/simulated/sand,
+/area/warfare/map)
 "b" = (
 /obj/hammereditor/playerclip/defuse,
-/obj/effect/lighting_dummy/daylight,
-/turf/unsimulated/floor/hammereditor/dev12,
-/area/warfare)
+/obj/effect/lighting_dummy/yellowlight,
+/turf/simulated/sand,
+/area/warfare/map)
+"d" = (
+/obj/effect/lighting_dummy/yellowlight,
+/obj/item/gun/projectile/automatic/m22/combatrifle,
+/obj/item/ammo_magazine/c45rifle/combatrifle,
+/obj/item/ammo_magazine/c45rifle/combatrifle,
+/obj/item/ammo_magazine/c45rifle/combatrifle,
+/obj/item/ammo_magazine/c45rifle/combatrifle,
+/turf/simulated/sand,
+/area/warfare/ctspawn)
 "e" = (
-/obj/effect/lighting_dummy/daylight,
+/obj/effect/lighting_dummy/yellowlight,
 /turf/simulated/wall/perspecticrete,
-/area/warfare)
+/area/warfare/map)
+"f" = (
+/obj/effect/lighting_dummy/yellowlight,
+/obj/effect/landmark{
+	name = "JoinLate"
+	},
+/turf/simulated/sand,
+/area/warfare/map)
 "g" = (
-/obj/effect/lighting_dummy/daylight,
+/obj/effect/lighting_dummy/yellowlight,
 /turf/unsimulated/floor/hammereditor/dev22,
 /area/warfare/bombsite)
 "h" = (
 /obj/structure/ore_box,
-/obj/effect/lighting_dummy/daylight,
-/turf/unsimulated/floor/hammereditor/dev12,
-/area/warfare)
+/obj/effect/lighting_dummy/yellowlight,
+/turf/simulated/sand,
+/area/warfare/map)
 "i" = (
 /obj/structure/warfare/barricade/concrete_barrier{
 	dir = 1
 	},
-/obj/effect/lighting_dummy/daylight,
-/turf/unsimulated/floor/hammereditor/dev12,
-/area/warfare)
+/obj/effect/lighting_dummy/yellowlight,
+/turf/simulated/sand,
+/area/warfare/map)
 "l" = (
 /obj/structure/warfare/barricade/concrete_barrier{
 	dir = 4
 	},
-/obj/effect/lighting_dummy/daylight,
-/turf/unsimulated/floor/hammereditor/dev12,
-/area/warfare)
+/obj/effect/lighting_dummy/yellowlight,
+/turf/simulated/sand,
+/area/warfare/map)
+"p" = (
+/obj/effect/lighting_dummy/yellowlight,
+/obj/machinery/telecomms/allinone{
+	intercept = 1
+	},
+/turf/simulated/wall/perspecticrete,
+/area/warfare/map)
 "q" = (
-/obj/effect/lighting_dummy/daylight,
+/obj/effect/lighting_dummy/yellowlight,
 /turf/unsimulated/floor/hammereditor/dev2,
 /area/warfare/bombsite)
 "r" = (
-/obj/effect/lighting_dummy/daylight,
+/obj/effect/lighting_dummy/yellowlight,
 /turf/unsimulated/wall/hammereditor/dev2,
-/area/warfare)
+/area/space)
+"s" = (
+/obj/effect/lighting_dummy/yellowlight,
+/obj/hammereditor/playerclip/defuse,
+/turf/simulated/sand,
+/area/warfare/map)
+"v" = (
+/obj/effect/lighting_dummy/yellowlight,
+/obj/item/grenade/smokebomb,
+/obj/item/grenade/smokebomb,
+/obj/item/grenade/smokebomb,
+/obj/item/grenade/smokebomb,
+/turf/simulated/sand,
+/area/warfare/tspawn)
 "w" = (
-/obj/effect/lighting_dummy/daylight,
+/obj/effect/lighting_dummy/yellowlight,
 /turf/simulated/floor/tiled/ramp{
 	dir = 1
 	},
-/area/warfare)
+/area/warfare/map)
 "z" = (
+/obj/effect/lighting_dummy/yellowlight,
 /obj/effect/landmark/start{
 	name = "Red Soldier"
 	},
-/obj/effect/lighting_dummy/daylight,
-/turf/unsimulated/floor/hammereditor/dev12,
-/area/warfare)
+/turf/simulated/sand,
+/area/warfare/ctspawn)
+"A" = (
+/obj/effect/lighting_dummy/yellowlight,
+/obj/structure/effect/decal/sitemarker{
+	pixel_x = 3;
+	pixel_y = -14
+	},
+/turf/unsimulated/floor/hammereditor/dev22,
+/area/warfare/bombsite)
+"B" = (
+/obj/effect/lighting_dummy/yellowlight,
+/obj/structure/ore_box,
+/turf/unsimulated/floor/hammereditor/dev22,
+/area/warfare/bombsite)
+"C" = (
+/obj/effect/lighting_dummy/yellowlight,
+/obj/effect/landmark/start,
+/turf/simulated/wall/perspecticrete,
+/area/warfare/map)
+"D" = (
+/obj/effect/lighting_dummy/yellowlight,
+/obj/item/gun/projectile/revolver/manual,
+/obj/item/ammo_magazine/handful/revolver,
+/obj/item/ammo_magazine/handful/revolver,
+/obj/item/ammo_magazine/handful/revolver,
+/obj/item/ammo_magazine/handful/revolver,
+/turf/simulated/sand,
+/area/warfare/tspawn)
+"E" = (
+/obj/effect/lighting_dummy/yellowlight,
+/obj/effect/landmark/test/space_turf,
+/turf/simulated/wall/perspecticrete,
+/area/warfare/map)
 "F" = (
 /obj/structure/dirt_wall,
-/obj/effect/lighting_dummy/daylight,
-/turf/unsimulated/floor/hammereditor/dev12,
-/area/warfare)
-"I" = (
-/obj/item/plastique/keypad/blue/defuse,
-/obj/effect/lighting_dummy/daylight,
-/turf/unsimulated/floor/hammereditor/dev12,
-/area/warfare)
-"J" = (
-/obj/effect/lighting_dummy/daylight,
+/obj/effect/lighting_dummy/yellowlight,
+/turf/simulated/sand,
+/area/warfare/map)
+"G" = (
+/obj/effect/lighting_dummy/yellowlight,
+/obj/structure/ore_box,
+/turf/simulated/sand,
+/area/warfare/map)
+"H" = (
+/obj/effect/lighting_dummy/yellowlight,
+/obj/structure/railing{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/ramp{
 	dir = 4
 	},
-/area/warfare)
+/area/warfare/map)
+"I" = (
+/obj/item/plastique/keypad/blue/defuse,
+/obj/effect/lighting_dummy/yellowlight,
+/turf/simulated/sand,
+/area/warfare/tspawn)
+"J" = (
+/obj/effect/lighting_dummy/yellowlight,
+/turf/simulated/floor/tiled/ramp{
+	dir = 4
+	},
+/area/warfare/map)
 "K" = (
 /obj/structure/warfare/barricade/concrete_barrier,
-/obj/effect/lighting_dummy/daylight,
-/turf/unsimulated/floor/hammereditor/dev12,
-/area/warfare)
+/obj/effect/lighting_dummy/yellowlight,
+/turf/simulated/sand,
+/area/warfare/map)
+"L" = (
+/obj/effect/lighting_dummy/yellowlight,
+/obj/effect/landmark{
+	name = "tdome1"
+	},
+/turf/simulated/sand,
+/area/warfare/map)
+"M" = (
+/obj/effect/lighting_dummy/yellowlight,
+/obj/item/grenade/smokebomb,
+/obj/item/grenade/smokebomb,
+/turf/simulated/sand,
+/area/warfare/ctspawn)
+"N" = (
+/obj/effect/lighting_dummy/yellowlight,
+/obj/item/gun/projectile/automatic/m22/warmonger/fully_auto/nemesis,
+/obj/item/ammo_magazine/c45rifle/akarabiner,
+/obj/item/ammo_magazine/c45rifle/akarabiner,
+/obj/item/ammo_magazine/c45rifle/akarabiner,
+/obj/item/ammo_magazine/c45rifle/akarabiner,
+/turf/simulated/sand,
+/area/warfare/tspawn)
 "P" = (
 /obj/item/bombdefusal,
-/obj/effect/lighting_dummy/daylight,
-/turf/unsimulated/floor/hammereditor/dev12,
-/area/warfare)
+/obj/effect/lighting_dummy/yellowlight,
+/turf/simulated/sand,
+/area/warfare/ctspawn)
 "Q" = (
-/obj/effect/lighting_dummy/daylight,
+/obj/effect/lighting_dummy/yellowlight,
 /turf/simulated/floor/tiled/ramp,
-/area/warfare)
+/area/warfare/map)
 "R" = (
+/obj/effect/lighting_dummy/yellowlight,
+/turf/simulated/sand,
+/area/warfare/ctspawn)
+"S" = (
+/obj/effect/lighting_dummy/yellowlight,
+/obj/effect/landmark/map_data,
+/turf/simulated/wall/perspecticrete,
+/area/warfare/map)
+"T" = (
+/obj/effect/lighting_dummy/yellowlight,
 /obj/effect/landmark/start{
 	name = "Blue Soldier"
 	},
-/obj/effect/lighting_dummy/daylight,
-/turf/unsimulated/floor/hammereditor/dev12,
-/area/warfare)
-"S" = (
-/obj/effect/landmark/start{
-	name = "Red Engineer"
+/turf/simulated/sand,
+/area/warfare/tspawn)
+"U" = (
+/obj/effect/lighting_dummy/yellowlight,
+/turf/simulated/sand,
+/area/warfare/tspawn)
+"V" = (
+/obj/effect/lighting_dummy/yellowlight,
+/obj/structure/effect/decal/sitemarker{
+	pixel_x = 0;
+	pixel_y = -16
 	},
-/obj/effect/lighting_dummy/daylight,
-/turf/unsimulated/floor/hammereditor/dev12,
-/area/warfare)
-"T" = (
-/obj/effect/landmark/start{
-	name = "Blue Engineer"
-	},
-/obj/effect/lighting_dummy/daylight,
-/turf/unsimulated/floor/hammereditor/dev12,
-/area/warfare)
+/turf/unsimulated/floor/hammereditor/dev2,
+/area/warfare/bombsite)
+"W" = (
+/obj/effect/lighting_dummy/yellowlight,
+/obj/effect/landmark/test/safe_turf,
+/turf/simulated/wall/perspecticrete,
+/area/warfare/map)
 "X" = (
 /obj/structure/warfare/barricade/concrete_barrier{
 	dir = 4
 	},
 /obj/structure/warfare/barricade/concrete_barrier,
-/obj/effect/lighting_dummy/daylight,
-/turf/unsimulated/floor/hammereditor/dev12,
-/area/warfare)
+/obj/effect/lighting_dummy/yellowlight,
+/turf/simulated/sand,
+/area/warfare/map)
+"Z" = (
+/obj/effect/lighting_dummy/yellowlight,
+/obj/item/gun/projectile/revolver/manual,
+/obj/item/ammo_magazine/handful/revolver,
+/obj/item/ammo_magazine/handful/revolver,
+/obj/item/ammo_magazine/handful/revolver,
+/obj/item/ammo_magazine/handful/revolver,
+/turf/simulated/sand,
+/area/warfare/ctspawn)
 
 (1,1,1) = {"
 e
@@ -142,6 +267,7 @@ e
 e
 e
 e
+p
 e
 e
 e
@@ -158,8 +284,7 @@ e
 e
 e
 e
-e
-e
+W
 "}
 (2,1,1) = {"
 e
@@ -194,17 +319,17 @@ K
 a
 a
 a
-Q
-Q
-Q
-Q
-Q
-Q
-Q
 a
 a
 a
-e
+a
+a
+a
+a
+L
+L
+L
+E
 "}
 (3,1,1) = {"
 e
@@ -239,17 +364,17 @@ K
 a
 a
 a
-Q
-Q
-Q
-Q
-Q
-Q
-Q
 a
 a
 a
-e
+a
+a
+a
+a
+L
+L
+L
+S
 "}
 (4,1,1) = {"
 e
@@ -284,17 +409,17 @@ K
 a
 a
 a
-Q
-Q
-Q
-Q
-Q
-Q
-Q
 a
 a
 a
-e
+a
+a
+a
+a
+L
+L
+L
+C
 "}
 (5,1,1) = {"
 e
@@ -336,9 +461,9 @@ F
 F
 F
 F
-a
-a
-a
+f
+f
+f
 e
 "}
 (6,1,1) = {"
@@ -381,9 +506,9 @@ a
 a
 a
 a
-a
-a
-a
+f
+f
+f
 e
 "}
 (7,1,1) = {"
@@ -403,7 +528,7 @@ a
 a
 a
 a
-a
+G
 a
 a
 e
@@ -426,9 +551,9 @@ a
 a
 a
 a
-a
-a
-a
+f
+f
+f
 e
 "}
 (8,1,1) = {"
@@ -485,7 +610,7 @@ e
 a
 a
 g
-g
+B
 g
 a
 a
@@ -530,7 +655,7 @@ e
 a
 a
 g
-q
+V
 g
 a
 a
@@ -572,7 +697,7 @@ r
 r
 r
 e
-a
+G
 a
 g
 g
@@ -619,7 +744,7 @@ r
 e
 a
 a
-g
+B
 g
 g
 a
@@ -663,7 +788,7 @@ r
 r
 e
 e
-e
+H
 e
 e
 e
@@ -708,9 +833,9 @@ r
 r
 r
 e
+J
 a
-a
-a
+G
 a
 a
 a
@@ -740,10 +865,10 @@ r
 r
 r
 e
-a
-a
-a
-a
+U
+U
+U
+U
 e
 "}
 (15,1,1) = {"
@@ -755,7 +880,7 @@ r
 e
 a
 a
-a
+G
 a
 a
 a
@@ -785,7 +910,7 @@ r
 r
 r
 e
-a
+U
 T
 T
 T
@@ -830,7 +955,7 @@ r
 r
 r
 e
-a
+N
 T
 T
 T
@@ -875,7 +1000,7 @@ r
 r
 r
 e
-a
+N
 T
 T
 T
@@ -920,10 +1045,10 @@ r
 r
 r
 e
-a
-R
-R
-R
+v
+T
+T
+T
 e
 "}
 (19,1,1) = {"
@@ -966,9 +1091,9 @@ r
 r
 e
 I
-R
-R
-R
+T
+T
+T
 e
 "}
 (20,1,1) = {"
@@ -1010,10 +1135,10 @@ e
 e
 e
 e
-a
-R
-R
-R
+D
+T
+T
+T
 e
 "}
 (21,1,1) = {"
@@ -1055,10 +1180,10 @@ a
 a
 a
 b
-a
-a
-a
-a
+D
+T
+T
+T
 e
 "}
 (22,1,1) = {"
@@ -1100,10 +1225,10 @@ a
 a
 a
 b
-a
-a
-a
-a
+D
+U
+U
+U
 e
 "}
 (23,1,1) = {"
@@ -1297,16 +1422,16 @@ r
 r
 e
 P
-a
-a
-a
-a
+R
+R
+R
+R
 e
 a
 a
 a
 a
-Q
+a
 a
 a
 e
@@ -1342,16 +1467,16 @@ r
 r
 e
 P
-a
-a
-a
-a
+z
+z
+z
+R
 e
 a
 a
 a
 a
-Q
+a
 a
 a
 e
@@ -1387,10 +1512,10 @@ r
 r
 e
 P
-S
-S
-S
-a
+z
+z
+z
+d
 e
 a
 a
@@ -1432,10 +1557,10 @@ r
 r
 e
 P
-S
-S
-S
-a
+z
+z
+z
+d
 e
 a
 a
@@ -1476,10 +1601,10 @@ r
 r
 r
 e
-a
-S
-S
-S
+M
+z
+z
+z
 P
 e
 a
@@ -1521,7 +1646,7 @@ r
 r
 r
 e
-a
+M
 z
 z
 z
@@ -1566,7 +1691,7 @@ r
 r
 r
 e
-a
+R
 z
 z
 z
@@ -1611,7 +1736,7 @@ r
 r
 r
 e
-a
+R
 z
 z
 z
@@ -1656,12 +1781,12 @@ r
 r
 r
 e
-a
-a
-a
-a
-a
-a
+R
+z
+z
+z
+Z
+s
 a
 a
 e
@@ -1701,12 +1826,12 @@ r
 r
 r
 e
-a
-a
-a
-a
-a
-a
+R
+z
+z
+z
+Z
+s
 a
 a
 e
@@ -1719,7 +1844,7 @@ a
 a
 a
 a
-a
+G
 e
 a
 a
@@ -1746,12 +1871,12 @@ r
 r
 r
 e
-a
-a
-a
-a
-a
-a
+R
+R
+R
+R
+Z
+s
 a
 a
 e
@@ -1791,12 +1916,12 @@ r
 r
 r
 e
-a
-a
-a
+R
+R
+R
 e
 e
-a
+s
 a
 a
 e
@@ -1852,8 +1977,8 @@ a
 a
 a
 e
-a
-a
+G
+G
 a
 a
 a
@@ -2016,8 +2141,8 @@ a
 a
 a
 a
-a
-a
+G
+G
 a
 e
 r
@@ -2108,7 +2233,7 @@ a
 g
 g
 g
-a
+G
 e
 r
 r
@@ -2151,9 +2276,9 @@ a
 a
 h
 g
+A
 g
-g
-a
+G
 e
 r
 r
@@ -2162,7 +2287,7 @@ r
 r
 r
 e
-a
+G
 a
 a
 a
@@ -2207,7 +2332,7 @@ r
 r
 r
 e
-a
+G
 a
 a
 a
@@ -2252,7 +2377,7 @@ r
 r
 r
 e
-a
+G
 a
 a
 a
@@ -2394,7 +2519,7 @@ a
 a
 a
 a
-a
+G
 e
 r
 r

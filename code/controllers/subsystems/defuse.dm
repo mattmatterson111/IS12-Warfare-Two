@@ -87,6 +87,9 @@ SUBSYSTEM_DEF(warfare)
 
 		else if(C.warfare_faction == RED_TEAM)
 			to_chat(C,"<big>DEFEND REDISTAN!</big>")
+	for(var/mob/living/carbon/human/H in GLOB.human_mob_list)
+		H.set_team_huds()
+
 	config.enter_allowed = !(config.enter_allowed)
 	if (!(config.enter_allowed))
 		to_world("<B>New players may no longer enter the game until the next round.</B>")
