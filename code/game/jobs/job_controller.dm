@@ -428,7 +428,7 @@ var/global/datum/controller/occupations/SSjobs
 		to_chat(H, "<b>Role Description:</b> <i>[job.role_desc]</i>")
 
 	if(job.supervisors)
-		to_chat(H, "<b>As the [alt_title ? alt_title : rank] you answer directly to [job.supervisors]. Special circumstances may change this.</b>")
+		to_chat(H, "<b>As the [alt_title ? alt_title : rank] you answer directly to [job.supervisors].</b>")
 
 	to_chat(H, "<b>To speak on your squad's radio channel use :h. For the use of other channels, examine your headset. For general use, use ;.</b>")
 

@@ -107,7 +107,9 @@
 /area/warfare/bombsite)
 "C" = (
 /obj/effect/lighting_dummy/yellowlight,
-/obj/effect/landmark/start,
+/obj/effect/landmark/start{
+	name = "Blurrorist"
+	},
 /turf/simulated/wall/perspecticrete,
 /area/warfare/map)
 "D" = (
@@ -181,6 +183,11 @@
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /turf/simulated/sand,
 /area/warfare/tspawn)
+"O" = (
+/obj/effect/lighting_dummy/yellowlight,
+/obj/item/bombdefusal,
+/turf/simulated/sand,
+/area/warfare/ctspawn)
 "P" = (
 /obj/item/bombdefusal,
 /obj/effect/lighting_dummy/yellowlight,
@@ -202,7 +209,7 @@
 "T" = (
 /obj/effect/lighting_dummy/yellowlight,
 /obj/effect/landmark/start{
-	name = "Blue Soldier"
+	name = "Blurrorist"
 	},
 /turf/simulated/sand,
 /area/warfare/tspawn)
@@ -1421,7 +1428,7 @@ r
 r
 r
 e
-P
+R
 R
 R
 R
@@ -1466,7 +1473,7 @@ r
 r
 r
 e
-P
+R
 z
 z
 z
@@ -1511,7 +1518,7 @@ r
 r
 r
 e
-P
+O
 z
 z
 z
@@ -1605,7 +1612,7 @@ M
 z
 z
 z
-P
+R
 e
 a
 a
@@ -1650,7 +1657,7 @@ M
 z
 z
 z
-P
+R
 e
 a
 a

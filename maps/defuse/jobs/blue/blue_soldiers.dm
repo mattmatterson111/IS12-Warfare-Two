@@ -1,15 +1,15 @@
 /datum/job/soldier/blue_soldier
-	title = "Blue Soldier"
+	title = "Blurrorist"
 	outfit_type = /decl/hierarchy/outfit/job/bluesoldier/soldier
 	is_blue_team = TRUE
-	selection_color = "#76abb2"
-	supervisors = "the president, the chain of command, and the drums of war"
+	selection_color = "#86b6d6"
+	supervisors = "Absolutely Nobody, The call of insurrection, And Eternal Martyrdom, Nothing can change this."
 	auto_rifle_skill = 10
-	semi_rifle_skill = 7
-	sniper_skill = 3
-	shotgun_skill = 6
-	lmg_skill = 3
-	smg_skill = 3
+	semi_rifle_skill = 10
+	sniper_skill = 10
+	shotgun_skill = 10
+	lmg_skill = 10
+	smg_skill = 10
 	boltie_skill = 10
 
 	squad_overlay = "rifleman"
@@ -19,9 +19,9 @@
 		..()
 		H.add_stats(rand(12,17), rand(10,16), rand(8,12))
 		SSwarfare.blue.team += H
-		if(can_be_in_squad)
-			H.assign_random_squad(BLUE_TEAM)
-		H.fully_replace_character_name("Pvt. [H.real_name]")
+		//if(can_be_in_squad)
+		//	H.assign_random_squad(BLUE_TEAM)
+		//H.fully_replace_character_name("Pvt. [H.real_name]")
 		H.warfare_language_shit(LANGUAGE_BLUE)
 		H.assign_random_quirk()
 		if(announced)
@@ -242,17 +242,18 @@
 
 /decl/hierarchy/outfit/job/bluesoldier
 	name = OUTFIT_JOB_NAME("Blue Soldier")
-	head = /obj/item/clothing/head/helmet/bluehelmet
+	head = null
 	uniform = /obj/item/clothing/under/blue_uniform
 	back = /obj/item/storage/backpack/satchel/warfare
 	shoes = /obj/item/clothing/shoes/jackboots/warfare/blue
 	l_ear = /obj/item/device/radio/headset/blue_team/all
 	l_pocket = /obj/item/storage/box/ifak
 	suit = /obj/item/clothing/suit/armor/bluecoat
-	gloves = /obj/item/clothing/gloves/thick/swat/combat/warfare
-	neck = /obj/item/reagent_containers/food/drinks/canteen
+	gloves = /obj/item/clothing/gloves/thick/swat/combat/warfare/blue
+	neck = null
 	pda_type = null
-	id_type = /obj/item/card/id/dog_tag/blue
+	mask = /obj/item/clothing/mask/bluorrist
+	id_type = null
 	flags = OUTFIT_NO_BACKPACK|OUTFIT_NO_SURVIVAL_GEAR
 
 /decl/hierarchy/outfit/job/bluesoldier/soldier/equip()

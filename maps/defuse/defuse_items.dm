@@ -366,11 +366,11 @@
 /obj/item/clothing/suit/armor/bluecoat
 	name = "Blue Team's jacket"
 	desc = "The proud jacket of the Bluecoats!"
-	icon_state = "bluecoatnew"
+	icon_state = "bluorrist"
 	warfare_team = BLUE_TEAM
 	cold_protection = UPPER_TORSO | LOWER_TORSO | LEGS | FEET | ARMS | HANDS
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
-	worldicons = list("bluecoatworld1","bluecoatworld2","bluecoatworld3")
+	worldicons = null
 	sprite_sheets = list(SPECIES_CHILD = 'icons/mob/species/child/suit.dmi')
 
 	item_state_slots = list(
@@ -382,6 +382,21 @@
 	..()
 	name = "The [BLUE_TEAM]'s jacket"
 	desc = "The proud jacket of the [BLUE_TEAM]."
+	if(prob(30))
+		icon_state = "bluorrist_love"
+
+/obj/item/clothing/mask/bluorrist
+	name = "bluaclava"
+	desc = "The proud balaclava of the Bluecoats!"
+	icon_state = "blurrorist"
+	warfare_team = BLUE_TEAM
+	flags_inv = HIDEFACE|BLOCKHAIR
+	body_parts_covered = FACE|HEAD
+
+	item_state_slots = list(
+		slot_l_hand_str = "cloth",
+		slot_r_hand_str = "cloth",
+	)
 
 /obj/item/clothing/suit/armor/bluecoat/sl
 	item_state = "blue_prac"
@@ -427,29 +442,12 @@
 	name = "Blue's uniform"
 	desc = "It's not the best. But it's not the worst."
 	icon_state = "bluegrunt"
-	worn_state = "bluegrunt_m"
+	worn_state = "blurrorist"
 	warfare_team = BLUE_TEAM
 	can_be_worn_by_child = FALSE
 	worldicons = list("blueuniworld1","blueuniworld2","blueuniworld3")
 	//sprite_sheets = list(SPECIES_CHILD = 'icons/mob/species/child/mask.dmi')
 	canremove = FALSE
-
-/obj/item/clothing/under/blue_uniform/equipped(mob/user) // This is stupid. But it works.
-	. = ..()
-	var/mob/living/carbon/human/weirdo = user
-	if(weirdo.isChild())
-		worn_state = "[initial(worn_state)]_child"
-		update_clothing_icon()
-		update_icon()
-		return
-	if(weirdo.gender == MALE)
-		worn_state = "[initial(worn_state)]_m"
-	else
-		worn_state = "[initial(worn_state)]_f"
-	update_clothing_icon()
-	update_icon()
-
-
 
 //Hats
 /obj/item/clothing/head/warfare_officer/blueofficer
@@ -492,7 +490,7 @@
 
 /obj/item/clothing/gloves/thick/swat/combat/warfare/blue
 	icon_state = "redgloves"
-	item_state = "redgloves"
+	item_state = "blurrorist"
 	warfare_team = BLUE_TEAM
 
 /obj/item/clothing/mask/gas/
@@ -1026,7 +1024,7 @@ obj/item/storage/backpack/satchel/warfare/chestrig/blue/oldlmg
 
 /obj/item/clothing/shoes/jackboots/warfare/blue
 	icon_state = "redboots"
-	item_state = "redboots"
+	item_state = "blurrorist"
 	warfare_team = BLUE_TEAM
 	sprite_sheets = list(SPECIES_CHILD = 'icons/mob/species/child/feet.dmi')
 

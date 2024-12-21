@@ -16,7 +16,8 @@ IT'S IMPORTANT TO REMEMBER THAT YES, ASPECTS HAVE THE HUGE POTENTIAL TO RUIN GAM
 
 //Global "chosen aspect" mainly used to affect stuff post game launch
 //The global list of aspects that can be chosen. Used in gameticker.dm
-GLOBAL_LIST_INIT(possible_aspects, list(/datum/aspect/clean_guns, /datum/aspect/extramoney, /datum/aspect/additional_troops, /datum/aspect/one_word))
+//GLOBAL_LIST_INIT(possible_aspects, list(/datum/aspect/clean_guns, /datum/aspect/extramoney, /datum/aspect/additional_troops, /datum/aspect/one_word))
+GLOBAL_LIST_INIT(possible_aspects, list())
 
 //Checks to see if the aspect chosen matches the argument. Useful for affecting stuff post round start.
 proc/aspect_chosen(var/datum/aspect/aspect)

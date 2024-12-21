@@ -1,3 +1,8 @@
+#undef BLUE_TEAM
+#undef RED_TEAM
+
+#define BLUE_TEAM "Blusnian underground"
+#define RED_TEAM "R-E-D"
 
 /datum/map/defuse
 	name = "Defusal"

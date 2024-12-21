@@ -8,8 +8,8 @@
 	social_class = SOCIAL_CLASS_MIN
 	has_email = FALSE
 	latejoin_at_spawnpoints = TRUE
-	can_be_in_squad = TRUE
-	announced = TRUE
+	can_be_in_squad = FALSE
+	announced = FALSE
 
 	//Baseline skill defines
 	medical_skill = 6
@@ -27,6 +27,7 @@
 
 
 /mob/living/carbon/human/proc/assign_random_squad(var/team, var/rank)
+	/*
 	switch(team)
 		if(RED_TEAM)//You're now put in whatever squad has the least amount of living people in it.
 			var/alpha_members = SSwarfare.red.squadA.members.len
@@ -154,7 +155,8 @@
 	I.assignment = "[src.squad.name] Squad [actual_job]"
 
 	to_chat(src, "<b>I am apart of [src.squad.name] Squad</b>")
-
+	*/
+	return FALSE
 
 /mob/living/carbon/human/proc/assign_squad_leader(var/team)
 	switch(team)

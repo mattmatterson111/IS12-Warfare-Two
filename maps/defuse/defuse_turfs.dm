@@ -26,4 +26,4 @@
 	GLOB.lighting_dummies += src
 	if(aspect_chosen(/datum/aspect/nightfare)) //For init. Note this will probably force this mode on until behavior has been made for deactivating aspects.
 		return
-	set_light(2, 1, "#dfd9c8")
+	set_light(2, 1, "#beb9a3")

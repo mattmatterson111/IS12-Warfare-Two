@@ -460,7 +460,7 @@
 	mymob.noise.name = " "
 	mymob.noise.screen_loc = "WEST, SOUTH to EAST, NORTH"
 	mymob.noise.plane = FULLSCREEN_PLANE
-	mymob.noise.alpha = 165
+	mymob.noise.alpha = 75
 	mymob.noise.layer = 1
 	mymob.noise.mouse_opacity = 0
 	hud_elements |= mymob.noise
