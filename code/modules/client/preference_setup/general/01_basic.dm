@@ -71,7 +71,7 @@ datum/preferences
 
 	. += "<br><b>Enable backstories:</b> <a onfocus ='this.blur()' href='?src=\ref[src];backstory=1'><b>["[pref.backstory == 1 ? "Yes" : "No"]"]</b></a><br>"
 
-	if(user.client.holder)//it's user not usr Bombany.
+	if(user.client.holder || SSwarfare.allow_observe == TRUE)//it's user not usr Bombany.
 		. += "<p style='position: absolute;right: 50px; bottom: 30px;'><a onfocus='this.blur()' href='byond://?src=\ref[user];observe=1' class='active'><b>Observe()</a></p>"
 	. = jointext(.,null)
 

@@ -3,6 +3,7 @@
 /obj/structure/key_relay
 	name = "/obj/structure/key_relay"
 	desc = "Not supposed to see this."
+	anchored = TRUE
 	var/obj/host = null
 
 /obj/structure/key_relay/New(var/obj/owner)
@@ -12,8 +13,9 @@
 	name = owner.name
 	desc = owner.desc
 
-/obj/structure/key_relay/keyPress(key, user)
-	return host.keyPress(key, user)
+/obj/structure/key_relay/keyPress(key, mob/user)
+	if(!isghost(user))
+		return host.keyPress(key, user)
 
 /obj/structure/key_relay/plastique
 	name = "plastic explosives"
@@ -31,10 +33,14 @@
 	return TRUE
 
 /obj/structure/key_relay/plastique/keyPress(key, mob/user)
+	if(isghost(user))
+		return FALSE
 	if(host.active)
 		if(user.Adjacent(target))
 			if(!CanPhysicallyInteract(user))
 				return FALSE
+			return host.keyPress(key, user)
+		else if(!target)
 			return host.keyPress(key, user)
 
 /obj/structure/key_relay/plastique/attack_hand(mob/user)
@@ -126,6 +132,8 @@
 /obj/item/plastique/keypad/keyPress(key, user)
 	if(!key && user)
 		return TRUE
+	if(isghost(user))
+		return FALSE
 	if(can_input)
 		if(!active && !isworld(loc))
 			if(!CanPhysicallyInteract(user))
