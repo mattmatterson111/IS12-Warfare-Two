@@ -268,7 +268,7 @@
 		backpack_contents = list(/obj/item/grenade/smokebomb = 1)
 		belt = /obj/item/storage/belt/armageddon
 
-	else if (prob(5))
+	else if (prob(15))
 		suit_store = /obj/item/gun/projectile/shotgun/pump/boltaction/good
 		r_pocket =  /obj/item/ammo_box/rifle/modern
 		backpack_contents = initial(backpack_contents)
@@ -306,6 +306,11 @@
 		r_pocket = /obj/item/ammo_box/shotgun
 	else if(prob(40))
 		suit_store = /obj/item/gun/projectile/automatic/m22/warmonger/fully_auto/nemesis
+		r_pocket = /obj/item/grenade/smokebomb
+		backpack_contents = list(/obj/item/clothing/mask/gas/blue = 1)
+		chest_holster = /obj/item/storage/backpack/satchel/warfare/chestrig/blue/soldier
+	else if(prob(25))
+		suit_store = /obj/item/gun/projectile/automatic/m22/warmonger/fully_auto/ersatz
 		r_pocket = /obj/item/grenade/smokebomb
 		backpack_contents = list(/obj/item/clothing/mask/gas/blue = 1)
 		chest_holster = /obj/item/storage/backpack/satchel/warfare/chestrig/blue/soldier
@@ -437,7 +442,7 @@
 	suit = /obj/item/clothing/suit/armor/bluecoat/leader
 	head = /obj/item/clothing/head/warfare_officer/blueofficer
 	l_ear = /obj/item/device/radio/headset/blue_team/all
-	belt = /obj/item/gun/projectile/revolver/manual
+	belt = /obj/item/gun/projectile/revolver/cpt
 	r_pocket = /obj/item/device/binoculars
 	chest_holster = null
 	backpack_contents = list(/obj/item/ammo_magazine/handful/revolver = 2, /obj/item/grenade/smokebomb = 1)
