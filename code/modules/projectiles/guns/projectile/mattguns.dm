@@ -259,6 +259,27 @@
 	unwielded_unloaded_icon = "bar-e"
 	wielded_unloaded_icon = "bar-wielded-e"
 
+/obj/item/gun/projectile/automatic/m22/warmonger/fully_auto/ersatz
+	name = "Mk.1 Ersatz"
+	desc = "Alternate version of the Mk.5 Warmonger with better handling."
+	icon_state = "ersatz"
+	item_state = "ersatz"
+	wielded_item_state = "ersatz-wielded"
+	fire_sound = 'sound/weapons/guns/fire/ak_fire.ogg'
+	unload_sound = 'sound/weapons/guns/interact/ak_magout.ogg'
+	reload_sound = 'sound/weapons/guns/interact/ak_magin.ogg'
+	cock_sound = 'sound/weapons/guns/interact/ak_cock.ogg'
+	far_fire_sound = 'sound/effects/weapons/gun/ak_farfire.ogg'
+
+	loaded_icon = "ersatz"
+	unwielded_loaded_icon = "ersatz"
+	wielded_loaded_icon = "ersatz-wielded"
+	unloaded_icon = "ersatz-e"
+	unwielded_unloaded_icon = "ersatz-e"
+	wielded_unloaded_icon = "ersatz-wielded-e"
+
+	screen_shake = 1
+
 /obj/item/gun/projectile/automatic/m22/warmonger/m14
 	name = "M41 Eclipse"
 	desc = "A semi-automatic sharpshooter’s rifle made from old war scraps. Its rounds are powerful, but good luck trying to get this thing to work half the time."
