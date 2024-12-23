@@ -119,7 +119,7 @@
 /obj/item/storage/belt/medical/full
 	icon_state = "warfare_belt"
 	item_state = "warfare_belt"
-	max_storage_space = 16
+	max_storage_space = 18
 
 /obj/item/storage/belt/medical/full/New()
 	..()

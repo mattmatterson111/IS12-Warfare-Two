@@ -830,6 +830,7 @@
 	use_sound = "military_rustle_light"
 	close_sound = "military_rustle_light_close"
 	drop_sound = 'sound/effects/ifak_drop.ogg'
+	cant_hold = list(/obj/item/storage/box/ifak)
 
 /obj/item/storage/box/ifak/attack_hand(var/mob/living/carbon/human/user)
 	if(!istype(user))
