@@ -38,8 +38,8 @@
 			speakers |= s
 
 /obj/structure/announcementmicrophone/attack_hand(mob/user)
-	return //Will re-enable after we are sure all other lag is gone.
-/*
+	//return //Will re-enable after we are sure all other lag is gone.
+
 	. = ..()
 	if(!cooldown)
 		if(!broadcasting)
@@ -50,8 +50,6 @@
 				if(id == s.id) // gotta make sure
 					soundoverlay(s, newplane = FOOTSTEP_ALERT_PLANE)
 					playsound(s.loc, broadcast_start_sound, broadcast_start_sound_volume, 0)
-					//s.overlays += image('icons/obj/structures.dmi', icon_state = "rpfsafe") // call a proc on the speakers in the future to update icon?
-					// dunno if we wanna make it update icon at all
 
 		else
 			broadcasting = FALSE
@@ -74,7 +72,7 @@
 			listening = TRUE
 		playsound(src.loc, "button", 75, 1)
 		update_icon()
-*/
+
 /obj/structure/announcementmicrophone/hear_talk(mob/living/M as mob, msg, var/verb="says", datum/language/speaking=null)
 	if(broadcasting)
 		if(listening)
@@ -111,7 +109,7 @@
 				return
 */
 /obj/structure/announcementmicrophone/proc/transmitmessage(spkrname, msg, var/verbtxt)
-	//var/list/clients = list()
+	var/list/clients = list()
 	var/this_sound = null
 	mobstosendto.Cut()
 	if(additional_talk_sound)
@@ -120,15 +118,15 @@
 		if(id == s.id)
 			for(var/mob/living/carbon/H in get_area(s))
 				mobstosendto |= H
-			//for(var/mob/living/carbon/m in view(world.view + broadcast_range, get_turf(s)))
-				//if(!m.stat == UNCONSCIOUS || !m.is_deaf() || !m.stat == DEAD)
-				//	mobstosendto |= m
-				//	soundoverlay(s, newplane = FOOTSTEP_ALERT_PLANE)
-				//	//if(m.client)
-				//	//	clients |= m.client
+			for(var/mob/living/carbon/m in view(world.view + broadcast_range, get_turf(s)))
+				if(!m.stat == UNCONSCIOUS || !m.is_deaf() || !m.stat == DEAD)
+					mobstosendto |= m
+					soundoverlay(s, newplane = FOOTSTEP_ALERT_PLANE)
+					if(m.client)
+						clients |= m.client
 			// it got annoying REALLY FAST having them all being different..
 			playsound(get_turf(s),this_sound , additional_talk_sound_volume, additional_talk_sound_vary, ignore_walls = FALSE, extrarange = 4)
-			//INVOKE_ASYNC(s, /atom/movable/proc/animate_chat, "<font color='[rune_color]'><b>[msg]", null, 0, clients, 5 SECONDS, 1)
+			INVOKE_ASYNC(s, /atom/movable/proc/animate_chat, "<font color='[rune_color]'><b>[msg]", null, 0, clients, 5 SECONDS, 1)
 	for(var/mob/living/carbon/m in mobstosendto)
 		to_chat(m,"<h2><span class='[speakerstyle]'>[spkrname] [verbtxt], \"<span class='[textstyle]'>[msg]</span>\"</span></h2>")
 /*
