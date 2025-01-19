@@ -66,6 +66,7 @@ GLOBAL_LIST_EMPTY(family_blacklist)
 	var/lmg_skill = 5
 	var/smg_skill = 5
 	var/boltie_skill = 5
+	var/close_when_dead = FALSE
 
 
 /datum/job/New()

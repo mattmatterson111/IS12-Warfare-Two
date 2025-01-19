@@ -495,7 +495,7 @@
 	item_state = "redgloves"
 	warfare_team = BLUE_TEAM
 
-/obj/item/clothing/mask/gas/
+/obj/item/clothing/mask/gas
 	icon_state = "gasmask"
 	item_state = "gasask"
 	flags_inv = HIDEEARS|HIDEEYES|HIDEFACE|BLOCKHEADHAIR
