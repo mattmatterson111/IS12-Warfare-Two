@@ -109,6 +109,7 @@
 	shotgun_skill = 3
 	lmg_skill = 3
 	smg_skill = 3
+	close_when_dead = TRUE
 	// open_when_dead = TRUE
 
 	announced = FALSE
@@ -155,6 +156,7 @@
 	lmg_skill = 3
 	smg_skill = 3
 	can_be_in_squad = TRUE
+	close_when_dead = TRUE
 
 	announced = FALSE
 

@@ -295,11 +295,16 @@
 							else
 								playsound(src.loc, 'sound/machines/rpf/sendmsgcargo.ogg', 100, 0)
 								var/datum/job/team_job = SSjobs.GetJobByType(productpath) //Open up the corresponding job on that team.
-								SSjobs.allow_one_more(team_job.title)
+								if(team_job.total_positions < 1)//You can only buy a guy if he's not dead.
+									SSjobs.allow_one_more(team_job.title)
+								else
+									playsound(src.loc, 'sound/machines/rpf/denybeep.ogg', 100, 0.5)
+									to_chat(user, "\icon[src]There are no more units available to send at the moment.")
 								return
 						else
 							to_chat(user, "\icon[src]You lack the required funding to purchase this product.")
 							playsound(src.loc, 'sound/machines/rpf/denybeep.ogg', 100, 0.5)
+							return
 					//var/list/cargoturfs = list()
 				//	var/hasdenseobject
 					if(productprice <= src.credits) // This shitcode works! Checks for dense objects on the turf!
@@ -314,9 +319,11 @@
 					if(!clear_turfs)
 						to_chat(user, "\icon[src]ERROR. ALL PADS OCCUPIED. MAKE SPACE AND TRY AGAIN.")
 						playsound(src.loc, 'sound/machines/rpf/denybeep.ogg', 100, 0.5)
+						return
 					if(!pads) // if this somehow were to happen id be in awe.
 						to_chat(user, "\icon[src]ERROR. NO LINKED CARGO PADS. REESTABLISH CONNECTION AND TRY AGAIN.")
 						playsound(src.loc, 'sound/machines/rpf/denybeep.ogg', 100, 0.5)
+						return
 					else if(productprice <= src.credits)
 						useable = FALSE
 						playsound(src.loc, 'sound/machines/rpf/cargo_starttp.ogg', 100, 0)
@@ -361,13 +368,18 @@
 					else if(productprice > src.credits)
 						to_chat(user, "\icon[src]Insufficient funds to purchase [product["name"]].")
 						playsound(src.loc, 'sound/machines/rpf/denybeep.ogg', 100, 0.5)
+						return 0
 					else if(clear_turfs.len <= 0)
 						to_chat(user, "\icon[src]No space to drop off [product["name"]].")
 						playsound(src.loc, 'sound/machines/rpf/denybeep.ogg', 100, 0.5)
+						return
 					else if(pickedloc == null)
 						to_chat(user, "\icon[src]FATAL ERROR.")
-					else
+						return
+					else//I know these returns aren't needed they just make me feel better ok? Fuck you.
 						to_chat(user, "\icon[src]An UNKNOWN error has occured.")
+						return
+
 
 /obj/machinery/kaos/cargo_machine/red
 	name = "R.E.D. Cargo Machine"
@@ -383,7 +395,7 @@
 		list("name" = "Warmonger Ammo", "price" = 50, "category" = "Ammunition", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/item/ammo_magazine/c45rifle/akarabiner = 10)),
 		list("name" = "Flamethrower Ammo Pack", "price" = 100, "category" = "Ammunition", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/item/ammo_magazine/flamer = 5)),
 		list("name" = "PTSD Ammo Pack", "price" = 100, "category" = "Ammunition", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/item/ammo_box/ptsd = 5)),
-		list("name" = "Mortar Ammo", "price" = 800, "category" = "Ammunition", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/item/mortar_shell = 8)),
+		list("name" = "Mortar Ammo", "price" = 100, "category" = "Ammunition", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/item/mortar_shell = 8)),
 
 		// general weapon stuff
 		list("name" = "Shotgun Pack", "price" = 100, "category" = "Weaponry", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/item/gun/projectile/shotgun/pump/shitty = 5)),
@@ -396,10 +408,10 @@
 		list("name" = "Flamethrower Pack", "price" = 200, "category" = "Weaponry", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/item/gun/projectile/automatic/flamer = 1, /obj/item/ammo_magazine/flamer = 2)),
 		list("name" = "Frag Grenade Pack", "price" = 350, "category" = "Weaponry", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/item/grenade/frag/warfare = 5)),
 		list("name" = "Trench Club Pack", "price" = 100, "category" = "Weaponry", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/item/melee/classic_baton/trench_club = 5)),
-		list("name" = "Mortar Pack", "price" = 600, "category" = "Weaponry", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/item/mortar_launcher = 2, /obj/item/mortar_shell = 6)),
+		list("name" = "Mortar Pack", "price" = 800, "category" = "Weaponry", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/item/mortar_launcher = 2, /obj/item/mortar_shell = 6)),
 
 		// medical and supply stuff
-		list("name" = "Gas Mask Pack", "price" = 50, "category" = "Miscellaneous", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/item/clothing/mask/gas = 10)),
+		list("name" = "Gas Mask Pack", "price" = 50, "category" = "Miscellaneous", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/item/clothing/mask/gas/= 10)),
 		list("name" = "Barbwire Pack", "price" = 50, "category" = "Miscellaneous", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/item/stack/barbwire = 5)),
 		list("name" = "Canned Food Pack", "price" = 20, "category" = "Miscellaneous", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/random/canned_food = 10)),
 		list("name" = "Bodybag Pack", "price" = 5, "category" = "Miscellaneous", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/item/storage/box/bodybags = 3)),
