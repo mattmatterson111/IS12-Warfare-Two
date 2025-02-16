@@ -388,7 +388,7 @@
 		// general ammo stuff
 		list("name" = "Rifle Ammo Pack", "price" = 50, "category" = "Ammunition", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/item/ammo_box/rifle = 10)),
 		list("name" = "Shotgun Ammo Pack", "price" = 100, "category" = "Ammunition", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/item/ammo_box/shotgun = 10)),
-		list("name" = "Pistol Ammo Pack", "price" = 50, "category" = "Ammunition", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/item/ammo_magazine/c45m/warfare = 10)),
+		list("name" = "Pistol Ammo Pack", "price" = 50, "category" = "Ammunition", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/item/ammo_magazine/c45m/warfare = 10, /obj/item/ammo_magazine/a50 = 5)),
 		list("name" = "Revolver Ammo Pack", "price" = 50, "category" = "Ammunition", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/item/ammo_magazine/handful/revolver = 10)),
 		list("name" = "Soulburn Ammo Pack", "price" = 50, "category" = "Ammunition", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/item/ammo_magazine/mc9mmt/machinepistol = 10)),
 		list("name" = "HMG Ammo Pack", "price" = 100, "category" = "Ammunition", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/item/ammo_magazine/box/a556/mg08 = 5)),
@@ -399,6 +399,7 @@
 
 		// general weapon stuff
 		list("name" = "Shotgun Pack", "price" = 100, "category" = "Weaponry", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/item/gun/projectile/shotgun/pump/shitty = 5)),
+		list("name" = "Pistol Pack", "price" = 100, "category" = "Weaponry", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/item/gun/projectile/golt = 2, /obj/item/gun/projectile/warfare = 3)),
 		list("name" = "Harbinger Pack", "price" = 100, "category" = "Weaponry", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/item/gun/projectile/automatic/mg08 = 2)),
 		list("name" = "Warmonger Pack", "price" = 100, "category" = "Weaponry", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/item/gun/projectile/automatic/m22/warmonger = 10)),
 		list("name" = "Shovel Crate", "price" = 50, "category" = "Weaponry", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/item/shovel = 5)),
@@ -445,7 +446,7 @@
 		// general ammo stuff
 		list("name" = "Rifle Ammo Pack", "price" = 50, "category" = "Ammunition", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/item/ammo_box/rifle = 10)),
 		list("name" = "Shotgun Ammo Pack", "price" = 100, "category" = "Ammunition", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/item/ammo_box/shotgun = 10)),
-		list("name" = "Pistol Ammo Pack", "price" = 50, "category" = "Ammunition", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/item/ammo_magazine/c45m/warfare = 10)),
+		list("name" = "Pistol Ammo Pack", "price" = 50, "category" = "Ammunition", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/item/ammo_magazine/c45m/warfare = 10, /obj/item/ammo_magazine/a50 = 5)),
 		list("name" = "Revolver Ammo Pack", "price" = 50, "category" = "Ammunition", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/item/ammo_magazine/handful/revolver = 10)),
 		list("name" = "Soulburn Ammo Pack", "price" = 50, "category" = "Ammunition", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/item/ammo_magazine/mc9mmt/machinepistol = 10)),
 		list("name" = "HMG Ammo Pack", "price" = 100, "category" = "Ammunition", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/item/ammo_magazine/box/a556/mg08 = 5)),
@@ -456,6 +457,7 @@
 
 		// general weapon stuff
 		list("name" = "Shotgun Pack", "price" = 100, "category" = "Weaponry", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/item/gun/projectile/shotgun/pump/shitty = 5)),
+		list("name" = "Pistol Pack", "price" = 100, "category" = "Weaponry", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/item/gun/projectile/golt = 2, /obj/item/gun/projectile/warfare = 3)),
 		list("name" = "Harbinger Pack", "price" = 100, "category" = "Weaponry", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/item/gun/projectile/automatic/mg08 = 2)),
 		list("name" = "Warmonger Pack", "price" = 100, "category" = "Weaponry", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/item/gun/projectile/automatic/m22/warmonger = 10)),
 		list("name" = "Shovel Pack", "price" = 50, "category" = "Weaponry", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/item/shovel = 5)),
