@@ -869,6 +869,20 @@
 	max_ammo = 7
 	multiple_sprites = 1
 
+/obj/item/gun/projectile/golt
+	name = "Mk.1 Golt"
+	icon_state = "colt"
+	unloaded_icon = "colt-e"
+	item_state = "handgun"
+	fire_sound = "sound/weapons/guns/fire/pistol1.ogg"
+	desc = "Potent handgun that fires an unwieldy and unusual caliber, denotated 'Wristfucker'"
+	magazine_type = /obj/item/ammo_magazine/a50
+	allowed_magazines = /obj/item/ammo_magazine/a50
+	caliber = ".50"
+	load_method = MAGAZINE
+	fire_delay = 5
+	condition = 75
+
 /obj/item/gun/projectile/shotgun/pump/boltaction/grenadelauncher
 	name = "GRA Pubtrator"
 	desc = "These wooden grips feel like they could splinter at any moment, clinging to a skeletal metal frame of low grade tubes.\n It’s got an over-under barrel setup, nothing fancy. We load it with whatever fits: chlorine gas, fragmentation grenades, and even the occasional smoke round.\n It’s cheap metal, so the barrel heat up too fast, and the grip breaks apart sometimes. I struggle to hold it together.\n That’s the General’s genius; he knows exactly what he’s doing. He doesn’t care if the thing falls apart mid fight; he’s already cashed the check."
