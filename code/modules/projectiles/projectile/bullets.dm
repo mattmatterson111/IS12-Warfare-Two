@@ -208,6 +208,9 @@
 	damage = 50 //.50AE
 	armor_penetration = 30
 
+/obj/item/projectile/bullet/pistol/strong/very
+	damage = 60
+
 /obj/item/projectile/bullet/pistol/strong/revolver //revolvers
 	damage = 50 //Revolvers get snowflake bullets, to keep them relevant
 	armor_penetration = 20

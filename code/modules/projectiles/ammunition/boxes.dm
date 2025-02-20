@@ -228,7 +228,7 @@
 
 /obj/item/ammo_magazine/a50
 	name = "magazine (.50)"
-	icon_state = "50ae"
+	icon_state = "colt-mag"
 	origin_tech = list(TECH_COMBAT = 2)
 	mag_type = MAGAZINE
 	caliber = ".50"
