@@ -213,20 +213,18 @@ SUBSYSTEM_DEF(jobs)
 				if(age < job.minimum_character_age) // Nope.
 					continue
 
-				switch(age)
-					if(job.minimum_character_age to (job.minimum_character_age+10))
-						weightedCandidates[V] = 3 // Still a bit young.
-					if((job.minimum_character_age+10) to (job.ideal_character_age-10))
-						weightedCandidates[V] = 6 // Better.
-					if((job.ideal_character_age-10) to (job.ideal_character_age+10))
-						weightedCandidates[V] = 10 // Great.
-					if((job.ideal_character_age+10) to (job.ideal_character_age+20))
-						weightedCandidates[V] = 6 // Still good.
-					if((job.ideal_character_age+20) to INFINITY)
-						weightedCandidates[V] = 3 // Geezer.
-					else
-						// If there's ABSOLUTELY NOBODY ELSE
-						if(candidates.len == 1) weightedCandidates[V] = 1
+				if(age >= job.minimum_character_age && age < job.minimum_character_age + 10)
+					weightedCandidates[V] = 3 // Still a bit young.
+				else if(age >= job.minimum_character_age + 10 && age < job.ideal_character_age - 10)
+					weightedCandidates[V] = 6 // Better.
+				else if(age >= job.ideal_character_age - 10 && age <= job.ideal_character_age + 10)
+					weightedCandidates[V] = 10 // Great.
+				else if(age > job.ideal_character_age + 10 && age <= job.ideal_character_age + 20)
+					weightedCandidates[V] = 6 // Still good.
+				else if(age > job.ideal_character_age + 20)
+					weightedCandidates[V] = 3 // Geezer.
+				else if(candidates.len == 1)
+					weightedCandidates[V] = 1 // If there's ABSOLUTELY NOBODY ELSE
 
 
 			var/mob/new_player/candidate = pickweight(weightedCandidates)
@@ -670,11 +668,13 @@ SUBSYSTEM_DEF(jobs)
 					src.client?.images -= H.get_squad_hud()
 					src.client?.images += H.get_squad_hud()//Make sure we get their HUD icon too.
 
-/mob/living/carbon/human/proc/get_squad_hud()
-	var/datum/job/J = SSjobs.GetJob(src.mind.assigned_role)
-	var/icon_source = 'icons/mob/hud_blue.dmi'
-	if(J.is_red_team)
-		icon_source = 'icons/mob/hud_red.dmi'
-	var/image/HUD_icon = image(icon_source, src, J.squad_overlay)
-	HUD_icon.plane = HUMAN_PLANE
-	return HUD_icon
+/mob/living/carbon/proc/get_squad_hud()
+    var/datum/job/J = SSjobs.GetJob(src.mind.assigned_role)
+    if(!J)
+        return null
+    var/icon_source = 'icons/mob/hud_blue.dmi'
+    if(J.is_red_team)
+        icon_source = 'icons/mob/hud_red.dmi'
+    var/image/HUD_icon = image(icon_source, src, J.squad_overlay)
+    HUD_icon.plane = HUMAN_PLANE
+    return HUD_icon

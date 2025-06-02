@@ -192,39 +192,45 @@ Turf and target are seperate in case you want to teleport some distance from a t
 			return 1
 	return 0
 
-/proc/sign(x)
+/proc/signum(x)
 	return x!=0?x/abs(x):0
 
-/proc/getline(atom/M,atom/N)//Ultra-Fast Bresenham Line-Drawing Algorithm
-	var/px=M.x		//starting x
-	var/py=M.y
-	var/line[] = list(locate(px,py,M.z))
-	var/dx=N.x-px	//x distance
-	var/dy=N.y-py
-	var/dxabs=abs(dx)//Absolute value of x distance
-	var/dyabs=abs(dy)
-	var/sdx=sign(dx)	//Sign of x distance (+ or -)
-	var/sdy=sign(dy)
-	var/x=dxabs>>1	//Counters for steps taken, setting to distance/2
-	var/y=dyabs>>1	//Bit-shifting makes me l33t.  It also makes getline() unnessecarrily fast.
-	var/j			//Generic integer for counting
-	if(dxabs>=dyabs)	//x distance is greater than y
-		for(j=0;j<dxabs;j++)//It'll take dxabs steps to get there
-			y+=dyabs
-			if(y>=dxabs)	//Every dyabs steps, step once in y direction
-				y-=dxabs
-				py+=sdy
-			px+=sdx		//Step on in x direction
-			line+=locate(px,py,M.z)//Add the turf to the list
-	else
-		for(j=0;j<dyabs;j++)
-			x+=dxabs
-			if(x>=dyabs)
-				x-=dyabs
-				px+=sdx
-			py+=sdy
-			line+=locate(px,py,M.z)
-	return line
+/proc/dm_sign(x)
+    if(x > 0) return 1
+    if(x < 0) return -1
+    return 0
+
+/proc/getline(atom/M, atom/N) // Ultra-Fast Bresenham Line-Drawing Algorithm
+    var/px = M.x		// starting x
+    var/py = M.y
+    var/line[] = list(locate(px, py, M.z))
+    var/dx = N.x - px	// x distance
+    var/dy = N.y - py
+    var/dxabs = abs(dx)	// Absolute value of x distance
+    var/dyabs = abs(dy)
+    var/sdx = dm_sign(dx)	// Sign of x distance (+ or -)
+    var/sdy = dm_sign(dy)
+    var/x = dxabs >> 1	// Counters for steps taken, setting to distance/2
+    var/y = dyabs >> 1	// Bit-shifting makes me l33t.  It also makes getline() unnecessarily fast.
+    var/j			// Generic integer for counting
+
+    if(dxabs >= dyabs)	// x distance is greater than y
+        for(j = 0; j < dxabs; j++) // It'll take dxabs steps to get there
+            y += dyabs
+            if(y >= dxabs)	// Every dyabs steps, step once in y direction
+                y -= dxabs
+                py += sdy
+            px += sdx		// Step on in x direction
+            line += locate(px, py, M.z) // Add the turf to the list
+    else
+        for(j = 0; j < dyabs; j++)
+            x += dxabs
+            if(x >= dyabs)
+                x -= dyabs
+                px += sdx
+            py += sdy
+            line += locate(px, py, M.z)
+    return line
 
 #define LOCATE_COORDS(X, Y, Z) locate(between(1, X, world.maxx), between(1, Y, world.maxy), Z)
 /proc/getcircle(turf/center, var/radius) //Uses a fast Bresenham rasterization algorithm to return the turfs in a thin circle.
