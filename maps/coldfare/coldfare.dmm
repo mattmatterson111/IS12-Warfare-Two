@@ -457,10 +457,6 @@
 "bi" = (
 /turf/simulated/wall/perspecticrete,
 /area/warfare/battlefield/capture_point/blue/two)
-"bj" = (
-/obj/machinery/door/airlock/multi_tile/metal/maintenance,
-/turf/simulated/floor/trenches,
-/area/warfare/battlefield/capture_point/blue/two)
 "bk" = (
 /turf/simulated/floor/trenches/underground{
 	icon_state = "trench";
@@ -1797,7 +1793,7 @@
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/blue/div)
 "eN" = (
-/obj/machinery/door/airlock/multi_tile/metal/maintenance,
+/obj/machinery/door/airlock/multi_tile/metal/maintenance/blue,
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/blue)
 "eP" = (
@@ -2080,10 +2076,10 @@
 /turf/simulated/floor/dirty/indestructable,
 /area/warfare/homebase/blue)
 "fO" = (
-/obj/machinery/door/airlock/multi_tile/metal/maintenance,
 /obj/machinery/door/blast/shutters/open{
 	id = "blue"
 	},
+/obj/machinery/door/airlock/multi_tile/metal/maintenance/blue,
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/blue)
 "fP" = (
@@ -2933,8 +2929,18 @@
 	},
 /area/warfare/battlefield/capture_point/red/two)
 "kH" = (
-/turf/simulated/floor/trenches,
-/area/warfare/battlefield/capture_point/blue/two)
+/obj/structure/trench_wall{
+	icon_state = "door_closed";
+	icon = 'icons/obj/doors/Doordoublesecglass1x2BLUE.dmi';
+	name = "locked door";
+	mouse_opacity = 1
+	},
+/obj/structure/defensive_barrier{
+	pixel_y = -4;
+	secured = 1
+	},
+/turf/simulated/mineral,
+/area/space)
 "kK" = (
 /turf/simulated/floor/wood,
 /area/warfare/homebase/red/div)
@@ -2951,7 +2957,7 @@
 /turf/simulated/floor/wood,
 /area/warfare/battlefield/capture_point/red/two)
 "kZ" = (
-/obj/machinery/door/airlock/multi_tile/metal/maintenance,
+/obj/machinery/door/airlock/multi_tile/metal/maintenance/blue,
 /turf/simulated/floor/wood,
 /area/warfare/battlefield/capture_point/blue/one)
 "la" = (
@@ -3113,6 +3119,19 @@
 "mw" = (
 /turf/simulated/floor/wood,
 /area/warfare/homebase/blue)
+"mC" = (
+/obj/structure/trench_wall{
+	icon_state = "door_closed";
+	icon = 'icons/obj/doors/Doordoublesecglass1x2.dmi';
+	mouse_opacity = 1;
+	name = "locked door"
+	},
+/obj/structure/defensive_barrier{
+	pixel_y = -4;
+	secured = 1
+	},
+/turf/simulated/mineral,
+/area/space)
 "mD" = (
 /obj/structure/trench_wall{
 	dir = 1
@@ -3445,6 +3464,20 @@
 /obj/effect/lighting_dummy/daylight,
 /turf/simulated/floor/concrete/random,
 /area/warfare/battlefield/capture_point/blue/two)
+"oK" = (
+/obj/structure/trench_wall{
+	icon_state = "door_closed";
+	icon = 'icons/obj/doors/Doordoublesecglass1x2.dmi';
+	name = "locked door";
+	mouse_opacity = 1
+	},
+/obj/structure/defensive_barrier{
+	dir = 1;
+	pixel_y = 18;
+	secured = 1
+	},
+/turf/simulated/mineral,
+/area/space)
 "oQ" = (
 /obj/effect/landmark/start{
 	name = "Blue Squad Leader"
@@ -3600,7 +3633,6 @@
 /obj/item/clothing/suit/surgeon_apron,
 /obj/item/clothing/suit/surgeon_apron,
 /obj/item/clothing/suit/surgeon_apron,
-/obj/item/storage/backpack/satchel/warfare/prac/blue,
 /obj/item/storage/backpack/satchel/warfare/prac/blue,
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/blue/div)
@@ -4011,7 +4043,7 @@
 /turf/simulated/floor/wood,
 /area/warfare/battlefield/capture_point/red/two)
 "tX" = (
-/obj/machinery/door/airlock/multi_tile/metal/maintenance,
+/obj/machinery/door/airlock/multi_tile/metal/maintenance/blue,
 /turf/simulated/floor/concrete/random,
 /area/warfare/battlefield/capture_point/blue/two)
 "uf" = (
@@ -5372,7 +5404,7 @@
 /turf/simulated/floor/dirty/indestructable,
 /area/warfare/battlefield/trench_section)
 "FW" = (
-/obj/machinery/door/airlock/multi_tile/metal/maintenance,
+/obj/machinery/door/airlock/multi_tile/metal/maintenance/blue,
 /turf/simulated/floor/concrete/random,
 /area/warfare/battlefield/capture_point/blue/one)
 "Gd" = (
@@ -5834,6 +5866,13 @@
 	},
 /turf/simulated/floor/concrete/random,
 /area/warfare/battlefield/trench_section/underground)
+"Lz" = (
+/obj/structure/defensive_barrier{
+	pixel_y = -4;
+	secured = 1
+	},
+/turf/simulated/mineral,
+/area/space)
 "LB" = (
 /obj/structure/trench_wall/sequel{
 	dir = 4
@@ -6928,6 +6967,20 @@
 	color = "#ffffff"
 	},
 /area/warfare/battlefield/capture_point/red/one)
+"WX" = (
+/obj/structure/trench_wall{
+	icon_state = "door_closed";
+	icon = 'icons/obj/doors/Doordoublesecglass1x2BLUE.dmi';
+	name = "locked door";
+	mouse_opacity = 1
+	},
+/obj/structure/defensive_barrier{
+	dir = 1;
+	pixel_y = 18;
+	secured = 1
+	},
+/turf/simulated/mineral,
+/area/space)
 "WZ" = (
 /obj/structure/toilet{
 	dir = 8;
@@ -7112,6 +7165,14 @@
 	color = "#ffffff"
 	},
 /area/warfare/battlefield/capture_point/red/one)
+"YF" = (
+/obj/structure/defensive_barrier{
+	dir = 1;
+	pixel_y = 18;
+	secured = 1
+	},
+/turf/simulated/mineral,
+/area/space)
 "YW" = (
 /obj/structure/closet/crate,
 /obj/item/ammo_magazine/mc9mmt/machinepistol,
@@ -12958,9 +13019,9 @@ aa
 aa
 aa
 zA
-OS
-OS
-qu
+sA
+sA
+Mc
 WU
 dr
 mD
@@ -13057,7 +13118,7 @@ aa
 aa
 aa
 aa
-NX
+pS
 Um
 cg
 MZ
@@ -13073,7 +13134,7 @@ ls
 Nt
 db
 ph
-LK
+sW
 aa
 aa
 aa
@@ -13210,9 +13271,9 @@ aa
 aa
 aa
 aa
-di
-di
-oR
+aa
+aa
+pS
 Si
 dr
 Nv
@@ -13228,7 +13289,7 @@ vd
 dP
 dS
 wq
-LK
+sW
 aa
 aa
 aa
@@ -13309,7 +13370,7 @@ aa
 aa
 aa
 aa
-NX
+kH
 bk
 qb
 bk
@@ -13325,7 +13386,7 @@ nz
 IZ
 DK
 TN
-LK
+WX
 aa
 aa
 aa
@@ -13462,9 +13523,9 @@ aa
 aa
 aa
 aa
-di
-di
-oR
+aa
+aa
+mC
 pL
 CI
 pL
@@ -13480,7 +13541,7 @@ Wl
 Sy
 QF
 HQ
-LK
+oK
 aa
 aa
 aa
@@ -13561,7 +13622,7 @@ aa
 aa
 aa
 aa
-NX
+Lz
 mT
 bk
 qb
@@ -13577,7 +13638,7 @@ DK
 uW
 IZ
 ef
-LK
+YF
 aa
 aa
 aa
@@ -13714,9 +13775,9 @@ aa
 aa
 aa
 aa
-di
-di
-oR
+aa
+aa
+Lz
 DR
 pL
 CI
@@ -13732,7 +13793,7 @@ QF
 Qy
 Sy
 LX
-LK
+YF
 aa
 aa
 aa
@@ -13813,7 +13874,7 @@ aa
 aa
 aa
 aa
-NX
+Mc
 nn
 cg
 ik
@@ -13829,7 +13890,7 @@ eS
 ct
 db
 uj
-LK
+Fk
 aa
 aa
 aa
@@ -13966,9 +14027,9 @@ aa
 aa
 aa
 aa
-di
-di
-oR
+aa
+aa
+Mc
 OE
 dr
 dx
@@ -13984,7 +14045,7 @@ yT
 BD
 dS
 cA
-LK
+Fk
 aa
 aa
 aa
@@ -14218,9 +14279,9 @@ aa
 aa
 aa
 Dc
-Ku
-Ku
-eR
+zg
+zg
+pS
 WU
 dr
 mD
@@ -23898,7 +23959,7 @@ bi
 gf
 jT
 be
-bj
+tX
 oJ
 Cy
 Cy
@@ -24150,7 +24211,7 @@ bi
 gf
 Te
 be
-kH
+be
 oJ
 Cy
 Cy
@@ -25880,7 +25941,7 @@ AR
 wG
 wG
 wG
-av
+eN
 av
 cu
 eN
@@ -27930,7 +27991,7 @@ bi
 gf
 jT
 be
-bj
+tX
 oJ
 Cy
 Cy
@@ -28182,7 +28243,7 @@ bi
 gf
 Te
 be
-kH
+be
 oJ
 Cy
 Cy
