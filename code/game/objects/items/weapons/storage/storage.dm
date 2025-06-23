@@ -27,7 +27,7 @@
 	//initializes the contents of the storage with some items based on an assoc list. The assoc key must be an item path,
 	//the assoc value can either be the quantity, or a list whose first value is the quantity and the rest are args.
 	var/list/startswith
-	var/datum/storage_ui/storage_ui = /datum/storage_ui/default
+	var/datum/storage_ui/storage_ui = /datum/storage_ui/default/metal ///datum/storage_ui/default
 
 /obj/item/storage/Destroy()
 	QDEL_NULL(storage_ui)
