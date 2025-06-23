@@ -427,15 +427,15 @@ SUBSYSTEM_DEF(jobs)
 			W.buckled_mob = H
 			W.add_fingerprint(H)
 
-	to_chat(H, "<B>You are [job.total_positions == 1 ? "the" : "a"] [alt_title ? alt_title : rank].</B>")
+	to_chat(H, SPAN_WHITE_LARGE("<B>You are [job.total_positions == 1 ? "the" : "a"] <font color=\"[job.selection_color]\">[alt_title ? alt_title : rank]</font>.</B>"))
 
 	if(job.role_desc)
 		to_chat(H, "<b>Role Description:</b> <i>[job.role_desc]</i>")
 
 	if(job.supervisors)
-		to_chat(H, "<b>As the [alt_title ? alt_title : rank] you answer directly to [job.supervisors]. Special circumstances may change this.</b>")
+		to_chat(H, SPAN_WHITE("<b>As the [alt_title ? alt_title : rank] you answer directly to [job.supervisors]. Special circumstances may change this.</b>"))
 
-	to_chat(H, "<b>To speak on your squad's radio channel use :h. For the use of other channels, examine your headset. For general use, use ;.</b>")
+	to_chat(H, SPAN_WHITE("<b>To speak on your squad's radio channel use :h. For the use of other channels, examine your headset. For general use, use ;.</b>"))
 
 	if(job.req_admin_notify)
 		to_chat(H, "<b>You are playing a job that is important for Game Progression. If you have to disconnect, please notify the admins via adminhelp.</b>")
@@ -474,8 +474,8 @@ SUBSYSTEM_DEF(jobs)
 		if(equipped)
 			var/obj/item/clothing/glasses/G = H.glasses
 			G.prescription = 7
-	if(job.possible_backstories.len && H.client.prefs.backstory)
-		pick_backstory(job.possible_backstories, H)
+	if(job.backstories.len && H.client.prefs.backstory)
+		pick_backstory(job, H)
 	if(SSwarfare.battle_time)
 		H.set_squad_huds()
 		H.set_team_huds()

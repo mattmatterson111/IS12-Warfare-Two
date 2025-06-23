@@ -292,6 +292,7 @@
 	body_parts_covered = FACE|EYES
 	helmet_vision = TRUE
 	worldicons = "penal1_onworld"
+	sprite_sheets = list(SPECIES_CHILD = 'icons/mob/species/child/mask.dmi')
 
 /obj/item/clothing/mask/gas/sniper/penal3
 	icon_state = "penal3"
@@ -300,6 +301,7 @@
 	body_parts_covered = FACE|EYES
 	helmet_vision = TRUE
 	worldicons = "penal3_onworld"
+	sprite_sheets = list(SPECIES_CHILD = 'icons/mob/species/child/mask.dmi')
 
 /obj/item/clothing/mask/gas/flamer
 	icon_state = "sniper"
@@ -710,6 +712,17 @@
 	helmet_vision = FALSE
 	canremove = FALSE
 
+/obj/item/clothing/mask/gas/prac_mask/broken
+	name = "broken mask"
+	icon_state = "prac_mask_broken"
+	item_state = "prac_mask_broken"
+
+/obj/item/clothing/head/that/prac
+	name = "beaked hat"
+	icon_state = "dapper_hat"
+	item_state = "dapper_hat"
+	worldicons = "dapper_hat_world"
+
 /obj/item/clothing/shoes/prac_boots
 	name = "practioner footwraps"
 	desc = "Squish."
@@ -908,7 +921,10 @@
 //RED STORAGE ITEMS
 
 /obj/item/storage/backpack/satchel/warfare/prac
-	icon_state = "satchel_firstaid"
+	icon_state = "firstaidsatchel"
+
+/obj/item/storage/backpack/satchel/warfare/prac/blue
+	icon_state = "firstaidsatchel_blue"
 
 /obj/item/storage/backpack/satchel/warfare/red
 	icon_state = "redsatchel"

@@ -3440,7 +3440,6 @@
 		..()
 		reagents.add_reagent(/datum/reagent/iron, 3)
 		bitesize = 4
-		worldicons = "[icon_state]_world"
 
 /obj/item/reagent_containers/food/snacks/warfare/attack_self(mob/user)
 	return
@@ -3448,6 +3447,24 @@
 /obj/item/reagent_containers/food/snacks/warfare/team/New()
 	. = ..()
 	worldicons = "[icon_state]_world"
+
+/obj/item/reagent_containers/food/snacks/warfare/team/On_Consume(var/mob/M)
+	if(!reagents.total_volume)
+		M.visible_message("<span class='notice'>[M] finishes eating \the [src].</span>","<span class='notice'>You finish eating \the [src].</span>")
+
+		M.drop_item()
+		if(trash)
+			if(ispath(trash,/obj/item))
+				var/obj/item/TrashItem = new trash(get_turf(M))
+				M.put_in_hands(TrashItem)
+				TrashItem.icon = icon
+				TrashItem.icon_state = "[initial(icon_state)]_empty"
+				TrashItem.worldicons = "[initial(icon_state)]_empty_world"
+			else if(istype(trash,/obj/item))
+				M.put_in_hands(trash)
+		qdel(src)
+	return
+
 
 /obj/item/reagent_containers/food/snacks/warfare/team/update_icon()
 	if(is_open_container())

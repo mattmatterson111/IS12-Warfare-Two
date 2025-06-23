@@ -1,7 +1,7 @@
 /datum/job/fortress/blue
 	title = "Blue Fortress Inhabitant"
 	is_blue_team = TRUE
-	selection_color = "#76abb2"
+	selection_color = "#60a0ca"
 
 	equip(var/mob/living/carbon/human/H)
 		..()
@@ -47,11 +47,17 @@
 	lmg_skill = 0
 	smg_skill = 0
 
+	backstories = list(/datum/backstory/beakless)
+
 	equip(var/mob/living/carbon/human/H)
 		..()
 		H.set_trait(new/datum/trait/death_tolerant())
 		H.add_stats(rand(8,12), rand(5,8), rand(5,7), rand(10,14))
 		H.say(";[H.real_name] reporting for duty!")
+		if(prob(5))
+			H.equip_to_slot_or_del(new /obj/item/clothing/head/that/prac(), slot_head)
+			to_chat(H, SPAN_YELLOW("You brought a nice hat from home."))
+
 
 /decl/hierarchy/outfit/job/medical/doctor/blue
 	uniform = /obj/item/clothing/under/prac_under

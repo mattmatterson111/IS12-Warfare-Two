@@ -19,6 +19,9 @@
 #define SPAN_YELLOW(X) "<span class='yel'>[X]</span>"
 #define SPAN_YELLOW_LARGE(X) "<span class='yelBig'>[X]</span>"
 
+#define SPAN_WHITE(X) "<span class='whi'>[X]</span>"
+#define SPAN_WHITE_LARGE(X) "<span class='whiBig'>[X]</span>"
+
 #define FONT_SMALL(X) "<font size='1'>[X]</font>"
 #define FONT_NORMAL(X) "<font size='2'>[X]</font>"
 #define FONT_LARGE(X) "<font size='3'>[X]</font>"

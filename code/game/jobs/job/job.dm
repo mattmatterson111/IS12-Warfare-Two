@@ -75,6 +75,15 @@ GLOBAL_LIST_EMPTY(family_blacklist)
 		total_positions = 0
 		spawn_positions = 0
 
+	// backstories
+	if(length(backstories))
+		var/list/initialized_stories = list()
+		for(var/thing in backstories)//Populate possible backstories list.
+			var/datum/backstory/A = new thing
+			initialized_stories += A
+		backstories.Cut()
+		backstories += initialized_stories
+
 /datum/job/dd_SortValue()
 	return title
 

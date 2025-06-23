@@ -1,32 +1,29 @@
 /datum/job/
-	var/list/possible_backstories = list()
+	var/list/backstories = list()
 
-/datum/controller/subsystem/jobs/proc/pick_backstory(var/list/backstories_list, var/mob/user)
+// I know this is bad, I know this shouldn't have to create all of the datums each time, but I can't be bothered to make it better right now.
+// edit: It doesn't create them each time, it's stored as a list, but it's still shit
+
+/datum/controller/subsystem/jobs/proc/pick_backstory(var/datum/job/job, var/mob/user)
 	if(!ishuman(user))
 		return
-	var/list/possible_backstories = list()
-	for(var/thing in backstories_list)//Populate possible backstories list.
-		var/datum/backstory/A = new thing
-		possible_backstories += A
-	if(!possible_backstories.len)//If there's nothing there afterwards return.
-		return
-	var/datum/backstory/backstory
-	for(var/datum/backstory/story in shuffle(possible_backstories)) // end me
-		if(prob(15))
-			break // A chance you won't get one at all.
+	var/datum/backstory/backstory = null
+	for(var/datum/backstory/story in shuffle(job.backstories)) // end me
 		if(prob(story.chance))
 			backstory = story
 			break
 		else
 			continue
-	if(!backstory)
+	if(!backstory) // you get nothing
 		return
 	backstory.apply(user)
+	user.backstory = backstory
 
 /datum/backstory/
 	var/name = "BASE NAME"
 	var/description = "BASE BACKSTORY"
 	var/chance = 100
+	var/apply_sound = 'sound/effects/backstory.ogg'
 
 /datum/backstory/proc/apply(var/mob/living/carbon/human/user)
 	if(!user)
@@ -39,3 +36,5 @@
 	user.mind.store_memory(description)
 	user.show_message(SPAN_YELLOW_LARGE(FONT_LARGE("\n|--[name]--|")))
 	user.show_message(SPAN_YELLOW(FONT_SMALL("[description]\n")))
+	if(apply_sound)
+		sound_to(user, apply_sound)

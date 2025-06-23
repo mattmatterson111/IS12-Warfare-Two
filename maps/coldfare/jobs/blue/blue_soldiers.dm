@@ -2,7 +2,7 @@
 	title = "Blue Soldier"
 	outfit_type = /decl/hierarchy/outfit/job/bluesoldier/soldier
 	is_blue_team = TRUE
-	selection_color = "#76abb2"
+	selection_color = "#60a0ca"
 	supervisors = "the president, the chain of command, and the drums of war"
 	auto_rifle_skill = 10
 	semi_rifle_skill = 7
@@ -178,6 +178,8 @@
 	open_when_dead = TRUE
 
 	announced = FALSE
+
+	backstories = list(/datum/backstory/nepotismcaptain)
 
 	equip(var/mob/living/carbon/human/H)
 		var/current_name = H.real_name

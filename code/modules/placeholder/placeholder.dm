@@ -412,7 +412,7 @@
 		list("name" = "Mortar Pack", "price" = 800, "category" = "Weaponry", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/item/mortar_launcher = 2, /obj/item/mortar_shell = 6)),
 
 		// medical and supply stuff
-		list("name" = "Gas Mask Pack", "price" = 50, "category" = "Miscellaneous", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/item/clothing/mask/gas = 10)),
+		list("name" = "Gas Mask Pack", "price" = 50, "category" = "Miscellaneous", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/item/clothing/mask/gas/sniper/penal1 = 10)),
 		list("name" = "Barbwire Pack", "price" = 50, "category" = "Miscellaneous", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/item/stack/barbwire = 5)),
 		list("name" = "Canned Food Pack", "price" = 20, "category" = "Miscellaneous", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/random/canned_food = 10)),
 		list("name" = "Bodybag Pack", "price" = 5, "category" = "Miscellaneous", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/item/storage/box/bodybags = 3)),
@@ -470,7 +470,7 @@
 		list("name" = "Mortar Pack", "price" = 600, "category" = "Weaponry", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/item/mortar_launcher = 2, /obj/item/mortar_shell = 6)),
 
 		// medical and supply stuff
-		list("name" = "Gas Mask Pack", "price" = 50, "category" = "Miscellaneous", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/item/clothing/mask/gas = 10)),
+		list("name" = "Gas Mask Pack", "price" = 50, "category" = "Miscellaneous", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/item/clothing/mask/gas/sniper/penal3 = 10)),
 		list("name" = "Barbwire Pack", "price" = 50, "category" = "Miscellaneous", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/item/stack/barbwire = 5)),
 		list("name" = "Canned Food Pack", "price" = 20, "category" = "Miscellaneous", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/random/canned_food = 10)),
 		list("name" = "Bodybag Pack", "price" = 5, "category" = "Miscellaneous", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/item/storage/box/bodybags = 3)),

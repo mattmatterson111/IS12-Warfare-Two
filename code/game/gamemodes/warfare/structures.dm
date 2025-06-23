@@ -6,7 +6,8 @@
 	throwpass = TRUE//we can throw grenades despite its density
 	anchored = TRUE
 	density = FALSE
-	color = "#bfc0cf"// I Cba to resprite these rn so its just a recolor to make them blend in more. - Kas
+	//color = "#bfc0cf"// I Cba to resprite these rn so its just a recolor to make them blend in more. - Kas
+	/// They have since then been resprited ^^
 	//plane = PLATING_PLANE
 	//layer = BASE_ABOVE_OBJ_LAYER
 	//  Crates kept getting hidden under these. // Edit: cannot do that. It fucks up the turf smoothing overlays.
@@ -930,63 +931,52 @@
 	if(CanPhysicallyInteract(user))
 		busy = TRUE
 		if(do_after(user, 20))
-			if(istype(SSjobs.GetJobByTitle(user.job), /datum/job/fortress/red/practitioner) || istype(SSjobs.GetJobByTitle(user.job), /datum/job/fortress/blue/practitioner))
-				user.visible_message("[user] knocks on the door..", "You knock on the door..")
-				playsound(get_turf(user), 'sound/effects/hatchknock.ogg',75,0.5)
-				sleep(3)
-				playsound(get_turf(user), 'sound/effects/hatchknock.ogg',75,0.5)
-				if(inside)
-					var/total_teeth = 0
-					for(var/obj/item/organ/O in inside.organs)
-						if(O.status & ORGAN_CUT_AWAY)
+			user.visible_message("[user] knocks on the door..", "You knock on the door..")
+			playsound(get_turf(user), 'sound/effects/hatchknock.ogg',75,0.5)
+			sleep(3)
+			playsound(get_turf(user), 'sound/effects/hatchknock.ogg',75,0.5)
+			if(inside)
+				var/total_teeth = 0
+				for(var/obj/item/organ/O in inside.organs)
+					if(O.status & ORGAN_CUT_AWAY)
+						continue
+					else
+						if(istype(O, /obj/item/organ/external))
+							if(istype(O, /obj/item/organ/external/head/))
+								var/obj/item/organ/external/head/H = O
+								total_teeth += H.get_teeth()
+							total_teeth += 1
 							continue
 						else
-							if(istype(O, /obj/item/organ/external))
-								if(istype(O, /obj/item/organ/external/head/))
-									var/obj/item/organ/external/head/H = O
-									total_teeth += H.get_teeth()
-								total_teeth += 1
-								continue
-							else
-								total_teeth += 2
-								continue
-					other_stuff_inside = new/obj/item/stack/teeth/human()
-					other_stuff_inside.amount = total_teeth
-					other_stuff_inside.update_icon()
-					if(inside.stat == DEAD)
-						sleep(rand(20,40))
-						playsound(get_turf(src), 'sound/effects/hatchknock.ogg',35,0.25, override_env = SEWER_PIPE)
-						sleep(6)
-						playsound(get_turf(src), 'sound/effects/hatchknock.ogg',35,0.25, override_env = SEWER_PIPE)
-						qdel(inside)
-						inside = null
-						busy = FALSE
-					else
-						sleep(rand(15,30))
-						playsound(get_turf(src), 'sound/effects/hatched.ogg', 90, 0, override_env = SEWER_PIPE)
-						sleep(110)
-						inside.death()
-						inside.ghostize(FALSE)
-						qdel(inside)
-						inside = null
-						goredinside = TRUE
-						playsound(get_turf(src), 'sound/effects/hatchknock.ogg',35,0.25, override_env = SEWER_PIPE)
-						sleep(6)
-						playsound(get_turf(src), 'sound/effects/hatchknock.ogg',35,0.25, override_env = SEWER_PIPE)
-						busy = FALSE
-				else
+							total_teeth += 2
+							continue
+				other_stuff_inside = new/obj/item/stack/teeth/human()
+				other_stuff_inside.amount = total_teeth
+				other_stuff_inside.update_icon()
+				if(inside.stat == DEAD)
+					sleep(rand(20,40))
+					playsound(get_turf(src), 'sound/effects/hatchknock.ogg',35,0.25, override_env = SEWER_PIPE)
+					sleep(6)
+					playsound(get_turf(src), 'sound/effects/hatchknock.ogg',35,0.25, override_env = SEWER_PIPE)
+					qdel(inside)
+					inside = null
 					busy = FALSE
-					return
+				else
+					sleep(rand(15,30))
+					playsound(get_turf(src), 'sound/effects/hatched.ogg', 90, 0, override_env = SEWER_PIPE)
+					sleep(110)
+					inside.death()
+					inside.ghostize(FALSE)
+					qdel(inside)
+					inside = null
+					goredinside = TRUE
+					playsound(get_turf(src), 'sound/effects/hatchknock.ogg',35,0.25, override_env = SEWER_PIPE)
+					sleep(6)
+					playsound(get_turf(src), 'sound/effects/hatchknock.ogg',35,0.25, override_env = SEWER_PIPE)
+					busy = FALSE
 			else
 				busy = FALSE
-				user.visible_message("[user] knocks on the door..", "You knock on the door..")
-				playsound(get_turf(user), 'sound/effects/hatchknock.ogg',75,0.5)
-				sleep(3)
-				playsound(get_turf(user), 'sound/effects/hatchknock.ogg',75,0.5)
-				sleep(3)
-				playsound(get_turf(user), 'sound/effects/hatchknock.ogg',75,0.5)
-				sleep(30)
-				busy = FALSE
+				return
 		else
 			busy = FALSE
 

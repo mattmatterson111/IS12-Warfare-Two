@@ -60,7 +60,6 @@
 	var/can_input = TRUE
 	var/active = FALSE
 	var/obj/structure/key_relay/plastique/relay = null
-	var/primed_state = "plastic-explosive2"
 	var/defused_state = "plastic-explosive0"
 
 /obj/item/plastique/keypad/red
@@ -263,3 +262,15 @@
 
 /obj/item/plastique/attack(mob/M as mob, mob/user as mob, def_zone)
 	return
+
+/obj/item/plastique/red
+	icon_state = "red4"
+	item_state = "red4"
+	worldicons = "red4_world"
+	primed_state = "red4_primed"
+
+/obj/item/plastique/blue
+	icon_state = "blue4"
+	item_state = "blue4"
+	worldicons = "blue4_world"
+	primed_state = "blue4_primed"

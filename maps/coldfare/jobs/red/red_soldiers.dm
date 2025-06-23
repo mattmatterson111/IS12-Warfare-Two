@@ -2,7 +2,7 @@
 	title = "Red Soldier"
 	outfit_type = /decl/hierarchy/outfit/job/redsoldier/soldier
 	is_red_team = TRUE
-	selection_color = "#b27676"
+	selection_color = "#ca6060"
 	supervisors = "GREAT LEADER, the chain of command, and the drums of war"
 	auto_rifle_skill = 10
 	semi_rifle_skill = 7
@@ -177,7 +177,7 @@
 	sniper_skill = 10
 	open_when_dead = TRUE
 
-	possible_backstories = list(/datum/backstory/nepotismcaptain)
+	backstories = list(/datum/backstory/nepotismcaptain)
 
 	announced = FALSE
 

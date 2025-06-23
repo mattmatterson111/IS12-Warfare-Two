@@ -13,10 +13,11 @@
 	var/atom/target = null
 	var/open_panel = 0
 	var/image_overlay = null
+	var/primed_state = "plastic-explosive2"
 
 /obj/item/plastique/New()
 	wires = new(src)
-	image_overlay = image('icons/obj/assemblies.dmi', "plastic-explosive2")
+	image_overlay = image('icons/obj/assemblies.dmi', primed_state ? primed_state : "plastic-explosive2")
 	..()
 
 /obj/item/plastique/Destroy()

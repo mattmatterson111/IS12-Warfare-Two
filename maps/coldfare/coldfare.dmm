@@ -1746,6 +1746,8 @@
 /obj/item/clothing/suit/surgeon_apron,
 /obj/item/clothing/suit/surgeon_apron,
 /obj/item/clothing/suit/surgeon_apron,
+/obj/item/storage/backpack/satchel/warfare/prac/blue,
+/obj/item/storage/backpack/satchel/warfare/prac/blue,
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/blue/div)
 "eF" = (
@@ -2140,9 +2142,9 @@
 /obj/item/crowbar,
 /obj/item/crowbar,
 /obj/item/crowbar,
-/obj/item/plastique/keypad/blue,
-/obj/item/plastique/keypad/blue,
-/obj/item/plastique/keypad/blue,
+/obj/item/plastique/blue,
+/obj/item/plastique/blue,
+/obj/item/plastique/blue,
 /obj/effect/lighting_dummy/daylight,
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/blue)
@@ -2294,9 +2296,9 @@
 /obj/item/crowbar,
 /obj/item/crowbar,
 /obj/item/crowbar,
-/obj/item/plastique/keypad/red,
-/obj/item/plastique/keypad/red,
-/obj/item/plastique/keypad/red,
+/obj/item/plastique/red,
+/obj/item/plastique/red,
+/obj/item/plastique/red,
 /obj/effect/lighting_dummy/daylight,
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/red)
@@ -3598,6 +3600,8 @@
 /obj/item/clothing/suit/surgeon_apron,
 /obj/item/clothing/suit/surgeon_apron,
 /obj/item/clothing/suit/surgeon_apron,
+/obj/item/storage/backpack/satchel/warfare/prac/blue,
+/obj/item/storage/backpack/satchel/warfare/prac/blue,
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/blue/div)
 "pX" = (
