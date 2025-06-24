@@ -390,7 +390,10 @@
 /decl/hierarchy/outfit/job/redsoldier/flamer
 	l_ear = /obj/item/device/radio/headset/red_team/all
 	suit = /obj/item/clothing/suit/fire/red
-	head = /obj/item/clothing/head/helmet/redhelmet/fire
+	mask = /obj/item/clothing/mask/gas/red/flamer
+	gloves = /obj/item/clothing/gloves/thick/swat/combat/warfare/red/flamer
+	head = null
+	shoes = /obj/item/clothing/shoes/jackboots/warfare/red/flamer
 	belt = /obj/item/gun/projectile/automatic/flamer
 	suit_store = /obj/item/melee/trench_axe
 	r_pocket = /obj/item/grenade/fire

@@ -1372,7 +1372,13 @@
 	remove_coldbreath()
 	breathe_tick++
 	var/mask_sound
-	if(istype(wear_mask, /obj/item/clothing/mask/gas/red))
+	if(istype(wear_mask, /obj/item/clothing/mask/gas/blue/flamer) || istype(wear_mask, /obj/item/clothing/mask/gas/red/flamer))
+		if(breathe_tick>=rand(3,5))
+			breathe_tick = 0
+			mask_sound = pick('sound/effects/gasmasks/flamer1.ogg','sound/effects/gasmasks/flamer2.ogg')
+			playsound(src, mask_sound, 45, FALSE)
+			return
+	else if(istype(wear_mask, /obj/item/clothing/mask/gas/red))
 		if(breathe_tick>=rand(3,5))
 			breathe_tick = 0
 			mask_sound = pick('sound/effects/gasmasks/red1.ogg','sound/effects/gasmasks/red2.ogg','sound/effects/gasmasks/red3.ogg','sound/effects/gasmasks/red4.ogg','sound/effects/gasmasks/red5.ogg','sound/effects/gasmasks/red6.ogg','sound/effects/gasmasks/red7.ogg','sound/effects/gasmasks/red8.ogg','sound/effects/gasmasks/red9.ogg','sound/effects/gasmasks/red10.ogg','sound/effects/gasmasks/red11.ogg')
@@ -1398,12 +1404,6 @@
 		if(breathe_tick>=rand(4,6))
 			breathe_tick = 0
 			mask_sound = pick('sound/effects/gasmasks/sniper1.ogg','sound/effects/gasmasks/sniper2.ogg')
-			playsound(src, mask_sound, 35, FALSE)
-			return
-	else if(istype(wear_mask, /obj/item/clothing/mask/gas/flamer))
-		if(breathe_tick>=rand(3,5))
-			breathe_tick = 0
-			mask_sound = pick('sound/effects/gasmasks/flamer1.ogg','sound/effects/gasmasks/flamer2.ogg')
 			playsound(src, mask_sound, 35, FALSE)
 			return
 	else if(istype(wear_mask, /obj/item/clothing/mask/gas))

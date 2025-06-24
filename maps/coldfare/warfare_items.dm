@@ -50,25 +50,6 @@
 	icon_state = "bluecoatnew_child"
 	warfare_team = BLUE_TEAM
 
-
-/obj/item/clothing/suit/fire/red
-	name = "Redcoats Firesuit"
-	icon_state = "redfiresuit"
-	warfare_team = RED_TEAM
-	cold_protection = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS
-	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
-	flags_inv = null
-
-/obj/item/clothing/suit/fire/blue
-	name = "Bluecoats Firesuit"
-	icon_state = "bluefiresuit"
-	warfare_team = BLUE_TEAM
-	cold_protection = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS
-	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
-	flags_inv = null
-
 /obj/item/clothing/suit/armor/sniper
 	name = "black cloak"
 	desc = "Boom! Headshot!"
@@ -302,14 +283,6 @@
 	helmet_vision = TRUE
 	worldicons = "penal3_onworld"
 	sprite_sheets = list(SPECIES_CHILD = 'icons/mob/species/child/mask.dmi')
-
-/obj/item/clothing/mask/gas/flamer
-	icon_state = "sniper"
-	item_state = "sniper"
-	flags_inv = HIDEEARS|HIDEEYES|HIDEFACE|BLOCKHAIR
-	body_parts_covered = FACE|EYES
-	helmet_vision = TRUE
-	worldicons = "sniperworld"
 
 /obj/item/clothing/mask/gas/blue
 	icon_state = "bluemask"
@@ -1329,3 +1302,78 @@ obj/item/storage/backpack/satchel/warfare/chestrig/blue/oldlmg
 		sound_to(user, sound('sound/effects/skill/interface-skill-passiveINT-04-01.ogg', volume = 100))
 		to_chat(user, span_mindvoice("A wave of satisfaction washes over you- You feel proud of what you've accomplished."))
 */
+
+// flamer
+
+/obj/item/clothing/mask/gas/red/flamer
+	icon_state = "flamer_red"
+	item_state = "flamer_red"
+	flags_inv = HIDEEARS|HIDEEYES|HIDEFACE|BLOCKHAIR
+	body_parts_covered = FACE|EYES
+	cold_protection = HEAD
+	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
+	helmet_vision = TRUE
+	worldicons = "sniperworld"
+
+/obj/item/clothing/mask/gas/blue/flamer
+	icon_state = "flamer_blue"
+	item_state = "flamer_blue"
+	flags_inv = HIDEEARS|HIDEEYES|HIDEFACE|BLOCKHAIR
+	body_parts_covered = FACE|EYES
+	cold_protection = HEAD
+	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
+	helmet_vision = TRUE
+	worldicons = "sniperworld"
+
+/obj/item/clothing/shoes/jackboots/warfare/red/flamer
+	item_state = "flamer_red"
+
+/obj/item/clothing/shoes/jackboots/warfare/blue/flamer
+	item_state = "flamer_blue"
+
+
+/obj/item/clothing/gloves/thick/swat/combat/warfare/red/flamer
+	icon_state = "flamer_red"
+	item_state = "flamer_red"
+
+/obj/item/clothing/gloves/thick/swat/combat/warfare/blue/flamer
+	icon_state = "flamer_blue"
+	item_state = "flamer_blue"
+
+/obj/item/clothing/suit/fire
+	var/last_sound = null
+	var/list/footstep_sounds = list('sound/effects/footsteps/armor/flamer/foot1.ogg','sound/effects/footsteps/armor/flamer/foot2.ogg','sound/effects/footsteps/armor/flamer/foot3.ogg')
+// hacky bs but its my bs <3
+
+/obj/item/clothing/suit/fire/red
+	name = "Redcoats Firesuit"
+	icon_state = "flamer_red"
+	warfare_team = RED_TEAM
+	cold_protection = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS
+	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
+	flags_inv = null
+
+/obj/item/clothing/suit/fire/blue
+	name = "Bluecoats Firesuit"
+	icon_state = "flamer_blue"
+	warfare_team = BLUE_TEAM
+	cold_protection = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS
+	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
+	flags_inv = null
+
+/obj/item/clothing/suit/fire/handle_movement(var/turf/walking, var/running)
+	last_sound = pick(footstep_sounds - last_sound)
+	playsound(get_turf(src), last_sound, 25, FALSE) // this will get annoying very fast.
+	/*
+	if(footstep >= 1)
+		footstep = 0
+		playsound(get_turf(src), "flamer_step", 35, 0) // this will get annoying very fast.
+	else
+		footstep++
+		*/
+
+/obj/item/clothing/suit/fire/New()
+	..()
+	slowdown_per_slot[slot_wear_suit] = 2
