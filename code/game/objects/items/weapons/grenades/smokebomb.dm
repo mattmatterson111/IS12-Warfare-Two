@@ -11,7 +11,7 @@
 
 /obj/item/grenade/smokebomb/New()
 	..()
-	src.smoke = new /datum/effect/effect/system/smoke_spread()
+	src.smoke = new /datum/effect/effect/system/smoke_spread(set_particles = TRUE)
 	src.smoke.attach(src)
 
 /obj/item/grenade/smokebomb/Destroy()
