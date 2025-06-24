@@ -854,6 +854,10 @@
 /obj/structure/cargo_pad/red,
 /turf/simulated/floor/fixed,
 /area/warfare/homebase/red)
+"cr" = (
+/obj/structure/closet/secure_closet/warfare,
+/turf/simulated/floor/concrete/random,
+/area/warfare/homebase/blue)
 "cs" = (
 /turf/simulated/wall/perspecticrete,
 /area/warfare/battlefield/trench_section/underground)
@@ -2914,34 +2918,6 @@
 	},
 /turf/simulated/floor/concrete/random,
 /area/warfare/battlefield/capture_point/red/two)
-"jL" = (
-/obj/effect/decal/cleanable/cobweb2{
-	dir = 8
-	},
-/obj/item/ammo_casing/grenade/frag{
-	pixel_x = -6;
-	pixel_y = 1;
-	layer = 27
-	},
-/obj/item/ammo_casing/grenade/frag{
-	pixel_x = 6;
-	pixel_y = 4;
-	layer = 27
-	},
-/obj/item/ammo_casing/grenade/frag{
-	pixel_x = 2;
-	pixel_y = -4
-	},
-/obj/item/ammo_casing/grenade/frag{
-	pixel_x = 13;
-	pixel_y = -6
-	},
-/obj/item/ammo_casing/grenade/frag{
-	pixel_x = -11;
-	pixel_y = -5
-	},
-/turf/simulated/floor/concrete/random,
-/area/warfare/homebase/blue)
 "jT" = (
 /obj/structure/closet/crate,
 /obj/random/canned_food/blue,
@@ -2975,18 +2951,6 @@
 	},
 /turf/simulated/mineral,
 /area/space)
-"kx" = (
-/obj/structure/cargo_pad,
-/obj/structure/window/reinforced{
-	dir = 8;
-	icon_state = "rwindow"
-	},
-/obj/machinery/light/small/bunker{
-	pixel_x = 0;
-	pixel_y = 32
-	},
-/turf/simulated/floor/fixed,
-/area/warfare/homebase/blue)
 "kz" = (
 /obj/machinery/light/caged{
 	pixel_y = 30;
@@ -3013,6 +2977,29 @@
 	},
 /turf/simulated/floor/wood,
 /area/warfare/battlefield/capture_point/red/two)
+"kY" = (
+/obj/hammereditor/nodraw/deco/shutter_quarter{
+	dir = 4;
+	icon = 'icons/effects/blood.dmi';
+	icon_state = "tracks";
+	color = "#aaaaaa";
+	pixel_y = 14;
+	pixel_x = 15;
+	plane = -20;
+	layer = 38
+	},
+/obj/hammereditor/nodraw/deco/shutter_quarter{
+	dir = 4;
+	icon = 'icons/effects/blood.dmi';
+	icon_state = "gibbl5";
+	color = "#aaaaaa";
+	pixel_y = 5;
+	pixel_x = 17;
+	plane = -20;
+	layer = 38
+	},
+/turf/simulated/floor/concrete/random,
+/area/warfare/homebase/blue)
 "kZ" = (
 /obj/machinery/door/airlock/multi_tile/metal/maintenance/blue,
 /turf/simulated/floor/wood,
@@ -3187,6 +3174,14 @@
 /obj/structure/bed/chair/red,
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/red)
+"mi" = (
+/obj/structure/cargo_pad,
+/obj/structure/window/reinforced{
+	dir = 8;
+	icon_state = "rwindow"
+	},
+/turf/simulated/floor/fixed,
+/area/warfare/homebase/blue)
 "ml" = (
 /obj/structure/table/woodentable,
 /obj/machinery/light/caged{
@@ -3393,16 +3388,6 @@
 	},
 /turf/simulated/mineral,
 /area/space)
-"nC" = (
-/obj/machinery/kaos/cargo_machine/blue,
-/obj/effect/decal/cleanable/cobweb,
-/obj/effect/decal/cleanable/cobweb2{
-	dir = 8;
-	pixel_y = 8;
-	pixel_x = -6
-	},
-/turf/simulated/floor/concrete/random,
-/area/warfare/homebase/blue)
 "nD" = (
 /obj/structure/closet/crate,
 /obj/item/ammo_magazine/mc9mmt/machinepistol,
@@ -3877,29 +3862,6 @@
 	},
 /turf/simulated/floor/concrete/random,
 /area/space)
-"qz" = (
-/obj/hammereditor/nodraw/deco/shutter_quarter{
-	dir = 4;
-	icon = 'icons/effects/blood.dmi';
-	icon_state = "tracks";
-	color = "#aaaaaa";
-	pixel_y = 14;
-	pixel_x = 15;
-	plane = -20;
-	layer = 38
-	},
-/obj/hammereditor/nodraw/deco/shutter_quarter{
-	dir = 4;
-	icon = 'icons/effects/blood.dmi';
-	icon_state = "gibbl5";
-	color = "#aaaaaa";
-	pixel_y = 5;
-	pixel_x = 17;
-	plane = -20;
-	layer = 38
-	},
-/turf/simulated/floor/concrete/random,
-/area/warfare/homebase/blue)
 "qF" = (
 /obj/machinery/vending/soldier,
 /turf/simulated/floor/tiled,
@@ -4106,12 +4068,6 @@
 	},
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/blue/div)
-"sg" = (
-/obj/hammereditor/nodraw/deco/shutter_quarter{
-	dir = 4
-	},
-/turf/simulated/floor/concrete/random,
-/area/warfare/homebase/blue)
 "sn" = (
 /obj/structure/table/rack/nosmooth/wood/alt,
 /turf/simulated/floor/concrete/random,
@@ -4157,12 +4113,6 @@
 	},
 /turf/simulated/mineral,
 /area/space)
-"sY" = (
-/obj/effect/decal/cleanable/cobweb2{
-	dir = 8
-	},
-/turf/simulated/floor/concrete/random,
-/area/warfare/homebase/blue)
 "sZ" = (
 /obj/structure/toilet{
 	dir = 8;
@@ -4585,10 +4535,6 @@
 /obj/item/storage/backpack/satchel/warfare/prac,
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/red/div)
-"wb" = (
-/obj/structure/closet/secure_closet/warfare,
-/turf/simulated/floor/concrete/random,
-/area/warfare/homebase/blue)
 "wc" = (
 /obj/effect/floor_decal/trench{
 	dir = 6
@@ -4733,6 +4679,13 @@
 	},
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/red)
+"xM" = (
+/obj/structure/reagent_dispensers/watertank{
+	pixel_x = 3;
+	pixel_y = 0
+	},
+/turf/simulated/floor/concrete/random,
+/area/warfare/homebase/blue)
 "xO" = (
 /obj/structure/table/rack/nosmooth/capleft{
 	dir = 10
@@ -4818,6 +4771,12 @@
 /obj/machinery/vending/cigarette,
 /turf/unsimulated/floor/hammereditor/dev12,
 /area/warfare/battlefield/trench_section/underground)
+"yF" = (
+/obj/hammereditor/nodraw/deco/shutter_quarter{
+	dir = 4
+	},
+/turf/simulated/floor/concrete/random,
+/area/warfare/homebase/blue)
 "yG" = (
 /obj/machinery/light/caged{
 	dir = 8;
@@ -4849,6 +4808,12 @@
 	},
 /turf/simulated/floor/dirty/indestructable,
 /area/warfare/homebase/red)
+"yS" = (
+/obj/machinery/door/blast/shutters{
+	dir = 8
+	},
+/turf/simulated/wall/perspecticrete,
+/area/space)
 "yT" = (
 /obj/structure/trench_wall{
 	dir = 8
@@ -4891,6 +4856,15 @@
 	},
 /turf/simulated/mineral,
 /area/warfare/battlefield/capture_point/blue/two)
+"zz" = (
+/obj/structure/table/rack/holorack,
+/obj/item/gun/projectile/automatic/autoshotty{
+	pixel_x = 1;
+	pixel_y = 9;
+	starts_loaded = 0
+	},
+/turf/simulated/floor/concrete/random,
+/area/warfare/homebase/blue)
 "zA" = (
 /obj/structure/trench_wall/innercorners{
 	dir = 1
@@ -5186,6 +5160,13 @@
 	},
 /turf/simulated/floor/concrete/random,
 /area/warfare/battlefield/capture_point/blue/one)
+"BT" = (
+/obj/structure/reagent_dispensers/watertank{
+	pixel_x = 1;
+	pixel_y = 3
+	},
+/turf/simulated/floor/concrete/random,
+/area/warfare/homebase/blue)
 "BZ" = (
 /obj/structure/trench_wall{
 	dir = 8;
@@ -5643,14 +5624,6 @@
 "Fr" = (
 /turf/simulated/wall/perspecticrete,
 /area/warfare/homebase/red/div)
-"FD" = (
-/obj/item/device/flashlight{
-	on = 1;
-	pixel_x = 5;
-	pixel_y = 2
-	},
-/turf/simulated/floor/concrete/random,
-/area/warfare/homebase/blue)
 "FE" = (
 /obj/effect/floor_decal/trench{
 	dir = 6
@@ -5684,13 +5657,6 @@
 /obj/machinery/door/airlock/multi_tile/metal/maintenance/blue,
 /turf/simulated/floor/concrete/random,
 /area/warfare/battlefield/capture_point/blue/one)
-"FY" = (
-/obj/random/canned_food/blue{
-	pixel_x = -7;
-	pixel_y = 11
-	},
-/turf/simulated/floor/concrete/random,
-/area/warfare/homebase/blue)
 "FZ" = (
 /obj/structure/trench_wall/innercorners{
 	dir = 4;
@@ -5756,6 +5722,15 @@
 	},
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/red)
+"GR" = (
+/obj/machinery/light/caged{
+	dir = 4;
+	pixel_x = -19;
+	pixel_y = 0
+	},
+/obj/effect/decal/cleanable/cobweb,
+/turf/simulated/floor/concrete/random,
+/area/warfare/homebase/blue)
 "GW" = (
 /obj/structure/table/rack/nosmooth/capleft{
 	dir = 1
@@ -6042,6 +6017,12 @@
 	},
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/red)
+"JR" = (
+/obj/effect/decal/cleanable/cobweb2{
+	dir = 8
+	},
+/turf/simulated/floor/concrete/random,
+/area/warfare/homebase/blue)
 "JU" = (
 /obj/machinery/optable{
 	dir = 1
@@ -6071,6 +6052,15 @@
 	color = "#ffffff"
 	},
 /area/warfare/battlefield/capture_point/red/one)
+"Kh" = (
+/obj/structure/cargo_pad,
+/obj/structure/window/reinforced{
+	dir = 8;
+	icon_state = "rwindow"
+	},
+/obj/structure/window/reinforced,
+/turf/simulated/floor/fixed,
+/area/warfare/homebase/blue)
 "Km" = (
 /obj/hammereditor/nodraw,
 /turf/simulated/wall/perspecticrete,
@@ -6235,15 +6225,6 @@
 	},
 /turf/simulated/mineral,
 /area/space)
-"LM" = (
-/obj/structure/cargo_pad,
-/obj/structure/window/reinforced{
-	dir = 8;
-	icon_state = "rwindow"
-	},
-/obj/structure/window/reinforced,
-/turf/simulated/floor/fixed,
-/area/warfare/homebase/blue)
 "LT" = (
 /obj/effect/floor_decal/trench{
 	dir = 4
@@ -6299,13 +6280,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/warfare/battlefield/capture_point/red/two)
-"MF" = (
-/obj/structure/reagent_dispensers/watertank{
-	pixel_x = 3;
-	pixel_y = 0
-	},
-/turf/simulated/floor/concrete/random,
-/area/warfare/homebase/blue)
 "MG" = (
 /obj/structure/closet/crate,
 /obj/random/canned_food/blue,
@@ -6666,6 +6640,16 @@
 	},
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/blue)
+"Qk" = (
+/obj/machinery/kaos/cargo_machine/blue,
+/obj/effect/decal/cleanable/cobweb,
+/obj/effect/decal/cleanable/cobweb2{
+	dir = 8;
+	pixel_y = 8;
+	pixel_x = -6
+	},
+/turf/simulated/floor/concrete/random,
+/area/warfare/homebase/blue)
 "Ql" = (
 /obj/item/flame/candle,
 /obj/item/storage/box/matches,
@@ -6832,18 +6816,6 @@
 /obj/structure/table/rack/shelf/red,
 /turf/simulated/floor/wood,
 /area/warfare/battlefield/trench_section/underground)
-"RB" = (
-/obj/structure/table/rack/holorack,
-/obj/item/gun/projectile/automatic/autoshotty{
-	pixel_x = 1;
-	pixel_y = 9;
-	starts_loaded = 0
-	},
-/obj/machinery/light/small/bunker{
-	dir = 1
-	},
-/turf/simulated/floor/concrete/random,
-/area/warfare/homebase/blue)
 "RC" = (
 /obj/machinery/door/airlock/multi_tile/metal/maintenance/red,
 /turf/simulated/floor/concrete/random,
@@ -6856,12 +6828,6 @@
 	},
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/red/div)
-"Sb" = (
-/obj/machinery/door/blast/shutters{
-	dir = 8
-	},
-/turf/simulated/wall/perspecticrete,
-/area/space)
 "Sf" = (
 /obj/machinery/light/small/bunker{
 	dir = 1
@@ -7235,6 +7201,13 @@
 	color = "#ffffff"
 	},
 /area/warfare/battlefield/capture_point/red/two)
+"UV" = (
+/obj/random/canned_food/blue{
+	pixel_x = -7;
+	pixel_y = 11
+	},
+/turf/simulated/floor/concrete/random,
+/area/warfare/homebase/blue)
 "UX" = (
 /obj/item/trash/warfare_can/sardine,
 /turf/unsimulated/floor/hammereditor/dev2,
@@ -7372,15 +7345,6 @@
 	color = "#ffffff"
 	},
 /area/warfare/battlefield/capture_point/red/two)
-"WH" = (
-/obj/machinery/light/caged{
-	dir = 4;
-	pixel_x = -19;
-	pixel_y = 0
-	},
-/obj/effect/decal/cleanable/cobweb,
-/turf/simulated/floor/concrete/random,
-/area/warfare/homebase/blue)
 "WK" = (
 /obj/structure/trench_wall,
 /turf/simulated/mineral,
@@ -7484,13 +7448,6 @@
 	},
 /turf/simulated/floor/dirty/indestructable,
 /area/warfare/battlefield/trench_section)
-"Xk" = (
-/obj/structure/reagent_dispensers/watertank{
-	pixel_x = 1;
-	pixel_y = 3
-	},
-/turf/simulated/floor/concrete/random,
-/area/warfare/homebase/blue)
 "Xn" = (
 /obj/machinery/light/small/bunker{
 	dir = 8
@@ -7667,6 +7624,14 @@
 /obj/item/ammo_magazine/a762/sks,
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/red)
+"Zb" = (
+/obj/item/device/flashlight{
+	on = 1;
+	pixel_x = 5;
+	pixel_y = 2
+	},
+/turf/simulated/floor/concrete/random,
+/area/warfare/homebase/blue)
 "Zc" = (
 /turf/simulated/mineral,
 /area/warfare/battlefield)
@@ -7709,6 +7674,34 @@
 /obj/structure/trench_wall/innercorners,
 /turf/simulated/mineral,
 /area/warfare/battlefield/capture_point/red/one)
+"ZB" = (
+/obj/effect/decal/cleanable/cobweb2{
+	dir = 8
+	},
+/obj/item/ammo_casing/grenade/frag{
+	pixel_x = -6;
+	pixel_y = 1;
+	layer = 27
+	},
+/obj/item/ammo_casing/grenade/frag{
+	pixel_x = 6;
+	pixel_y = 4;
+	layer = 27
+	},
+/obj/item/ammo_casing/grenade/frag{
+	pixel_x = 2;
+	pixel_y = -4
+	},
+/obj/item/ammo_casing/grenade/frag{
+	pixel_x = 13;
+	pixel_y = -6
+	},
+/obj/item/ammo_casing/grenade/frag{
+	pixel_x = -11;
+	pixel_y = -5
+	},
+/turf/simulated/floor/concrete/random,
+/area/warfare/homebase/blue)
 "ZI" = (
 /obj/machinery/light/small/bunker{
 	dir = 4
@@ -21132,12 +21125,12 @@ av
 la
 OQ
 ag
-WH
+GR
 la
 ag
-MF
+xM
 br
-Xk
+BT
 ag
 aq
 aq
@@ -21382,7 +21375,7 @@ aq
 ag
 av
 zI
-FY
+UV
 ua
 av
 av
@@ -22140,7 +22133,7 @@ av
 av
 av
 rC
-FD
+Zb
 av
 rC
 av
@@ -22393,7 +22386,7 @@ aq
 aq
 gg
 av
-sY
+JR
 gg
 aq
 aq
@@ -31718,8 +31711,8 @@ Eu
 ag
 gg
 gg
-sg
-sg
+yF
+yF
 gg
 gg
 gg
@@ -31969,10 +31962,10 @@ ag
 ag
 gg
 gg
-nC
+Qk
 av
 av
-wb
+cr
 gg
 aq
 aq
@@ -32221,10 +32214,10 @@ aq
 aq
 aq
 gg
-kx
-LM
+mi
+Kh
 av
-RB
+zz
 gg
 aq
 aq
@@ -32475,8 +32468,8 @@ aq
 ag
 Ic
 Ic
-qz
-jL
+kY
+ZB
 ag
 aq
 aq
@@ -32726,8 +32719,8 @@ aa
 aa
 pF
 pF
-Sb
-Sb
+yS
+yS
 pF
 pF
 aa
