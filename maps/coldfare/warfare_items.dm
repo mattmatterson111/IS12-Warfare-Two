@@ -1312,7 +1312,7 @@ obj/item/storage/backpack/satchel/warfare/chestrig/blue/oldlmg
 	body_parts_covered = FACE|EYES
 	cold_protection = HEAD
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
-	helmet_vision = TRUE
+	helmet_vision = FALSE
 	worldicons = "sniperworld"
 
 /obj/item/clothing/mask/gas/blue/flamer
@@ -1322,7 +1322,7 @@ obj/item/storage/backpack/satchel/warfare/chestrig/blue/oldlmg
 	body_parts_covered = FACE|EYES
 	cold_protection = HEAD
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
-	helmet_vision = TRUE
+	helmet_vision = FALSE
 	worldicons = "sniperworld"
 
 /obj/item/clothing/shoes/jackboots/warfare/red/flamer
