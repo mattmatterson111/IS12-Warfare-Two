@@ -505,6 +505,13 @@
 	var/armed = FALSE//Whether or not it will blow up.
 	var/can_be_armed = TRUE//Whether or not it can be armed to blow up. Disarmed mines won't blow.
 	var/mob/stepper = null // This prevents people that lay down or die on a landmine from making others think that they won't blow it if walk over it since it's already primed.
+	var/glow_state = null // string to manually set the glow, otherwise its random blue/red
+
+/obj/structure/landmine/blue
+	glow_state = "mine_glow_alt"
+
+/obj/structure/landmine/red
+	glow_state = "mine_glow"
 
 /obj/structure/landmine/New()
 	..()
@@ -522,7 +529,11 @@
 
 /obj/structure/landmine/update_icon()
 	overlays.Cut()
-	var/image/I = image(icon=src.icon, icon_state="mine_glow")
+	if(!glow_state)
+		glow_state = "mine_glow"
+		if(prob(50))
+			glow_state = "[glow_state]_alt"
+	var/image/I = image(icon=src.icon, icon_state=glow_state)
 	I.plane = EFFECTS_ABOVE_LIGHTING_PLANE
 	overlays += I
 	if(!can_be_armed)

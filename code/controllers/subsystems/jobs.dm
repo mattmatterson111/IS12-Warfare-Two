@@ -427,7 +427,7 @@ SUBSYSTEM_DEF(jobs)
 			W.buckled_mob = H
 			W.add_fingerprint(H)
 
-	to_chat(H, SPAN_WHITE_LARGE("<B>You are [job.total_positions == 1 ? "the" : "a"] <font color=\"[job.selection_color]\">[alt_title ? alt_title : rank]</font>.</B>"))
+	to_chat(H, SPAN_WHITE("<B>You are [job.total_positions == 1 ? "the" : "a"] <font color=\"[job.selection_color]\">[alt_title ? alt_title : rank]</font>.</B>"))
 
 	if(job.role_desc)
 		to_chat(H, "<b>Role Description:</b> <i>[job.role_desc]</i>")
