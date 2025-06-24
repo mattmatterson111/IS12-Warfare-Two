@@ -1,7 +1,7 @@
 /datum/backstory/nepotismcaptain
 	name = "The product of Nepotism"
 	description = "<i>You</i> come from a high-end family within your country of origin, you know practically nothing about war, weaponry, or the like. All you really know is that your family is rich, and that you have supreme authority over all, and that noone should question it. Oh- and that you have some spare dosh to use to purchase gear with. That's about it. You're a nepo baby. Get over it."
-	chance = 100 // rare, extra dosh and
+	chance = 5 // rare, extra dosh and
 
 /datum/backstory/nepotismcaptain/apply(mob/living/carbon/human/user)
 	. = ..() // fuck you?? you're a nepo baby, you don't know how to FIGHT
