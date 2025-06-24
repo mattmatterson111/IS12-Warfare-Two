@@ -14,6 +14,7 @@
 	origin_tech = list(TECH_MATERIAL = 1)
 	var/list/datum/stack_recipe/recipes
 	var/singular_name
+	var/plural_name
 	var/amount = 1
 	var/max_amount //also see stack recipes initialisation, param "max_res_amount" must be equal to this max_amount
 	var/stacktype //determines whether different stack types can merge
@@ -38,8 +39,8 @@
 
 /obj/item/stack/examine(mob/user)
 	if(..(user, 1))
-		if(!uses_charge)
-			to_chat(user, "There [src.amount == 1 ? "is" : "are"] [src.amount] [src.singular_name]\s in the stack.")
+		if(!uses_charge)	// oh my god this is so stupid
+			to_chat(user, "There [src.amount == 1 ? "is" : "are"] [src.amount] [src.amount == 1 ? src.singular_name : "[src.plural_name ? src.plural_name : "[src.singular_name]\s"]"] in the stack.")
 		else
 			to_chat(user, "There is enough charge for [get_amount()].")
 

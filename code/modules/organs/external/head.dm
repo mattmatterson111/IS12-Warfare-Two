@@ -169,6 +169,7 @@
 /obj/item/stack/teeth
 	name = "teeth"
 	singular_name = "tooth"
+	plural_name = "teeth"
 	w_class = 1
 	force = 0
 	throwforce = 0
@@ -187,6 +188,7 @@
 /obj/item/stack/teeth/human
 	name = "human teeth"
 	singular_name = "human tooth"
+	plural_name = "human teeth"
 	var/list/image_list = list() // List of generated teeth icons for object overlay.
 	icon = null // We want to use the new generated overlay from update_icon.
 	icon_state = null

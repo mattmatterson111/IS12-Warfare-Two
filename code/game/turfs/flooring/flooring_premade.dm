@@ -171,6 +171,13 @@
 /turf/simulated/floor/concrete/can_climb(mob/living/user, post_climb_check)
 	if(locate(/obj/structure/bridge, get_turf(user)))
 		return FALSE
+
+	if(locate(/obj/hammereditor/nodraw, src))
+		return FALSE
+
+	if(locate(/obj/hammereditor/playerclip, src))
+		return FALSE
+
 	if (!(atom_flags & ATOM_FLAG_CLIMBABLE) || !can_touch(user))
 		return FALSE
 
