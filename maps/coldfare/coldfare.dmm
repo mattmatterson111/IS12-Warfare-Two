@@ -511,7 +511,7 @@
 	},
 /obj/machinery/light/caged{
 	dir = 4;
-	pixel_x = -19;
+	pixel_x = -15;
 	pixel_y = 0
 	},
 /turf/simulated/floor/concrete/random,
@@ -2460,6 +2460,24 @@
 	},
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/red)
+"hv" = (
+/obj/structure/trench_wall/innercorners{
+	dir = 4
+	},
+/obj/structure/trench_wall/innercorners{
+	dir = 8;
+	pixel_x = 32
+	},
+/obj/structure/defensive_barrier{
+	dir = 1;
+	pixel_y = 12;
+	secured = 1
+	},
+/turf/simulated/floor/trenches/underground{
+	icon_state = "trench";
+	color = "#ffffff"
+	},
+/area/warfare/homebase/red)
 "hx" = (
 /obj/effect/landmark/start{
 	name = "Red Sentry"
@@ -2608,6 +2626,10 @@
 	dir = 1
 	},
 /turf/simulated/floor/concrete/random,
+/area/warfare/homebase/red)
+"hX" = (
+/obj/hammereditor/nodraw,
+/turf/simulated/mineral,
 /area/warfare/homebase/red)
 "hZ" = (
 /obj/machinery/optable,
@@ -2847,16 +2869,9 @@
 	},
 /area/warfare/battlefield/trench_section/underground)
 "iZ" = (
-/obj/item/device/flashlight/lantern{
-	on = 1;
-	pixel_x = -6;
-	pixel_y = -10
-	},
-/turf/simulated/floor/trenches/underground{
-	icon_state = "trench";
-	color = "#ffffff"
-	},
-/area/warfare/homebase/red)
+/obj/structure/closet/body_bag,
+/turf/simulated/floor/wood,
+/area/warfare/battlefield/trench_section/underground)
 "jh" = (
 /obj/structure/warfare/thehatch{
 	dir = 4
@@ -2945,6 +2960,24 @@
 /obj/machinery/door/airlock/command,
 /turf/simulated/floor/concrete/random,
 /area/warfare/battlefield/trench_section/underground)
+"kk" = (
+/obj/structure/trench_wall/innercorners{
+	dir = 4;
+	pixel_x = -32
+	},
+/obj/structure/trench_wall/innercorners{
+	dir = 8
+	},
+/obj/structure/defensive_barrier{
+	pixel_y = 7;
+	secured = 1;
+	plane = -14
+	},
+/turf/simulated/floor/trenches/underground{
+	icon_state = "trench";
+	color = "#ffffff"
+	},
+/area/space)
 "ks" = (
 /obj/structure/trench_wall/innercorners{
 	dir = 4
@@ -3129,6 +3162,14 @@
 	},
 /turf/simulated/floor/concrete/random,
 /area/warfare/battlefield/capture_point/red/one)
+"lV" = (
+/obj/machinery/light/caged{
+	dir = 4;
+	pixel_x = -15;
+	pixel_y = 0
+	},
+/turf/simulated/floor/concrete/random,
+/area/warfare/homebase/blue)
 "lX" = (
 /obj/structure/table/rack/nosmooth/metal,
 /obj/item/storage/box/bodybags{
@@ -3299,6 +3340,14 @@
 	},
 /turf/simulated/floor/concrete/random,
 /area/space)
+"nl" = (
+/obj/machinery/door/unpowered/simple/wood/captain{
+	initial_lock_value = "red";
+	locked = 1
+	},
+/obj/hammereditor/nodraw,
+/turf/simulated/floor/wood,
+/area/warfare/battlefield/trench_section/underground)
 "nm" = (
 /turf/simulated/mineral,
 /turf/simulated/open,
@@ -3639,6 +3688,14 @@
 /obj/structure/table/rack/nosmooth/wood/alt,
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/red)
+"pe" = (
+/obj/structure/trench_wall{
+	dir = 1;
+	pixel_y = -32
+	},
+/obj/structure/closet/body_bag,
+/turf/simulated/floor/wood,
+/area/warfare/battlefield/trench_section/underground)
 "ph" = (
 /obj/effect/floor_decal/trench{
 	dir = 5
@@ -4401,15 +4458,11 @@
 /turf/unsimulated/floor/hammereditor/dev2,
 /area/warfare/battlefield/trench_section/underground)
 "vu" = (
-/obj/item/device/flashlight/lantern{
-	on = 1;
-	pixel_x = 7;
-	pixel_y = 23
+/obj/structure/trench_wall/sequel{
+	dir = 8
 	},
-/turf/simulated/floor/trenches/underground{
-	icon_state = "trench";
-	color = "#ffffff"
-	},
+/obj/hammereditor/nodraw,
+/turf/simulated/mineral,
 /area/space)
 "vz" = (
 /obj/structure/announcementspeaker/blue{
@@ -4617,6 +4670,17 @@
 "wG" = (
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/blue/div)
+"wH" = (
+/obj/item/device/flashlight/lantern{
+	on = 1;
+	pixel_x = -13;
+	pixel_y = -6
+	},
+/turf/simulated/floor/trenches/underground{
+	icon_state = "trench";
+	color = "#ffffff"
+	},
+/area/warfare/homebase/red)
 "wJ" = (
 /obj/effect/floor_decal/trench{
 	dir = 4
@@ -4796,6 +4860,16 @@
 /obj/machinery/door/blast/shutters,
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/blue)
+"yM" = (
+/obj/structure/warfare/thehatch{
+	dir = 4
+	},
+/obj/structure/trench_wall/sequel{
+	dir = 8
+	},
+/obj/hammereditor/nodraw,
+/turf/simulated/mineral,
+/area/warfare/battlefield/trench_section/underground)
 "yP" = (
 /obj/structure/curtain,
 /turf/simulated/floor/stones,
@@ -4856,6 +4930,15 @@
 	},
 /turf/simulated/mineral,
 /area/warfare/battlefield/capture_point/blue/two)
+"zt" = (
+/obj/effect/decal/cleanable/cobweb,
+/obj/structure/table/rack/nosmooth/metal,
+/obj/item/clothing/gloves/latex{
+	pixel_x = 0;
+	pixel_y = 2
+	},
+/turf/simulated/floor/wood,
+/area/warfare/battlefield/trench_section/underground)
 "zz" = (
 /obj/structure/table/rack/holorack,
 /obj/item/gun/projectile/automatic/autoshotty{
@@ -4878,14 +4961,17 @@
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/red)
 "zI" = (
-/obj/structure/table/rack/holorack,
-/obj/structure/closet/crate{
-	pixel_x = 1;
-	pixel_y = 17
+/obj/machinery/door/unpowered/simple/wood/captain{
+	initial_lock_value = "red";
+	locked = 1
 	},
-/obj/structure/closet/crate,
-/turf/simulated/floor/concrete/random,
-/area/warfare/homebase/blue)
+/obj/structure/defensive_barrier{
+	pixel_y = -4;
+	secured = 1;
+	plane = -14
+	},
+/turf/simulated/mineral,
+/area/warfare/battlefield/trench_section/underground)
 "zJ" = (
 /obj/effect/phone_line,
 /obj/structure/storage/cabinet{
@@ -5003,6 +5089,11 @@
 /obj/structure/trench_wall/innercorners{
 	dir = 8;
 	pixel_x = 32
+	},
+/obj/structure/defensive_barrier{
+	pixel_y = 7;
+	secured = 1;
+	plane = -14
 	},
 /turf/simulated/floor/trenches/underground{
 	icon_state = "trench";
@@ -5199,6 +5290,12 @@
 "Cc" = (
 /obj/hammereditor/nodraw/deco/shutter_half{
 	dir = 8
+	},
+/obj/structure/defensive_barrier{
+	secured = 1;
+	dir = 4;
+	pixel_x = 2;
+	pixel_y = 1
 	},
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/blue)
@@ -5605,8 +5702,8 @@
 "Fp" = (
 /obj/structure/table/rack/holorack,
 /obj/structure/closet/crate{
-	pixel_x = 0;
-	pixel_y = 15
+	pixel_x = 1;
+	pixel_y = 16
 	},
 /obj/structure/closet/crate,
 /turf/simulated/floor/concrete/random,
@@ -5693,6 +5790,14 @@
 "Gu" = (
 /turf/simulated/floor/concrete/random,
 /area/space)
+"Gy" = (
+/obj/machinery/light/caged{
+	dir = 4;
+	pixel_x = -16;
+	pixel_y = 16
+	},
+/turf/simulated/floor/concrete/random,
+/area/warfare/homebase/blue)
 "GA" = (
 /obj/item/flame/candle,
 /obj/item/device/compass,
@@ -5723,11 +5828,6 @@
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/red)
 "GR" = (
-/obj/machinery/light/caged{
-	dir = 4;
-	pixel_x = -19;
-	pixel_y = 0
-	},
 /obj/effect/decal/cleanable/cobweb,
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/blue)
@@ -5886,6 +5986,14 @@
 	},
 /turf/simulated/floor/concrete/random,
 /area/warfare/battlefield/capture_point/red/one)
+"Iq" = (
+/obj/machinery/light/small/red{
+	dir = 8;
+	pixel_y = 6;
+	pixel_x = -7
+	},
+/turf/simulated/floor/concrete/random,
+/area/space)
 "It" = (
 /obj/structure/trench_wall,
 /turf/simulated/mineral,
@@ -6390,6 +6498,22 @@
 	},
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/blue)
+"NC" = (
+/obj/structure/trench_wall{
+	dir = 1;
+	pixel_y = -32
+	},
+/obj/item/autopsy_scanner{
+	pixel_x = -4;
+	pixel_y = -1
+	},
+/obj/structure/table/rack/nosmooth/metal,
+/obj/item/reagent_containers/spray/cleaner/warfare/red{
+	pixel_x = 6;
+	pixel_y = 1
+	},
+/turf/simulated/floor/wood,
+/area/warfare/battlefield/trench_section/underground)
 "NG" = (
 /obj/structure/banner/red/small{
 	pixel_y = 32
@@ -6558,6 +6682,17 @@
 	},
 /turf/simulated/floor/wood,
 /area/warfare/battlefield/trench_section/underground)
+"Pc" = (
+/obj/structure/defensive_barrier{
+	dir = 1;
+	pixel_y = 12;
+	secured = 1
+	},
+/turf/simulated/floor/trenches/underground{
+	icon_state = "trench";
+	color = "#ffffff"
+	},
+/area/space)
 "Pd" = (
 /obj/structure/table/rack/shelf/red,
 /turf/simulated/floor/concrete/random,
@@ -6596,6 +6731,7 @@
 /obj/hammereditor/nodraw/deco/bars{
 	pixel_y = 10
 	},
+/obj/hammereditor/nodraw,
 /turf/simulated/floor/trenches/underground{
 	icon_state = "trench";
 	color = "#ffffff"
@@ -6794,6 +6930,14 @@
 	},
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/red)
+"Rt" = (
+/obj/hammereditor/nodraw/deco/bars,
+/obj/hammereditor/nodraw/deco/bars{
+	pixel_y = 10
+	},
+/obj/hammereditor/nodraw,
+/turf/simulated/floor/wood,
+/area/warfare/battlefield/trench_section/underground)
 "Rx" = (
 /obj/item/storage/belt/medical/full,
 /obj/item/storage/belt/medical/full,
@@ -6865,6 +7009,13 @@
 /obj/item/storage/firstaid/adv,
 /turf/simulated/floor/wood,
 /area/warfare/battlefield/trench_section/underground)
+"Sm" = (
+/obj/machinery/light/small/red{
+	dir = 1
+	},
+/obj/structure/closet/body_bag,
+/turf/simulated/floor/wood,
+/area/warfare/battlefield/trench_section/underground)
 "Sn" = (
 /obj/effect/floor_decal/trench{
 	dir = 9
@@ -6875,14 +7026,23 @@
 	},
 /area/warfare/battlefield/capture_point/blue/two)
 "Sp" = (
-/obj/structure/table/rack/holorack,
-/obj/structure/closet/crate{
-	pixel_x = 2;
-	pixel_y = 14
+/obj/structure/trench_wall/innercorners{
+	dir = 4;
+	pixel_x = -32
 	},
-/obj/structure/closet/crate,
-/turf/simulated/floor/concrete/random,
-/area/warfare/homebase/blue)
+/obj/structure/trench_wall/innercorners{
+	dir = 8
+	},
+/obj/structure/defensive_barrier{
+	dir = 1;
+	pixel_y = 12;
+	secured = 1
+	},
+/turf/simulated/floor/trenches/underground{
+	icon_state = "trench";
+	color = "#ffffff"
+	},
+/area/warfare/homebase/red)
 "Sr" = (
 /obj/machinery/light/caged{
 	pixel_y = 28;
@@ -7220,6 +7380,13 @@
 /obj/machinery/vending/soldier/blue,
 /turf/simulated/floor/tiled,
 /area/warfare/homebase/blue)
+"Vh" = (
+/obj/structure/trench_wall{
+	dir = 10
+	},
+/obj/hammereditor/nodraw,
+/turf/simulated/mineral,
+/area/space)
 "Vj" = (
 /obj/structure/dirt_wall,
 /turf/simulated/floor/dirty/fake,
@@ -7454,6 +7621,13 @@
 	},
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/red/div)
+"Xs" = (
+/obj/structure/trench_wall{
+	dir = 10
+	},
+/obj/hammereditor/nodraw,
+/turf/simulated/mineral,
+/area/warfare/battlefield/trench_section/underground)
 "Xx" = (
 /obj/structure/closet/crate,
 /obj/random/canned_food/blue,
@@ -7653,6 +7827,18 @@
 	color = "#ffffff"
 	},
 /area/warfare/battlefield/capture_point/blue/one)
+"Zl" = (
+/obj/hammereditor/nodraw/deco/shutter_half{
+	dir = 4
+	},
+/obj/structure/defensive_barrier{
+	secured = 1;
+	dir = 8;
+	pixel_x = -4;
+	pixel_y = 2
+	},
+/turf/simulated/floor/concrete/random,
+/area/warfare/homebase/blue)
 "Zm" = (
 /obj/machinery/door/unpowered/simple/wood/captain{
 	initial_lock_value = "blue";
@@ -7738,6 +7924,17 @@
 	},
 /turf/simulated/floor/wood,
 /area/warfare/homebase/red/div)
+"ZW" = (
+/obj/structure/trench_wall{
+	dir = 1;
+	pixel_y = -32
+	},
+/obj/structure/closet/body_bag,
+/obj/effect/decal/cleanable/cobweb2{
+	dir = 8
+	},
+/turf/simulated/floor/wood,
+/area/warfare/battlefield/trench_section/underground)
 "ZY" = (
 /obj/item/flame/candle,
 /obj/item/storage/box/matches,
@@ -9211,11 +9408,11 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
+cB
+cB
+cB
+cB
+cB
 aa
 aa
 aa
@@ -9463,13 +9660,13 @@ aa
 aa
 aa
 aa
+cB
+cB
+cB
+cB
+cB
 aa
-aa
-aa
-aa
-aa
-aa
-aa
+he
 aa
 aa
 aa
@@ -9715,13 +9912,13 @@ aa
 aa
 aa
 aa
+xC
+Ln
+nl
+DB
+Bo
 aa
-aa
-aa
-aa
-aa
-aa
-aa
+he
 aa
 aa
 aa
@@ -9967,17 +10164,17 @@ aa
 aa
 aa
 aa
+WK
+zt
+EO
+NC
+cB
+aa
+he
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+zg
+zg
 aa
 aa
 aa
@@ -10219,22 +10416,22 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
+zI
+EO
+EO
+pe
+cB
 aa
 he
+FZ
+he
+kk
 he
 FZ
 he
 FZ
 he
-FZ
 he
-FZ
-he
-aa
 aa
 aa
 aa
@@ -10471,24 +10668,24 @@ aa
 aa
 aa
 aa
+WK
+Sm
+iZ
+pe
+cB
 aa
-aa
-aa
-aa
-aa
-he
 he
 he
 he
 AK
-vu
 he
 he
 he
 he
-aa
-aa
-aa
+he
+he
+he
+he
 aa
 aa
 aa
@@ -10723,23 +10920,23 @@ zg
 ks
 aa
 aa
-aa
-aa
-aa
-aa
-aa
+WK
+iZ
+iZ
+pe
+cB
 aa
 aa
 Dc
 zg
-pS
+Vh
 PH
-sW
+vu
 zg
 ks
 aa
-aa
-aa
+he
+he
 aa
 aa
 aa
@@ -10975,11 +11172,11 @@ dr
 mD
 di
 di
-aa
-aa
-aa
-aa
-aa
+WK
+iZ
+iZ
+ZW
+cB
 dA
 dA
 rI
@@ -10991,7 +11188,7 @@ bP
 LK
 aa
 aa
-aa
+he
 aa
 aa
 aa
@@ -11228,9 +11425,9 @@ mD
 di
 di
 xC
-TE
-TE
-WX
+Xs
+Rt
+yM
 Bo
 dA
 dA
@@ -13992,7 +14189,7 @@ aa
 aa
 aa
 Nr
-qx
+Iq
 Lz
 pL
 CI
@@ -14011,9 +14208,9 @@ QF
 HQ
 oK
 he
-he
 KY
 he
+Pc
 he
 he
 aa
@@ -14244,7 +14441,7 @@ aa
 aa
 aa
 pF
-sB
+Gu
 Lz
 DR
 pL
@@ -14265,7 +14462,7 @@ oK
 he
 he
 he
-he
+Pc
 aa
 aa
 aa
@@ -21122,11 +21319,11 @@ aq
 aq
 ag
 av
-la
+lV
 OQ
 ag
 GR
-la
+Gy
 ag
 xM
 br
@@ -21374,7 +21571,7 @@ aq
 aq
 ag
 av
-zI
+Fp
 UV
 ua
 av
@@ -21626,7 +21823,7 @@ aq
 aq
 ag
 av
-Sp
+Fp
 av
 Ed
 av
@@ -22093,10 +22290,10 @@ Cb
 Cb
 Yz
 Cb
+wH
+Yz
 Cb
-Yz
-iZ
-Yz
+Sp
 Cb
 Yz
 Cb
@@ -22348,7 +22545,7 @@ Cb
 rM
 Cb
 Cb
-rM
+hv
 Cb
 Cb
 dY
@@ -22596,11 +22793,11 @@ dY
 dY
 dY
 dY
-dY
+hX
 Cb
 Cb
 Cb
-dY
+hX
 dY
 dY
 dY
@@ -22848,11 +23045,11 @@ ab
 ab
 ab
 bg
-ab
+Km
 PX
 PX
 PX
-ab
+Km
 bg
 ab
 ab
@@ -31712,7 +31909,7 @@ ag
 gg
 gg
 yF
-yF
+Zl
 gg
 gg
 gg
