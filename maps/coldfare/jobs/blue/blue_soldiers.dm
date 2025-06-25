@@ -14,6 +14,8 @@
 
 	squad_overlay = "rifleman"
 
+	backstories = list(/datum/backstory/translator)
+
 	equip(var/mob/living/carbon/human/H)
 		H.warfare_faction = BLUE_TEAM
 		..()
@@ -179,7 +181,7 @@
 
 	announced = FALSE
 
-	backstories = list(/datum/backstory/nepotismcaptain)
+	backstories = list(/datum/backstory/nepotismcaptain, /datum/backstory/childcaptain)
 
 	equip(var/mob/living/carbon/human/H)
 		var/current_name = H.real_name

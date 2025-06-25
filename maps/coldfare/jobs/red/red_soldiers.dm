@@ -14,6 +14,8 @@
 
 	squad_overlay = "rifleman"
 
+	backstories = list(/datum/backstory/translator)
+
 	equip(var/mob/living/carbon/human/H)
 		H.warfare_faction = RED_TEAM
 		..()
@@ -177,7 +179,7 @@
 	sniper_skill = 10
 	open_when_dead = TRUE
 
-	backstories = list(/datum/backstory/nepotismcaptain)
+	backstories = list(/datum/backstory/nepotismcaptain, /datum/backstory/childcaptain)
 
 	announced = FALSE
 

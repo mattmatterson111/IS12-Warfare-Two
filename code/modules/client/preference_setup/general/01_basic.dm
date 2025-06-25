@@ -69,8 +69,8 @@ datum/preferences
 		. += "<b>Map Objective:</b><br>"
 		. += "[GLOB.using_map.map_lore]<br>"//Put the map lore here if there is any.
 
-	. += "<br><b>Enable backstories:</b> <a onfocus ='this.blur()' href='?src=\ref[src];backstory=1'><b>["[pref.backstory == 1 ? "Yes" : "No"]"]</b></a><br>"
-
+	. += "<br><b>Enable \"backstories\":</b> <a onfocus ='this.blur()' href='?src=\ref[src];backstory=1'><b>["[pref.backstory == 1 ? "Yes" : "No"]"]</b></a><br>"
+	. += "<font size=2>Backstories are not enforced, and are purely for roleplay purposes.<br>Some backstories may have gameplay altering effects.</font>"
 	if(user.client.holder)//it's user not usr Bombany.
 		. += "<p style='position: absolute;right: 50px; bottom: 30px;'><a onfocus='this.blur()' href='byond://?src=\ref[user];observe=1' class='active'><b>Observe()</a></p>"
 	. = jointext(.,null)
