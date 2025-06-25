@@ -8,6 +8,7 @@ SUBSYSTEM_DEF(mapping)
 	var/list/space_ruins_templates = list()
 	var/list/exoplanet_ruins_templates = list()
 	var/list/away_sites_templates = list()
+	var/list/warfare_mid_templates = list() // Warfare bs
 
 /datum/controller/subsystem/mapping/Initialize(timeofday)
 	preloadTemplates()
@@ -20,6 +21,7 @@ SUBSYSTEM_DEF(mapping)
 	space_ruins_templates = SSmapping.space_ruins_templates
 	exoplanet_ruins_templates = SSmapping.exoplanet_ruins_templates
 	away_sites_templates = SSmapping.away_sites_templates
+	warfare_mid_templates = SSmapping.warfare_mid_templates
 
 /datum/controller/subsystem/mapping/proc/preloadTemplates(path = "maps/templates/") //see master controller setup
 	var/list/filelist = flist(path)
@@ -62,3 +64,5 @@ SUBSYSTEM_DEF(mapping)
 			space_ruins_templates[R.name] = R
 		else if(istype(R, /datum/map_template/ruin/away_site))
 			away_sites_templates[R.name] = R
+		else if(istype(R,/datum/map_template/ruin/warfare_mid))
+			warfare_mid_templates[R.name] = R
