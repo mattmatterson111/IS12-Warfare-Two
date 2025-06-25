@@ -83,9 +83,12 @@ SUBSYSTEM_DEF(warfare)
 	for(var/turf/simulated/floor/trench/fake/T in world)//Make all the fake trenches into real ones.
 		T.ChangeTurf(/turf/simulated/floor/trench)
 	sound_to(world, sound('sound/ambience/distant_warfare.ogg', repeat = 1))
+	var/where_are_we = "[time2text(world.realtime, "MM-DD")]\n[time2text(world.timeofday, "hh:mm")]\n[GLOB.war_lore.name]"
 	for(var/mob/living/carbon/human/H in GLOB.human_mob_list)
 		H.set_squad_huds()
 		H.set_team_huds()
+		H.play_screen_text(where_are_we, alert = /atom/movable/screen/text/screen_text/battlefield)
+		to_chat(H, "<span class='maptext'>Name: [GLOB.war_lore.name].</span>")
 
 /datum/controller/subsystem/warfare/proc/check_completion()
 	if(red.left <= 0)

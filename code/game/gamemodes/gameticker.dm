@@ -366,6 +366,7 @@ var/global/datum/controller/gameticker/ticker
 	config.ooc_allowed = TRUE
 	to_world("<B>The OOC channel has been globally enabled due to round end!</B>")
 	to_world("<br><br><br><H1>A round of [mode.name] has ended!</H1>")
+	to_world("<br><h2>- [GLOB.war_lore.name]- </h2><br>")
 	print_aspect()
 	for(var/mob/Player in GLOB.player_list)
 		if(Player.mind && !isnewplayer(Player))
@@ -445,7 +446,7 @@ var/global/datum/controller/gameticker/ticker
 
 	round_end_stats += "Total round Length: <span class='danger'><B>[roundduration2text()]</B></span>\n"
 
-	round_end_stats += "First victim: <B>[GLOB.first_death]</B>. Their last words were: <b>\"[GLOB.final_words]\"</b>\n "
+	round_end_stats += "First victim: <B>[GLOB.first_death]</B>.\nTheir last words were: <b>\"[GLOB.final_words]\"</b>\n "
 
 	if(LAZYLEN(GLOB.bright_futures))
 		round_end_stats += SPAN_DANGER("The following people have a bright future ahead of them:")

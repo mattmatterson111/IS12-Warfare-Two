@@ -1,3 +1,5 @@
+GLOBAL_LIST_EMPTY(speakers)
+
 /obj/structure/announcementmicrophone
 	name = "captain's microphone"
 	desc = "Should work right as rain.."
@@ -33,8 +35,15 @@
 
 /obj/structure/announcementmicrophone/Initialize()
 	. = ..()
-	for(var/obj/structure/announcementspeaker/s in world)
-		if(s.id == src.id)
+	update_speakers()
+
+
+/obj/structure/announcementmicrophone/proc/update_speakers()
+	if(!speakers)
+		speakers = list()
+	speakers.Cut()
+	for(var/obj/structure/announcementspeaker/s in GLOB.speakers)
+		if(s.id == id)
 			speakers |= s
 
 /obj/structure/announcementmicrophone/attack_hand(mob/user)
@@ -172,6 +181,14 @@
 	anchored = TRUE
 	plane = ABOVE_HUMAN_PLANE
 	var/id = 0
+
+/obj/structure/announcementspeaker/New()
+	. = ..()
+	GLOB.speakers |= src
+
+/obj/structure/announcementspeaker/Destroy()
+	. = ..()
+	GLOB.speakers -= src
 
 /obj/structure/announcementspeaker/red
     id = RED_TEAM
