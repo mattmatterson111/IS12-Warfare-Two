@@ -677,13 +677,16 @@
 		allowed_condition = 90
 		repair_speed = 20
 	if(condition <= allowed_condition)
+		H.doing_something = TRUE
 		H.visible_message("<span class='notice'>[H] starts to repair their weapon.</span>")
 		if(do_after(H, repair_speed, src))//Instead of failing if their not skilled, just make it slow.
+			H.doing_something = FALSE
 			condition += 10
 			H.visible_message("<span class='info'>[H] successfully repairs their weapon.</span>")
 			if(condition > 100)//If it's greater than 100
 				condition = 100
 		else
+			H.doing_something = FALSE
 			H.visible_message("<span class='warning'>[H] fails to repair their weapon.</span>")
 			update_icon()
 
