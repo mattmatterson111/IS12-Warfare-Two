@@ -30,7 +30,7 @@
 	suffixes = list("classicfare.dmm")
 	category = "PLACE"
 	spawn_weight = 2
-
+/*
 /datum/map_template/ruin/warfare_mid/underground
 	name = "underfare"
 	id = "under_fare"
@@ -38,7 +38,7 @@
 	suffixes = list("underfare.dmm")
 	category = "PLACE"
 	spawn_weight = 1
-
+*/
 /datum/map_template/ruin/warfare_mid/bunker
 	name = "Bunker Fare"
 	id = "bunker_fare"
