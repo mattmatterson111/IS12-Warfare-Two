@@ -12,10 +12,10 @@
 
 
 /obj/effect/ruin_loader/warfare_mid/Load(list/potentialRuins, datum/map_template/template, is_centered = TRUE)
+	var/start_timeofday = REALTIMEOFDAY
 	. = ..()
-	if(template)
-		message_admins("Picked warfare template: [template.name] ([template.type])")
-
+	var/time = (REALTIMEOFDAY - start_timeofday) / 10
+	message_admins("Loaded warfare mid template: '[template.name]', in: [time] seconds.")
 
 /datum/map_template/ruin/warfare_mid
 	prefix = "maps/random_mid/"
