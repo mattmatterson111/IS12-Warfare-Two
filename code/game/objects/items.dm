@@ -349,7 +349,7 @@
 			size = "bulky"
 		if(ITEM_SIZE_HUGE + 1 to INFINITY)
 			size = "huge"
-	return ..(user, distance, "", "<br>It is a [size] item.")
+	return ..(user, distance, "", SPAN_SIZE("<br>It is a [size] item."))
 
 /obj/item/attack_hand(mob/user as mob)
 	if (!user) return

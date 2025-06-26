@@ -406,6 +406,9 @@ h1.alert, h2.alert		{color: #ffffff;}
 .memo					{color: #e7cb98; font-weight: bold; font-style: italic; text-shadow: 0px 0px 3px #d6a335;}
 .memoedit				{text-align: center;	font-size: 16px;}
 
+.itemdesc			{color: #b1a773; font-size: 15px;}
+.itemsize			{font-weight: bold; font-style: italic; font-size:13px;}
+
 .yelBig					{color: #ccbd8c; font-weight: bold; font-style: italic; text-shadow: 0px 0px 3px rgb(148, 140, 96);}
 .yel				{color: #b1a773;}
 

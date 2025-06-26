@@ -16,6 +16,9 @@
 #define SPAN_BNOTICE(X) "<span class='bnotice'>[X]</span>"
 #define SPAN_BOLD(X) "<span class='bold'>[X]</span>"
 
+#define SPAN_DESC(X) "<span class='itemdesc'>[X]</span>"
+#define SPAN_SIZE(X) "<span class='itemsize'>[X]</span>"
+
 #define SPAN_YELLOW(X) "<span class='yel'>[X]</span>"
 #define SPAN_YELLOW_LARGE(X) "<span class='yelBig'>[X]</span>"
 
