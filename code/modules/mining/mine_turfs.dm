@@ -189,6 +189,11 @@ var/list/mining_floors = list()
 			H.adjustStaminaLoss(rand(1,10))
 			H.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
 
+		if(health > 9999)
+			if(prob(25))
+				to_chat(user, SPAN_YELLOW("Doesn't look like this'll be breaking anytime soon."))
+			return
+
 		health -= rand(1,5)
 
 		var/newDepth = excavation_level + P.excavation_amount // Used commonly below
@@ -292,6 +297,11 @@ var/list/mining_floors = list()
 
 	else
 		return ..()
+
+/turf/simulated/mineral/examine(mob/user, distance, infix, suffix)
+	. = ..()
+	if(health > 9999)
+		to_chat(user,SPAN_YELLOW("Doesn't look like I can mine through this.."))
 
 /turf/simulated/mineral/proc/clear_ore_effects()
 	overlays -= ore_overlay

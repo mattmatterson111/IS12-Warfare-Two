@@ -157,13 +157,6 @@ GLOBAL_LIST_EMPTY(mortar_areas) // = list()
 	name = "Middle Bunker"
 	icon_state = "start"
 
-/area/warfare/battlefield/capture_point/mid/underground/Entered(atom/A)
-	. = ..() // STUPID STUPID
-	if(istype(L) && !istype(A, /area/warfare/battlefield))
-		L.clear_fullscreen("fog")
-		L.clear_fullscreen("ash")
-		L.clear_fullscreen("ashparticle")
-
 /area/warfare/battlefield/capture_point/red
 	icon_state = "red"
 	captured = RED_TEAM

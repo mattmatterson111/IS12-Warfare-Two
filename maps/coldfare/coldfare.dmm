@@ -73,12 +73,13 @@
 /turf/simulated/floor/fixed,
 /area/warfare/homebase/blue)
 "am" = (
-/obj/structure/closet/secure_closet/warfare/newver,
-/obj/item/crowbar,
-/obj/item/crowbar,
-/obj/item/crowbar,
-/turf/simulated/floor/concrete/random,
-/area/warfare/homebase/blue)
+/obj/structure/trench_wall{
+	dir = 4
+	},
+/turf/simulated/mineral{
+	health = 999999
+	},
+/area/warfare/battlefield/trench_section/underground/bunker)
 "an" = (
 /obj/structure/window/reinforced{
 	dir = 8;
@@ -473,11 +474,11 @@
 /area/warfare/battlefield/capture_point/blue/two)
 "bl" = (
 /obj/structure/closet/secure_closet/warfare/newver,
-/obj/item/crowbar/red,
-/obj/item/crowbar/red,
-/obj/item/crowbar/red,
+/obj/item/crowbar,
+/obj/item/crowbar,
+/obj/item/crowbar,
 /turf/simulated/floor/concrete/random,
-/area/warfare/homebase/red)
+/area/warfare/homebase/blue)
 "bm" = (
 /obj/structure/window/reinforced{
 	dir = 8;
@@ -571,6 +572,14 @@
 	},
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/red)
+"bD" = (
+/obj/structure/trench_wall/innercorners{
+	dir = 4
+	},
+/turf/simulated/mineral{
+	health = 999999
+	},
+/area/warfare/battlefield/trench_section/underground/bunker)
 "bF" = (
 /obj/item/flame/candle,
 /obj/item/device/compass,
@@ -3359,21 +3368,12 @@
 "nc" = (
 /obj/structure/lattice,
 /obj/machinery/light/caged{
-	dir = 8;
-	pixel_x = 19;
-	pixel_y = 0
-	},
-/turf/simulated/floor/concrete/random,
-/area/space)
-"nf" = (
-/obj/structure/lattice,
-/obj/machinery/light/caged{
 	dir = 4;
 	pixel_x = -19;
 	pixel_y = 0
 	},
 /turf/simulated/floor/concrete/random,
-/area/space)
+/area/warfare/battlefield/trench_section/underground)
 "nm" = (
 /turf/simulated/mineral{
 	health = 999999
@@ -3486,6 +3486,14 @@
 /obj/item/ammo_magazine/a762/sks,
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/blue)
+"nJ" = (
+/obj/structure/trench_wall/innercorners{
+	dir = 8
+	},
+/turf/simulated/mineral{
+	health = 999999
+	},
+/area/warfare/battlefield/trench_section/underground/bunker)
 "nK" = (
 /obj/structure/trench_wall/sequel{
 	dir = 8
@@ -3671,7 +3679,7 @@
 	layer = 29;
 	plane = -15
 	},
-/area/space)
+/area/warfare/battlefield/trench_section/underground)
 "oQ" = (
 /obj/effect/landmark/start{
 	name = "Blue Squad Leader"
@@ -3834,13 +3842,12 @@
 /turf/simulated/floor/wood,
 /area/warfare/battlefield/trench_section/underground)
 "pS" = (
-/obj/structure/trench_wall{
-	dir = 10
-	},
-/turf/simulated/mineral{
-	health = 999999
-	},
-/area/space)
+/obj/structure/closet/secure_closet/warfare/newver,
+/obj/item/crowbar/red,
+/obj/item/crowbar/red,
+/obj/item/crowbar/red,
+/turf/simulated/floor/concrete/random,
+/area/warfare/homebase/red)
 "pV" = (
 /obj/structure/closet/secure_closet/medical1/warfare,
 /obj/machinery/light/small/bunker{
@@ -3954,7 +3961,7 @@
 	pixel_y = 0
 	},
 /turf/simulated/floor/concrete/random,
-/area/space)
+/area/warfare/battlefield/trench_section/underground)
 "qF" = (
 /obj/machinery/vending/soldier,
 /turf/simulated/floor/tiled,
@@ -4228,13 +4235,13 @@
 	},
 /area/space)
 "sB" = (
-/obj/machinery/light/caged{
-	dir = 8;
-	pixel_x = 19;
-	pixel_y = 0
+/obj/structure/trench_wall/innercorners{
+	dir = 8
 	},
-/turf/simulated/floor/concrete/random,
-/area/space)
+/turf/simulated/mineral{
+	health = 999999
+	},
+/area/warfare/battlefield/trench_section/underground)
 "sG" = (
 /obj/machinery/light/small/bunker{
 	dir = 1
@@ -4249,8 +4256,11 @@
 /turf/simulated/floor/concrete/random,
 /area/warfare/battlefield/capture_point/blue/one)
 "sW" = (
-/obj/structure/trench_wall/sequel{
+/obj/structure/trench_wall{
 	dir = 8
+	},
+/obj/hammereditor/nodraw/deco/shadowpaint{
+	dir = 1
 	},
 /turf/simulated/mineral{
 	health = 999999
@@ -4524,6 +4534,14 @@
 	color = "#ffffff"
 	},
 /area/warfare/battlefield/capture_point/blue/one)
+"va" = (
+/obj/structure/trench_wall{
+	dir = 8
+	},
+/turf/simulated/mineral{
+	health = 999999
+	},
+/area/warfare/battlefield/trench_section/underground/bunker)
 "vd" = (
 /obj/structure/trench_wall{
 	dir = 4
@@ -4565,7 +4583,7 @@
 	icon_state = "trench";
 	color = "#ffffff"
 	},
-/area/space)
+/area/warfare/battlefield/trench_section/underground)
 "vz" = (
 /obj/structure/announcementspeaker/blue{
 	pixel_y = 0;
@@ -4900,6 +4918,14 @@
 	},
 /turf/simulated/floor/wood,
 /area/warfare/homebase/red)
+"xV" = (
+/obj/structure/trench_wall{
+	dir = 10
+	},
+/turf/simulated/mineral{
+	health = 999999
+	},
+/area/warfare/battlefield/trench_section/underground/bunker)
 "xW" = (
 /obj/effect/floor_decal/trench{
 	dir = 4
@@ -5910,8 +5936,11 @@
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/blue/div)
 "Fk" = (
-/obj/structure/trench_wall/sequel{
+/obj/structure/trench_wall{
 	dir = 4
+	},
+/obj/hammereditor/nodraw/deco/shadowpaint{
+	dir = 1
 	},
 /turf/simulated/mineral{
 	health = 999999
@@ -5946,6 +5975,12 @@
 "Fr" = (
 /turf/simulated/wall/perspecticrete,
 /area/warfare/homebase/red/div)
+"Fy" = (
+/obj/structure/trench_wall/innercorners,
+/turf/simulated/mineral{
+	health = 999999
+	},
+/area/warfare/battlefield/trench_section/underground/bunker)
 "FE" = (
 /obj/effect/floor_decal/trench{
 	dir = 6
@@ -6107,13 +6142,13 @@
 	},
 /area/warfare/battlefield/capture_point/blue/two)
 "Hq" = (
-/obj/machinery/light/small/red{
-	dir = 8;
-	pixel_y = 6;
-	pixel_x = -7
+/obj/structure/trench_wall/innercorners{
+	dir = 1
 	},
-/turf/simulated/floor/concrete/random,
-/area/space)
+/turf/simulated/mineral{
+	health = 999999
+	},
+/area/warfare/battlefield/trench_section/underground)
 "HD" = (
 /obj/structure/bed/chair/throne{
 	pixel_x = 16;
@@ -6201,7 +6236,9 @@
 	},
 /area/warfare/battlefield/trench_section/underground)
 "Ie" = (
-/obj/structure/lattice,
+/obj/hammereditor/nodraw/deco/shadowpaint{
+	dir = 1
+	},
 /turf/simulated/floor/concrete/random,
 /area/space)
 "Ig" = (
@@ -6226,6 +6263,14 @@
 	},
 /turf/simulated/floor/fixed,
 /area/warfare/homebase/red)
+"Ik" = (
+/obj/structure/trench_wall{
+	dir = 6
+	},
+/turf/simulated/mineral{
+	health = 999999
+	},
+/area/warfare/battlefield/trench_section/underground/bunker)
 "Ip" = (
 /obj/structure/toilet{
 	dir = 8;
@@ -6495,7 +6540,7 @@
 	icon_state = "trench";
 	color = "#ffffff"
 	},
-/area/space)
+/area/warfare/battlefield/trench_section/underground)
 "La" = (
 /obj/structure/trench_wall/innercorners{
 	dir = 8;
@@ -6556,7 +6601,7 @@
 	},
 /obj/hammereditor/nodraw,
 /turf/simulated/wall/perspecticrete,
-/area/space)
+/area/warfare/battlefield/trench_section/underground)
 "LD" = (
 /obj/machinery/light/small/bunker{
 	dir = 8
@@ -6572,7 +6617,7 @@
 	icon_state = "trench";
 	color = "#ffffff"
 	},
-/area/space)
+/area/warfare/battlefield/trench_section/underground)
 "LJ" = (
 /obj/structure/announcementspeaker/blue{
 	pixel_x = 0;
@@ -6598,9 +6643,14 @@
 	},
 /area/warfare/battlefield/capture_point/red/one)
 "LV" = (
-/obj/structure/curtain/tarp,
-/turf/simulated/wall/perspecticrete,
-/area/space)
+/obj/structure/lattice,
+/obj/machinery/light/caged{
+	dir = 8;
+	pixel_x = 19;
+	pixel_y = 0
+	},
+/turf/simulated/floor/concrete/random,
+/area/warfare/battlefield/trench_section/underground)
 "LX" = (
 /obj/effect/floor_decal/trench,
 /turf/simulated/floor/trenches/underground{
@@ -6614,14 +6664,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/warfare/battlefield/trench_section/underground)
-"Mc" = (
-/obj/structure/trench_wall{
-	dir = 6
-	},
-/turf/simulated/mineral{
-	health = 999999
-	},
-/area/space)
 "Ml" = (
 /obj/machinery/light/caged{
 	pixel_y = -14;
@@ -6744,9 +6786,10 @@
 /turf/simulated/floor/stones,
 /area/warfare/homebase/blue)
 "Nr" = (
-/obj/machinery/door/airlock/multi_tile/metal/maintenance/red,
-/turf/simulated/wall/perspecticrete,
-/area/space)
+/turf/simulated/mineral{
+	health = 999999
+	},
+/area/warfare/battlefield/trench_section/underground/bunker)
 "Nt" = (
 /obj/structure/trench_wall{
 	dir = 10
@@ -7189,14 +7232,6 @@
 	color = "#ffffff"
 	},
 /area/warfare/battlefield/capture_point/blue/two)
-"Re" = (
-/obj/machinery/light/caged{
-	pixel_y = -14;
-	dir = 1;
-	pixel_x = 16
-	},
-/turf/simulated/floor/concrete/random,
-/area/space)
 "Rg" = (
 /obj/machinery/light/small/bunker{
 	dir = 4
@@ -7315,14 +7350,6 @@
 	health = 999999
 	},
 /area/warfare/battlefield/capture_point/blue/one)
-"Sw" = (
-/obj/machinery/light/caged{
-	dir = 8;
-	pixel_x = 14;
-	pixel_y = 0
-	},
-/turf/simulated/floor/concrete/random,
-/area/space)
 "Sy" = (
 /obj/effect/floor_decal/trench{
 	dir = 9
@@ -7614,6 +7641,14 @@
 /obj/effect/lighting_dummy/daylight,
 /turf/simulated/floor/concrete/random,
 /area/warfare/battlefield/capture_point/red/two)
+"UI" = (
+/obj/structure/trench_wall/sequel{
+	dir = 8
+	},
+/turf/simulated/mineral{
+	health = 999999
+	},
+/area/warfare/battlefield/trench_section/underground/bunker)
 "UK" = (
 /obj/machinery/vending/medical{
 	req_access = newlist()
@@ -7944,6 +7979,14 @@
 	health = 999999
 	},
 /area/warfare/homebase/red)
+"XD" = (
+/obj/structure/trench_wall/sequel{
+	dir = 4
+	},
+/turf/simulated/mineral{
+	health = 999999
+	},
+/area/warfare/battlefield/trench_section/underground/bunker)
 "XH" = (
 /obj/structure/bed/chair/blue{
 	dir = 1;
@@ -7980,6 +8023,14 @@
 	},
 /turf/simulated/floor/wood,
 /area/warfare/battlefield/trench_section/underground)
+"XS" = (
+/obj/structure/trench_wall/innercorners{
+	dir = 1
+	},
+/turf/simulated/mineral{
+	health = 999999
+	},
+/area/warfare/battlefield/trench_section/underground/bunker)
 "XX" = (
 /turf/simulated/floor/wood,
 /area/warfare/homebase/blue/div)
@@ -13832,10 +13883,10 @@ aa
 aa
 aa
 aa
-zA
-sA
-sA
-Mc
+Hq
+yo
+yo
+AW
 Sn
 cg
 zq
@@ -13851,10 +13902,10 @@ cK
 bo
 db
 cx
-Fk
-sA
-sA
-nA
+XD
+va
+va
+nJ
 aa
 aa
 aa
@@ -13987,10 +14038,10 @@ aa
 aa
 aa
 aa
-zA
-sA
-sA
-Mc
+XS
+va
+va
+Ik
 WU
 dr
 mD
@@ -14006,13 +14057,13 @@ dA
 rI
 dS
 wJ
-Fk
-sA
-sA
-nA
-ks
-aa
-aa
+hB
+yo
+yo
+sB
+Bo
+cB
+cB
 aa
 aa
 aa
@@ -14082,12 +14133,12 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
+Fk
 zg
-zg
-pS
+TE
+TE
+TE
+Ln
 Um
 cg
 MZ
@@ -14103,267 +14154,14 @@ ls
 Nt
 db
 ph
-sW
-zg
-zg
-zg
-zg
-zg
-zg
-zg
-ks
+Nr
+Nr
+Nr
+Nr
 aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-zg
-zg
-pS
-Si
-dr
-Nv
-Ku
-eR
-MM
-MM
-MM
-MM
-MM
-tu
-vd
-dP
-dS
-wq
-sW
-pS
-LE
-LE
-sW
-zg
-zg
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-"}
-(25,1,1) = {"
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-cs
-HD
-Kx
-Eq
-WP
-lE
-zU
-cs
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-LV
-qx
-Lz
-bk
-qb
-bk
-cG
-CG
-MM
-hB
-yo
-AW
-qQ
-iU
-nz
-IZ
-DK
-TN
-oK
-qx
-Gu
-Gu
-nf
-Gu
-Ie
-Re
-LK
 aa
 aa
 aa
@@ -14493,8 +14291,261 @@ aa
 aa
 aa
 Nr
-Hq
+Nr
+Nr
+Nr
+Si
+dr
+Nv
+Ku
+eR
+MM
+MM
+MM
+MM
+MM
+tu
+vd
+dP
+dS
+wq
+DB
+Ln
+LE
+LE
+DB
+TE
+TE
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(25,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+cs
+HD
+Kx
+Eq
+WP
+lE
+zU
+cs
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+Ie
+Gu
+zU
+nc
+qx
 Lz
+bk
+qb
+bk
+cG
+CG
+MM
+hB
+yo
+AW
+qQ
+iU
+nz
+IZ
+DK
+TN
+Nr
+Nr
+Nr
+Nr
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+Nr
+Nr
+Nr
+Nr
 pL
 CI
 pL
@@ -14511,12 +14562,12 @@ Sy
 QF
 HQ
 oK
-he
+MM
 KY
-he
+MM
 vu
-he
-he
+MM
+MM
 aa
 aa
 aa
@@ -14586,11 +14637,11 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
+Ie
+Gu
+zU
 LV
-Sw
+qf
 Lz
 mT
 bk
@@ -14607,15 +14658,10 @@ DK
 uW
 IZ
 ef
-oK
-sB
-Gu
-Gu
-nc
-Ie
-Ie
-Ie
-LK
+Nr
+Nr
+Nr
+Nr
 aa
 aa
 aa
@@ -14744,9 +14790,14 @@ aa
 aa
 aa
 aa
-pF
-Gu
-Lz
+aa
+aa
+aa
+aa
+Nr
+Nr
+Nr
+Nr
 DR
 pL
 CI
@@ -14763,12 +14814,12 @@ Qy
 Sy
 LX
 oK
-he
-he
-he
+MM
+MM
+MM
 vu
-aa
-aa
+cB
+cB
 aa
 aa
 aa
@@ -14838,12 +14889,12 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
+sW
 sA
-sA
-Mc
+yo
+yo
+yo
+AW
 nn
 cg
 ik
@@ -14859,15 +14910,10 @@ eS
 ct
 db
 uj
-Fk
-sA
-sA
-sA
-sA
-Mc
-Gu
-Ie
-LK
+Nr
+Nr
+Nr
+Nr
 aa
 aa
 aa
@@ -14996,9 +15042,14 @@ aa
 aa
 aa
 aa
-sA
-sA
-Mc
+aa
+aa
+aa
+aa
+Nr
+Nr
+Nr
+Nr
 OE
 dr
 dx
@@ -15014,13 +15065,13 @@ yT
 BD
 dS
 cA
-Fk
-sA
-Mc
-he
-Fk
-aa
-aa
+hB
+yo
+AW
+MM
+hB
+cB
+cB
 aa
 aa
 aa
@@ -15092,10 +15143,10 @@ aa
 aa
 aa
 aa
-Dc
-zg
-zg
-pS
+xC
+TE
+TE
+Ln
 Sn
 cg
 zq
@@ -15111,15 +15162,12 @@ cK
 bo
 db
 IZ
-sW
-zg
-zg
-ks
+UI
+am
+am
+bD
 aa
 aa
-Gu
-Gu
-LK
 aa
 aa
 aa
@@ -15247,10 +15295,13 @@ aa
 aa
 aa
 aa
-Dc
-zg
-zg
-pS
+aa
+aa
+aa
+Fy
+am
+am
+xV
 WU
 dr
 mD
@@ -15266,13 +15317,13 @@ dA
 rI
 dS
 Sy
-sW
-zg
-zg
-ks
-aa
-aa
-aa
+DB
+TE
+TE
+Bo
+cB
+cB
+cB
 aa
 aa
 aa
@@ -15369,9 +15420,9 @@ dg
 LK
 aa
 aa
-Gu
-Gu
-LK
+aa
+aa
+aa
 aa
 aa
 aa
@@ -16317,7 +16368,7 @@ aa
 ag
 ak
 an
-am
+bl
 fa
 Zp
 ag
@@ -16545,7 +16596,7 @@ aa
 ab
 ae
 bm
-bl
+pS
 dn
 zB
 ab

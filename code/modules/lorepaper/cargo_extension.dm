@@ -58,3 +58,14 @@
 			to_chat(user, SPAN_SIZE("I could probably open it using a crowbar.."))
 		else
 			to_chat(user, SPAN_SIZE("The cover's loose, I could probably open it with just my hands.."))
+
+// Stuff to be moved to another file someday
+
+/obj/structure/closet/crate/wooden/pickaxes/WillContain()
+	return list(/obj/item/pickaxe/newpick = 10)
+
+/obj/structure/closet/crate/wooden/hardhats/blue/WillContain()
+	return list(/obj/item/clothing/head/hardhat/dblue = 10)
+
+/obj/structure/closet/crate/wooden/hardhats/WillContain()
+	return list(/obj/item/clothing/head/hardhat/red = 10)

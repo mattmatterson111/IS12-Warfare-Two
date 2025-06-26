@@ -2,12 +2,48 @@
 "a" = (
 /turf/template_noop,
 /area/template_noop)
+"c" = (
+/obj/structure/defensive_barrier{
+	pixel_y = -4;
+	secured = 1
+	},
+/obj/hammereditor/nodraw,
+/turf/simulated/wall/perspecticrete,
+/area/template_noop)
+"f" = (
+/turf/simulated/floor/concrete/random,
+/area/template_noop)
+"h" = (
+/obj/structure/trench_wall{
+	dir = 6
+	},
+/turf/simulated/mineral{
+	health = 999999
+	},
+/area/template_noop)
 "i" = (
 /obj/structure/dirt_wall,
 /turf/simulated/floor/dirty/indestructable,
 /area/warfare/battlefield/capture_point/mid)
 "m" = (
 /turf/simulated/floor/dirty/indestructable,
+/area/template_noop)
+"o" = (
+/turf/simulated/mineral{
+	health = 999999
+	},
+/area/template_noop)
+"p" = (
+/obj/structure/trench_wall{
+	dir = 8
+	},
+/turf/simulated/mineral{
+	health = 999999
+	},
+/area/template_noop)
+"q" = (
+/obj/machinery/door/airlock/multi_tile/metal/maintenance/red,
+/turf/simulated/wall/perspecticrete,
 /area/template_noop)
 "r" = (
 /obj/structure/barbwire,
@@ -21,6 +57,41 @@
 /obj/structure/landmine/red,
 /turf/simulated/floor/dirty/indestructable,
 /area/template_noop)
+"v" = (
+/turf/simulated/wall/perspecticrete,
+/area/template_noop)
+"w" = (
+/obj/machinery/door/airlock/multi_tile/metal/maintenance/blue,
+/turf/space,
+/area/template_noop)
+"x" = (
+/obj/structure/defensive_barrier{
+	dir = 1;
+	pixel_y = 12;
+	secured = 1
+	},
+/obj/hammereditor/nodraw,
+/turf/simulated/wall/perspecticrete{
+	layer = 29;
+	plane = -15
+	},
+/area/template_noop)
+"A" = (
+/obj/structure/trench_wall/sequel{
+	dir = 4
+	},
+/turf/simulated/mineral{
+	health = 999999
+	},
+/area/template_noop)
+"D" = (
+/obj/structure/trench_wall/sequel{
+	dir = 8
+	},
+/turf/simulated/mineral{
+	health = 999999
+	},
+/area/template_noop)
 "E" = (
 /obj/structure/barbwire,
 /turf/simulated/floor/dirty/indestructable,
@@ -28,6 +99,22 @@
 "H" = (
 /turf/simulated/floor/dirty/indestructable,
 /area/warfare/battlefield/capture_point/mid)
+"I" = (
+/obj/structure/trench_wall{
+	dir = 10
+	},
+/turf/simulated/mineral{
+	health = 999999
+	},
+/area/template_noop)
+"K" = (
+/obj/structure/trench_wall{
+	dir = 4
+	},
+/turf/simulated/mineral{
+	health = 999999
+	},
+/area/template_noop)
 "M" = (
 /obj/effect/phone_line,
 /turf/template_noop,
@@ -39,6 +126,17 @@
 "R" = (
 /turf/simulated/floor/trench,
 /area/warfare/battlefield/capture_point/mid)
+"T" = (
+/obj/machinery/light/small/red{
+	dir = 8;
+	pixel_y = 6;
+	pixel_x = -7
+	},
+/turf/simulated/floor/concrete/random,
+/area/template_noop)
+"W" = (
+/turf/space,
+/area/template_noop)
 
 (1,1,1) = {"
 a
@@ -5598,6 +5696,9 @@ a
 a
 a
 a
+D
+o
+o
 a
 a
 a
@@ -5732,12 +5833,9 @@ a
 a
 a
 a
-a
-a
-a
-a
-a
-a
+K
+K
+I
 a
 a
 a
@@ -5848,6 +5946,9 @@ a
 a
 a
 a
+x
+f
+w
 a
 a
 a
@@ -5982,12 +6083,9 @@ a
 a
 a
 a
-a
-a
-a
-a
-a
-a
+q
+T
+c
 a
 a
 a
@@ -6098,6 +6196,9 @@ a
 a
 a
 a
+x
+f
+W
 a
 a
 a
@@ -6232,12 +6333,9 @@ a
 a
 a
 a
-a
-a
-a
-a
-a
-a
+v
+f
+c
 a
 a
 a
@@ -6348,6 +6446,9 @@ a
 a
 a
 a
+A
+o
+o
 a
 a
 a
@@ -6482,12 +6583,9 @@ a
 a
 a
 a
-a
-a
-a
-a
-a
-a
+p
+p
+h
 a
 a
 a
