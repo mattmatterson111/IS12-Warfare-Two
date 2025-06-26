@@ -337,20 +337,31 @@
 								sparks.set_up(3, 0, pickedloc)
 								sparks.start()
 								pickedpad.isselectedbrighter()
-								spawn(0.025 SECONDS)
-									var/list/togib = get_people_on_turf(get_turf(pickedpad))
-									for(var/mob/gibthisguy in togib)
-										if(gibthisguy.loc == pickedpad.loc) // sanity check I guess
-											log_and_message_admins("[gibthisguy] has <span class='danger'>gibbed themselves</span> on the following cargo pad: [pickedpad]!")
-											to_chat(gibthisguy, "\icon[glowobj]You gibbed yourself on the cargo pad. Congratulations.. Your story ends here..<span class='alert'>(DEV MSG)</span>")
-											gibthisguy.gib()
-										else
-											continue // if this were to happen, it would be a miracle
-									var/obj/A = new productpath(pickedloc)
-									A.desc = "A [productname] crate."
-									A.name = "[productname] crate"
-									if(productwill_contain) // hopefully this will prevent runtimes
-										create_objects_in_loc(A, productwill_contain)
+								var/list/togib = get_people_on_turf(get_turf(pickedpad))
+								var/spawn_gibs = FALSE
+								for(var/mob/gibthisguy in togib)
+									if(gibthisguy.resting)
+										log_and_message_admins("[gibthisguy] has <span class='danger'>gibbed themselves</span> on the following cargo pad: [pickedpad]!")
+										gibthisguy.gib()
+									else
+										if(ishuman(gibthisguy))
+											var/mob/living/carbon/human/leg_removal = gibthisguy
+											var/obj/item/organ/external/L = leg_removal.get_organ(BP_L_LEG)
+											var/obj/item/organ/external/R = leg_removal.get_organ(BP_R_LEG)
+											if(L)
+												L.droplimb()
+											if(R)
+												R.droplimb()
+											new/obj/effect/gibspawner/human(get_turf(pickedpad))
+											spawn_gibs = TRUE
+								if(spawn_gibs)
+									new/obj/effect/gibspawner/human(get_turf(pickedpad))
+								var/to_spawn = product["path"]
+								var/obj/A = new to_spawn(pickedloc)
+								A.desc = "A [productname] crate."
+								A.name = "[productname] crate"
+								if(productwill_contain) // hopefully this will prevent runtimes
+									create_objects_in_loc(A, productwill_contain)
 							spawn(2.7 SECONDS)
 								pickedpad.isselected()
 					//				pad.lightdown()
@@ -386,56 +397,56 @@
 	id = RED_TEAM
 	products = list(
 		// general ammo stuff
-		list("name" = "Rifle Ammo Pack", "price" = 50, "category" = "Ammunition", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/item/ammo_box/rifle = 10)),
-		list("name" = "Shotgun Ammo Pack", "price" = 100, "category" = "Ammunition", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/item/ammo_box/shotgun = 10)),
-		list("name" = "Pistol Ammo Pack", "price" = 50, "category" = "Ammunition", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/item/ammo_magazine/c45m/warfare = 10, /obj/item/ammo_magazine/a50 = 5)),
-		list("name" = "Revolver Ammo Pack", "price" = 50, "category" = "Ammunition", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/item/ammo_magazine/handful/revolver = 10)),
-		list("name" = "Soulburn Ammo Pack", "price" = 50, "category" = "Ammunition", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/item/ammo_magazine/mc9mmt/machinepistol = 10)),
-		list("name" = "HMG Ammo Pack", "price" = 100, "category" = "Ammunition", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/item/ammo_magazine/box/a556/mg08 = 5)),
-		list("name" = "Warmonger Ammo", "price" = 50, "category" = "Ammunition", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/item/ammo_magazine/c45rifle/akarabiner = 10)),
-		list("name" = "Flamethrower Ammo Pack", "price" = 100, "category" = "Ammunition", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/item/ammo_magazine/flamer = 5)),
-		list("name" = "PTSD Ammo Pack", "price" = 100, "category" = "Ammunition", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/item/ammo_box/ptsd = 5)),
-		list("name" = "Mortar Ammo", "price" = 100, "category" = "Ammunition", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/item/mortar_shell = 8)),
+		list("name" = "Rifle Ammo Pack", "price" = 50, "category" = "Ammunition", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/ammo_box/rifle = 10)),
+		list("name" = "Shotgun Ammo Pack", "price" = 100, "category" = "Ammunition", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/ammo_box/shotgun = 10)),
+		list("name" = "Pistol Ammo Pack", "price" = 50, "category" = "Ammunition", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/ammo_magazine/c45m/warfare = 10, /obj/item/ammo_magazine/a50 = 5)),
+		list("name" = "Revolver Ammo Pack", "price" = 50, "category" = "Ammunition", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/ammo_magazine/handful/revolver = 10)),
+		list("name" = "Soulburn Ammo Pack", "price" = 50, "category" = "Ammunition", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/ammo_magazine/mc9mmt/machinepistol = 10)),
+		list("name" = "HMG Ammo Pack", "price" = 100, "category" = "Ammunition", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/ammo_magazine/box/a556/mg08 = 5)),
+		list("name" = "Warmonger Ammo", "price" = 50, "category" = "Ammunition", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/ammo_magazine/c45rifle/akarabiner = 10)),
+		list("name" = "Flamethrower Ammo Pack", "price" = 100, "category" = "Ammunition", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/ammo_magazine/flamer = 5)),
+		list("name" = "PTSD Ammo Pack", "price" = 100, "category" = "Ammunition", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/ammo_box/ptsd = 5)),
+		list("name" = "Mortar Ammo", "price" = 100, "category" = "Ammunition", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/mortar_shell = 8)),
 
 		// general weapon stuff
-		list("name" = "Shotgun Pack", "price" = 100, "category" = "Weaponry", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/item/gun/projectile/shotgun/pump/shitty = 5)),
-		list("name" = "Pistol Pack", "price" = 100, "category" = "Weaponry", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/item/gun/projectile/golt = 2, /obj/item/gun/projectile/warfare = 3)),
-		list("name" = "Harbinger Pack", "price" = 100, "category" = "Weaponry", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/item/gun/projectile/automatic/mg08 = 2)),
-		list("name" = "Warmonger Pack", "price" = 100, "category" = "Weaponry", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/item/gun/projectile/automatic/m22/warmonger = 10)),
-		list("name" = "Shovel Pack", "price" = 50, "category" = "Weaponry", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/item/shovel = 5)),
-		list("name" = "Doublebarrel Shotgun Pack", "price" = 100, "category" = "Weaponry", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/item/gun/projectile/shotgun/doublebarrel = 5)),
-		list("name" = "Bolt Action Rifle Pack", "price" = 50, "category" = "Weaponry", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/item/gun/projectile/shotgun/pump/boltaction/shitty/leverchester = 10)),
-		list("name" = "Soulburn Pack", "price" = 100, "category" = "Weaponry", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/item/gun/projectile/automatic/machinepistol/wooden = 5)),
-		list("name" = "Flamethrower Pack", "price" = 200, "category" = "Weaponry", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/item/gun/projectile/automatic/flamer = 1, /obj/item/ammo_magazine/flamer = 2)),
-		list("name" = "Frag Grenade Pack", "price" = 350, "category" = "Weaponry", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/item/grenade/frag/warfare = 5)),
-		list("name" = "Trench Club Pack", "price" = 100, "category" = "Weaponry", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/item/melee/classic_baton/trench_club = 5)),
-		list("name" = "Mortar Pack", "price" = 800, "category" = "Weaponry", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/item/mortar_launcher = 2, /obj/item/mortar_shell = 6)),
+		list("name" = "Shotgun Pack", "price" = 100, "category" = "Weaponry", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/gun/projectile/shotgun/pump/shitty = 5)),
+		list("name" = "Pistol Pack", "price" = 100, "category" = "Weaponry", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/gun/projectile/golt = 2, /obj/item/gun/projectile/warfare = 3)),
+		list("name" = "Harbinger Pack", "price" = 100, "category" = "Weaponry", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/gun/projectile/automatic/mg08 = 2)),
+		list("name" = "Warmonger Pack", "price" = 100, "category" = "Weaponry", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/gun/projectile/automatic/m22/warmonger = 10)),
+		list("name" = "Shovel Pack", "price" = 50, "category" = "Weaponry", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/shovel = 5)),
+		list("name" = "Doublebarrel Shotgun Pack", "price" = 100, "category" = "Weaponry", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/gun/projectile/shotgun/doublebarrel = 5)),
+		list("name" = "Bolt Action Rifle Pack", "price" = 50, "category" = "Weaponry", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/gun/projectile/shotgun/pump/boltaction/shitty/leverchester = 10)),
+		list("name" = "Soulburn Pack", "price" = 100, "category" = "Weaponry", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/gun/projectile/automatic/machinepistol/wooden = 5)),
+		list("name" = "Flamethrower Pack", "price" = 200, "category" = "Weaponry", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/gun/projectile/automatic/flamer = 1, /obj/item/ammo_magazine/flamer = 2)),
+		list("name" = "Frag Grenade Pack", "price" = 350, "category" = "Weaponry", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/grenade/frag/warfare = 5)),
+		list("name" = "Trench Club Pack", "price" = 100, "category" = "Weaponry", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/melee/classic_baton/trench_club = 5)),
+		list("name" = "Mortar Pack", "price" = 800, "category" = "Weaponry", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/mortar_launcher = 2, /obj/item/mortar_shell = 6)),
 
 		// medical and supply stuff
-		list("name" = "Gas Mask Pack", "price" = 50, "category" = "Miscellaneous", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/item/clothing/mask/gas/sniper/penal1 = 10)),
-		list("name" = "Barbwire Pack", "price" = 50, "category" = "Miscellaneous", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/item/stack/barbwire = 5)),
-		list("name" = "Canned Food Pack", "price" = 20, "category" = "Miscellaneous", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/random/canned_food/red = 10)),
-		list("name" = "Bodybag Pack", "price" = 5, "category" = "Miscellaneous", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/item/storage/box/bodybags = 3)),
-		list("name" = "Cigarette Pack", "price" = 50, "category" = "Miscellaneous", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/item/storage/fancy/cigarettes = 10)),
-		list("name" = "First Aid Pack", "price" = 100, "category" = "Miscellaneous", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/item/storage/firstaid/regular = 5)),
-		list("name" = "Advanced First Aid Pack", "price" = 200, "category" = "Miscellaneous", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/item/storage/firstaid/adv = 5)),
-		list("name" = "Medical Belt Pack", "price" = 50, "category" = "Miscellaneous", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/item/storage/belt/medical/full = 10)),
-		list("name" = "Booze Crate", "price" = 100, "category" = "Miscellaneous", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/random/drinkbottle = 8)),
-		list("name" = "Atepoine Pack", "price" = 50, "category" = "Miscellaneous", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/item/reagent_containers/hypospray/autoinjector/revive = 10)),
-		list("name" = "Blood Injector Pack", "price" = 50, "category" = "Miscellaneous", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/item/reagent_containers/hypospray/autoinjector/blood = 10)),
-		list("name" = "Smoke Grenade Pack", "price" = 150, "category" = "Miscellaneous", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/item/grenade/smokebomb = 5)),
-		//list("name" = "Trench Bridge Pack", "price" = 150, "category" = "Miscellaneous", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/item/grenade_box/trench_bridge = 2)),
+		list("name" = "Gas Mask Pack", "price" = 50, "category" = "Miscellaneous", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/clothing/mask/gas/sniper/penal1 = 10)),
+		list("name" = "Barbwire Pack", "price" = 50, "category" = "Miscellaneous", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/stack/barbwire = 5)),
+		list("name" = "Canned Food Pack", "price" = 20, "category" = "Miscellaneous", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/random/canned_food/red = 10)),
+		list("name" = "Bodybag Pack", "price" = 5, "category" = "Miscellaneous", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/storage/box/bodybags = 3)),
+		list("name" = "Cigarette Pack", "price" = 50, "category" = "Miscellaneous", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/storage/fancy/cigarettes = 10)),
+		list("name" = "First Aid Pack", "price" = 100, "category" = "Miscellaneous", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/storage/firstaid/regular = 5)),
+		list("name" = "Advanced First Aid Pack", "price" = 200, "category" = "Miscellaneous", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/storage/firstaid/adv = 5)),
+		list("name" = "Medical Belt Pack", "price" = 50, "category" = "Miscellaneous", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/storage/belt/medical/full = 10)),
+		list("name" = "Booze Pack", "price" = 100, "category" = "Miscellaneous", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/random/drinkbottle = 8)),
+		list("name" = "Atepoine Pack", "price" = 50, "category" = "Miscellaneous", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/reagent_containers/hypospray/autoinjector/revive = 10)),
+		list("name" = "Blood Injector Pack", "price" = 50, "category" = "Miscellaneous", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/reagent_containers/hypospray/autoinjector/blood = 10)),
+		list("name" = "Smoke Grenade Pack", "price" = 150, "category" = "Miscellaneous", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/grenade/smokebomb = 5)),
+		//list("name" = "Trench Bridge Pack", "price" = 150, "category" = "Miscellaneous", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/grenade_box/trench_bridge = 2)),
 
 
 		// team stuff
-		list("name" = "Illumination Mortar Ammo (Red)", "price" = 300, "category" = "Ammunition", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/item/mortar_shell/flare = 8)),
-//		list("name" = "Illumination Mortar Ammo (Blue)", "price" = 300, "category" = "Ammunition", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/item/mortar_shell/flare/blue = 8)),
+		list("name" = "Illumination Mortar Ammo (Red)", "price" = 300, "category" = "Ammunition", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/mortar_shell/flare = 8)),
+//		list("name" = "Illumination Mortar Ammo (Blue)", "price" = 300, "category" = "Ammunition", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/mortar_shell/flare/blue = 8)),
 
 	// warfunits
 
 		list("name" = "Red sniper", "price" = 500, "category" = "Units", "path" = /datum/job/soldier/red_soldier/sniper),
 		list("name" = "Red flamer", "price" = 1000, "category" = "Units", "path" = /datum/job/soldier/red_soldier/flame_trooper),
-		//list("name" = "Red sentry", "price" = 10, "category" = "Units", "path" = /datum/job/soldier/red_soldier/sentry),
+		list("name" = "Red sentry", "price" = 10, "category" = "Units", "path" = /datum/job/soldier/red_soldier/sentry),
 		list("name" = "Reinforcements", "price" = 750, "category" = "Units", "path" = "none")
 	)
 
@@ -444,53 +455,53 @@
 	id = BLUE_TEAM
 	products = list(
 		// general ammo stuff
-		list("name" = "Rifle Ammo Pack", "price" = 50, "category" = "Ammunition", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/item/ammo_box/rifle = 10)),
-		list("name" = "Shotgun Ammo Pack", "price" = 100, "category" = "Ammunition", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/item/ammo_box/shotgun = 10)),
-		list("name" = "Pistol Ammo Pack", "price" = 50, "category" = "Ammunition", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/item/ammo_magazine/c45m/warfare = 10, /obj/item/ammo_magazine/a50 = 5)),
-		list("name" = "Revolver Ammo Pack", "price" = 50, "category" = "Ammunition", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/item/ammo_magazine/handful/revolver = 10)),
-		list("name" = "Soulburn Ammo Pack", "price" = 50, "category" = "Ammunition", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/item/ammo_magazine/mc9mmt/machinepistol = 10)),
-		list("name" = "HMG Ammo Pack", "price" = 100, "category" = "Ammunition", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/item/ammo_magazine/box/a556/mg08 = 5)),
-		list("name" = "Warmonger Ammo", "price" = 50, "category" = "Ammunition", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/item/ammo_magazine/c45rifle/akarabiner = 10)),
-		list("name" = "Flamethrower Ammo Pack", "price" = 100, "category" = "Ammunition", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/item/ammo_magazine/flamer = 5)),
-		list("name" = "PTSD Ammo Pack", "price" = 100, "category" = "Ammunition", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/item/ammo_box/ptsd = 5)),
-		list("name" = "Mortar Ammo", "price" = 800, "category" = "Ammunition", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/item/mortar_shell = 8)),
+		list("name" = "Rifle Ammo Pack", "price" = 50, "category" = "Ammunition", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/ammo_box/rifle = 10)),
+		list("name" = "Shotgun Ammo Pack", "price" = 100, "category" = "Ammunition", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/ammo_box/shotgun = 10)),
+		list("name" = "Pistol Ammo Pack", "price" = 50, "category" = "Ammunition", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/ammo_magazine/c45m/warfare = 10, /obj/item/ammo_magazine/a50 = 5)),
+		list("name" = "Revolver Ammo Pack", "price" = 50, "category" = "Ammunition", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/ammo_magazine/handful/revolver = 10)),
+		list("name" = "Soulburn Ammo Pack", "price" = 50, "category" = "Ammunition", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/ammo_magazine/mc9mmt/machinepistol = 10)),
+		list("name" = "HMG Ammo Pack", "price" = 100, "category" = "Ammunition", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/ammo_magazine/box/a556/mg08 = 5)),
+		list("name" = "Warmonger Ammo", "price" = 50, "category" = "Ammunition", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/ammo_magazine/c45rifle/akarabiner = 10)),
+		list("name" = "Flamethrower Ammo Pack", "price" = 100, "category" = "Ammunition", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/ammo_magazine/flamer = 5)),
+		list("name" = "PTSD Ammo Pack", "price" = 100, "category" = "Ammunition", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/ammo_box/ptsd = 5)),
+		list("name" = "Mortar Ammo", "price" = 800, "category" = "Ammunition", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/mortar_shell = 8)),
 
 		// general weapon stuff
-		list("name" = "Shotgun Pack", "price" = 100, "category" = "Weaponry", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/item/gun/projectile/shotgun/pump/shitty = 5)),
-		list("name" = "Pistol Pack", "price" = 100, "category" = "Weaponry", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/item/gun/projectile/golt = 2, /obj/item/gun/projectile/warfare = 3)),
-		list("name" = "Harbinger Pack", "price" = 100, "category" = "Weaponry", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/item/gun/projectile/automatic/mg08 = 2)),
-		list("name" = "Warmonger Pack", "price" = 100, "category" = "Weaponry", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/item/gun/projectile/automatic/m22/warmonger = 10)),
-		list("name" = "Shovel Pack", "price" = 50, "category" = "Weaponry", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/item/shovel = 5)),
-		list("name" = "Doublebarrel Shotgun Pack", "price" = 100, "category" = "Weaponry", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/item/gun/projectile/shotgun/doublebarrel = 5)),
-		list("name" = "Bolt Action Rifle Pack", "price" = 50, "category" = "Weaponry", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/item/gun/projectile/shotgun/pump/boltaction/shitty = 10)),
-		list("name" = "Soulburn Pack", "price" = 100, "category" = "Weaponry", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/item/gun/projectile/automatic/machinepistol = 5)),
-		list("name" = "Flamethrower Pack", "price" = 200, "category" = "Weaponry", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/item/gun/projectile/automatic/flamer = 1, /obj/item/ammo_magazine/flamer = 2)),
-		list("name" = "Frag Grenade Pack", "price" = 350, "category" = "Weaponry", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/item/grenade/frag/warfare = 5)),
-		list("name" = "Trench Club Pack", "price" = 100, "category" = "Weaponry", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/item/melee/classic_baton/trench_club = 5)),
-		list("name" = "Mortar Pack", "price" = 600, "category" = "Weaponry", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/item/mortar_launcher = 2, /obj/item/mortar_shell = 6)),
+		list("name" = "Shotgun Pack", "price" = 100, "category" = "Weaponry", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/gun/projectile/shotgun/pump/shitty = 5)),
+		list("name" = "Pistol Pack", "price" = 100, "category" = "Weaponry", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/gun/projectile/golt = 2, /obj/item/gun/projectile/warfare = 3)),
+		list("name" = "Harbinger Pack", "price" = 100, "category" = "Weaponry", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/gun/projectile/automatic/mg08 = 2)),
+		list("name" = "Warmonger Pack", "price" = 100, "category" = "Weaponry", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/gun/projectile/automatic/m22/warmonger = 10)),
+		list("name" = "Shovel Pack", "price" = 50, "category" = "Weaponry", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/shovel = 5)),
+		list("name" = "Doublebarrel Shotgun Pack", "price" = 100, "category" = "Weaponry", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/gun/projectile/shotgun/doublebarrel = 5)),
+		list("name" = "Bolt Action Rifle Pack", "price" = 50, "category" = "Weaponry", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/gun/projectile/shotgun/pump/boltaction/shitty = 10)),
+		list("name" = "Soulburn Pack", "price" = 100, "category" = "Weaponry", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/gun/projectile/automatic/machinepistol = 5)),
+		list("name" = "Flamethrower Pack", "price" = 200, "category" = "Weaponry", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/gun/projectile/automatic/flamer = 1, /obj/item/ammo_magazine/flamer = 2)),
+		list("name" = "Frag Grenade Pack", "price" = 350, "category" = "Weaponry", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/grenade/frag/warfare = 5)),
+		list("name" = "Trench Club Pack", "price" = 100, "category" = "Weaponry", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/melee/classic_baton/trench_club = 5)),
+		list("name" = "Mortar Pack", "price" = 600, "category" = "Weaponry", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/mortar_launcher = 2, /obj/item/mortar_shell = 6)),
 
 		// medical and supply stuff
-		list("name" = "Gas Mask Pack", "price" = 50, "category" = "Miscellaneous", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/item/clothing/mask/gas/sniper/penal3 = 10)),
-		list("name" = "Barbwire Pack", "price" = 50, "category" = "Miscellaneous", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/item/stack/barbwire = 5)),
-		list("name" = "Canned Food Pack", "price" = 20, "category" = "Miscellaneous", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/random/canned_food/blue = 10)),
-		list("name" = "Bodybag Pack", "price" = 5, "category" = "Miscellaneous", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/item/storage/box/bodybags = 3)),
-		list("name" = "Cigarette Pack", "price" = 50, "category" = "Miscellaneous", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/item/storage/fancy/cigarettes = 10)),
-		list("name" = "First Aid Pack", "price" = 100, "category" = "Miscellaneous", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/item/storage/firstaid/regular = 5)),
-		list("name" = "Advanced First Aid Pack", "price" = 200, "category" = "Miscellaneous", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/item/storage/firstaid/adv = 5)),
-		list("name" = "Medical Belt Pack", "price" = 50, "category" = "Miscellaneous", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/item/storage/belt/medical/full = 10)),
-		list("name" = "Booze Pack", "price" = 100, "category" = "Miscellaneous", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/random/drinkbottle = 8)),
-		list("name" = "Atepoine Pack", "price" = 50, "category" = "Miscellaneous", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/item/reagent_containers/hypospray/autoinjector/revive = 10)),
-		list("name" = "Blood Injector Pack", "price" = 50, "category" = "Miscellaneous", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/item/reagent_containers/hypospray/autoinjector/blood = 10)),
-		list("name" = "Smoke Grenade Pack", "price" = 150, "category" = "Miscellaneous", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/item/grenade/smokebomb = 5)),
-		//list("name" = "Trench Bridge Pack", "price" = 150, "category" = "Miscellaneous", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/item/grenade_box/trench_bridge = 2)),
+		list("name" = "Gas Mask Pack", "price" = 50, "category" = "Miscellaneous", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/clothing/mask/gas/sniper/penal3 = 10)),
+		list("name" = "Barbwire Pack", "price" = 50, "category" = "Miscellaneous", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/stack/barbwire = 5)),
+		list("name" = "Canned Food Pack", "price" = 20, "category" = "Miscellaneous", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/random/canned_food/blue = 10)),
+		list("name" = "Bodybag Pack", "price" = 5, "category" = "Miscellaneous", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/storage/box/bodybags = 3)),
+		list("name" = "Cigarette Pack", "price" = 50, "category" = "Miscellaneous", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/storage/fancy/cigarettes = 10)),
+		list("name" = "First Aid Pack", "price" = 100, "category" = "Miscellaneous", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/storage/firstaid/regular = 5)),
+		list("name" = "Advanced First Aid Pack", "price" = 200, "category" = "Miscellaneous", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/storage/firstaid/adv = 5)),
+		list("name" = "Medical Belt Pack", "price" = 50, "category" = "Miscellaneous", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/storage/belt/medical/full = 10)),
+		list("name" = "Booze Pack", "price" = 100, "category" = "Miscellaneous", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/random/drinkbottle = 8)),
+		list("name" = "Atepoine Pack", "price" = 50, "category" = "Miscellaneous", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/reagent_containers/hypospray/autoinjector/revive = 10)),
+		list("name" = "Blood Injector Pack", "price" = 50, "category" = "Miscellaneous", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/reagent_containers/hypospray/autoinjector/blood = 10)),
+		list("name" = "Smoke Grenade Pack", "price" = 150, "category" = "Miscellaneous", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/grenade/smokebomb = 5)),
+		//list("name" = "Trench Bridge Pack", "price" = 150, "category" = "Miscellaneous", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/grenade_box/trench_bridge = 2)),
 
 		// team stuff
-//		list("name" = "Illumination Mortar Ammo (Red)", "price" = 300, "category" = "Ammunition", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/item/mortar_shell/flare = 8)),
-		list("name" = "Illumination Mortar Ammo (Blue)", "price" = 300, "category" = "Ammunition", "path" = /obj/structure/closet/crate/scuffedcargo, "willcontain" = list(/obj/item/mortar_shell/flare/blue = 8)),
+//		list("name" = "Illumination Mortar Ammo (Red)", "price" = 300, "category" = "Ammunition", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/mortar_shell/flare = 8)),
+		list("name" = "Illumination Mortar Ammo (Blue)", "price" = 300, "category" = "Ammunition", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/mortar_shell/flare/blue = 8)),
 
 		list("name" = "Blue sniper", "price" = 500, "category" = "Units", "path" = /datum/job/soldier/blue_soldier/sniper),
 		list("name" = "Blue flamer", "price" = 1000, "category" = "Units", "path" = /datum/job/soldier/blue_soldier/flame_trooper),
-		//list("name" = "Blue sentry", "price" = 10, "category" = "Units", "path" = /datum/job/soldier/blue_soldier/sentry),
+		list("name" = "Blue sentry", "price" = 10, "category" = "Units", "path" = /datum/job/soldier/blue_soldier/sentry),
 		list("name" = "Reinforcements", "price" = 750, "category" = "Units", "path" = "none"),
 	)
 

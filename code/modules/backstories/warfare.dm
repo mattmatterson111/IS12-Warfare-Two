@@ -66,7 +66,7 @@
 
 /datum/backstory/translator
 	name = "The Translator"
-	description = "You studied the enemy team's language and culture in secret, and you are now able to communicate with them fluently."
+	description = "You have spent years attempting to crack the enemy team's language. You know best not to speak it casually, but you can understand them fluently."
 	chance = 5 // Rarity
 
 /datum/backstory/translator/apply(mob/living/carbon/human/user)

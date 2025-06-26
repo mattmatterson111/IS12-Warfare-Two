@@ -39,3 +39,11 @@
 	suffixes = list("bunkerfare.dmm")
 	category = "PLACE"
 	spawn_weight = 1
+
+/datum/map_template/ruin/warfare_mid/bunkerfare
+	name = "Trench Fare"
+	id = "trench_fare"
+	description = "The mid-trench experience."
+	suffixes = list("trenchfare.dmm")
+	category = "PLACE"
+	spawn_weight = 1

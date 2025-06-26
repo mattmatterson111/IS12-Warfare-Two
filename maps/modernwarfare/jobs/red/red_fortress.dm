@@ -47,7 +47,7 @@
 	lmg_skill = 0
 	smg_skill = 0
 
-	backstories = list(/datum/backstory/beakless)
+	backstories = list(/datum/backstory/beakless, /datum/backstory/translator)
 
 	equip(var/mob/living/carbon/human/H)
 		..()

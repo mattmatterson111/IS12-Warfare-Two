@@ -58,15 +58,15 @@
 			if(!AM.anchored)
 				content_size += content_size(AM)
 		if(!content_size)
-			to_chat(user, "It is empty.")
+			to_chat(user, SPAN_SIZE("It is empty."))
 		else if(storage_capacity > content_size*4)
-			to_chat(user, "It is barely filled.")
+			to_chat(user, SPAN_SIZE("It is barely filled."))
 		else if(storage_capacity > content_size*2)
-			to_chat(user, "It is less than half full.")
+			to_chat(user, SPAN_SIZE("It is less than half full."))
 		else if(storage_capacity > content_size)
-			to_chat(user, "There is still some free space.")
+			to_chat(user, SPAN_SIZE("There is still some free space."))
 		else
-			to_chat(user, "It is full.")
+			to_chat(user, SPAN_SIZE("It is full."))
 
 /obj/structure/closet/CanPass(atom/movable/mover, turf/target, height=0, air_group=0)
 	if(air_group || (height==0 || wall_mounted)) return 1
@@ -283,7 +283,8 @@
 								 "<span class='notice'>You hear rustling of clothes.</span>")
 			return
 
-		if(usr.drop_item())
+		if(W.canremove)
+			usr.drop_item()
 			W.forceMove(loc)
 			W.pixel_x = 0
 			W.pixel_y = 0

@@ -1516,6 +1516,7 @@
 #include "code\modules\lorepaper\_screen_alerts.dm"
 #include "code\modules\lorepaper\atom_hud_text.dm"
 #include "code\modules\lorepaper\base.dm"
+#include "code\modules\lorepaper\cargo_extension.dm"
 #include "code\modules\lorepaper\location.dm"
 #include "code\modules\lorepaper\random_mid.dm"
 #include "code\modules\mapgen\mapgen.dm"

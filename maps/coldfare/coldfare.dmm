@@ -73,10 +73,10 @@
 /turf/simulated/floor/fixed,
 /area/warfare/homebase/blue)
 "am" = (
-/obj/structure/bed/chair{
-	dir = 1;
-	icon_state = "chair_preview"
-	},
+/obj/structure/closet/secure_closet/warfare/newver,
+/obj/item/crowbar,
+/obj/item/crowbar,
+/obj/item/crowbar,
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/blue)
 "an" = (
@@ -472,10 +472,10 @@
 	},
 /area/warfare/battlefield/capture_point/blue/two)
 "bl" = (
-/obj/structure/bed/chair{
-	dir = 1;
-	icon_state = "chair_preview"
-	},
+/obj/structure/closet/secure_closet/warfare/newver,
+/obj/item/crowbar/red,
+/obj/item/crowbar/red,
+/obj/item/crowbar/red,
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/red)
 "bm" = (
@@ -507,7 +507,6 @@
 /obj/structure/banner/red/small{
 	pixel_y = 32
 	},
-/obj/structure/closet/secure_closet/warfare/newver,
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/red)
 "br" = (
@@ -4542,11 +4541,6 @@
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/red)
 "vh" = (
-/obj/structure/closet/crate,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
 /obj/machinery/light/small/bunker{
 	pixel_x = 0;
 	pixel_y = 32
@@ -6323,17 +6317,6 @@
 	},
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/red)
-"IY" = (
-/obj/structure/banner/blue/small{
-	pixel_y = 32
-	},
-/obj/machinery/light/caged{
-	pixel_y = 30;
-	pixel_x = 0
-	},
-/obj/structure/closet/secure_closet/warfare/newver,
-/turf/simulated/floor/concrete/random,
-/area/warfare/homebase/blue)
 "IZ" = (
 /obj/effect/floor_decal/trench{
 	dir = 9
@@ -15830,7 +15813,7 @@ aa
 ag
 ag
 ag
-IY
+CR
 av
 hi
 aD
@@ -16081,8 +16064,8 @@ aa
 aa
 ah
 aj
-am
 av
+fa
 av
 av
 av
@@ -16309,7 +16292,7 @@ aa
 aa
 ab
 ad
-bl
+dn
 JL
 dn
 dn
@@ -16334,8 +16317,8 @@ aa
 ag
 ak
 an
-av
-av
+am
+fa
 Zp
 ag
 ag
@@ -16562,7 +16545,7 @@ aa
 ab
 ae
 bm
-dn
+bl
 dn
 zB
 ab
@@ -17571,13 +17554,13 @@ aa
 aa
 ab
 vh
-Bc
+dn
 IX
 Ql
 xK
 DJ
-Bc
-Bc
+dn
+dn
 dn
 dn
 dn
