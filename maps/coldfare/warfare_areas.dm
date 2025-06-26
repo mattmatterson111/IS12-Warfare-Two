@@ -168,6 +168,8 @@ GLOBAL_LIST_EMPTY(mortar_areas) // = list()
 /area/warfare/battlefield/capture_point/red/Enter(atom/movable/AM)
 	if(ishuman(AM))
 		var/mob/living/carbon/human/H = AM
+		if(!H.stat == CONSCIOUS)
+			return TRUE
 		if(H.warfare_faction == BLUE_TEAM && (GLOB.blue_captured_zones.len < REQUIRED_TRENCH_ZONES))
 			to_chat(H, "<big>WE DO NOT CONTROL THE MIDDLE BUNKER!</big>")
 			return FALSE
@@ -190,6 +192,8 @@ GLOBAL_LIST_EMPTY(mortar_areas) // = list()
 /area/warfare/battlefield/capture_point/blue/Enter(atom/movable/AM)
 	if(ishuman(AM))
 		var/mob/living/carbon/human/H = AM
+		if(!H.stat == CONSCIOUS)
+			return TRUE
 		if(H.warfare_faction == RED_TEAM && (GLOB.red_captured_zones.len < REQUIRED_TRENCH_ZONES))
 			to_chat(H, "<big>WE DO NOT CONTROL THE MIDDLE BUNKER!</big>")
 			return FALSE
@@ -207,6 +211,9 @@ GLOBAL_LIST_EMPTY(mortar_areas) // = list()
 		return TRUE
 	if(ishuman(mover))
 		var/mob/living/carbon/human/H = mover
+
+		if(H.stat == DEAD)
+			return TRUE
 
 		if(can_pre_enter)//You can always enter these areas.
 			return TRUE
@@ -263,6 +270,8 @@ GLOBAL_LIST_EMPTY(mortar_areas) // = list()
 /area/warfare/homebase/blue/Enter(atom/movable/AM)
 	if(ishuman(AM))
 		var/mob/living/carbon/human/H = AM
+		if(!H.stat == CONSCIOUS)
+			return TRUE
 		if(H.warfare_faction == RED_TEAM && (GLOB.red_captured_zones.len < REQUIRED_CAPTURED_ZONES))
 			to_chat(H, "<big>WE DO NOT CONTROL THE TRENCHES!</big>")
 			return FALSE
@@ -277,5 +286,7 @@ GLOBAL_LIST_EMPTY(mortar_areas) // = list()
 		return TRUE
 	if(ishuman(mover))
 		var/mob/living/carbon/human/H = mover
+		if(!H.stat == CONSCIOUS)
+			return TRUE
 		to_chat(H, "<big>I CANNOT DISOBEY ORDERS!</big>")
 	return FALSE
