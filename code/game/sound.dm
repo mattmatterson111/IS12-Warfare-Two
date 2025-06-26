@@ -63,6 +63,7 @@
 #define SPACE UNDERWATER
 
 GLOBAL_LIST_INIT(shatter_sound,list('sound/effects/Glassbr1.ogg','sound/effects/Glassbr2.ogg','sound/effects/Glassbr3.ogg'))
+GLOBAL_LIST_INIT(glasshit,list('sound/effects/Glasshit.ogg','sound/effects/Glasshit1.ogg','sound/effects/Glasshit2.ogg'))
 GLOBAL_LIST_INIT(explosion_sound,list('sound/effects/explosion1.ogg','sound/effects/explosion2.ogg','sound/effects/explosion3.ogg','sound/effects/explosion4.ogg','sound/effects/explosion5.ogg','sound/effects/explosion6.ogg'))
 GLOBAL_LIST_INIT(explosion_small,list('sound/effects/explosion_small1.ogg', 'sound/effects/explosion_small2.ogg', 'sound/effects/explosion_small3.ogg'))
 GLOBAL_LIST_INIT(spark_sound,list('sound/effects/sparks1.ogg','sound/effects/sparks2.ogg','sound/effects/sparks3.ogg','sound/effects/sparks4.ogg'))
@@ -256,6 +257,7 @@ var/const/FALLOFF_SOUNDS = 0.5
 	if(istext(soundin))
 		switch(soundin)
 			if ("shatter") soundin = pick(GLOB.shatter_sound)
+			if ("glasshit") soundin = pick(GLOB.glasshit)
 			if ("explosion") soundin = pick(GLOB.explosion_sound)
 			if ("explosion_small") soundin = pick(GLOB.explosion_small)
 			if ("sparks") soundin = pick(GLOB.spark_sound)

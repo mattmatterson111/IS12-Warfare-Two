@@ -326,6 +326,7 @@
 	var/has_light = TRUE
 	atom_flags = ATOM_FLAG_CLIMBABLE
 	add_mask = TRUE
+	var/tmp/water_type = /obj/effect/water
 
 /turf/simulated/floor/exoplanet/water/shallow/update_dirt()
 	return
@@ -440,7 +441,7 @@
 	new /obj/effect/water/bottom(src)//Put it right on top of the water so that they look like they're the same.
 	new /obj/effect/water/top(src)
 	*/
-	new /obj/effect/water(src)
+	new water_type(src)
 
 	spawn(5)
 		update_icon()

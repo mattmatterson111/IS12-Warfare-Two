@@ -38,7 +38,7 @@
 		shatter()
 	else
 		if(sound_effect)
-			playsound(loc, 'sound/effects/Glasshit.ogg', 100, 1)
+			playsound(loc, "glasshit", 100, 1)
 		if(health <= HALF_HEALTH)
 			update_icon()
 	return
@@ -97,7 +97,7 @@
 
 /obj/structure/window_frame/attack_tk(mob/user as mob)
 	user.visible_message("<span class='notice'>Something knocks on [src].</span>")
-	playsound(loc, 'sound/effects/Glasshit.ogg', 50, 1)
+	playsound(loc, "glasshit", 50, 1)
 
 /obj/structure/window_frame/attack_hand(mob/user as mob)
 	user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
@@ -169,7 +169,7 @@
 	if(W.damtype == BRUTE || W.damtype == BURN)
 		hit(W.force)
 	else
-		playsound(loc, 'sound/effects/Glasshit.ogg', 75, 1)
+		playsound(loc, "glasshit", 75, 1)
 	..()
 
 
