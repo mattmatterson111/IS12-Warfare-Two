@@ -2,7 +2,14 @@
 "a" = (
 /turf/template_noop,
 /area/template_noop)
-"f" = (
+"b" = (
+/obj/effect/floor_decal/newcorner/kafel/blue/quarter{
+	dir = 1
+	},
+/obj/effect/lighting_dummy/daylight,
+/turf/simulated/floor/urban/concrete,
+/area/warfare/battlefield/capture_point/mid)
+"c" = (
 /obj/effect/floor_decal/urban/trim3{
 	dir = 9
 	},
@@ -14,52 +21,17 @@
 /turf/simulated/floor/trench,
 /area/template_noop)
 "j" = (
-/obj/effect/floor_decal/newcorner/kafel/blue/quarter{
-	dir = 4
+/obj/effect/floor_decal/urban/trim3{
+	dir = 6
 	},
+/obj/structure/barbwire,
 /obj/effect/lighting_dummy/daylight,
 /turf/simulated/floor/urban/concrete,
 /area/warfare/battlefield/capture_point/mid)
 "m" = (
 /turf/simulated/floor/dirty/indestructable,
 /area/template_noop)
-"n" = (
-/obj/effect/floor_decal/urban/trim3{
-	dir = 8
-	},
-/obj/structure/barbwire,
-/obj/effect/lighting_dummy/daylight,
-/turf/simulated/floor/urban/concrete,
-/area/warfare/battlefield/capture_point/mid)
-"r" = (
-/obj/effect/lighting_dummy/daylight,
-/turf/simulated/floor/urban/concrete,
-/area/warfare/battlefield/capture_point/mid)
-"s" = (
-/obj/effect/floor_decal/urban/trim3{
-	dir = 1
-	},
-/obj/structure/barbwire,
-/obj/effect/lighting_dummy/daylight,
-/turf/simulated/floor/urban/concrete,
-/area/warfare/battlefield/capture_point/mid)
-"t" = (
-/obj/structure/landmine/red,
-/turf/simulated/floor/dirty/indestructable,
-/area/template_noop)
-"u" = (
-/obj/effect/floor_decal/newcorner/red/quarter,
-/obj/effect/lighting_dummy/daylight,
-/turf/simulated/floor/urban/concrete,
-/area/warfare/battlefield/capture_point/mid)
-"x" = (
-/obj/effect/floor_decal/urban/trim3{
-	dir = 4
-	},
-/obj/effect/lighting_dummy/daylight,
-/turf/simulated/floor/urban/concrete,
-/area/warfare/battlefield/capture_point/mid)
-"y" = (
+"o" = (
 /obj/structure/factionbanner{
 	pixel_x = -11;
 	pixel_y = 22
@@ -70,39 +42,60 @@
 /obj/effect/lighting_dummy/daylight,
 /turf/simulated/floor/urban/concrete,
 /area/warfare/battlefield/capture_point/mid)
-"A" = (
-/obj/effect/floor_decal/newcorner/kafel/blue/quarter{
+"r" = (
+/obj/effect/floor_decal/urban/trim3{
 	dir = 1
+	},
+/obj/structure/barbwire,
+/obj/effect/lighting_dummy/daylight,
+/turf/simulated/floor/urban/concrete,
+/area/warfare/battlefield/capture_point/mid)
+"s" = (
+/obj/effect/floor_decal/urban/trim3{
+	dir = 4
 	},
 /obj/effect/lighting_dummy/daylight,
 /turf/simulated/floor/urban/concrete,
 /area/warfare/battlefield/capture_point/mid)
-"D" = (
-/obj/structure/closet/crate/wooden{
-	loose = 1
-	},
-/obj/item/shovel,
-/obj/item/shovel,
-/obj/item/shovel,
-/obj/item/shovel,
-/obj/item/shovel,
-/turf/template_noop,
-/area/template_noop)
-"E" = (
-/obj/structure/barbwire,
+"t" = (
+/obj/structure/landmine/red,
 /turf/simulated/floor/dirty/indestructable,
 /area/template_noop)
-"H" = (
+"y" = (
+/obj/effect/floor_decal/urban/trim3{
+	dir = 8
+	},
+/obj/effect/lighting_dummy/daylight,
+/turf/simulated/floor/urban/concrete,
+/area/warfare/battlefield/capture_point/mid)
+"z" = (
+/obj/effect/floor_decal/urban/trim3{
+	dir = 4
+	},
+/obj/structure/barbwire,
+/obj/effect/lighting_dummy/daylight,
+/turf/simulated/floor/urban/concrete,
+/area/warfare/battlefield/capture_point/mid)
+"A" = (
 /obj/effect/floor_decal/urban/trim3,
 /obj/structure/barbwire,
 /obj/effect/lighting_dummy/daylight,
 /turf/simulated/floor/urban/concrete,
 /area/warfare/battlefield/capture_point/mid)
-"I" = (
+"E" = (
+/obj/structure/barbwire,
+/turf/simulated/floor/dirty/indestructable,
+/area/template_noop)
+"H" = (
 /obj/effect/floor_decal/urban/trim3{
-	dir = 4
+	dir = 10
 	},
 /obj/structure/barbwire,
+/obj/effect/lighting_dummy/daylight,
+/turf/simulated/floor/urban/concrete,
+/area/warfare/battlefield/capture_point/mid)
+"J" = (
+/obj/effect/floor_decal/newcorner/red/quarter,
 /obj/effect/lighting_dummy/daylight,
 /turf/simulated/floor/urban/concrete,
 /area/warfare/battlefield/capture_point/mid)
@@ -115,29 +108,10 @@
 /turf/simulated/floor/dirty/indestructable,
 /area/template_noop)
 "R" = (
-/obj/effect/floor_decal/urban/trim3{
-	dir = 8
-	},
 /obj/effect/lighting_dummy/daylight,
 /turf/simulated/floor/urban/concrete,
 /area/warfare/battlefield/capture_point/mid)
-"T" = (
-/obj/effect/floor_decal/urban/trim3{
-	dir = 10
-	},
-/obj/structure/barbwire,
-/obj/effect/lighting_dummy/daylight,
-/turf/simulated/floor/urban/concrete,
-/area/warfare/battlefield/capture_point/mid)
-"V" = (
-/obj/effect/floor_decal/urban/trim3{
-	dir = 6
-	},
-/obj/structure/barbwire,
-/obj/effect/lighting_dummy/daylight,
-/turf/simulated/floor/urban/concrete,
-/area/warfare/battlefield/capture_point/mid)
-"X" = (
+"S" = (
 /obj/effect/floor_decal/urban/trim3{
 	dir = 5
 	},
@@ -145,6 +119,32 @@
 /obj/effect/lighting_dummy/daylight,
 /turf/simulated/floor/urban/concrete,
 /area/warfare/battlefield/capture_point/mid)
+"T" = (
+/obj/effect/floor_decal/newcorner/kafel/blue/quarter{
+	dir = 4
+	},
+/obj/effect/lighting_dummy/daylight,
+/turf/simulated/floor/urban/concrete,
+/area/warfare/battlefield/capture_point/mid)
+"U" = (
+/obj/effect/floor_decal/urban/trim3{
+	dir = 8
+	},
+/obj/structure/barbwire,
+/obj/effect/lighting_dummy/daylight,
+/turf/simulated/floor/urban/concrete,
+/area/warfare/battlefield/capture_point/mid)
+"V" = (
+/obj/structure/closet/crate/wooden{
+	loose = 1
+	},
+/obj/item/shovel,
+/obj/item/shovel,
+/obj/item/shovel,
+/obj/item/shovel,
+/obj/item/shovel,
+/turf/template_noop,
+/area/template_noop)
 
 (1,1,1) = {"
 a
@@ -17524,12 +17524,12 @@ i
 Q
 m
 m
-T
-n
-R
-R
-n
-f
+H
+U
+y
+y
+U
+c
 m
 m
 Q
@@ -17774,12 +17774,12 @@ i
 Q
 m
 m
-H
+A
+R
+R
+R
+R
 r
-r
-r
-r
-s
 m
 m
 Q
@@ -17959,7 +17959,7 @@ a
 a
 a
 a
-D
+V
 a
 m
 m
@@ -18024,12 +18024,12 @@ i
 Q
 m
 m
-H
-r
 A
-u
+R
+b
+J
+R
 r
-s
 m
 m
 Q
@@ -18274,12 +18274,12 @@ i
 Q
 m
 m
-H
+A
+R
+T
+o
+R
 r
-j
-y
-r
-s
 m
 m
 Q
@@ -18340,7 +18340,7 @@ m
 m
 m
 a
-D
+V
 a
 a
 a
@@ -18524,12 +18524,12 @@ i
 Q
 m
 m
-H
+A
+R
+R
+R
+R
 r
-r
-r
-r
-s
 m
 m
 Q
@@ -18774,12 +18774,12 @@ i
 Q
 m
 m
-V
-I
-x
-x
-I
-X
+j
+z
+s
+s
+z
+S
 m
 m
 Q
