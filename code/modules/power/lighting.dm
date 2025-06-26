@@ -480,7 +480,7 @@
 
 	if(!skip_sound_and_sparks)
 		if(lightbulb && !(lightbulb.status == LIGHT_BROKEN))
-			playsound(src.loc, 'sound/effects/Glasshit.ogg', 75, 1)
+			playsound(src.loc, "glasshit", 75, 1)
 		if(on)
 			s.set_up(3, 1, src)
 			s.start()
@@ -687,7 +687,7 @@
 		status = LIGHT_BROKEN
 		force = 5
 		sharp = 1
-		playsound(src.loc, 'sound/effects/Glasshit.ogg', 75, 1)
+		playsound(src.loc, "glasshit", 75, 1)
 		update_icon()
 
 /obj/item/light/proc/switch_on()

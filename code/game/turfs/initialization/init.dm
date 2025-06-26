@@ -30,6 +30,9 @@
 	if(istype(T, /turf/simulated/floor/trench)  || istype(T, /turf/simulated/floor/exoplanet/water/shallow))
 		return
 
+	if(!istype(T, /turf/simulated/floor/dirty))
+		return
+
 	else if(prob(10))
 		new /obj/structure/flora/tree/dead(T)
 

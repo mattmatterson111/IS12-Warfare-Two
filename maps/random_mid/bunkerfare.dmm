@@ -2,6 +2,12 @@
 "a" = (
 /turf/template_noop,
 /area/template_noop)
+"b" = (
+/obj/effect/floor_decal/urban/trim1{
+	dir = 8
+	},
+/turf/simulated/floor/concrete/random,
+/area/template_noop)
 "d" = (
 /turf/simulated/floor/concrete/random,
 /area/warfare/battlefield/capture_point/mid)
@@ -22,6 +28,12 @@
 	},
 /turf/simulated/floor/concrete/random,
 /area/warfare/battlefield/capture_point/mid)
+"h" = (
+/obj/effect/floor_decal/urban/trim1{
+	dir = 4
+	},
+/turf/simulated/floor/concrete/random,
+/area/template_noop)
 "i" = (
 /turf/simulated/floor/concrete/random,
 /area/template_noop)
@@ -45,6 +57,14 @@
 /turf/simulated/floor/concrete/random,
 /area/warfare/battlefield/capture_point/mid)
 "m" = (
+/turf/simulated/floor/dirty/indestructable,
+/area/template_noop)
+"n" = (
+/obj/machinery/light/caged{
+	pixel_y = -14;
+	dir = 1;
+	pixel_x = 16
+	},
 /turf/simulated/floor/dirty/indestructable,
 /area/template_noop)
 "o" = (
@@ -76,6 +96,13 @@
 /obj/item/clothing/head/helmet/hard_had,
 /turf/simulated/floor/trenches/underground,
 /area/warfare/battlefield/trench_section/underground)
+"v" = (
+/obj/machinery/light/caged{
+	pixel_y = 14;
+	pixel_x = 16
+	},
+/turf/simulated/floor/dirty/indestructable,
+/area/template_noop)
 "w" = (
 /obj/machinery/light/caged{
 	pixel_y = -14;
@@ -135,6 +162,10 @@
 /obj/effect/phone_line,
 /turf/template_noop,
 /area/template_noop)
+"O" = (
+/obj/effect/floor_decal/urban/trim1,
+/turf/simulated/floor/dirty/indestructable,
+/area/template_noop)
 "Q" = (
 /obj/structure/dirt_wall,
 /turf/simulated/floor/dirty/indestructable,
@@ -151,6 +182,12 @@
 	dir = 1
 	},
 /turf/simulated/floor/concrete/random,
+/area/template_noop)
+"W" = (
+/obj/effect/floor_decal/urban/trim1{
+	dir = 1
+	},
+/turf/simulated/floor/dirty/indestructable,
 /area/template_noop)
 "X" = (
 /obj/machinery/light/caged{
@@ -17299,7 +17336,7 @@ m
 m
 E
 Q
-i
+m
 R
 f
 i
@@ -17312,7 +17349,7 @@ i
 i
 r
 R
-i
+m
 Q
 E
 m
@@ -17549,7 +17586,7 @@ m
 m
 E
 Q
-i
+W
 i
 i
 i
@@ -17562,7 +17599,7 @@ i
 i
 i
 i
-i
+O
 Q
 E
 m
@@ -17799,9 +17836,9 @@ m
 m
 E
 Q
+W
 i
-i
-i
+h
 i
 i
 s
@@ -17812,7 +17849,7 @@ i
 i
 i
 i
-i
+O
 Q
 E
 m
@@ -18049,7 +18086,7 @@ m
 m
 E
 Q
-y
+n
 R
 k
 V
@@ -18062,7 +18099,7 @@ i
 o
 w
 R
-Y
+v
 Q
 E
 m
@@ -18299,7 +18336,7 @@ m
 m
 E
 Q
-i
+m
 R
 D
 V
@@ -18312,7 +18349,7 @@ i
 o
 D
 R
-i
+m
 Q
 E
 m
@@ -18549,9 +18586,9 @@ m
 m
 E
 Q
+W
 i
-i
-i
+b
 i
 i
 s
@@ -18562,7 +18599,7 @@ Y
 i
 i
 i
-i
+O
 Q
 E
 m
@@ -18799,7 +18836,7 @@ m
 m
 E
 Q
-i
+W
 i
 i
 i
@@ -18812,7 +18849,7 @@ i
 i
 i
 i
-i
+O
 Q
 E
 m
@@ -19049,7 +19086,7 @@ m
 m
 E
 Q
-i
+m
 R
 f
 i
@@ -19062,7 +19099,7 @@ i
 i
 r
 R
-i
+m
 Q
 E
 m

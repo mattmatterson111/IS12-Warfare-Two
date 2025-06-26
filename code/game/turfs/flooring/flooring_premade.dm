@@ -90,6 +90,13 @@
 	icon_state = "Wooden trench floor"
 
 /turf/simulated/floor/ex_act(severity)
+	if(prob(25))
+		ChangeTurf(/turf/simulated/floor/urban/destroyed)
+		return
+	if(prob(50))
+		icon_state = "WT floor damaged 2"
+		return
+	icon_state = "WT floor damaged 1"
 	return
 
 /turf/simulated/floor/wood/New()

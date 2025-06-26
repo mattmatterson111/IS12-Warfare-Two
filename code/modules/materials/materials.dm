@@ -264,7 +264,7 @@ var/list/name_to_material
 	icon_colour = "#00ffe1"
 	opacity = 0.4
 	shard_type = SHARD_SHARD
-	tableslam_noise = 'sound/effects/Glasshit.ogg'
+	tableslam_noise = "glasshit"
 	hardness = 100
 	brute_armor = 10
 	burn_armor = 50		// Diamond walls are immune to fire, therefore it makes sense for them to be almost undamageable by burn damage type.
@@ -446,7 +446,7 @@ var/list/name_to_material
 	opacity = 0.3
 	integrity = 50
 	shard_type = SHARD_SHARD
-	tableslam_noise = 'sound/effects/Glasshit.ogg'
+	tableslam_noise = "glasshit"
 	hardness = 50
 	melting_point = T0C + 100
 	weight = 14
@@ -458,7 +458,7 @@ var/list/name_to_material
 	window_options = list("One Direction" = 1, "Full Window" = 4)
 	created_window = /obj/structure/window/basic
 	rod_product = /obj/item/stack/material/glass/reinforced
-	hitsound = 'sound/effects/Glasshit.ogg'
+	hitsound = "glasshit"
 	conductive = 0
 
 /material/glass/build_windows(var/mob/living/carbon/human/user, var/obj/item/stack/used_stack)
@@ -550,7 +550,7 @@ var/list/name_to_material
 	integrity = 100
 	melting_point = T0C + 750
 	shard_type = SHARD_SHARD
-	tableslam_noise = 'sound/effects/Glasshit.ogg'
+	tableslam_noise = "glasshit"
 	weight = 17
 	brute_armor = 2
 	burn_armor = 3
