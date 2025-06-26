@@ -29,7 +29,7 @@
 	description = "The classic experience."
 	suffixes = list("classicfare.dmm")
 	category = "PLACE"
-	spawn_weight = 3
+	spawn_weight = 2
 
 /datum/map_template/ruin/warfare_mid/underground
 	name = "underfare"
@@ -45,7 +45,7 @@
 	description = "The mid-bunker experience."
 	suffixes = list("bunkerfare.dmm")
 	category = "PLACE"
-	spawn_weight = 2
+	spawn_weight = 1
 
 /datum/map_template/ruin/warfare_mid/trench
 	name = "Trench Fare"
@@ -53,4 +53,4 @@
 	description = "The mid-trench experience."
 	suffixes = list("trenchfare.dmm")
 	category = "PLACE"
-	spawn_weight = 2
+	spawn_weight = 1

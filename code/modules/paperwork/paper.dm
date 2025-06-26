@@ -32,7 +32,7 @@
 	var/rigged = 0
 	var/spam_flag = 0
 
-	var/is_bordered = FALSE
+	var/is_bordered = TRUE
 
 	var/paperbg = "paper.png"
 
@@ -267,17 +267,19 @@
 
 /obj/item/paper/Topic(href, href_list)
 	..()
+
+	if(href_list["toggletitle"])
+		//is_bordered = !is_bordered
+		usr << browse(null, "window=[name]")
+
+	if(!usr || (usr.stat || usr.restrained())) // hacky fix  that also breaks the fuckiNG PAPER SHIT
+		return // Ghosts can exit out of paper now <3
+
 	var/haspen
 	if(usr.get_active_hand())
 		var/obj/item/i = usr.get_active_hand() // Check to see if he still got that darn pen, also check if he's using a crayon or pen.
 		if(istype(i, /obj/item/pen))
 			haspen = TRUE
-
-	if(!usr || (usr.stat || usr.restrained()))
-		return
-	if(href_list["toggletitle"])
-		is_bordered = !is_bordered
-		usr << browse(null, "window=[name]")
 
 	if(href_list["write"])
 		var/id = href_list["write"]
