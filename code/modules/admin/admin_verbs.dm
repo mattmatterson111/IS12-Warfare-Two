@@ -53,6 +53,7 @@ var/list/admin_verbs_admin = list(
 	/client/proc/cmd_admin_world_narrate,	//sends text to all players with no padding,
 	/client/proc/cmd_admin_create_centcom_report,
 	/client/proc/check_ai_laws,			//shows AI and borg laws,
+	/client/proc/check_map_name,
 	/client/proc/rename_silicon,		//properly renames silicons,
 	/client/proc/manage_silicon_laws,	// Allows viewing and editing silicon laws. ,
 	/client/proc/check_antagonists,
@@ -703,6 +704,13 @@ var/list/admin_verbs_mentor = list(
 	set category = "Admin"
 	if(holder)
 		src.holder.output_ai_laws()
+
+/client/proc/check_map_name()
+	set name = "Check Map name"
+	set category = "Admin"
+	if(holder)
+		to_chat(src, "The map is taking place at: [GLOB.war_lore.name].")
+
 
 /client/proc/rename_silicon()
 	set name = "Rename Silicon"
