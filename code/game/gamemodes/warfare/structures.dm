@@ -280,6 +280,9 @@
 	var/obj/item/organ/external/affecting = H.get_organ(pick("l_arm", "r_arm", "l_hand", "r_hand")) //pick limb to get cut for failed skillcheck
 	var/turf/T = get_step(user, user.dir)
 
+	if(H.doing_something)
+		return
+
 	if(T)
 		if(isopenspace(T))
 			return
@@ -290,7 +293,9 @@
 			to_chat(H, "There's already something there!")
 			return
 		visible_message("[user] begins to place the [src]!")
+		H.doing_something = TRUE
 		if(do_after(user, 20)) //leave it in this statement, dont want people getting cut for getting bumped/moving during assembly
+			H.doing_something = FALSE
 			if(H.statscheck(skills = H.SKILL_LEVEL(engineering)) > CRIT_FAILURE) //Considering how useless barbwire seems to be, everyone can now spam it.
 				to_chat(H, "You assemble the [src]!")
 				amount--
@@ -306,6 +311,8 @@
 					H.UpdateDamageIcon()
 				H.updatehealth()
 				to_chat(H, "You fail to assemble the [src], cutting your [affecting.name]!")
+		else
+			H.doing_something = FALSE
 
 /obj/structure/barbwire
 	name = "barbed wire"
