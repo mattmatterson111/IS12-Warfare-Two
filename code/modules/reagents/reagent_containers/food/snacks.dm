@@ -3476,16 +3476,28 @@
 			icon_state = "[initial(icon_state)]_open"
 		worldicons = "[initial(icon_state)]_open_world"
 
+/obj/item/reagent_containers/food/snacks/warfare/team/red
+	desc = "A RedChow brand meal! Tastes horrible, but it is cheap and filling.\nIt is a part of the RedChow brand meal line, which is known for its low quality and high quantity."
+
+/obj/item/reagent_containers/food/snacks/warfare/team/blue
+	desc = "A BlueMeal brand meal! tastes horrible, but it is cheap and filling.\nIt is a part of the BlueMeal brand meal line, which is known for its low quality and high quantity."
+
 /obj/item/reagent_containers/food/snacks/warfare/team/red/redchow
+	name = "RedChow Can"
 	icon_state = "redchow"
 /obj/item/reagent_containers/food/snacks/warfare/team/red/redmeal
+	name = "RedMeal Can"
 	icon_state = "redmeal"
 /obj/item/reagent_containers/food/snacks/warfare/team/red/redchew
+	name = "RedChew Can"
 	icon_state = "redchew"
 
 /obj/item/reagent_containers/food/snacks/warfare/team/blue/bluechow
+	name = "BlueChow Can"
 	icon_state = "bluechow"
 /obj/item/reagent_containers/food/snacks/warfare/team/blue/bluemeal
+	name = "BlueMeal Can"
 	icon_state = "bluemeal"
 /obj/item/reagent_containers/food/snacks/warfare/team/blue/bluechew
+	name = "BlueChew Can"
 	icon_state = "bluechew"
