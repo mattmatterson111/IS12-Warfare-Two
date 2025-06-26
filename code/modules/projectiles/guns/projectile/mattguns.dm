@@ -711,7 +711,7 @@
 
 /obj/item/gun/projectile/automatic/machinepistol
 	name = "Mk.2 Soulburn SMG"
-	desc = "A prototype of what? I have no clue. It feels relatively new, and I’ve been told its high fire rate puts rounds downrange faster than any machine gun. those early production parts are practically exposed. I'm not an engineer but  I think this thing is going to malfunction."
+	desc = "A submachine gun, which is misleading because it's a shredder. It puts a LOT of bullets down range, capable of killing an infantryman in mere seconds, but it has a flimsy wire stock."
 	icon_state = "machinepistol"
 	item_state = "machinepistol"
 	wielded_item_state = "machinepistol-wielded"
