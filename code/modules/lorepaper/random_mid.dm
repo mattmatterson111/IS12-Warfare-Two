@@ -21,7 +21,6 @@
 	prefix = "maps/random_mid/"
 	/// Example: "CITY" "OPERATION" "SIEGE" etc whatever just so it fits the theme decided by war_lore
 	var/category = "" // Unused for now
-	description = "REDACTED"
 	var/spawn_weight = 1
 
 /datum/map_template/ruin/warfare_mid/classic
@@ -31,8 +30,16 @@
 	suffixes = list("classicfare.dmm")
 	category = "PLACE"
 	spawn_weight = 2
-
-/datum/map_template/ruin/warfare_mid/bunkerfare
+/*
+/datum/map_template/ruin/warfare_mid/underground
+	name = "underfare"
+	id = "under_fare"
+	description = "The underground experience."
+	suffixes = list("underfare.dmm")
+	category = "PLACE"
+	spawn_weight = 1
+*/
+/datum/map_template/ruin/warfare_mid/bunker
 	name = "Bunker Fare"
 	id = "bunker_fare"
 	description = "The mid-bunker experience."
@@ -40,7 +47,7 @@
 	category = "PLACE"
 	spawn_weight = 1
 
-/datum/map_template/ruin/warfare_mid/bunkerfare
+/datum/map_template/ruin/warfare_mid/trench
 	name = "Trench Fare"
 	id = "trench_fare"
 	description = "The mid-trench experience."
