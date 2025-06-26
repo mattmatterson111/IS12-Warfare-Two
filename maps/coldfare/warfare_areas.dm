@@ -37,6 +37,7 @@ GLOBAL_LIST_EMPTY(mortar_areas) // = list()
 
 /area/warfare/battlefield/trench_section/underground//So it doesn't spawn random shit underground.
 	forced_ambience = null
+	base_turf = /turf/simulated/floor/trenches/underground
 
 
 /area/warfare/battlefield/trench_section/underground/Entered(mob/living/L, area/A)
