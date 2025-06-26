@@ -1259,7 +1259,7 @@ obj/item/storage/backpack/satchel/warfare/chestrig/blue/oldlmg
 	power_rang
 	light_color = "#e6c2a1"
 	var/examined
-
+/*
 /obj/item/device/flashlight/lamp/captain/examine(mob/user, distance)
 	. = ..()
 	if(!ishuman(user))
@@ -1282,7 +1282,7 @@ obj/item/storage/backpack/satchel/warfare/chestrig/blue/oldlmg
 				sound_to(user, sound('sound/effects/skill/interface-diceroll-success-02-01.ogg', volume = 100))
 				sleep(10)
 				to_chat(user, result.create_tooltip("You look away just in time, your eyes are saved from the wrath of a thousand suns."))
-
+*/
 /obj/item/device/flashlight/lamp/captain/attack_hand(mob/user)
 	if(CanPhysicallyInteract(user))
 		on = !on
