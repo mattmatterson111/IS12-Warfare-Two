@@ -1343,6 +1343,8 @@ obj/item/storage/backpack/satchel/warfare/chestrig/blue/oldlmg
 /obj/item/clothing/suit/fire
 	var/last_sound = null
 	var/list/footstep_sounds = list('sound/effects/footsteps/armor/flamer/foot1.ogg','sound/effects/footsteps/armor/flamer/foot2.ogg','sound/effects/footsteps/armor/flamer/foot3.ogg')
+	armor = list(melee = 40, bullet = 40, laser = 40, energy = 40, bomb = 30, bio = 10, rad = 0)//Beefy boys.
+	// Experimental armor values, more or less like half of the sentries
 // hacky bs but its my bs <3
 
 /obj/item/clothing/suit/fire/red
