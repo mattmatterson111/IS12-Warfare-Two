@@ -446,7 +446,7 @@
 
 		list("name" = "Red sniper", "price" = 500, "category" = "Units", "path" = /datum/job/soldier/red_soldier/sniper),
 		list("name" = "Red flamer", "price" = 1000, "category" = "Units", "path" = /datum/job/soldier/red_soldier/flame_trooper),
-		list("name" = "Red sentry", "price" = 10, "category" = "Units", "path" = /datum/job/soldier/red_soldier/sentry),
+		list("name" = "Red sentry", "price" = 750, "category" = "Units", "path" = /datum/job/soldier/red_soldier/sentry),
 		list("name" = "Reinforcements", "price" = 750, "category" = "Units", "path" = "none")
 	)
 
@@ -501,7 +501,7 @@
 
 		list("name" = "Blue sniper", "price" = 500, "category" = "Units", "path" = /datum/job/soldier/blue_soldier/sniper),
 		list("name" = "Blue flamer", "price" = 1000, "category" = "Units", "path" = /datum/job/soldier/blue_soldier/flame_trooper),
-		list("name" = "Blue sentry", "price" = 10, "category" = "Units", "path" = /datum/job/soldier/blue_soldier/sentry),
+		list("name" = "Blue sentry", "price" = 750, "category" = "Units", "path" = /datum/job/soldier/blue_soldier/sentry),
 		list("name" = "Reinforcements", "price" = 750, "category" = "Units", "path" = "none"),
 	)
 
