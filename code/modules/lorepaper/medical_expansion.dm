@@ -142,7 +142,7 @@
 	return
 
 /obj/item/reagent_containers/rag/attack(mob/living/M, mob/living/user, target_zone, special = FALSE)
-	if(M.get_equipped_item(slot_wear_mask))
+	if(M.get_equipped_item(slot_wear_mask) && !istype(M.get_equipped_item(slot_wear_mask), /obj/item/clothing/mask/gas/prac_mask) && !istype(M.get_equipped_item(slot_wear_mask), /obj/item/clothing/mask/smokable))
 		return
 	if(target_zone == BP_MOUTH)
 		user.doing_something = TRUE
