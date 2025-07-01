@@ -55,10 +55,6 @@
 /turf/simulated/floor/dirty/indestructable,
 /area/template_noop)
 "o" = (
-/obj/structure/factionbanner{
-	pixel_x = -11;
-	pixel_y = 22
-	},
 /obj/effect/floor_decal/newcorner/red/quarter{
 	dir = 8
 	},
@@ -167,6 +163,10 @@
 "J" = (
 /obj/effect/floor_decal/newcorner/red/quarter,
 /obj/effect/lighting_dummy/daylight,
+/obj/structure/vague_statue/random{
+	name = "statue";
+	pixel_y = 16
+	},
 /turf/simulated/floor/urban/concrete,
 /area/warfare/battlefield/capture_point/mid)
 "L" = (
@@ -180,6 +180,10 @@
 "M" = (
 /obj/effect/phone_line,
 /turf/template_noop,
+/area/template_noop)
+"N" = (
+/obj/structure/landmine/blue,
+/turf/simulated/floor/dirty/indestructable,
 /area/template_noop)
 "O" = (
 /obj/structure/trench_wall/sequel{
@@ -15059,7 +15063,7 @@ a
 a
 a
 a
-t
+N
 m
 m
 m
@@ -15309,7 +15313,7 @@ a
 a
 a
 a
-t
+N
 m
 m
 m
@@ -15559,7 +15563,7 @@ a
 a
 a
 a
-t
+N
 m
 m
 m
@@ -15809,7 +15813,7 @@ a
 a
 a
 a
-t
+N
 m
 m
 m
@@ -16059,7 +16063,7 @@ a
 a
 a
 a
-t
+N
 m
 m
 m
@@ -16309,7 +16313,7 @@ a
 a
 a
 a
-t
+N
 m
 m
 m
@@ -16559,7 +16563,7 @@ a
 a
 a
 a
-t
+N
 m
 m
 m
@@ -16809,7 +16813,7 @@ a
 a
 a
 a
-t
+N
 m
 m
 m
@@ -17059,7 +17063,7 @@ a
 a
 a
 a
-t
+N
 m
 m
 m
@@ -17309,7 +17313,7 @@ a
 a
 a
 a
-t
+N
 m
 m
 m
@@ -17559,7 +17563,7 @@ a
 a
 a
 a
-t
+N
 m
 m
 m
@@ -17809,7 +17813,7 @@ a
 a
 a
 a
-t
+N
 m
 m
 m
@@ -18559,7 +18563,7 @@ a
 a
 a
 a
-t
+N
 m
 m
 m
@@ -18809,7 +18813,7 @@ a
 a
 a
 a
-t
+N
 m
 m
 m
@@ -19059,7 +19063,7 @@ a
 a
 a
 a
-t
+N
 m
 m
 m
@@ -19309,7 +19313,7 @@ a
 a
 a
 a
-t
+N
 m
 m
 m
@@ -19559,7 +19563,7 @@ a
 a
 a
 a
-t
+N
 m
 m
 m
@@ -19809,7 +19813,7 @@ a
 a
 a
 a
-t
+N
 m
 m
 m
@@ -20059,7 +20063,7 @@ a
 a
 a
 a
-t
+N
 m
 m
 m
@@ -20559,7 +20563,7 @@ a
 a
 a
 a
-t
+N
 m
 m
 m
@@ -20809,7 +20813,7 @@ a
 a
 a
 a
-t
+N
 m
 m
 m
@@ -21059,7 +21063,7 @@ a
 a
 a
 a
-t
+N
 m
 m
 m
@@ -21309,7 +21313,7 @@ a
 a
 a
 a
-t
+N
 m
 m
 m

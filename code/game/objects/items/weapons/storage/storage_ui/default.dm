@@ -3,6 +3,9 @@
 
 	var/icon_override = null
 
+	var/closer_x = 0
+	var/closer_y = 0
+
 	var/obj/screen/storage/boxes
 	var/obj/screen/storage/storage_start //storage UI
 	var/obj/screen/storage/storage_continue
@@ -12,7 +15,7 @@
 	var/obj/screen/storage/stored_end
 	var/obj/screen/close/closer
 
-/datum/storage_ui/default/New(var/storage)
+/datum/storage_ui/default/New()
 	..()
 	boxes = new /obj/screen/storage(  )
 	boxes.SetName("storage")
@@ -73,6 +76,10 @@
 		stored_continue.icon = icon_override
 		stored_end.icon = icon_override
 		closer.icon = icon_override
+	if(storage.storage_slots == null)
+		var/matrix/t = matrix(closer.transform)
+		t.Translate(closer_x, closer_y)
+		closer.transform = t
 
 /datum/storage_ui/default/Destroy()
 	close_all()

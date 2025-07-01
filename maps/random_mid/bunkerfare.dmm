@@ -322,6 +322,10 @@
 	},
 /turf/simulated/floor/urban/concrete,
 /area/warfare/battlefield/capture_point/mid)
+"EL" = (
+/obj/structure/landmine/blue,
+/turf/simulated/floor/dirty/indestructable,
+/area/template_noop)
 "EO" = (
 /obj/structure/grille/sewer{
 	health = 15
@@ -15324,7 +15328,7 @@ rT
 rT
 rT
 rT
-mR
+EL
 vN
 vN
 vN
@@ -15574,7 +15578,7 @@ rT
 rT
 rT
 rT
-mR
+EL
 vN
 vN
 vN
@@ -15824,7 +15828,7 @@ rT
 rT
 rT
 rT
-mR
+EL
 vN
 vN
 vN
@@ -16074,7 +16078,7 @@ rT
 rT
 rT
 rT
-mR
+EL
 vN
 vN
 vN
@@ -16324,7 +16328,7 @@ rT
 rT
 rT
 rT
-mR
+EL
 vN
 vN
 vN
@@ -16574,7 +16578,7 @@ rT
 rT
 rT
 rT
-mR
+EL
 vN
 vN
 vN
@@ -16824,7 +16828,7 @@ rT
 rT
 rT
 rT
-mR
+EL
 vN
 vN
 vN
@@ -17074,7 +17078,7 @@ rT
 rT
 rT
 rT
-mR
+EL
 vN
 vN
 vN
@@ -17324,7 +17328,7 @@ rT
 rT
 rT
 rT
-mR
+EL
 vN
 vN
 vN
@@ -17574,7 +17578,7 @@ rT
 rT
 rT
 rT
-mR
+EL
 vN
 vN
 vN
@@ -17824,7 +17828,7 @@ rT
 rT
 rT
 rT
-mR
+EL
 vN
 vN
 vN
@@ -18074,7 +18078,7 @@ rT
 rT
 rT
 rT
-mR
+EL
 vN
 vN
 vN
@@ -18824,7 +18828,7 @@ rT
 rT
 rT
 rT
-mR
+EL
 vN
 vN
 vN
@@ -19074,7 +19078,7 @@ rT
 rT
 rT
 rT
-mR
+EL
 vN
 vN
 vN
@@ -19324,7 +19328,7 @@ rT
 rT
 rT
 rT
-mR
+EL
 vN
 vN
 vN
@@ -19574,7 +19578,7 @@ rT
 rT
 rT
 rT
-mR
+EL
 vN
 vN
 vN
@@ -19824,7 +19828,7 @@ rT
 rT
 rT
 rT
-mR
+EL
 vN
 vN
 vN
@@ -20074,7 +20078,7 @@ rT
 rT
 rT
 rT
-mR
+EL
 vN
 vN
 vN
@@ -20324,7 +20328,7 @@ rT
 rT
 rT
 rT
-mR
+EL
 vN
 vN
 vN
@@ -20824,7 +20828,7 @@ rT
 rT
 rT
 rT
-mR
+EL
 vN
 vN
 vN
@@ -21074,7 +21078,7 @@ rT
 rT
 rT
 rT
-mR
+EL
 vN
 vN
 vN
@@ -21324,7 +21328,7 @@ rT
 rT
 rT
 rT
-mR
+EL
 vN
 vN
 vN
@@ -21574,7 +21578,7 @@ rT
 rT
 rT
 rT
-mR
+EL
 vN
 vN
 vN

@@ -616,6 +616,8 @@
 	var/activated = FALSE
 	var/countdown_time
 	var/doomsday_timer
+	var/last_use
+	var/in_use
 
 /obj/structure/destruction_computer/New()
 	..()
@@ -624,35 +626,50 @@
 
 /obj/structure/destruction_computer/attack_hand(mob/user)
 	. = ..()
+	if(REALTIMEOFDAY - last_use < 2 SECONDS)
+		to_chat(user, "The device is scorching hot! I must wait a few seconds!")
+		return
+	if(in_use)
+		return
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
 		if(H.warfare_faction == faction)
 			if(!activated)
 				return
+			in_use = TRUE
 			if(do_after(H,100))
+				in_use = FALSE
 				user.unlock_achievement(new/datum/achievement/deactivate())
 				activated = FALSE
 				deltimer(doomsday_timer)
 				to_world(uppertext("<big>[H.warfare_faction] have disarmed the [src]!</big>"))
 				playsound(src, 'sound/effects/mine_arm.ogg', 100, FALSE)
 				sound_to(world, 'sound/effects/ponr_activate.ogg')
+				stop_alarm("[name]_[faction]_PONR_Alarm")
+				last_use = REALTIMEOFDAY
 			else
-				to_chat(H, "I'm already disarming the device!")
+				in_use = FALSE
 
 		else
 			if(activated)
 				return
+			in_use = TRUE
 			if(do_after(H, 30))
+				in_use = FALSE
+				start_alarm("[name]_[faction]_PONR_Alarm", /datum/speaker_alarm/evil, faction)
 				user.unlock_achievement(new/datum/achievement/point_of_no_return())
 				playsound(src, 'sound/effects/mine_arm.ogg', 100, FALSE)
 				sound_to(world, 'sound/effects/ponr_activate.ogg')
 				to_world(uppertext("<big>[H.warfare_faction] have activated the [src]! They will achieve victory in [countdown_time/10] seconds!</big>"))
 				activated = TRUE
 				doomsday_timer = addtimer(CALLBACK(src,/obj/structure/destruction_computer/proc/kaboom), countdown_time, TIMER_STOPPABLE|TIMER_UNIQUE|TIMER_NO_HASH_WAIT|TIMER_OVERRIDE)
+				last_use = REALTIMEOFDAY
 			else
-				to_chat(H, "I'm already arming the device!")
+				in_use = FALSE
+			in_use = FALSE
 
 /obj/structure/destruction_computer/proc/kaboom()
+	stop_alarm("[name]_[faction]_PONR_Alarm")
 	SSwarfare.end_warfare(faction)//really simple I know.
 
 /obj/structure/destruction_computer/red

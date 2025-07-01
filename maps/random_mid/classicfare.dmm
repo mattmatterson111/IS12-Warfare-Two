@@ -2,6 +2,10 @@
 "a" = (
 /turf/template_noop,
 /area/template_noop)
+"b" = (
+/obj/structure/landmine/blue,
+/turf/simulated/floor/dirty/indestructable,
+/area/template_noop)
 "c" = (
 /obj/structure/defensive_barrier{
 	pixel_y = -4;
@@ -14953,7 +14957,7 @@ a
 a
 a
 a
-t
+b
 m
 m
 m
@@ -15203,7 +15207,7 @@ a
 a
 a
 a
-t
+b
 m
 m
 m
@@ -15453,7 +15457,7 @@ a
 a
 a
 a
-t
+b
 m
 m
 m
@@ -15703,7 +15707,7 @@ a
 a
 a
 a
-t
+b
 m
 m
 m
@@ -15953,7 +15957,7 @@ a
 a
 a
 a
-t
+b
 m
 m
 m
@@ -16203,7 +16207,7 @@ a
 a
 a
 a
-t
+b
 m
 m
 m
@@ -16453,7 +16457,7 @@ a
 a
 a
 a
-t
+b
 m
 m
 m
@@ -16703,7 +16707,7 @@ a
 a
 a
 a
-t
+b
 m
 m
 m
@@ -16953,7 +16957,7 @@ a
 a
 a
 a
-t
+b
 m
 m
 m
@@ -17203,7 +17207,7 @@ a
 a
 a
 a
-t
+b
 m
 m
 m
@@ -17453,7 +17457,7 @@ a
 a
 a
 a
-t
+b
 m
 m
 m
@@ -17703,7 +17707,7 @@ a
 a
 a
 a
-t
+b
 m
 m
 m
@@ -18453,7 +18457,7 @@ a
 a
 a
 a
-t
+b
 m
 m
 m
@@ -18703,7 +18707,7 @@ a
 a
 a
 a
-t
+b
 m
 m
 m
@@ -18953,7 +18957,7 @@ a
 a
 a
 a
-t
+b
 m
 m
 m
@@ -19203,7 +19207,7 @@ a
 a
 a
 a
-t
+b
 m
 m
 m
@@ -19453,7 +19457,7 @@ a
 a
 a
 a
-t
+b
 m
 m
 m
@@ -19703,7 +19707,7 @@ a
 a
 a
 a
-t
+b
 m
 m
 m
@@ -19953,7 +19957,7 @@ a
 a
 a
 a
-t
+b
 m
 m
 m
@@ -20453,7 +20457,7 @@ a
 a
 a
 a
-t
+b
 m
 m
 m
@@ -20703,7 +20707,7 @@ a
 a
 a
 a
-t
+b
 m
 m
 m
@@ -20953,7 +20957,7 @@ a
 a
 a
 a
-t
+b
 m
 m
 m
@@ -21203,7 +21207,7 @@ a
 a
 a
 a
-t
+b
 m
 m
 m

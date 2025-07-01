@@ -315,3 +315,13 @@ obj/item/reagent_containers/pill/noexcutite/New()
 	..()
 	reagents.add_reagent(/datum/reagent/paroxetine, 10)
 	color = reagents.get_color()
+
+/obj/item/reagent_containers/pill/tartaremetic
+	name = "Tartar Emetic"
+	desc = "Mm. Pills."
+	icon_state = "pill2"
+
+/obj/item/reagent_containers/pill/tartaremetic/New()
+	..()
+	reagents.add_reagent(/datum/reagent/tartaremetic, 5)
+	color = reagents.get_color()

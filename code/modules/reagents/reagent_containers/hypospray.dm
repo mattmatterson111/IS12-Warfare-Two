@@ -212,7 +212,6 @@
 	var/closed = 1
 
 /obj/item/reagent_containers/glass/ampule/attack_self()
-	..()
 	if(closed)
 		to_chat(usr, "<span class='notice'>You crack \the [src], opening it.</span>")
 		playsound(src, 'sound/items/plastic_rip.ogg', 100)

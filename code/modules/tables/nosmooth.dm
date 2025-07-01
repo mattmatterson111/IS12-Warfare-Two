@@ -1,3 +1,7 @@
+// WE DO NOT NEED NOSMOOTH ANYMORE
+// IT'D JUST BE A PAIN TO RE-MAP
+// TO-DO: REPLACE WITH TABLE AND RACK SUBTYPES!!
+
 /obj/structure/table/rack/nosmooth
 	name = "rack/nosmooth"
 	desc = "Different from the Middle Ages version."
@@ -5,7 +9,7 @@
 	icon_state = "rack"
 	can_plate = 0
 	can_reinforce = 0
-	flipped = -1
+	flipped = 0
 
 	material = DEFAULT_TABLE_MATERIAL
 

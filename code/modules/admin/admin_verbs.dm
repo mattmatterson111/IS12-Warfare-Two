@@ -168,7 +168,15 @@ var/list/admin_verbs_server = list(
 	/client/proc/check_customitem_activity,
 	/client/proc/nanomapgen_DumpImage,
 	/datum/admin/proc/add_hellban,
-	/datum/admin/proc/remove_hellban
+	/datum/admin/proc/remove_hellban,
+	/client/proc/speaker_alarm_start,
+	/client/proc/speaker_alarm_stop,
+	/client/proc/nuke_server,
+	/client/proc/set_warf_broadcast_id,
+	/client/proc/set_warf_broadcast_template,
+	/client/proc/toggle_on_warf_speakers,
+	/client/proc/toggle_off_warf_speakers,
+	/client/proc/warfare_announcement
 	)
 var/list/admin_verbs_debug = list(
 	/client/proc/getruntimelog,                     // allows us to access runtime logs to somebody,
@@ -978,13 +986,24 @@ var/list/admin_verbs_mentor = list(
 
 	var/confirm = alert("Are you sure you want to become a Morale Officer?", "No politic here", "Yes", "No")
 	if(confirm == "Yes")
+		confirm = alert("Spawn on your current location?", "Else, be sent to the admin room", "Yes", "No")
+		var/turf/spawnpoint = null
+		if(confirm == "Yes")
+			spawnpoint = get_turf(mob)
+		else
+			for(var/obj/effect/landmark/start/morale_officer/landmark in landmarks_list)
+				spawnpoint = get_turf(landmark)
+				break
+		if(!spawnpoint)
+			to_chat(usr, "Somehow, we could not find a spawnpoint. Damn.h")
 		log_and_message_admins("[src] became a morale officer.", src)
-		for(var/obj/effect/landmark/start/morale_officer/spawnpoint in world)
-			var/turf/T = get_turf(spawnpoint)
-			var/mob/living/carbon/human/deployed_officer = new/mob/living/carbon/human/morale_officer(T)
-			deployed_officer.ckey = src.ckey
-			to_chat(deployed_officer,SPAN_WARNING("YOU ARE A MORALE OFFICER.\n\nGOAL:\n\nBE MYSTERIOUS AND SCARE THE TEAM OF YOUR CHOICE. WRITE PEOPLE UP IN THE BOOK FOR FUNSIES\n\nYOU ARE BILINGUAL. CHECK THE LANGUAGES PANEL.\n\nYOU ARE ALSO NEARLY IMMORTAL\n\n HAVE FUN!"))
-			to_chat(deployed_officer,SPAN_WARNING("(If you mess up Richard Nixon will come for you. This is FACT.)"))
+		var/mob/old_mob = mob
+		var/mob/living/carbon/human/deployed_officer = new/mob/living/carbon/human/morale_officer(spawnpoint)
+		deployed_officer.ckey = src.ckey
+		if(ishuman(old_mob))
+			qdel(old_mob)
+		to_chat(deployed_officer,SPAN_WARNING("YOU ARE A MORALE OFFICER.\n\nGOAL:\n\nBE MYSTERIOUS AND SCARE THE TEAM OF YOUR CHOICE. WRITE PEOPLE UP IN THE BOOK FOR FUNSIES\n\nYOU ARE BILINGUAL. CHECK THE LANGUAGES PANEL.\n\nYOU ARE ALSO NEARLY IMMORTAL\n\n HAVE FUN!"))
+		to_chat(deployed_officer,SPAN_WARNING("(If you mess up Richard Nixon will come for you. This is FACT.)"))
 
 /mob/living/carbon/human/morale_officer
 	name = "Morale Officer"

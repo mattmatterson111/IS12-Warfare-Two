@@ -151,6 +151,8 @@
 	for(var/obj/item/I in loc)
 		if(I.anchored)
 			continue
+		if(I.pixel_x > 16 || I.pixel_y > 16)
+			continue
 		var/item_size = content_size(I)
 		if(CLOSET_CHECK_TOO_BIG(item_size))
 			break

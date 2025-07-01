@@ -12,3 +12,7 @@
 
 /datum/storage_ui/default/hud_metal
 	icon_override = 'icons/mob/screen/storage/hud_metal.dmi'
+
+/datum/storage_ui/default/pills // the close button is
+	icon_override = 'icons/mob/screen/storage/pills.dmi'
+	closer_x = 4

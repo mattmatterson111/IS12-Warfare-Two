@@ -903,7 +903,6 @@
 /area/warfare/homebase/blue)
 "cv" = (
 /obj/item/storage/firstaid/surgery,
-/obj/item/FixOVein,
 /obj/machinery/light/caged{
 	pixel_y = 30;
 	pixel_x = 0
@@ -1754,7 +1753,6 @@
 /area/warfare/homebase/blue/div)
 "eu" = (
 /obj/item/storage/firstaid/surgery,
-/obj/item/FixOVein,
 /obj/structure/table/rack/nosmooth/metal,
 /turf/simulated/floor/tiled/dark,
 /area/warfare/homebase/blue/div)
@@ -2705,7 +2703,6 @@
 /area/warfare/homebase/red/div)
 "ih" = (
 /obj/item/storage/firstaid/surgery,
-/obj/item/FixOVein,
 /obj/structure/table/rack/nosmooth/metal,
 /obj/machinery/light/small/bunker{
 	dir = 1
@@ -3504,7 +3501,6 @@
 /area/warfare/battlefield/capture_point/blue/one)
 "nN" = (
 /obj/item/storage/firstaid/surgery,
-/obj/item/FixOVein,
 /obj/machinery/light/caged{
 	pixel_y = 30;
 	pixel_x = 0
@@ -4224,6 +4220,24 @@
 /obj/item/storage/firstaid/toxin,
 /obj/item/storage/firstaid/toxin,
 /obj/structure/table/rack/shelf/red,
+/obj/structure/table/woodentable/shelf{
+	pixel_y = 26;
+	density = 0
+	},
+/obj/item/reagent_containers/rag{
+	pixel_x = -5;
+	pixel_y = 28
+	},
+/obj/item/reagent_containers/glass/bottle/antique/slim/chloroform{
+	pixel_x = 1;
+	pixel_y = 31;
+	icon_state = "slim_rd"
+	},
+/obj/item/reagent_containers/glass/bottle/antique/slim/chloroform{
+	pixel_x = 10;
+	pixel_y = 32;
+	icon_state = "slim_rd"
+	},
 /turf/simulated/floor/wood,
 /area/warfare/battlefield/trench_section/underground)
 "sA" = (
@@ -5850,9 +5864,23 @@
 /obj/item/storage/firstaid/toxin,
 /obj/item/storage/firstaid/toxin,
 /obj/structure/table/rack/shelf/red,
-/obj/structure/announcementspeaker/blue{
-	pixel_x = 0;
-	pixel_y = 32
+/obj/structure/table/woodentable/shelf{
+	pixel_y = 26;
+	density = 0
+	},
+/obj/item/reagent_containers/glass/bottle/antique/slim/chloroform{
+	pixel_x = 10;
+	pixel_y = 32;
+	icon_state = "slim_bl"
+	},
+/obj/item/reagent_containers/rag{
+	pixel_x = -5;
+	pixel_y = 28
+	},
+/obj/item/reagent_containers/glass/bottle/antique/slim/chloroform{
+	pixel_x = 1;
+	pixel_y = 31;
+	icon_state = "slim_bl"
 	},
 /turf/simulated/floor/wood,
 /area/warfare/battlefield/trench_section/underground)
@@ -6208,7 +6236,6 @@
 /area/warfare/battlefield/trench_section/underground)
 "HZ" = (
 /obj/item/storage/firstaid/surgery,
-/obj/item/FixOVein,
 /obj/item/reagent_containers/spray/cleaner/warfare/red{
 	pixel_x = -8;
 	pixel_y = 14
@@ -6482,11 +6509,14 @@
 /obj/item/clothing/mask/surgical,
 /obj/item/clothing/mask/surgical,
 /obj/item/storage/backpack/satchel/warfare/prac/blue,
+/obj/structure/announcementspeaker/blue{
+	pixel_x = 0;
+	pixel_y = 32
+	},
 /turf/simulated/floor/wood,
 /area/warfare/battlefield/trench_section/underground)
 "Kw" = (
 /obj/item/storage/firstaid/surgery,
-/obj/item/FixOVein,
 /obj/item/reagent_containers/spray/cleaner/warfare/red{
 	pixel_x = 6;
 	pixel_y = 14
@@ -6687,6 +6717,12 @@
 	},
 /turf/simulated/floor/wood,
 /area/warfare/battlefield/capture_point/red/two)
+"Mp" = (
+/obj/machinery/optable{
+	pixel_x = 4
+	},
+/turf/simulated/floor/wood,
+/area/warfare/battlefield/trench_section/underground)
 "MG" = (
 /obj/structure/closet/crate,
 /obj/random/canned_food/blue,
@@ -7281,6 +7317,32 @@
 	},
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/red/div)
+"RW" = (
+/obj/item/storage/firstaid/toxin,
+/obj/item/storage/firstaid/toxin,
+/obj/item/storage/firstaid/toxin,
+/obj/item/storage/firstaid/toxin,
+/obj/structure/table/rack/shelf/red,
+/obj/structure/table/woodentable/shelf{
+	pixel_y = 26;
+	density = 0
+	},
+/obj/item/reagent_containers/glass/bottle/antique/slim/chloroform{
+	pixel_x = 10;
+	pixel_y = 32;
+	icon_state = "slim_rd"
+	},
+/obj/item/reagent_containers/rag{
+	pixel_x = -5;
+	pixel_y = 28
+	},
+/obj/item/reagent_containers/glass/bottle/antique/slim/chloroform{
+	pixel_x = 1;
+	pixel_y = 31;
+	icon_state = "slim_rd"
+	},
+/turf/simulated/floor/wood,
+/area/warfare/battlefield/trench_section/underground)
 "Sf" = (
 /obj/machinery/light/small/bunker{
 	dir = 1
@@ -12790,7 +12852,7 @@ di
 WK
 HZ
 EO
-qn
+Mp
 We
 rI
 Yh
@@ -13040,7 +13102,7 @@ Yd
 dl
 di
 WK
-sz
+RW
 EO
 pR
 We

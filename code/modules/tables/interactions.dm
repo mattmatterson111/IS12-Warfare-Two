@@ -10,10 +10,9 @@
 			return 1
 	if(istype(mover) && mover.checkpass(PASS_FLAG_TABLE))
 		return 1
-	var/obj/structure/table/T = (locate() in get_turf(mover))
+	var/obj/structure/table/T = (locate(/obj/structure/table) in get_turf(mover))
 	return (T && !T.flipped) 	//If we are moving from a table, check if it is flipped.
 								//If the table we are standing on is not flipped, then we can move freely to another table.
-
 
 //checks if projectile 'P' from turf 'from' can hit whatever is behind the table. Returns 1 if it can, 0 if bullet stops.
 /obj/structure/table/proc/check_cover(obj/item/projectile/P, turf/from)
@@ -119,11 +118,11 @@
 		return
 
 	// Placing stuff on tables
-	if(user.drop_from_inventory(W, src.loc))
-		if(W.table_sound)
-			playsound(src, W.table_sound, 50, FALSE)
-		auto_align(W, click_params)
-		return 1
+	user.drop_from_inventory(W, src.loc)
+	if(W.table_sound)
+		playsound(src, W.table_sound, 50, FALSE)
+	auto_align(W, click_params)
+	return 1
 
 	return
 
@@ -163,8 +162,8 @@ Note: This proc can be overwritten to allow for different types of auto-alignmen
 
 	var/list/center = cached_key_number_decode(W.center_of_mass)
 
-	W.pixel_x = (CELLSIZE * (cell_x + 0.5)) - center["x"]
-	W.pixel_y = (CELLSIZE * (cell_y + 0.5)) - center["y"]
+	W.pixel_x = (CELLSIZE * (cell_x + 0.5)) - center["x"] + src.pixel_x
+	W.pixel_y = (CELLSIZE * (cell_y + 0.5)) - center["y"] + src.pixel_y
 	W.pixel_z = 0
 
 /obj/structure/table/rack/auto_align(obj/item/W, click_params)
@@ -174,6 +173,8 @@ Note: This proc can be overwritten to allow for different types of auto-alignmen
 	var/i = -1
 	for (var/obj/item/I in get_turf(src))
 		if (I.anchored || !I.center_of_mass)
+			continue
+		if(I.pixel_x > 16 || I.pixel_y > 16)
 			continue
 		i++
 		I.pixel_x = max(3-i*3, -3) + 1 // There's a sprite layering bug for 0/0 pixelshift, so we avoid it.

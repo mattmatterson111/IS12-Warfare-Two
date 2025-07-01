@@ -115,6 +115,8 @@
 	icon_state = "surgerykit"
 	item_state = "firstaid-surgery"
 
+	close_sound = 'sound/effects/doctorbag_close.ogg'
+
 	storage_slots = 14
 	max_w_class = ITEM_SIZE_NORMAL
 	max_storage_space = null
@@ -146,7 +148,8 @@
 		/obj/item/surgicaldrill,
 		/obj/item/bonegel,
 		/obj/item/suture,
-		/obj/item/stack/medical/advanced/bruise_pack
+		/obj/item/stack/medical/advanced/bruise_pack,
+		/obj/item/FixOVein
 		)
 
 /*
@@ -165,8 +168,46 @@
 	allow_quick_gather = 1
 	use_to_pickup = 1
 	use_sound = 'sound/effects/storage/pillbottle.ogg'
+	storage_ui = /datum/storage_ui/default/pills
+	var/opened = FALSE
+
+/obj/item/storage/pill_bottle/update_icon()
+	. = ..()
+	if(opened)
+		icon_state = "[initial(icon_state)]_open"
+	else
+		icon_state = initial(icon_state)
+
+/obj/item/storage/pill_bottle/proc/toggle(mob/user)
+	opened = !opened
+	to_chat(user, "\icon[src] <span class='notice'>You [opened ? "open" : "close"] the [src]</span>")
+	update_icon()
+	if(opened)
+		playsound(get_turf(src), 'sound/effects/pillbottle_corkopen.ogg', 75, 1)
+		return
+	playsound(get_turf(src), 'sound/effects/cork_insert.ogg', 75, 1)
+
+/obj/item/storage/pill_bottle/attack_hand(mob/user)
+	if((loc))
+		return . = ..()
+	if(opened)
+		return . = ..()
+	toggle(user)
+
+/obj/item/storage/pill_bottle/RightClick(mob/user)
+	toggle(user)
+	return
+
+/obj/item/storage/pill_bottle/AltClick(mob/user)
+	if(!opened)
+		toggle(user)
+		return
+	. = ..()
 
 /obj/item/storage/pill_bottle/attack_self(mob/living/user)
+	if(!opened)
+		toggle()
+		return
 	if(user.get_inactive_hand())
 		to_chat(user, "<span class='notice'>You need an empty hand to take something out.</span>")
 		return
@@ -276,3 +317,9 @@
 	desc = "Mild painkiller, also known as Tylenol. Won't fix the cause of your headache (unlike cyanide), but might make it bearable."
 
 	startswith = list(/obj/item/reagent_containers/pill/paracetamol = 21)
+
+/obj/item/storage/pill_bottle/tartaremetic
+	name = "bottle of Tartar Emetic"
+	desc = "Vomit inducer, should purge some of the toxins in a person."
+
+	startswith = list(/obj/item/reagent_containers/pill/tartaremetic = 10)

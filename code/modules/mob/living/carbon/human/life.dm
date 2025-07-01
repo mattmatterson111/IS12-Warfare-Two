@@ -604,6 +604,8 @@
 			blinded = 1
 			set_stat(UNCONSCIOUS)
 			adjustHalLoss(-3)
+			drop_r_hand()
+			drop_l_hand()
 
 			if(sleeping)
 				handle_dreams()

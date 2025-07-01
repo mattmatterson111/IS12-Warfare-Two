@@ -456,12 +456,13 @@
 
 	mymob.noise = new /obj/screen()
 	mymob.noise.icon = 'icons/mob/noise.dmi'
-	mymob.noise.icon_state = "[rand(1,9)]j"
+	mymob.noise.icon_state = "[rand(1,9)]h"
 	mymob.noise.name = " "
 	mymob.noise.screen_loc = "WEST, SOUTH to EAST, NORTH"
 	mymob.noise.plane = FULLSCREEN_PLANE
 	mymob.noise.layer = 1
 	mymob.noise.mouse_opacity = 0
+	mymob.noise.filters += filter(type="alpha", render_source="*Light_mask_RT")
 	hud_elements |= mymob.noise
 
 	mymob.combat_icon = new /obj/screen()//combat mode

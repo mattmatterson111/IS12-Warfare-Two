@@ -39,7 +39,7 @@
 	surgery_skill = 10
 	ranged_skill = 0
 	engineering_skill = 0
-	melee_skill = 0
+	melee_skill = 6 // You're a doctor, you've been using melee all your career
 	auto_rifle_skill = 0
 	semi_rifle_skill = 0
 	sniper_skill = 0
