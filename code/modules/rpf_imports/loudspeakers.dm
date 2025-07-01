@@ -492,8 +492,6 @@ GLOBAL_LIST_EMPTY(running_alarms)
 	var/how_long = input("How long should the sirens take?", "(In seconds) (Default: 60 Sec)") as num|null
 
 	var/early = input("Should it end early?", "(It'll close the server when the explosion begins)") as num|null
-	if(!early)
-		return
 
 	var/confirm = input("Confirm? Type \"1\" to confirm.") as num
 	if(!confirm)
