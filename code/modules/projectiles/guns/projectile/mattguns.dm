@@ -547,129 +547,302 @@
 	condition = 300 //Enough for two clean mags.
 	var/deployed = FALSE
 
-/obj/item/gun/projectile/automatic/mg08/special_check(var/mob/user)
-	if(!deployed)//Can't fire.
-		to_chat(user, "<span class='danger'>I can't fire it if it's not deployed.</span>")
-		return 0
-	return ..()
+///obj/item/gun/projectile/automatic/mg08/special_check(var/mob/user)
+	//if(!deployed)//Can't fire.
+		//to_chat(user, "<span class='danger'>I can't fire it if it's not deployed.</span>")
+		//return 0
+	//return ..()
 
 
-/obj/item/gun/projectile/automatic/mg08/attack_self(mob/user)
+///obj/item/gun/projectile/automatic/mg08/attack_self(mob/user)
+	//. = ..()
+	//if(deployed)//If there's an mg deployed, then pack it up again.
+		//pack_up_mg(user)
+	//else
+		//deploy_mg(user)//Otherwise, deploy that motherfucker.
+
+///obj/item/gun/projectile/automatic/mg08/proc/deploy_mg(mob/user)
+	//if(user.doing_something)
+		//return
+	//for(var/obj/structure/mg08_structure/M in user.loc)//If there's already an mg there then don't deploy it. Dunno how that's possible but stranger things have happened.
+		//if(M)
+			//to_chat(user, "There is already an LMG here.")
+			//return
+	//user.visible_message("[user] starts to deploy the [src]")
+	//user.doing_something = TRUE
+	//if(!do_after(user,30))
+		//return
+	//user.doing_something = FALSE
+	//var/obj/structure/mg08_structure/M = new(get_turf(user)) //Make a new one here.
+	//M.dir = user.dir
+	//switch(M.dir)
+		//if(EAST)
+			//user.pixel_x -= 5
+		//if(WEST)
+			//user.pixel_x += 5
+		//if(NORTH)
+			//user.pixel_y -= 5
+		//if(SOUTH)
+			//user.pixel_y += 5
+			//M.plane = ABOVE_HUMAN_PLANE
+	//deployed = TRUE
+	//playsound(src, 'sound/weapons/mortar_deploy.ogg', 100, FALSE)
+	//update_icon(user)
+
+///obj/item/gun/projectile/automatic/mg08/proc/pack_up_mg(mob/user)
+	//user.visible_message("[user] packs up the [src]")
+	//for(var/obj/structure/mg08_structure/M in user.loc)
+		//switch(M.dir)//Set our offset back to normal.
+			//if(EAST)
+				//user.pixel_x += 5
+			//if(WEST)
+				//user.pixel_x -= 5
+			//if(NORTH)
+				//user.pixel_y += 5
+			//if(SOUTH)
+				//user.pixel_y -= 5
+		//qdel(M) //Delete the mg structure.
+	//deployed = FALSE
+	//update_icon(user)
+
+///obj/item/gun/projectile/automatic/mg08/dropped(mob/user)
+	//. = ..()
+	//if(deployed)
+		//pack_up_mg(user)
+
+///obj/item/gun/projectile/automatic/mg08/equipped(var/mob/user, var/slot)
+	//..()
+	//if((slot == slot_back) || (slot == slot_s_store))
+		//. = ..()
+		//if(deployed)
+			//pack_up_mg(user)
+
+///obj/structure/mg08_structure //That thing that's created when you place down your mg, purely for looks.
+	//name = "Deployed LMG Harbinger"
+	//anchored = TRUE //No moving this around please.
+
+///obj/structure/mg08/CanPass(atom/movable/mover, turf/target, height, air_group)//Humans cannot pass cross this thing in any way shape or form.
+	//if(ishuman(mover))
+		//var/mob/living/carbon/human/H = mover
+		//if(locate(/obj/item/gun/projectile/automatic/mg08) in H)//Locate the mg.
+			//if(istype(H.l_hand, /obj/item/gun/projectile/automatic/mg08))
+				//var/obj/item/gun/projectile/automatic/mg08/gun = H.l_hand
+				//switch(gun.deployed)
+					//if(TRUE) return FALSE
+					//if(FALSE)
+						//qdel(src)
+						//return TRUE
+			//if(istype(H.r_hand, /obj/item/gun/projectile/automatic/mg08))
+				//var/obj/item/gun/projectile/automatic/mg08/gun = H.r_hand
+				//switch(gun.deployed)
+					//if(TRUE) return FALSE
+					//if(FALSE)
+						//qdel(src)
+						//return TRUE
+		//qdel(src)
+		//return TRUE
+	//else
+		//return TRUE
+
+
+///obj/structure/mg08_structure/CheckExit(atom/movable/O, turf/target)//Humans can't leave this thing either.
+	//if(ishuman(O))
+		//var/mob/living/carbon/human/H = O
+		//if(locate(/obj/item/gun/projectile/automatic/mg08) in H)//Locate the mg.
+			//if(istype(H.l_hand, /obj/item/gun/projectile/automatic/mg08))
+				//var/obj/item/gun/projectile/automatic/mg08/gun = H.l_hand
+				//switch(gun.deployed)
+					//if(TRUE) return FALSE
+					//if(FALSE)
+						//qdel(src)
+						//return TRUE
+			//if(istype(H.r_hand, /obj/item/gun/projectile/automatic/mg08))
+				//var/obj/item/gun/projectile/automatic/mg08/gun = H.r_hand
+				//switch(gun.deployed)
+					//if(TRUE) return FALSE
+					//if(FALSE)
+						//qdel(src)
+						//return TRUE
+		//qdel(src)
+		//return TRUE
+	//else
+		//return TRUE
+
+///obj/structure/mg08_structure/rotate/proc/rotate()//Can't rotate it.
+	//return
+
+/obj/item/gun/projectile/automatic/mg08/grenade
+	name = "AGL Stormbringer"
+	desc = "Named for the... storms of shrapnel it brings."
+	icon = 'icons/obj/gunx35.dmi'
+	icon_state = "mg08"
+	item_state = "mg08"
+	str_requirement = 18
+	w_class = ITEM_SIZE_HUGE
+	force = 10
+	slot_flags = SLOT_BACK|SLOT_S_STORE
+	max_shells = 40
+	caliber = "a40mm"
+	origin_tech = list(TECH_COMBAT = 6, TECH_MATERIAL = 1, TECH_ILLEGAL = 2)
+	ammo_type = /obj/item/ammo_casing/grenade/frag
+	load_method = MAGAZINE
+	magazine_type = /obj/item/ammo_magazine/box/a556/grenades
+	allowed_magazines = /obj/item/ammo_magazine/box/a556/grenades
+	one_hand_penalty = 50
+	wielded_item_state = "akarabiner-wielded"
+	fire_sound = 'sound/weapons/gunshot/grindr.ogg'//fire_sound = 'sound/weapons/gunshot/hmg.ogg'
+	fire_volume = 70 // BIIG EVIL FUCKING GUUN
+	unload_sound 	= 'sound/weapons/guns/interact/ltrifle_magout.ogg'
+	reload_sound 	= 'sound/weapons/guns/interact/ltrifle_magin.ogg'
+	cock_sound 		= 'sound/weapons/guns/interact/ltrifle_cock.ogg'
+	loaded_icon = "mg08"
+	unwielded_loaded_icon = "akarabiner"
+	wielded_loaded_icon = "akarabiner-wielded"
+	unloaded_icon = "mg08_empty"
+	unwielded_unloaded_icon = "akarabiner-e"
+	wielded_unloaded_icon = "akarabiner-wielded"
+	fire_delay=2.5
+	screen_shake = 2.5
+	burst=1
+	move_delay=24
+	automatic = 2
+	firemodes = list()
+	gun_type = GUN_LMG
+	condition = 200
+
+///obj/item/gun/projectile/automatic/mg08/grenade/special_check(var/mob/user)
+	//if(!deployed)//Can't fire.
+		//to_chat(user, "<span class='danger'>I can't fire it if it's not deployed.</span>")
+		//return 0
+	//return ..()
+
+///obj/item/gun/projectile/automatic/mg08/grenade/proc/deploy_agl(mob/user)
+	//if(user.doing_something)
+		//return
+	//for(var/obj/structure/mg08_structure/grenade/M in user.loc)//If there's already an mg there then don't deploy it. Dunno how that's possible but stranger things have happened.
+		//if(M)
+			//to_chat(user, "There is already an AGL here.")
+			//return
+	//user.visible_message("[user] starts to deploy the [src]")
+	//user.doing_something = TRUE
+	//if(!do_after(user,30))
+		//return
+	//user.doing_something = FALSE
+	//var/obj/structure/mg08_structure/grenade/M = new(get_turf(user)) //Make a new one here.
+	//M.dir = user.dir
+	//switch(M.dir)
+		//if(EAST)
+			//user.pixel_x -= 5
+		//if(WEST)
+			//user.pixel_x += 5
+		//if(NORTH)
+			//user.pixel_y -= 5
+		//if(SOUTH)
+			//user.pixel_y += 5
+			//M.plane = ABOVE_HUMAN_PLANE
+	//deployed = TRUE
+	//playsound(src, 'sound/weapons/mortar_deploy.ogg', 100, FALSE)
+	//update_icon(user)
+
+///obj/item/gun/projectile/automatic/mg08/grenade/proc/pack_up_agl(mob/user)
+	//user.visible_message("[user] packs up the [src]")
+	//for(var/obj/structure/mg08_structure/grenade/M in user.loc)
+		//switch(M.dir)//Set our offset back to normal.
+			//if(EAST)
+				//user.pixel_x += 5
+			//if(WEST)
+				//user.pixel_x -= 5
+			//if(NORTH)
+				//user.pixel_y += 5
+			//if(SOUTH)
+				//user.pixel_y -= 5
+		//qdel(M) //Delete the mg structure.
+	//deployed = FALSE
+	//update_icon(user)
+
+///obj/item/gun/projectile/automatic/mg08/grenade/attack_self(mob/user)
+	//. = ..()
+	//if(deployed)//If there's an mg deployed, then pack it up again.
+		//pack_up_agl(user)
+	//else
+		//deploy_agl(user)//Otherwise, deploy that motherfucker.
+
+///obj/item/gun/projectile/automatic/mg08/grenade/dropped(mob/user)
+	//. = ..()
+	//if(deployed)
+		//pack_up_agl(user)
+
+///obj/item/gun/projectile/automatic/mg08/grenade/equipped(var/mob/user, var/slot)
+	//..()
+	//if((slot == slot_back) || (slot == slot_s_store))
+		//. = ..()
+		//if(deployed)
+			//pack_up_agl(user)
+
+///obj/structure/mg08_structure/grenade //That thing that's created when you place down your mg, purely for looks.
+	//name = "Deployed AGL Harbinger"
+	//anchored = TRUE //No moving this around please.
+
+///obj/structure/mg08/grenade/CanPass(atom/movable/mover, turf/target, height, air_group)//Humans cannot pass cross this thing in any way shape or form.
+	//if(ishuman(mover))
+		//var/mob/living/carbon/human/H = mover
+		//if(locate(/obj/item/gun/projectile/automatic/mg08/grenade) in H)//Locate the mg.
+			//if(istype(H.l_hand, /obj/item/gun/projectile/automatic/mg08/grenade/))
+				//var/obj/item/gun/projectile/automatic/mg08/grenade/gun = H.l_hand
+				//switch(gun.deployed)
+					//if(TRUE) return FALSE
+					//if(FALSE)
+						//qdel(src)
+						//return TRUE
+			//if(istype(H.r_hand, /obj/item/gun/projectile/automatic/mg08/grenade/))
+				//var/obj/item/gun/projectile/automatic/mg08/grenade/gun = H.r_hand
+				//switch(gun.deployed)
+					//if(TRUE) return FALSE
+					//if(FALSE)
+						//qdel(src)
+						//return TRUE
+		//qdel(src)
+		//return TRUE
+	//else
+		//return TRUE
+
+///obj/structure/mg08_structure/grenade/CheckExit(atom/movable/O, turf/target)//Humans can't leave this thing either.
+	//if(ishuman(O))
+		//var/mob/living/carbon/human/H = O
+		//if(locate(/obj/item/gun/projectile/automatic/mg08/grenade) in H)//Locate the mg.
+			//if(istype(H.l_hand, /obj/item/gun/projectile/automatic/mg08/grenade))
+				//var/obj/item/gun/projectile/automatic/mg08/grenade/gun = H.l_hand
+				//switch(gun.deployed)
+					//if(TRUE) return FALSE
+					//if(FALSE)
+						//qdel(src)
+						//return TRUE
+			//if(istype(H.r_hand, /obj/item/gun/projectile/automatic/mg08/grenade))
+				//var/obj/item/gun/projectile/automatic/mg08/grenade/gun = H.r_hand
+				//switch(gun.deployed)
+					//if(TRUE) return FALSE
+					//if(FALSE)
+						//qdel(src)
+						//return TRUE
+		//qdel(src)
+		//return TRUE
+	//else
+		//return TRUE
+
+///obj/structure/mg08_structure/grenade/rotate/proc/rotate()//Can't rotate it.
+	//return
+
+/obj/item/gun/projectile/automatic/mg08/grenade/examine(mob/user)
 	. = ..()
-	if(deployed)//If there's an mg deployed, then pack it up again.
-		pack_up_mg(user)
-	else
-		deploy_mg(user)//Otherwise, deploy that motherfucker.
-
-/obj/item/gun/projectile/automatic/mg08/proc/deploy_mg(mob/user)
-	if(user.doing_something)
+	if(get_dist(user, src) > 1)
 		return
-	for(var/obj/structure/mg08_structure/M in user.loc)//If there's already an mg there then don't deploy it. Dunno how that's possible but stranger things have happened.
-		if(M)
-			to_chat(user, "There is already an LMG here.")
-			return
-	user.visible_message("[user] starts to deploy the [src]")
-	user.doing_something = TRUE
-	if(!do_after(user,30))
-		return
-	user.doing_something = FALSE
-	var/obj/structure/mg08_structure/M = new(get_turf(user)) //Make a new one here.
-	M.dir = user.dir
-	switch(M.dir)
-		if(EAST)
-			user.pixel_x -= 5
-		if(WEST)
-			user.pixel_x += 5
-		if(NORTH)
-			user.pixel_y -= 5
-		if(SOUTH)
-			user.pixel_y += 5
-			M.plane = ABOVE_HUMAN_PLANE
-	deployed = TRUE
-	playsound(src, 'sound/weapons/mortar_deploy.ogg', 100, FALSE)
-	update_icon(user)
-
-/obj/item/gun/projectile/automatic/mg08/proc/pack_up_mg(mob/user)
-	user.visible_message("[user] packs up the [src]")
-	for(var/obj/structure/mg08_structure/M in user.loc)
-		switch(M.dir)//Set our offset back to normal.
-			if(EAST)
-				user.pixel_x += 5
-			if(WEST)
-				user.pixel_x -= 5
-			if(NORTH)
-				user.pixel_y += 5
-			if(SOUTH)
-				user.pixel_y -= 5
-		qdel(M) //Delete the mg structure.
-	deployed = FALSE
-	update_icon(user)
-
-/obj/item/gun/projectile/automatic/mg08/dropped(mob/user)
-	. = ..()
-	if(deployed)
-		pack_up_mg(user)
-
-/obj/item/gun/projectile/automatic/mg08/equipped(var/mob/user, var/slot)
-	..()
-	if((slot == slot_back) || (slot == slot_s_store))
-		. = ..()
-		if(deployed)
-			pack_up_mg(user)
-
-/obj/structure/mg08_structure //That thing that's created when you place down your mg, purely for looks.
-	name = "Deployed LMG Harbinger"
-	anchored = TRUE //No moving this around please.
-
-/obj/structure/mg08/CanPass(atom/movable/mover, turf/target, height, air_group)//Humans cannot pass cross this thing in any way shape or form.
-	if(ishuman(mover))
-		var/mob/living/carbon/human/H = mover
-		if(locate(/obj/item/gun/projectile/automatic/mg08) in H)//Locate the mg.
-			if(istype(H.l_hand, /obj/item/gun/projectile/automatic/mg08))
-				var/obj/item/gun/projectile/automatic/mg08/gun = H.l_hand
-				switch(gun.deployed)
-					if(TRUE) return FALSE
-					if(FALSE)
-						qdel(src)
-						return TRUE
-			if(istype(H.r_hand, /obj/item/gun/projectile/automatic/mg08))
-				var/obj/item/gun/projectile/automatic/mg08/gun = H.r_hand
-				switch(gun.deployed)
-					if(TRUE) return FALSE
-					if(FALSE)
-						qdel(src)
-						return TRUE
-		qdel(src)
-		return TRUE
-	else
-		return TRUE
-
-
-/obj/structure/mg08_structure/CheckExit(atom/movable/O, turf/target)//Humans can't leave this thing either.
-	if(ishuman(O))
-		var/mob/living/carbon/human/H = O
-		if(locate(/obj/item/gun/projectile/automatic/mg08) in H)//Locate the mg.
-			if(istype(H.l_hand, /obj/item/gun/projectile/automatic/mg08))
-				var/obj/item/gun/projectile/automatic/mg08/gun = H.l_hand
-				switch(gun.deployed)
-					if(TRUE) return FALSE
-					if(FALSE)
-						qdel(src)
-						return TRUE
-			if(istype(H.r_hand, /obj/item/gun/projectile/automatic/mg08))
-				var/obj/item/gun/projectile/automatic/mg08/gun = H.r_hand
-				switch(gun.deployed)
-					if(TRUE) return FALSE
-					if(FALSE)
-						qdel(src)
-						return TRUE
-		qdel(src)
-		return TRUE
-	else
-		return TRUE
-
-/obj/structure/mg08_structure/rotate/proc/rotate()//Can't rotate it.
-	return
+	to_chat(user,SPAN_BOLD("You notice a encasing with a piece of paper in it, with instructions:"))
+	to_chat(user,SPAN_BOLD("The AGL Stormbringer was designed for bunker clearing, and is best used as is."))
+	to_chat(user,SPAN_BOLD("However, it may be used for infantry suppression. We do not cover repairs for this use."))
+	to_chat(user,SPAN_WARNING("Do not operate the AGL Stormbringer while the top cover is open, as it creates the risk of catastrophic failure. Warranty voided if using the AGL Stormbringer with the top cover open."))
+	to_chat(user,SPAN_WARNING("You must operate the AGL Stormbringer while it is deployed. Warranty voided if using the AGL Stormbringer while not deployed."))
+	to_chat(user,SPAN_WARNING("You must deploy the AGL Stormbringer two times in the same location before it can be used. Warranty voided if using the AGL Stormbringer when not deployed twice."))
+	to_chat(user,SPAN_DANGER("Speak softly, but let your weapon scream."))
 
 /obj/item/gun/projectile/automatic/gpmg
 	name = "GPMG Requiem"
