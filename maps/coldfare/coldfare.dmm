@@ -190,13 +190,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/warfare/homebase/blue/div)
-"aA" = (
-/obj/structure/bed/chair,
-/obj/effect/landmark/start{
-	name = "Blue Soldier"
-	},
-/turf/simulated/floor/concrete/random,
-/area/warfare/homebase/blue)
 "aB" = (
 /obj/structure/closet/crate,
 /obj/item/ammo_magazine/mc9mmt/machinepistol,
@@ -214,13 +207,6 @@
 /obj/item/ammo_magazine/a762/m14,
 /obj/item/ammo_magazine/a762/m14,
 /obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/sks,
-/obj/item/ammo_magazine/a762/sks,
-/obj/item/ammo_magazine/a762/sks,
-/obj/item/ammo_magazine/a762/sks,
-/obj/item/ammo_magazine/a762/sks,
-/obj/item/ammo_magazine/a762/sks,
-/obj/item/ammo_magazine/a762/sks,
 /obj/structure/announcementspeaker/blue{
 	pixel_y = 0;
 	dir = 8
@@ -340,11 +326,6 @@
 /obj/item/ammo_magazine/a762/m14,
 /obj/item/ammo_magazine/a762/m14,
 /obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/sks,
-/obj/item/ammo_magazine/a762/sks,
-/obj/item/ammo_magazine/a762/sks,
-/obj/item/ammo_magazine/a762/sks,
-/obj/item/ammo_magazine/a762/sks,
 /obj/machinery/light/caged{
 	pixel_y = -14;
 	dir = 1;
@@ -386,11 +367,6 @@
 /obj/item/ammo_magazine/a762/m14,
 /obj/item/ammo_magazine/a762/m14,
 /obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/sks,
-/obj/item/ammo_magazine/a762/sks,
-/obj/item/ammo_magazine/a762/sks,
-/obj/item/ammo_magazine/a762/sks,
-/obj/item/ammo_magazine/a762/sks,
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/blue)
 "aU" = (
@@ -607,14 +583,6 @@
 	},
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/red)
-"bJ" = (
-/obj/machinery/light/small/bunker{
-	dir = 4;
-	pixel_x = 0;
-	pixel_y = 15
-	},
-/turf/simulated/floor/wood,
-/area/warfare/battlefield/trench_section/underground)
 "bK" = (
 /obj/structure/table/rack/nosmooth/wood/alt{
 	dir = 5
@@ -693,13 +661,6 @@
 /obj/item/ammo_magazine/a762/m14,
 /obj/item/ammo_magazine/a762/m14,
 /obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/sks,
-/obj/item/ammo_magazine/a762/sks,
-/obj/item/ammo_magazine/a762/sks,
-/obj/item/ammo_magazine/a762/sks,
-/obj/item/ammo_magazine/a762/sks,
-/obj/item/ammo_magazine/a762/sks,
-/obj/item/ammo_magazine/a762/sks,
 /obj/structure/trench_wall{
 	dir = 8;
 	pixel_x = 32;
@@ -884,7 +845,18 @@
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/blue)
 "cs" = (
-/turf/simulated/wall/perspecticrete,
+/obj/item/gun/projectile/revolver{
+	name = "Authority";
+	desc = "Over something as fundemental as life itself"
+	},
+/obj/machinery/light/small/bunker{
+	pixel_x = 0;
+	pixel_y = 32
+	},
+/obj/structure/table/rack/nosmooth/wood/alt{
+	dir = 5
+	},
+/turf/simulated/floor/wood,
 /area/warfare/battlefield/trench_section/underground)
 "ct" = (
 /obj/structure/trench_wall{
@@ -989,21 +961,26 @@
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/blue/div)
 "cD" = (
-/obj/structure/phone/rotary/redcaptain{
-	pixel_x = 2;
-	pixel_y = 10
-	},
 /obj/effect/phone_line,
-/obj/structure/table/rack/nosmooth/wood{
-	dir = 8
-	},
 /obj/item/paper_bin{
-	pixel_x = -11;
-	pixel_y = 6
+	pixel_x = -2;
+	pixel_y = 8
 	},
 /obj/item/pen/red{
-	pixel_x = -12;
-	pixel_y = 7
+	pixel_x = -3;
+	pixel_y = 10
+	},
+/obj/structure/table/nosmooth/capnew{
+	pixel_y = -4;
+	dir = 4
+	},
+/obj/structure/table/nosmooth/capnew{
+	pixel_y = 28;
+	dir = 5
+	},
+/obj/item/device/megaphone/red{
+	pixel_x = -8;
+	pixel_y = -3
 	},
 /turf/simulated/floor/wood,
 /area/warfare/homebase/red/div)
@@ -1097,12 +1074,6 @@
 /obj/item/ammo_magazine/a762/m14,
 /obj/item/ammo_magazine/a762/m14,
 /obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/sks,
-/obj/item/ammo_magazine/a762/sks,
-/obj/item/ammo_magazine/a762/sks,
-/obj/item/ammo_magazine/a762/sks,
-/obj/item/ammo_magazine/a762/sks,
-/obj/item/ammo_magazine/a762/sks,
 /turf/simulated/floor/wood,
 /area/warfare/battlefield/capture_point/blue/one)
 "cS" = (
@@ -1115,14 +1086,6 @@
 	pixel_y = 32
 	},
 /turf/simulated/floor/stones,
-/area/warfare/homebase/red)
-"cT" = (
-/obj/machinery/telecomms/allinone{
-	intercept = 1
-	},
-/turf/simulated/mineral{
-	health = 999999
-	},
 /area/warfare/homebase/red)
 "cV" = (
 /obj/structure/closet/crate,
@@ -1169,12 +1132,6 @@
 /obj/item/ammo_magazine/a762/m14,
 /obj/item/ammo_magazine/a762/m14,
 /obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/sks,
-/obj/item/ammo_magazine/a762/sks,
-/obj/item/ammo_magazine/a762/sks,
-/obj/item/ammo_magazine/a762/sks,
-/obj/item/ammo_magazine/a762/sks,
-/obj/item/ammo_magazine/a762/sks,
 /turf/simulated/floor/wood,
 /area/warfare/battlefield/capture_point/blue/one)
 "cY" = (
@@ -1189,11 +1146,6 @@
 /obj/item/ammo_magazine/a762/m14,
 /obj/item/ammo_magazine/a762/m14,
 /obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/sks,
-/obj/item/ammo_magazine/a762/sks,
-/obj/item/ammo_magazine/a762/sks,
-/obj/item/ammo_magazine/a762/sks,
-/obj/item/ammo_magazine/a762/sks,
 /obj/structure/trench_wall{
 	dir = 8;
 	pixel_x = 32;
@@ -1425,14 +1377,8 @@
 /obj/item/ammo_magazine/a762/m14,
 /obj/item/ammo_magazine/a762/m14,
 /obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/sks,
-/obj/item/ammo_magazine/a762/sks,
-/obj/item/ammo_magazine/a762/sks,
-/obj/item/ammo_magazine/a762/sks,
-/obj/item/ammo_magazine/a762/sks,
-/obj/item/ammo_magazine/a762/sks,
 /turf/simulated/floor/concrete/random,
-/area/warfare/battlefield/capture_point/red/two)
+/area/warfare/battlefield/capture_point/red/one)
 "dH" = (
 /obj/structure/closet/crate,
 /obj/item/ammo_magazine/mc9mmt/machinepistol,
@@ -1450,13 +1396,6 @@
 /obj/item/ammo_magazine/a762/m14,
 /obj/item/ammo_magazine/a762/m14,
 /obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/sks,
-/obj/item/ammo_magazine/a762/sks,
-/obj/item/ammo_magazine/a762/sks,
-/obj/item/ammo_magazine/a762/sks,
-/obj/item/ammo_magazine/a762/sks,
-/obj/item/ammo_magazine/a762/sks,
-/obj/item/ammo_magazine/a762/sks,
 /turf/simulated/floor/concrete/random,
 /area/warfare/battlefield/capture_point/red/two)
 "dJ" = (
@@ -1520,11 +1459,6 @@
 /obj/item/ammo_magazine/a762/m14,
 /obj/item/ammo_magazine/a762/m14,
 /obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/sks,
-/obj/item/ammo_magazine/a762/sks,
-/obj/item/ammo_magazine/a762/sks,
-/obj/item/ammo_magazine/a762/sks,
-/obj/item/ammo_magazine/a762/sks,
 /obj/structure/trench_wall{
 	dir = 8;
 	pixel_x = 32;
@@ -1929,13 +1863,6 @@
 /obj/item/ammo_magazine/a762/m14,
 /obj/item/ammo_magazine/a762/m14,
 /obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/sks,
-/obj/item/ammo_magazine/a762/sks,
-/obj/item/ammo_magazine/a762/sks,
-/obj/item/ammo_magazine/a762/sks,
-/obj/item/ammo_magazine/a762/sks,
-/obj/item/ammo_magazine/a762/sks,
-/obj/item/ammo_magazine/a762/sks,
 /obj/structure/trench_wall{
 	dir = 8;
 	pixel_x = 32;
@@ -2416,14 +2343,6 @@
 	},
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/red)
-"hd" = (
-/obj/machinery/light/caged{
-	dir = 4;
-	pixel_x = -17;
-	pixel_y = 0
-	},
-/turf/simulated/floor/concrete/random,
-/area/warfare/battlefield/trench_section/underground)
 "he" = (
 /turf/simulated/floor/trenches/underground{
 	icon_state = "trench";
@@ -2920,15 +2839,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/warfare/homebase/blue/div)
-"jt" = (
-/obj/structure/table/rack/nosmooth/capright{
-	dir = 8
-	},
-/obj/item/paper/crumpled/bloody{
-	info = "Those fuckers from the other phone room are hogging up the vending machines <br> If that flower wasn't employing us we would've done something about it ages ago."
-	},
-/turf/simulated/floor/concrete/random,
-/area/warfare/battlefield/trench_section/underground)
 "jv" = (
 /obj/machinery/light/small/red{
 	dir = 1;
@@ -2936,11 +2846,6 @@
 	},
 /obj/structure/closet/body_bag,
 /turf/simulated/floor/wood,
-/area/warfare/battlefield/trench_section/underground)
-"jw" = (
-/obj/structure/table/steel,
-/obj/item/storage/secure/briefcase/money,
-/turf/unsimulated/floor/hammereditor/dev12,
 /area/warfare/battlefield/trench_section/underground)
 "jz" = (
 /obj/structure/announcementspeaker/red{
@@ -2967,11 +2872,6 @@
 /obj/item/ammo_magazine/a762/m14,
 /obj/item/ammo_magazine/a762/m14,
 /obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/sks,
-/obj/item/ammo_magazine/a762/sks,
-/obj/item/ammo_magazine/a762/sks,
-/obj/item/ammo_magazine/a762/sks,
-/obj/item/ammo_magazine/a762/sks,
 /obj/machinery/light/small/bunker{
 	dir = 1
 	},
@@ -3004,10 +2904,6 @@
 	health = 999999
 	},
 /area/warfare/battlefield/capture_point/red/two)
-"ke" = (
-/obj/machinery/door/airlock/command,
-/turf/simulated/floor/concrete/random,
-/area/warfare/battlefield/trench_section/underground)
 "ks" = (
 /obj/structure/trench_wall/innercorners{
 	dir = 4
@@ -3157,10 +3053,13 @@
 	},
 /area/warfare/battlefield/capture_point/red/one)
 "lE" = (
-/obj/structure/table/rack/nosmooth/capleft{
-	dir = 9
+/obj/machinery/light/small/bunker{
+	dir = 1
 	},
-/turf/simulated/floor/concrete/random,
+/obj/machinery/telecomms/allinone{
+	intercept = 1
+	},
+/turf/simulated/floor/wood,
 /area/warfare/battlefield/trench_section/underground)
 "lH" = (
 /obj/structure/trench_wall/innercorners{
@@ -3289,10 +3188,10 @@
 	pixel_x = -32;
 	layer = 28
 	},
-/obj/structure/closet/secure_closet/warfare/practicioner,
-/obj/item/clothing/gloves/latex,
-/obj/item/clothing/suit/surgeon_apron,
-/obj/item/clothing/mask/surgical,
+/obj/machinery/kaos{
+	pixel_y = 22;
+	pages = list( list(/datum/terminal_page/multiselect,list(list("code" = "1", "page_name" = "my_messages", "name" = "MESSAGE HUB")),"PAGE 1"),list(/datum/terminal_page/my_messages,"blue_prac1",null))
+	},
 /turf/simulated/floor/wood,
 /area/warfare/battlefield/trench_section/underground)
 "mD" = (
@@ -3354,14 +3253,34 @@
 /obj/item/ammo_magazine/a762/m14,
 /obj/item/ammo_magazine/a762/m14,
 /obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/sks,
-/obj/item/ammo_magazine/a762/sks,
-/obj/item/ammo_magazine/a762/sks,
-/obj/item/ammo_magazine/a762/sks,
-/obj/item/ammo_magazine/a762/sks,
-/obj/item/ammo_magazine/a762/sks,
 /turf/simulated/floor/concrete/random,
 /area/warfare/battlefield/capture_point/blue/two)
+"mX" = (
+/obj/structure/table/rack/nosmooth/metal,
+/obj/item/storage/box/bodybags{
+	pixel_x = 0;
+	pixel_y = 11
+	},
+/obj/item/storage/box/bodybags{
+	pixel_x = 0;
+	pixel_y = -1
+	},
+/obj/machinery/light/caged{
+	pixel_y = 30;
+	pixel_x = 16
+	},
+/obj/structure/trench_wall/innercorners{
+	pixel_y = 32;
+	pixel_x = -32
+	},
+/turf/simulated/floor/wood,
+/area/warfare/battlefield/trench_section/underground)
+"mZ" = (
+/obj/structure/warfare_itemeater/red{
+	pixel_y = 32
+	},
+/turf/simulated/floor/concrete/random,
+/area/warfare/homebase/red)
 "nc" = (
 /obj/structure/lattice,
 /obj/machinery/light/caged{
@@ -3477,10 +3396,6 @@
 /obj/item/ammo_magazine/a762/m14,
 /obj/item/ammo_magazine/a762/m14,
 /obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/sks,
-/obj/item/ammo_magazine/a762/sks,
-/obj/item/ammo_magazine/a762/sks,
-/obj/item/ammo_magazine/a762/sks,
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/blue)
 "nJ" = (
@@ -3518,14 +3433,9 @@
 /turf/simulated/floor/wood,
 /area/warfare/battlefield/trench_section/underground)
 "nQ" = (
-/obj/structure/banner/red{
-	pixel_y = -32
+/turf/simulated/wall/perspecticrete{
+	integrity = 99999
 	},
-/turf/simulated/wall/perspecticrete,
-/area/warfare/battlefield/trench_section/underground)
-"nR" = (
-/obj/effect/landmark/start/phoneoperator,
-/turf/unsimulated/floor/hammereditor/dev2,
 /area/warfare/battlefield/trench_section/underground)
 "nV" = (
 /obj/structure/announcementspeaker/red{
@@ -3618,15 +3528,10 @@
 	},
 /area/warfare/battlefield/trench_section/underground)
 "oD" = (
-/obj/item/spacecash/bundle/c10,
-/obj/structure/storage/cabinet{
-	dir = 1;
-	pixel_x = 6;
-	pixel_y = 4
+/obj/machinery/kaos{
+	pixel_y = 22;
+	pages = list( list(/datum/terminal_page/multiselect,list(list("code" = "1", "page_name" = "PAGE 2", "name" = "SECOND PAGE"),list("code" = "2", "page_name" = "msg_staff_login", "name" = "MESSAGE COMMAND")),"PAGE 1"),list(/datum/terminal_page/multiselect,list(list("code" = "1", "page_name" = "PAGE 1", "name" = "FIRST PAGE"),list("code" = "2", "page_name" = "my_messages", "name" = "MESSAGE HUB"),list("code" = "3", "page_name" = "money_manager_main", "name" = "FUND MANAGEMENT - MAIN"),list("code" = "4", "page_name" = "money_manager_captain_login", "name" = "FUND MANAGEMENT - PRIVATE")),"PAGE 2"),list(/datum/terminal_page/message_staff,null,null),list(/datum/terminal_page/login,list("%CARGO","msg_staff_login","message_staff"),null),list(/datum/terminal_page/my_messages,"blue_captain",null),list(/datum/terminal_page/money_manager,list("Bluecoats",500,1,"B.L.U.E. CATALOGUE","money_manager_main","Bluecoats",list(/datum/snowflake_supply/shotgun_ammo_pack,/datum/snowflake_supply/rifle_ammo_pack,/datum/snowflake_supply/pistol_pack,/datum/snowflake_supply/canned_food_pack)),null),list(/datum/terminal_page/money_manager,list("Bluecoats",500,1,"EXCLUSIVE CATALOGUE","money_manager_captain","Bluecoats_C",list(/datum/snowflake_supply/booze_pack)),null),list(/datum/terminal_page/login,list("%CARGO","money_manager_captain_login","money_manager_captain"),null))
 	},
-/obj/item/spacecash/bundle/c10,
-/obj/item/spacecash/bundle/c10,
-/obj/item/clothing/mask/gas/captaingasmask,
 /turf/simulated/floor/wood,
 /area/warfare/homebase/blue/div)
 "oE" = (
@@ -3641,22 +3546,21 @@
 	},
 /area/warfare/battlefield/trench_section/underground)
 "oG" = (
-/obj/structure/table/rack/nosmooth/wood{
-	dir = 1
-	},
 /obj/item/device/flashlight/lamp/captain{
-	pixel_x = 0;
-	pixel_y = 16
+	pixel_x = -6;
+	pixel_y = 11
 	},
 /obj/structure/announcementmicrophone/red{
-	pixel_x = -2;
+	pixel_x = -1;
 	pixel_y = 7
 	},
-/obj/item/key{
-	key_data = "red";
-	icon_state = "key3";
-	pixel_x = -3;
-	pixel_y = 4
+/obj/structure/table/nosmooth/capnew{
+	pixel_y = -4;
+	dir = 8
+	},
+/obj/structure/table/nosmooth/capnew{
+	pixel_y = 28;
+	dir = 9
 	},
 /turf/simulated/floor/wood,
 /area/warfare/homebase/red/div)
@@ -3673,7 +3577,7 @@
 /obj/hammereditor/nodraw,
 /turf/simulated/wall/perspecticrete{
 	layer = 29;
-	plane = -15
+	plane = -150
 	},
 /area/warfare/battlefield/trench_section/underground)
 "oQ" = (
@@ -3805,10 +3709,6 @@
 /obj/item/ammo_magazine/a762/m14,
 /obj/item/ammo_magazine/a762/m14,
 /obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/sks,
-/obj/item/ammo_magazine/a762/sks,
-/obj/item/ammo_magazine/a762/sks,
-/obj/item/ammo_magazine/a762/sks,
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/red)
 "pF" = (
@@ -3833,10 +3733,6 @@
 	color = "#ffffff"
 	},
 /area/warfare/battlefield/capture_point/red/one)
-"pR" = (
-/obj/machinery/computer/operating,
-/turf/simulated/floor/wood,
-/area/warfare/battlefield/trench_section/underground)
 "pS" = (
 /obj/structure/closet/secure_closet/warfare/newver,
 /obj/item/crowbar/red,
@@ -3918,30 +3814,27 @@
 /obj/item/ammo_magazine/a762/m14,
 /obj/item/ammo_magazine/a762/m14,
 /obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/sks,
-/obj/item/ammo_magazine/a762/sks,
-/obj/item/ammo_magazine/a762/sks,
-/obj/item/ammo_magazine/a762/sks,
-/obj/item/ammo_magazine/a762/sks,
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/red)
-"ql" = (
-/obj/machinery/light/small/bunker{
-	pixel_x = 0;
-	pixel_y = 32
-	},
-/turf/simulated/floor/wood,
-/area/warfare/homebase/red/div)
 "qn" = (
-/obj/machinery/optable,
+/obj/machinery/optable{
+	dir = 1;
+	pixel_x = -4
+	},
+/obj/structure/trench_wall/innercorners{
+	dir = 8;
+	pixel_x = 32;
+	pixel_y = -32
+	},
 /turf/simulated/floor/wood,
 /area/warfare/battlefield/trench_section/underground)
 "qt" = (
-/obj/structure/table/rack/nosmooth/capright{
-	dir = 5
+/obj/machinery/light/small/bunker{
+	dir = 1
 	},
-/turf/simulated/floor/concrete/random,
-/area/warfare/battlefield/trench_section/underground)
+/obj/structure/table/rack/nosmooth/wood,
+/turf/simulated/floor/wood,
+/area/warfare/homebase/red/div)
 "qu" = (
 /obj/structure/trench_wall{
 	dir = 6
@@ -4058,7 +3951,9 @@
 /turf/simulated/floor/dirty/indestructable,
 /area/warfare/battlefield/trench_section)
 "ra" = (
-/obj/structure/bed/chair/throne,
+/obj/structure/bed/chair/throne{
+	color = "#FF0000"
+	},
 /obj/effect/landmark/start{
 	name = "Red Captain"
 	},
@@ -4361,8 +4256,14 @@
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/blue)
 "tA" = (
-/obj/machinery/door/airlock/security,
-/turf/simulated/floor/concrete/random,
+/obj/machinery/light/small/bunker{
+	dir = 4;
+	pixel_x = 0;
+	pixel_y = 15
+	},
+/obj/structure/phone/rotary/admin/red,
+/obj/structure/table/rack/nosmooth/metal,
+/turf/simulated/floor/wood,
 /area/warfare/battlefield/trench_section/underground)
 "tN" = (
 /obj/machinery/light/small/bunker{
@@ -4423,13 +4324,14 @@
 	},
 /area/warfare/battlefield/capture_point/blue/one)
 "ul" = (
-/obj/structure/table/steel,
-/obj/item/storage/secure/briefcase/money,
-/obj/item/paper/crumpled/bloody{
-	info = "NIXON '24, KILL THE BASTARDS";
-	name = "Campaign Ad"
+/obj/machinery/light/small/bunker{
+	dir = 8;
+	pixel_x = 0;
+	pixel_y = 15
 	},
-/turf/unsimulated/floor/hammereditor/dev12,
+/obj/structure/phone/rotary/admin,
+/obj/structure/table/rack/nosmooth/metal,
+/turf/simulated/floor/wood,
 /area/warfare/battlefield/trench_section/underground)
 "um" = (
 /obj/structure/trench_wall/innercorners{
@@ -4472,13 +4374,13 @@
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/blue/div)
 "uB" = (
-/obj/structure/bed/chair,
 /obj/effect/landmark/start{
 	name = "Blue Soldier"
 	},
 /obj/machinery/light/small/bunker{
 	dir = 4
 	},
+/obj/structure/bed/chair/blue,
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/blue)
 "uC" = (
@@ -4520,14 +4422,6 @@
 	health = 999999
 	},
 /area/warfare/battlefield/capture_point/red/two)
-"uP" = (
-/obj/item/paper/crumpled/bloody{
-	info = "NIXON '24, KILL THE BASTARDS";
-	name = "Campaign Ad"
-	},
-/obj/machinery/vending/cola,
-/turf/unsimulated/floor/hammereditor/dev12,
-/area/warfare/battlefield/trench_section/underground)
 "uS" = (
 /obj/machinery/sleeper{
 	dir = 1;
@@ -4584,8 +4478,15 @@
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/red)
 "vn" = (
-/obj/item/trash/pistachios,
-/turf/unsimulated/floor/hammereditor/dev2,
+/obj/item/flame/lighter/zippo{
+	name = "History";
+	desc = "To destroy the old, from wildlife to simple documents - history can be destroyed with a single motion of the thumb"
+	},
+/obj/structure/table/rack/nosmooth/wood/alt{
+	dir = 9
+	},
+/obj/item/device/boombox,
+/turf/simulated/floor/wood,
 /area/warfare/battlefield/trench_section/underground)
 "vu" = (
 /obj/structure/defensive_barrier{
@@ -4771,14 +4672,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/warfare/battlefield/trench_section/underground)
-"wu" = (
-/obj/structure/table/rack/nosmooth/metal,
-/obj/item/folder/envelope{
-	name = "Dictates";
-	desc = "To pass thy dictates to thy chosen envoys. Or to dispatch reward."
-	},
-/turf/simulated/floor/wood,
-/area/warfare/battlefield/trench_section/underground)
 "wz" = (
 /obj/machinery/light/small/bunker{
 	pixel_x = 0;
@@ -4801,12 +4694,6 @@
 /obj/item/ammo_magazine/a762/m14,
 /obj/item/ammo_magazine/a762/m14,
 /obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/sks,
-/obj/item/ammo_magazine/a762/sks,
-/obj/item/ammo_magazine/a762/sks,
-/obj/item/ammo_magazine/a762/sks,
-/obj/item/ammo_magazine/a762/sks,
-/obj/item/ammo_magazine/a762/sks,
 /turf/simulated/floor/concrete/random,
 /area/warfare/battlefield/capture_point/red/two)
 "wG" = (
@@ -4851,12 +4738,6 @@
 /obj/effect/lighting_dummy/daylight,
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/blue)
-"xj" = (
-/obj/structure/table/steel,
-/obj/item/storage/secure/briefcase/money,
-/obj/item/trash/cheesie,
-/turf/unsimulated/floor/hammereditor/dev12,
-/area/warfare/battlefield/trench_section/underground)
 "xm" = (
 /turf/simulated/floor/stones,
 /area/warfare/homebase/blue)
@@ -4874,12 +4755,6 @@
 	color = "#ffffff"
 	},
 /area/warfare/battlefield/capture_point/red/two)
-"xA" = (
-/obj/structure/table/rack/nosmooth/capright{
-	dir = 6
-	},
-/turf/simulated/floor/concrete/random,
-/area/warfare/battlefield/trench_section/underground)
 "xC" = (
 /obj/structure/trench_wall/innercorners,
 /turf/simulated/mineral{
@@ -4915,12 +4790,6 @@
 	},
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/blue)
-"xO" = (
-/obj/structure/table/rack/nosmooth/capleft{
-	dir = 10
-	},
-/turf/simulated/floor/concrete/random,
-/area/warfare/battlefield/trench_section/underground)
 "xR" = (
 /obj/machinery/light/small/bunker,
 /turf/simulated/wall/perspecticrete,
@@ -5014,10 +4883,6 @@
 /obj/structure/table/rack/nosmooth/wood/alt,
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/red)
-"yE" = (
-/obj/machinery/vending/cigarette,
-/turf/unsimulated/floor/hammereditor/dev12,
-/area/warfare/battlefield/trench_section/underground)
 "yF" = (
 /obj/hammereditor/nodraw/deco/shutter_quarter{
 	dir = 4
@@ -5181,30 +5046,7 @@
 /area/warfare/homebase/blue)
 "zJ" = (
 /obj/effect/phone_line,
-/obj/structure/storage/cabinet{
-	pixel_x = -6;
-	pixel_y = 4
-	},
-/obj/item/reagent_containers/pill/cyanide{
-	icon_state = "pill4";
-	name = "cyanide pill";
-	desc = "It's marked 'KCN'. Smells vaguely of almonds. Your last resort.."
-	},
-/obj/item/reagent_containers/pill/cyanide{
-	icon_state = "pill4";
-	name = "cyanide pill";
-	desc = "It's marked 'KCN'. Smells vaguely of almonds. Your last resort.."
-	},
-/obj/item/reagent_containers/pill/cyanide{
-	icon_state = "pill4";
-	name = "cyanide pill";
-	desc = "It's marked 'KCN'. Smells vaguely of almonds. Your last resort.."
-	},
-/obj/item/device/megaphone/red,
-/obj/machinery/light/small/bunker{
-	pixel_x = -7;
-	pixel_y = 32
-	},
+/obj/structure/cargo_pad/red/captain,
 /turf/simulated/floor/wood,
 /area/warfare/homebase/red/div)
 "zO" = (
@@ -5220,11 +5062,6 @@
 /obj/item/ammo_magazine/a762/m14,
 /obj/item/ammo_magazine/a762/m14,
 /obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/sks,
-/obj/item/ammo_magazine/a762/sks,
-/obj/item/ammo_magazine/a762/sks,
-/obj/item/ammo_magazine/a762/sks,
-/obj/item/ammo_magazine/a762/sks,
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/red)
 "zR" = (
@@ -5253,17 +5090,6 @@
 	},
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/blue)
-"Af" = (
-/turf/unsimulated/floor/hammereditor/dev2,
-/area/warfare/battlefield/trench_section/underground)
-"Aq" = (
-/obj/structure/table/rack/nosmooth/metal,
-/obj/item/flame/lighter/zippo{
-	name = "History";
-	desc = "To destroy the old, from wildlife to simple documents - history can be destroyed with a single motion of the thumb"
-	},
-/turf/simulated/floor/wood,
-/area/warfare/battlefield/trench_section/underground)
 "As" = (
 /obj/machinery/light/caged{
 	pixel_y = -14;
@@ -5287,17 +5113,21 @@
 	pixel_x = 32;
 	pixel_y = 31
 	},
-/obj/structure/closet/secure_closet/warfare/practicioner,
-/obj/item/clothing/suit/surgeon_apron,
-/obj/item/clothing/gloves/latex,
-/obj/item/clothing/mask/surgical,
+/obj/machinery/kaos{
+	pixel_y = 22;
+	pages = list( list(/datum/terminal_page/multiselect,list(list("code" = "1", "page_name" = "my_messages", "name" = "MESSAGE HUB")),"PAGE 1"),list(/datum/terminal_page/my_messages,"red_prac2",null))
+	},
 /turf/simulated/floor/wood,
 /area/warfare/battlefield/trench_section/underground)
 "AH" = (
-/obj/structure/table/rack/nosmooth/capleft{
-	dir = 5
+/obj/item/folder/envelope{
+	name = "Dictates";
+	desc = "To pass thy dictates to thy chosen envoys. Or to dispatch reward."
 	},
-/turf/simulated/floor/concrete/random,
+/obj/structure/table/rack/nosmooth/wood/alt{
+	dir = 9
+	},
+/turf/simulated/floor/wood,
 /area/warfare/battlefield/trench_section/underground)
 "AK" = (
 /obj/structure/trench_wall/innercorners{
@@ -5318,8 +5148,18 @@
 	},
 /area/space)
 "AL" = (
-/obj/item/trash/tray,
-/turf/unsimulated/floor/hammereditor/dev2,
+/obj/item/disk/nuclear{
+	name = "Powerlessness";
+	desc = "A trump card wielded by a powerless autarch - an ace in the hole the gods forbade him to play. How tragic"
+	},
+/obj/machinery/light/small/bunker{
+	pixel_x = 0;
+	pixel_y = 32
+	},
+/obj/structure/table/rack/nosmooth/wood/alt{
+	dir = 6
+	},
+/turf/simulated/floor/wood,
 /area/warfare/battlefield/trench_section/underground)
 "AM" = (
 /obj/machinery/sleeper,
@@ -5367,6 +5207,10 @@
 /turf/simulated/mineral{
 	health = 999999
 	},
+/area/warfare/homebase/red/div)
+"Bb" = (
+/obj/structure/soldiercryo/special/red,
+/turf/simulated/floor/concrete/random,
 /area/warfare/homebase/red/div)
 "Bc" = (
 /obj/structure/closet/crate,
@@ -5440,6 +5284,22 @@
 /obj/structure/announcementspeaker/red{
 	pixel_y = 32
 	},
+/obj/item/reagent_containers/pill/cyanide{
+	icon_state = "pill4";
+	name = "cyanide pill";
+	desc = "It's marked 'KCN'. Smells vaguely of almonds. Your last resort.."
+	},
+/obj/item/reagent_containers/pill/cyanide{
+	icon_state = "pill4";
+	name = "cyanide pill";
+	desc = "It's marked 'KCN'. Smells vaguely of almonds. Your last resort.."
+	},
+/obj/item/reagent_containers/pill/cyanide{
+	icon_state = "pill4";
+	name = "cyanide pill";
+	desc = "It's marked 'KCN'. Smells vaguely of almonds. Your last resort.."
+	},
+/obj/item/crowbar/red,
 /turf/simulated/floor/wood,
 /area/warfare/homebase/red/div)
 "BD" = (
@@ -5460,13 +5320,21 @@
 	},
 /area/warfare/battlefield/capture_point/red/two)
 "BM" = (
-/obj/structure/table/rack/nosmooth/wood{
-	dir = 4
-	},
 /obj/item/paper/crumpled{
 	info = "Note to self..<br> I jotted down the number to <b><i>High Command</i></b> in my personal notes.. <br><i>Best to only use it when things get dicey..</i>";
-	pixel_x = -1;
+	pixel_x = -17;
+	pixel_y = 1;
+	icon = 'icons/obj/chembottles.dmi';
+	icon_state = "rag_world"
+	},
+/obj/item/key{
+	key_data = "red";
+	icon_state = "key3";
+	pixel_x = -11;
 	pixel_y = 3
+	},
+/obj/structure/table/nosmooth/capnew{
+	pixel_y = -4
 	},
 /turf/simulated/floor/wood,
 /area/warfare/homebase/red/div)
@@ -5568,13 +5436,13 @@
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/red)
 "Ch" = (
-/obj/structure/bed/chair,
 /obj/effect/landmark/start{
 	name = "Red Soldier"
 	},
 /obj/machinery/light/small/bunker{
 	dir = 8
 	},
+/obj/structure/bed/chair/red,
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/red)
 "Cm" = (
@@ -5606,12 +5474,6 @@
 /obj/item/ammo_magazine/a762/m14,
 /obj/item/ammo_magazine/a762/m14,
 /obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/sks,
-/obj/item/ammo_magazine/a762/sks,
-/obj/item/ammo_magazine/a762/sks,
-/obj/item/ammo_magazine/a762/sks,
-/obj/item/ammo_magazine/a762/sks,
-/obj/item/ammo_magazine/a762/sks,
 /turf/simulated/floor/concrete/random,
 /area/warfare/battlefield/capture_point/blue/two)
 "CG" = (
@@ -5700,24 +5562,6 @@
 	},
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/blue/div)
-"Dn" = (
-/obj/machinery/vending/fashionvend,
-/turf/unsimulated/floor/hammereditor/dev12,
-/area/warfare/battlefield/trench_section/underground)
-"Dr" = (
-/obj/structure/table/rack/nosmooth/capright{
-	dir = 9
-	},
-/obj/item/storage/fancy/cigarettes/carcinomas{
-	pixel_x = -17;
-	pixel_y = 27
-	},
-/obj/item/flame/lighter/zippo{
-	pixel_x = -22;
-	pixel_y = 21
-	},
-/turf/simulated/floor/concrete/random,
-/area/warfare/battlefield/trench_section/underground)
 "Ds" = (
 /obj/structure/closet/crate,
 /obj/item/wirecutters,
@@ -5806,18 +5650,6 @@
 	color = "#ffffff"
 	},
 /area/warfare/battlefield/capture_point/red/one)
-"DU" = (
-/obj/structure/table/rack/nosmooth/metal,
-/obj/item/disk/nuclear{
-	name = "Powerlessness";
-	desc = "A trump card wielded by a powerless autarch - an ace in the hole the gods forbade him to play. How tragic"
-	},
-/obj/machinery/light/small/bunker{
-	pixel_x = 0;
-	pixel_y = 32
-	},
-/turf/simulated/floor/wood,
-/area/warfare/battlefield/trench_section/underground)
 "DW" = (
 /obj/structure/dirt_wall,
 /turf/simulated/floor/dirty/fake,
@@ -5838,14 +5670,6 @@
 /obj/hammereditor/nodraw/deco/shutter_quarter,
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/blue)
-"Eg" = (
-/obj/machinery/light/caged{
-	pixel_y = -14;
-	dir = 1;
-	pixel_x = 0
-	},
-/turf/unsimulated/floor/hammereditor/dev2,
-/area/warfare/battlefield/trench_section/underground)
 "Ei" = (
 /obj/effect/landmark/start{
 	name = "Blue Soldier"
@@ -5896,16 +5720,6 @@
 	},
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/red)
-"Eo" = (
-/obj/item/trash/semki,
-/turf/unsimulated/floor/hammereditor/dev2,
-/area/warfare/battlefield/trench_section/underground)
-"Eq" = (
-/obj/structure/table/rack/nosmooth/capleft{
-	dir = 8
-	},
-/turf/simulated/floor/concrete/random,
-/area/warfare/battlefield/trench_section/underground)
 "Eu" = (
 /obj/effect/landmark/start{
 	name = "Blue Soldier"
@@ -5990,16 +5804,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/warfare/battlefield/trench_section/underground)
-"Fq" = (
-/obj/structure/banner/blue{
-	pixel_y = 32
-	},
-/obj/item/paper/crumpled/bloody{
-	info = "NIXON '24, KILL THE BASTARDS";
-	name = "Campaign Ad"
-	},
-/turf/unsimulated/floor/hammereditor/dev2,
-/area/warfare/battlefield/trench_section/underground)
 "Fr" = (
 /turf/simulated/wall/perspecticrete,
 /area/warfare/homebase/red/div)
@@ -6025,15 +5829,9 @@
 	},
 /area/warfare/homebase/red)
 "FP" = (
-/obj/item/spacecash/bundle/c10,
-/obj/structure/storage/cabinet{
-	dir = 1;
-	pixel_x = 6;
-	pixel_y = 4
+/obj/machinery/kaos{
+	Textcolor = "red"
 	},
-/obj/item/spacecash/bundle/c10,
-/obj/item/spacecash/bundle/c10,
-/obj/item/clothing/mask/gas/captaingasmask,
 /turf/simulated/floor/wood,
 /area/warfare/homebase/red/div)
 "FR" = (
@@ -6085,6 +5883,13 @@
 /obj/item/device/compass,
 /turf/simulated/floor/stones,
 /area/warfare/homebase/blue)
+"Gs" = (
+/obj/structure/soldiercryo/special/red,
+/obj/machinery/light/small/bunker{
+	dir = 4
+	},
+/turf/simulated/floor/concrete/random,
+/area/warfare/homebase/red/div)
 "Gu" = (
 /turf/simulated/floor/concrete/random,
 /area/space)
@@ -6121,13 +5926,6 @@
 /obj/effect/decal/cleanable/cobweb,
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/blue)
-"GW" = (
-/obj/structure/table/rack/nosmooth/capleft{
-	dir = 1
-	},
-/obj/structure/phone/rotary/admin,
-/turf/simulated/floor/concrete/random,
-/area/warfare/battlefield/trench_section/underground)
 "GX" = (
 /obj/structure/trench_wall/innercorners{
 	dir = 4
@@ -6177,15 +5975,14 @@
 	health = 999999
 	},
 /area/warfare/battlefield/trench_section/underground)
-"HD" = (
-/obj/structure/bed/chair/throne{
-	pixel_x = 16;
-	pixel_y = -5;
-	buckle_pixel_shift = "x=16;y=-5";
-	color = "#FFFFF"
+"Hw" = (
+/obj/machinery/light/small/bunker{
+	pixel_x = 0;
+	pixel_y = 32
 	},
-/turf/simulated/floor/concrete/random,
-/area/warfare/battlefield/trench_section/underground)
+/obj/structure/cargo_pad/bue/captain,
+/turf/simulated/floor/wood,
+/area/warfare/homebase/blue/div)
 "HH" = (
 /obj/structure/stairs/trenchstairs{
 	dir = 1
@@ -6224,16 +6021,6 @@
 	},
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/red)
-"HV" = (
-/obj/structure/table/rack/nosmooth/capright{
-	dir = 10
-	},
-/obj/item/book/manual/barman_recipes{
-	pixel_x = -2;
-	pixel_y = 10
-	},
-/turf/simulated/floor/concrete/random,
-/area/warfare/battlefield/trench_section/underground)
 "HZ" = (
 /obj/item/storage/firstaid/surgery,
 /obj/item/reagent_containers/spray/cleaner/warfare/red{
@@ -6327,15 +6114,6 @@
 	health = 999999
 	},
 /area/space)
-"ID" = (
-/obj/structure/table/rack/nosmooth/capleft,
-/obj/item/device/flashlight/lamp{
-	pixel_x = 16;
-	pixel_y = -19
-	},
-/obj/effect/phone_line,
-/turf/simulated/floor/concrete/random,
-/area/warfare/battlefield/trench_section/underground)
 "IF" = (
 /obj/structure/poster/red,
 /obj/hammereditor/nodraw,
@@ -6372,13 +6150,6 @@
 /obj/structure/sign/medholo,
 /turf/simulated/wall/perspecticrete,
 /area/warfare/homebase/blue/div)
-"IW" = (
-/obj/item/paper/crumpled/bloody{
-	info = "NIXON '24, KILL THE BASTARDS";
-	name = "Campaign Ad"
-	},
-/turf/unsimulated/floor/hammereditor/dev2,
-/area/warfare/battlefield/trench_section/underground)
 "IX" = (
 /obj/effect/landmark/start{
 	name = "Red Soldier"
@@ -6408,9 +6179,6 @@
 	},
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/blue)
-"JC" = (
-/turf/unsimulated/floor/hammereditor/dev12,
-/area/warfare/battlefield/trench_section/underground)
 "JG" = (
 /obj/structure/trench_wall{
 	dir = 10
@@ -6451,13 +6219,14 @@
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/blue)
 "JU" = (
-/obj/machinery/optable{
-	dir = 1
-	},
 /obj/structure/trench_wall/innercorners{
 	dir = 8;
 	pixel_x = 32;
 	pixel_y = -32
+	},
+/obj/machinery/optable{
+	dir = 1;
+	pixel_x = -4
 	},
 /turf/simulated/floor/wood,
 /area/warfare/battlefield/trench_section/underground)
@@ -6533,13 +6302,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/warfare/battlefield/trench_section/underground)
-"Kx" = (
-/obj/structure/table/rack/nosmooth/capleft{
-	dir = 1
-	},
-/obj/structure/phone/rotary/admin/red,
-/turf/simulated/floor/concrete/random,
-/area/warfare/battlefield/trench_section/underground)
 "KH" = (
 /obj/effect/lighting_dummy/daylight,
 /turf/simulated/floor/concrete/random,
@@ -6600,20 +6362,6 @@
 	health = 999999
 	},
 /area/warfare/battlefield/trench_section/underground)
-"Lq" = (
-/obj/structure/table/rack/nosmooth/capleft{
-	dir = 6
-	},
-/obj/item/material/ashtray/bronze{
-	pixel_x = 8;
-	pixel_y = 8
-	},
-/obj/item/clothing/mask/smokable/cigarette/cigar{
-	pixel_x = 10;
-	pixel_y = 12
-	},
-/turf/simulated/floor/concrete/random,
-/area/warfare/battlefield/trench_section/underground)
 "Lt" = (
 /obj/structure/trench_wall{
 	dir = 4;
@@ -6624,6 +6372,23 @@
 	color = "#ffffff"
 	},
 /area/warfare/homebase/red)
+"Lv" = (
+/obj/structure/trench_wall{
+	dir = 5;
+	pixel_x = 32;
+	layer = 28
+	},
+/obj/structure/trench_wall/innercorners{
+	dir = 1;
+	pixel_x = 32;
+	pixel_y = 31
+	},
+/obj/machinery/kaos{
+	pixel_y = 22;
+	pages = list( list(/datum/terminal_page/multiselect,list(list("code" = "2", "page_name" = "my_messages", "name" = "MESSAGE HUB")),"PAGE 1"),list(/datum/terminal_page/my_messages,"blue_prac2",null))
+	},
+/turf/simulated/floor/wood,
+/area/warfare/battlefield/trench_section/underground)
 "Lz" = (
 /obj/structure/defensive_barrier{
 	pixel_y = -4;
@@ -6639,15 +6404,17 @@
 /turf/simulated/floor/stones,
 /area/warfare/homebase/blue)
 "LE" = (
-/obj/structure/trench_wall{
+/obj/machinery/light/small/bunker{
+	pixel_x = 0;
+	pixel_y = 32
+	},
+/obj/machinery/camera{
 	dir = 4;
-	pixel_x = -32
+	pixel_x = 2;
+	pixel_y = 0
 	},
-/turf/simulated/floor/trenches/underground{
-	icon_state = "trench";
-	color = "#ffffff"
-	},
-/area/warfare/battlefield/trench_section/underground)
+/turf/simulated/floor/wood,
+/area/warfare/homebase/red/div)
 "LJ" = (
 /obj/structure/announcementspeaker/blue{
 	pixel_x = 0;
@@ -6690,7 +6457,8 @@
 /area/warfare/battlefield/capture_point/red/two)
 "Mb" = (
 /obj/machinery/computer/operating{
-	dir = 1
+	dir = 1;
+	density = 1
 	},
 /turf/simulated/floor/wood,
 /area/warfare/battlefield/trench_section/underground)
@@ -6975,10 +6743,6 @@
 	health = 999999
 	},
 /area/warfare/battlefield/capture_point/blue/two)
-"OA" = (
-/obj/item/trash/syndi_cakes,
-/turf/unsimulated/floor/hammereditor/dev12,
-/area/warfare/battlefield/trench_section/underground)
 "OE" = (
 /obj/machinery/light/caged{
 	pixel_y = 30;
@@ -7020,14 +6784,6 @@
 "OX" = (
 /turf/simulated/floor/tiled/dark,
 /area/warfare/homebase/red/div)
-"OY" = (
-/obj/machinery/light/small/bunker{
-	dir = 8;
-	pixel_x = 0;
-	pixel_y = 15
-	},
-/turf/simulated/floor/wood,
-/area/warfare/battlefield/trench_section/underground)
 "Pd" = (
 /obj/structure/table/rack/shelf/red,
 /turf/simulated/floor/concrete/random,
@@ -7119,12 +6875,22 @@
 	},
 /area/warfare/battlefield/capture_point/red/one)
 "Qh" = (
-/obj/structure/bed/chair,
-/obj/effect/landmark/start{
-	name = "Red Soldier"
-	},
+/obj/structure/closet/crate,
+/obj/item/ammo_magazine/mc9mmt/machinepistol,
+/obj/item/ammo_magazine/mc9mmt/machinepistol,
+/obj/item/ammo_magazine/mc9mmt/machinepistol,
+/obj/item/ammo_magazine/mc9mmt/machinepistol,
+/obj/item/ammo_magazine/c45rifle/akarabiner,
+/obj/item/ammo_magazine/c45rifle/akarabiner,
+/obj/item/ammo_magazine/c45rifle/akarabiner,
+/obj/item/ammo_magazine/c45rifle/akarabiner,
+/obj/item/ammo_magazine/c45rifle/akarabiner,
+/obj/item/ammo_magazine/a762/m14,
+/obj/item/ammo_magazine/a762/m14,
+/obj/item/ammo_magazine/a762/m14,
+/obj/item/ammo_magazine/a762/m14,
 /turf/simulated/floor/concrete/random,
-/area/warfare/homebase/red)
+/area/warfare/battlefield/capture_point/red/one)
 "Qj" = (
 /obj/effect/landmark/start{
 	name = "Blue Soldier"
@@ -7205,22 +6971,12 @@
 	},
 /turf/simulated/floor/dirty/indestructable,
 /area/warfare/battlefield/capture_point/blue/one)
-"QE" = (
-/obj/machinery/vending/coffee,
-/turf/unsimulated/floor/hammereditor/dev12,
-/area/warfare/battlefield/trench_section/underground)
 "QF" = (
 /turf/simulated/floor/trenches/underground{
 	icon_state = "trench";
 	color = "#ffffff"
 	},
 /area/warfare/battlefield/capture_point/red/two)
-"QI" = (
-/obj/structure/table/rack/nosmooth/capright{
-	dir = 4
-	},
-/turf/simulated/floor/concrete/random,
-/area/warfare/battlefield/trench_section/underground)
 "QN" = (
 /obj/structure/announcementspeaker/red{
 	pixel_x = 0;
@@ -7242,6 +6998,13 @@
 "QQ" = (
 /turf/simulated/floor/concrete/random,
 /area/warfare/battlefield/capture_point/red/two)
+"QR" = (
+/obj/machinery/light/small/bunker{
+	pixel_x = 0;
+	pixel_y = 32
+	},
+/turf/simulated/floor/wood,
+/area/warfare/homebase/red/div)
 "QS" = (
 /obj/machinery/light/caged{
 	dir = 8;
@@ -7421,16 +7184,6 @@
 	color = "#ffffff"
 	},
 /area/warfare/battlefield/capture_point/red/two)
-"SE" = (
-/obj/structure/table/rack/nosmooth/capleft{
-	dir = 4
-	},
-/obj/effect/phone_line,
-/obj/item/paper/crumpled/bloody{
-	info = "Those fuckers from the other phone room are hogging up the vending machines <br> If that flower wasn't employing us we would've done something about it ages ago."
-	},
-/turf/simulated/floor/concrete/random,
-/area/warfare/battlefield/trench_section/underground)
 "SN" = (
 /obj/structure/trench_wall{
 	dir = 4
@@ -7447,6 +7200,9 @@
 	},
 /turf/simulated/floor/dirty/indestructable,
 /area/warfare/battlefield/capture_point/blue/one)
+"SQ" = (
+/turf/simulated/floor/exoplanet/water/shallow/lightless/urban,
+/area/space)
 "SR" = (
 /obj/machinery/light/caged{
 	pixel_y = 30;
@@ -7579,10 +7335,6 @@
 	},
 /turf/simulated/wall/perspecticrete,
 /area/warfare/homebase/red/div)
-"TA" = (
-/obj/machinery/door/airlock/multi_tile/metal/maintenance,
-/turf/simulated/floor/concrete/random,
-/area/warfare/battlefield/trench_section/underground)
 "TE" = (
 /obj/structure/trench_wall{
 	dir = 4
@@ -7650,10 +7402,8 @@
 	},
 /area/space)
 "Uv" = (
-/obj/structure/table/rack/nosmooth/capright{
-	dir = 1
-	},
-/turf/simulated/floor/concrete/random,
+/obj/effect/landmark/start/phoneoperator,
+/turf/simulated/floor/wood,
 /area/warfare/battlefield/trench_section/underground)
 "Ux" = (
 /obj/effect/floor_decal/trench{
@@ -7688,19 +7438,6 @@
 /obj/item/ammo_magazine/a762/m14,
 /obj/item/ammo_magazine/a762/m14,
 /obj/item/ammo_magazine/a762/m14,
-/turf/simulated/floor/concrete/random,
-/area/warfare/battlefield/capture_point/red/two)
-"UG" = (
-/obj/structure/closet/crate{
-	name = "gasmask crate"
-	},
-/obj/item/clothing/mask/gas/red,
-/obj/item/clothing/mask/gas/red,
-/obj/item/clothing/mask/gas/red,
-/obj/item/clothing/mask/gas/red,
-/obj/item/clothing/mask/gas/red,
-/obj/item/clothing/mask/gas/red,
-/obj/effect/lighting_dummy/daylight,
 /turf/simulated/floor/concrete/random,
 /area/warfare/battlefield/capture_point/red/two)
 "UI" = (
@@ -7747,10 +7484,6 @@
 	},
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/blue)
-"UX" = (
-/obj/item/trash/warfare_can/sardine,
-/turf/unsimulated/floor/hammereditor/dev2,
-/area/warfare/battlefield/trench_section/underground)
 "Vc" = (
 /obj/structure/dirt_wall,
 /turf/simulated/floor/dirty/tough,
@@ -7763,18 +7496,6 @@
 /obj/structure/dirt_wall,
 /turf/simulated/floor/dirty/fake,
 /area/warfare/battlefield/capture_point/blue/one)
-"VF" = (
-/obj/structure/table/rack/nosmooth/capright,
-/obj/item/material/ashtray/bronze{
-	pixel_x = 1;
-	pixel_y = -6
-	},
-/obj/item/clothing/mask/smokable/cigarette/cigar{
-	pixel_x = 0;
-	pixel_y = -3
-	},
-/turf/simulated/floor/concrete/random,
-/area/warfare/battlefield/trench_section/underground)
 "VI" = (
 /obj/item/device/flashlight/lantern{
 	on = 1;
@@ -7857,10 +7578,6 @@
 	color = "#ffffff"
 	},
 /area/warfare/homebase/red)
-"WA" = (
-/obj/item/trash/candy/proteinbar,
-/turf/unsimulated/floor/hammereditor/dev2,
-/area/warfare/battlefield/trench_section/underground)
 "WD" = (
 /obj/structure/stairs/trenchstairs,
 /obj/structure/announcementspeaker/blue{
@@ -7903,23 +7620,12 @@
 	health = 999999
 	},
 /area/warfare/battlefield/trench_section/underground)
-"WM" = (
-/obj/effect/phone_line,
-/turf/simulated/floor/concrete/random,
-/area/warfare/battlefield/trench_section/underground)
 "WN" = (
 /obj/machinery/light/small/bunker{
 	dir = 4
 	},
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/blue/div)
-"WP" = (
-/obj/structure/table/rack/nosmooth/capleft{
-	dir = 10
-	},
-/obj/item/book/manual/nuclear,
-/turf/simulated/floor/concrete/random,
-/area/warfare/battlefield/trench_section/underground)
 "WS" = (
 /obj/structure/closet/crate,
 /obj/item/ammo_magazine/mc9mmt/machinepistol,
@@ -7935,12 +7641,6 @@
 /obj/item/ammo_magazine/a762/m14,
 /obj/item/ammo_magazine/a762/m14,
 /obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/sks,
-/obj/item/ammo_magazine/a762/sks,
-/obj/item/ammo_magazine/a762/sks,
-/obj/item/ammo_magazine/a762/sks,
-/obj/item/ammo_magazine/a762/sks,
-/obj/item/ammo_magazine/a762/sks,
 /turf/simulated/floor/wood,
 /area/warfare/battlefield/capture_point/red/two)
 "WU" = (
@@ -8073,18 +7773,6 @@
 	color = "#ffffff"
 	},
 /area/warfare/battlefield/trench_section/underground)
-"XP" = (
-/obj/structure/table/rack/nosmooth/metal,
-/obj/item/gun/projectile/revolver{
-	name = "Authority";
-	desc = "Over something as fundemental as life itself"
-	},
-/obj/machinery/light/small/bunker{
-	pixel_x = 0;
-	pixel_y = 32
-	},
-/turf/simulated/floor/wood,
-/area/warfare/battlefield/trench_section/underground)
 "XS" = (
 /obj/structure/trench_wall/innercorners{
 	dir = 1
@@ -8114,18 +7802,13 @@
 /obj/item/ammo_magazine/a762/m14,
 /obj/item/ammo_magazine/a762/m14,
 /obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/sks,
-/obj/item/ammo_magazine/a762/sks,
-/obj/item/ammo_magazine/a762/sks,
-/obj/item/ammo_magazine/a762/sks,
-/obj/item/ammo_magazine/a762/sks,
 /obj/machinery/light/caged{
 	pixel_y = -14;
 	dir = 1;
 	pixel_x = 0
 	},
 /turf/simulated/floor/concrete/random,
-/area/warfare/battlefield/capture_point/red/two)
+/area/warfare/battlefield/capture_point/red/one)
 "Yh" = (
 /obj/structure/closet/crate,
 /obj/item/ammo_magazine/mc9mmt/machinepistol,
@@ -8143,12 +7826,6 @@
 /obj/item/ammo_magazine/a762/m14,
 /obj/item/ammo_magazine/a762/m14,
 /obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/sks,
-/obj/item/ammo_magazine/a762/sks,
-/obj/item/ammo_magazine/a762/sks,
-/obj/item/ammo_magazine/a762/sks,
-/obj/item/ammo_magazine/a762/sks,
-/obj/item/ammo_magazine/a762/sks,
 /turf/simulated/floor/wood,
 /area/warfare/battlefield/capture_point/red/two)
 "Yl" = (
@@ -8190,6 +7867,22 @@
 	health = 999999
 	},
 /area/warfare/battlefield/trench_section/underground)
+"YM" = (
+/obj/machinery/light/caged{
+	pixel_y = 30;
+	pixel_x = 16
+	},
+/obj/structure/trench_wall{
+	dir = 5;
+	pixel_x = -32;
+	layer = 28
+	},
+/obj/machinery/kaos{
+	pixel_y = 22;
+	pages = list( list(/datum/terminal_page/multiselect,list(list("code" = "1", "page_name" = "my_messages", "name" = "MESSAGE HUB")),"PAGE 1"),list(/datum/terminal_page/my_messages,"red_prac1",null))
+	},
+/turf/simulated/floor/wood,
+/area/warfare/battlefield/trench_section/underground)
 "YW" = (
 /obj/structure/closet/crate,
 /obj/item/ammo_magazine/mc9mmt/machinepistol,
@@ -8202,11 +7895,6 @@
 /obj/item/ammo_magazine/a762/m14,
 /obj/item/ammo_magazine/a762/m14,
 /obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/sks,
-/obj/item/ammo_magazine/a762/sks,
-/obj/item/ammo_magazine/a762/sks,
-/obj/item/ammo_magazine/a762/sks,
-/obj/item/ammo_magazine/a762/sks,
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/red)
 "Zb" = (
@@ -8316,6 +8004,13 @@
 	},
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/blue)
+"ZF" = (
+/obj/structure/soldiercryo/special/red,
+/obj/machinery/light/small/bunker{
+	dir = 8
+	},
+/turf/simulated/floor/concrete/random,
+/area/warfare/homebase/red/div)
 "ZI" = (
 /obj/machinery/light/small/bunker{
 	dir = 4
@@ -8351,6 +8046,10 @@
 	dir = 1
 	},
 /turf/simulated/floor/wood,
+/area/warfare/homebase/red/div)
+"ZV" = (
+/obj/hammereditor/nodraw,
+/turf/simulated/floor/concrete/random,
 /area/warfare/homebase/red/div)
 "ZY" = (
 /obj/item/flame/candle,
@@ -8874,14 +8573,14 @@ aa
 aa
 aa
 aa
-cs
-HD
-GW
-Eq
-xO
-lE
-zU
-cs
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -9126,14 +8825,14 @@ aa
 aa
 aa
 aa
-cs
-zU
-VF
-QI
-xA
-qt
-zU
-cs
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -9378,14 +9077,14 @@ aa
 aa
 aa
 aa
-cs
-zU
-Uv
-jt
-HV
-Dr
-zU
-cs
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -9630,14 +9329,14 @@ aa
 aa
 aa
 aa
-cs
-zU
-qf
-zU
-zU
-qf
-zU
-cs
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -9882,14 +9581,14 @@ aa
 aa
 aa
 aa
-cs
-cs
-cs
-ke
-ke
-cs
-cs
-cs
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -10134,14 +9833,14 @@ aa
 aa
 aa
 aa
-cB
-cB
-cs
-IW
-Af
-cs
-cB
-cB
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -10386,14 +10085,14 @@ aa
 aa
 aa
 aa
-cB
-cB
-cs
-vn
-Af
-cs
-cB
-cB
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -10638,14 +10337,14 @@ aa
 aa
 aa
 aa
-cB
-cs
-cs
-Af
-AL
-cs
-cB
-cB
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -10890,14 +10589,14 @@ aa
 aa
 aa
 aa
-cs
-cs
-JC
-Fq
-Af
-cs
-cB
-cB
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -11136,20 +10835,20 @@ aa
 (12,1,1) = {"
 aa
 aa
-cs
-cs
-cs
-cs
-cs
-cs
-cs
-yE
-JC
-Af
-Eg
-cs
-cs
-cs
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -11388,20 +11087,20 @@ ee
 (13,1,1) = {"
 aa
 aa
-cs
-XP
-EO
-OY
-oy
-cs
-cs
-QE
-JC
-Af
-Af
-ul
-jw
-cs
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -11640,20 +11339,20 @@ aa
 (14,1,1) = {"
 aa
 aa
-cs
-Aq
-EO
-qj
-EO
-TA
-Af
-Af
-Af
-Af
-Af
-UX
-jw
-cs
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -11892,20 +11591,20 @@ aa
 (15,1,1) = {"
 aa
 aa
-cs
-wu
-EO
-EO
-EO
-zU
-Af
-Af
-Af
-Af
-Af
-WA
-jw
-cs
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -12094,7 +11793,7 @@ dl
 dl
 di
 WK
-lX
+mX
 EO
 As
 We
@@ -12144,20 +11843,20 @@ aa
 (16,1,1) = {"
 aa
 aa
-cs
-DU
-EO
-bJ
-oy
-cs
-cs
-Dn
-OA
-Af
-nR
-xj
-jw
-cs
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -12191,7 +11890,7 @@ aO
 bi
 cn
 WK
-AC
+Lv
 EO
 yA
 We
@@ -12396,20 +12095,20 @@ aa
 (17,1,1) = {"
 aa
 aa
-cs
-cs
-cs
-cs
-cs
-cs
-cs
-uP
-JC
-Af
-Eg
-cs
-cs
-cs
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -12654,14 +12353,14 @@ aa
 aa
 aa
 aa
-cs
-nQ
-JC
-Eo
-Af
-cs
-cB
-cB
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -12697,7 +12396,7 @@ cn
 WK
 cv
 EO
-qn
+Mp
 We
 bo
 cQ
@@ -12846,7 +12545,7 @@ CI
 NQ
 NQ
 dG
-wF
+Qh
 dl
 di
 WK
@@ -12906,14 +12605,14 @@ aa
 aa
 aa
 aa
-cB
-cs
-cs
-Af
-IW
-cs
-cB
-cB
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -12949,7 +12648,7 @@ cn
 WK
 Ek
 EO
-pR
+Mb
 We
 bo
 bQ
@@ -13097,14 +12796,14 @@ dh
 lB
 dl
 do
-dH
+dG
 Yd
 dl
 di
 WK
 RW
 EO
-pR
+Mb
 We
 rI
 eX
@@ -13158,14 +12857,14 @@ aa
 aa
 aa
 aa
-cB
-cB
-cs
-Af
-Af
-cs
-cB
-cB
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -13410,14 +13109,14 @@ aa
 aa
 aa
 aa
-cB
-cB
-cs
-Af
-Af
-cs
-cB
-cB
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -13662,14 +13361,14 @@ aa
 aa
 aa
 aa
-cs
-cs
-cs
-tA
-tA
-cs
-cs
-cs
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -13914,14 +13613,14 @@ aa
 aa
 aa
 aa
-cs
-zU
-hd
-zU
-zU
-hd
-zU
-cs
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -14123,7 +13822,7 @@ hB
 yo
 yo
 sB
-Bo
+cB
 cB
 cB
 aa
@@ -14166,14 +13865,14 @@ aa
 aa
 aa
 aa
-cs
-WM
-ID
-SE
-Lq
-AH
-zU
-cs
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -14373,8 +14072,8 @@ dS
 wq
 DB
 Ln
-LE
-LE
+MM
+MM
 DB
 TE
 TE
@@ -14418,14 +14117,14 @@ aa
 aa
 aa
 aa
-cs
-HD
-Kx
-Eq
-WP
-lE
-zU
-cs
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -14670,14 +14369,14 @@ aa
 aa
 aa
 aa
-cs
-zU
-VF
-QI
-xA
-qt
-zU
-cs
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -15664,7 +15363,7 @@ dZ
 ab
 VP
 VP
-cT
+VP
 VP
 VP
 aa
@@ -16477,7 +16176,7 @@ cn
 WK
 nN
 EO
-JU
+qn
 We
 bo
 bT
@@ -17134,7 +16833,7 @@ dl
 dl
 di
 WK
-mC
+YM
 EO
 ch
 We
@@ -19169,12 +18868,12 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
+nQ
+nQ
+nQ
+nQ
+nQ
+nQ
 aa
 aa
 ab
@@ -19421,12 +19120,12 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
+nQ
+cs
+EO
+ul
+oy
+nQ
 aa
 aa
 ab
@@ -19673,12 +19372,12 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
+nQ
+vn
+EO
+qj
+EO
+nQ
 aa
 aa
 ab
@@ -19708,7 +19407,7 @@ aa
 ag
 Oa
 av
-aA
+hi
 bz
 aM
 fr
@@ -19925,12 +19624,12 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
+nQ
+AH
+EO
+Uv
+EO
+nQ
 aa
 aa
 ab
@@ -20177,12 +19876,12 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
+nQ
+AL
+EO
+tA
+lE
+nQ
 aa
 aa
 ab
@@ -20429,12 +20128,12 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
+nQ
+nQ
+nQ
+nQ
+nQ
+nQ
 aa
 aa
 ab
@@ -21155,32 +20854,32 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
 aa
 aa
 aa
@@ -21407,32 +21106,32 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
 aa
 aa
 aa
@@ -21659,32 +21358,32 @@ Zc
 Zc
 Zc
 Zc
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-nm
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
 aa
 aa
 aa
@@ -21911,32 +21610,32 @@ Zc
 Zc
 Zc
 Zc
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-nm
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
 aa
 aa
 aa
@@ -22163,32 +21862,32 @@ Zc
 Zc
 Zc
 Zc
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
 aa
 VP
 VP
@@ -22415,32 +22114,32 @@ Zc
 Zc
 Zc
 Zc
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
 aa
 VP
 VP
@@ -22667,32 +22366,32 @@ Zc
 Zc
 Zc
 Zc
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-nm
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
 aa
 VP
 VP
@@ -22919,32 +22618,32 @@ Zc
 Zc
 Zc
 Zc
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
 aa
 VP
 VP
@@ -23171,32 +22870,32 @@ Zc
 Zc
 Zc
 Zc
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-nm
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
 aa
 VP
 VP
@@ -23219,12 +22918,12 @@ VP
 VP
 VP
 VP
-VP
-VP
-VP
-VP
-VP
-VP
+ab
+ab
+ab
+ab
+ab
+ab
 VP
 VP
 VP
@@ -23423,32 +23122,32 @@ Zc
 Zc
 Zc
 Zc
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
 aa
 VP
 VP
@@ -23472,10 +23171,10 @@ ab
 ab
 ab
 ab
-AX
-AX
-AX
-AX
+Bb
+ZF
+Bb
+ZV
 Fr
 Fr
 Tx
@@ -23675,32 +23374,32 @@ Zc
 Zc
 Zc
 Zc
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
 aa
 VP
 VP
@@ -23723,11 +23422,11 @@ eY
 Ce
 dn
 Ce
-ab
-AX
-AX
-AX
-AX
+hN
+tk
+tk
+tk
+Bb
 Fr
 Gd
 tk
@@ -23927,32 +23626,32 @@ Zc
 Zc
 Zc
 Zc
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
+SQ
 aa
 VP
 VP
@@ -23975,11 +23674,11 @@ hy
 hy
 dn
 dn
-ab
-AX
-AX
-AX
-AX
+dn
+tk
+tk
+tk
+Bb
 Fr
 if
 tk
@@ -24213,7 +23912,7 @@ gS
 gR
 NJ
 ab
-dn
+mZ
 dn
 mf
 sn
@@ -24228,10 +23927,10 @@ AU
 bO
 zB
 ab
-AX
-AX
-AX
-AX
+Bb
+Gs
+Bb
+ZV
 Fr
 tk
 tk
@@ -25458,7 +25157,7 @@ Cy
 Gf
 QQ
 QQ
-dG
+dH
 wF
 dD
 gG
@@ -25516,7 +25215,7 @@ eB
 cH
 ag
 bb
-EV
+Hw
 XX
 XX
 jo
@@ -25726,10 +25425,10 @@ gR
 gR
 ab
 Fr
-ql
+QR
 kK
 kK
-sG
+qt
 ab
 dn
 dn
@@ -25766,7 +25465,7 @@ wG
 wG
 wG
 wG
-ai
+ag
 oD
 XX
 Tt
@@ -26734,7 +26433,7 @@ gR
 yR
 ab
 Fr
-ql
+LE
 kK
 kK
 sG
@@ -26982,7 +26681,7 @@ gN
 gP
 gQ
 gS
-UG
+oz
 gW
 ab
 ab
@@ -29490,7 +29189,7 @@ Cy
 Gf
 QQ
 QQ
-dG
+dH
 wF
 dD
 gG
@@ -29505,7 +29204,7 @@ gS
 gR
 yR
 ab
-dn
+mZ
 dn
 mf
 yB
@@ -30767,7 +30466,7 @@ tj
 ab
 bu
 bu
-Qh
+mf
 hC
 El
 bO

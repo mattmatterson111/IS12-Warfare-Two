@@ -41,12 +41,15 @@ var/list/floating_chat_colors = list()
 	I.alpha = 0
 	I.maptext_width = 80
 	I.maptext_height = 64
+	I.pixel_y = 10 // I thought it was too low.
 	I.appearance_flags = APPEARANCE_UI_IGNORE_ALPHA
 	I.pixel_x = -round(I.maptext_width/2) + 16
 
 	style = "font-family: 'Small Fonts'; -dm-text-outline: 1 black; font-size: [size]px; [style]"
 	I.maptext = "<center><span style=\"[style]\">[message]</span></center>"
-	animate(I, 1, alpha = 255, pixel_y = 20)
+	I.filters += filter(type = "blur", size = 5)
+	animate(I, 2, alpha = 255, pixel_y = 20, flags = ANIMATION_PARALLEL)
+	animate(I.filters[I.filters.len], size = 0, time = 2)
 
 	for(var/image/old in holder.stored_chat_text)
 		animate(old, 2, pixel_y = old.pixel_y + 8)
@@ -58,7 +61,8 @@ var/list/floating_chat_colors = list()
 	return I
 
 /proc/remove_floating_text(atom/movable/holder, image/I)
-	animate(I, 2, pixel_y = I.pixel_y + 10, alpha = 0)
+	animate(I.filters[I.filters.len], size = 5, time = 5)
+	animate(I, 2, pixel_y = I.pixel_y + 10, alpha = 0, flags = ANIMATION_PARALLEL)
 	LAZYREMOVE(holder.stored_chat_text, I)
 
 /proc/remove_images_from_clients(image/I, list/show_to)

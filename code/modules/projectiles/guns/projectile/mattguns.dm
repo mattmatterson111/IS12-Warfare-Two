@@ -775,7 +775,8 @@
 	caliber = "flamer"
 	one_hand_penalty = 50
 	str_requirement = 18
-	fire_sound = "combust"
+	fire_sound = "flamer_fire"
+	handle_casings = CLEAR_CASINGS
 	casingsound = null//No eject sound for you.
 	firemodes = list()
 	automatic = 0.1
@@ -784,6 +785,9 @@
 	magazine_type = /obj/item/ammo_magazine/flamer
 	allowed_magazines = /obj/item/ammo_magazine/flamer
 	can_jam = FALSE
+
+	unload_sound = 'sound/weapons/guns/interact/flamer_remove.ogg'
+	reload_sound = 'sound/weapons/guns/interact/flamer_insert.ogg'
 
 	loaded_icon = "flamer"
 	unwielded_loaded_icon = "flamer"

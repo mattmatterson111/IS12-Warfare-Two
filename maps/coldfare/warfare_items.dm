@@ -24,7 +24,7 @@
 /obj/item/clothing/suit/armor/sentry/handle_movement(var/turf/walking, var/running)
 	if(footstep >= 1)
 		footstep = 0
-		playsound(get_turf(src), "sentry_step", 35, 0) // this will get annoying very fast.
+		playsound(get_turf(src), "sentry_step", 45, 0) // this will get annoying very fast.
 	else
 		footstep++
 

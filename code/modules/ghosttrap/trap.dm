@@ -37,8 +37,8 @@ var/list/ghost_traps
 
 // Check for bans, proper atom types, etc.
 /datum/ghosttrap/proc/assess_candidate(var/mob/observer/ghost/candidate, var/mob/target, var/feedback = TRUE)
-	if(!candidate.MayRespawn(1, minutes_since_death))
-		return 0
+	//if(!candidate.MayRespawn(1, minutes_since_death))
+	//	return 0
 	if(islist(ban_checks))
 		for(var/bantype in ban_checks)
 			if(jobban_isbanned(candidate, "[bantype]"))
@@ -92,7 +92,16 @@ var/list/ghost_traps
 /datum/ghosttrap/proc/transfer_personality(var/mob/candidate, var/mob/target)
 	if(!assess_candidate(candidate, target))
 		return 0
-	target.ckey = candidate.ckey
+
+	if(candidate.client)
+		candidate.client.color = "#FFFFFF" // debug
+
+	if(candidate.mind)
+		candidate.mind.active = 0					//we wish to transfer the key manually
+		candidate.mind.original = target
+		candidate.mind.transfer_to(target)
+
+	target.key = candidate.key		//Manually transfer the key to log them in
 	if(target.mind)
 		target.mind.assigned_role = "[ghost_trap_role]"
 	announce_ghost_joinleave(candidate, 0, "[ghost_trap_message]")

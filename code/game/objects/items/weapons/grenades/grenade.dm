@@ -9,6 +9,7 @@
 	throw_range = 20
 	obj_flags = OBJ_FLAG_CONDUCTIBLE
 	slot_flags = SLOT_BELT
+	equipsound = 'sound/items/equip/grenade_equip.ogg'
 	var/active = 0
 	var/det_time = 50
 	var/arm_sound = 'sound/weapons/armbomb.ogg'

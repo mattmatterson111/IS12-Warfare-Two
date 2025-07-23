@@ -541,7 +541,7 @@
 		if(prob(50))
 			glow_state = "[glow_state]_alt"
 	var/image/I = image(icon=src.icon, icon_state=glow_state)
-	I.plane = EFFECTS_ABOVE_LIGHTING_PLANE
+	I.plane = BLOOM_PLANE
 	overlays += I
 	if(!can_be_armed)
 		overlays.Cut()
@@ -617,7 +617,7 @@
 	var/countdown_time
 	var/doomsday_timer
 	var/last_use
-	var/in_use
+	var/do_after_use
 
 /obj/structure/destruction_computer/New()
 	..()
@@ -627,18 +627,18 @@
 /obj/structure/destruction_computer/attack_hand(mob/user)
 	. = ..()
 	if(REALTIMEOFDAY - last_use < 2 SECONDS)
-		to_chat(user, "The device is scorching hot! I must wait a few seconds!")
+		to_chat(user, "The device is scorching hot! I must wait a few seconds!") // Fuck the people that were spamming it
 		return
-	if(in_use)
+	if(do_after_use)
 		return
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
 		if(H.warfare_faction == faction)
 			if(!activated)
 				return
-			in_use = TRUE
+			do_after_use = TRUE
 			if(do_after(H,100))
-				in_use = FALSE
+				do_after_use = FALSE
 				user.unlock_achievement(new/datum/achievement/deactivate())
 				activated = FALSE
 				deltimer(doomsday_timer)
@@ -648,7 +648,7 @@
 				stop_alarm("[name]_[faction]_PONR_Alarm")
 				last_use = REALTIMEOFDAY
 			else
-				in_use = FALSE
+				do_after_use = FALSE
 
 		else
 			if(activated)

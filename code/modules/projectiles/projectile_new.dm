@@ -724,6 +724,8 @@
 			var/obj/item/clothing/head/helmet/helm = L.head
 			helm.take_damage(damage)
 			playsound(L, pick(helmet_hit_sound), 80, 1)
+			to_chat(target_mob, SPAN_DANGER("The bullet whizzes by- and it ricochets off of the helmet, damaging it!"))
+			return 0
 		if(ishuman(firer))//Stuff that isn't a mob doesn't play well with achievements.
 			if(parse_zone(def_zone) == BP_HEAD)//Boom headshot bitch.
 				firer.unlock_achievement(new/datum/achievement/headshot())

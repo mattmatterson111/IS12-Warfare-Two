@@ -18,6 +18,9 @@
 
 	// Things you might plausibly want to follow
 	if(istype(A,/atom/movable))
+		if ((A.atom_flags & ATOM_FLAG_GHOSTCLIP))
+			if(!client.holder)
+				return
 		ManualFollow(A)
 	// Otherwise jump
 	else

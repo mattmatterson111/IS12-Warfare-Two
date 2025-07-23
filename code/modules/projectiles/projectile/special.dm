@@ -119,6 +119,7 @@
 	mouse_opacity = 0
 	icon = 'icons/effects/fire.dmi'
 	icon_state = "red_2"
+	plane = BLOOM_PLANE
 	layer = BELOW_OBJ_LAYER
 	var/firelevel = 12 //Tracks how much "fire" there is. Basically the timer of how long the fire burns
 	var/burnlevel = 10 //Tracks how HOT the fire is. This is basically the heat level of the fire and determines the temperature.
@@ -127,9 +128,20 @@
 
 /obj/flamer_fire/New(loc, fire_lvl, burn_lvl, f_color, fire_spread_amount)
 	..()
+	var/turf/T = loc
+	if(!istype(T)) //Is it a valid turf? Has to be on a floor
+		qdel(src)
+		return
+
+	updateicon()
+
+	if(!firelevel)
+		qdel(src)
+		return
 	if(istype(loc, /turf/simulated/floor/exoplanet/water/shallow))//No catching the water on fire.
 		qdel(src)
 	playsound(src, "combust", 50, FALSE)
+	particles = new/particles/fire_sparks
 	//var/obj/fire = new/obj/particle_emitter/fire(get_turf(src))
 	//var/obj/smoke = new/obj/particle_emitter/firesmoke(get_turf(src))
 	//var/obj/embers = new/obj/emitter/sparks/fire(get_turf(src))
@@ -183,32 +195,30 @@
 
 /obj/flamer_fire/proc/updateicon()
 	if(burnlevel < 15)
-		color = "#c1c1c1" //make it darker to make show its weaker.
+		color = "#dfdfdf" //make it darker to make show its weaker.
+		alpha = 195
 	switch(firelevel)
 		if(1 to 9)
 			icon_state = "[flame_color]_1"
-			set_light(2)
+			set_light(2, 0.5,"#361106")
 		if(10 to 25)
 			icon_state = "[flame_color]_2"
-			set_light(4)
+			set_light(3, 0.75,"#b1905f")
 		if(25 to INFINITY) //Change the icons and luminosity based on the fire's intensity
 			icon_state = "[flame_color]_3"
-			set_light(6)
+			set_light(5, 0.95, "#ffd7b2")
 
 
 /obj/flamer_fire/Process()
-	var/turf/T = loc
+
 	firelevel = max(0, firelevel)
-	if(!istype(T)) //Is it a valid turf? Has to be on a floor
-		qdel(src)
-		return
 
 	updateicon()
 
 	if(!firelevel)
 		qdel(src)
 		return
-
+	update_icon()
 	var/j = 0
 	for(var/i in loc)
 		if(++j >= 11) break

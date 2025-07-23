@@ -172,7 +172,7 @@ steam.start() -- spawns the effect
 	var/time_to_live = 200
 	var/fade_out_time = 20
 	var/fade_in_time = 10
-	plane = -5
+	plane = BLURRED_EFFECTS_PLANE
 	layer = ABOVE_HUMAN_LAYER
 	alpha = 255
 	//Remove this bit to use the old smoke

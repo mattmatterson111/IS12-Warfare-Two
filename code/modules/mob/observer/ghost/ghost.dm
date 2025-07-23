@@ -308,6 +308,10 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	if(check_is_holy_turf(target_turf))
 		to_chat(src, "<span class='warning'>The target location is holy grounds!</span>")
 		return
+	for (var/obj/I in get_turf(target_turf))
+		if ((I.atom_flags & ATOM_FLAG_GHOSTCLIP))
+			if(!client.holder)
+				return
 	stop_following()
 	forceMove(target_turf)
 
@@ -338,6 +342,10 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	if(check_is_holy_turf(T))
 		to_chat(src, "<span class='warning'>You cannot follow something standing on holy grounds!</span>")
 		return
+	for (var/obj/I in get_turf(T))
+		if ((I.atom_flags & ATOM_FLAG_GHOSTCLIP))
+			if(!client.holder)
+				return
 	..()
 
 /mob/observer/ghost/memory()
@@ -583,3 +591,16 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	for(var/datum/sound_token/ST) // Removing from listeners list in sound_player.dm so music won't bother new_player in lobby after respawn
 		ST.PrivRemoveListener(src) // Better safe than sorry
 		ST.PrivRemoveListener(M)
+
+
+// Stop using pagedown/pageup to circumvent the ghost clickey..
+/mob/observer/zMove(direction)
+	var/turf/destination = (direction == UP) ? GetAbove(src) : GetBelow(src)
+	for (var/obj/I in destination)
+		if ((I.atom_flags & ATOM_FLAG_GHOSTCLIP))
+			if(!client.holder)
+				return
+	if(destination)
+		forceMove(destination)
+	else
+		to_chat(src, "<span class='notice'>There is nothing of interest in this direction.</span>")

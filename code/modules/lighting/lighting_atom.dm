@@ -46,6 +46,11 @@
 			else if(light_shape)
 				light_new.icon_state = light_shape
 
+			else if(light_range > 10) // fine
+				var/matrix/M = matrix()
+				M.Scale(light_range)
+				light_new.transform = M
+
 			else if(light_range > 2)
 				var/matrix/M = matrix()
 				M.Scale(10)

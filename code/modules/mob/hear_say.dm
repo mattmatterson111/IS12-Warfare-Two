@@ -67,6 +67,8 @@
 		if(H.warfare_faction != src.warfare_faction)
 			speaker_name = ageAndGender2Desc(H.age, H.gender)
 
+		speaker_name = "<span style=\"color: [floating_chat_colors[speaker.real_name]]\">[speaker_name]</span>"
+
 	if(italics)
 		message = "<i>[capitalize(message)]</i>"
 

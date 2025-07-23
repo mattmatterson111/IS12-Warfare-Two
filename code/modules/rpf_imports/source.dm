@@ -110,6 +110,15 @@
 	if(istype(mover, /mob/living))
 		return 1
 
+/obj/hammereditor/ghostclip
+	icon = 'icons/hammer/source.dmi' // noone gets through this
+	icon_state = "ghostclip"
+	atom_flags = ATOM_FLAG_GHOSTCLIP
+	anchored = 1
+	alpha = 0
+	density = 0
+	opacity = 0
+
 /obj/hammereditor/devtext
 	icon = 'icons/hammer/source.dmi' // noone gets through this
 	icon_state = "dev_text"
@@ -127,9 +136,11 @@
 		qdel(src)
 	var/text = "[text1]<br>[text2]<br>[text3]</div>"
 	maptext = text
-	maptext_width = 500
+	maptext_width = 600 // sure whatever
+	maptext_height = 600
 	maptext_x = 32
 
+// phase it out, it sucks, or redo it (note to self)
 /obj/hammereditor/sound_probe // This lets us set an area to have a specific ambience (echo) just by placing this object inside of it.
 	icon = 'icons/hammer/source.dmi'
 	name = "Sound Probe"

@@ -64,19 +64,22 @@ var/list/limb_icon_cache = list()
 
 /obj/item/organ/external/var/icon_cache_key
 /obj/item/organ/external/update_icon(var/regenerate = 0)
-	var/gender = ""
-	if(species.use_gendered_parts)
-		if(gendered_icon)
-			gender = "_m"
-		//else if (dna && dna.GetUIState(DNA_UI_GENDER))
-		//	gender = "_f"
-		if(owner && owner.gender == FEMALE)
-			gender = "_f"
+	var/gender = "_m"
+	if(species)
+		if(species.use_gendered_parts)
+			if(gendered_icon)
+				gender = "_m"
+			//else if (dna && dna.GetUIState(DNA_UI_GENDER))
+			//	gender = "_f"
+			if(owner && owner.gender == FEMALE)
+				gender = "_f"
 
 	icon_state = "[icon_name][gender]"
+	// was runtiming like crazy
+	/*
 	if(species.base_skin_colours && !isnull(species.base_skin_colours[s_base]))
 		icon_state += species.base_skin_colours[s_base]
-
+	*/
 	icon_cache_key = "[icon_state]_[species ? species.name : SPECIES_HUMAN]"
 
 	if(force_icon)
@@ -179,6 +182,8 @@ var/list/robot_hud_colours = list("#ffffff","#cccccc","#aaaaaa","#888888","#6666
 		else
 			applying.Blend(rgb(-s_tone,  -s_tone,  -s_tone), ICON_SUBTRACT)
 		icon_cache_key += "_tone_[s_tone]"
+	if(!species)
+		return applying
 	if(species.appearance_flags & HAS_SKIN_COLOR)
 		if(s_col && s_col.len >= 3)
 			applying.Blend(rgb(s_col[1], s_col[2], s_col[3]), s_col_blend)

@@ -26,6 +26,8 @@
 		H.fully_replace_character_name("Pvt. [H.real_name]")
 		H.warfare_language_shit(LANGUAGE_BLUE)
 		H.assign_random_quirk()
+		var/hex = "[num2hex(rand(5,75))][num2hex(rand(50,200))][num2hex(rand(150,255))]"
+		floating_chat_colors[H.name] = "#[hex]"
 		if(announced)
 			H.say(";Soldier reporting for duty!")
 
@@ -205,10 +207,12 @@
 			if(phone.phonename == RED_TEAM)
 				to_chat(H, "<b>Enemy captain's phone number</b>: [phone.fullphonenumber]")
 				H.mind.store_memory("<b>Enemy captain's phone number</b>: [phone.fullphonenumber]")
+		/*
 		for(var/obj/structure/phone/phone in GLOB.phone_list)
 			if(phone.phonename == "BLUE COMMAND")
 				to_chat(H, "<b>Blusnian High Command's Number</b>: [phone.fullphonenumber]")
 				H.mind.store_memory("<b>Blusnian High Command's Number</b>: [phone.fullphonenumber]")
+		*/ // Dont call twice, and we no longer give them high command
 		H.say(";[H.real_name] [pick("taking","in")] command!")
 		H.add_language(LANGUAGE_DIPLOMATIC)
 		to_chat(H,SPAN_NOTICE("You are fluent in <u>Diplomatic Standard</u>, allowing you to communicate with the opposing captain. <b>Check the language tab for more details.</b>"))

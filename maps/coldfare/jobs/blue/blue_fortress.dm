@@ -10,6 +10,8 @@
 		SSwarfare.blue.team += H
 		H.warfare_language_shit(LANGUAGE_BLUE)
 		H.assign_random_quirk()
+		var/hex = "[num2hex(rand(5,75))][num2hex(rand(50,200))][num2hex(rand(150,255))]"
+		floating_chat_colors[H.name] = "#[hex]"
 
 /datum/job/fortress/blue/chef
 	title = "Blue Chef"

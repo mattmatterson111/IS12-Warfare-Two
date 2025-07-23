@@ -84,7 +84,7 @@ GLOBAL_LIST_EMPTY(speaker_ids)
 /client/proc/set_warf_broadcast_id()
 	set name = "set warfare broadcast ID"
 	set desc = "redacted"
-	set category = "map control"
+	set category = "roleplay"
 
 	var/list/ids = list("CANCEL", "ALL") // Start with "ALL"
 	for(var/id in GLOB.speaker_ids)
@@ -97,7 +97,7 @@ GLOBAL_LIST_EMPTY(speaker_ids)
 /client/proc/set_warf_broadcast_template()
 	set name = "set warfare broadcast template"
 	set desc = "redacted"
-	set category = "map control"
+	set category = "roleplay"
 
 	var/choice = input("Select a template to use.") as anything in subtypesof(/datum/speakercast_template)
 	if(!choice) return
@@ -106,7 +106,7 @@ GLOBAL_LIST_EMPTY(speaker_ids)
 /client/proc/toggle_on_warf_speakers()
 	set name = "toggle on broadcast"
 	set desc = "redacted"
-	set category = "map control"
+	set category = "roleplay"
 
 	if(!holder) return
 	if(!length(GLOB.speakers)) return
@@ -123,7 +123,7 @@ GLOBAL_LIST_EMPTY(speaker_ids)
 /client/proc/toggle_off_warf_speakers()
 	set name = "toggle off broadcast"
 	set desc = "redacted"
-	set category = "map control"
+	set category = "roleplay"
 
 	if(!holder) return
 	if(!length(GLOB.speakers)) return
@@ -140,7 +140,7 @@ GLOBAL_LIST_EMPTY(speaker_ids)
 /client/proc/warfare_announcement()
 	set name = "make broadcast"
 	set desc = "redacted"
-	set category = "map control"
+	set category = "roleplay"
 
 	if(!holder) return
 	if(!length(GLOB.speakers)) return
@@ -175,8 +175,9 @@ GLOBAL_LIST_EMPTY(speaker_ids)
 		this_sound = pick(shuffle(broadcast_template.additional_talk_sound))
 	for(var/obj/structure/announcementspeaker/s in filtered)
 		for(var/mob/m in view(world.view + 8, get_turf(s)))
-			if(m.stat == UNCONSCIOUS || m.is_deaf() || m.stat == DEAD)
-				continue
+			if(!isobserver(m))
+				if(m.stat == UNCONSCIOUS || m.is_deaf() || m.stat == DEAD)
+					continue
 			mobstosendto |= m
 			soundoverlay(s, newplane = FOOTSTEP_ALERT_PLANE)
 			if(m.client)
@@ -286,8 +287,9 @@ GLOBAL_LIST_EMPTY(speaker_ids)
 		if(id != s.id)
 			continue
 		for(var/mob/m in view(world.view + broadcast_range, get_turf(s)))
-			if(m.stat == UNCONSCIOUS || m.is_deaf() || m.stat == DEAD)
-				continue
+			if(!isobserver(m))
+				if(m.stat == UNCONSCIOUS || m.is_deaf() || m.stat == DEAD)
+					continue
 			mobstosendto |= m
 			soundoverlay(s, newplane = FOOTSTEP_ALERT_PLANE)
 			if(m.client)
@@ -433,7 +435,7 @@ GLOBAL_LIST_EMPTY(running_alarms)
 /client/proc/speaker_alarm_start()
 	set name = "start speaker alarm"
 	set desc = "redacted"
-	set category = "map control"
+	set category = "roleplay"
 
 	if(!holder) return
 
@@ -461,7 +463,7 @@ GLOBAL_LIST_EMPTY(running_alarms)
 /client/proc/speaker_alarm_stop()
 	set name = "stop speaker alarm"
 	set desc = "redacted"
-	set category = "map control"
+	set category = "roleplay"
 
 	if(!holder) return
 
@@ -485,7 +487,7 @@ GLOBAL_LIST_EMPTY(running_alarms)
 /client/proc/nuke_server()
 	set name = "nuke_server"
 	set desc = "redacted"
-	set category = "map control"
+	set category = "roleplay"
 
 	if(!holder) return
 
