@@ -103,7 +103,7 @@ SUBSYSTEM_DEF(mapgen)
 
 /area/procedural_generation/Initialize()
 	. = ..()
-	ADD_SORTED(GLOB.mapgen_areas, src, /proc/cmp_z) // We start generating areas from the top down to avoid placing features on top of each other
+	ADD_SORTED(GLOB.mapgen_areas, src, GLOBAL_PROC_REF(cmp_z)) // We start generating areas from the top down to avoid placing features on top of each other
 
 /area/procedural_generation/proc/setup_procgen()
 	// Build our boundary first, this lets us do three 1D operations instead of 1 3D operation, which will break early independently upon hitting the area's bounds

@@ -92,11 +92,11 @@
 /proc/is_coherent_area(var/area/A)
 	return !is_type_in_list(A, GLOB.using_map.area_coherency_test_exempt_areas)
 
-GLOBAL_LIST_INIT(is_station_but_not_space_or_shuttle_area, list(/proc/is_station_area, /proc/is_not_space_area, /proc/is_not_shuttle_area))
+GLOBAL_LIST_INIT(is_station_but_not_space_or_shuttle_area, list(/proc/is_station_area, GLOBAL_PROC_REF(is_not_space_area), /proc/is_not_shuttle_area))
 
-GLOBAL_LIST_INIT(is_contact_but_not_space_or_shuttle_area, list(/proc/is_contact_area, /proc/is_not_space_area, /proc/is_not_shuttle_area))
+GLOBAL_LIST_INIT(is_contact_but_not_space_or_shuttle_area, list(/proc/is_contact_area, GLOBAL_PROC_REF(is_not_space_area), /proc/is_not_shuttle_area))
 
-GLOBAL_LIST_INIT(is_player_but_not_space_or_shuttle_area, list(/proc/is_player_area, /proc/is_not_space_area, /proc/is_not_shuttle_area))
+GLOBAL_LIST_INIT(is_player_but_not_space_or_shuttle_area, list(/proc/is_player_area, GLOBAL_PROC_REF(is_not_space_area), /proc/is_not_shuttle_area))
 
 
 /*
