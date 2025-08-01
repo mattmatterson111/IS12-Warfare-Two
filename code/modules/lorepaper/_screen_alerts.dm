@@ -133,7 +133,7 @@
 		sleep(play_delay)
 
 	if(auto_end)
-		addtimer(CALLBACK(src, .proc/fade_out), fade_out_delay)
+		addtimer(CALLBACK(src, PROC_REF(fade_out)), fade_out_delay)
 ///handles post-play effects like fade out after the fade out delay
 /atom/movable/screen/text/screen_text/proc/fade_out()
 	if(!fade_out_time)
@@ -141,7 +141,7 @@
 		return
 
 	animate(src, alpha = 0, time = fade_out_time)
-	addtimer(CALLBACK(src, .proc/end_play), fade_out_time)
+	addtimer(CALLBACK(src, PROC_REF(end_play)), fade_out_time)
 
 ///ends the play then deletes this screen object and plalys the next one in queue if it exists
 /atom/movable/screen/text/screen_text/proc/end_play()

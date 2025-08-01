@@ -14,7 +14,7 @@
 /obj/structure/defensive_barrier/Initialize()
 	. = ..()
 	update_icon()
-	GLOB.dir_set_event.register(src, src, .proc/update_layers)
+	GLOB.dir_set_event.register(src, src, PROC_REF(update_layers))
 
 /obj/structure/defensive_barrier/examine(mob/user)
 	. = ..()
@@ -35,7 +35,7 @@
 	qdel(src)
 
 /obj/structure/defensive_barrier/Destroy()
-	GLOB.dir_set_event.unregister(src, src, .proc/update_layers)
+	GLOB.dir_set_event.unregister(src, src, PROC_REF(update_layers))
 	. = ..()
 
 /obj/structure/defensive_barrier/proc/update_layers()
@@ -116,7 +116,7 @@
 /obj/structure/defensive_barrier/attack_hand(mob/living/carbon/human/user)
 
 	if(ishuman(user) && user.species.can_shred(user) && user.a_intent == I_HURT)
-		take_damage(20)
+		take_weapon_damage(20)
 		user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
 		return TRUE
 
@@ -151,12 +151,12 @@
 
 	. = ..()
 
-/obj/structure/defensive_barrier/proc/take_damage(damage)
+/obj/structure/defensive_barrier/proc/take_weapon_damage(damage)
 	if(damage)
 		playsound(src.loc, 'sound/effects/bang.ogg', 75, 1)
 		damage = round(damage * 0.5)
 		if(damage)
-			..()
+			take_damage(damage)
 
 /obj/structure/defensive_barrier/proc/check_cover(obj/item/projectile/P, turf/from)
 	var/turf/cover = get_turf(src)
@@ -170,11 +170,14 @@
 
 /obj/structure/defensive_barrier/bullet_act(obj/item/projectile/P)
 	..()
-	health -= rand(20,40)
-	if(health <= 0)
-		health = 0
-		get_destroyed()
+	take_damage(rand(20,40))
 
+/obj/structure/defensive_barrier/proc/take_damage(damage)
+	if(damage)
+		health -= damage
+		if(health <= 0)
+			health = 0
+			get_destroyed()
 
 /obj/item/defensive_barrier
 	name = "deployable barrier"

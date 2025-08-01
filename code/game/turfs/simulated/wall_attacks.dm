@@ -70,12 +70,15 @@
 		else
 			to_chat(user, "<span class='danger'>\The [src.name] crumbles under your touch!</span>")
 			dismantle_wall()
-			return 1
+			return TRUE
+	return TRUE
 
-	if(..()) return 1
+	//There was ..() without parent
 
 	if(can_open)
 		toggle_open(user)
+	else
+		to_chat(user, SPAN_NOTICE("You touch \The [src.name] but nothing happens"))
 	return 0
 
 
