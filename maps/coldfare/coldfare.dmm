@@ -521,6 +521,14 @@
 /obj/random/canned_food/red,
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/red)
+"bw" = (
+/obj/machinery/camera{
+	dir = 4;
+	pixel_x = 2;
+	pixel_y = 0
+	},
+/turf/simulated/floor/stones,
+/area/warfare/homebase/blue/div)
 "bx" = (
 /obj/structure/closet/crate,
 /obj/item/grenade/frag/warfare,
@@ -1162,8 +1170,9 @@
 /turf/simulated/floor/wood,
 /area/warfare/battlefield/capture_point/blue/one)
 "cZ" = (
-/turf/unsimulated/floor/hammereditor/dev12,
-/area/space)
+/obj/machinery/optable,
+/turf/simulated/floor/concrete/random,
+/area/warfare/homebase/blue/div)
 "db" = (
 /obj/structure/stairs/trenchstairs{
 	dir = 1
@@ -1732,8 +1741,8 @@
 /obj/hammereditor/nodraw/deco/bars{
 	dir = 8
 	},
-/turf/unsimulated/floor/hammereditor/dev12,
-/area/space)
+/turf/simulated/floor/concrete/random,
+/area/warfare/homebase/blue/div)
 "ew" = (
 /obj/structure/sign/neon/cargo,
 /turf/simulated/wall/perspecticrete,
@@ -1746,7 +1755,7 @@
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/blue)
 "ey" = (
-/obj/structure/iv_drip,
+/obj/structure/table/rack/nosmooth/metal,
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/blue/div)
 "ez" = (
@@ -1783,17 +1792,18 @@
 /obj/hammereditor/nodraw/deco/bars{
 	dir = 4
 	},
-/turf/unsimulated/floor/hammereditor/dev12,
-/area/space)
+/turf/simulated/floor/concrete/random,
+/area/warfare/homebase/blue/div)
 "eG" = (
-/turf/unsimulated/wall/hammereditor/dev2,
-/area/space)
+/obj/effect/decal/cleanable/blood,
+/turf/simulated/floor/concrete/random,
+/area/warfare/homebase/blue/div)
 "eI" = (
 /obj/structure/stairs/west{
 	dir = 4
 	},
 /turf/simulated/floor/urban/concrete,
-/area/space)
+/area/warfare/homebase/blue/div)
 "eJ" = (
 /turf/simulated/floor/tiled/ramp{
 	dir = 4;
@@ -1804,21 +1814,11 @@
 /turf/simulated/open,
 /area/warfare/homebase/blue)
 "eL" = (
-/obj/structure/closet/crate,
-/obj/item/reagent_containers/ivbag/blood/AMinus,
-/obj/item/reagent_containers/ivbag/blood/AMinus,
-/obj/item/reagent_containers/ivbag/blood/APlus,
-/obj/item/reagent_containers/ivbag/blood/APlus,
-/obj/item/reagent_containers/ivbag/blood/BMinus,
-/obj/item/reagent_containers/ivbag/blood/BMinus,
-/obj/item/reagent_containers/ivbag/blood/BPlus,
-/obj/item/reagent_containers/ivbag/blood/BPlus,
-/obj/item/reagent_containers/ivbag/blood/OMinus,
-/obj/item/reagent_containers/ivbag/blood/OMinus,
-/obj/item/reagent_containers/ivbag/blood/OPlus,
-/obj/item/reagent_containers/ivbag/blood/OPlus,
-/turf/simulated/floor/concrete/random,
-/area/warfare/homebase/blue/div)
+/obj/structure/poster/nixon,
+/turf/simulated/wall/perspecticrete{
+	integrity = 99999
+	},
+/area/warfare/battlefield/trench_section/underground)
 "eN" = (
 /obj/machinery/door/airlock/multi_tile/metal/maintenance/blue,
 /turf/simulated/floor/concrete/random,
@@ -2352,9 +2352,10 @@
 /turf/simulated/floor/urban/destroyed,
 /area/warfare/homebase/blue)
 "hd" = (
-/obj/structure/table/rack,
-/turf/unsimulated/floor/hammereditor/dev12,
-/area/space)
+/obj/structure/table/rack/nosmooth/metal,
+/obj/item/storage/firstaid/surgery,
+/turf/simulated/floor/concrete/random,
+/area/warfare/homebase/blue/div)
 "he" = (
 /turf/simulated/floor/trenches/underground{
 	icon_state = "trench";
@@ -2452,6 +2453,9 @@
 	},
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/red)
+"hv" = (
+/turf/simulated/floor/stones,
+/area/warfare/homebase/blue/div)
 "hw" = (
 /obj/effect/floor_decal/trench{
 	dir = 10
@@ -2860,6 +2864,10 @@
 	color = "#ffffff"
 	},
 /area/warfare/battlefield/trench_section/underground)
+"iX" = (
+/obj/structure/closet/crate/wooden/large,
+/turf/simulated/floor/concrete/random,
+/area/warfare/homebase/blue/div)
 "iZ" = (
 /obj/structure/closet/body_bag,
 /turf/simulated/floor/wood,
@@ -3274,7 +3282,7 @@
 	},
 /obj/machinery/kaos{
 	pixel_y = 22;
-	pages = list( list(/datum/terminal_page/multiselect,list(list("code" = "1", "page_name" = "my_messages", "name" = "MESSAGE HUB")),"PAGE 1"),list(/datum/terminal_page/my_messages,"blue_prac1",null))
+	pages = list(list(/datum/terminal_page/multiselect,list(list("code"="1","page_name"="my_messages","name"="MESSAGE HUB")),"PAGE 1"),list(/datum/terminal_page/my_messages,"blue_prac1",null))
 	},
 /turf/simulated/floor/wood,
 /area/warfare/battlefield/trench_section/underground)
@@ -3326,9 +3334,15 @@
 	},
 /area/warfare/battlefield/capture_point/blue/two)
 "mU" = (
-/obj/structure/table/rack,
-/turf/unsimulated/floor/hammereditor/dev1,
-/area/space)
+/obj/structure/closet/secure_closet/medical1/warfare,
+/obj/item/clothing/suit/surgeon_apron,
+/obj/item/clothing/suit/surgeon_apron,
+/obj/item/clothing/suit/surgeon_apron,
+/obj/item/clothing/suit/surgeon_apron,
+/obj/item/storage/backpack/satchel/warfare/prac,
+/obj/item/storage/backpack/satchel/warfare/prac,
+/turf/simulated/floor/concrete/random,
+/area/warfare/homebase/blue/div)
 "mW" = (
 /obj/structure/closet/crate,
 /obj/item/ammo_magazine/mc9mmt/machinepistol,
@@ -3390,6 +3404,14 @@
 /obj/structure/bed/chair/gray,
 /turf/simulated/floor/ert/metal01,
 /area/train/red)
+"ni" = (
+/obj/item/storage/firstaid/adv,
+/obj/item/storage/firstaid/adv,
+/obj/item/storage/firstaid/adv,
+/obj/item/storage/firstaid/adv,
+/obj/structure/table/rack/shelf/red,
+/turf/simulated/floor/concrete/random,
+/area/warfare/homebase/blue/div)
 "nm" = (
 /turf/simulated/mineral{
 	health = 999999
@@ -3602,6 +3624,13 @@
 	},
 /turf/simulated/floor/wood,
 /area/warfare/battlefield/trench_section/underground)
+"oo" = (
+/obj/structure/closet/crate/wooden{
+	pixel_x = -10;
+	pixel_y = 1
+	},
+/turf/simulated/floor/concrete/random,
+/area/warfare/homebase/blue/div)
 "os" = (
 /obj/structure/trench_wall/innercorners{
 	dir = 1
@@ -3614,6 +3643,7 @@
 /obj/machinery/light/small/bunker{
 	dir = 1
 	},
+/obj/item/device/boombox,
 /turf/simulated/floor/wood,
 /area/warfare/battlefield/trench_section/underground)
 "oz" = (
@@ -3642,7 +3672,7 @@
 "oD" = (
 /obj/machinery/kaos{
 	pixel_y = 22;
-	pages = list( list(/datum/terminal_page/multiselect,list(list("code" = "1", "page_name" = "PAGE 2", "name" = "SECOND PAGE"),list("code" = "2", "page_name" = "msg_staff_login", "name" = "MESSAGE COMMAND")),"PAGE 1"),list(/datum/terminal_page/multiselect,list(list("code" = "1", "page_name" = "PAGE 1", "name" = "FIRST PAGE"),list("code" = "2", "page_name" = "my_messages", "name" = "MESSAGE HUB"),list("code" = "3", "page_name" = "money_manager_main", "name" = "FUND MANAGEMENT - MAIN"),list("code" = "4", "page_name" = "money_manager_captain_login", "name" = "FUND MANAGEMENT - PRIVATE")),"PAGE 2"),list(/datum/terminal_page/message_staff,null,null),list(/datum/terminal_page/login,list("%CARGO","msg_staff_login","message_staff"),null),list(/datum/terminal_page/my_messages,"blue_captain",null),list(/datum/terminal_page/money_manager,list("Bluecoats",500,1,"B.L.U.E. CATALOGUE","money_manager_main","Bluecoats",list(/datum/snowflake_supply/shotgun_ammo_pack,/datum/snowflake_supply/rifle_ammo_pack,/datum/snowflake_supply/pistol_pack,/datum/snowflake_supply/canned_food_pack)),null),list(/datum/terminal_page/money_manager,list("Bluecoats",500,1,"EXCLUSIVE CATALOGUE","money_manager_captain","Bluecoats_C",list(/datum/snowflake_supply/booze_pack)),null),list(/datum/terminal_page/login,list("%CARGO","money_manager_captain_login","money_manager_captain"),null))
+	pages = list(list(/datum/terminal_page/multiselect,list(list("code"="1","page_name"="PAGE 2","name"="SECOND PAGE"),list("code"="2","page_name"="msg_staff_login","name"="MESSAGE COMMAND")),"PAGE 1"),list(/datum/terminal_page/multiselect,list(list("code"="1","page_name"="PAGE 1","name"="FIRST PAGE"),list("code"="2","page_name"="my_messages","name"="MESSAGE HUB"),list("code"="3","page_name"="money_manager_main","name"="FUND MANAGEMENT - MAIN"),list("code"="4","page_name"="money_manager_captain_login","name"="FUND MANAGEMENT - PRIVATE")),"PAGE 2"),list(/datum/terminal_page/message_staff,null,null),list(/datum/terminal_page/login,list("%CARGO","msg_staff_login","message_staff"),null),list(/datum/terminal_page/my_messages,"blue_captain",null),list(/datum/terminal_page/money_manager,list("Bluecoats",500,1,"B.L.U.E. CATALOGUE","money_manager_main","Bluecoats",list(/datum/snowflake_supply/shotgun_ammo_pack,/datum/snowflake_supply/rifle_ammo_pack,/datum/snowflake_supply/pistol_pack,/datum/snowflake_supply/canned_food_pack)),null),list(/datum/terminal_page/money_manager,list("Bluecoats",500,1,"EXCLUSIVE CATALOGUE","money_manager_captain","Bluecoats_C",list(/datum/snowflake_supply/booze_pack)),null),list(/datum/terminal_page/login,list("%CARGO","money_manager_captain_login","money_manager_captain"),null))
 	},
 /turf/simulated/floor/wood,
 /area/warfare/homebase/blue/div)
@@ -3848,6 +3878,13 @@
 	color = "#ffffff"
 	},
 /area/warfare/battlefield/capture_point/blue/one)
+"pI" = (
+/obj/effect/decal/cleanable/blood,
+/obj/machinery/light/small/bunker{
+	dir = 8
+	},
+/turf/simulated/floor/stones,
+/area/warfare/homebase/blue/div)
 "pL" = (
 /turf/simulated/floor/trenches/underground{
 	icon_state = "trench";
@@ -4079,6 +4116,12 @@
 	},
 /turf/simulated/floor/wood,
 /area/warfare/homebase/red/div)
+"rb" = (
+/obj/structure/warfare/thehatch{
+	dir = 4
+	},
+/turf/simulated/wall/perspecticrete,
+/area/warfare/homebase/blue/div)
 "rd" = (
 /obj/effect/landmark/start{
 	name = "Red Soldier"
@@ -4232,6 +4275,12 @@
 	},
 /turf/simulated/floor/concrete/random,
 /area/space)
+"sg" = (
+/obj/machinery/light/small/bunker{
+	dir = 8
+	},
+/turf/simulated/floor/stones,
+/area/warfare/homebase/blue/div)
 "sk" = (
 /obj/machinery/bodyscanner{
 	dir = 4;
@@ -4315,6 +4364,10 @@
 	},
 /turf/simulated/floor/concrete/random,
 /area/warfare/battlefield/capture_point/blue/one)
+"sU" = (
+/obj/item/paper/crumpled,
+/turf/simulated/floor/concrete/random,
+/area/warfare/homebase/blue/div)
 "sW" = (
 /obj/structure/trench_wall{
 	dir = 8
@@ -4710,7 +4763,6 @@
 /obj/structure/table/rack/nosmooth/wood/alt{
 	dir = 9
 	},
-/obj/item/device/boombox,
 /turf/simulated/floor/wood,
 /area/warfare/battlefield/trench_section/underground)
 "vo" = (
@@ -4888,6 +4940,17 @@
 	color = "#ffffff"
 	},
 /area/warfare/battlefield/capture_point/blue/one)
+"we" = (
+/obj/hammereditor/nodraw/deco/shadowpaint{
+	opacity = 1;
+	dir = 4
+	},
+/obj/hammereditor/nodraw/deco/shadowpaint{
+	opacity = 1;
+	dir = 1
+	},
+/turf/simulated/floor/concrete/random,
+/area/warfare/homebase/blue/div)
 "wq" = (
 /obj/effect/floor_decal/trench{
 	dir = 5
@@ -4956,6 +5019,10 @@
 	color = "#ffffff"
 	},
 /area/warfare/battlefield/capture_point/red/two)
+"wK" = (
+/obj/machinery/light/small/red,
+/turf/simulated/floor/concrete/random,
+/area/space)
 "wP" = (
 /obj/structure/closet/secure_closet/medical2{
 	req_access = newlist()
@@ -5006,8 +5073,13 @@
 /turf/simulated/floor/ert/metal01,
 /area/train/blue)
 "xq" = (
-/turf/unsimulated/floor/hammereditor/dev1,
-/area/space)
+/obj/item/storage/firstaid/regular,
+/obj/item/storage/firstaid/regular,
+/obj/item/storage/firstaid/regular,
+/obj/item/storage/firstaid/regular,
+/obj/structure/table/rack/shelf/red,
+/turf/simulated/floor/concrete/random,
+/area/warfare/homebase/blue/div)
 "xx" = (
 /obj/machinery/light/caged{
 	dir = 8;
@@ -5106,6 +5178,14 @@
 /obj/structure/poster/red,
 /turf/simulated/wall/perspecticrete,
 /area/warfare/homebase/red/div)
+"yj" = (
+/obj/hammereditor/nodraw/deco/shadowpaint{
+	opacity = 1;
+	dir = 4
+	},
+/obj/hammereditor/nodraw/deco/shadowpaint,
+/turf/simulated/floor/concrete/random,
+/area/warfare/homebase/blue/div)
 "yn" = (
 /obj/structure/railing/urban{
 	dir = 4
@@ -5435,9 +5515,8 @@
 /turf/simulated/floor/stones,
 /area/warfare/homebase/blue)
 "AB" = (
-/obj/structure/table/rack/nosmooth/metal,
-/turf/unsimulated/floor/hammereditor/dev12,
-/area/space)
+/turf/simulated/floor/exoplanet/water/shallow/lightless/urban,
+/area/warfare/homebase/blue/div)
 "AC" = (
 /obj/structure/trench_wall{
 	dir = 5;
@@ -5451,7 +5530,7 @@
 	},
 /obj/machinery/kaos{
 	pixel_y = 22;
-	pages = list( list(/datum/terminal_page/multiselect,list(list("code" = "1", "page_name" = "my_messages", "name" = "MESSAGE HUB")),"PAGE 1"),list(/datum/terminal_page/my_messages,"red_prac2",null))
+	pages = list(list(/datum/terminal_page/multiselect,list(list("code"="1","page_name"="my_messages","name"="MESSAGE HUB")),"PAGE 1"),list(/datum/terminal_page/my_messages,"red_prac2",null))
 	},
 /turf/simulated/floor/wood,
 /area/warfare/battlefield/trench_section/underground)
@@ -5511,6 +5590,10 @@
 	},
 /turf/simulated/floor/wood,
 /area/warfare/battlefield/trench_section/underground)
+"AO" = (
+/obj/structure/closet/crate/wooden/hardhats,
+/turf/simulated/floor/concrete/random,
+/area/warfare/homebase/blue/div)
 "AP" = (
 /obj/structure/dirt_wall,
 /obj/structure/announcementspeaker/red{
@@ -5522,6 +5605,13 @@
 "AR" = (
 /obj/machinery/light/small/bunker{
 	dir = 8
+	},
+/turf/simulated/floor/concrete/random,
+/area/warfare/homebase/blue/div)
+"AT" = (
+/obj/machinery/light/small/red{
+	dir = 1;
+	pixel_y = 15
 	},
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/blue/div)
@@ -5661,6 +5751,10 @@
 	health = 999999
 	},
 /area/warfare/battlefield/capture_point/red/two)
+"BE" = (
+/obj/item/gun/projectile/warfare/shig,
+/turf/simulated/floor/concrete/random,
+/area/warfare/homebase/blue/div)
 "BH" = (
 /obj/effect/floor_decal/trench{
 	dir = 6
@@ -6037,6 +6131,12 @@
 /obj/structure/dirt_wall,
 /turf/simulated/floor/dirty/fake,
 /area/warfare/battlefield/capture_point/red/one)
+"DX" = (
+/obj/effect/landmark/start{
+	name = "Blue Practitioner"
+	},
+/turf/simulated/floor/concrete/random,
+/area/warfare/homebase/blue/div)
 "Ec" = (
 /obj/effect/floor_decal/trench,
 /obj/machinery/light/caged{
@@ -6162,8 +6262,11 @@
 /turf/simulated/floor/dirty/indestructable,
 /area/train/red)
 "Fb" = (
-/obj/structure/curtain/medical,
-/obj/structure/curtain/medical,
+/obj/machinery/camera{
+	dir = 4;
+	pixel_x = 2;
+	pixel_y = 0
+	},
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/blue/div)
 "Fc" = (
@@ -6223,6 +6326,13 @@
 /obj/structure/bed/chair/red,
 /turf/simulated/floor/ert/metal01,
 /area/train/blue)
+"Fx" = (
+/obj/item/paper{
+	contents = "You are seeing something you should not see. Something you should never see. Turn away now. You are not worthy.";
+	info = "You are seeing something you should not see. Something you should never see. Turn away now. You are not worthy."
+	},
+/turf/simulated/floor/concrete/random,
+/area/space)
 "Fy" = (
 /obj/structure/trench_wall/innercorners,
 /turf/simulated/mineral{
@@ -6259,6 +6369,13 @@
 /obj/effect/floor_decal/stones,
 /turf/simulated/floor/dirty/indestructable,
 /area/warfare/battlefield/trench_section)
+"FS" = (
+/obj/machinery/door/unpowered/simple/wood/captain{
+	desc = "There are constant rumours throughout the front that something is happening beneath it. They believe that the battle above is merely just a cover for something much more severe.";
+	name = "Mysterious Door"
+	},
+/turf/simulated/floor/concrete/random,
+/area/warfare/homebase/blue/div)
 "FT" = (
 /obj/machinery/light/caged{
 	dir = 4;
@@ -6271,6 +6388,21 @@
 /obj/machinery/door/airlock/multi_tile/metal/maintenance/blue,
 /turf/simulated/floor/concrete/random,
 /area/warfare/battlefield/capture_point/blue/one)
+"FY" = (
+/obj/structure/table/rack/nosmooth/metal,
+/obj/item/pen/blue{
+	pixel_x = -12;
+	pixel_y = 7
+	},
+/obj/item/paper/crumpled{
+	info = "///// ///// ///// //";
+	pixel_x = -1;
+	pixel_y = 3;
+	contents = "///// ///// ///// //";
+	name = "Tally"
+	},
+/turf/simulated/floor/stones,
+/area/warfare/homebase/blue/div)
 "FZ" = (
 /obj/structure/trench_wall/innercorners{
 	dir = 4;
@@ -6630,6 +6762,17 @@
 	color = "#ffffff"
 	},
 /area/warfare/battlefield/capture_point/blue/one)
+"Jb" = (
+/obj/structure/announcementspeaker/red{
+	pixel_x = 0;
+	dir = 8
+	},
+/turf/simulated/floor/concrete/random,
+/area/warfare/homebase/blue/div)
+"Jc" = (
+/obj/structure/announcementspeaker/red,
+/turf/simulated/wall/perspecticrete,
+/area/warfare/homebase/blue/div)
 "Jj" = (
 /turf/space,
 /area/space)
@@ -6866,7 +7009,7 @@
 	},
 /obj/machinery/kaos{
 	pixel_y = 22;
-	pages = list( list(/datum/terminal_page/multiselect,list(list("code" = "2", "page_name" = "my_messages", "name" = "MESSAGE HUB")),"PAGE 1"),list(/datum/terminal_page/my_messages,"blue_prac2",null))
+	pages = list(list(/datum/terminal_page/multiselect,list(list("code"="2","page_name"="my_messages","name"="MESSAGE HUB")),"PAGE 1"),list(/datum/terminal_page/my_messages,"blue_prac2",null))
 	},
 /turf/simulated/floor/wood,
 /area/warfare/battlefield/trench_section/underground)
@@ -7087,6 +7230,17 @@
 	color = "#ffffff"
 	},
 /area/warfare/battlefield/capture_point/red/two)
+"Nd" = (
+/obj/structure/closet/crate/wooden{
+	pixel_x = -3;
+	pixel_y = 1
+	},
+/obj/structure/closet/crate/wooden{
+	pixel_x = -3;
+	pixel_y = 12
+	},
+/turf/simulated/floor/concrete/random,
+/area/warfare/homebase/blue/div)
 "Nf" = (
 /obj/structure/train_deco/tracks01,
 /obj/hammereditor/nodraw/deco/shadowpaint{
@@ -7350,6 +7504,10 @@
 /obj/hammereditor/nodraw,
 /turf/simulated/floor/ert/metal01,
 /area/train/blue)
+"Pq" = (
+/obj/machinery/computer/operating,
+/turf/simulated/floor/concrete/random,
+/area/warfare/homebase/blue/div)
 "Pw" = (
 /obj/machinery/light/caged{
 	pixel_y = 30;
@@ -7380,6 +7538,23 @@
 	color = "#ffffff"
 	},
 /area/space)
+"PS" = (
+/obj/structure/closet/secure_closet/medical1/warfare,
+/obj/machinery/light/small/bunker{
+	dir = 1
+	},
+/obj/item/clothing/suit/surgeon_apron,
+/obj/item/clothing/suit/surgeon_apron,
+/obj/item/clothing/suit/surgeon_apron,
+/obj/item/clothing/suit/surgeon_apron,
+/obj/item/storage/backpack/satchel/warfare/prac,
+/obj/item/storage/backpack/satchel/warfare/prac,
+/turf/simulated/floor/concrete/random,
+/area/warfare/homebase/blue/div)
+"PV" = (
+/obj/effect/decal/cleanable/blood/gibs,
+/turf/simulated/floor/stones,
+/area/warfare/homebase/blue/div)
 "PX" = (
 /obj/hammereditor/nodraw/deco/bars,
 /turf/simulated/floor/concrete/random,
@@ -7515,6 +7690,10 @@
 	color = "#ffffff"
 	},
 /area/warfare/battlefield/capture_point/red/two)
+"QA" = (
+/obj/machinery/light/small/red,
+/turf/simulated/floor/concrete/random,
+/area/warfare/homebase/blue/div)
 "QD" = (
 /obj/structure/dirt_wall,
 /obj/structure/announcementspeaker/blue{
@@ -7585,6 +7764,10 @@
 	color = "#ffffff"
 	},
 /area/warfare/battlefield/capture_point/blue/one)
+"Rb" = (
+/obj/item/flame/candle,
+/turf/simulated/floor/concrete/random,
+/area/space)
 "Rc" = (
 /obj/structure/stairs/trenchstairs{
 	dir = 1
@@ -7612,6 +7795,12 @@
 	},
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/red)
+"Rk" = (
+/obj/structure/poster/nixon,
+/turf/simulated/mineral{
+	health = 999999
+	},
+/area/space)
 "Rl" = (
 /obj/hammereditor/nodraw,
 /turf/simulated/floor/concrete/random,
@@ -7648,6 +7837,10 @@
 /obj/structure/table/rack/shelf/red,
 /turf/simulated/floor/wood,
 /area/warfare/battlefield/trench_section/underground)
+"Ry" = (
+/obj/effect/decal/cleanable/blood,
+/turf/simulated/floor/stones,
+/area/warfare/homebase/blue/div)
 "RC" = (
 /obj/machinery/door/airlock/multi_tile/metal/maintenance/red,
 /turf/simulated/floor/concrete/random,
@@ -7977,6 +8170,14 @@
 "TW" = (
 /turf/simulated/floor/wood,
 /area/warfare/battlefield/capture_point/red/two)
+"Uc" = (
+/obj/item/storage/firstaid/toxin,
+/obj/item/storage/firstaid/toxin,
+/obj/item/storage/firstaid/toxin,
+/obj/item/storage/firstaid/toxin,
+/obj/structure/table/rack/shelf/red,
+/turf/simulated/floor/concrete/random,
+/area/warfare/homebase/blue/div)
 "Ui" = (
 /obj/structure/trench_wall{
 	dir = 8
@@ -8081,6 +8282,13 @@
 	health = 999999
 	},
 /area/warfare/battlefield/trench_section/underground/bunker)
+"UJ" = (
+/obj/hammereditor/nodraw/deco/shadowpaint{
+	opacity = 1;
+	dir = 4
+	},
+/turf/simulated/floor/exoplanet/water/shallow/lightless/urban,
+/area/warfare/homebase/blue/div)
 "UK" = (
 /obj/machinery/vending/medical{
 	req_access = newlist()
@@ -8117,6 +8325,14 @@
 	},
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/blue)
+"UX" = (
+/obj/item/storage/firstaid/fire,
+/obj/item/storage/firstaid/fire,
+/obj/item/storage/firstaid/fire,
+/obj/item/storage/firstaid/fire,
+/obj/structure/table/rack/shelf/red,
+/turf/simulated/floor/concrete/random,
+/area/warfare/homebase/blue/div)
 "Vc" = (
 /obj/structure/dirt_wall,
 /turf/simulated/floor/dirty/tough,
@@ -8129,6 +8345,12 @@
 /obj/effect/lighting_dummy/daylight,
 /turf/simulated/floor/stones,
 /area/warfare/homebase/blue)
+"Ve" = (
+/obj/machinery/wish_granter{
+	desc = "Wouldn't it be nice to just undo this whole mess? Return to a much more simple time?"
+	},
+/turf/simulated/floor/concrete/random,
+/area/space)
 "Vf" = (
 /obj/structure/train_deco/tracks01,
 /obj/effect/lighting_dummy/daylight,
@@ -8191,6 +8413,13 @@
 	},
 /turf/simulated/floor/stones,
 /area/warfare/homebase/blue)
+"Wa" = (
+/obj/machinery/sleeper{
+	dir = 1;
+	icon_state = "sleeper_0"
+	},
+/turf/simulated/floor/concrete/random,
+/area/warfare/homebase/blue/div)
 "We" = (
 /obj/structure/trench_wall{
 	dir = 1
@@ -8432,6 +8661,12 @@
 	health = 999999
 	},
 /area/warfare/homebase/red)
+"XA" = (
+/obj/effect/landmark/start{
+	name = "Blue Practitioner"
+	},
+/turf/simulated/floor/stones,
+/area/warfare/homebase/blue/div)
 "XD" = (
 /obj/structure/trench_wall/sequel{
 	dir = 4
@@ -8598,7 +8833,7 @@
 	},
 /obj/machinery/kaos{
 	pixel_y = 22;
-	pages = list( list(/datum/terminal_page/multiselect,list(list("code" = "1", "page_name" = "my_messages", "name" = "MESSAGE HUB")),"PAGE 1"),list(/datum/terminal_page/my_messages,"red_prac1",null))
+	pages = list(list(/datum/terminal_page/multiselect,list(list("code"="1","page_name"="my_messages","name"="MESSAGE HUB")),"PAGE 1"),list(/datum/terminal_page/my_messages,"red_prac1",null))
 	},
 /turf/simulated/floor/wood,
 /area/warfare/battlefield/trench_section/underground)
@@ -8828,24 +9063,24 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-eG
-eG
-eG
-aa
-aa
-aa
+NZ
+NZ
+NZ
+NZ
+NZ
+NZ
+NZ
+NZ
+NZ
+NZ
+NZ
+NZ
+bb
+bb
+bb
+NZ
+NZ
+NZ
 aa
 aa
 aa
@@ -9105,24 +9340,24 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-eG
-eG
-ek
-eG
-eG
-aa
-aa
+NZ
+NZ
+NZ
+NZ
+NZ
+NZ
+NZ
+NZ
+NZ
+NZ
+NZ
+bb
+bb
+AB
+bb
+bb
+NZ
+NZ
 aa
 aa
 aa
@@ -9381,29 +9616,29 @@ aa
 aa
 aa
 aa
-eG
-eG
-eG
-eG
-eG
-eG
-eG
-eG
-eG
-eG
-eG
-eG
-eG
-xq
-ek
-xq
-eG
 aa
-aa
-aa
-aa
-aa
-aa
+NZ
+NZ
+NZ
+NZ
+NZ
+NZ
+NZ
+NZ
+NZ
+NZ
+NZ
+NZ
+wG
+AB
+QA
+bb
+bb
+bb
+pF
+pF
+pF
+pF
 aa
 aa
 aa
@@ -9658,70 +9893,70 @@ aa
 aa
 aa
 aa
-eG
+aa
+bb
+bb
+bb
+bb
+bb
+bb
+bb
+bb
+bb
+bb
+bb
+NZ
+BE
 AB
-cZ
-cZ
-hd
 eG
-xq
 eG
-hd
-cZ
-cZ
-AB
 eG
-xq
-ek
-xq
-eG
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+wG
+Gu
+Gu
+Gu
+Gu
+Gu
+Gu
+Gu
+Gu
+Gu
+Gu
+Gu
+Gu
+Gu
+Gu
+Gu
+Gu
+Gu
+Gu
+Gu
+Gu
+Gu
+Gu
+Gu
+Gu
+Gu
+Gu
+Gu
+Gu
+Gu
+Gu
+Gu
+Gu
+Gu
+Gu
+Gu
+Gu
+Gu
+Gu
+Gu
+Gu
+Gu
+Gu
+Gu
+Rb
+wK
 aa
 aa
 aa
@@ -9935,70 +10170,70 @@ aa
 aa
 aa
 aa
-eG
-cZ
-xq
-xq
-hd
-eG
-xq
-eG
+aa
+bb
 hd
 cZ
+Pq
+bb
+wG
+bb
+hd
 cZ
-cZ
-eG
-xq
+Pq
+bb
+NZ
+wG
+AB
+AB
+AB
+AB
+AB
 ek
-xq
-eG
+ek
+ek
+ek
+ek
+ek
+ek
+ek
+ek
+ek
+ek
+ek
+ek
+ek
+ek
+ek
+ek
+ek
+ek
+ek
+ek
+ek
+ek
+ek
+ek
+ek
+ek
+ek
+ek
+ek
+ek
+ek
+ek
+ek
+ek
+ek
+ek
+ek
+ek
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+Rk
+Ve
+Fx
+Rb
 aa
 aa
 aa
@@ -10212,70 +10447,70 @@ aa
 aa
 aa
 aa
+aa
+bb
+wG
+wG
+wG
+bb
+wG
+bb
+wG
+wG
+wG
+bb
+NZ
 eG
-cZ
-xq
-xq
-cZ
-cZ
-xq
-cZ
-cZ
-cZ
-cZ
-cZ
+AB
+sU
 eG
-xq
-ek
-xq
-eG
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+wG
+wG
+Gu
+Gu
+Gu
+Gu
+Gu
+Gu
+Gu
+Gu
+Gu
+Gu
+Gu
+Gu
+Gu
+Gu
+Gu
+Gu
+Gu
+Gu
+Gu
+Gu
+Gu
+Gu
+Gu
+Gu
+Gu
+Gu
+Gu
+Gu
+Gu
+Gu
+Gu
+Gu
+Gu
+Gu
+Gu
+Gu
+Gu
+Gu
+Gu
+Gu
+Gu
+Gu
+Gu
+Rb
+wK
 aa
 aa
 aa
@@ -10489,29 +10724,29 @@ aa
 aa
 aa
 aa
-eG
-cZ
-xq
-xq
-cZ
-eG
-xq
-eG
-cZ
-cZ
-cZ
-cZ
-eG
-xq
-ek
-xq
-eG
 aa
-aa
-aa
-aa
-aa
-aa
+bb
+wG
+DX
+wG
+wG
+wG
+wG
+wG
+DX
+wG
+bb
+NZ
+iX
+AB
+QA
+bb
+bb
+bb
+pF
+pF
+pF
+pF
 aa
 aa
 aa
@@ -10766,25 +11001,25 @@ aa
 aa
 aa
 aa
-eG
-cZ
-xq
-xq
-cZ
-eG
-xq
-eG
-cZ
-cZ
-cZ
-cZ
-eG
-xq
-ek
-xq
-eG
 aa
-aa
+bb
+wG
+wG
+wG
+bb
+wG
+bb
+wG
+wG
+wG
+bb
+NZ
+wG
+AB
+AO
+bb
+NZ
+NZ
 aa
 aa
 aa
@@ -11043,25 +11278,25 @@ aa
 aa
 aa
 aa
-eG
-eG
-eG
-eG
-eG
-eG
-xq
-eG
-eG
-eG
-eG
-eG
-eG
-xq
-ek
-xq
-eG
 aa
-aa
+bb
+bb
+bb
+bb
+bb
+wG
+bb
+bb
+bb
+bb
+bb
+bb
+AT
+AB
+Nd
+bb
+NZ
+NZ
 aa
 aa
 aa
@@ -11321,24 +11556,24 @@ aa
 aa
 aa
 aa
-eG
-xq
-xq
-xq
-xq
-xq
-xq
-xq
-xq
-xq
-xq
+bb
+wG
+wG
+wG
+wG
+wG
+wG
+wG
+wG
+wG
+wG
 ev
-xq
-ek
-xq
-eG
-aa
-aa
+wG
+AB
+oo
+bb
+NZ
+NZ
 aa
 aa
 aa
@@ -11598,24 +11833,24 @@ aa
 aa
 aa
 aa
-eG
-xq
-xq
-xq
-xq
-xq
-xq
-xq
-xq
-xq
-xq
+bb
+wG
+wG
+wG
+wG
+wG
+wG
+wG
+wG
+wG
+wG
 eF
-xq
-ek
-xq
-eG
-aa
-aa
+wG
+AB
+wG
+bb
+bb
+bb
 aa
 aa
 aa
@@ -11875,24 +12110,24 @@ aa
 aa
 aa
 aa
-eG
-xq
-xq
-xq
-xq
-xq
-xq
-xq
-xq
-xq
-xq
+bb
+wG
+wG
+wG
+wG
+wG
+wG
+wG
+wG
+wG
+wG
 ev
-xq
-ek
-xq
-eG
-aa
-aa
+wG
+AB
+wG
+wG
+QA
+bb
 aa
 aa
 aa
@@ -12152,24 +12387,24 @@ aa
 aa
 aa
 aa
-pF
+bb
 eI
 eI
-eG
-eG
-cZ
-eG
-eG
-eG
-cZ
-eG
-eG
-xq
-ek
-xq
-eG
-aa
-aa
+bb
+bb
+wG
+bb
+wG
+bb
+bb
+bb
+bb
+AT
+AB
+wG
+wG
+wG
+FS
 aa
 aa
 aa
@@ -12429,24 +12664,24 @@ aa
 aa
 aa
 aa
-pF
-pF
-pF
-eG
+bb
+bb
+bb
+bb
 mU
+wG
+DX
+wG
 xq
-xq
-xq
-xq
-xq
-mU
-eG
-xq
-ek
-xq
-eG
-aa
-aa
+bb
+NZ
+bb
+wG
+AB
+wG
+wG
+QA
+bb
 aa
 aa
 aa
@@ -12706,24 +12941,24 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-eG
-mU
-xq
-xq
-xq
-xq
-xq
-mU
-eG
-xq
-ek
-xq
-eG
-aa
-aa
+NZ
+NZ
+NZ
+bb
+PS
+wG
+wG
+wG
+et
+bb
+NZ
+bb
+wG
+AB
+wG
+bb
+bb
+bb
 aa
 aa
 aa
@@ -12983,24 +13218,24 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-eG
-mU
-mU
-mU
-mU
-mU
-mU
-mU
-eG
-xq
-ek
-xq
-eG
-aa
-aa
+NZ
+NZ
+NZ
+bb
+bb
+UX
+Uc
+ni
+bb
+bb
+NZ
+bb
+wG
+AB
+wG
+bb
+NZ
+NZ
 aa
 aa
 aa
@@ -13260,24 +13495,24 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-eG
-eG
-eG
-eG
-eG
-eG
-eG
-eG
-eG
-xq
-ek
-xq
-eG
-aa
-aa
+NZ
+NZ
+NZ
+NZ
+bb
+bb
+bb
+bb
+bb
+NZ
+NZ
+bb
+we
+UJ
+yj
+bb
+NZ
+NZ
 aa
 aa
 aa
@@ -13537,24 +13772,24 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-eG
-eG
-ek
-eG
-eG
-aa
-aa
+NZ
+NZ
+NZ
+NZ
+NZ
+NZ
+NZ
+NZ
+NZ
+NZ
+NZ
+bb
+bb
+bb
+bb
+bb
+NZ
+NZ
 aa
 aa
 aa
@@ -13814,24 +14049,24 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-eG
-eG
-eG
-aa
-aa
-aa
+NZ
+NZ
+NZ
+NZ
+NZ
+NZ
+NZ
+NZ
+NZ
+NZ
+NZ
+NZ
+NZ
+NZ
+NZ
+NZ
+NZ
+NZ
 aa
 aa
 aa
@@ -21232,7 +21467,7 @@ aa
 aa
 aa
 aa
-nQ
+eL
 vn
 EO
 qj
@@ -26285,7 +26520,7 @@ aX
 aX
 bb
 bb
-bb
+rb
 bb
 bb
 ag
@@ -26560,11 +26795,11 @@ bb
 eh
 wG
 wG
-Dw
-wG
-Dw
-wG
-Dw
+bb
+sg
+PV
+pI
+NZ
 ag
 eP
 av
@@ -26837,11 +27072,11 @@ bb
 dL
 wG
 wG
-Dw
-wG
-Dw
-wG
-Fb
+Jc
+Ry
+XA
+hv
+NZ
 ag
 Oa
 av
@@ -27114,11 +27349,11 @@ bb
 dL
 wG
 wG
-Dw
-Dw
-Dw
-Dw
-Dw
+bb
+FY
+hv
+bw
+NZ
 ag
 ug
 av
@@ -27391,11 +27626,11 @@ bb
 dL
 wG
 wG
-wG
-wG
-wG
-wG
-eL
+bb
+bb
+Dw
+bb
+bb
 ag
 ag
 ag
@@ -27672,7 +27907,7 @@ wG
 wG
 wG
 wG
-et
+Wa
 ag
 bb
 Hw
@@ -27948,7 +28183,7 @@ wG
 wG
 wG
 wG
-wG
+DX
 ey
 ag
 oD
@@ -28222,11 +28457,11 @@ bb
 wG
 wG
 wG
-Dw
-Dw
-Dw
-Dw
-Dw
+wG
+wG
+wG
+wG
+Wa
 ag
 ze
 TP
@@ -28499,11 +28734,11 @@ bb
 el
 wG
 wG
-Dw
 wG
-Dw
 wG
-Dw
+wG
+DX
+ey
 ag
 eg
 az
@@ -28776,11 +29011,11 @@ bb
 el
 wG
 wG
-Dw
 wG
-Dw
+Fb
+Jb
 wG
-Dw
+Wa
 ag
 bb
 EV
