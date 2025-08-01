@@ -1,12 +1,17 @@
 //The throne has many functions so it gets its own file.
 
 /obj/structure/bed/chair/throne
-	name = "\the Commandant's throne"
-	desc = "Fit for a king... or a uh... commadant"
-	base_icon = "throne"
-	icon_state = "throne"
+	name = "\the Blue Captain's throne"
+	desc = "A throne for the finest of nepotized asses."
+	base_icon = "throne_blue"
+	icon_state = "throne_blue"
 	var/datum/announcement/decree/magistrate_decree = new
 	var/announcement_cooldown = FALSE
+
+/obj/structure/bed/chair/throne/red
+	name = "\the Red Captain's throne"
+	base_icon = "throne_red"
+	icon_state = "throne_red"
 
 /obj/structure/bed/chair/throne/rotate()//Can't rotate it.
 	return

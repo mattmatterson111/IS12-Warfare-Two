@@ -26,7 +26,7 @@
 			. += M
 
 /mob/living/simple_animal/hostile/retaliate/proc/Retaliate()
-	..()
+	//Here was a ..() without parent
 	var/list/around = view(src, 7)
 
 	for(var/atom/movable/A in around)

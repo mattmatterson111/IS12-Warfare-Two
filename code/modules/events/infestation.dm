@@ -69,13 +69,13 @@
 	command_announcement.Announce("Bioscans indicate that [vermstring] have been breeding in \the [location]. Clear them out, before this starts to affect productivity.", "Major Bill's Shipping Critter Sensor")
 
 /datum/event/infestation/proc/set_location_get_infestation_turfs()
-	location = pick_area(list(/proc/is_not_space_area, /proc/is_station_area))
+	location = pick_area(list(/proc/is_not_space_area, GLOBAL_PROC_REF(is_station_area)))
 	if(!location)
 		log_debug("Vermin infestation failed to find a viable area. Aborting.")
 		kill()
 		return
 
-	var/list/vermin_turfs = get_area_turfs(location, list(/proc/not_turf_contains_dense_objects, /proc/IsTurfAtmosSafe))
+	var/list/vermin_turfs = get_area_turfs(location, list(/proc/not_turf_contains_dense_objects, GLOBAL_PROC_REF(IsTurfAtmosSafe)))
 	if(!vermin_turfs.len)
 		log_debug("Vermin infestation failed to find viable turfs in \the [location].")
 		return

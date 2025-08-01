@@ -1,4 +1,4 @@
-#include "icarus_areas.dm"
+//#include "icarus_areas.dm"
 
 /obj/effect/overmap/sector/icarus
 	name = "forest planetoid"
