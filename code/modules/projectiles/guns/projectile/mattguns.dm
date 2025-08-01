@@ -1008,10 +1008,8 @@
 	if(get_dist(user, src) > 1)
 		return
 	to_chat(user,SPAN_MINDVOICE("Who even allowed this to be sent to the front?"))
-	/*
-	if(SSjobs?.GetJobByTitle(user.client.job)?.type == /datum/job/soldier/red_soldier/captain || SSjobs?.GetJobByTitle(user.client.job)?.type == /datum/job/soldier/blue_soldier/captain)
+	if(user.HasRoleSimpleCheck("Red Captain") || user.HasRoleSimpleCheck("Blue Captain"))
 		to_chat(user,SPAN_MINDVOICE("<b>I did. Everyone on the War Council did. Do they not understand how desperate the situation is?</b>"))
-	*/ //Not being added until i find an easy way to check job vars
 
 /obj/item/gun/projectile/warfare/shig/proc/handleMisfire(mob/victim)
 	if(calculateMisfire())
