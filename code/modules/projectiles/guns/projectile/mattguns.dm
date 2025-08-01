@@ -985,3 +985,51 @@
 	var/turf/T = src.loc
 	qdel(src)
 	new/obj/effect/abstract/smoke(T)
+
+
+	//Shig 420
+/obj/item/gun/projectile/warfare/shig
+	name = "Shig 420"
+	icon_state = "handgun"
+	item_state = "handgun"
+	fire_sound = "gunshot"//Pistol sounds.
+	desc = "A cutting edge innovation in weapons technology. It always lands a shot. The fact that it's your own skin half the time doesn't matter. It's the Shig 420! It'll win us the war!"
+
+/obj/item/gun/projectile/warfare/shig/attackby(obj/item/W, mob/user)
+	. = ..()
+	handleMisfire(user)
+
+/obj/item/gun/projectile/warfare/shig/grab_sound(mob/living/carbon/human/user)
+	. = ..()
+	handleMisfire(user)
+
+/obj/item/gun/projectile/warfare/shig/examine(mob/user)
+	. = ..()
+	if(get_dist(user, src) > 1)
+		return
+	to_chat(user,SPAN_MINDVOICE("Who even allowed this to be sent to the front?"))
+	if(user.HasRoleSimpleCheck("Red Captain") || user.HasRoleSimpleCheck("Blue Captain"))
+		to_chat(user,SPAN_MINDVOICE("<b>I did. Everyone on the War Council did. Do they not understand how desperate the situation is?</b>"))
+
+/obj/item/gun/projectile/warfare/shig/proc/handleMisfire(mob/victim)
+	if(calculateMisfire())
+		to_chat(victim,SPAN_DANGER("The Shig 420 misfires! Why did our team purchase this stupid thing?!"))
+		Fire(victim,victim)
+	else
+		to_chat(victim,SPAN_DANGER("This Shig 420 doesn't misfire. You live another day."))
+
+/obj/item/gun/projectile/warfare/shig/proc/calculateMisfire() //straight 50/50 chance. It's the shig420 after all.
+	var/willMisfire = rand(1,2)
+	if(willMisfire == 1)
+		return TRUE
+	else if(willMisfire == 2)
+		return FALSE
+	else
+		to_chat(usr,"DIVINE INTERVENTION! NOFITFY AN ADMIN!") //here to check if actually doing a fair 50/50 roll
+		return FALSE
+
+/*
+/obj/item/gun/projectile/warfare/shig/evil
+	name = "Shig 420"
+	desc = SPAN_DANGER("I shouldn't touch this... I shouldn't even look at it...\n\nBy god... What have we done?")
+*/
