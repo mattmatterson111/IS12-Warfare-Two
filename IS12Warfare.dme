@@ -2192,6 +2192,8 @@
 #include "code\modules\research\research.dm"
 #include "code\modules\research\server.dm"
 #include "code\modules\research\stock_parts.dm"
+#include "code\modules\respawn_waves\_respawn.dm"
+#include "code\modules\respawn_waves\decals.dm"
 #include "code\modules\rpf_imports\loudspeakers.dm"
 #include "code\modules\rpf_imports\soundoverlay.dm"
 #include "code\modules\rpf_imports\source.dm"

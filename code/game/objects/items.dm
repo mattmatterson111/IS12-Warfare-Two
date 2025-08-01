@@ -159,7 +159,7 @@
 		return
 	I.attempt_wield(src)
 
-/obj/item/proc/unwield(mob/user)
+/obj/item/proc/unwield(mob/user, hidden = FALSE)
 	if(!wielded || !user)
 		return
 	wielded = 0
@@ -177,16 +177,16 @@
 	if(user)
 		user.update_inv_r_hand()
 		user.update_inv_l_hand()
-
-	user.visible_message("<span class='warning'>[user] lets go of their other hand.")
-	if(unwieldsound)
-		playsound(loc, unwieldsound, 50, 1)
+	if(!hidden)
+		user.visible_message("<span class='warning'>[user] lets go of their other hand.")
+		if(unwieldsound)
+			playsound(loc, unwieldsound, 50, 1)
 	var/obj/item/twohanded/offhand/O = user.get_inactive_hand()
 	if(O && istype(O))
 		user.drop_from_inventory(O)
 	return
 
-/obj/item/proc/wield(mob/user)
+/obj/item/proc/wield(mob/user, hidden = FALSE)
 	if(wielded)
 		return
 	if(!is_held_twohanded(user))
@@ -205,9 +205,10 @@
 	if(user)
 		user.update_inv_r_hand()
 		user.update_inv_l_hand()
-	user.visible_message("<span class='warning'>[user] grabs the [initial(name)] with both hands.")
-	if(wieldsound)
-		playsound(loc, wieldsound, 50, 1)
+	if(!hidden)
+		user.visible_message("<span class='warning'>[user] grabs the [initial(name)] with both hands.")
+		if(wieldsound)
+			playsound(loc, wieldsound, 50, 1)
 	var/obj/item/twohanded/offhand/O = new(user) ////Let's reserve his other hand~
 	O.name = "[name] - offhand"
 	O.desc = "Your second grip on the [name]"
@@ -284,6 +285,7 @@
 
 /obj/item/twohanded/offhand/unwield()
 	//if(wielded)//Only delete if we're wielded
+
 	wielded = FALSE
 	loc = null
 	if(!QDELETED(src))

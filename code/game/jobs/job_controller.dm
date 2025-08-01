@@ -375,6 +375,7 @@ var/global/datum/controller/occupations/SSjobs
 	H.job = rank
 
 	if(!joined_late || job.latejoin_at_spawnpoints || job.spawn_in_cryopod)
+
 		var/obj/structure/soldiercryo/special/cryo_spawnpoint = null
 
 		if(job.spawn_in_cryopod)
@@ -393,6 +394,11 @@ var/global/datum/controller/occupations/SSjobs
 			spawn(5 SECONDS) // don't idle.
 				cryo_spawnpoint.eject(forced = TRUE)
 				cryo_spawnpoint.icon_state = initial(cryo_spawnpoint.icon_state) // nice illusion of it being refilled
+
+		else if(job.spawn_in_cryopod)
+			var/obj/structure/soldiercryo/special/C = new /obj/structure/soldiercryo/special(H.loc, job.cryopod_id)
+			C.move_inside(H, TRUE)
+
 		else
 			var/obj/S = get_roundstart_spawnpoint(rank)
 
@@ -612,8 +618,14 @@ var/global/datum/controller/occupations/SSjobs
 /datum/controller/occupations/proc/GetJobByTitle(var/job_title)
 	return occupations_by_title[job_title]
 
-/datum/controller/occupations/proc/get_roundstart_spawnpoint(var/rank)
+/datum/controller/occupations/proc/get_roundstart_spawnpoint(var/rank, var/faction)
 	var/list/loc_list = list()
+	for(var/obj/effect/landmark/start/sloc in landmarks_list)
+		if(iswarfare() && SSwarfare.battle_time && faction)
+			to_world("Is battle time, sloc [sloc.name]")
+			if(!sloc.name == faction) continue
+			loc_list += sloc
+			continue
 	for(var/obj/effect/landmark/start/sloc in landmarks_list)
 		if(sloc.name != rank)	continue
 		if(locate(/mob/living) in sloc.loc)	continue

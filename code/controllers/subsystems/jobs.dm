@@ -398,6 +398,18 @@ SUBSYSTEM_DEF(jobs)
 			spawn(5 SECONDS) // don't idle.
 				cryo_spawnpoint.eject(forced = TRUE)
 				cryo_spawnpoint.icon_state = initial(cryo_spawnpoint.icon_state) // nice illusion of it being refilled
+
+		else if(iswarfare() && SSwarfare.battle_time)
+			var/list/loc_list = list()
+			to_world("Is warfa")
+			for(var/obj/effect/landmark/start/sloc in landmarks_list)
+				if(sloc.name != H.client.warfare_faction)	continue
+				loc_list += sloc
+			var/obj/spawnpoint = pick(loc_list)
+			to_world("Got spawnpoint: [spawnpoint.name] for [H.real_name], length: [length(loc_list)]")
+			if(spawnpoint)
+				H.forceMove(spawnpoint.loc)
+
 		else
 			var/obj/S = get_roundstart_spawnpoint(rank)
 

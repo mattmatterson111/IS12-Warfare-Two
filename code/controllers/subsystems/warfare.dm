@@ -7,6 +7,7 @@
 	var/points = 0 //KOTH stuff, trench capping game mode doesn't use this.
 	var/nuked = FALSE //When set to true this side instantly loses. PONR uses it.
 	var/left = 70 //Number of reinforcements both sides have.
+
 	var/datum/squad/squadA
 	var/datum/squad/squadB
 	var/datum/squad/squadC

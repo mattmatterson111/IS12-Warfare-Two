@@ -146,12 +146,6 @@
 	},
 /turf/simulated/floor/ert/metal01,
 /area/vehicle/submarine/start_zone)
-"gf" = (
-/obj/machinery/light/caged{
-	dir = 1
-	},
-/turf/simulated/floor/ert/metal01,
-/area/vehicle/submarine/start_zone)
 "gS" = (
 /obj/machinery/light/small/red{
 	dir = 1;
@@ -530,12 +524,6 @@
 	},
 /turf/template_noop,
 /area/warfare/battlefield/trench_section/underground)
-"Bt" = (
-/obj/machinery/light/caged{
-	pixel_y = 39
-	},
-/turf/simulated/floor/ert/metal01,
-/area/vehicle/submarine/start_zone)
 "Bw" = (
 /obj/machinery/light/spot,
 /turf/simulated/floor/ert/tile06,
@@ -2020,11 +2008,11 @@ PZ
 PZ
 PZ
 Tz
-Bt
+PZ
 PZ
 gV
 PZ
-gf
+PZ
 Tz
 uV
 gV
