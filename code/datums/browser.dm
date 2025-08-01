@@ -77,6 +77,15 @@
 	if (title_image)
 		title_attributes = "class='uiTitle icon' style='background-image: url([title_image]);'"
 
+	if(user.client?.window_scaling && user.client?.window_scaling != 1 && width && height)
+		head_content += {"
+			<style>
+				body {
+					zoom: [100 / user.client?.window_scaling]%;
+				}
+			</style>
+			"}
+
 	return {"<!DOCTYPE html>
 <html>
 	<meta charset=ISO-8859-1">
@@ -106,8 +115,12 @@
 
 /datum/browser/proc/open(var/use_onclose = 1)
 	var/window_size = ""
-	if (width && height)
-		window_size = "size=[width]x[height];"
+	if(width && height)
+		if(user.client?.window_scaling)
+			var/scaling = user.client.window_scaling
+			window_size = "size=[width * scaling]x[height * scaling];"
+		else
+			window_size = "size=[width]x[height];"
 	user << browse(get_content(), "window=[window_id];[window_size][window_options]")
 	if (use_onclose)
 		onclose(user, window_id, ref)

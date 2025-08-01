@@ -55,13 +55,13 @@
 	if(!moved && !locked)
 		playsound(src, 'sound/effects/helicopter_takeoff.ogg', 100)
 		locked = TRUE
-		addtimer(CALLBACK(src, .proc/move_to_transport, start_zone, end_zone), 45 SECONDS) //Ok, we're taking off, move us to the transport zone please.
+		addtimer(CALLBACK(src, PROC_REF(move_to_transport), start_zone, end_zone), 45 SECONDS) //Ok, we're taking off, move us to the transport zone please.
 		moved = TRUE
 
 	if(moved && !locked)
 		playsound(src, 'sound/effects/helicopter_takeoff.ogg', 100)
 		locked = TRUE
-		addtimer(CALLBACK(src, .proc/move_to_transport, end_zone, start_zone), 45 SECONDS) //We have already moved, so send us back to where we started.
+		addtimer(CALLBACK(src, PROC_REF(move_to_transport), end_zone, start_zone), 45 SECONDS) //We have already moved, so send us back to where we started.
 		moved = FALSE
 
 /obj/machinery/button/test_heli/proc/move_to_transport(var/area/starting_zone, var/area/ending_destination)//This is the proc that moves us.
@@ -73,7 +73,7 @@
 		for(var/obj/effect/doorblocker/D in A)
 			D.opacity = TRUE
 			D.density = TRUE
-		addtimer(CALLBACK(src, .proc/move_to_destination, ending_destination), 1 MINUTE)//Now wait one minute and move us again please.
+		addtimer(CALLBACK(src, PROC_REF(move_to_destination), ending_destination), 1 MINUTE)//Now wait one minute and move us again please.
 
 /obj/machinery/button/test_heli/proc/move_to_destination(var/area/destination)//Ok this is the LZ
 	var/area/my_zone = locate(transport_zone)

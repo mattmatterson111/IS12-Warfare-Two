@@ -103,7 +103,7 @@
 	debris_visuals.particles.spawning = debris_amount
 	debris_visuals.particles.scale = debris_scale
 	smoke_visuals.layer = ABOVE_OBJ_LAYER + 0.01
-	addtimer(CALLBACK(src, .proc/remove_ping, smoke_visuals, debris_visuals), 0.7 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(remove_ping), smoke_visuals, debris_visuals), 0.7 SECONDS)
 
 /atom/proc/remove_ping(obj/effect/abstract/particle_holder/smoke_visuals, obj/effect/abstract/particle_holder/debris_visuals)
 	QDEL_NULL(smoke_visuals)
@@ -724,8 +724,6 @@
 			var/obj/item/clothing/head/helmet/helm = L.head
 			helm.take_damage(damage)
 			playsound(L, pick(helmet_hit_sound), 80, 1)
-			to_chat(target_mob, SPAN_DANGER("The bullet whizzes by- and it ricochets off of the helmet, damaging it!"))
-			return 0
 		if(ishuman(firer))//Stuff that isn't a mob doesn't play well with achievements.
 			if(parse_zone(def_zone) == BP_HEAD)//Boom headshot bitch.
 				firer.unlock_achievement(new/datum/achievement/headshot())

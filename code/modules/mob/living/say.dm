@@ -317,7 +317,7 @@ proc/get_radio_key_from_channel(var/channel)
 			if(M.client)
 				speech_bubble_recipients += M.client
 
-	INVOKE_ASYNC(GLOBAL_PROC, .proc/animate_speechbubble, speech_bubble, speech_bubble_recipients, 30)
+	INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(animate_speechbubble), speech_bubble, speech_bubble_recipients, 30)
 
 	for(var/obj/O in listening_obj)
 		spawn(0)
@@ -386,7 +386,7 @@ proc/get_radio_key_from_channel(var/channel)
 	new_message = replacetext(new_message, " im ", " I'm ")//AND IM TOO! STOP THAT YOU FUCKS!
 	new_message = replacetext(new_message, " u ", " you ")//STOP USING FUCKING U YOU SICK FUCKS!
 
-	INVOKE_ASYNC(src, /atom/movable/proc/animate_chat, new_message, speaking, italics, speech_bubble_recipients, 40)
+	INVOKE_ASYNC(src, PROC_BY_TYPE(/atom/movable, animate_chat), new_message, speaking, italics, speech_bubble_recipients, 40)
 
 	return 1
 

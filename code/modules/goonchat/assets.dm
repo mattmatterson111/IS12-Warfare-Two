@@ -20,6 +20,23 @@
 		"browserOutput_white.css"  = 'code/modules/goonchat/browserassets/css/browserOutput_white.css',
 		"browserOutput_override.css"  = 'code/modules/goonchat/browserassets/css/browserOutput_override.css',
 		"background.png" = 'code/modules/goonchat/browserassets/img/bg.png',
+		"chatbg-t.png" = 'code/modules/goonchat/browserassets/img/chatbg-t.png',
+		"testbg.png" = 'code/modules/goonchat/browserassets/img/testbg.png',
+		"chatbg-b.png" = 'code/modules/goonchat/browserassets/img/chatbg-b.png',
+		"chatbg-w-ct.png" = 'code/modules/goonchat/browserassets/img/chatbg-w-ct.png',
+		"chatbg-w-cb.png" = 'code/modules/goonchat/browserassets/img/chatbg-w-cb.png',
+		"chatbg-w.png" = 'code/modules/goonchat/browserassets/img/chatbg-w.png',
+		"chatbg-e-ct.png" = 'code/modules/goonchat/browserassets/img/chatbg-e-ct.png',
+		"chatbg-e-cb.png" = 'code/modules/goonchat/browserassets/img/chatbg-e-cb.png',
+		"chatbg-e.png" = 'code/modules/goonchat/browserassets/img/chatbg-e.png',
+		"chatscrollbar-bg-t.png" = 'code/modules/goonchat/browserassets/img/chatscrollbar-bg-t.png',
+		"chatscrollbar-bg.png" = 'code/modules/goonchat/browserassets/img/chatscrollbar-bg.png',
+		"chatscrollbar-bg-b.png" = 'code/modules/goonchat/browserassets/img/chatscrollbar-bg-b.png',
+		"chatscrollbar-scrolldown.png" = 'code/modules/goonchat/browserassets/img/chatscrollbar-scrolldown.png',
+		"chatscrollbar-scrollup.png" = 'code/modules/goonchat/browserassets/img/chatscrollbar-scrollup.png',
+		"chatscroller-b.png" = 'code/modules/goonchat/browserassets/img/chatscroller-b.png',
+		"chatscroller-m.png" = 'code/modules/goonchat/browserassets/img/chatscroller-m.png',
+		"chatscroller-t.png" = 'code/modules/goonchat/browserassets/img/chatscroller-t.png',
 	)
 
 /datum/asset/simple/fontawesome
