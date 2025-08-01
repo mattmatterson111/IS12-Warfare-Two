@@ -175,12 +175,12 @@ SUBSYSTEM_DEF(squads)
 			var/mob/old_SL = squad.SL
 			squad.SL = null
 
-			for (var/mob/M in squad.members)
-				if (!M.client)
+			for (var/mob/mob in squad.members)
+				if (!mob.client)
 					continue
-				sound_to(M.client, sound('sound/effects/ert/evil_announcement.ogg'))
+				sound_to(mob.client, sound('sound/effects/ert/evil_announcement.ogg'))
 				spawn(5)
-					M.play_screen_text("<font size=1>ATTENTION PLEASE\n\nFIELD DEMOTION CONFIRMED\n<i>[uppertext(old_SL.real_name)]</i> IS NO LONGER IN COMMAND</font>", alert = /atom/movable/screen/text/screen_text/screen)
+					mob.play_screen_text("<font size=1>ATTENTION PLEASE\n\nFIELD DEMOTION CONFIRMED\n<i>[uppertext(old_SL.real_name)]</i> IS NO LONGER IN COMMAND</font>", alert = /atom/movable/screen/text/screen_text/screen)
 
 	create_squad_waypoint(location, squad.members, message, mob, callout = callout)
 	to_chat(src, "Placed '[callout]' succesfully")
@@ -291,4 +291,4 @@ SUBSYSTEM_DEF(squads)
 	if(M.client?.holder)
 		return TRUE
 	var/mob/living/carbon/human/objective/O = M
-	return O.squad?.SL == O
+	return O.ertsquad?.SL == O
