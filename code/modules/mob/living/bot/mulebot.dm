@@ -219,7 +219,7 @@
 		H.apply_damage(0.5 * damage, BRUTE, BP_R_ARM)
 
 		blood_splatter(src, H, 1)
-	..()
+	//There was ..() without parent
 
 /mob/living/bot/mulebot/relaymove(var/mob/user, var/direction)
 	if(load == user)

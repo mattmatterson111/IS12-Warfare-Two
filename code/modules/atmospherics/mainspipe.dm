@@ -72,9 +72,9 @@ obj/machinery/atmospherics/mains_pipe
 		update_icon()
 
 	proc/burst()
-		..()
-		for(var/obj/machinery/atmospherics/pipe/mains_component/pipe in contents)
-			burst()
+//		..()
+//		for(var/obj/machinery/atmospherics/pipe/mains_component/pipe in contents)
+//			burst()
 
 	proc/check_pressure(pressure)
 		var/datum/gas_mixture/environment = loc.return_air()

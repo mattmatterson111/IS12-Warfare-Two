@@ -73,7 +73,7 @@
 		return
 
 /mob/living/carbon/human/objective
-	var/datum/ert_squad/squad = null // I belong to this squad
+	var/datum/ert_squad/ertsquad = null // I belong to this squad
 	var/datum/squadmember/member = null // I belong to this template ughh
 
 /mob/living/carbon/human/objective/ssd_check()
@@ -83,7 +83,7 @@
 
 /mob/living/carbon/human/objective/Stat()
 	. = ..()
-	stat("<b>CURRENT DIRECTIVE:</b>", "<b>[squad.directive ? squad.directive : "STAND BY"]</b>")
+	stat("<b>CURRENT DIRECTIVE:</b>", "<b>[ertsquad.directive ? ertsquad.directive : "STAND BY"]</b>")
 /*
 /mob/living/carbon/human/objective/ClickOn(var/atom/A, params)
 	if(world.time <= next_click)

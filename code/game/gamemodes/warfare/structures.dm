@@ -617,7 +617,7 @@
 	var/countdown_time
 	var/doomsday_timer
 	var/last_use
-	var/do_after_use
+	var/used_by_person
 
 /obj/structure/destruction_computer/New()
 	..()
@@ -629,16 +629,16 @@
 	if(REALTIMEOFDAY - last_use < 2 SECONDS)
 		to_chat(user, "The device is scorching hot! I must wait a few seconds!") // Fuck the people that were spamming it
 		return
-	if(do_after_use)
+	if(used_by_person)
 		return
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
 		if(H.warfare_faction == faction)
 			if(!activated)
 				return
-			do_after_use = TRUE
+			used_by_person = TRUE
 			if(do_after(H,100))
-				do_after_use = FALSE
+				used_by_person = FALSE
 				user.unlock_achievement(new/datum/achievement/deactivate())
 				activated = FALSE
 				deltimer(doomsday_timer)
@@ -648,12 +648,12 @@
 				stop_alarm("[name]_[faction]_PONR_Alarm")
 				last_use = REALTIMEOFDAY
 			else
-				do_after_use = FALSE
+				used_by_person = FALSE
 
 		else
 			if(activated)
 				return
-			in_use = TRUE
+			used_by_person = TRUE
 			if(do_after(H, 30))
 				in_use = FALSE
 				start_alarm("[name]_[faction]_PONR_Alarm", /datum/speaker_alarm/evil, faction)
@@ -665,8 +665,8 @@
 				doomsday_timer = addtimer(CALLBACK(src,/obj/structure/destruction_computer/proc/kaboom), countdown_time, TIMER_STOPPABLE|TIMER_UNIQUE|TIMER_NO_HASH_WAIT|TIMER_OVERRIDE)
 				last_use = REALTIMEOFDAY
 			else
-				in_use = FALSE
-			in_use = FALSE
+				used_by_person = FALSE
+			used_by_person = FALSE
 
 /obj/structure/destruction_computer/proc/kaboom()
 	stop_alarm("[name]_[faction]_PONR_Alarm")

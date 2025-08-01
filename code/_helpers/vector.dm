@@ -21,10 +21,10 @@ increment()
 
 return_angle()
 	Returns the direction (angle in degrees) the object is travelling in.
-	* North = 90°
-	* East  = 0°
-	* South = -90°
-	* West  = 180°
+	* North = 90ï¿½
+	* East  = 0ï¿½
+	* South = -90ï¿½
+	* West  = 180ï¿½
 
 return_hypotenuse()
 	Returns the distance of travel for each step of the vector, relative to each full step of movement. 1 is a full turf 
@@ -83,14 +83,14 @@ return_location()
 	// calculate the offset per increment step
 	if(abs(angle) in list(0, 45, 90, 135, 180))		// check if the angle is a cardinal
 		if(abs(angle) in list(0, 45, 135, 180))		// if so we can skip the trigonometry and set these to absolutes as
-			offset_x = sign(dx)						// they will always be a full step in one or more directions
+			offset_x = sign_math(dx)						// they will always be a full step in one or more directions
 		if(abs(angle) in list(45, 90, 135))
-			offset_y = sign(dy)
+			offset_y = sign_math(dy)
 	else if(abs(dy) > abs(dx))
 		offset_x = Cot(abs(angle))					// otherwise set the offsets
-		offset_y = sign(dy)
+		offset_y = sign_math(dy)
 	else
-		offset_x = sign(dx)
+		offset_x = sign_math(dx)
 		offset_y = Tan(angle)
 		if(dx < 0)
 			offset_y = -offset_y

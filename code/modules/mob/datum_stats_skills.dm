@@ -159,7 +159,7 @@
 	set category = "IC"
 	var/message = "<div class='examinebox'><big><b>General Skills:</b></big>\n"
 	var/list/skill_copy = my_skills.Copy()
-	sortTim(skill_copy, /proc/cmp_skill_level, associative = TRUE)
+	sortTim(skill_copy, GLOBAL_PROC_REF(cmp_skill_level), associative = TRUE)
 	for(var/type in skill_copy)
 		var/datum/skill/S = skill_copy[type]
 		if(S.category == "General Skills")

@@ -17,7 +17,7 @@ This file is built for communication with a discord bot.
 	SSwebhooks.send("wardog", list("victor" = victor, "condition" = condition, "players" = players))
 
 /decl/webhook/wardog
-	var/id = "wardog"
+	id = "wardog"
 
 /datum/controller/gameticker/declare_completion()
 	. = ..()

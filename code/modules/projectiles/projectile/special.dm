@@ -157,19 +157,19 @@
 	START_PROCESSING(SSobj,src)
 
 	if(fire_spread_amount > 0)
-		var/turf/T
+		var/turf/Turf
 		for(var/dirn in GLOB.cardinal)
-			T = get_step(loc, dirn)
-			if(istype(T,/turf/simulated/floor/exoplanet/water/shallow)) continue//Do not light the water on fire please.
-			if(locate(/obj/flamer_fire) in T) continue //No stacking
-			var/new_spread_amt = T.density ? 0 : fire_spread_amount - 1 //walls stop the spread
+			Turf = get_step(loc, dirn)
+			if(istype(Turf,/turf/simulated/floor/exoplanet/water/shallow)) continue//Do not light the water on fire please.
+			if(locate(/obj/flamer_fire) in Turf) continue //No stacking
+			var/new_spread_amt = Turf.density ? 0 : fire_spread_amount - 1 //walls stop the spread
 			if(new_spread_amt)
-				for(var/obj/O in T)
+				for(var/obj/O in Turf)
 					if(!O.CanPass(src, loc))
 						new_spread_amt = 0
 						break
 			spawn(0) //delay so the newer flame don't block the spread of older flames
-				new /obj/flamer_fire(T, fire_lvl, burn_lvl, f_color, new_spread_amt)
+				new /obj/flamer_fire(Turf, fire_lvl, burn_lvl, f_color, new_spread_amt)
 
 
 /obj/flamer_fire/Destroy()
