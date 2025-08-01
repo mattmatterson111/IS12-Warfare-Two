@@ -8129,12 +8129,6 @@
 /obj/effect/lighting_dummy/daylight,
 /turf/simulated/floor/stones,
 /area/warfare/homebase/blue)
-"Vf" = (
-/obj/structure/train_deco/tracks01,
-/obj/effect/lighting_dummy/daylight,
-/obj/structure/vehicle/train/random,
-/turf/simulated/floor/stones,
-/area/warfare/homebase/blue)
 "Vg" = (
 /obj/machinery/vending/soldier/blue,
 /turf/simulated/floor/tiled,
@@ -33743,15 +33737,15 @@ Vd
 Ti
 Ti
 Ti
-Vf
+km
 Ti
 Ti
 Ti
-Vf
+km
 Ti
 Ti
 Ti
-Vf
+km
 aq
 aq
 aq

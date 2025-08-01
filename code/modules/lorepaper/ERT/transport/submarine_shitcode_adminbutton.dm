@@ -152,12 +152,12 @@
 
 
 	if(!moved)
-		addtimer(CALLBACK(src, .proc/move_to_transport, destination_id), 60 SECONDS)
+		addtimer(CALLBACK(src, PROC_REF(move_to_transport), destination_id), 60 SECONDS)
 		moved = TRUE
 		update_marker_positions(destination_id)
 /*
 	else
-		addtimer(CALLBACK(src, .proc/move_to_transport, start_id), 60 SECONDS)
+		addtimer(CALLBACK(src, PROC_REF(move_to_transport), start_id), 60 SECONDS)
 		moved = FALSE
 		update_marker_positions(start_id)
 */
@@ -190,7 +190,7 @@
 	update_teleports(start_id)
 	update_teleports(current_id)
 	on_transit()
-	addtimer(CALLBACK(src, .proc/move_to_destination, destination_id), 60 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(move_to_destination), destination_id), 60 SECONDS)
 
 /obj/machinery/button/transport_controller/proc/move_to_destination(destination_id)
 	playsound_from_speakers(speaker_alarm(), 85)
@@ -221,10 +221,10 @@
 // Stopped using areas, but still leaving it here incase I come back to it
 /*
 	if(!moved)
-		addtimer(CALLBACK(src, .proc/move_to_transport, start_zone, end_zone), 5 SECONDS)
+		addtimer(CALLBACK(src, PROC_REF(move_to_transport), start_zone, end_zone), 5 SECONDS)
 		moved = TRUE
 	else
-		addtimer(CALLBACK(src, .proc/move_to_transport, end_zone, start_zone), 5 SECONDS)
+		addtimer(CALLBACK(src, PROC_REF(move_to_transport), end_zone, start_zone), 5 SECONDS)
 		moved = FALSE
 
 /obj/machinery/button/transport_controller/proc/move_to_transport(var/area/vehicle/starting_zone, var/area/vehicle/ending_destination)
@@ -241,7 +241,7 @@
 			D.opacity = TRUE
 			D.density = TRUE
 		on_transit()
-		addtimer(CALLBACK(src, .proc/move_to_destination, ending_destination), 5 SECONDS)
+		addtimer(CALLBACK(src, PROC_REF(move_to_destination), ending_destination), 5 SECONDS)
 
 /obj/machinery/button/transport_controller/proc/move_to_destination(var/area/vehicle/destination)
 

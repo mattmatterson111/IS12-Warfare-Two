@@ -84,10 +84,10 @@ GLOBAL_LIST_EMPTY(special_shuttles)
 	on_dive()
 
 	if(!moved)
-		addtimer(CALLBACK(src, .proc/move_to_transport, start_zone, end_zone), 5 SECONDS)
+		addtimer(CALLBACK(src, PROC_REF(move_to_transport), start_zone, end_zone), 5 SECONDS)
 		moved = TRUE
 	else
-		addtimer(CALLBACK(src, .proc/move_to_transport, end_zone, start_zone), 5 SECONDS)
+		addtimer(CALLBACK(src, PROC_REF(move_to_transport), end_zone, start_zone), 5 SECONDS)
 		moved = FALSE
 
 /obj/machinery/button/transport_controller/proc/move_to_transport(var/area/vehicle/starting_zone, var/area/vehicle/ending_destination)
@@ -104,7 +104,7 @@ GLOBAL_LIST_EMPTY(special_shuttles)
 			D.opacity = TRUE
 			D.density = TRUE
 		on_transit()
-		addtimer(CALLBACK(src, .proc/move_to_destination, ending_destination), 5 SECONDS)
+		addtimer(CALLBACK(src, PROC_REF(move_to_destination), ending_destination), 5 SECONDS)
 
 /obj/machinery/button/transport_controller/proc/move_to_destination(var/area/vehicle/destination)
 

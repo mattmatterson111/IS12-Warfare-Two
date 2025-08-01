@@ -240,7 +240,7 @@ SUBSYSTEM_DEF(respawn)
 	var/respawn_cycle = 0
 	var/next_respawn
 	var/last_respawn = 0
-	var/time_between_respawns = 500
+	var/time_between_respawns = 60 SECONDS // in seconds
 
 	var/area/red_train
 	var/area/blue_train
@@ -299,24 +299,22 @@ SUBSYSTEM_DEF(respawn)
 
 		var/obj/structure/vehicle/train/T = pick(trains)
 		if (!istype(T, /obj/structure/vehicle/train)) return
-
-		to_world("Attempting to spawn passing train...")
+		message_admins("Trying to spawn a passing train: [T.id]")
 		T.pass(500, 5 SECONDS)
 		return
+	/*
 	if (!respawning && world.time - last_cargo_time >= time_between_cargo)
+		to_world("Attempting to send cargo train...")
 		send_cargo_train()
 		return
+	*/
 	// Start a new respawn cycle
-	if (world.time > next_respawn || !next_respawn)
+	if (world.time >= next_respawn || !next_respawn)
 		if (!respawn_cycle)
-			next_respawn = world.time + time_between_respawns
-			last_respawn = world.time
 			message_admins("Respawn cycle system is now online.")
-			respawn_cycle++
-			return
 
 		respawning = TRUE
-
+		to_world("Respawn cycle #[respawn_cycle ? respawn_cycle : 0] started, next: [next_respawn ? next_respawn : "To be determined"], last: [last_respawn ? last_respawn : "Just now"]")
 		var/obj/structure/vehicle/train/long_passenger/TR = trains[RED_TEAM]
 		var/obj/structure/vehicle/train/long_passenger/TB = trains[BLUE_TEAM]
 
@@ -362,12 +360,6 @@ SUBSYSTEM_DEF(respawn)
 		next_respawn = world.time + time_between_respawns
 		last_respawn = world.time
 		respawning = FALSE
-
-
-
-
-
-
 
 
 

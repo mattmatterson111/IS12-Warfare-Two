@@ -184,7 +184,7 @@ GLOBAL_LIST_EMPTY(speaker_ids)
 				clients |= m.client
 		// it got annoying REALLY FAST having them all being different..
 		playsound(get_turf(s), this_sound , broadcast_template.additional_talk_sound_volume, broadcast_template.additional_talk_sound_vary, ignore_walls = FALSE, extrarange = 4)
-		INVOKE_ASYNC(s, /atom/movable/proc/animate_chat, "<font color='[broadcast_template.rune_color]'><b>[text]", null, 0, clients, 5 SECONDS, 1)
+		INVOKE_ASYNC(s, PROC_BY_TYPE(/atom/movable, animate_chat), "<font color='[broadcast_template.rune_color]'><b>[text]", null, 0, clients, 5 SECONDS, 1)
 	for(var/mob/m in mobstosendto)
 		to_chat(m,"<h2><span class='[broadcast_template.speakerstyle]'>[broadcast_template.voice_name] [broadcast_template.voice_verb], \"<span class='[broadcast_template.textstyle]'>[text]</span>\"</span></h2>")
 
@@ -296,7 +296,7 @@ GLOBAL_LIST_EMPTY(speaker_ids)
 				clients |= m.client
 		// it got annoying REALLY FAST having them all being different..
 		playsound(get_turf(s), this_sound , speakercast.additional_talk_sound_volume, speakercast.additional_talk_sound_vary, ignore_walls = FALSE, extrarange = 4)
-		INVOKE_ASYNC(s, /atom/movable/proc/animate_chat, "<font color='[speakercast.rune_color]'><b>[msg]", null, 0, clients, 5 SECONDS, 1)
+		INVOKE_ASYNC(s, PROC_BY_TYPE(/atom/movable, animate_chat), "<font color='[speakercast.rune_color]'><b>[msg]", null, 0, clients, 5 SECONDS, 1)
 	for(var/mob/m in mobstosendto)
 		to_chat(m,"<h2><span class='[speakercast.speakerstyle]'>[spkrname] [verbtxt], \"<span class='[speakercast.textstyle]'>[msg]</span>\"</span></h2>")
 /*

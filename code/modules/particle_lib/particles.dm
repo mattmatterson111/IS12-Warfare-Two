@@ -186,7 +186,7 @@
 /obj/particle_emitter/burst/Initialize(mapload, time)
 	. = ..()
 	//Burst emitters turn off after 1 tick
-	addtimer(CALLBACK(src, .proc/enable, FALSE), 1, TIMER_CLIENT_TIME)
+	addtimer(CALLBACK(src, PROC_REF(enable), FALSE), 1, TIMER_CLIENT_TIME)
 /obj/particle_emitter/burst/rocks
 	particles = new/particles/debris
 

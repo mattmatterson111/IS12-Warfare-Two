@@ -56,7 +56,7 @@
 		sleep(play_delay)
 
 	if(auto_end)
-		addtimer(CALLBACK(src, .proc/fade_out), fade_out_delay)
+		addtimer(CALLBACK(src, PROC_REF(fade_out)), fade_out_delay)
 
 /datum/ghosttrap/soldier
 	object = "soldier"
