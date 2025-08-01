@@ -64,13 +64,14 @@ var/list/limb_icon_cache = list()
 
 /obj/item/organ/external/var/icon_cache_key
 /obj/item/organ/external/update_icon(var/regenerate = 0)
-	var/gender = "_m"
-	if(!gendered_icon)
-		gender = null
-	else if (dna && dna.GetUIState(DNA_UI_GENDER))
-		gender = "_f"
-	else if(owner && owner.gender == FEMALE)
-		gender = "_f"
+	var/gender = ""
+	if(species.use_gendered_parts)
+		if(gendered_icon)
+			gender = "_m"
+		//else if (dna && dna.GetUIState(DNA_UI_GENDER))
+		//	gender = "_f"
+		if(owner && owner.gender == FEMALE)
+			gender = "_f"
 
 	icon_state = "[icon_name][gender]"
 	if(species.base_skin_colours && !isnull(species.base_skin_colours[s_base]))

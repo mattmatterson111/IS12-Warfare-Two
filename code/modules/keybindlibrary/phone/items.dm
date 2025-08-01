@@ -78,7 +78,6 @@
 		user.remove_from_mob(src)
 		src.forceMove(linked_phone)
 		linked_phone.phonemounted = TRUE
-		GLOB.moved_event.unregister(user, src, /obj/item/phone/proc/on_holder_moved)
 
 /obj/item/phone/proc/tophone(key as text, mob/living/user)
 	if(linked_phone)

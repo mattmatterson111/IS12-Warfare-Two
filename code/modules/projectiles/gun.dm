@@ -71,6 +71,7 @@
 	var/automatic = 0  //can gun use it, 0 is no, anything above 0 is the delay between clicks in ds
 	var/move_delay = 1
 	var/fire_sound = null//'sound/weapons/gunshot/gunshot.ogg' //No fire sound by default so we use the bullet's fire sound.
+	var/fire_volume = 50
 	var/fire_sound_text = "gunshot"
 	var/far_fire_sound = null
 	var/gun_vary = TRUE
@@ -340,9 +341,16 @@
 					to_chat(user, "<span class='warning'>Your aim wavers as you fire \the [src] with just one hand.</span>")
 				if(3)
 					to_chat(user, "<span class='warning'>You have trouble keeping \the [src] on target with just one hand.</span>")
-				if(4 to INFINITY)
+				if(4)
 					to_chat(user, "<span class='warning'>You struggle to keep \the [src] on target with just one hand!</span>")
-
+				if(5 to INFINITY)
+					to_chat(user, "<span class='warning'>You struggle to keep \the [src] in your hand-</span>")
+					user.remove_from_mob(src)
+					if(prob(25))
+						throw_at(get_turf(target), 1, 10)
+						to_chat(user, "<span class='warning'>\the [src] flies out of your hand and towards [target]!</span>")
+					else
+						to_chat(user, "<span class='warning'>\the [src] flies out of your hand and falls to the ground!</span>")
 	if(screen_shake)
 		spawn()
 			shake_camera(user, screen_shake+1, screen_shake)
@@ -499,7 +507,7 @@
 	if(silenced)
 		playsound(user, shot_sound, 10, 1)
 	else//If the mobs are far away, then play the far away shot sound instead.
-		playsound(user, shot_sound, 50, gun_vary)
+		playsound(user, shot_sound, fire_volume, gun_vary)
 		var/list/mob/mobs = view(world.view, user)
 		var/list/mob/far_mobs = (orange(world.view * 3, user) - mobs)
 		for(var/mob/living/carbon/human/M in far_mobs)
@@ -669,13 +677,16 @@
 		allowed_condition = 90
 		repair_speed = 20
 	if(condition <= allowed_condition)
+		H.doing_something = TRUE
 		H.visible_message("<span class='notice'>[H] starts to repair their weapon.</span>")
 		if(do_after(H, repair_speed, src))//Instead of failing if their not skilled, just make it slow.
+			H.doing_something = FALSE
 			condition += 10
 			H.visible_message("<span class='info'>[H] successfully repairs their weapon.</span>")
 			if(condition > 100)//If it's greater than 100
 				condition = 100
 		else
+			H.doing_something = FALSE
 			H.visible_message("<span class='warning'>[H] fails to repair their weapon.</span>")
 			update_icon()
 

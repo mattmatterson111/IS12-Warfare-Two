@@ -7,7 +7,7 @@
 	var/datum/sound_token/sound_token
 	var/playing = 0
 	var/sound_id
-	worldicons = list("cdplayerworld")
+	worldicons = "cdplayerworld"
 	w_class = ITEM_SIZE_NO_CONTAINER
 
 /obj/item/device/boombox/attack_hand(mob/user as mob)
@@ -97,18 +97,18 @@
 	. = ..()
 	if(isworld(loc))
 		if(casseta)
-			worldicons = list("cdplayerworld")
+			worldicons = "cdplayerworld"
 			originalstate = "cdplayer"
 		else
-			worldicons = list("cdplayerworld_open")
+			worldicons = "cdplayerworld_open"
 			originalstate = "cdplayer_open"
 	if(!isworld(loc))
 		if(casseta)
 			icon_state = "cdplayer"
-			worldicons = list("cdplayerworld")
+			worldicons = "cdplayerworld"
 		else
 			icon_state = "cdplayer_open"
-			worldicons = list("cdplayerworld_open")
+			worldicons = "cdplayerworld_open"
 /obj/item/device/cassette
 	name = "cassette tape"
 	desc = "A tape smuggled in from somewhere in the outside world. Contains some bumping tunes on it."
@@ -123,7 +123,7 @@
 
 /obj/item/device/cassette/New()
 	icon_state = "cassette_[rand(0,4)]"
-	world_icons = list("[icon_state]_onworld")
+	//worldicons = "[icon_state]_onworld"
 
 /obj/item/device/cassette/attack_self(mob/user)
 	. = ..()

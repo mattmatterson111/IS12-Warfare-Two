@@ -6,13 +6,13 @@
 	throwpass = TRUE//we can throw grenades despite its density
 	anchored = TRUE
 	density = FALSE
-	color = "#bfc0cf"// I Cba to resprite these rn so its just a recolor to make them blend in more. - Kas
-	plane = PLATING_PLANE
-	layer = BASE_ABOVE_OBJ_LAYER
-	 // Crates kept getting hidden under these. // Edit: cannot do that. It fucks up the turf smoothing overlays.
-	/*plane = OBJ_PLANE
-	layer = BELOW_OBJ_LAYER-0.1 // I want this to be under crates and items. || It also means that you can throw grenades back if they land on dirt cover.
-	*/
+	//color = "#bfc0cf"// I Cba to resprite these rn so its just a recolor to make them blend in more. - Kas
+	/// They have since then been resprited ^^
+	//plane = PLATING_PLANE
+	//layer = BASE_ABOVE_OBJ_LAYER
+	//  Crates kept getting hidden under these. // Edit: cannot do that. It fucks up the turf smoothing overlays.
+	plane = ABOVE_OBJ_PLANE
+	layer = 26.1 // I want this to be under crates and items. || It also means that you can throw grenades back if they land on dirt cover.
 	atom_flags = ATOM_FLAG_CLIMBABLE
 	var/health = 100
 
@@ -38,23 +38,22 @@
 
 		icon_state = "brustwehr_[junction]"
 
-/obj/structure/dirt_wall/Crossed(var/mob/living/M as mob)
-	if(istype(M))
+/obj/structure/dirt_wall/Crossed(var/atom/M)
+	if(ismob(M))
 		M.pixel_y = 12
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
-		if(H.client)
-			H.fov_mask.screen_loc = "1,1"
-			H.fov.screen_loc = "1,1"
+	if(isobj(M))
+		var/obj/O = M
+		O.plane = ABOVE_OBJ_PLANE
+		O.layer = ABOVE_OBJ_LAYER+1
 
-/obj/structure/dirt_wall/Uncrossed(var/mob/living/M as mob)
-	if(istype(M))
+/obj/structure/dirt_wall/Uncrossed(var/atom/M)
+	if(ismob(M))
 		M.pixel_y = 0
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
-		if(H.client)
-			H.fov_mask.screen_loc = "1,1"
-			H.fov.screen_loc = "1,1"
+
+	if(isobj(M))
+		var/obj/O = M
+		O.plane = initial(O.plane)
+		O.layer = initial(O.layer)
 
 /obj/structure/dirt_wall/attackby(obj/O as obj, mob/user as mob)
 	if(istype(O, /obj/item/shovel))
@@ -281,6 +280,9 @@
 	var/obj/item/organ/external/affecting = H.get_organ(pick("l_arm", "r_arm", "l_hand", "r_hand")) //pick limb to get cut for failed skillcheck
 	var/turf/T = get_step(user, user.dir)
 
+	if(H.doing_something)
+		return
+
 	if(T)
 		if(isopenspace(T))
 			return
@@ -291,7 +293,9 @@
 			to_chat(H, "There's already something there!")
 			return
 		visible_message("[user] begins to place the [src]!")
+		H.doing_something = TRUE
 		if(do_after(user, 20)) //leave it in this statement, dont want people getting cut for getting bumped/moving during assembly
+			H.doing_something = FALSE
 			if(H.statscheck(skills = H.SKILL_LEVEL(engineering)) > CRIT_FAILURE) //Considering how useless barbwire seems to be, everyone can now spam it.
 				to_chat(H, "You assemble the [src]!")
 				amount--
@@ -307,6 +311,8 @@
 					H.UpdateDamageIcon()
 				H.updatehealth()
 				to_chat(H, "You fail to assemble the [src], cutting your [affecting.name]!")
+		else
+			H.doing_something = FALSE
 
 /obj/structure/barbwire
 	name = "barbed wire"
@@ -370,6 +376,7 @@
 				M.visible_message("<span class='danger'>[M] struggle to free themselves from the barbed wire!</span>")
 				var/mob/living/carbon/human/H = M
 				playsound(loc, "stab_sound", 50, TRUE)
+				M.receive_damage()
 				var/obj/item/organ/external/affecting = H.get_organ(pick("l_foot", "r_foot", "l_leg", "r_leg"))
 				if (affecting.status & ORGAN_ROBOT)
 					return
@@ -504,19 +511,40 @@
 	density = FALSE
 	var/armed = FALSE//Whether or not it will blow up.
 	var/can_be_armed = TRUE//Whether or not it can be armed to blow up. Disarmed mines won't blow.
+	var/mob/stepper = null // This prevents people that lay down or die on a landmine from making others think that they won't blow it if walk over it since it's already primed.
+	var/glow_state = null // string to manually set the glow, otherwise its random blue/red
+
+/obj/structure/landmine/blue
+	glow_state = "mine_glow_alt"
+
+/obj/structure/landmine/red
+	glow_state = "mine_glow"
 
 /obj/structure/landmine/New()
 	..()
 	if(prob(15))
 		desc = "This mushroom is not for picking."
+	update_icon()
+	if(istype(src.loc, /turf/simulated/floor/exoplanet/water/shallow))
+		qdel(src)
 
 /obj/structure/landmine/proc/blow()
 	GLOB.mines_tripped++
 	fragmentate(get_turf(src), 20, 2, list(/obj/item/projectile/bullet/pellet/fragment/landmine))
+	explosion(loc, 2, 2, 1, 1)
 	qdel(src)
 
 /obj/structure/landmine/update_icon()
+	overlays.Cut()
+	if(!glow_state)
+		glow_state = "mine_glow"
+		if(prob(50))
+			glow_state = "[glow_state]_alt"
+	var/image/I = image(icon=src.icon, icon_state=glow_state)
+	I.plane = EFFECTS_ABOVE_LIGHTING_PLANE
+	overlays += I
 	if(!can_be_armed)
+		overlays.Cut()
 		icon_state = "mine_disarmed"
 
 
@@ -536,6 +564,7 @@
 				GLOB.mines_disarmed++
 				playsound(src, 'sound/items/Wirecutter.ogg', 100, FALSE)
 				update_icon()
+				stepper = null
 				return
 			blow()
 	if(istype(W, /obj/item/shovel))
@@ -552,15 +581,26 @@
 		var/mob/living/carbon/human/H = M
 		if(H.isChild())//Kids don't set off landmines.
 			return
-		if(!M.throwing && !armed && can_be_armed)
-			to_chat(M, "<span class='danger'>You hear a sickening click!</span>")
-			playsound(src, 'sound/effects/mine_arm.ogg', 100, FALSE)
-			armed = TRUE
+		if(!armed && can_be_armed)
+			if(M.throwing)
+				sleep(3)
+				if(!locate(M) in src.loc)
+					return FALSE
+				to_chat(M, "<span class='danger'>You hear a sickening click!</span>")
+				playsound(src, 'sound/effects/mine_arm.ogg', 100, FALSE)
+				armed = TRUE
+				stepper = M
+			else
+				to_chat(M, "<span class='danger'>You hear a sickening click!</span>")
+				playsound(src, 'sound/effects/mine_arm.ogg', 100, FALSE)
+				armed = TRUE
+				stepper = M
 
 /obj/structure/landmine/Uncrossed(var/mob/living/M as mob)
 	if(istype(M))
 		if(armed)
-			blow()
+			if(M == stepper) // HAH
+				blow()
 
 
 
@@ -576,6 +616,8 @@
 	var/activated = FALSE
 	var/countdown_time
 	var/doomsday_timer
+	var/last_use
+	var/in_use
 
 /obj/structure/destruction_computer/New()
 	..()
@@ -584,35 +626,50 @@
 
 /obj/structure/destruction_computer/attack_hand(mob/user)
 	. = ..()
+	if(REALTIMEOFDAY - last_use < 2 SECONDS)
+		to_chat(user, "The device is scorching hot! I must wait a few seconds!")
+		return
+	if(in_use)
+		return
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
 		if(H.warfare_faction == faction)
 			if(!activated)
 				return
+			in_use = TRUE
 			if(do_after(H,100))
+				in_use = FALSE
 				user.unlock_achievement(new/datum/achievement/deactivate())
 				activated = FALSE
 				deltimer(doomsday_timer)
 				to_world(uppertext("<big>[H.warfare_faction] have disarmed the [src]!</big>"))
 				playsound(src, 'sound/effects/mine_arm.ogg', 100, FALSE)
 				sound_to(world, 'sound/effects/ponr_activate.ogg')
+				stop_alarm("[name]_[faction]_PONR_Alarm")
+				last_use = REALTIMEOFDAY
 			else
-				to_chat(H, "I'm already disarming the device!")
+				in_use = FALSE
 
 		else
 			if(activated)
 				return
+			in_use = TRUE
 			if(do_after(H, 30))
+				in_use = FALSE
+				start_alarm("[name]_[faction]_PONR_Alarm", /datum/speaker_alarm/evil, faction)
 				user.unlock_achievement(new/datum/achievement/point_of_no_return())
 				playsound(src, 'sound/effects/mine_arm.ogg', 100, FALSE)
 				sound_to(world, 'sound/effects/ponr_activate.ogg')
 				to_world(uppertext("<big>[H.warfare_faction] have activated the [src]! They will achieve victory in [countdown_time/10] seconds!</big>"))
 				activated = TRUE
 				doomsday_timer = addtimer(CALLBACK(src,/obj/structure/destruction_computer/proc/kaboom), countdown_time, TIMER_STOPPABLE|TIMER_UNIQUE|TIMER_NO_HASH_WAIT|TIMER_OVERRIDE)
+				last_use = REALTIMEOFDAY
 			else
-				to_chat(H, "I'm already arming the device!")
+				in_use = FALSE
+			in_use = FALSE
 
 /obj/structure/destruction_computer/proc/kaboom()
+	stop_alarm("[name]_[faction]_PONR_Alarm")
 	SSwarfare.end_warfare(faction)//really simple I know.
 
 /obj/structure/destruction_computer/red
@@ -909,63 +966,52 @@
 	if(CanPhysicallyInteract(user))
 		busy = TRUE
 		if(do_after(user, 20))
-			if(istype(SSjobs.GetJobByTitle(user.job), /datum/job/fortress/red/practitioner) || istype(SSjobs.GetJobByTitle(user.job), /datum/job/fortress/blue/practitioner))
-				user.visible_message("[user] knocks on the door..", "You knock on the door..")
-				playsound(get_turf(user), 'sound/effects/hatchknock.ogg',75,0.5)
-				sleep(3)
-				playsound(get_turf(user), 'sound/effects/hatchknock.ogg',75,0.5)
-				if(inside)
-					var/total_teeth = 0
-					for(var/obj/item/organ/O in inside.organs)
-						if(O.status & ORGAN_CUT_AWAY)
+			user.visible_message("[user] knocks on the door..", "You knock on the door..")
+			playsound(get_turf(user), 'sound/effects/hatchknock.ogg',75,0.5)
+			sleep(3)
+			playsound(get_turf(user), 'sound/effects/hatchknock.ogg',75,0.5)
+			if(inside)
+				var/total_teeth = 0
+				for(var/obj/item/organ/O in inside.organs)
+					if(O.status & ORGAN_CUT_AWAY)
+						continue
+					else
+						if(istype(O, /obj/item/organ/external))
+							if(istype(O, /obj/item/organ/external/head/))
+								var/obj/item/organ/external/head/H = O
+								total_teeth += H.get_teeth()
+							total_teeth += 1
 							continue
 						else
-							if(istype(O, /obj/item/organ/external))
-								if(istype(O, /obj/item/organ/external/head/))
-									var/obj/item/organ/external/head/H = O
-									total_teeth += H.get_teeth()
-								total_teeth += 1
-								continue
-							else
-								total_teeth += 2
-								continue
-					other_stuff_inside = new/obj/item/stack/teeth/human()
-					other_stuff_inside.amount = total_teeth
-					other_stuff_inside.update_icon()
-					if(inside.stat == DEAD)
-						sleep(rand(20,40))
-						playsound(get_turf(src), 'sound/effects/hatchknock.ogg',35,0.25, override_env = SEWER_PIPE)
-						sleep(6)
-						playsound(get_turf(src), 'sound/effects/hatchknock.ogg',35,0.25, override_env = SEWER_PIPE)
-						qdel(inside)
-						inside = null
-						busy = FALSE
-					else
-						sleep(rand(15,30))
-						playsound(get_turf(src), 'sound/effects/hatched.ogg', 90, 0, override_env = SEWER_PIPE)
-						sleep(110)
-						playsound(get_turf(src), 'sound/effects/hatchknock.ogg',35,0.25, override_env = SEWER_PIPE)
-						sleep(6)
-						playsound(get_turf(src), 'sound/effects/hatchknock.ogg',35,0.25, override_env = SEWER_PIPE)
-						inside.death()
-						inside.ghostize(FALSE)
-						qdel(inside)
-						inside = null
-						goredinside = TRUE
-						busy = FALSE
-				else
+							total_teeth += 2
+							continue
+				other_stuff_inside = new/obj/item/stack/teeth/human()
+				other_stuff_inside.amount = total_teeth
+				other_stuff_inside.update_icon()
+				if(inside.stat == DEAD)
+					sleep(rand(20,40))
+					playsound(get_turf(src), 'sound/effects/hatchknock.ogg',35,0.25, override_env = SEWER_PIPE)
+					sleep(6)
+					playsound(get_turf(src), 'sound/effects/hatchknock.ogg',35,0.25, override_env = SEWER_PIPE)
+					qdel(inside)
+					inside = null
 					busy = FALSE
-					return
+				else
+					sleep(rand(15,30))
+					playsound(get_turf(src), 'sound/effects/hatched.ogg', 90, 0, override_env = SEWER_PIPE)
+					sleep(110)
+					inside.death()
+					inside.ghostize(FALSE)
+					qdel(inside)
+					inside = null
+					goredinside = TRUE
+					playsound(get_turf(src), 'sound/effects/hatchknock.ogg',35,0.25, override_env = SEWER_PIPE)
+					sleep(6)
+					playsound(get_turf(src), 'sound/effects/hatchknock.ogg',35,0.25, override_env = SEWER_PIPE)
+					busy = FALSE
 			else
 				busy = FALSE
-				user.visible_message("[user] knocks on the door..", "You knock on the door..")
-				playsound(get_turf(user), 'sound/effects/hatchknock.ogg',75,0.5)
-				sleep(3)
-				playsound(get_turf(user), 'sound/effects/hatchknock.ogg',75,0.5)
-				sleep(3)
-				playsound(get_turf(user), 'sound/effects/hatchknock.ogg',75,0.5)
-				sleep(30)
-				busy = FALSE
+				return
 		else
 			busy = FALSE
 

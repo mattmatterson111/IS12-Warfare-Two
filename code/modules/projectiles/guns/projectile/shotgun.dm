@@ -16,7 +16,6 @@
 		else
 			icon_state = initial(icon_state)
 
-
 /obj/item/gun/projectile/shotgun/pump
 	name = "shotgun"
 	desc = "The mass-produced W-T Remmington 29x shotgun is a favourite of police and security forces on many worlds. Useful for sweeping alleys."

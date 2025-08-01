@@ -22,6 +22,22 @@
 	var/can_generate_water = TRUE
 	var/can_be_dug = TRUE
 
+/turf/simulated/floor/dirty/update_icon()
+	overlays.Cut()
+	for(var/direction in GLOB.cardinal)
+		var/turf/turf_to_check = get_step(src,direction)
+		if(istype(turf_to_check, /turf/simulated/floor/dirty) || istype(turf_to_check, /turf/simulated/floor/exoplanet/water/shallow))
+			continue
+
+		else
+			var/image/dirt = image('icons/turf/blending_overlays.dmi', "dirt_edge_yay", dir = direction)
+			dirt.plane = src.plane
+			dirt.layer = src.layer+2
+			//dirt.color = "#877a8b"
+			//dirt.alpha = 200
+
+			overlays += dirt
+
 /turf/simulated/floor/dirty/alt
 	name = "dirt" //"snowy dirt"
 	//icon = 'icons/turf/snow.dmi'
@@ -67,6 +83,13 @@
 /turf/simulated/floor/can_climb(var/mob/living/user, post_climb_check=0)
 	if(locate(/obj/structure/bridge, get_turf(user)))
 		return FALSE
+
+	if(locate(/obj/hammereditor/nodraw, src))
+		return FALSE
+
+	if(locate(/obj/hammereditor/playerclip, src))
+		return FALSE
+
 	if (!(atom_flags & ATOM_FLAG_CLIMBABLE) || !can_touch(user))
 		return FALSE
 
@@ -109,13 +132,18 @@
 	if(!can_climb(user))
 		return
 
+	if(locate(/obj/structure/barbwire, get_turf(user))) // fuck you asshole, stop abusing climb to get out of barbed wire
+		return
+
 	if(istype(get_area(src), /area/warfare))//We're trying to go?
 		if(locate(/obj/item/gun/projectile/automatic/mg08) in user)//Locate the mg.
 			if(istype(usr.l_hand, /obj/item/gun/projectile/automatic/mg08) || istype(usr.r_hand, /obj/item/gun/projectile/automatic/mg08))
 				to_chat(user, "I can't climb with this in my hands!")//No you fucking don't.
-				return //Keep that mg stowed asshole
-		if(locate(/obj/structure/barbwire, get_turf(user))) // fuck you asshole, stop abusing climb to get out of barbed wire
-			return
+				return // Edited this to remove the need for the structure. Just fucking put it on your back :sob:
+		else if(locate(/obj/item/mortar_launcher) in user)//Locate the mg.
+			if(istype(usr.l_hand, /obj/item/mortar_launcher) || istype(usr.r_hand, /obj/item/mortar_launcher))
+				to_chat(user, "I can't climb with this in my hands!")//No you fucking don't.
+				return
 
 	user.visible_message("<span class='warning'>[user] starts climbing onto \the [src]!</span>")
 	climbers |= user
@@ -207,8 +235,8 @@
 				user.doing_something = FALSE
 				return
 			for(var/obj/structure/object in contents)
-				if(object)
-					to_chat(user, "There are things in the way.")
+				if(istype(object, /obj/structure/landmine) || istype(object, /obj/structure/barbwire) || istype(object, /obj/structure/anti_tank))
+					to_chat(user, "There are structures or landmines in the way.")
 					user.doing_something = FALSE
 					return
 			playsound(src, 'sound/effects/dig_shovel.ogg', 50, 0)
@@ -226,6 +254,10 @@
 			to_chat(user, "You're already digging.")
 
 /turf/simulated/floor/dirty/RightClick(mob/living/user)
+	var/obj/item/gun/G = user.get_active_hand()//Please let me aim, thanks.
+	if(istype(G) && !G.safety)
+		..()
+		return
 	if(!CanPhysicallyInteract(user))
 		return
 	var/obj/item/shovel/S = user.get_active_hand()
@@ -239,8 +271,8 @@
 			user.doing_something = FALSE
 			return
 		for(var/obj/structure/object in contents)
-			if(object)
-				to_chat(user, "There are things in the way.")
+			if(istype(object, /obj/structure/landmine) || istype(object, /obj/structure/barbwire) || istype(object, /obj/structure/anti_tank))
+				to_chat(user, "There are structures or landmines in the way.")
 				user.doing_something = FALSE
 				return
 		playsound(src, 'sound/effects/dig_shovel.ogg', 50, 0)
@@ -250,6 +282,8 @@
 			visible_message("[user] finishes digging the trench.")
 			playsound(src, 'sound/effects/empty_shovel.ogg', 50, 0)
 			user.doing_something = FALSE
+			for(var/obj/structure/O in contents)
+				qdel(O)//Get rid of whatever stupid shit is there.
 
 		user.doing_something = FALSE
 
@@ -292,6 +326,7 @@
 	var/has_light = TRUE
 	atom_flags = ATOM_FLAG_CLIMBABLE
 	add_mask = TRUE
+	var/tmp/water_type = /obj/effect/water
 
 /turf/simulated/floor/exoplanet/water/shallow/update_dirt()
 	return
@@ -406,7 +441,7 @@
 	new /obj/effect/water/bottom(src)//Put it right on top of the water so that they look like they're the same.
 	new /obj/effect/water/top(src)
 	*/
-	new /obj/effect/water(src)
+	new water_type(src)
 
 	spawn(5)
 		update_icon()

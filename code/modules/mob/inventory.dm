@@ -259,6 +259,7 @@ var/list/slot_equipment_priority = list( \
 		if(!do_after(src, I.time_to_unequip, stay_still = FALSE))
 			return
 	drop_from_inventory(I, target)
+	I.unequipped(src)
 	return 1
 
 //Attemps to remove an object on a mob.

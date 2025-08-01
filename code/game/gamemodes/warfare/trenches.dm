@@ -136,6 +136,11 @@
 //		user.doing_something = FALSE
 
 /turf/simulated/floor/trench/RightClick(mob/living/user)
+	var/obj/item/gun/G = user.get_active_hand()//Please let me aim, thanks.
+	if(istype(G) && !G.safety)
+		..()
+		return
+
 	if(!CanPhysicallyInteract(user))
 		..()
 		return
@@ -150,8 +155,8 @@
 	if(src.density)
 		return
 	for(var/obj/structure/object in contents)
-		if(object)
-			to_chat(user, "There are things in the way.")
+		if(istype(object, /obj/structure/landmine) || istype(object, /obj/structure/barbwire) || istype(object, /obj/structure/anti_tank))
+			to_chat(user, "There are structures or landmines in the way.")
 			return
 	playsound(src, 'sound/effects/dig_shovel.ogg', 50, 0)
 	visible_message("[user] begins filling in the trench!")
@@ -163,6 +168,8 @@
 		user.doing_something = FALSE
 		ChangeTurf(/turf/simulated/floor/dirty)
 		update_trench_shit()
+		for(var/obj/structure/O in contents)
+			qdel(O)
 		visible_message("[user] finishes filling in trench.")
 		playsound(src, 'sound/effects/empty_shovel.ogg', 50, 0)
 
@@ -189,12 +196,11 @@
 					trench_side.dir = pick(GLOB.cardinal)
 					trench_side.pixel_y += ((world.icon_size) - 22)
 					trench_side.plane = PLATING_PLANE
-					trench_side.layer = BELOW_OBJ_LAYER
+					trench_side.layer = BELOW_DOOR_LAYER
 				if(SOUTH)
 					trench_side.pixel_y -= ((world.icon_size) - 16)
-					trench_side.plane = PLATING_PLANE
-					trench_side.layer = BELOW_OBJ_LAYER
-					add_mask = TRUE
+					trench_side.plane = ABOVE_OBJ_PLANE
+					trench_side.layer = BELOW_DOOR_LAYER
 				if(EAST)
 					trench_side.pixel_x += (world.icon_size)
 					trench_side.plane = ABOVE_OBJ_PLANE
@@ -425,8 +431,8 @@
 /turf/simulated/floor/trench/Crossed(var/io)
 	if(ishuman(io))
 		var/mob/living/carbon/human/M = io
-		if(M.plane == HUMAN_PLANE && locate(/obj/structure/bridge, get_turf(src)))
-			return
+		//if(M.plane == HUMAN_PLANE && locate(/obj/structure/bridge, get_turf(src)))
+		//	return
 		if(locate(/obj/structure/trenchstairs, get_turf(src)))
 			M.pixel_y = -4
 			return
@@ -440,7 +446,7 @@
 				M.pixel_y = -8
 
 			M.reset_layer()
-			//M.plane = LYING_HUMAN_PLANE
+			M.plane = LYING_HUMAN_PLANE
 			M.in_trench = 1 // Yes, we in trench now.
 
 			if(add_mask)
@@ -472,19 +478,20 @@
 		var/obj/O = io
 		if(O.pulledby) // for pulling stuff...
 			O.in_trench = O.pulledby.in_trench
-		if(locate(/obj/structure/bridge, get_turf(src)) && !O.in_trench)
-			O.plane = HUMAN_PLANE
-			return
+		//if(locate(/obj/structure/bridge, get_turf(src)) && !O.in_trench)
+		//	O.plane = HUMAN_PLANE
+		//	return
 		O.in_trench = TRUE
+
 /turf/simulated/floor/trench/Uncrossed(var/io)
 	if(ishuman(io))
 		var/mob/living/carbon/human/M = io
-		if(M.client)
-			M.fov_mask.screen_loc = "1,1"
-			M.fov.screen_loc = "1,1"
+		//if(M.client)
+		//	M.fov_mask.screen_loc = "1,1"
+		//	M.fov.screen_loc = "1,1"
 		M.in_trench = 0 // We leave the trench.
 		M.pixel_y = 0
-		//M.plane = HUMAN_PLANE
+		M.plane = HUMAN_PLANE
 		M.reset_layer()
 		if(M.has_trench_overlay)
 			for(var/obj/effect/trench/mask/mask in M.vis_contents)

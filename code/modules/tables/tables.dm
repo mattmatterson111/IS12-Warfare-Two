@@ -81,7 +81,7 @@
 
 /obj/structure/table/Initialize()
 	. = ..()
-
+	/* // No. We can stack them now :)
 	// One table per turf.
 	for(var/obj/structure/table/T in loc)
 		if(T != src)
@@ -89,7 +89,7 @@
 			// break_to_parts calls qdel(src)
 			break_to_parts(full_return = 1)
 			return
-
+	*/
 	// reset color/alpha, since they're set for nice map previews
 	color = "#ffffff"
 	alpha = 255
@@ -329,7 +329,7 @@
 		if(S) shards += S
 	qdel(src)
 	return shards
-
+/*
 /obj/structure/table/update_icon()
 	if(flipped != 1)
 		icon_state = "blank"
@@ -397,7 +397,7 @@
 
 		if(carpeted)
 			overlays += "carpet_flip[type]"
-
+*/
 /obj/structure/table/proc/can_connect()
 	return TRUE
 

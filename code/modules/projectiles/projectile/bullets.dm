@@ -9,9 +9,11 @@
 	embed = 1
 	sharp = 1
 	penetration_modifier = 1.0
-	hitscan = TRUE
 	var/mob_passthrough_check = 0
 	muzzle_type = /obj/effect/projectile/bullet/muzzle
+	tracer_type = /obj/effect/projectile/bullet/tracer
+	impact_type = /obj/effect/projectile/bullet/impact
+	hitscan = TRUE
 
 /obj/item/projectile/bullet/on_hit(var/atom/target, var/blocked = 0)
 	if (..(target, blocked))
@@ -116,6 +118,19 @@
 	light_range = 0
 	light_color = null
 
+
+/obj/item/projectile/bullet/pellet/shotgun/launch_projectile(atom/target, target_zone, mob/user, params, angle_override, forced_spread = 0)
+	for(var/x=1,x<pellets,x++)
+		var/obj/item/projectile/bullet/buckshot_pellet/P = new(get_turf(src))
+		P.dispersion += pick(-8,8)
+		P.launch_projectile(target, target_zone, user, params, angle_override, forced_spread)
+	qdel(src)
+	return
+
+/obj/item/projectile/bullet/buckshot_pellet
+	damage = 12 //There are 8 of these fired at a time usually.
+	armor_penetration = 0
+
 /*
 /obj/item/projectile/bullet/pellet/Bumped()
 	. = ..()
@@ -192,6 +207,9 @@
 	fire_sound = 'sound/weapons/gunshot/gunshot_strong.ogg'
 	damage = 50 //.50AE
 	armor_penetration = 30
+
+/obj/item/projectile/bullet/pistol/strong/very
+	damage = 60
 
 /obj/item/projectile/bullet/pistol/strong/revolver //revolvers
 	damage = 50 //Revolvers get snowflake bullets, to keep them relevant
@@ -332,3 +350,50 @@
 	pixel_x = rand(-10,10)
 	pixel_y = rand(-10,10)
 	..()
+
+/obj/item/projectile/bullet/shotgunBuckshot
+	name = "12 Gauge buck pellet"
+	range = 10
+	damage = 25
+	/// Wheter we are the initial buckshot pellet that should create the rest or not
+	var/isInitial = TRUE
+	/// Amount of pellets to create / replicate
+	var/pelletCount = 12
+	/// Minimum/maximum angle offset when firing.
+	var/angleOffset = 35
+	/// the projectile will lose a fragment of its damage each time it travels this distance. Scales exponentially.
+	/// /// This decreases how much it loses-
+	var/falloff = 2
+
+/obj/item/projectile/bullet/shotgunBuckshot/nospread
+	angleOffset = 0
+
+/obj/item/projectile/bullet/shotgunBuckshot/launch_projectile(atom/target, target_zone, mob/user, params, angle_override, forced_spread = 0)
+	if(!isInitial)
+		return ..()
+	else while(pelletCount)
+		pelletCount--
+		var/obj/item/projectile/bullet/shotgunBuckshot/fellowPellet = new(get_turf(src))
+		fellowPellet.isInitial = FALSE
+		fellowPellet.firer = src.firer
+		fellowPellet.silenced = TRUE
+		fellowPellet.def_zone = ran_zone(def_zone, get_dist(firer,target))
+		forced_spread = rand(-angleOffset,angleOffset) // eh fuck it
+		fellowPellet.preparePixelProjectile(target, user? user : get_turf(src), params, forced_spread)
+		fellowPellet.launch_projectile(target, target_zone, user, params, angle_override, forced_spread)
+	..()
+
+/obj/item/projectile/bullet/shotgunBuckshot/proc/get_pellets(var/distance)
+	var/pellet_loss = round((distance - 1)/falloff) //damage lost due to distance
+	return max(pelletCount - pellet_loss, 1)
+
+/obj/item/projectile/bullet/shotgunBuckshot/get_structure_damage()
+	var/distance = get_dist(loc, starting)
+	return ..() * get_pellets(distance)
+
+/obj/item/projectile/bullet/shotgunBuckshot/on_impact(atom/A)
+	if(falloff>0)
+		var/distance = get_dist(loc, starting)
+		var/amount = distance/falloff
+		damage = round(damage/amount)
+	. = ..()

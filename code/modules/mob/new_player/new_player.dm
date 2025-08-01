@@ -79,7 +79,7 @@
 			stat("<b>Game Mode:</b>", "[ticker.mode || master_mode][ticker.hide_mode ? " (Secret)" : ""]")
 		else
 			stat("<b>Game Mode:</b>", PUBLIC_GAME_MODE)
-		var/extra_antags = list2params(additional_antag_types)
+		//var/extra_antags = list2params(additional_antag_types)
 		//stat("Added Antagonists:", extra_antags ? extra_antags : "None")
 
 		if(ticker.current_state == GAME_STATE_PREGAME)

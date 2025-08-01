@@ -89,6 +89,16 @@
 	icon = 'icons/turf/interwar_trenches.dmi'
 	icon_state = "Wooden trench floor"
 
+/turf/simulated/floor/ex_act(severity)
+	if(prob(25))
+		ChangeTurf(/turf/simulated/floor/urban/destroyed)
+		return
+	if(prob(50))
+		icon_state = "WT floor damaged 2"
+		return
+	icon_state = "WT floor damaged 1"
+	return
+
 /turf/simulated/floor/wood/New()
 	. = ..()
 	if(prob(15))
@@ -162,9 +172,19 @@
 	icon_state = "concrete"
 	atom_flags = ATOM_FLAG_CLIMBABLE
 
+/turf/simulated/floor/concrete/ex_act(severity)
+	return
+
 /turf/simulated/floor/concrete/can_climb(mob/living/user, post_climb_check)
 	if(locate(/obj/structure/bridge, get_turf(user)))
 		return FALSE
+
+	if(locate(/obj/hammereditor/nodraw, src))
+		return FALSE
+
+	if(locate(/obj/hammereditor/playerclip, src))
+		return FALSE
+
 	if (!(atom_flags & ATOM_FLAG_CLIMBABLE) || !can_touch(user))
 		return FALSE
 
@@ -180,10 +200,10 @@
 	overlays.Cut()
 	for(var/direction in GLOB.cardinal)
 		var/turf/turf_to_check = get_step(src,direction)
-		if(istype(turf_to_check, /turf/simulated/floor/concrete/))
+		if(istype(turf_to_check, src))
 			continue
 
-		else if(istype(turf_to_check, /turf/simulated))
+		else
 			var/image/dirt = image('icons/turf/flooring/decals.dmi', "concrete_trim", dir = turn(direction, 180))
 			dirt.plane = src.plane
 			dirt.layer = src.layer+2
@@ -196,24 +216,25 @@
 
 
 
-/turf/simulated/floor/concrete/stones
+/turf/simulated/floor/stones
 	icon = 'icons/turf/interwar_trenches.dmi'
 	icon_state = "stone trench floor"
 
-/turf/simulated/floor/concrete/stones/New()
+/turf/simulated/floor/stones/ex_act(severity)
+	return
+
+/turf/simulated/floor/stones/New()
 	. = ..()
 	if(prob(10))
 		icon_state = "stone trench floor damaged"
 
-/turf/simulated/floor/concrete/cracked
-	icon_state = "concrete_cracked"
-
 /turf/simulated/floor/concrete/random/New()
 	. = ..()
 	dir = pick(GLOB.alldirs)
+	var/turf/crackedcrete = new/turf/simulated/floor/concrete/(src)
 	if(prob(15))
-		var/turf/crackedcrete = new/turf/simulated/floor/concrete/cracked(src)
-		crackedcrete.dir = pick(GLOB.alldirs)
+		crackedcrete.icon_state = "concrete_cracked"
+	crackedcrete.dir = pick(GLOB.alldirs)
 
 /turf/simulated/floor/reinforced/airless
 	initial_gas = null

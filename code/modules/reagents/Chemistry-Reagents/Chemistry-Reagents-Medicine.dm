@@ -779,3 +779,60 @@
 		M.immunity = max(M.immunity - 0.1, 0)
 		if(M.chem_doses[type] > M.species.blood_volume/8) //half of blood was replaced with us, rip white bodies
 			M.immunity = max(M.immunity - 0.5, 0)
+
+/datum/reagent/chloroform
+	name = "Chloroform"
+	description = "A highly toxic chemical."
+	taste_description = "sweetness and suffocation"
+	taste_mult = 0.6
+	reagent_state = REAGENT_LIQUID
+	color = "#dfdbda31"
+	metabolism = REM
+	overdose = REAGENTS_OVERDOSE * 0.5
+
+/datum/reagent/chloroform/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+
+	var/threshold = 1
+
+	if(M.chem_doses[type] == metabolism * threshold)
+		M.confused += 2
+		M.drowsyness += 2
+	else if(M.chem_doses[type] < 2 * threshold)
+		M.Weaken(15)
+		M.eye_blurry = max(M.eye_blurry, 5)
+	else
+		M.sleeping = max(M.sleeping, 10)
+
+/datum/reagent/tartaremetic
+	name = "Antimony potassium tartrate"
+	description = "Induced vomiting, purgative."
+	taste_description = "sweetish with a metallic aftertaste."
+	taste_mult = 0.6
+	reagent_state = REAGENT_LIQUID
+	color = "#e2e2e2d8"
+	metabolism = REM * 0.1
+	overdose = REAGENTS_OVERDOSE * 0.5
+
+/datum/reagent/tartaremetic/affect_blood(var/mob/living/carbon/human/M, var/alien, var/removed)
+	var/threshold = 1
+	if(M.chem_doses[type] == metabolism * threshold)
+		M.vomit(level=1)
+	else if(M.chem_doses[type] < 2 * threshold)
+		M.vomit(level=2)
+	else
+		M.vomit(level=3)
+	var/removing = (2 * removed)
+	for(var/datum/reagent/R in M.ingested.reagent_list)
+		if(istype(R, /datum/reagent/toxin))
+			M.ingested.remove_reagent(R.type, removing)
+			return
+	for(var/datum/reagent/R in M.reagents.reagent_list)
+		if(istype(R, /datum/reagent/toxin))
+			M.reagents.remove_reagent(R.type, removing)
+			return
+// prolly set it up wrong LMFAO
+/datum/reagent/tartaremetic/overdose(var/mob/living/carbon/M, var/alien)
+	..()
+	M.losebreath += 2
+	M.adjustOxyLoss(2)
+	M.Weaken(4)

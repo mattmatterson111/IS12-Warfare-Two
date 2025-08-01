@@ -28,10 +28,10 @@
 	to_chat(src, msg)
 
 /mob/living/carbon/proc/update_happiness()
-	var/old_happiness = happiness
-	var/old_icon = null
-	if(happiness_icon)
-		old_icon = happiness_icon.icon_state
+	//var/old_happiness = happiness
+	//var/old_icon = null
+	//if(happiness_icon)
+	//	old_icon = happiness_icon.icon_state
 	happiness = 0
 	for(var/i in events)
 		var/modified_mood

@@ -722,7 +722,7 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 			if(W.force <15)
 				for (var/mob/O in hearers(5, src.loc))
 					O.show_message("[user.name] hits the [src.name] with the [W.name] with no visible effect." )
-					playsound(src.loc, 'sound/effects/Glasshit.ogg', 100, 1)
+					playsound(src.loc, "glasshit", 100, 1)
 			else
 				src.hitstaken++
 				if(hitstaken==3)
@@ -733,7 +733,7 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 				else
 					for (var/mob/O in hearers(5, src.loc))
 						O.show_message("[user.name] forcefully slams the [src.name] with the [I.name]!" )
-					playsound(src.loc, 'sound/effects/Glasshit.ogg', 100, 1)
+					playsound(src.loc, "glasshit", 100, 1)
 		else
 			to_chat(user, "<span class='notice'>This does nothing.</span>")
 	update_icon()

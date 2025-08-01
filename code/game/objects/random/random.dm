@@ -249,6 +249,29 @@
 				/obj/item/reagent_containers/food/snacks/warfare/sardine,
 				/obj/item/reagent_containers/food/snacks/warfare/milk)
 
+/obj/random/canned_food/red
+	name = "random canned food"
+	desc = "This is a random canned food"
+	icon = 'icons/obj/food.dmi'
+	icon_state = "redchow"
+
+
+/obj/random/canned_food/red/spawn_choices()
+	return list(/obj/item/reagent_containers/food/snacks/warfare/team/red/redchow,
+				/obj/item/reagent_containers/food/snacks/warfare/team/red/redmeal,
+				/obj/item/reagent_containers/food/snacks/warfare/team/red/redchew)
+
+/obj/random/canned_food/blue
+	name = "random canned food"
+	desc = "This is a random canned food"
+	icon = 'icons/obj/food.dmi'
+	icon_state = "bluechow"
+
+/obj/random/canned_food/blue/spawn_choices()
+	return list(/obj/item/reagent_containers/food/snacks/warfare/team/blue/bluechow,
+				/obj/item/reagent_containers/food/snacks/warfare/team/blue/bluemeal,
+				/obj/item/reagent_containers/food/snacks/warfare/team/blue/bluechew)
+
 /obj/random/bolt_action
 	name = "Bolt Action Rifle"
 	desc = "random bolties"

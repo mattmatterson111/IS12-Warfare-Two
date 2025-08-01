@@ -19,11 +19,24 @@
 	cold_protection = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 	str_requirement = 18
+	footstep = 1
+
+/obj/item/clothing/suit/armor/sentry/handle_movement(var/turf/walking, var/running)
+	if(footstep >= 1)
+		footstep = 0
+		playsound(get_turf(src), "sentry_step", 35, 0) // this will get annoying very fast.
+	else
+		footstep++
+
+
+/obj/item/clothing/suit/armor/sentry/New()
+	..()
+	slowdown_per_slot[slot_wear_suit] = 4
 
 
 /obj/item/clothing/suit/child_coat
-	name = "scav coat"
-	desc = "Fitted just for scavs."
+	name = "child coat"
+	desc = "Small enough for a child to wear it."
 	icon_state = "child_redcoat"
 	can_be_worn_by_child = TRUE
 	child_exclusive = TRUE
@@ -37,33 +50,19 @@
 	icon_state = "bluecoatnew_child"
 	warfare_team = BLUE_TEAM
 
-
-/obj/item/clothing/suit/fire/red
-	name = "Redcoats Firesuit"
-	icon_state = "redfiresuit"
-	warfare_team = RED_TEAM
-	cold_protection = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS
-	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
-	flags_inv = null
-
-/obj/item/clothing/suit/fire/blue
-	name = "Bluecoats Firesuit"
-	icon_state = "bluefiresuit"
-	warfare_team = BLUE_TEAM
-	cold_protection = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS
-	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
-	flags_inv = null
-
 /obj/item/clothing/suit/armor/sniper
 	name = "black cloak"
 	desc = "Boom! Headshot!"
 	icon_state = "sniper"
 	item_state = "sniper"
 	worldicons = list("sniperworld1","sniperworld2")
-	canremove = FALSE
-	var/hood
+	sprite_sheets = list(SPECIES_CHILD = 'icons/mob/species/child/suit.dmi')
+	var/obj/item/clothing/head/sniper/hood = /obj/item/clothing/head/sniper
+	var/hood_on = FALSE
+
+/obj/item/clothing/suit/armor/sniper/Initialize()
+	. = ..()
+	hood = new hood(src)
 
 /obj/item/clothing/suit/armor/sniper/RightClick(mob/user)
 	. = ..()
@@ -71,34 +70,45 @@
 		toggle_hood(user)
 
 /obj/item/clothing/head/sniper
+	name = "hood"
 	icon_state = "hood"
 	item_state = "hood"
+	flags_inv = BLOCKHAIR|HIDEEARS
 	canremove = FALSE
+
+/obj/item/clothing/suit/armor/sniper/proc/put_on_hood(mob/user)
+	if(hood.loc == src)
+		//icon_state = "sniper_hood"
+		user.equip_to_slot_or_del(hood, slot_head)
+		update_clothing_icon()
+
+/obj/item/clothing/suit/armor/sniper/proc/remove_hood(mob/user)
+	if(hood.loc != src)
+		//icon_state = "sniper"
+		user.remove_from_mob(hood)
+		hood.forceMove(src)
+		update_clothing_icon()
 
 
 /obj/item/clothing/suit/armor/sniper/proc/toggle_hood(mob/user)
-	if(user.get_equipped_item(slot_head))
-		if(!istype(user.get_equipped_item(slot_head), /obj/item/clothing/head/sniper))
-			return
-	if(user.get_equipped_item(slot_wear_suit))
-		if(!istype(user.get_equipped_item(slot_wear_suit), src))
-			return
+	if(isworld(loc))
+		return
 	if(!hood)
-		icon_state = "sniper_hood"
-		//canremove = FALSE
-		hood = TRUE
-		var/obj/augh = new/obj/item/clothing/head/sniper(src)
-		user.equip_to_slot_or_del(augh, slot_head)
+		hood = new hood(src) // failsafe
+		hood.forceMove(src)
+	if(!user.get_equipped_item(slot_head) == hood)
+		if(!hood.mob_can_equip(user, slot_head, 1))
+			return
+	if(!user.isEquipped(hood))
+		put_on_hood(user)
 	else
-		if(user.get_equipped_item(slot_head))
-			if(istype(user.get_equipped_item(slot_head), /obj/item/clothing/head/sniper))
-				var/obj/hood = user.get_equipped_item(slot_head)
-				user.remove_from_mob(hood)
-				qdel(hood)
-		icon_state = "sniper"
-		hood = FALSE
-		//canremove = TRUE
-	update_clothing_icon()
+		remove_hood(user)
+	playsound(get_turf(src), "cloth_step", 75, 1)
+
+/obj/item/clothing/suit/armor/sniper/unequipped(mob/user)
+	//icon_state = "sniper" // ugh..
+	if(user.isEquipped(hood))
+		remove_hood(user)
 
 /obj/item/clothing/head/helmet/redhelmet/sniper
 	icon_state = "redsniperhelmet"
@@ -124,16 +134,23 @@
 	name = "scavengers's clothing"
 	desc = "A proper uniform worn by child scavengers."
 	icon_state = "urchin"
+	child_exclusive = TRUE
 	cold_protection = UPPER_TORSO | LOWER_TORSO | LEGS | FEET | ARMS | HANDS//So they don't freeze to death with their clothes on.
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 
 /obj/item/clothing/under/child_jumpsuit/warfare/red
 	warfare_team = RED_TEAM
 	icon_state = "redgrunt_child"
+	worldicons = list("reduniworld1","reduniworld2","reduniworld3")
+	child_exclusive = TRUE
+	canremove = FALSE
 
 /obj/item/clothing/under/child_jumpsuit/warfare/blue
 	warfare_team = BLUE_TEAM
 	icon_state = "bluegrunt_child"
+	worldicons = list("blueuniworld1","blueuniworld2","blueuniworld3")
+	child_exclusive = TRUE
+	canremove = FALSE
 
 //Red shit
 /obj/item/clothing/suit/armor/redcoat
@@ -144,6 +161,12 @@
 	cold_protection = UPPER_TORSO | LOWER_TORSO | LEGS | FEET | ARMS | HANDS
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 	worldicons = list("redcoatworld1","redcoatworld2","redcoatworld3")
+	sprite_sheets = list(SPECIES_CHILD = 'icons/mob/species/child/suit.dmi')
+
+	item_state_slots = list(
+		slot_l_hand_str = "cloth",
+		slot_r_hand_str = "cloth",
+	)
 
 /obj/item/clothing/suit/armor/redcoat/New()
 	..()
@@ -156,42 +179,47 @@
 
 /obj/item/clothing/suit/armor/sentry/red
 	name = "Red Sentry Armor"
-	icon_state = "redsentryarmor"
+	icon_state = "sentry_r"
+	worldicons = "sentry_r_world"
 	warfare_team = RED_TEAM
+	species_restricted = (SPECIES_CHILD)
 
 /obj/item/clothing/head/helmet/sentryhelm/red
 	name = "Red Sentry Helmet"
-	icon_state = "redsentryhelm"
-	item_state = "redsentryhelm"
+	icon_state = "sentry_r"
+	worldicons = "sentry_r_world"
+	item_state = "sentry_r"
 	warfare_team = RED_TEAM
 
 /obj/item/clothing/under/red_uniform
 	name = "Red's uniform"
 	desc = "It's not the best. But it's not the worst."
 	icon_state = "redgrunt"
-	worn_state = "redgrunt_m"
+	//worn_state = "redgrunt_m"
 	warfare_team = RED_TEAM
+	can_be_worn_by_child = FALSE
 	worldicons = list("reduniworld1","reduniworld2","reduniworld3")
+	//sprite_sheets = list(SPECIES_CHILD = 'icons/mob/species/child/mask.dmi')
+	canremove = FALSE
 
 /obj/item/clothing/under/red_uniform/equipped(mob/user)
-	. = ..()
 	var/mob/living/carbon/human/weirdo = user
-	if(weirdo.isChild())
-		worn_state = "[initial(worn_state)]_child"
-		update_clothing_icon()
-		update_icon()
-		return
 	if(weirdo.gender == MALE)
-		worn_state = "[initial(worn_state)]_m"
+		worn_state = "[initial(icon_state)]_m"
 	else
-		worn_state = "[initial(worn_state)]_f"
+		worn_state = "[initial(icon_state)]_f"
+	if(weirdo.isChild())
+		worn_state = "[initial(icon_state)]_child"
+	item_state_slots[slot_w_uniform_str] = worn_state
 	update_clothing_icon()
 	update_icon()
+	. = ..()
 
 /obj/item/clothing/suit/armor/redcoat/leader
 	icon_state = "captaincoat"
 	//item_state = "captaincoat"
 	worldicons = list("captaincoatworld1","captaincoatworld2","captaincoatworld3")
+	sprite_sheets = list(SPECIES_CHILD = 'icons/mob/species/child/suit.dmi')
 
 /obj/item/clothing/suit/armor/redcoat/medic
 	icon_state = "redcoat_medic"
@@ -210,9 +238,9 @@
 	desc = "Sometimes protects your head from bullets and blows."
 	icon_state = "redhelmet"
 	warfare_team = RED_TEAM
-	worldicons = list("redhelmet_world")
+	worldicons = "redhelmet_world"
 	can_be_damaged = TRUE
-	damaged_worldicons = list("redhelmet_world_dam")
+	damaged_worldicons = "redhelmet_world_dam"
 
 /obj/item/clothing/head/helmet/redhelmet/medic
 	icon_state = "redhelmet_medic"
@@ -224,60 +252,54 @@
 /obj/item/clothing/mask/gas/sniper
 	icon_state = "sniper"
 	item_state = "sniper"
-	flags_inv = HIDEEARS|HIDEEYES|HIDEFACE|BLOCKHEADHAIR
+	flags_inv = HIDEEARS|HIDEEYES|HIDEFACE|BLOCKHAIR
 	body_parts_covered = FACE|EYES
 	helmet_vision = TRUE
-	worldicons = list("sniperworld")
+	worldicons = "sniperworld"
 
 /obj/item/clothing/mask/gas/sniper/penal1
 	icon_state = "penal1"
 	item_state = "penal1"
-	flags_inv = HIDEEARS|HIDEEYES|HIDEFACE|BLOCKHEADHAIR
+	flags_inv = HIDEEARS|HIDEEYES|HIDEFACE|BLOCKHAIR
 	body_parts_covered = FACE|EYES
 	helmet_vision = TRUE
-	worldicons = list("penal1_onworld")
+	worldicons = "penal1_onworld"
+	sprite_sheets = list(SPECIES_CHILD = 'icons/mob/species/child/mask.dmi')
 
 /obj/item/clothing/mask/gas/sniper/penal2
 	icon_state = "penal2"
 	item_state = "penal2"
-	flags_inv = HIDEEARS|HIDEEYES|HIDEFACE|BLOCKHEADHAIR
+	flags_inv = HIDEEARS|HIDEEYES|HIDEFACE|BLOCKHAIR
 	body_parts_covered = FACE|EYES
 	helmet_vision = TRUE
-	worldicons = list("penal1_onworld")
+	worldicons = "penal1_onworld"
+	sprite_sheets = list(SPECIES_CHILD = 'icons/mob/species/child/mask.dmi')
 
 /obj/item/clothing/mask/gas/sniper/penal3
 	icon_state = "penal3"
 	item_state = "penal3"
-	flags_inv = HIDEEARS|HIDEEYES|HIDEFACE|BLOCKHEADHAIR
+	flags_inv = HIDEEARS|HIDEEYES|HIDEFACE|BLOCKHAIR
 	body_parts_covered = FACE|EYES
 	helmet_vision = TRUE
-	worldicons = list("penal3_onworld")
-
-/obj/item/clothing/mask/gas/flamer
-	icon_state = "sniper"
-	item_state = "sniper"
-	flags_inv = HIDEEARS|HIDEEYES|HIDEFACE|BLOCKHEADHAIR
-	body_parts_covered = FACE|EYES
-	helmet_vision = TRUE
-	worldicons = list("sniperworld")
+	worldicons = "penal3_onworld"
+	sprite_sheets = list(SPECIES_CHILD = 'icons/mob/species/child/mask.dmi')
 
 /obj/item/clothing/mask/gas/blue
 	icon_state = "bluemask"
 	item_state = "bluemask"
-	flags_inv = HIDEEARS|HIDEEYES|HIDEFACE|BLOCKHEADHAIR
+	flags_inv = HIDEEARS|HIDEEYES|HIDEFACE|BLOCKHAIR
 	body_parts_covered = FACE|EYES
 	helmet_vision = TRUE
-	worldicons = list("bluemaskworld")
+	worldicons = "bluemaskworld"
+
 
 /obj/item/clothing/mask/gas/red
 	icon_state = "redmask"
 	item_state = "redmask"
-	flags_inv = HIDEEARS|HIDEEYES|HIDEFACE|BLOCKHEADHAIR
+	flags_inv = HIDEEARS|HIDEEYES|HIDEFACE|BLOCKHAIR
 	body_parts_covered = FACE|EYES
 	helmet_vision = TRUE
-	worldicons = list("redmaskworld")
-
-
+	worldicons = "redmaskworld"
 
 //Nam shit
 /obj/item/clothing/suit/armor/redcoat/nam
@@ -307,6 +329,8 @@
 	icon_state = "redgloves"
 	item_state = "redgloves"
 	equipsound = 'sound/effects/wear_gloves.ogg'
+	worldicons = "redglovesworld"
+	sprite_sheets = list(SPECIES_CHILD = 'icons/mob/species/child/hands.dmi')
 
 /obj/item/clothing/gloves/thick/swat/combat/warfare/red
 	icon_state = "redgloves"
@@ -322,6 +346,12 @@
 	cold_protection = UPPER_TORSO | LOWER_TORSO | LEGS | FEET | ARMS | HANDS
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 	worldicons = list("bluecoatworld1","bluecoatworld2","bluecoatworld3")
+	sprite_sheets = list(SPECIES_CHILD = 'icons/mob/species/child/suit.dmi')
+
+	item_state_slots = list(
+		slot_l_hand_str = "cloth",
+		slot_r_hand_str = "cloth",
+	)
 
 /obj/item/clothing/suit/armor/bluecoat/New()
 	..()
@@ -342,18 +372,26 @@
 /obj/item/clothing/suit/armor/sentry/blue
 	warfare_team = BLUE_TEAM
 	name = "Blue Sentry Armor"
-	icon_state = "bluesentryarmor"
+	icon_state = "sentry_b"
+	worldicons = "sentry_b_world"
 
 /obj/item/clothing/head/helmet/sentryhelm/blue
 	warfare_team = BLUE_TEAM
 	name = "Blue Sentry Helmet"
-	icon_state = "blue_sentry_helmet"
-	item_state = "blue_sentry_helmet"
+	icon_state = "sentry_b"
+	worldicons = "sentry_b_world"
+	item_state = "sentry_b"
 
 /obj/item/clothing/suit/armor/bluecoat/leader
 	icon_state = "captaincoat"
 	//item_state = "captaincoat"
 	worldicons = list("captaincoatworld1","captaincoatworld2","captaincoatworld3")
+
+	item_state_slots = list(
+		slot_l_hand_str = "cloth",
+		slot_r_hand_str = "cloth",
+	)
+
 
 /obj/item/clothing/suit/armor/bluecoat/medic
 	icon_state = "bluecoat_medic"
@@ -366,9 +404,12 @@
 	icon_state = "bluegrunt"
 	worn_state = "bluegrunt_m"
 	warfare_team = BLUE_TEAM
+	can_be_worn_by_child = FALSE
 	worldicons = list("blueuniworld1","blueuniworld2","blueuniworld3")
+	//sprite_sheets = list(SPECIES_CHILD = 'icons/mob/species/child/mask.dmi')
+	canremove = FALSE
 
-/obj/item/clothing/under/blue_uniform/equipped(mob/user)
+/obj/item/clothing/under/blue_uniform/equipped(mob/user) // This is stupid. But it works.
 	. = ..()
 	var/mob/living/carbon/human/weirdo = user
 	if(weirdo.isChild())
@@ -400,18 +441,26 @@
 	desc = "Sometimes protects your head from bullets and blows."
 	icon_state = "redhelmet"
 	warfare_team = RED_TEAM
-	worldicons = list("redhelmet_world")
+	worldicons = "redhelmet_world"
 	can_be_damaged = TRUE
-	damaged_worldicons = list("redhelmet_world_dam")
+	damaged_worldicons = "redhelmet_world_dam"
+	item_icons = list(
+		slot_l_hand_str = 'icons/mob/onmob/items/lefthand.dmi',
+		slot_r_hand_str = 'icons/mob/onmob/items/righthand.dmi',
+	)
 
 /obj/item/clothing/head/helmet/bluehelmet
 	name = "Blue's Helmet"
 	desc = "Sometimes protects your head from bullets and blows."
 	icon_state = "bluehelmet"
 	warfare_team = BLUE_TEAM
-	worldicons = list("bluehelmet_world")
+	worldicons = "bluehelmet_world"
 	can_be_damaged = TRUE
-	damaged_worldicons = list("bluehelmet_world_dam")
+	damaged_worldicons = "bluehelmet_world_dam"
+	item_icons = list(
+		slot_l_hand_str = 'icons/mob/onmob/items/lefthand.dmi',
+		slot_r_hand_str = 'icons/mob/onmob/items/righthand.dmi',
+	)
 
 /obj/item/clothing/head/helmet/bluehelmet/medic
 	icon_state = "bluehelmet_medic"
@@ -421,12 +470,18 @@
 	item_state = "redgloves"
 	warfare_team = BLUE_TEAM
 
-/obj/item/clothing/mask/gas/
+/obj/item/clothing/mask/gas
 	icon_state = "gasmask"
 	item_state = "gasask"
 	flags_inv = HIDEEARS|HIDEEYES|HIDEFACE|BLOCKHEADHAIR
 	body_parts_covered = FACE|EYES
 	helmet_vision = TRUE
+	sprite_sheets = list(SPECIES_CHILD = 'icons/mob/species/child/mask.dmi')
+
+	item_state_slots = list(
+		slot_l_hand_str = "gasmask",
+		slot_r_hand_str = "gasmask",
+	)
 
 /obj/item/clothing/head/helmet/bluehelmet/leader
 	icon_state = "bluehelmet_leader"
@@ -473,6 +528,7 @@
 	origin_tech = list(TECH_ILLEGAL = 3)
 	syndie = 1
 	ks1type = /obj/item/device/encryptionkey/red
+	sprite_sheets = list(SPECIES_CHILD = 'icons/mob/species/child/ears.dmi')
 
 /obj/item/device/radio/headset/red_team/Initialize()
 	. = ..()
@@ -611,6 +667,13 @@
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 	canremove = FALSE
 
+/obj/item/clothing/suit/prac_arpon/handle_movement(var/turf/walking, var/running)
+	if(footstep >= 1)
+		footstep = 0
+		playsound(get_turf(src), "cloth_step", 60, 0) // this will get annoying very fast.
+	else
+		footstep++
+
 /obj/item/clothing/mask/gas/prac_mask
 	name = "practioner mask"
 	desc = "Keeps all that blood off your face."
@@ -621,6 +684,17 @@
 	body_parts_covered = FACE|EYES|HEAD
 	helmet_vision = FALSE
 	canremove = FALSE
+
+/obj/item/clothing/mask/gas/prac_mask/broken
+	name = "broken mask"
+	icon_state = "prac_mask_broken"
+	item_state = "prac_mask_broken"
+
+/obj/item/clothing/head/that/prac
+	name = "beaked hat"
+	icon_state = "dapper_hat"
+	item_state = "dapper_hat"
+	worldicons = "dapper_hat_world"
 
 /obj/item/clothing/shoes/prac_boots
 	name = "practioner footwraps"
@@ -701,7 +775,7 @@
 
 /obj/item/storage/belt/autoshotty
 	name = "ammo belt"
-	desc = "Great for holding ammo! This one starts with smg ammo."
+	desc = "Great for holding ammo! This one starts with Warcrime magazines."
 	icon_state = "warfare_belt"
 	item_state = "warfare_belt"
 	can_hold = list(
@@ -717,7 +791,7 @@
 
 /obj/item/storage/belt/armageddon
 	name = "ammo belt"
-	desc = "Great for holding ammo! This one starts with Armageddon ammo."
+	desc = "Great for holding ammo! This one starts with Armageddon magazines."
 	icon_state = "warfare_belt"
 	item_state = "warfare_belt"
 	can_hold = list(
@@ -733,15 +807,16 @@
 
 /obj/item/storage/box/ifak
 	name = "IFAK"
-	desc = "An Individual First Aid Kit, used to keep you alive until a medic can patch you up proper."
+	desc = "An Individual First Aid Kit, used to keep you alive until a medic can patch you up properly."
 	icon_state = "ifak"
 	startswith = list(/obj/item/bandage_pack, /obj/item/tourniquet, /obj/item/reagent_containers/hypospray/autoinjector/morphine,/obj/item/reagent_containers/hypospray/autoinjector/warfare/trooper)
 	w_class = ITEM_SIZE_SMALL
-	worldicons = list("ifakworld")
+	worldicons = "ifakworld"
 	max_storage_space = 8
 	use_sound = "military_rustle_light"
 	close_sound = "military_rustle_light_close"
 	drop_sound = 'sound/effects/ifak_drop.ogg'
+	cant_hold = list(/obj/item/storage/box/ifak)
 
 /obj/item/storage/box/ifak/attack_hand(var/mob/living/carbon/human/user)
 	if(!istype(user))
@@ -758,7 +833,7 @@
 
 /obj/item/bandage_pack
 	name = "Bandage Pack"
-	desc = "Holds a bandage. One time use. You can't put the bandage back don't try."
+	desc = "Holds a bandage. One time use. You can't put the bandage back, don't try."
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "bandage_pack1"
 	w_class = ITEM_SIZE_SMALL
@@ -817,6 +892,13 @@
 
 
 //RED STORAGE ITEMS
+
+/obj/item/storage/backpack/satchel/warfare/prac
+	icon_state = "firstaidsatchel"
+
+/obj/item/storage/backpack/satchel/warfare/prac/blue
+	icon_state = "firstaidsatchel_blue"
+
 /obj/item/storage/backpack/satchel/warfare/red
 	icon_state = "redsatchel"
 
@@ -828,12 +910,7 @@
 	icon_state = "redpack"
 
 /obj/item/storage/backpack/satchel/warfare/chestrig/red
-	icon_state = "redchestrig"
-
-	New()
-		icon_state = pick("redchestrig", "redchestrigalt")
-		item_state = icon_state
-		..()
+	icon_state = "chestrig"
 
 /obj/item/storage/backpack/satchel/warfare/chestrig/red/medic
 	New()
@@ -865,6 +942,12 @@
 		for(var/x, x<4, x++)
 			new /obj/item/ammo_magazine/autoshotty(src)
 
+/obj/item/storage/backpack/satchel/warfare/chestrig/red/oldlmg
+	New()
+		..()
+		for(var/x, x<4, x++)
+			new /obj/item/ammo_magazine/c45rifle/flat(src)
+
 
 //BLUE STORAGE ITEMS
 /obj/item/storage/backpack/satchel/warfare/blue
@@ -883,7 +966,7 @@
 	icon_state = "blue_backpack"
 
 /obj/item/storage/backpack/satchel/warfare/chestrig/blue
-	icon_state = "blue_chestrig"
+	icon_state = "chestrig"
 
 /obj/item/storage/backpack/satchel/warfare/chestrig/blue/soldier
 	New()
@@ -892,7 +975,7 @@
 			new /obj/item/ammo_magazine/c45rifle/akarabiner(src)
 
 /obj/item/storage/backpack/satchel/warfare/chestrig/blue/medical
-	icon_state = "medic_chestrigblue"
+	icon_state = "chestrig"
 
 	New()
 		..()
@@ -918,16 +1001,24 @@
 		for(var/x, x<4, x++)
 			new /obj/item/ammo_magazine/autoshotty(src)
 
+obj/item/storage/backpack/satchel/warfare/chestrig/blue/oldlmg
+	New()
+		..()
+		for(var/x, x<4, x++)
+			new /obj/item/ammo_magazine/c45rifle/flat(src)
+
 
 /obj/item/clothing/shoes/jackboots/warfare/red
 	icon_state = "redboots"
 	item_state = "redboots"
 	warfare_team = RED_TEAM
+	sprite_sheets = list(SPECIES_CHILD = 'icons/mob/species/child/feet.dmi')
 
 /obj/item/clothing/shoes/jackboots/warfare/blue
 	icon_state = "redboots"
 	item_state = "redboots"
 	warfare_team = BLUE_TEAM
+	sprite_sheets = list(SPECIES_CHILD = 'icons/mob/species/child/feet.dmi')
 
 /obj/item/grenade_dud
 	name = "Dud"
@@ -938,23 +1029,32 @@
 
 //IFAK Autoinjector
 /obj/item/reagent_containers/hypospray/autoinjector/warfare/trooper
-	name = "Bland Corp. 'Second Wind' Autoinjector"
-	desc = "An autoinjector issued to frontline troops, allows them to quickly revive their comrades for a brief window of time."
+	name = "Bland Corp. 'Second Wind' Injectable"
+	desc = "An injectable syrette issued to frontline troops. It allows them to quickly revive their comrades for a brief window of time."
 	starts_with = list(/datum/reagent/tramadol/morphine = 5, /datum/reagent/atepoine = 10)
 	volume = 50
 	amount_per_transfer_from_this = 50
+	icon_state = "syrette_closedalt"
+	inject_sound = 'sound/items/syrette_inject.ogg'
+
+/obj/item/reagent_containers/hypospray/autoinjector/warfare/trooper/update_icon()
+	if(reagents.total_volume > 0)
+		icon_state = "syrette_closedalt"
+	else
+		icon_state = "syrette_openalt"
 
 /obj/item/reagent_containers/hypospray/autoinjector/warfare/trooper/New()
 	..()
 	reagents.add_reagent(/datum/reagent/blood, 30, list("donor" = null, "blood_DNA" = null, "blood_type" = "O-", "trace_chem" = null, "virus2" = list(), "antibodies" = list()))
+
 /obj/item/reagent_containers/hypospray/autoinjector/warfare/trooper/examine(mob/user)
 	. = ..()
 	if(get_dist(user, src) > 1)
 		return
 	to_chat(user,SPAN_BOLD("You notice a set of instructions on the label:"))
-	to_chat(user,SPAN_WARNING("USE TO QUICKLY STABALISE YOUR FELLOW TROOPER. AFTER INJECTION, URGE THEM TO PERFORM SELF SURGERY, OR REQUEST A PRACTITIONER. THEY WILL ONLY HAVE 30 SECONDS TO ACT."))
+	to_chat(user,SPAN_WARNING("USE TO QUICKLY STABILISE YOUR FELLOW TROOPER. AFTER INJECTION, URGE THEM TO PERFORM SELF SURGERY, OR REQUEST A PRACTITIONER. THEY WILL ONLY HAVE 30 SECONDS TO ACT."))
 	to_chat(user,SPAN_WARNING("<u>YOU ONLY HAVE ONE. USE IT WITH GREAT CONSIDERATION AND THE AIM TO MINIMIZE FRIENDLY CASUALTIES. DO NOT USE IT ON YOURSELF UNLESS THE SITUATION IS DIRE.</u>"))
-	to_chat(user,SPAN_BOLD("<small>Bland Corp. does not bear any responsibility in the case of any deaths or harm caused by their products. All products have been approved by the Powers That Be. Any attempt at a civil suit will be null and void.</b>"))
+	to_chat(user,SPAN_BOLD("<small>Bland Corp. does not bear any responsibility in the case of any deaths or harm caused by our products. All products have been approved by the Powers That Be. Any attempt at a civil suit will be null and void.</b>"))
 
 
 
@@ -979,7 +1079,7 @@
 	flags_inv = HIDEEARS|HIDEEYES|HIDEFACE|BLOCKHEADHAIR
 	body_parts_covered = FACE|EYES
 	helmet_vision = FALSE
-	worldicons = list("sniperworld")
+	worldicons = "sniperworld"
 	canremove = FALSE
 
 /obj/item/clothing/head/moraleofficer
@@ -992,7 +1092,7 @@
 
 /obj/item/clothing/under/moraleofficer
 	name = "Morale Officer's Suit"
-	desc = "A serious uniform. Ignore the piss stains and brown skid marks at the back."
+	desc = "A serious uniform. Ignore the piss stains and brown skid marks on the back."
 	icon_state = "redgrunt"
 	worn_state = "redgrunt"
 	item_state = "redgrunt"
@@ -1103,6 +1203,8 @@
 
 //CLicking on peopple from a distance to add to the book
 /obj/item/black_book/afterattack(mob/living/carbon/human/target, mob/user)
+	if(!ishuman(user))
+		return
 	if(user.a_intent == I_HURT && user.Adjacent(target) && user.zone_sel.selecting == BP_HEAD)
 		playsound(get_turf(src), 'sound/effects/slap.ogg', 100, 1)
 		target.ear_deaf += 15
@@ -1133,7 +1235,7 @@
 	name = "megaphone"
 	desc = "A device used to project your voice. Loudly."
 	icon_state = "megaphone_red"
-	worldicons = list("megaphone_red_world")
+	worldicons = "megaphone_red_world"
 
 	message_color = "#d33434"
 
@@ -1141,7 +1243,7 @@
 	name = "megaphone"
 	desc = "A device used to project your voice. Loudly."
 	icon_state = "megaphone_blue"
-	worldicons = list("megaphone_blue_world")
+	worldicons = "megaphone_blue_world"
 
 	message_color = "#3466d3"
 
@@ -1157,7 +1259,7 @@
 	power_rang
 	light_color = "#e6c2a1"
 	var/examined
-
+/*
 /obj/item/device/flashlight/lamp/captain/examine(mob/user, distance)
 	. = ..()
 	if(!ishuman(user))
@@ -1180,7 +1282,7 @@
 				sound_to(user, sound('sound/effects/skill/interface-diceroll-success-02-01.ogg', volume = 100))
 				sleep(10)
 				to_chat(user, result.create_tooltip("You look away just in time, your eyes are saved from the wrath of a thousand suns."))
-
+*/
 /obj/item/device/flashlight/lamp/captain/attack_hand(mob/user)
 	if(CanPhysicallyInteract(user))
 		on = !on
@@ -1200,3 +1302,80 @@
 		sound_to(user, sound('sound/effects/skill/interface-skill-passiveINT-04-01.ogg', volume = 100))
 		to_chat(user, span_mindvoice("A wave of satisfaction washes over you- You feel proud of what you've accomplished."))
 */
+
+// flamer
+
+/obj/item/clothing/mask/gas/red/flamer
+	icon_state = "flamer_red"
+	item_state = "flamer_red"
+	flags_inv = HIDEEARS|HIDEEYES|HIDEFACE|BLOCKHAIR
+	body_parts_covered = FACE|EYES
+	cold_protection = HEAD
+	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
+	helmet_vision = FALSE
+	worldicons = "sniperworld"
+
+/obj/item/clothing/mask/gas/blue/flamer
+	icon_state = "flamer_blue"
+	item_state = "flamer_blue"
+	flags_inv = HIDEEARS|HIDEEYES|HIDEFACE|BLOCKHAIR
+	body_parts_covered = FACE|EYES
+	cold_protection = HEAD
+	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
+	helmet_vision = FALSE
+	worldicons = "sniperworld"
+
+/obj/item/clothing/shoes/jackboots/warfare/red/flamer
+	item_state = "flamer_red"
+
+/obj/item/clothing/shoes/jackboots/warfare/blue/flamer
+	item_state = "flamer_blue"
+
+
+/obj/item/clothing/gloves/thick/swat/combat/warfare/red/flamer
+	icon_state = "flamer_red"
+	item_state = "flamer_red"
+
+/obj/item/clothing/gloves/thick/swat/combat/warfare/blue/flamer
+	icon_state = "flamer_blue"
+	item_state = "flamer_blue"
+
+/obj/item/clothing/suit/fire
+	var/last_sound = null
+	var/list/footstep_sounds = list('sound/effects/footsteps/armor/flamer/foot1.ogg','sound/effects/footsteps/armor/flamer/foot2.ogg','sound/effects/footsteps/armor/flamer/foot3.ogg')
+	armor = list(melee = 40, bullet = 40, laser = 40, energy = 40, bomb = 30, bio = 10, rad = 0)//Beefy boys.
+	// Experimental armor values, more or less like half of the sentries
+// hacky bs but its my bs <3
+
+/obj/item/clothing/suit/fire/red
+	name = "Redcoats Firesuit"
+	icon_state = "flamer_red"
+	warfare_team = RED_TEAM
+	cold_protection = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS
+	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
+	flags_inv = null
+
+/obj/item/clothing/suit/fire/blue
+	name = "Bluecoats Firesuit"
+	icon_state = "flamer_blue"
+	warfare_team = BLUE_TEAM
+	cold_protection = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS
+	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
+	flags_inv = null
+
+/obj/item/clothing/suit/fire/handle_movement(var/turf/walking, var/running)
+	last_sound = pick(footstep_sounds - last_sound)
+	playsound(get_turf(src), last_sound, 25, FALSE) // this will get annoying very fast.
+	/*
+	if(footstep >= 1)
+		footstep = 0
+		playsound(get_turf(src), "flamer_step", 35, 0) // this will get annoying very fast.
+	else
+		footstep++
+		*/
+
+/obj/item/clothing/suit/fire/New()
+	..()
+	slowdown_per_slot[slot_wear_suit] = 2

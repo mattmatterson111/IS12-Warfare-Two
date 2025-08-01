@@ -67,3 +67,10 @@
 	opacity = 1
 	glass = 0
 	assembly_type = /obj/structure/door_assembly/multi_tile/maintenance
+
+/obj/machinery/door/airlock/multi_tile/metal/maintenance/blue
+	name = "Airlock"
+	icon = 'icons/obj/doors/Doordoublesecglass1x2BLUE.dmi'
+	opacity = 1
+	glass = 0
+	assembly_type = /obj/structure/door_assembly/multi_tile/maintenance

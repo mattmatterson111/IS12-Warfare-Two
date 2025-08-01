@@ -63,6 +63,7 @@
 #define SPACE UNDERWATER
 
 GLOBAL_LIST_INIT(shatter_sound,list('sound/effects/Glassbr1.ogg','sound/effects/Glassbr2.ogg','sound/effects/Glassbr3.ogg'))
+GLOBAL_LIST_INIT(glasshit,list('sound/effects/Glasshit.ogg','sound/effects/Glasshit1.ogg','sound/effects/Glasshit2.ogg'))
 GLOBAL_LIST_INIT(explosion_sound,list('sound/effects/explosion1.ogg','sound/effects/explosion2.ogg','sound/effects/explosion3.ogg','sound/effects/explosion4.ogg','sound/effects/explosion5.ogg','sound/effects/explosion6.ogg'))
 GLOBAL_LIST_INIT(explosion_small,list('sound/effects/explosion_small1.ogg', 'sound/effects/explosion_small2.ogg', 'sound/effects/explosion_small3.ogg'))
 GLOBAL_LIST_INIT(spark_sound,list('sound/effects/sparks1.ogg','sound/effects/sparks2.ogg','sound/effects/sparks3.ogg','sound/effects/sparks4.ogg'))
@@ -120,7 +121,10 @@ GLOBAL_LIST_INIT(revolver_fire, list('sound/weapons/gunshot/revolverfire1.ogg','
 GLOBAL_LIST_INIT(revolver_reload, list('sound/weapons/guns/interact/revolverload1.ogg','sound/weapons/guns/interact/revolverload2.ogg','sound/weapons/guns/interact/revolverload3.ogg'))
 GLOBAL_LIST_INIT(concrete_metal_scrape, list('sound/effects/metalconcrete1.ogg','sound/effects/metalconcrete2.ogg','sound/effects/metalconcrete3.ogg'))
 GLOBAL_LIST_INIT(megaphone, list('sound/effects/megaphone_01.ogg','sound/effects/megaphone_02.ogg', 'sound/effects/megaphone_05.ogg'))
-
+GLOBAL_LIST_INIT(launcher_fire, list('sound/weapons/guns/fire/launcher_fire_01.ogg','sound/weapons/guns/fire/launcher_fire_02.ogg'))
+GLOBAL_LIST_INIT(sentrystep,list('sound/effects/footsteps/armor/sentry/sentry1.ogg','sound/effects/footsteps/armor/sentry/sentry2.ogg','sound/effects/footsteps/armor/sentry/sentry3.ogg'))
+GLOBAL_LIST_INIT(pracstep,list('sound/effects/footsteps/prac/prac1.ogg','sound/effects/footsteps/prac/prac2.ogg','sound/effects/footsteps/prac/prac3.ogg'))
+GLOBAL_LIST_INIT(keypad,list('sound/effects/keypad/pad1.ogg','sound/effects/keypad/pad2.ogg'))
 
 /proc/playsound(atom/source, soundin, vol as num, vary, extrarange as num, falloff, is_global, frequency, is_ambiance = 0,  ignore_walls = TRUE, zrange = 2, override_env, envdry, envwet)
 	if(isarea(source))
@@ -253,6 +257,7 @@ var/const/FALLOFF_SOUNDS = 0.5
 	if(istext(soundin))
 		switch(soundin)
 			if ("shatter") soundin = pick(GLOB.shatter_sound)
+			if ("glasshit") soundin = pick(GLOB.glasshit)
 			if ("explosion") soundin = pick(GLOB.explosion_sound)
 			if ("explosion_small") soundin = pick(GLOB.explosion_small)
 			if ("sparks") soundin = pick(GLOB.spark_sound)
@@ -306,6 +311,10 @@ var/const/FALLOFF_SOUNDS = 0.5
 			if ("revolver_reload") soundin = pick(GLOB.revolver_reload)
 			if ("concrete_metal_scrape") soundin = pick(GLOB.concrete_metal_scrape)
 			if ("loudspeaker") soundin = pick(GLOB.megaphone)
+			if ("launcher_fire") soundin = pick(GLOB.launcher_fire)
+			if ("sentry_step") soundin = pick(GLOB.sentrystep)
+			if ("cloth_step") soundin = pick(GLOB.pracstep)
+			if ("keypad") soundin = pick(GLOB.keypad)
 	return soundin
 
 

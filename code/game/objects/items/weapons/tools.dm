@@ -195,9 +195,10 @@
 
 	//..()
 
-
 /obj/item/proc/remove_shrapnel(mob/living/C as mob, mob/living/user as mob)
 	//REMOVE SHRAPNEL! VERY IMPORTANT FOR WARFARE!
+	if(user.doing_something)
+		return
 	if(ishuman(C))
 		var/mob/living/carbon/human/H = C
 		var/mob/living/carbon/human/userr = user
@@ -206,7 +207,10 @@
 			for(var/obj/item/O in organ.implants)
 				if(istype(O,/obj/item/material/shard/shrapnel))
 					H.visible_message("<span class='bnotice'>[userr] starts to remove \the [O.name] with \the [src].</span>")
-					if(do_after(userr, (backwards_skill_scale(user.SKILL_LEVEL(medical)) * 5)))
+					userr.doing_something = TRUE
+					if(do_after(userr, (backwards_skill_scale(user.SKILL_LEVEL(medical)) * 2.5)))
+						userr.my_skills[SKILL(medical)].give_xp(10, user)
+						userr.doing_something = FALSE
 						for(var/datum/wound/wound in organ.wounds)
 							wound.embedded_objects -= O
 						organ.implants -= O
@@ -216,6 +220,7 @@
 						playsound(H, 'sound/effects/bullet_remove.ogg', 50)
 						return
 					else
+						userr.doing_something = FALSE
 						return
 
 /*

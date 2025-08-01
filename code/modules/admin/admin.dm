@@ -88,6 +88,8 @@ var/global/floorIsLava = 0
 		else
 			body += "<A href='?src=\ref[src];removestaffwarn=\ref[M]'>Remove StaffWarn</A>"
 
+		body += "<br><A href='?src=\ref[src];changeteam=\ref[M]'>Change Warfare Faction</A>"
+
 	body += {"<br><br>
 		<A href='?src=\ref[src];jumpto=\ref[M]'><b>Jump to</b></A> |
 		<A href='?src=\ref[src];getmob=\ref[M]'>Get</A> |

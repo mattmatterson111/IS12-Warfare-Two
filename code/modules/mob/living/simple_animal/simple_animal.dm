@@ -201,6 +201,8 @@
 					do_dodge()
 					return
 			adjustBruteLoss(harm_intent_damage)
+			receive_damage()
+			playsound(loc, "punch", 25, 1, -1)
 			M.visible_message("<span class='warning'>[M] [response_harm] \the [src]</span>")
 
 	return

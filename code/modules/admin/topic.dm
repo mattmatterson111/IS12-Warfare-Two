@@ -1974,6 +1974,19 @@
 			if("No")
 				return
 
+	if(href_list["changeteam"])
+		var/mob/M = locate(href_list["changeteam"])
+		if(!ismob(M)) return
+		switch(alert("Select Method",,"List","Manual Input"))
+			if("List")
+				var/list/factions = list(RED_TEAM, BLUE_TEAM)
+				var/set_to = input(usr, "Pick a faction:") as null|anything in factions // lazy, have it copied twice :)
+				M.client.warfare_faction = set_to
+				M.warfare_faction = set_to
+			if("Manual Input")
+				var/set_to = sanitize(input("Please type the faction name:") as null|text)
+				M.client.warfare_faction = set_to
+				M.warfare_faction = set_to
 mob/living/proc/can_centcom_reply()
 	return 0
 

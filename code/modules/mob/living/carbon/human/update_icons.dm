@@ -641,8 +641,6 @@ var/global/list/damage_icon_parts = list()
 	if(client)
 		client.screen |= contents
 		//client.images.Cut()
-		set_squad_huds()
-		set_team_huds()
 		if(hud_used)
 			hud_used.hidden_inventory_update() 	//Updates the screenloc of the items on the 'other' inventory bar
 			hud_used.add_inventory_overlay()

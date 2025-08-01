@@ -89,6 +89,13 @@
 	if(prob(1))
 		sound_to(src, sound('sound/effects/death.ogg', volume = 50))
 
+	if(!GLOB.first_death)
+		GLOB.first_death = real_name
+	if(!GLOB.first_death_happened)
+		GLOB.first_death_happened = TRUE
+	if(!GLOB.final_words)
+		GLOB.final_words = last_words
+
 /mob/living/carbon/human/proc/ChangeToHusk()
 	if(HUSK in mutations)	return
 

@@ -112,7 +112,8 @@
 	create_reagents(100)
 	reagents.add_reagent(/datum/reagent/toxin/mustard_gas, 50)
 	var/location = get_turf(src)
-	var/datum/effect/effect/system/smoke_spread/chem/S = new
+	var/datum/effect/effect/system/smoke_spread/chem/S = new()
+	S.particles = FALSE
 	S.attach(location)
 	S.set_up(reagents, 50, 0, location)
 	spawn(0)

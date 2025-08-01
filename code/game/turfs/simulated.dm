@@ -98,6 +98,10 @@
 					bloodDNA = H.feet_blood_DNA
 					bloodcolor = H.feet_blood_color
 					H.track_blood--
+			if(H.wear_suit)
+				var/obj/item/clothing/suit/S = H.wear_suit
+				if(istype(S))
+					S.handle_movement(src,(H.m_intent == "run" ? 1 : 0))
 
 			if (bloodDNA)
 				src.AddTracks(H.species.get_move_trail(H),bloodDNA,H.dir,0,bloodcolor) // Coming

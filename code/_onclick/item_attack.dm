@@ -169,6 +169,9 @@ avoid code duplication. This includes items that may sometimes act as a standard
 	if(swing_sound)
 		playsound(user, swing_sound, 50, 1, -1)
 
+	if(hit_shake)
+		shake_camera(user, hit_shake+1, hit_shake)
+
 	if(offhand_attack)
 		var/obj/item/I = user.get_inactive_hand()
 		if(I)

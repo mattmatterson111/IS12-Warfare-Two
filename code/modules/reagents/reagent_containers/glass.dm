@@ -19,6 +19,12 @@
 	table_sound = 'sound/items/placing_glass.ogg'
 	table_pickup_sound = 'sound/items/generic_lift.ogg'
 
+	var/lid_on = "You put the lid on"
+	var/lid_off = "You put the lid off"
+
+	var/lid_on_sound
+	var/lid_off_sound
+
 	var/list/can_be_placed_into = list(
 		/obj/machinery/chem_master/,
 		/obj/machinery/chemical_dispenser,
@@ -58,15 +64,24 @@
 	if(!is_open_container())
 		to_chat(user, "<span class='notice'>The airtight lid seals it completely.</span>")
 
-/obj/item/reagent_containers/glass/attack_self()
-	..()
+/obj/item/reagent_containers/glass/proc/toggle_lid(mob/user)
 	if(is_open_container())
-		to_chat(usr, "<span class = 'notice'>You put the lid on \the [src].</span>")
+		to_chat(usr, "<span class = 'notice'>[lid_on] \the [src].</span>")
+		playsound(get_turf(src), lid_on_sound, 75, 1)
 		atom_flags ^= ATOM_FLAG_OPEN_CONTAINER
 	else
-		to_chat(usr, "<span class = 'notice'>You take the lid off \the [src].</span>")
+		to_chat(usr, "<span class = 'notice'>[lid_off] \the [src].</span>")
+		playsound(get_turf(src), lid_off_sound, 75, 1)
 		atom_flags |= ATOM_FLAG_OPEN_CONTAINER
 	update_icon()
+
+/obj/item/reagent_containers/glass/attack_self()
+	. = ..()
+	toggle_lid(usr)
+
+/obj/item/reagent_containers/glass/RightClick(mob/user)
+	. = ..()
+	toggle_lid(user)
 
 /obj/item/reagent_containers/glass/attack(mob/M as mob, mob/user as mob, def_zone)
 	if(force && !(item_flags & ITEM_FLAG_NO_BLUDGEON) && user.a_intent == I_HURT)
@@ -82,6 +97,9 @@
 	if(user.a_intent == I_HURT)
 		return 1
 	return ..()
+
+/obj/item/reagent_containers/glass/feed_sound(mob/user)
+	playsound(user.loc, "drink", 100, FALSE)
 
 /obj/item/reagent_containers/glass/self_feed_message(var/mob/user)
 	to_chat(user, "<span class='notice'>You swallow a gulp from \the [src].</span>")

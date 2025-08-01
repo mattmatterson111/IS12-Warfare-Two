@@ -41,7 +41,11 @@
 	walltype = "perspecticrete"
 	mineral = "rust"
 	plane = WALL_PLANE
-	integrity = 500 //Tough bois
+	integrity = 2500 //Tough bois
+
+/turf/simulated/wall/perspecticrete/bullet_act(obj/item/projectile/Proj)
+	return FALSE
+// Use C4 instead ^^
 
 /turf/simulated/wall/concrete/strong/oldcrete
 	icon = 'icons/turf/oldcrete.dmi'

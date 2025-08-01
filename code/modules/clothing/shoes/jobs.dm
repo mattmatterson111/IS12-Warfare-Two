@@ -21,10 +21,9 @@
 	siemens_coefficient = 0.7
 	can_hold_knife = 1
 	cold_protection = FEET
-	var/initialicon
 	min_cold_protection_temperature = HELMET_MIN_COLD_PROTECTION_TEMPERATURE
 	var/obj/item/material/sword/combat_knife/knife = null
-	worldicons = list("redbootsworld")
+	worldicons = "redbootsworld"
 
 /obj/item/clothing/shoes/jackboots/New()
 	..()
@@ -47,12 +46,13 @@
 			playsound(src, 'sound/items/holster_knife.ogg', 50, 0, -1)
 
 /obj/item/clothing/shoes/jackboots/attack_hand(mob/living/user)
-	if(knife)
-		user.put_in_active_hand(knife)
-		knife = null
-		if(!isworld(user))
-			update_icon()
-		return
+	if(!isworld(loc))
+		if(knife)
+			user.put_in_active_hand(knife)
+			knife = null
+			if(!isworld(user))
+				update_icon()
+			return
 	..()
 
 /obj/item/clothing/shoes/jackboots/update_icon()
@@ -60,16 +60,16 @@
 	if(!isworld(loc))
 		if(knife)
 			icon_state = "[initial(icon_state)]_strap_knife"
-			initialicon = icon_state
+			originalstate = "[initial(icon_state)]_strap_knife"
 			return
 		else
 			if(!isworld(loc))
-				initialicon = "[initial(icon_state)]_strap"
+				originalstate = "[initial(icon_state)]_strap"
 				icon_state = "[initial(icon_state)]_strap"
 			else
-				initialicon = "[initial(icon_state)]_strap"
+				originalstate = "[initial(icon_state)]_strap"
 		if(!can_hold_knife)
-			initialicon = initial(icon_state)
+			originalstate = initial(icon_state)
 			icon_state = initial(icon_state)
 /*
 /obj/item/clothing/shoes/jackboots/update_icon()

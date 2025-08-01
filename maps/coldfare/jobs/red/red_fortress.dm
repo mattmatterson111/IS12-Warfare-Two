@@ -1,7 +1,7 @@
 /datum/job/fortress/red
 	title = "Red Fortress Inhabitant"
 	is_red_team = TRUE
-	selection_color = "#b27676"
+	selection_color = "#ca6060"
 
 	equip(var/mob/living/carbon/human/H)
 		..()
@@ -39,7 +39,7 @@
 	surgery_skill = 10
 	ranged_skill = 0
 	engineering_skill = 0
-	melee_skill = 0
+	melee_skill = 6 // You're a doctor, you've been using melee all your career
 	auto_rifle_skill = 0
 	semi_rifle_skill = 0
 	sniper_skill = 0
@@ -47,13 +47,16 @@
 	lmg_skill = 0
 	smg_skill = 0
 
-	possible_backstories = list(/datum/backstory/disgruntledprac, /datum/backstory/frontier_medic, /datum/backstory/idealistic, /datum/backstory/scholar)
+	backstories = list(/datum/backstory/beakless)
 
 	equip(var/mob/living/carbon/human/H)
 		..()
 		H.set_trait(new/datum/trait/death_tolerant())
 		H.add_stats(rand(8,11), rand(5,8), rand(5,7), rand(10,14))
 		H.say(";Practitioner reporting for duty!")
+		if(prob(5))
+			H.equip_to_slot_or_del(new /obj/item/clothing/head/that/prac(), slot_head)
+			to_chat(H, SPAN_YELLOW("You brought a nice hat from home."))
 
 /decl/hierarchy/outfit/job/medical/doctor/red
 	uniform = /obj/item/clothing/under/prac_under

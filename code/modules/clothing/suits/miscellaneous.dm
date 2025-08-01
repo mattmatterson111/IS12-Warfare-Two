@@ -546,3 +546,12 @@
 	body_parts_covered = UPPER_TORSO|ARMS|LOWER_TORSO|LEGS
 	allowed = list(/obj/item/nullrod, /obj/item/storage/bible)
 	armor = list(melee = 40, bullet = 25, laser = 5, energy = 0, bomb = 0, bio = 0, rad = 0)
+
+/obj/item/clothing/suit/surgeon_apron
+	name = "Clinician's apron"
+	desc = "A basic, dull, dirtied up apron."
+	icon_state = "apronchef"
+	item_state = "apronchef"
+	blood_overlay_type = "armor"
+	body_parts_covered = 0
+	germ_level = 0

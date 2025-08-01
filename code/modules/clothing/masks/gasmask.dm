@@ -37,7 +37,7 @@
 /obj/item/clothing/mask/gas/captaingasmask
 	icon_state = "captaingasmask"
 	item_state = "captaingasmask"
-	worldicons = list("captaingasmaskworld")
+	worldicons = "captaingasmaskworld"
 	helmet_vision = TRUE
 
 /obj/item/clothing/mask/gas/ancient

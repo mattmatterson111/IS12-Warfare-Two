@@ -175,15 +175,15 @@ steam.start() -- spawns the effect
 	plane = -5
 	layer = ABOVE_HUMAN_LAYER
 	alpha = 255
-	var/usesparticles = TRUE
 	//Remove this bit to use the old smoke
 	icon = 'icons/effects/96x96.dmi'
 	pixel_x = -32
 	pixel_y = -32
+	var/uses_particles = TRUE
 
-/obj/effect/effect/smoke/New()
+/obj/effect/effect/smoke/New(var/usesparticles = FALSE)
 	..()
-	if(usesparticles) // TEMPORARY FIX FOR COLORED SMOKE, DON'T FORGET TO IMPLEMENT THIS PROPERLY, ME!! - K
+	if(uses_particles && !istype(src, /obj/effect/effect/smoke/chem)) // TEMPORARY FIX FOR COLORED SMOKE, DON'T FORGET TO IMPLEMENT THIS PROPERLY, ME!! - K
 		icon = 'icons/effects/particles/smokes_updated.dmi'
 		icon_state = "smokkum"
 		opacity = 0
@@ -350,6 +350,11 @@ steam.start() -- spawns the effect
 	var/total_smoke = 0 // To stop it being spammed and lagging!
 	var/direction
 	var/smoke_type = /obj/effect/effect/smoke
+	var/particles = FALSE
+
+/datum/effect/effect/system/smoke_spread/New(var/set_particles = FALSE)
+	. = ..()
+	particles = set_particles
 
 /datum/effect/effect/system/smoke_spread/set_up(n = 5, c = 0, loca, direct)
 	if(n > 10)
@@ -375,7 +380,7 @@ steam.start() -- spawns the effect
 /datum/effect/effect/system/smoke_spread/proc/make_smokes(var/i)
 	if(holder)
 		src.location = get_turf(holder)
-	var/obj/effect/effect/smoke/smoke = new smoke_type(location)
+	var/obj/effect/effect/smoke/smoke = new smoke_type(location, usesparticles = particles)
 	src.total_smoke++
 	var/direction = src.direction
 	if(!direction)

@@ -230,7 +230,7 @@ var/list/gamemode_cache = list()
 	var/not_a_fucking_moron = ""
 
 	var/static/regex/ic_filter_regex
-	var/use_aspect_system = TRUE //This isn't actually on the box right now, so who cares.
+	var/use_aspect_system = FALSE
 
 /datum/configuration/New()
 	var/list/L = typesof(/datum/game_mode) - /datum/game_mode

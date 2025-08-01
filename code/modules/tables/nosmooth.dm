@@ -1,3 +1,7 @@
+// WE DO NOT NEED NOSMOOTH ANYMORE
+// IT'D JUST BE A PAIN TO RE-MAP
+// TO-DO: REPLACE WITH TABLE AND RACK SUBTYPES!!
+
 /obj/structure/table/rack/nosmooth
 	name = "rack/nosmooth"
 	desc = "Different from the Middle Ages version."
@@ -5,7 +9,7 @@
 	icon_state = "rack"
 	can_plate = 0
 	can_reinforce = 0
-	flipped = -1
+	flipped = 0
 
 	material = DEFAULT_TABLE_MATERIAL
 
@@ -35,12 +39,13 @@
 // I feel bad about copy and pasting this.
 
 // NOTE: Figure out a cleaner way to do this, since currently you can't walk from table to table.
-/obj/structure/table/rack/nosmooth/auto_align(obj/item/W, click_params)
-	if (!W.center_of_mass) // Clothing, material stacks, generally items with large sprites where exact placement would be unhandy.
-		W.pixel_x = rand(-W.randpixel, W.randpixel)
-		W.pixel_y = rand(-W.randpixel, W.randpixel)
-		W.pixel_z = 0
-		return
+/obj/structure/table/rack/nosmooth/auto_align(obj/item/W, click_params) //You broke something here Kas. It runtimes like crazy. I'll fix it later.
+	if(W)
+		if(!W.center_of_mass) // Clothing, material stacks, generally items with large sprites where exact placement would be unhandy.
+			W.pixel_x = rand(-W.randpixel, W.randpixel)
+			W.pixel_y = rand(-W.randpixel, W.randpixel)
+			W.pixel_z = 0
+			return
 
 	if (!click_params)
 		return
@@ -58,9 +63,9 @@
 
 	var/list/center = cached_key_number_decode(W.center_of_mass)
 
-	W.pixel_x = (CELLSIZE * (cell_x + 0.5)) - center["x"]
-	W.pixel_y = (CELLSIZE * (cell_y + 0.5)) - center["y"]
-	W.pixel_z = 0
+	W?.pixel_x = (CELLSIZE * (cell_x + 0.5)) - center["x"]
+	W?.pixel_y = (CELLSIZE * (cell_y + 0.5)) - center["y"]
+	W?.pixel_z = 0
 
 /obj/structure/table/rack/nosmooth/capleft
 	name = "wooden table"

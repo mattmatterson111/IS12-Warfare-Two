@@ -4,7 +4,7 @@
 	plane = LIGHTING_PLANE
 	blend_mode = BLEND_MULTIPLY
 	appearance_flags = PLANE_MASTER | NO_CLIENT_COLOR
-	color = list(1,0,0,0, 0,1,0,0, 0,0,1,0, 0,0,0,0, 0.1,0.1,0.1,1)
+	color = list(1,0,0,0, 0,1,0,0, 0,0,1,0, 0,0,0,0, 0.05,0.05,0.05,1)
 	mouse_opacity = 0
 	screen_loc = "CENTER"
 	New()
@@ -47,9 +47,9 @@
 	var/tmp/obj/plane/darkness/darkness_plane
 
 /mob/proc/update_lighting()
-	client.screen.Remove(master_plane,darkness_plane)
+	client?.screen.Remove(master_plane,darkness_plane)
 	darkness_plane = new()
-	client.screen.Add(master_plane,darkness_plane)
+	client?.screen.Add(master_plane,darkness_plane)
 
 /mob/Login()
 	..()

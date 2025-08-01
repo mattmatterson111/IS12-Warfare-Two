@@ -81,6 +81,8 @@
 	*/
 	var/list/sprite_sheets = list()
 
+	var/hit_shake = 0.15 //shouldn't be greater than 0.1 or 0.25. Anything above that feels like too much.0.15
+
 	// Species-specific sprite sheets for inventory sprites
 	// Works similarly to worn sprite_sheets, except the alternate sprites are used when the clothing/refit_for_species() proc is called.
 	var/list/sprite_sheets_obj = list()
@@ -105,7 +107,6 @@
 	var/time_to_unequip = 0
 	var/bag_place_sound = "rustle"
 	var/bag_pickup_sound = null
-	var/world_icons = list()
 
 	var/table_pickup_sound = null //Sound it makes when you take something off a table.
 
@@ -348,7 +349,7 @@
 			size = "bulky"
 		if(ITEM_SIZE_HUGE + 1 to INFINITY)
 			size = "huge"
-	return ..(user, distance, "", "It is a [size] item.")
+	return ..(user, distance, "", SPAN_SIZE("<br>It is a [size] item."))
 
 /obj/item/attack_hand(mob/user as mob)
 	if (!user) return
@@ -431,9 +432,14 @@
 			user.l_hand.update_twohanding()
 		if(user.r_hand)
 			user.r_hand.update_twohanding()
-	if(LAZYLEN(worldicons))
-		originalstate = icon_state
-		icon_state = safepick(worldicons)
+	if(worldicons)
+		if(islist(worldicons))
+			if(LAZYLEN(worldicons))
+				originalstate = icon_state
+				icon_state = safepick(worldicons)
+		else
+			originalstate = icon_state
+			icon_state = worldicons
 
 // called just as an item is picked up (loc is not yet changed)
 /obj/item/proc/pickup(mob/user)
@@ -497,7 +503,6 @@
 var/list/global/slot_flags_enumeration = list(
 	"[slot_wear_mask]" = SLOT_MASK,
 	"[slot_back]" = SLOT_BACK,
-	"[slot_chest]" = SLOT_CHEST,
 	"[slot_wear_suit]" = SLOT_OCLOTHING,
 	"[slot_gloves]" = SLOT_GLOVES,
 	"[slot_shoes]" = SLOT_FEET,
@@ -509,8 +514,12 @@ var/list/global/slot_flags_enumeration = list(
 	"[slot_w_uniform]" = SLOT_ICLOTHING,
 	"[slot_wear_id]" = SLOT_ID,
 	"[slot_tie]" = SLOT_TIE,
-	"[slot_s_store]" = SLOT_S_STORE
+	"[slot_s_store]" = SLOT_S_STORE,
+	"[slot_chest]" = SLOT_CHEST
 	)
+
+/obj/item/proc/unequipped(var/mob/user)
+	return
 
 //the mob M is attempting to equip this item into the slot passed through as 'slot'. Return 1 if it can do this and 0 if it can't.
 //If you are making custom procs but would like to retain partial or complete functionality of this one, include a 'return ..()' to where you want this to happen.
@@ -795,7 +804,7 @@ modules/mob/mob_movement.dm if you move you will be zoomed out
 modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 */
 //Looking through a scope or binoculars should /not/ improve your periphereal vision. Still, increase viewsize a tiny bit so that sniping isn't as restricted to NSEW
-/obj/item/proc/zoom(mob/user, var/tileoffset = 14,var/viewsize = 9) //tileoffset is client view offset in the direction the user is facing. viewsize is how far out this thing zooms. 7 is normal view
+/obj/item/proc/zoom(mob/user, var/tileoffset = 14) //tileoffset is client view offset in the direction the user is facing. viewsize is how far out this thing zooms. 7 is normal view
 	if(!user.client)
 		return
 
@@ -821,7 +830,6 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 	if(!zoom && !cannotzoom)
 		//if(user.hud_used.hud_shown)
 		//	user.toggle_zoom_hud()	// If the user has already limited their HUD this avoids them having a HUD when they zoom in
-		user.client.view = viewsize
 		zoom = 1
 
 		var/tilesize = 32
@@ -851,7 +859,6 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 		if(user.zoomed)
 			user.zoomed = FALSE
 			user.set_face_dir(FALSE)//Reset our facing direction.
-		user.client.view = world.view
 		//if(!user.hud_used.hud_shown)
 		//	user.toggle_zoom_hud()
 		zoom = 0
@@ -925,16 +932,15 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 		mob_icon = item_icons[slot]
 	else
 		mob_icon = default_onmob_icons[slot]
-
 	var/image/ret_overlay = overlay_image(mob_icon,mob_state,color)//,RESET_COLOR)
-	if(slot == slot_r_ear_str)
+	/*if(slot == slot_r_ear_str)
 		var/matrix/M = matrix(transform)
 		M.Scale(-1,1)
 		M.Translate(-1,0)
 		ret_overlay.transform = M
 		switch(user_human.dir)
 			if(WEST)	ret_overlay.dir = NORTH
-			if(EAST)	ret_overlay.dir = WEST
+			if(EAST)	ret_overlay.dir = WEST*/
 	if(user_human && user_human.species && user_human.species.equip_adjust.len && !spritesheet)
 		var/list/equip_adjusts = user_human.species.equip_adjust
 		if(equip_adjusts[slot])

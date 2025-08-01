@@ -76,9 +76,9 @@
 	anchored = 1
 
 /obj/hammereditor/playerclip
-	icon = 'icons/hammer/source.dmi' // noone gets through this
+	icon = 'icons/hammer/source.dmi'
 	icon_state = "playerclip"
-	alpha = 0
+	alpha = 255
 	density = 1
 	opacity = 0
 	anchored = 1
@@ -157,21 +157,41 @@
 	name = "Sound Probe"
 	icon_state = "sound"
 	sound_env = QUARRY
-	ambience = list('sound/ambience/new/crematorium.ogg')
-	music = "none"
+	music = 'sound/ambience/new/crematorium.ogg'
 
 /obj/hammereditor/sound_probe/lunch
 	icon = 'icons/hammer/source.dmi'
 	name = "Sound Probe"
 	icon_state = "sound"
 	sound_env = CONCERT_HALL
-	ambience = FALSE
-	music = FALSE
+	ambience = null
+	music = null
 
 /obj/hammereditor/sound_probe/basement
 	icon = 'icons/hammer/source.dmi'
 	name = "Sound Probe"
 	icon_state = "sound"
 	sound_env = CONCERT_HALL
-	ambience = list('sound/ambience/new/underground.ogg')
-	music = FALSE
+	music = 'sound/ambience/new/underground.ogg'
+
+
+// World decor
+/obj/hammereditor/nodraw/deco
+	icon = 'icons/obj/worldbuilding.dmi'
+	alpha = 255
+	plane = ABOVE_OBJ_PLANE
+
+/obj/hammereditor/nodraw/deco/New()
+	return
+
+/obj/hammereditor/nodraw/deco/bars
+	icon_state = "bars"
+
+/obj/hammereditor/nodraw/deco/shadowpaint
+	icon_state = "shadow"
+
+/obj/hammereditor/nodraw/deco/shutter_half
+	icon_state = "mostly_open_shuitter"
+
+/obj/hammereditor/nodraw/deco/shutter_quarter
+	icon_state = "slightly_open_shutter"

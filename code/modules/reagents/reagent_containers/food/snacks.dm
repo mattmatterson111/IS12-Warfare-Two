@@ -3363,7 +3363,8 @@
 	return ..()
 
 /obj/item/reagent_containers/food/snacks/warfare/attackby(obj/item/W, mob/user)
-	if(istype(W,/obj/item/material/sword/combat_knife))
+	//if(istype(W,/obj/item/material/sword/combat_knife))
+	if(is_sharp(W))
 		open(user)
 		update_icon()
 
@@ -3391,7 +3392,7 @@
 	open_can_icon = "pisssardine_open"
 	desc = "A can of the only sort of fish that could live in these waters."
 	trash = /obj/item/trash/warfare_can/sardine
-	
+
 /obj/item/reagent_containers/food/snacks/warfare/milk
 	name = "\improper canned roachmilk"
 	icon_state = "cmilk"
@@ -3424,3 +3425,79 @@
 		reagents.add_reagent(/datum/reagent/blackpepper, 1)
 		reagents.add_reagent(/datum/reagent/bicaridine = 2)
 		bitesize = 2
+
+/obj/item/reagent_containers/food/snacks/warfare
+	name = "\improper canned beans"
+	desc = "Supposedly what's in there is edible. But out on the frontlines it's about all you're getting."
+	icon_state = "blue/obj/random/canned_foodmeal"
+	atom_flags = 0 //They start closed
+	trash = /obj/item/trash/warfare_can
+	nutriment_desc = list("gross shit" = 6)
+	nutriment_amt = 20
+	open_sound = 'sound/items/nonsoda_canopen.ogg'
+	drop_sound = 'sound/items/handle/can_drop.ogg'
+	New()
+		..()
+		reagents.add_reagent(/datum/reagent/iron, 3)
+		bitesize = 4
+
+/obj/item/reagent_containers/food/snacks/warfare/attack_self(mob/user)
+	return
+
+/obj/item/reagent_containers/food/snacks/warfare/team/New()
+	. = ..()
+	worldicons = "[icon_state]_world"
+
+/obj/item/reagent_containers/food/snacks/warfare/team/On_Consume(var/mob/M)
+	if(!reagents.total_volume)
+		M.visible_message("<span class='notice'>[M] finishes eating \the [src].</span>","<span class='notice'>You finish eating \the [src].</span>")
+
+		M.drop_item()
+		if(trash)
+			if(ispath(trash,/obj/item))
+				var/obj/item/TrashItem = new trash(get_turf(M))
+				M.put_in_hands(TrashItem)
+				TrashItem.icon = icon
+				TrashItem.icon_state = "[initial(icon_state)]_empty"
+				TrashItem.worldicons = "[initial(icon_state)]_empty_world"
+			else if(istype(trash,/obj/item))
+				M.put_in_hands(trash)
+		qdel(src)
+	return
+
+
+/obj/item/reagent_containers/food/snacks/warfare/team/update_icon()
+	if(is_open_container())
+		if(isworld(loc))
+			originalstate = "[initial(icon_state)]_open"
+			icon_state = "[initial(icon_state)]_open_world"
+		else
+			originalstate = "[initial(icon_state)]_open" // just to be safe
+			icon_state = "[initial(icon_state)]_open"
+		worldicons = "[initial(icon_state)]_open_world"
+
+/obj/item/reagent_containers/food/snacks/warfare/team/red
+	desc = "A RedChow brand meal! Tastes horrible, but it is cheap and filling.\nIt is a part of the RedChow brand meal line, which is known for its low quality and high quantity."
+
+/obj/item/reagent_containers/food/snacks/warfare/team/blue
+	desc = "A BlueMeal brand meal! tastes horrible, but it is cheap and filling.\nIt is a part of the BlueMeal brand meal line, which is known for its low quality and high quantity."
+
+/obj/item/reagent_containers/food/snacks/warfare/team/red/redchow
+	name = "RedChow Can"
+	icon_state = "redchow"
+/obj/item/reagent_containers/food/snacks/warfare/team/red/redmeal
+	name = "RedMeal Can"
+	icon_state = "redmeal"
+/obj/item/reagent_containers/food/snacks/warfare/team/red/redchew
+	name = "RedChew Can"
+	icon_state = "redchew"
+
+/obj/item/reagent_containers/food/snacks/warfare/team/blue/bluechow
+	name = "BlueChow Can"
+	icon_state = "bluechow"
+/obj/item/reagent_containers/food/snacks/warfare/team/blue/bluemeal
+	name = "BlueMeal Can"
+	icon_state = "bluemeal"
+/obj/item/reagent_containers/food/snacks/warfare/team/blue/bluechew
+	name = "BlueChew Can"
+	icon_state = "bluechew"

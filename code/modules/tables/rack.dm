@@ -17,7 +17,7 @@
 /obj/structure/table/rack/Initialize()
 	auto_align()
 	. = ..()
-
+/*
 /obj/structure/table/rack/update_connections()
 	return
 
@@ -29,7 +29,7 @@
 
 /obj/structure/table/rack/can_connect()
 	return FALSE
-
+*/
 /obj/structure/table/rack/holorack/dismantle(obj/item/wrench/W, mob/user)
 	to_chat(user, "<span class='warning'>You cannot dismantle \the [src].</span>")
 	return
@@ -41,7 +41,7 @@
 	icon_state = "bograck"
 	can_plate = 0
 	can_reinforce = 0
-	flipped = -1
+	flipped = 0
 
 /obj/structure/table/rack/dark
 	color = COLOR_GRAY40
@@ -53,7 +53,7 @@
 	icon_state = "shelf"
 	can_plate = 0
 	can_reinforce = 0
-	flipped = -1
+	flipped = 0
 
 /obj/structure/table/rack/shelf/red
 	name = "shelf"

@@ -15,12 +15,14 @@
 	max_age = 65
 	gluttonous = GLUT_TINY
 
+	use_gendered_parts = TRUE
+
 	spawn_flags = SPECIES_CAN_JOIN
 	appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_TONE_NORMAL | HAS_LIPS | HAS_UNDERWEAR | HAS_EYE_COLOR
 
 	teeth_type = /obj/item/stack/teeth/human //Teeth
 	sexybits_location = BP_GROIN
-
+ // FUCK YOU!! YOU'VE BEEN THE THING THAT'S BEEN BREAKING CHILDREN!!
 /datum/species/human/get_bodytype(var/mob/living/carbon/human/H)
 	return SPECIES_HUMAN
 
@@ -31,7 +33,7 @@
 	if(!firstspace)	//we need a surname
 		sanitized_name += " [pick(GLOB.last_names)]"
 
-	return sanitized_name 
+	return sanitized_name
 
 /datum/species/human/handle_npc(var/mob/living/carbon/human/H)
 	if(H.stat != CONSCIOUS)

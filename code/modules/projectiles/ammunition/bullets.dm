@@ -7,7 +7,7 @@
 /obj/item/ammo_casing/a50
 	desc = "A .50AE bullet casing."
 	caliber = ".50"
-	projectile_type = /obj/item/projectile/bullet/pistol/strong
+	projectile_type = /obj/item/projectile/bullet/pistol/strong/very
 
 /obj/item/ammo_casing/a75
 	desc = "A 20mm bullet casing."
@@ -98,7 +98,6 @@
 	ammo_stack = /obj/item/ammo_magazine/handful/shotgun/shotgun_handful/two
 	matter = list(DEFAULT_WALL_MATERIAL = 360)
 
-
 /obj/item/ammo_casing/shotgun/blank
 	name = "shotgun shell"
 	desc = "A blank shell."
@@ -151,7 +150,7 @@
 	desc = "A 5.56mm bullet casing."
 	caliber = "a556"
 	projectile_type = /obj/item/projectile/bullet/rifle/a556
-	icon_state = "rifle-casing"
+	icon_state = "ar1"
 	spent_icon = "rifle-casing-spent"
 
 /obj/item/ammo_casing/a145
@@ -230,3 +229,23 @@
 	spent_icon = "null"
 	caliber = "flamer"
 	projectile_type = /obj/item/projectile/flamer
+
+/obj/item/ammo_casing/shotgun/newshot
+	name = "shotgun slug"
+	desc = "A 12 gauge slug."
+	icon_state = "slshell"
+	spent_icon = "slshell-spent"
+	caliber = "shotgun"
+	drop_sound = 'sound/weapons/guns/misc/shotgun_fall.ogg'
+	projectile_type = /obj/item/projectile/bullet/shotgunBuckshot
+	matter = list(DEFAULT_WALL_MATERIAL = 360)
+
+/obj/item/ammo_casing/shotgun/newshot/nospread
+	name = "shotgun slug"
+	desc = "A 12 gauge slug."
+	icon_state = "slshell"
+	spent_icon = "slshell-spent"
+	caliber = "shotgun"
+	drop_sound = 'sound/weapons/guns/misc/shotgun_fall.ogg'
+	projectile_type = /obj/item/projectile/bullet/shotgunBuckshot/nospread
+	matter = list(DEFAULT_WALL_MATERIAL = 360)

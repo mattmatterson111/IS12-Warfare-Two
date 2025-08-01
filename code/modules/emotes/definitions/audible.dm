@@ -350,7 +350,7 @@
 		return
 
 	else if(user.isChild())
-		emotesound = 'sound/voice/emotes/child_scream.ogg'
+		emotesound = "sound/voice/emotes/child_scream[rand(1,3)].ogg"
 
 	else if(user.gender == MALE)
 		emotesound = "sound/voice/emotes/male_scream[rand(1,2)].ogg"

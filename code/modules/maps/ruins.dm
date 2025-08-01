@@ -79,7 +79,7 @@
 	icon_state = "syndballoon"
 	invisibility = 0
 
-/obj/effect/ruin_loader/proc/Load(list/potentialRuins, datum/map_template/template)
+/obj/effect/ruin_loader/proc/Load(list/potentialRuins, datum/map_template/template, is_centered = TRUE)
 	var/list/possible_ruins = list()
 	for(var/A in potentialRuins)
 		var/datum/map_template/T = potentialRuins[A]
@@ -94,7 +94,7 @@
 		var/turf/T = i
 		for(var/mob/living/simple_animal/monster in T)
 			qdel(monster)
-	template.load(central_turf,centered = TRUE)
+	template.load(central_turf,centered = is_centered)
 	var/datum/map_template/ruin = template
 	if(istype(ruin))
 		new /obj/effect/landmark/ruin(central_turf, ruin)

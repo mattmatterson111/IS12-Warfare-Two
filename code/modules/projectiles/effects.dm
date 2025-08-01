@@ -183,3 +183,11 @@
 	light_range = 5
 	light_power = 1
 	light_color = COLOR_MUZZLE_FLASH
+
+/obj/effect/projectile/bullet/tracer
+	icon_state = "tracer"
+	light_color = COLOR_MUZZLE_FLASH
+
+/obj/effect/projectile/bullet/impact
+	icon_state = "impact"
+	light_color = COLOR_MUZZLE_FLASH

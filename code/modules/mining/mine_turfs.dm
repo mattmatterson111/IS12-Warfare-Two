@@ -100,14 +100,15 @@ var/list/mining_floors = list()
 		overlays += archaeo_overlay
 
 /turf/simulated/mineral/ex_act(severity)
-	switch(severity)
+	return FALSE
+	/*switch(severity)
 		if(2.0)
 			if (prob(70))
 				mined_ore = 1 //some of the stuff gets blown up
 				GetDrilled()
 		if(1.0)
 			mined_ore = 2 //some of the stuff gets blown up
-			GetDrilled()
+			GetDrilled()*/
 
 /turf/simulated/mineral/bullet_act(var/obj/item/projectile/Proj)
 
@@ -187,6 +188,11 @@ var/list/mining_floors = list()
 			var/mob/living/carbon/human/H = user
 			H.adjustStaminaLoss(rand(1,10))
 			H.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
+
+		if(health > 9999)
+			if(prob(25))
+				to_chat(user, SPAN_YELLOW("Doesn't look like this'll be breaking anytime soon."))
+			return
 
 		health -= rand(1,5)
 
@@ -291,6 +297,11 @@ var/list/mining_floors = list()
 
 	else
 		return ..()
+
+/turf/simulated/mineral/examine(mob/user, distance, infix, suffix)
+	. = ..()
+	if(health > 9999)
+		to_chat(user,SPAN_YELLOW("Doesn't look like I can mine through this.."))
 
 /turf/simulated/mineral/proc/clear_ore_effects()
 	overlays -= ore_overlay

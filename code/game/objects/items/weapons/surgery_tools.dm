@@ -86,6 +86,8 @@
 				"<span class='notice'>You have patched the [affected.artery_name] in [H]'s [affected.name] with \the [src.name].</span>")
 				affected.status &= ~ORGAN_ARTERY_CUT
 
+			user.doing_something = FALSE
+
 		else//Then fix wounds if they do it again.
 			// Checking for each wound before bailing. Sanity check if 0 damage wounds can actually appear
 			var/found_wound = FALSE
@@ -110,10 +112,15 @@
 							else if(W.damage <= 10)
 								W.clamped = 1
 					break
+
+			user.doing_something = FALSE
+
 			if(!found_wound)
 				to_chat(user, "There are no wounds to patch up.")
+				user.doing_something = FALSE
 
 		affected.update_damages()
+		user.doing_something = FALSE
 
 
 

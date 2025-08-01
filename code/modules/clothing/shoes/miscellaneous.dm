@@ -105,7 +105,6 @@
 	icon_state = "clown"
 	item_state = "clown"
 	force = 0
-	var/footstep = 1	//used for squeeks whilst walking
 	species_restricted = null
 
 /obj/item/clothing/shoes/clown_shoes/New()

@@ -132,12 +132,12 @@
 						S.end_step(user, M, zone, src)		//finish successfully
 					else
 						visible_message("<span class='warning'>[user] messes up the surgery step. They must try again.</span>")
-						//S.fail_step(user, M, zone, src)
-						//user.my_skills[SKILL(surgery)].give_xp(25, user)//If they fail it then give them some XP for trying.
+						S.fail_step(user, M, zone, src) // INTERWAR EDIT : BRING BACK SURGERY FAILSTEPS
+						user.my_skills[SKILL(surgery)].give_xp(10, user)//If they fail it then give them some XP for trying.
 				else if ((src in user.contents) && user.Adjacent(M))			//or
 					visible_message("<span class='warning'>[user] messes up the surgery step. They must try again.</span>")
-					//S.fail_step(user, M, zone, src)		//malpractice~
-					//user.my_skills[SKILL(surgery)].give_xp(25, user)//If they fail it then give them some XP for trying.
+					S.fail_step(user, M, zone, src)		//malpractice~
+					user.my_skills[SKILL(surgery)].give_xp(10, user)//If they fail it then give them some XP for trying.
 				else // This failing silently was a pain.
 					to_chat(user, "<span class='warning'>You must remain close to your patient to conduct surgery.</span>")
 				if (M)

@@ -97,7 +97,7 @@
 		qdel(src)
 	..()
 
-/datum/effect/effect/system/smoke_spread/chem/New()
+/datum/effect/effect/system/smoke_spread/chem/New(usesparticles = FALSE)
 	..()
 	chemholder = new/obj()
 	chemholder.create_reagents(500)

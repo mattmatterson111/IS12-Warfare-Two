@@ -104,6 +104,8 @@
 
 		handle_gas_mask_sound()//Was in breathing, but people don't breathe anymore.
 
+		handle_blood_pools()
+
 		if(!client && !mind)
 			species.handle_npc(src)
 
@@ -602,6 +604,8 @@
 			blinded = 1
 			set_stat(UNCONSCIOUS)
 			adjustHalLoss(-3)
+			drop_r_hand()
+			drop_l_hand()
 
 			if(sleeping)
 				handle_dreams()
@@ -915,8 +919,8 @@
 		spawn vomit(1, vomit_score, vomit_score/25)
 
 	var/area/A = get_area(src)
-	//if(client && world.time >= client.played + 600) // TWOFARE EDIT - This broke ambiences.. but in return.. it was our greatest hero.. random ambience noises.. we will miss you..
-	//	A.play_ambience(src)
+	if(client && world.time >= client.played + 600) // TWOFARE EDIT - This broke ambiences.. but in return.. it was our greatest hero.. random ambience noises.. we will miss you..
+		A.play_ambience(src)
 	if(stat == UNCONSCIOUS && world.time - l_move_time < 5 && prob(10))
 		to_chat(src,"<span class='notice'>You feel like you're [pick("moving","flying","floating","falling","hovering")].</span>")
 
@@ -1370,7 +1374,13 @@
 	remove_coldbreath()
 	breathe_tick++
 	var/mask_sound
-	if(istype(wear_mask, /obj/item/clothing/mask/gas/red))
+	if(istype(wear_mask, /obj/item/clothing/mask/gas/blue/flamer) || istype(wear_mask, /obj/item/clothing/mask/gas/red/flamer))
+		if(breathe_tick>=rand(3,5))
+			breathe_tick = 0
+			mask_sound = pick('sound/effects/gasmasks/flamer1.ogg','sound/effects/gasmasks/flamer2.ogg')
+			playsound(src, mask_sound, 45, FALSE)
+			return
+	else if(istype(wear_mask, /obj/item/clothing/mask/gas/red))
 		if(breathe_tick>=rand(3,5))
 			breathe_tick = 0
 			mask_sound = pick('sound/effects/gasmasks/red1.ogg','sound/effects/gasmasks/red2.ogg','sound/effects/gasmasks/red3.ogg','sound/effects/gasmasks/red4.ogg','sound/effects/gasmasks/red5.ogg','sound/effects/gasmasks/red6.ogg','sound/effects/gasmasks/red7.ogg','sound/effects/gasmasks/red8.ogg','sound/effects/gasmasks/red9.ogg','sound/effects/gasmasks/red10.ogg','sound/effects/gasmasks/red11.ogg')
@@ -1398,12 +1408,6 @@
 			mask_sound = pick('sound/effects/gasmasks/sniper1.ogg','sound/effects/gasmasks/sniper2.ogg')
 			playsound(src, mask_sound, 35, FALSE)
 			return
-	else if(istype(wear_mask, /obj/item/clothing/mask/gas/flamer))
-		if(breathe_tick>=rand(3,5))
-			breathe_tick = 0
-			mask_sound = pick('sound/effects/gasmasks/flamer1.ogg','sound/effects/gasmasks/flamer2.ogg')
-			playsound(src, mask_sound, 35, FALSE)
-			return
 	else if(istype(wear_mask, /obj/item/clothing/mask/gas))
 		mask_sound = pick('sound/effects/gasmasks/gasmask1.ogg','sound/effects/gasmasks/gasmask2.ogg','sound/effects/gasmasks/gasmask3.ogg','sound/effects/gasmasks/gasmask4.ogg','sound/effects/gasmasks/gasmask5.ogg','sound/effects/gasmasks/gasmask6.ogg','sound/effects/gasmasks/gasmask7.ogg','sound/effects/gasmasks/gasmask8.ogg','sound/effects/gasmasks/gasmask9.ogg','sound/effects/gasmasks/gasmask10.ogg')
 		playsound(src, mask_sound, 50, 1)
@@ -1413,3 +1417,15 @@
 	// runs an update to check if we've become jaundiced, pale or low on oxygen resulting in icon changes
 	if(stat != DEAD && !(life_tick % 15)) // don't want to do this too often. update_body() also won't do anything if nothing has changed
 		update_body()
+
+/mob/living/carbon/human/proc/handle_blood_pools() // added the pulledby condition so that it doesn't make pools whenever we're dragging someone
+	if((resting) && vessel.total_volume > 200 && !pulledby) //check if human is laying and has blood, i dont know if this is the right way to check for laying
+		for(var/obj/item/organ/external/org in organs) // added a check so that they don't start making pools if they're below 200
+			if(org.status & ORGAN_ARTERY_CUT || org.status & ORGAN_BLEEDING) // check if bleeding, i dont know if there is another way to do it maybe without the loop
+				if(isturf(loc))
+					var/obj/effect/decal/cleanable/bloodpool/B = locate(/obj/effect/decal/cleanable/bloodpool) in loc
+					if(!B)
+						B = new /obj/effect/decal/cleanable/bloodpool(loc)
+						return 0
+					else
+						return 0

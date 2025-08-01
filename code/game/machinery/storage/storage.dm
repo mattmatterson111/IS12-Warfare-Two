@@ -12,52 +12,16 @@
 //allowing to manipulate the container's inventory despite not being on a player
 //or a turf.
 
-
-// TWOFARE NOTE: Rewrite some of this it's hot garbage
-
 /obj/item/storage/special
 	name = "/obj/item/storage/special"
 	desc = "base storage for storage machines & structures"
 	w_class = ITEM_SIZE_NO_CONTAINER
 	max_w_class = ITEM_SIZE_GARGANTUAN //you prolly want to change this on subclasses.
 	max_storage_space = DEFAULT_BACKPACK_STORAGE
-	var/closed_state
-	var/open_state
 	//storage_slots = 1
 	use_sound = null
 	close_sound = null
-	var/isopen = FALSE
 	var/atom/holder
-	var/usestates
-
-// // all of this is so hacky that I wouldn't be suprised if we reverted this someday
-///obj/item/storage/special/on_open()
-//	..()
-//	if(!isopen)
-//		isopen = TRUE
-//		if(usestates)
-//			holder.icon_state = open_state
-//		return
-//
-///obj/item/storage/special/on_close()
-//	..()
-//	if(isopen)
-//		isopen = FALSE
-//		if(usestates)
-//			holder.icon_state = closed_state
-//		return
-//
-///obj/item/storage/special/quick_insert()
-//	..()
-//	if(!isopen)
-//		isopen = TRUE
-//		if(usestates)
-//			holder.icon_state = open_state
-//		spawn(0.5 SECONDS)
-//			if(usestates)
-//				holder.icon_state = closed_state
-//			isopen = FALSE
-//	return
 
 //overrides item:Adjacent() so we can drop down one level
 /obj/item/storage/special/Adjacent(var/atom/neighbor)
@@ -79,45 +43,60 @@
 //Use this machine as a base class it's pretty simple
 /obj/machinery/storage/
 	name = "/obj/machinery/storage/"
-	desc = "baseclass for storage enabled machines"
+	desc = "baseclass for storage enabled machinery"
 	icon = 'icons/obj/closet.dmi'
 	icon_state = "cabinet_closed"
+	var/mob/fuck
 	var/open_state
-	var/closed_state
 	var/obj/item/storage/special/inventory
-	var/usestates = TRUE
+	var/sound_override
 
 /obj/machinery/storage/New()
 	inventory = new /obj/item/storage/special()
 	inventory.holder = src
 	inventory.loc = src   //VERY IMPORTANT
 	inventory.name = name //Not strictly needed but this affects the text description when players insert items inside the storage.
-	inventory.usestates = usestates
-	if(closed_state)
-		inventory.closed_state = closed_state
-	else if(!closed_state)
-		inventory.closed_state = icon_state
-	if(open_state)
-		inventory.open_state = open_state
-	else if(!open_state)
-		inventory.open_state = icon_state
 
 /obj/machinery/storage/Destroy()
 	qdel(inventory)
 	..()
 
+/obj/machinery/storage/proc/open(var/obj/item/I, var/autoclose)
+	if(I)
+		if(!inventory.can_be_inserted(I, null, 1))
+			return
+	if(!open_state)
+		return
+	icon_state = open_state
+	if(!autoclose)
+		return
+	spawn(autoclose SECONDS)
+		icon_state = initial(icon_state)
+
+/obj/machinery/storage/proc/close()
+	icon_state = initial(icon_state)
+	GLOB.moved_event.unregister(fuck, src)
+	fuck = null
+
+
 //fowards attack_hand
 /obj/machinery/storage/attack_hand(mob/user as mob)
-	inventory.attack_hand(user)
+	if(CanPhysicallyInteract(user))
+		inventory.attack_hand(user)
+		open(null,null)
+		fuck = user
+		GLOB.moved_event.register(fuck, src, /obj/machinery/storage/proc/close)
+
 
 //fowards attackby
 /obj/machinery/storage/attackby(obj/item/W as obj, mob/user as mob)
-	if(CanPhysicallyInteract(user))
+	if(!CanPhysicallyInteract(user))
+		return
+	if(sound_override)
+		W.bag_place_sound = sound_override
 		inventory.attackby(W, user)
-
-/obj/machinery/storage/AltClick(mob/user as mob)
-	if(CanPhysicallyInteract(user))
-		inventory.open(user)
+		W.bag_place_sound = initial(W.bag_place_sound)
+	open(W, 1)
 
 
 //Use this machine as a base class it's pretty simple
@@ -126,17 +105,14 @@
 	desc = "baseclass for storage enabled structures"
 	icon = 'icons/obj/closet.dmi'
 	icon_state = "cabinet_closed"
+	var/mob/fuck
 	var/open_state
-	var/closed_state
 	var/obj/item/storage/special/inventory
-	var/usestates
+	var/sound_override
 
 /obj/structure/storage/New()
 	inventory = new /obj/item/storage/special()
 	inventory.holder = src
-	inventory.closed_state = src.closed_state
-	inventory.open_state = src.open_state
-	inventory.usestates = usestates
 	inventory.loc = src   //VERY IMPORTANT
 	inventory.name = name //Not strictly needed but this affects the text description when players insert items inside the storage.
 
@@ -144,28 +120,55 @@
 	qdel(inventory)
 	..()
 
+/obj/structure/storage/proc/open(var/obj/item/I, var/autoclose)
+	if(I)
+		if(!inventory.can_be_inserted(I, null, 1))
+			return
+	if(!open_state)
+		return
+	icon_state = open_state
+	if(!autoclose)
+		return
+	spawn(autoclose SECONDS)
+		icon_state = initial(icon_state)
+
+/obj/structure/storage/proc/close()
+	icon_state = initial(icon_state)
+	GLOB.moved_event.unregister(fuck, src)
+	fuck = null
+
+
 //fowards attack_hand
 /obj/structure/storage/attack_hand(mob/user as mob)
 	if(CanPhysicallyInteract(user))
 		inventory.attack_hand(user)
+		open(null,null)
+		fuck = user
+		GLOB.moved_event.register(fuck, src, /obj/structure/storage/proc/close)
+
 
 //fowards attackby
 /obj/structure/storage/attackby(obj/item/W as obj, mob/user as mob)
-	if(CanPhysicallyInteract(user))
+	if(!CanPhysicallyInteract(user))
+		return
+	if(sound_override)
+		W.bag_place_sound = sound_override
 		inventory.attackby(W, user)
+		W.bag_place_sound = initial(W.bag_place_sound)
+	open(W, 1)
 
 /obj/structure/storage/AltClick(mob/user as mob)
-	if(CanPhysicallyInteract(user))
-		inventory.open(user)
+	attack_hand(user)
 
 /obj/structure/storage/cabinet
 	name = "Filing cabinet"
 	desc = "Dusty.. probably has the files of your great-great-great-grandfather.."
 	icon = 'icons/obj/storagestructures.dmi'
 	icon_state = "filing"
+	open_state = "filing_open"
+	sound_override = 'sound/effects/cabinetplace.ogg'
 	anchored = TRUE
 	density = TRUE
-	usestates = FALSE
 
 /obj/structure/storage/cabinet/Initialize()
 	. = ..()
@@ -173,9 +176,3 @@
 	inventory.use_sound = 'sound/effects/cabinetopen.ogg'
 	inventory.close_sound = 'sound/effects/cabinetclose.ogg'
 	inventory.gather_all(get_turf(src))
-
-/obj/structure/storage/cabinet/attackby(obj/item/W as obj, mob/user as mob)
-	if(CanPhysicallyInteract(user))
-		W.bag_place_sound = 'sound/effects/cabinetplace.ogg'
-		inventory.attackby(W, user)
-		W.bag_place_sound = initial(W.bag_place_sound)

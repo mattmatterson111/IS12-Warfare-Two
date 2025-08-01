@@ -66,6 +66,7 @@ GLOBAL_LIST_EMPTY(family_blacklist)
 	var/lmg_skill = 5
 	var/smg_skill = 5
 	var/boltie_skill = 5
+	var/close_when_dead = FALSE
 
 
 /datum/job/New()
@@ -73,6 +74,15 @@ GLOBAL_LIST_EMPTY(family_blacklist)
 	if(prob(100-availablity_chance))	//Close positions, blah blah.
 		total_positions = 0
 		spawn_positions = 0
+
+	// backstories
+	if(length(backstories))
+		var/list/initialized_stories = list()
+		for(var/thing in backstories)//Populate possible backstories list.
+			var/datum/backstory/A = new thing
+			initialized_stories += A
+		backstories.Cut()
+		backstories += initialized_stories
 
 /datum/job/dd_SortValue()
 	return title
@@ -114,7 +124,7 @@ GLOBAL_LIST_EMPTY(family_blacklist)
 
 /datum/job/proc/equip(var/mob/living/carbon/human/H, var/alt_title, var/datum/mil_branch/branch, var/datum/mil_rank/grade)
 	if(child_role)
-		H.set_species("Child")//Actually makes them a child.
+		H.set_species(SPECIES_CHILD)//Actually makes them a child.
 		H.unlock_achievement(new/datum/achievement/kid())
 
 	if(social_class)

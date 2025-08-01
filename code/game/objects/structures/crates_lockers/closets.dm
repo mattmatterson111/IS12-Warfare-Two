@@ -58,15 +58,15 @@
 			if(!AM.anchored)
 				content_size += content_size(AM)
 		if(!content_size)
-			to_chat(user, "It is empty.")
+			to_chat(user, SPAN_SIZE("It is empty."))
 		else if(storage_capacity > content_size*4)
-			to_chat(user, "It is barely filled.")
+			to_chat(user, SPAN_SIZE("It is barely filled."))
 		else if(storage_capacity > content_size*2)
-			to_chat(user, "It is less than half full.")
+			to_chat(user, SPAN_SIZE("It is less than half full."))
 		else if(storage_capacity > content_size)
-			to_chat(user, "There is still some free space.")
+			to_chat(user, SPAN_SIZE("There is still some free space."))
 		else
-			to_chat(user, "It is full.")
+			to_chat(user, SPAN_SIZE("It is full."))
 
 /obj/structure/closet/CanPass(atom/movable/mover, turf/target, height=0, air_group=0)
 	if(air_group || (height==0 || wall_mounted)) return 1
@@ -150,6 +150,8 @@
 
 	for(var/obj/item/I in loc)
 		if(I.anchored)
+			continue
+		if(I.pixel_x > 16 || I.pixel_y > 16)
 			continue
 		var/item_size = content_size(I)
 		if(CLOSET_CHECK_TOO_BIG(item_size))
@@ -283,7 +285,8 @@
 								 "<span class='notice'>You hear rustling of clothes.</span>")
 			return
 
-		if(usr.drop_item())
+		if(W.canremove)
+			usr.drop_item()
 			W.forceMove(loc)
 			W.pixel_x = 0
 			W.pixel_y = 0
@@ -389,7 +392,11 @@
 	else
 		to_chat(usr, "<span class='warning'>This mob type can't use this verb.</span>")
 
-/obj/structure/closet/RightClick(mob/user)
+/obj/structure/closet/RightClick(mob/living/user)
+	var/obj/item/gun/G = user.get_active_hand()//Please let me aim, thanks.
+	if(istype(G) && !G.safety)
+		..()
+		return
 	if(CanPhysicallyInteract(user))
 		verb_toggleopen()
 

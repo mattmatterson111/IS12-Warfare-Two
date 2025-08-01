@@ -1,6 +1,6 @@
 //ALL SHIT FOR KIDS IN ONE FILE BECUASE I'M TIRED OF SEARCHING ALL OVER THE PLACE FOR CHILDREN SHIT
 /datum/species/human/child //Oh lord here we go.
-	name = "Child"
+	name = SPECIES_CHILD
 	name_plural = "Children"
 	blurb = "But a child."
 	total_health = 150 //Kids are weaker than adults.
@@ -12,18 +12,21 @@
 	blood_mask = 'icons/mob/human_races/masks/blood_child.dmi'
 	pixel_offset_y = -4
 	spawn_flags = SPECIES_IS_RESTRICTED//No more kids becoming nuke ops.
-
+	use_gendered_parts = FALSE
 
 /datum/species/human/child/handle_post_spawn(var/mob/living/carbon/human/H)
 	//H.mutations.Add(CLUMSY)//So kids don't go around being commandos.
 	H.age = rand(min_age,max_age)//Random age for kiddos.
 	if(H.f_style)//Children don't get beards.
 		H.f_style = "Shaved"
-	to_chat(H, "<span class='info'><big>You're [H.age] years old! Act like it!</big></span>")
+	to_chat(H, "<span class='danger'><big>You're [H.age] years old! Act like it!</big></span>")
 	to_chat(H, "<big><span class='warning'>CHILDREN ARE CLUMSY AND CANNOT USE GUNS OR MELEE WEAPONS! DOING SO WILL KILL YOU!</span></big>")
 	H.update_eyes()	//hacky fix, i don't care and i'll never ever care
 	return ..()
 
+
+/datum/species/human/child/get_bodytype(var/mob/living/carbon/human/H)
+	return SPECIES_CHILD
 
 /obj/item/clothing/under/child_jumpsuit
 	name = "grey children's jumpsuit"
@@ -48,11 +51,11 @@
 
 
 /mob/living/carbon/human/proc/isChild()//Used to tell if someone is a child.
-	if(species && species.name == "Child")
+	if(get_species() == SPECIES_CHILD)
 		return 1
 	else
 		return 0
 
 /mob/living/carbon/human/child/New(var/new_loc)
-	..(new_loc, "Child")
+	..(new_loc, SPECIES_CHILD)
 

@@ -427,15 +427,15 @@ SUBSYSTEM_DEF(jobs)
 			W.buckled_mob = H
 			W.add_fingerprint(H)
 
-	to_chat(H, "<B>You are [job.total_positions == 1 ? "the" : "a"] [alt_title ? alt_title : rank].</B>")
+	to_chat(H, SPAN_WHITE("<B>You are [job.total_positions == 1 ? "the" : "a"] <font color=\"[job.selection_color]\">[alt_title ? alt_title : rank]</font>.</B>"))
 
 	if(job.role_desc)
 		to_chat(H, "<b>Role Description:</b> <i>[job.role_desc]</i>")
 
 	if(job.supervisors)
-		to_chat(H, "<b>As the [alt_title ? alt_title : rank] you answer directly to [job.supervisors]. Special circumstances may change this.</b>")
+		to_chat(H, SPAN_WHITE("<b>As the [alt_title ? alt_title : rank] you answer directly to [job.supervisors]. Special circumstances may change this.</b>"))
 
-	to_chat(H, "<b>To speak on your squad's radio channel use :h. For the use of other channels, examine your headset. For general use, use ;.</b>")
+	to_chat(H, SPAN_WHITE("<b>To speak on your squad's radio channel use :h. For the use of other channels, examine your headset. For general use, use ;.</b>"))
 
 	if(job.req_admin_notify)
 		to_chat(H, "<b>You are playing a job that is important for Game Progression. If you have to disconnect, please notify the admins via adminhelp.</b>")
@@ -474,10 +474,11 @@ SUBSYSTEM_DEF(jobs)
 		if(equipped)
 			var/obj/item/clothing/glasses/G = H.glasses
 			G.prescription = 7
-	if(job.possible_backstories.len && H.client.prefs.backstory)
-		pick_backstory(job.possible_backstories, H)
-
-	H.set_squad_huds()
+	if(job.backstories.len && H.client.prefs.backstory)
+		pick_backstory(job, H)
+	if(SSwarfare.battle_time)
+		H.set_squad_huds()
+		H.set_team_huds()
 	BITSET(H.hud_updateflag, ID_HUD)
 	BITSET(H.hud_updateflag, IMPLOYAL_HUD)
 	BITSET(H.hud_updateflag, SPECIALROLE_HUD)
@@ -618,6 +619,22 @@ SUBSYSTEM_DEF(jobs)
 #undef RETURN_TO_LOBBY
 
 /mob/living/carbon/human/proc/set_team_huds()
+// only runs once now, should fix the lag hopefully
+	for(var/mob/living/carbon/human/H in GLOB.human_mob_list)
+		if(H.warfare_faction == src.warfare_faction || istype(SSjobs.GetJobByTitle(H.job), /datum/job/fortress/red/practitioner) || istype(SSjobs.GetJobByTitle(H.job), /datum/job/fortress/blue/practitioner) || H.warfare_faction == null)
+			var/hud_state = "friendly"
+			if(istype(SSjobs.GetJobByTitle(H.job), /datum/job/fortress/red/practitioner)||istype(SSjobs.GetJobByTitle(H.job), /datum/job/fortress/blue/practitioner) || H.warfare_faction == null)
+				hud_state = "prac"
+			var/image/HUD_icon = image('icons/effects/team_indicator.dmi', H, hud_state)
+			if(istype(SSjobs.GetJobByTitle(H.job), /datum/job/soldier/red_soldier/captain)||istype(SSjobs.GetJobByTitle(H.job), /datum/job/soldier/blue_soldier/captain))
+				HUD_icon.pixel_y = -5
+				var/image/LEADER_icon = image('icons/effects/team_indicator.dmi', H, "leader") // captain
+				LEADER_icon.plane = EFFECTS_ABOVE_LIGHTING_PLANE
+				src.client?.images += LEADER_icon
+			HUD_icon.plane = EFFECTS_ABOVE_LIGHTING_PLANE
+			src.client?.images += HUD_icon//Make sure we get their HUD icon too.
+
+/* // DANGEROUS SHITCODE
 	spawn(10) // for some reason it tends to just assign enemy to your teammates.. should fix it?
 		for(var/mob/living/carbon/human/H in GLOB.human_mob_list)
 			var/hud_state
@@ -636,11 +653,11 @@ SUBSYSTEM_DEF(jobs)
 				HUD_icon.pixel_y = -5
 				var/image/LEADER_icon = image('icons/effects/team_indicator.dmi', H, "leader") // captain
 				LEADER_icon.plane = EFFECTS_ABOVE_LIGHTING_PLANE
-				src.client?.images -= LEADER_icon
-				src.client?.images += LEADER_icon
-			src.client?.images -= HUD_icon//refresh..
-			src.client?.images += HUD_icon//Make sure we get their HUD icon too.
-
+				src.overlays += LEADER_icon
+				src.overlays += LEADER_icon
+			src.overlays += HUD_icon//refresh..
+			src.overlays += HUD_icon//Make sure we get their HUD icon too.
+*/
 
 /mob/living/carbon/human/proc/set_squad_huds()
 	var/image/HUD_icon = get_squad_hud()

@@ -2,16 +2,19 @@
 	title = "Red Soldier"
 	outfit_type = /decl/hierarchy/outfit/job/redsoldier/soldier
 	is_red_team = TRUE
-	selection_color = "#b27676"
+	selection_color = "#ca6060"
 	supervisors = "GREAT LEADER, the chain of command, and the drums of war"
 	auto_rifle_skill = 10
 	semi_rifle_skill = 7
 	sniper_skill = 3
-	shotgun_skill = 6
+	shotgun_skill = 5
 	lmg_skill = 3
 	smg_skill = 3
+	boltie_skill = 10
 
 	squad_overlay = "rifleman"
+
+	backstories = list(/datum/backstory/translator)
 
 	equip(var/mob/living/carbon/human/H)
 		H.warfare_faction = RED_TEAM
@@ -85,6 +88,7 @@
 	smg_skill = 10
 	shotgun_skill = 10
 	total_positions = -1
+	boltie_skill = 5
 
 	announced = FALSE
 
@@ -107,6 +111,7 @@
 	shotgun_skill = 3
 	lmg_skill = 3
 	smg_skill = 3
+	close_when_dead = TRUE
 	// open_when_dead = TRUE
 
 	announced = FALSE
@@ -153,6 +158,7 @@
 	lmg_skill = 3
 	smg_skill = 3
 	can_be_in_squad = TRUE
+	close_when_dead = TRUE
 
 	announced = FALSE
 
@@ -173,7 +179,7 @@
 	sniper_skill = 10
 	open_when_dead = TRUE
 
-	possible_backstories = list(/datum/backstory/nepotismcaptain)
+	backstories = list(/datum/backstory/nepotismcaptain, /datum/backstory/childcaptain)
 
 	announced = FALSE
 
@@ -226,6 +232,7 @@
 	shotgun_skill = 0
 	lmg_skill = 0
 	smg_skill = 0
+	boltie_skill = 0
 	supervisors = "adults and your very cool country"
 	announced = FALSE
 
@@ -268,6 +275,12 @@
 		backpack_contents = list(/obj/item/grenade/smokebomb = 1)
 		belt = /obj/item/storage/belt/armageddon
 
+	else if (prob(15))
+		suit_store = /obj/item/gun/projectile/shotgun/pump/boltaction/good
+		r_pocket =  /obj/item/ammo_box/rifle/modern
+		backpack_contents = initial(backpack_contents)
+		belt = null
+
 	else if(prob(25))
 		suit_store = /obj/item/gun/projectile/shotgun/pump/boltaction/shitty/leverchester
 		r_pocket = /obj/item/ammo_box/rifle
@@ -293,28 +306,37 @@
 	..()
 
 /decl/hierarchy/outfit/job/redsoldier/sgt
-	suit = /obj/item/clothing/suit/armor/redcoat/sl
 
 /decl/hierarchy/outfit/job/redsoldier/sgt/equip()
 	if(prob(1))
 		suit_store = /obj/item/gun/projectile/shotgun/pump/shitty/sawn
 		r_pocket = /obj/item/ammo_box/shotgun
-	else if(prob(50))
+	else if(prob(40))
 		suit_store = /obj/item/gun/projectile/automatic/m22/warmonger/fully_auto
-		backpack_contents = list(/obj/item/clothing/mask/gas/ancient = 1)
+		backpack_contents = list(/obj/item/clothing/mask/gas/red = 1)
 		r_pocket = /obj/item/grenade/smokebomb
-		//chest_holster = /obj/item/storage/backpack/satchel/warfare/chestrig/red
+		chest_holster = /obj/item/storage/backpack/satchel/warfare/chestrig/red/soldier
+	else if(prob(25))
+		suit_store = /obj/item/gun/projectile/automatic/m22/warmonger/fully_auto/ersatz
+		r_pocket = /obj/item/grenade/smokebomb
+		backpack_contents = list(/obj/item/clothing/mask/gas/red = 1)
+		chest_holster = /obj/item/storage/backpack/satchel/warfare/chestrig/red/soldier
+	else if(prob(5)) //I am light weapons guy. And this is my weapon.
+		suit_store = /obj/item/gun/projectile/automatic/m22/warmonger/fully_auto/oldlmg
+		r_pocket = /obj/item/grenade/smokebomb
+		backpack_contents = list(/obj/item/clothing/mask/gas/red = 1)
+		chest_holster = /obj/item/storage/backpack/satchel/warfare/chestrig/red/oldlmg
 	else
 		suit_store =/obj/item/gun/projectile/automatic/m22/warmonger/m14
 		r_pocket = /obj/item/grenade/smokebomb
 		chest_holster = /obj/item/storage/backpack/satchel/warfare/chestrig/red/sl
-		backpack_contents = list(/obj/item/clothing/mask/gas/ancient = 1)
-
+		backpack_contents = list(/obj/item/clothing/mask/gas/red = 1)
+/*
 	if(prob(50))//Give them an MRE. They're going to be out there a while.
 		backpack_contents += list(/obj/item/storage/box/mre = 1)
 	else
 		backpack_contents += list(/obj/item/storage/box/mre/var1 = 1)
-
+*/
 	if(aspect_chosen(/datum/aspect/nightfare))
 		backpack_contents += list(/obj/item/ammo_box/flares = 1, /obj/item/torch/self_lit = 1)
 	..()
@@ -370,7 +392,10 @@
 /decl/hierarchy/outfit/job/redsoldier/flamer
 	l_ear = /obj/item/device/radio/headset/red_team/all
 	suit = /obj/item/clothing/suit/fire/red
-	head = /obj/item/clothing/head/helmet/redhelmet/fire
+	mask = /obj/item/clothing/mask/gas/red/flamer
+	gloves = /obj/item/clothing/gloves/thick/swat/combat/warfare/red/flamer
+	head = null
+	shoes = /obj/item/clothing/shoes/jackboots/warfare/red/flamer
 	belt = /obj/item/gun/projectile/automatic/flamer
 	suit_store = /obj/item/melee/trench_axe
 	r_pocket = /obj/item/grenade/fire
@@ -427,26 +452,27 @@
 	suit = /obj/item/clothing/suit/armor/redcoat/leader
 	head = /obj/item/clothing/head/warfare_officer/redofficer
 	l_ear = /obj/item/device/radio/headset/red_team/all
-	belt = /obj/item/gun/projectile/revolver/manual
+	belt = /obj/item/gun/projectile/revolver/cpt
 	r_pocket = /obj/item/device/binoculars
 	chest_holster = null
 	backpack_contents = list(/obj/item/ammo_magazine/handful/revolver = 2, /obj/item/grenade/smokebomb = 1, /obj/item/clothing/mask/gas/captaingasmask = 1)
 
 /decl/hierarchy/outfit/job/redsoldier/leader/equip()
+/*
 	if(prob(50))//Give them an MRE. They're going to be out there a while.
 		backpack_contents += list(/obj/item/storage/box/mre = 1)
 	else
 		backpack_contents += list(/obj/item/storage/box/mre/var1 = 1)
-
+*/
 	if(aspect_chosen(/datum/aspect/nightfare))
 		backpack_contents += list(/obj/item/ammo_box/flares = 1 , /obj/item/torch/self_lit = 1)
 	..()
 
 /decl/hierarchy/outfit/job/redsoldier/scout
-	suit = /obj/item/clothing/suit/child_coat/red
+	suit = /obj/item/clothing/suit/armor/redcoat
 	l_ear = /obj/item/device/radio/headset/red_team/all
 	uniform = /obj/item/clothing/under/child_jumpsuit/warfare/red
-	shoes = /obj/item/clothing/shoes/child_shoes
+	shoes = /obj/item/clothing/shoes/jackboots/warfare/red
 	gloves = null
 	r_pocket = /obj/item/device/binoculars
 	backpack_contents = list(/obj/item/grenade/smokebomb = 1)

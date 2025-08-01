@@ -83,7 +83,7 @@
 	var/confused = 0		//Carbon
 	var/sleeping = 0		//Carbon
 	var/resting = 0			//Carbon
-	var/in_trench = 0       //For /mob/living/Bump stuff.
+	//var/in_trench = 0       //For /mob/living/Bump stuff.
 	var/doing_something = FALSE
 	var/lying = 0
 	var/lying_prev = 0
@@ -208,3 +208,5 @@
 	var/warfare_faction = null //The warfare faction they're apart of. Used by humans and ghosts primarily. Placed all the way up here so that when you logout as something other than a human you don't get team switched.
 
 	var/breathe_tick = 0 // Used for gas mask delays.
+
+	var/datum/backstory/backstory = null // The backstory of the mob, if any. Lets us check if they have a specific backstory, or some other bs if i need it.

@@ -54,12 +54,8 @@
 	if(SSjobs?.GetJobByTitle(job)?.open_when_dead)//When the person dies who has this job, free this role again.
 		SSjobs.allow_one_more(job)
 
-	if(!GLOB.first_death)
-		GLOB.first_death = real_name
-	if(!GLOB.first_death_happened)
-		GLOB.first_death_happened = TRUE
-	if(!GLOB.final_words)
-		GLOB.final_words = last_words
+	if(SSjobs?.GetJobByTitle(job)?.close_when_dead)//This is only for special units. Close the role when they die so that cargo has to buy another guy. This means you can only buy one special unit at a time.
+		SSjobs?.GetJobByTitle(job)?.total_positions = 0
 
 /mob/living/carbon/human/proc/handle_warfare_life()
 	if(!iswarfare())

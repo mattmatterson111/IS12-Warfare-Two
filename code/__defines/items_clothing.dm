@@ -19,8 +19,8 @@
 #define SLOT_TWOEARS    0x2000
 #define SLOT_TIE        0x4000
 #define SLOT_S_STORE 	0x8000
-#define SLOT_HOLSTER	0x1600
-#define SLOT_CHEST		0x3200
+#define SLOT_CHEST		0x10000
+#define SLOT_HOLSTER	0x20000
 
 #define ACCESSORY_SLOT_UTILITY  "Utility"
 #define ACCESSORY_SLOT_HOLSTER  "Holster"

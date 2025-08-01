@@ -19,9 +19,14 @@
 	var/child_exclusive = FALSE
 	var/warfare_team = null
 	var/helmet_vision = FALSE
+	var/footstep = 0
 
 // Updates the icons of the mob wearing the clothing item, if any.
 /obj/item/clothing/proc/update_clothing_icon()
+	return
+
+
+/obj/item/clothing/proc/handle_movement(var/turf/walking, var/running)
 	return
 
 // Updates the vision of the mob wearing the clothing item, if any
@@ -617,9 +622,6 @@ BLIND     // can't see anything
 	if(holding)
 		overlays += image(icon, "[icon_state]_knife")
 	return ..()
-
-/obj/item/clothing/shoes/proc/handle_movement(var/turf/walking, var/running)
-	return
 
 /obj/item/clothing/shoes/update_clothing_icon()
 	if (ismob(src.loc))

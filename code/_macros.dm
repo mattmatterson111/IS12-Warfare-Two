@@ -30,7 +30,7 @@
 
 #define ishuman(A) istype(A, /mob/living/carbon/human)
 
-#define isworld(A) !istype(A, /mob/living) // in general, checks if it's in the world for icon changes..
+#define isworld(A) !istype(A, /mob/) // in general, checks if it's in the world for icon changes..
 
 #define isitem(A) istype(A, /obj/item)
 

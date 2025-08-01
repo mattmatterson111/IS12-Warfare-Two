@@ -83,6 +83,15 @@
 	initial_reagent_types = list(/datum/reagent/water = 1)
 	atom_flags = ATOM_FLAG_CLIMBABLE
 
+/obj/structure/reagent_dispensers/watertank/red
+	name = "Water Tank"
+	icon_state = "watertank_red"
+	desc = "A tank full to the brim with succulent, potent, petrochemically enhanced water harvested from the Sulfur Zee."
+/obj/structure/reagent_dispensers/watertank/blue
+	name = "Water Tank"
+	icon_state = "watertank_blue"
+	desc = "A tank full to the brim with delicious Bog Water™ from a now nonexistant Greenslandic Swamp."
+
 /obj/structure/reagent_dispensers/fueltank
 	name = "fueltank"
 	desc = "A tank containing fuel."

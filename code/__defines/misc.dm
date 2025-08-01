@@ -16,8 +16,14 @@
 #define SPAN_BNOTICE(X) "<span class='bnotice'>[X]</span>"
 #define SPAN_BOLD(X) "<span class='bold'>[X]</span>"
 
+#define SPAN_DESC(X) "<span class='itemdesc'>[X]</span>"
+#define SPAN_SIZE(X) "<span class='itemsize'>[X]</span>"
+
 #define SPAN_YELLOW(X) "<span class='yel'>[X]</span>"
 #define SPAN_YELLOW_LARGE(X) "<span class='yelBig'>[X]</span>"
+
+#define SPAN_WHITE(X) "<span class='whi'>[X]</span>"
+#define SPAN_WHITE_LARGE(X) "<span class='whiBig'>[X]</span>"
 
 #define FONT_SMALL(X) "<font size='1'>[X]</font>"
 #define FONT_NORMAL(X) "<font size='2'>[X]</font>"
@@ -26,6 +32,11 @@
 #define FONT_GIANT(X) "<font size='5'>[X]</font>"
 
 #define text_starts_with(text, start) (copytext(text, 1, length(start) + 1) == start)
+
+// disco shit
+#define SPAN_STATSBAD(str) ("<span class='statsBad'>" + str + "</span>")
+#define SPAN_STATSGOOD(str) ("<span class='statsGood'>" + str + "</span>")
+#define SPAN_MINDVOICE(str) ("<span class='headSpeak'>" + str + "</span>")
 
 //Misc text define. Does 4 spaces. Used as a makeshift tabulator.
 #define FOURSPACES "&nbsp;&nbsp;&nbsp;&nbsp;"
@@ -320,3 +331,28 @@
 #define GEN_SPHERE "sphere"
 #define GEN_SQUARE "square"
 #define GEN_CUBE "cube"
+
+// Skill sources
+#define SKILL_SOURCE_COMBAT_MODE "Prepared to fight"
+/// Confusion status effect.
+#define SKILL_SOURCE_CONFUSION "Confused"
+/// Knockdown status effect
+#define SKILL_SOURCE_FLOORED "Knocked down"
+/// Blind
+#define SKILL_SOURCE_BLINDNESS "Blind"
+/// Clumsy
+#define SKILL_SOURCE_CLUMSY "Clumsy"
+/// Overcome witnessing a death
+#define SKILL_SOURCE_DEATH_RESOLVE "Overcome witnessing a death"
+/// Witness a death
+#define SKILL_SOURCE_WITNESS_DEATH "Witnessed a death"
+/// Have nicotine in your blood
+#define SKILL_SOURCE_NICOTINE "Nicotine"
+/// Have a nicotine withdrawl
+#define SKILL_SOURCE_NICOTINE_WITHDRAWL "Nicotine withdrawl"
+/// Opiod Withdrawl
+#define SKILL_SOURCE_OPIOD_WITHDRAWL "Opiod withdrawl"
+/// Alchohol withdrawl
+#define SKILL_SOURCE_ALCHOHOL_WITHDRAWL "Alchohol withdrawl"
+/// The baseline value for a stat.
+#define STATS_BASELINE_VALUE 11

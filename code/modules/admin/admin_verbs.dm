@@ -30,6 +30,7 @@ var/list/admin_verbs_admin = list(
 	/client/proc/cmd_admin_pm_context,	//right-click adminPM interface,
 	/client/proc/cmd_admin_pm_panel,	//admin-pm list,
 	/client/proc/cmd_admin_subtle_message,	//send an message to somebody as a 'voice in their head',
+	/client/proc/cmd_admin_subtle_message_disco,
 	/client/proc/cmd_admin_delete,		//delete an instance/object/mob/etc,
 	/client/proc/cmd_admin_check_contents,	//displays the contents of an instance,
 	/datum/admins/proc/access_news_network,	//allows access of newscasters,
@@ -52,6 +53,8 @@ var/list/admin_verbs_admin = list(
 	/client/proc/cmd_admin_world_narrate,	//sends text to all players with no padding,
 	/client/proc/cmd_admin_create_centcom_report,
 	/client/proc/check_ai_laws,			//shows AI and borg laws,
+	/client/proc/check_map_name,
+	/client/proc/check_team_reinforcements,
 	/client/proc/rename_silicon,		//properly renames silicons,
 	/client/proc/manage_silicon_laws,	// Allows viewing and editing silicon laws. ,
 	/client/proc/check_antagonists,
@@ -165,7 +168,15 @@ var/list/admin_verbs_server = list(
 	/client/proc/check_customitem_activity,
 	/client/proc/nanomapgen_DumpImage,
 	/datum/admin/proc/add_hellban,
-	/datum/admin/proc/remove_hellban
+	/datum/admin/proc/remove_hellban,
+	/client/proc/speaker_alarm_start,
+	/client/proc/speaker_alarm_stop,
+	/client/proc/nuke_server,
+	/client/proc/set_warf_broadcast_id,
+	/client/proc/set_warf_broadcast_template,
+	/client/proc/toggle_on_warf_speakers,
+	/client/proc/toggle_off_warf_speakers,
+	/client/proc/warfare_announcement
 	)
 var/list/admin_verbs_debug = list(
 	/client/proc/getruntimelog,                     // allows us to access runtime logs to somebody,
@@ -243,6 +254,8 @@ var/list/admin_verbs_hideable = list(
 	/datum/admins/proc/view_txt_log,
 	/datum/admins/proc/view_atk_log,
 	/client/proc/cmd_admin_subtle_message,
+	/client/proc/cmd_admin_subtle_message_disco,
+	/client/proc/cmd_admin_roll_disco,
 	/client/proc/cmd_admin_check_contents,
 	/datum/admins/proc/access_news_network,
 	/client/proc/admin_call_shuttle,
@@ -311,6 +324,8 @@ var/list/admin_verbs_mod = list(
 	/datum/admins/proc/show_player_panel,
 	/client/proc/check_antagonists,
 	/client/proc/cmd_admin_subtle_message, // send an message to somebody as a 'voice in their head',
+	/client/proc/cmd_admin_subtle_message_disco,
+	/client/proc/cmd_admin_roll_disco, // hehehe
 	/datum/admins/proc/sendFax
 
 )
@@ -699,6 +714,19 @@ var/list/admin_verbs_mentor = list(
 	if(holder)
 		src.holder.output_ai_laws()
 
+/client/proc/check_map_name()
+	set name = "Check Map name"
+	set category = "Admin"
+	if(holder)
+		to_chat(src, "The map is taking place at: [GLOB.war_lore.name].")
+
+/client/proc/check_team_reinforcements()
+	set name = "Check Team Reinforcements"
+	set category = "Admin"
+	if(holder)
+		to_chat(src, "Red: [SSwarfare.red.left]")
+		to_chat(src, "Blue: [SSwarfare.blue.left]")
+
 /client/proc/rename_silicon()
 	set name = "Rename Silicon"
 	set category = "Admin"
@@ -958,13 +986,24 @@ var/list/admin_verbs_mentor = list(
 
 	var/confirm = alert("Are you sure you want to become a Morale Officer?", "No politic here", "Yes", "No")
 	if(confirm == "Yes")
+		confirm = alert("Spawn on your current location?", "Else, be sent to the admin room", "Yes", "No")
+		var/turf/spawnpoint = null
+		if(confirm == "Yes")
+			spawnpoint = get_turf(mob)
+		else
+			for(var/obj/effect/landmark/start/morale_officer/landmark in landmarks_list)
+				spawnpoint = get_turf(landmark)
+				break
+		if(!spawnpoint)
+			to_chat(usr, "Somehow, we could not find a spawnpoint. Damn.h")
 		log_and_message_admins("[src] became a morale officer.", src)
-		for(var/obj/effect/landmark/start/morale_officer/spawnpoint in world)
-			var/turf/T = get_turf(spawnpoint)
-			var/mob/living/carbon/human/deployed_officer = new/mob/living/carbon/human/morale_officer(T)
-			deployed_officer.ckey = src.ckey
-			to_chat(deployed_officer,SPAN_WARNING("YOU ARE A MORALE OFFICER.\n\nGOAL:\n\nBE MYSTERIOUS AND SCARE THE TEAM OF YOUR CHOICE. WRITE PEOPLE UP IN THE BOOK FOR FUNSIES\n\nYOU ARE BILINGUAL. CHECK THE LANGUAGES PANEL.\n\nYOU ARE ALSO NEARLY IMMORTAL\n\n HAVE FUN!"))
-			to_chat(deployed_officer,SPAN_WARNING("(If you mess up Richard Nixon will come for you. This is FACT.)"))
+		var/mob/old_mob = mob
+		var/mob/living/carbon/human/deployed_officer = new/mob/living/carbon/human/morale_officer(spawnpoint)
+		deployed_officer.ckey = src.ckey
+		if(ishuman(old_mob))
+			qdel(old_mob)
+		to_chat(deployed_officer,SPAN_WARNING("YOU ARE A MORALE OFFICER.\n\nGOAL:\n\nBE MYSTERIOUS AND SCARE THE TEAM OF YOUR CHOICE. WRITE PEOPLE UP IN THE BOOK FOR FUNSIES\n\nYOU ARE BILINGUAL. CHECK THE LANGUAGES PANEL.\n\nYOU ARE ALSO NEARLY IMMORTAL\n\n HAVE FUN!"))
+		to_chat(deployed_officer,SPAN_WARNING("(If you mess up Richard Nixon will come for you. This is FACT.)"))
 
 /mob/living/carbon/human/morale_officer
 	name = "Morale Officer"
