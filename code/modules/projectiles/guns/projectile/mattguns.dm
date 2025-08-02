@@ -1015,8 +1015,6 @@
 	if(calculateMisfire())
 		to_chat(victim,SPAN_DANGER("The Shig 420 misfires! Why did our team purchase this stupid thing?!"))
 		Fire(victim,victim)
-	else
-		to_chat(victim,SPAN_DANGER("This Shig 420 doesn't misfire. You live another day."))
 
 /obj/item/gun/projectile/warfare/shig/proc/calculateMisfire() //straight 50/50 chance. It's the shig420 after all.
 	var/willMisfire = rand(1,2)
@@ -1025,7 +1023,7 @@
 	else if(willMisfire == 2)
 		return FALSE
 	else
-		to_chat(usr,"DIVINE INTERVENTION! NOFITFY AN ADMIN!") //here to check if actually doing a fair 50/50 roll
+		//to_chat(usr,"DIVINE INTERVENTION! NOFITFY AN ADMIN!") //here to check if actually doing a fair 50/50 roll
 		return FALSE
 
 /*

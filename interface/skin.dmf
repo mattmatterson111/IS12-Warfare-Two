@@ -1098,12 +1098,17 @@ window "mapwindow"
 window "outputwindow"
 	elem "outputwindow"
 		type = MAIN
-		pos = 281,0
+		pos = 291,0
 		size = 640x480
 		anchor1 = -1,-1
 		anchor2 = -1,-1
+		background-color = none
 		saved-params = "pos;size;is-minimized;is-maximized"
 		is-pane = true
+		outer-size = 656x538
+		outer-pos = 291,0
+		inner-pos = 8,31
+		screen-size = 1920x1080
 	elem "browseroutput"
 		type = BROWSER
 		pos = 0,0
@@ -1122,7 +1127,7 @@ window "outputwindow"
 		anchor2 = 100,100
 		font-size = 12
 		text-color = #d1d1d1
-		background-color = #0c0c0c
+		background-color = #07020a
 		is-default = true
 		saved-params = ""
 		command = "Say \""
