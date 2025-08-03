@@ -78,3 +78,15 @@
 	desc = "Sturdy.. the peak of circular innovation."
 	icon = 'icons/obj/tables.dmi'
 	icon_state = "captabler"
+
+/obj/structure/table/nosmooth
+
+/obj/structure/table/nosmooth/update_icon()
+	return
+
+/obj/structure/table/nosmooth/capnew
+	name = "ebony desk"
+	desc = "Different from the Middle Ages version."
+	icon_state = "captdesk1"
+
+	material = DEFAULT_TABLE_MATERIAL

@@ -234,5 +234,82 @@ var/list/outfits_decls_by_type_
 /decl/hierarchy/outfit/dd_SortValue()
 	return name
 
+// evil fucking code to just let mes pawn shit in containers
 
+/decl/hierarchy/outfit/proc/spawn_into(obj/C, mob/living/carbon/human/H)
+	if(!C || !H)
+		return
 
+	// Main worn gear
+	if(uniform)
+		new uniform(C)
+	if(suit)
+		new suit(C)
+
+	var/obj/item/storage/backpack = null
+
+	if(back)
+		backpack = new back(C)
+	if(chest_holster)
+		new chest_holster(C)
+	if(belt)
+		new belt(C)
+	if(gloves)
+		new gloves(C)
+	if(shoes)
+		new shoes(C)
+	if(mask)
+		new mask(C)
+	if(head)
+		new head(C)
+
+	// Ears (fallback to plain headset if adjustment were enabled — not needed here)
+	if(l_ear)
+		new l_ear(C)
+	if(r_ear)
+		new r_ear(C)
+
+	if(glasses)
+		new glasses(C)
+	if(id)
+		new id(C)
+	if(l_pocket)
+		new l_pocket(C)
+	if(r_pocket)
+		new r_pocket(C)
+	if(suit_store)
+		new suit_store(C)
+	if(neck)
+		new neck(C)
+
+	// Hands
+	if(l_hand)
+		new l_hand(C)
+	if(r_hand)
+		new r_hand(C)
+
+	// Backpack contents
+	if(backpack)
+		for(var/path in backpack_contents)
+			var/number = backpack_contents[path]
+			for(var/i = 0, i < number, i++)
+				new path(backpack)
+
+	// ID card
+	var/obj/item/card/id/id_card
+	if(id_slot && id_type && !(OUTFIT_ADJUSTMENT_SKIP_ID_PDA & 0))
+		id_card = new id_type(C)
+		if(id_desc)
+			id_card.desc = id_desc
+		if(id_pda_assignment)
+			id_card.rank = id_pda_assignment
+			id_card.assignment = id_pda_assignment
+
+	// PDA
+	if(pda_slot && pda_type && !(OUTFIT_ADJUSTMENT_SKIP_ID_PDA & 0))
+		var/obj/item/device/pda/pda = new pda_type(C)
+		pda.set_owner_rank_job(H.real_name, id_card?.rank, id_card?.assignment)
+
+		if(id_card)
+			id_card.loc = pda
+			pda.id = id_card

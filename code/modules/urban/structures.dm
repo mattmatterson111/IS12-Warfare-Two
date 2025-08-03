@@ -30,12 +30,6 @@
 /obj/item/device/flashlight/lamp/captain/urban_streetlamp/attack_hand(mob/user)
 	return FALSE
 
-/obj/item/device/flashlight/lamp/captain/urban_streetlamp/update_icon()
-	. = ..()
-	if(on)
-		var/image/I = image(icon=src.icon, icon_state = "[initial(icon_state)]-glow")
-		I.plane = EFFECTS_ABOVE_LIGHTING_PLANE
-		overlays += I
 /*
 	if(CanPhysicallyInteract(user))
 		on = !on

@@ -19,7 +19,9 @@
 /obj/machinery/door/unpowered/simple/New(var/newloc, var/material_name, var/locked)
 	..()
 	if(!material_name)
-		material_name = DEFAULT_WALL_MATERIAL
+		material_name = material
+		if(!material_name)
+			material_name = DEFAULT_WALL_MATERIAL
 	material = get_material_by_name(material_name)
 	if(!material)
 		qdel(src)
@@ -79,7 +81,7 @@
 /obj/machinery/door/unpowered/simple/close(var/forced = 0)
 	if(!can_close(forced))
 		return
-	playsound(src.loc, material.dooropen_noise, 100, 1)
+	playsound(src.loc, material.doorclose_noise, 100, 1)
 	..()
 
 /obj/machinery/door/unpowered/simple/open(var/forced = 0)

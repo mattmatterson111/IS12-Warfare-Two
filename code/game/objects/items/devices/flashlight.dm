@@ -21,8 +21,12 @@
 	update_icon()
 
 /obj/item/device/flashlight/update_icon()
+	overlays.Cut()
 	if(on)
 		icon_state = "[initial(icon_state)]-on"
+		var/image/I = image(icon=src.icon, icon_state = "[initial(icon_state)]-glow")
+		I.plane = GLOW_PLANE
+		overlays += I
 		if(flashlight_power)
 			set_light(l_range = brightness_on, l_power = flashlight_power)
 		else
@@ -278,7 +282,7 @@
 		set_light(0)
 	else if (on)
 		var/image/I = overlay_image(icon,"glowstick-on",color)
-		I.blend_mode = BLEND_ADD
+		I.plane = GLOW_PLANE
 		overlays += I
 		item_state = "glowstick-on"
 		set_light(brightness_on)

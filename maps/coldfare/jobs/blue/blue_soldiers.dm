@@ -205,10 +205,12 @@
 			if(phone.phonename == RED_TEAM)
 				to_chat(H, "<b>Enemy captain's phone number</b>: [phone.fullphonenumber]")
 				H.mind.store_memory("<b>Enemy captain's phone number</b>: [phone.fullphonenumber]")
+		/*
 		for(var/obj/structure/phone/phone in GLOB.phone_list)
 			if(phone.phonename == "BLUE COMMAND")
 				to_chat(H, "<b>Blusnian High Command's Number</b>: [phone.fullphonenumber]")
 				H.mind.store_memory("<b>Blusnian High Command's Number</b>: [phone.fullphonenumber]")
+		*/ // Dont call twice, and we no longer give them high command
 		H.say(";[H.real_name] [pick("taking","in")] command!")
 		H.add_language(LANGUAGE_DIPLOMATIC)
 		to_chat(H,SPAN_NOTICE("You are fluent in <u>Diplomatic Standard</u>, allowing you to communicate with the opposing captain. <b>Check the language tab for more details.</b>"))
@@ -475,6 +477,7 @@
 	gloves = null
 	r_pocket = /obj/item/device/binoculars
 	backpack_contents = list(/obj/item/grenade/smokebomb = 1)
+	r_hand = /obj/item/tagnabber
 
 /decl/hierarchy/outfit/job/bluesoldier/scout/equip()
 	if(aspect_chosen(/datum/aspect/nightfare))

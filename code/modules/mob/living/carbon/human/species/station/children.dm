@@ -50,7 +50,7 @@
 	child_exclusive = TRUE
 
 
-/mob/living/carbon/human/proc/isChild()//Used to tell if someone is a child.
+/mob/proc/isChild()//Used to tell if someone is a child.
 	if(get_species() == SPECIES_CHILD)
 		return 1
 	else

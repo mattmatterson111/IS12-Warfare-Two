@@ -19,7 +19,7 @@
 /obj/effect/abstract/particle_holder/Initialize(mapload, particle_path = null)
 	. = ..()
 	if(!loc)
-		to_world("particle holder was created with no loc!")
+		message_admins("particle holder was created with no loc!")
 		return INITIALIZE_HINT_QDEL
 	particles = new particle_path
 
@@ -103,7 +103,7 @@
 	debris_visuals.particles.spawning = debris_amount
 	debris_visuals.particles.scale = debris_scale
 	smoke_visuals.layer = ABOVE_OBJ_LAYER + 0.01
-	addtimer(CALLBACK(src, .proc/remove_ping, smoke_visuals, debris_visuals), 0.7 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(remove_ping), smoke_visuals, debris_visuals), 0.7 SECONDS)
 
 /atom/proc/remove_ping(obj/effect/abstract/particle_holder/smoke_visuals, obj/effect/abstract/particle_holder/debris_visuals)
 	QDEL_NULL(smoke_visuals)

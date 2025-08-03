@@ -378,17 +378,45 @@ SUBSYSTEM_DEF(jobs)
 
 	H.job = rank
 
-	if(!joined_late || job.latejoin_at_spawnpoints)
-		var/obj/S = get_roundstart_spawnpoint(rank)
+	if(!joined_late || job.latejoin_at_spawnpoints || job.spawn_in_cryopod)
+		var/obj/structure/soldiercryo/special/cryo_spawnpoint = null
 
-		if(istype(S, /obj/effect/landmark/start) && istype(S.loc, /turf))
-			H.forceMove(S.loc)
+		if(job.spawn_in_cryopod)
+			for (var/obj/structure/soldiercryo/special/C in GLOB.special_cryospawns[job.cryopod_id])
+				if (C.occupant)
+					continue
+				if(C.id != job.cryopod_id) // safety
+					continue
+				cryo_spawnpoint = C
+				break // Found an open one
+
+		if (cryo_spawnpoint)
+			var/turf/T = get_turf(cryo_spawnpoint)
+			H.forceMove(T)
+			cryo_spawnpoint.move_inside(H, TRUE)
+			spawn(5 SECONDS) // don't idle.
+				cryo_spawnpoint.eject(forced = TRUE)
+				cryo_spawnpoint.icon_state = initial(cryo_spawnpoint.icon_state) // nice illusion of it being refilled
+
+		else if(iswarfare() && SSwarfare.battle_time)
+			var/list/loc_list = list()
+			for(var/obj/effect/landmark/start/sloc in landmarks_list)
+				if(sloc.name != H.client.warfare_faction)	continue
+				loc_list += sloc
+			var/obj/spawnpoint = pick(loc_list)
+			if(spawnpoint)
+				H.forceMove(spawnpoint.loc)
+
 		else
-			var/datum/spawnpoint/spawnpoint = get_spawnpoint_for(H.client, rank)
-			H.forceMove(pick(spawnpoint.turfs))
+			var/obj/S = get_roundstart_spawnpoint(rank)
 
-		// Moving wheelchair if they have one
-		if(H.buckled && istype(H.buckled, /obj/structure/bed/chair/wheelchair))
+			if (istype(S, /obj/effect/landmark/start) && istype(S.loc, /turf))
+				H.forceMove(S.loc)
+			else
+				var/datum/spawnpoint/spawnpoint = get_spawnpoint_for(H.client, rank)
+				H.forceMove(pick(spawnpoint.turfs))
+
+		if (H.buckled && istype(H.buckled, /obj/structure/bed/chair/wheelchair))
 			H.buckled.forceMove(H.loc)
 			H.buckled.set_dir(H.dir)
 

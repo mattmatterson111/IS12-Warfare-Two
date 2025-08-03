@@ -340,7 +340,7 @@
 
 	var/datum/spawnpoint/spawnpoint = SSjobs.get_spawnpoint_for(client, job.title)
 	var/turf/spawn_turf = pick(spawnpoint.turfs)
-	if(job.latejoin_at_spawnpoints)
+	if(job.latejoin_at_spawnpoints && !job.spawn_in_cryopod)
 		var/obj/S = SSjobs.get_roundstart_spawnpoint(job.title)
 		spawn_turf = get_turf(S)
 	var/radlevel = radiation_repository.get_rads_at_turf(spawn_turf)

@@ -138,6 +138,9 @@
 
 	squad_overlay = "heavy_weaponry"
 
+	spawn_in_cryopod = TRUE
+	cryopod_id = RED_TEAM
+
 	announced = FALSE
 
 	equip(var/mob/living/carbon/human/H)
@@ -159,6 +162,9 @@
 	smg_skill = 3
 	can_be_in_squad = TRUE
 	close_when_dead = TRUE
+
+	spawn_in_cryopod = TRUE
+	cryopod_id = RED_TEAM
 
 	announced = FALSE
 
@@ -205,10 +211,12 @@
 			if(phone.phonename == BLUE_TEAM)
 				to_chat(H, "<b>Enemy captain's phone number</b>: [phone.fullphonenumber]")
 				H.mind.store_memory("<b>Enemy captain's phone number</b>: [phone.fullphonenumber]")
+		/*
 		for(var/obj/structure/phone/phone in GLOB.phone_list)
 			if(phone.phonename == "RED COMMAND")
 				to_chat(H, "<b>Redistani High Command's Number</b>: [phone.fullphonenumber]")
 				H.mind.store_memory("<b>Redistani High Command's Number</b>: [phone.fullphonenumber]")
+		*/ // Dont call twice, and we no longer give them high command
 		H.say(";[H.real_name] [pick("taking","in")] command!")
 		H.add_language(LANGUAGE_DIPLOMATIC)
 		to_chat(H,SPAN_NOTICE("You are fluent in <u>Diplomatic Standard</u>, allowing you to communicate with the opposing captain. <b>Check the language tab for more details.</b>"))
@@ -476,6 +484,7 @@
 	gloves = null
 	r_pocket = /obj/item/device/binoculars
 	backpack_contents = list(/obj/item/grenade/smokebomb = 1)
+	r_hand = /obj/item/tagnabber
 
 /decl/hierarchy/outfit/job/redsoldier/scout/equip()
 	if(aspect_chosen(/datum/aspect/nightfare))

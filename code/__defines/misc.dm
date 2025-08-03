@@ -129,6 +129,7 @@
 
 #define DEFAULT_TABLE_MATERIAL "plastic"
 #define DEFAULT_WALL_MATERIAL "steel"
+#define REINFORCED_STEEL_MATERIAL "reinforced_steel"
 
 #define SHARD_SHARD "shard"
 #define SHARD_SHRAPNEL "shrapnel"

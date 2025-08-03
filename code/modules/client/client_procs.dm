@@ -164,6 +164,8 @@
 
 	. = ..()	//calls mob.Login()
 	chatOutput.start() // Starts the chat
+	spawn(10)
+		chatOutput.start() // Starts the chat
 	force_dark_theme()
 	prefs.sanitize_preferences()
 
@@ -379,6 +381,9 @@
 /client/proc/send_resources()
 
 	getFiles(
+		'html/browser/terminal.css',
+		'html/spinner.js',
+		'html/images/scanlines.png',
 		'html/search.js',
 		'html/panels.css',
 		'html/spacemag.css',

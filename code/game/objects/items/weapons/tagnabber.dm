@@ -20,6 +20,7 @@
 				return
 
 		if(O && istype(O))  // if there is a dog tag
+			H.drop_from_inventory(O)
 			if(S && istype(S))  // if there is a backpack
 				if(S.can_be_inserted(O, user))  // if the backpack can take the dog tag
 					S.handle_item_insertion(O)

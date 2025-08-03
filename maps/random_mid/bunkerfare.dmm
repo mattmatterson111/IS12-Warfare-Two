@@ -473,7 +473,7 @@
 /obj/hammereditor/nodraw,
 /turf/simulated/wall/perspecticrete{
 	layer = 29;
-	plane = -15
+	plane = -150
 	},
 /area/template_noop)
 "TU" = (

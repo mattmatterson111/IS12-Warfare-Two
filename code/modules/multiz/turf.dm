@@ -128,6 +128,7 @@
 		for(var/obj/O in below)
 			if(O.invisibility) continue // Ignore objects that have any form of invisibility
 			if(O.loc != below) continue // Ignore multi-turf objects not directly below
+			if(istype(O, /obj/machinery/light)) continue // INTERWAR EDIT: HACKY FIX TO STOP LIGHTS FROM BEING FUCKSHIT!!
 			var/image/temp2 = image(O, dir = O.dir, layer = O.layer)
 			temp2.overlays += O.overlays
 			temp2.underlays += O.underlays

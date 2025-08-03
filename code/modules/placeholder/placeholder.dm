@@ -5,12 +5,14 @@
 
 // this code is fucking retarded I will rewrite it someday but not today 11/2/2024
 
-/obj/structure/closet/crate/scuffedcargo/
+/obj/structure/closet/crate/scuffedcargo/ // unused
 	name = "TEST CRATE #1"
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "securecrate"
 	icon_opened = "securecrateopen"
 	icon_closed = "securecrate"
+
+GLOBAL_LIST_EMPTY(faction_dosh)
 
 /obj/machinery/kaos/cargo_machine
 	name = "Cargo Machine"
@@ -38,6 +40,9 @@
 	)
 
 	var/list/categories = list("Weaponry", "Ammunition", "Miscellaneous", "Units", "Artillery")
+
+/obj/machinery/kaos/cargo_machine/RightClick(mob/user)
+	return // NO
 
 /obj/machinery/kaos/cargo_machine/proc/pingpads()
 	for(var/obj/structure/cargo_pad/pad in pads)
@@ -80,19 +85,6 @@
 	// Return the list of objects
 	return objects_on_turf
 
-/obj/machinery/kaos/cargo_machine/proc/get_dense_objects_on_turf(turf/T)
-	// Initialize an empty list to hold the objects
-	var/list/dense_objects_on_turf = list()
-
-	// Loop through the contents of the turf
-	for (var/obj/A in T)
-		if(A.density | istype(A, /obj/structure/closet) | istype(A, /mob/living/carbon))
-		// Add each object to the list
-			dense_objects_on_turf += A
-
-	// Return the list of objects
-	return dense_objects_on_turf
-
 /obj/machinery/kaos/cargo_machine/proc/pinglight()
 	spawn(0.1 SECONDS)
 		set_light(3, 3,"#f0e2c9")
@@ -124,8 +116,9 @@
 		if (pad.id == src.id && !pad.broken)
 			pads += pad
 
-/obj/machinery/kaos/cargo_machine/New()
-	credits = 500 // temporary(?)
+/obj/machinery/kaos/cargo_machine/New() // temporary(?)
+	if(id)
+		GLOB.faction_dosh[id] = 500
 	reconnectpads()
 
 /obj/machinery/kaos/cargo_machine/attackby(obj/item/C as obj, mob/user as mob)
@@ -137,7 +130,7 @@
 		else
 			to_chat(user, "\icon[src]You insert [C.name] into the machine.")
 			playsound(user.loc, 'sound/machines/rpf/audiotapein.ogg', 50, 0.4)
-			src.credits += dolla.worth
+			GLOB.faction_dosh[id] += dolla.worth
 			qdel(C)
 	else if(istype(C, /obj/item/stack/teeth/human)) // FUCK YOU SCAVS, YOU DID TIS TO ME
 		var/obj/item/stack/teeth/human/toof = C
@@ -146,7 +139,7 @@
 			return
 		else if(toof.amount >= 1)
 			toof.amount--
-			src.credits += 3 // Nerfed, see thehatch structure to know why.
+			GLOB.faction_dosh[id] += 3 // Nerfed, see thehatch structure to know why.
 			playsound(user.loc, 'sound/machines/rpf/audiotapein.ogg', 50, 0.4) // it sounds nicer when its played from the person ngl
 			toof.update_icon()
 			if(toof.amount == 1) // fuck you..
@@ -156,12 +149,12 @@
 		else // huh?
 			return
 	else if(istype(C, /obj/item/clothing/head/helmet/redhelmet) && id == BLUE_TEAM || istype(C, /obj/item/clothing/head/helmet/bluehelmet) && id == RED_TEAM ) // meh
-		src.credits += 10
+		GLOB.faction_dosh[id] += 10
 		playsound(user.loc, 'sound/machines/rpf/audiotapein.ogg', 50, 0.4)
 		qdel(C)
 
 	else if(istype(C, /obj/item/card/id/dog_tag/red) && id == BLUE_TEAM || istype(C, /obj/item/card/id/dog_tag/blue) && id == RED_TEAM ) // meh
-		src.credits += 10
+		GLOB.faction_dosh[id] += 10
 		playsound(user.loc, 'sound/machines/rpf/audiotapein.ogg', 50, 0.4)
 		qdel(C)
 
@@ -176,9 +169,9 @@
 		to_chat(user, "\icon[src]The machine is currently busy processing something..")
 		playsound(src.loc, 'sound/machines/rpf/denybeep.ogg', 100, 0.3)
 	if(machine_input == "CHECK BALANCE" && useable)
-		if(src.credits > 0)
+		if(GLOB.faction_dosh[id] > 0)
 			playsound(src, "keyboard_sound", 100, 1)
-			to_chat(user, "\icon[src]The machine has [src.credits] credits.")
+			to_chat(user, "\icon[src]The machine has [GLOB.faction_dosh[id]] credits.")
 			playsound(src.loc, 'sound/machines/rpf/consolebeep.ogg', 100, 0.5)
 		else
 			to_chat(user, "\icon[src]The machine has no credits.")
@@ -211,7 +204,7 @@
 							playsound(src.loc, "sound/machines/rpf/press1.ogg", 100, 0.7)
 							var/y = input(user, "Please input the Y coordinate.") as num
 							var/costofartillery = 550 // shitty way to go about it. redo this someday.
-							if(y && credits >= costofartillery && CanPhysicallyInteract(user))
+							if(y && GLOB.faction_dosh[id] >= costofartillery && CanPhysicallyInteract(user))
 								var/turf/turf_to_drop = locate(x,y,2)
 								if(istype(turf_to_drop.loc, /area/warfare/battlefield/no_mans_land) || istype(turf_to_drop.loc, /area/warfare/battlefield/capture_point/mid))
 									playsound(src.loc, "sound/machines/rpf/press1.ogg", 100, 0.7)
@@ -221,7 +214,7 @@
 										for(var/i = 1, i<3, i++) // it sounds nicer when its delayed.
 											sound_to(world, 'sound/effects/arty_distant.ogg')
 											sleep(50)
-									credits -= costofartillery
+									GLOB.faction_dosh[id] -= costofartillery
 									playsound(src.loc, 'sound/machines/rpf/sendmsgcargo.ogg', 100, 0)
 									spawn(8 SECONDS)
 										artillery_barage(x,y)
@@ -229,7 +222,7 @@
 									playsound(src.loc, 'sound/machines/rpf/denybeep.ogg', 100, 0.5)
 									to_chat(user, "\icon[src]The coordinates were invalid, <span class='warning'>Captain</span>.")
 									set_light(0)
-							else if(y && credits < costofartillery)
+							else if(y && GLOB.faction_dosh[id] < costofartillery)
 								playsound(src.loc, 'sound/machines/rpf/denybeep.ogg', 100, 0.5)
 								to_chat(user, "\icon[src]You are unable to afford an artillery strike, <span class='warning'>Captain</span>.")
 								set_light(0)
@@ -277,7 +270,7 @@
 					var/list/clear_turfs = list()
 					var/obj/structure/cargo_pad/pickedpad
 					if(useable && selected_category == "- Units")
-						if(productprice <= src.credits)
+						if(productprice <= GLOB.faction_dosh[id])
 							if(productname == "Reinforcements")
 								if(id == BLUE_TEAM)
 									var/newcount = SSwarfare.blue.left + 5
@@ -307,7 +300,7 @@
 							return
 					//var/list/cargoturfs = list()
 				//	var/hasdenseobject
-					if(productprice <= src.credits) // This shitcode works! Checks for dense objects on the turf!
+					if(productprice <= GLOB.faction_dosh[id]) // This shitcode works! Checks for dense objects on the turf!
 						reconnectpads() // let's be cheeky and silently reocnnect it just incase one got deleted
 						for(var/obj/structure/cargo_pad/pad in pads)
 							if(get_dense_objects_on_turf(get_turf(pad)).len <= 0)
@@ -324,7 +317,7 @@
 						to_chat(user, "\icon[src]ERROR. NO LINKED CARGO PADS. REESTABLISH CONNECTION AND TRY AGAIN.")
 						playsound(src.loc, 'sound/machines/rpf/denybeep.ogg', 100, 0.5)
 						return
-					else if(productprice <= src.credits)
+					else if(productprice <= GLOB.faction_dosh[id])
 						useable = FALSE
 						playsound(src.loc, 'sound/machines/rpf/cargo_starttp.ogg', 100, 0)
 						spawn(2.2 SECONDS)
@@ -366,7 +359,7 @@
 								pickedpad.isselected()
 					//				pad.lightdown()
 						//A.SetName("[productname]")
-								src.credits -= productprice
+								GLOB.faction_dosh[id] -= productprice
 								spawn(0.1 SECONDS)
 									qdel(glowobj)
 									pickedpad.isdeselected()
@@ -376,7 +369,7 @@
 									playsound(src.loc, 'sound/machines/rpf/ChatMsg.ogg', 100, 0)
 									useable = TRUE
 
-					else if(productprice > src.credits)
+					else if(productprice > GLOB.faction_dosh[id])
 						to_chat(user, "\icon[src]Insufficient funds to purchase [product["name"]].")
 						playsound(src.loc, 'sound/machines/rpf/denybeep.ogg', 100, 0.5)
 						return 0
@@ -528,23 +521,88 @@
 	plane = WALL_PLANE
 	var/id
 	var/broken = FALSE
+	var/lvl1_color = "#e26868"
+	var/lvl2_color = "#e26868"
+
+GLOBAL_LIST_EMPTY(cargo_pads)
+
+/obj/structure/cargo_pad/New()
+	sleep(50)
+	if(!id || broken)
+		return
+	if(!GLOB.cargo_pads[id])
+		GLOB.cargo_pads[id] = list()
+		var/list/agh = GLOB.cargo_pads[id]
+		agh += src
+
+proc/get_dense_objects_on_turf(turf/T)
+	var/list/dense_objects_on_turf = list()
+
+	for (var/obj/A in T)
+		if(A.density | istype(A, /obj/structure/closet) | istype(A, /mob/living/carbon))
+			dense_objects_on_turf += A
+
+	return dense_objects_on_turf
 
 /obj/structure/cargo_pad/proc/isselected()
-	set_light(2, 1,"#e26868")
+	set_light(2, 1, lvl1_color)
+
+/obj/structure/cargo_pad/proc/get_people_on_turf(turf/T)
+	var/list/people_on_turf = list()
+
+	for (var/mob/living/carbon/A in T)
+		people_on_turf += A
+
+	return people_on_turf
+
+/obj/structure/cargo_pad/proc/handle_spawn(var/datum/snowflake_supply/selected)
+	playsound(src.loc, 'sound/machines/rpf/cargo_starttp.ogg', 100, 0)
+	sleep(2.2 SECONDS)
+	//	pad.lightup()
+	isselected()
+	var/obj/glowobj = new /obj/effect/overlay/cargopadglow(loc)
+	playsound(loc, 'sound/machines/rpf/cargo_endtp.ogg', 200, 0)
+	sleep(2.65 SECONDS)
+	var/datum/effect/effect/system/spark_spread/sparks = new /datum/effect/effect/system/spark_spread()
+	sparks.set_up(3, 0, loc)
+	sparks.start()
+	selected.Spawn(loc)
+	qdel(glowobj)
+	isselectedbrighter()
+	var/list/togib = get_people_on_turf(loc)
+	var/spawn_gibs = FALSE
+	for(var/mob/gibthisguy in togib)
+		if(gibthisguy.resting)
+			log_and_message_admins("[gibthisguy] has <span class='danger'>gibbed themselves</span> on the following cargo pad: [src]!")
+			gibthisguy.gib()
+		else
+			if(ishuman(gibthisguy))
+				var/mob/living/carbon/human/leg_removal = gibthisguy
+				var/obj/item/organ/external/L = leg_removal.get_organ(BP_L_LEG)
+				var/obj/item/organ/external/R = leg_removal.get_organ(BP_R_LEG)
+				if(L)
+					L.droplimb()
+				if(R)
+					R.droplimb()
+				new/obj/effect/gibspawner/human(loc)
+				spawn_gibs = TRUE
+	if(spawn_gibs)
+		new/obj/effect/gibspawner/human(loc)
+	return TRUE
 
 /obj/structure/cargo_pad/proc/isselectedbrighter()
-	set_light(3, 1,"#fdcaca")
+	set_light(3, 1,lvl2_color)
 
 /obj/structure/cargo_pad/proc/isdeselected()
 	set_light(0)
 
 /obj/structure/cargo_pad/proc/pingpad()
-	spawn(0.05 SECONDS)
-		set_light(1, 1,"#e26868")
-		var/obj/glowobj = new /obj/effect/overlay/cargopadglow(src.loc)
-		spawn(0.05 SECONDS)
-			qdel(glowobj)
-			set_light(0)
+	set_light(1, 1, lvl1_color)
+	var/obj/glowobj = new /obj/effect/overlay/cargopadglow(src.loc)
+	playsound(loc,'sound/machines/rpf/UImsg.ogg', 45, 0)
+	spawn(1)
+		qdel(glowobj)
+		set_light(0)
 
 /obj/structure/cargo_pad/ex_act()
 	return
@@ -555,16 +613,8 @@
 /obj/structure/cargo_pad/blue
 	id = BLUE_TEAM
 
-	isselected()
-		set_light(2, 1,"#6899e2")
+/obj/structure/cargo_pad/red/captain
+	id = "Redcoats_C"
 
-	isselectedbrighter()
-		set_light(3, 1,"#cad7fd")
-
-	pingpad()
-		spawn(0.05 SECONDS)
-			set_light(1, 1,"#6899e2")
-			var/obj/glowobj = new /obj/effect/overlay/cargopadglow(src.loc)
-			spawn(0.05 SECONDS)
-				qdel(glowobj)
-				set_light(0)
+/obj/structure/cargo_pad/bue/captain
+	id = "Bluecoats_C"

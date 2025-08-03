@@ -1020,6 +1020,8 @@ mob/proc/yank_out_object()
 	set_face_dir()
 
 /mob/proc/set_hud_stats(var/delay) // very shitty hardcodey shitcodey stat number display
+	if(!client)
+		return
 	spawn(delay)
 		var/num_ui_style = 'icons/mob/screen/custom/interhud_num.dmi' // just for myself..
 		var/obj/screen/using

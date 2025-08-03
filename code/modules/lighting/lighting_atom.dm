@@ -46,6 +46,11 @@
 			else if(light_shape)
 				light_new.icon_state = light_shape
 
+			else if(light_range > 10) // fine
+				var/matrix/M = matrix()
+				M.Scale(light_range)
+				light_new.transform = M
+
 			else if(light_range > 2)
 				var/matrix/M = matrix()
 				M.Scale(10)
@@ -163,11 +168,17 @@ if(loc != old_loc) {\
 
 /mob/drop_from_inventory(var/obj/item/W, var/atom/target = null)
 	..()
+/*
 	if(W && W.light_new)
 		for(W.light_new in src.vis_contents)//We have no light already, so get rid of it.
 			src.vis_contents -= W.light_new
 			qdel(W.light_new)
 			update_light()
+*/
+	if(W && W.light_new && W.light_new in src.vis_contents)
+		src.vis_contents -= W.light_new
+		qdel(W.light_new)
+		update_light()
 
 
 /obj/item/dropped(mob/user)

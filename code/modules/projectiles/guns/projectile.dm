@@ -43,7 +43,7 @@
 	var/unloaded_icon
 	var/unwielded_unloaded_icon
 	var/wielded_unloaded_icon
-	var/casingsound = 'sound/weapons/guns/misc/casingfall1.ogg'
+	var/casingsound = "casing_sound"
 	var/load_delay = 5
 	var/condition_icon = 'icons/obj/gun.dmi'
 	fire_sound = 'sound/weapons/guns/fire/pistol_fire.ogg'
@@ -515,3 +515,9 @@
 
 	unload_ammo(usr)
 */
+
+/obj/item/gun/projectile/grab_sound(mob/living/carbon/human/user)
+	. = ..()
+	if(safety && !user.isChild() && user.a_intent == I_HURT)
+		visible_message(SPAN_DANGER("** [user.name] brandishes \the [src], flicking the safety off."))
+		toggle_safety(user)

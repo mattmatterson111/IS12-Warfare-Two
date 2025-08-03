@@ -24,7 +24,7 @@
 /obj/item/clothing/suit/armor/sentry/handle_movement(var/turf/walking, var/running)
 	if(footstep >= 1)
 		footstep = 0
-		playsound(get_turf(src), "sentry_step", 35, 0) // this will get annoying very fast.
+		playsound(get_turf(src), "sentry_step", 45, 0) // this will get annoying very fast.
 	else
 		footstep++
 
@@ -494,6 +494,8 @@
 	grab_sound = 'sound/effects/dogtag_handle.ogg'
 
 /obj/item/card/id/dog_tag/proc/split(mob/user)
+	return FALSE
+/*
 	if(!warfare_faction || halfed)
 		return
 	var/obj/item/card/id/dog_tag/tag = DuplicateObject(src, 1, 1)
@@ -503,16 +505,15 @@
 	tag.icon_state = "halftag"
 	tag.canremove = TRUE
 	user.put_in_active_hand(tag)
+*/
 
 /obj/item/card/id/dog_tag/red
 	warfare_faction = RED_TEAM
 	icon_state = "tagred"
-	canremove = FALSE
 
 /obj/item/card/id/dog_tag/blue
 	warfare_faction = BLUE_TEAM
 	icon_state = "tagblue"
-	canremove = FALSE
 
 /obj/item/card/id/dog_tag/update_name()
 	var/final_name = "[registered_name]'s Dog Tag"
