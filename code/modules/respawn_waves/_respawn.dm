@@ -240,7 +240,7 @@ SUBSYSTEM_DEF(respawn)
 	var/respawn_cycle = 0
 	var/next_respawn
 	var/last_respawn = 0
-	var/time_between_respawns = 120 SECONDS // in seconds
+	var/time_between_respawns = 90 SECONDS // in seconds
 
 	var/area/red_train
 	var/area/blue_train
