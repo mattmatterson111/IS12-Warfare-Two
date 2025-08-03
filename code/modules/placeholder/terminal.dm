@@ -663,6 +663,8 @@ GLOBAL_LIST_EMPTY(chat_clients)
 	src.pad_override = pad_override
 	if(!pad_override)	src.pad_override = src.manager.account // pull the account Id if we don't have a pad override.
 
+	pads = GLOB.cargo_pads[pad_override]
+
 	// Here we fucking go..
 	var/list/temporary_storage = list()
 	for(var/type in products)
