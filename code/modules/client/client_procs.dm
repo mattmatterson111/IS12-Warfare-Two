@@ -164,6 +164,8 @@
 
 	. = ..()	//calls mob.Login()
 	chatOutput.start() // Starts the chat
+	spawn(10)
+		chatOutput.start() // Starts the chat
 	force_dark_theme()
 	prefs.sanitize_preferences()
 

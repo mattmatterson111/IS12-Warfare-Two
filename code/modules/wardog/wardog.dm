@@ -35,12 +35,12 @@ This file is built for communication with a discord bot.
 	var/desc = "## \"[GLOB.war_lore.name]\".\n\n"
 	if(data)
 		desc += "> The winning team ended up being the *[data["victor"]]*.\n"
-		desc += "> In the end, it was a *[data["condition"] ? data["condition"] : "draw"]*.\n"
+		desc += "> Win condition: *[data["condition"] ? data["condition"] : "draw"]*.\n"
 		desc += "> There were *[data["players"]]* players participating.\n\n"
 		desc += "> In total, *[GLOB.mines_tripped]* mines were tripped.\n"
 		desc += "> *[GLOB.teeth_lost]* teeth were lost.\n"
 		desc += "> and there were *[GLOB.total_deaths]* deaths.\n\n"
-		desc += "> It only ended at *[roundduration2text()]*."
+		desc += "> Round duration: *[roundduration2text()]*."
 	.["embeds"] = list(list(
 		"title" = "# A round of Interwar has ended.\n",
 		"description" = desc,

@@ -101,7 +101,8 @@
 	layer = BELOW_OBJ_LAYER // Kept being overlayed ontop of items
 
 /obj/structure/closet/crate/wooden/large/meatball
-	name = "wooden crate"
+	name = "meatball crate"
+	desc = "I'd.. better stay away from that.."
 	icon_state = "meatball"
 	icon_closed = "meatball"
 	cover = null
@@ -115,7 +116,7 @@
 	. = ..()
 
 /obj/structure/closet/crate/wooden/large/meatball/Process()
-	if(prob(10))
+	if(prob(5))
 		playsound(src, 'sound/effects/meatball.ogg', 100, TRUE)
 		visible_message(SPAN_DANGER("\the [src] growls.."))
 		receive_damage()

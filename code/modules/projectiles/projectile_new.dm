@@ -19,7 +19,7 @@
 /obj/effect/abstract/particle_holder/Initialize(mapload, particle_path = null)
 	. = ..()
 	if(!loc)
-		to_world("particle holder was created with no loc!")
+		message_admins("particle holder was created with no loc!")
 		return INITIALIZE_HINT_QDEL
 	particles = new particle_path
 

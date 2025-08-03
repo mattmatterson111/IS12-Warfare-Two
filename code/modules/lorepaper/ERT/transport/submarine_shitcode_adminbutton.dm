@@ -71,20 +71,20 @@
 	for(var/mob/M in get_people_inside())
 		to_chat(M, "Sound is [sound]")
 		sound_to(M, sound(sound, volume = 85))
-	to_world("Surfacing")
+
 /obj/machinery/button/transport_controller/proc/on_transit() // transit, basically unused tbh
 	var/sound = sound_transit()
 	for(var/mob/M in get_people_inside())
 		to_chat(M, "Sound is [sound]")
 		sound_to(M, sound(sound, volume = 85))
-	to_world("beginning transit")
+
 /obj/machinery/button/transport_controller/proc/on_dive() // Leaving
 	anim_fx_to(dive_pos, idle_pos, 255, 0)
 	var/sound = sound_dive(TRUE)
 	for(var/mob/M in get_people_inside(TRUE))
 		to_chat(M, "Sound is [sound]")
 		sound_to(M, sound(sound, volume = 85))
-	to_world("Diving")
+
 
 /obj/machinery/button/transport_controller/proc/get_speakers()
 	var/list/filtered = list()
@@ -231,7 +231,7 @@
 	if(starting_zone && transport_zone)
 		starting_zone.move_contents_to(transport_zone)
 		for(var/obj/effect/darkout_teleporter/tp in transport_zone)
-			to_world("TRY3")
+
 			tp.enabled = FALSE
 			tp.change_id(transport_zone.id)
 		update_teleports(starting_zone.id)
@@ -248,8 +248,8 @@
 	if(transport_zone && destination)
 		transport_zone.move_contents_to(destination)
 		for(var/obj/effect/darkout_teleporter/tp in destination)
-			to_world("TRY2")
-			to_world("Its: [destination] with [destination.id]")
+
+
 			tp.enabled = TRUE
 			tp.change_id(destination.id)
 		update_teleports(transport_zone.id)

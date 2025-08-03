@@ -289,12 +289,6 @@
 	dir = 5
 	},
 /area/vehicle/submarine/start_zone)
-"qP" = (
-/obj/effect/sub_marker/surface{
-	id = "SUB_END"
-	},
-/turf/template_noop,
-/area/warfare/battlefield/trench_section/underground)
 "rg" = (
 /obj/structure/table/rack/nosmooth/metal,
 /turf/simulated/floor/ert/tile06,
@@ -518,12 +512,6 @@
 	dir = 8
 	},
 /area/vehicle/submarine/start_zone)
-"Bd" = (
-/obj/effect/sub_marker/dive{
-	id = "SUB_END"
-	},
-/turf/template_noop,
-/area/warfare/battlefield/trench_section/underground)
 "Bw" = (
 /obj/machinery/light/spot,
 /turf/simulated/floor/ert/tile06,
@@ -829,12 +817,6 @@
 	pixel_y = 32
 	},
 /turf/simulated/floor/urban/concrete,
-/area/warfare/battlefield/trench_section/underground)
-"Vs" = (
-/obj/effect/sub_marker/float{
-	id = "SUB_END"
-	},
-/turf/template_noop,
 /area/warfare/battlefield/trench_section/underground)
 "VB" = (
 /obj/machinery/door/unpowered/simple/sub{
@@ -1260,7 +1242,7 @@ aw
 aw
 aw
 aw
-Vs
+aw
 aw
 Oz
 cQ
@@ -1437,7 +1419,7 @@ aw
 aw
 aw
 aw
-qP
+aw
 Oz
 rh
 Xf
@@ -1525,7 +1507,7 @@ aw
 aw
 aw
 aw
-Bd
+aw
 Oz
 Oz
 mk

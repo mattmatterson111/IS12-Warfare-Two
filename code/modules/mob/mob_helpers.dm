@@ -322,7 +322,7 @@ proc/Gibberish(t, p)//t is the inputted message, and any value higher than 70 fo
 	var/oldy = C.pixel_y
 	var/max = strength*world.icon_size
 	var/min = -(strength*world.icon_size)
-	for(var/x=0; x<duration, x++)
+	for(var/x=0, x<duration, x++)
 		animate(C, pixel_x=rand(oldx+min,oldx+max), pixel_y=rand(oldy+min,oldy+max), time=2, easing = SINE_EASING)
 		sleep(1)
 	animate(C, pixel_x=oldx, pixel_y=oldy, time=1, easing = SINE_EASING)
