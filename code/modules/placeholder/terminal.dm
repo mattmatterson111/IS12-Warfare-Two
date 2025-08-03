@@ -346,7 +346,7 @@ GLOBAL_LIST_EMPTY(chat_clients)
 			holder.holder.overlays += I
 	//var/page = return_to
 	if(holder.current_page==src)
-		load(src)
+		holder.load_page(src)
 	//holder.load_page(src)
 	//holder.previous_page = page
 	return
@@ -641,6 +641,10 @@ GLOBAL_LIST_EMPTY(chat_clients)
 		holder.holder.think(7, TRUE)
 		holder.load_page(supply)
 		return
+	else
+		refresh()
+		if(!holder.holder.input)
+			toggle_input(3, TRUE)
 
 /datum/terminal_page/cargo
 	var/display_name = "" /// Display name for the manager to show. different than internal page name
@@ -705,7 +709,6 @@ GLOBAL_LIST_EMPTY(chat_clients)
 		num++
 	add_line("</fieldset>", 6, TRUE)
 	add_choice("ENTER", "a corresponding number to view the category", 2, TRUE)
-	add_choice("CALIBRATE", "send out a ping to the nearby teleport pads", 2, TRUE)
 	add_choice("BALANCE", "inspect the balance of the current account", 4)
 	add_choice("BACK", "return to the main fund management screen", 3, TRUE)
 	holder.holder.think(3, TRUE)
@@ -724,10 +727,6 @@ GLOBAL_LIST_EMPTY(chat_clients)
 	if(string == "back")
 		holder.holder.think(7, TRUE)
 		holder.load_page(manager)
-		return
-	if(string == "calibrate")
-		holder.holder.think(8)
-		holder.load_page(calib_page)
 		return
 	else if(string == "balance")
 		clear_screen(4, TRUE)
@@ -837,8 +836,9 @@ GLOBAL_LIST_EMPTY(chat_clients)
 				add_line("<fieldset style='margin: 15px 0; opacity: 0.75; border: 3px double [holder.holder.Textcolor]; padding: 2px;'><legend style='background-color: [holder.holder.Textcolor]; color: black; margin-left: 1em; text-transform: uppercase; text-align: left;' class='blink'><b>CRITICAL ERROR</b></legend>", 7, TRUE)
 				holder.holder.think(7)
 				add_line("<legend style='background-color: [holder.holder.Textcolor]; color: black;'>NO PADS DETECTED</legend>", 3, TRUE)
-				add_line("<legend style='background-color: [holder.holder.Textcolor]; color: black;'>ATTEMPT CALIBRATION OR CONSULT A QUALIFIED TECHNICIAN</legend></fieldset>", 8, TRUE)
+				add_line("<legend style='background-color: [holder.holder.Textcolor]; color: black;'>ATTEMPTING CALIBRATION</legend></fieldset>", 8, TRUE)
 				holder.holder.think(7)
+				holder.load_page(supply.calib_page)
 				state = 0
 				selected = null
 				holder.load_page(src)

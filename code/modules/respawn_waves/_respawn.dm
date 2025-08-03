@@ -309,7 +309,7 @@ SUBSYSTEM_DEF(respawn)
 		return
 	*/
 	// Start a new respawn cycle
-	if (round_duration_in_ticks >= next_respawn || !next_respawn)
+	if (world.time >= next_respawn || !next_respawn)
 		if (!respawn_cycle)
 			message_admins("Respawn cycle system is now online.")
 

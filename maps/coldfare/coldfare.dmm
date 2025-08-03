@@ -968,13 +968,13 @@
 	},
 /area/warfare/battlefield/trench_section/underground)
 "cC" = (
-/obj/effect/sub_marker/dive{
-	id = "SUB_END"
+/obj/structure/soldiercryo/special/blue,
+/obj/structure/announcementspeaker/red{
+	id = "Bluecoats";
+	pixel_y = 32
 	},
-/turf/simulated/mineral{
-	health = 999999
-	},
-/area/warfare/homebase/red)
+/turf/simulated/floor/concrete/random,
+/area/warfare/homebase/blue/div)
 "cD" = (
 /obj/effect/phone_line,
 /obj/item/paper_bin{
@@ -1459,6 +1459,10 @@
 /area/warfare/battlefield/capture_point/red/two)
 "dL" = (
 /obj/structure/table/rack,
+/obj/structure/announcementspeaker/red{
+	id = "Bluecoats";
+	pixel_y = 32
+	},
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/blue/div)
 "dM" = (
@@ -1660,6 +1664,24 @@
 	},
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/blue/div)
+"ei" = (
+/obj/effect/sub_marker/surface{
+	id = "SUB_END"
+	},
+/turf/simulated/mineral{
+	health = 999999
+	},
+/area/warfare/homebase/red)
+"ej" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/obj/structure/announcementspeaker/red{
+	pixel_x = 0;
+	dir = 4
+	},
+/turf/simulated/floor/concrete/random,
+/area/warfare/homebase/red)
 "ek" = (
 /turf/simulated/floor/exoplanet/water/shallow/lightless/urban,
 /area/space)
@@ -1678,6 +1700,14 @@
 /obj/effect/lighting_dummy/daylight,
 /turf/simulated/floor/urban/concrete,
 /area/warfare/homebase/blue)
+"eo" = (
+/obj/effect/sub_marker/dive{
+	id = "SUB_END"
+	},
+/turf/simulated/mineral{
+	health = 999999
+	},
+/area/warfare/homebase/red)
 "ep" = (
 /obj/machinery/light/small/bunker{
 	dir = 4
@@ -1750,17 +1780,6 @@
 /obj/effect/lighting_dummy/daylight,
 /turf/simulated/floor/urban/concrete,
 /area/warfare/homebase/red)
-"eC" = (
-/obj/item/device/flashlight/lantern{
-	on = 1;
-	pixel_x = -13;
-	pixel_y = -6
-	},
-/turf/simulated/floor/trenches/underground{
-	icon_state = "trench";
-	color = "#ffffff"
-	},
-/area/space)
 "eD" = (
 /obj/machinery/light{
 	dir = 8
@@ -1921,6 +1940,10 @@
 /obj/item/storage/firstaid/toxin,
 /obj/structure/table/rack/shelf/red,
 /obj/machinery/light/small{
+	dir = 8
+	},
+/obj/structure/announcementspeaker/red{
+	pixel_x = 0;
 	dir = 4
 	},
 /turf/simulated/floor/concrete/random,
@@ -2742,6 +2765,10 @@
 /obj/machinery/light/small/bunker{
 	dir = 8
 	},
+/obj/structure/announcementspeaker/red{
+	pixel_x = 0;
+	dir = 4
+	},
 /turf/simulated/floor/stones,
 /area/warfare/homebase/red)
 "iu" = (
@@ -2899,20 +2926,6 @@
 	},
 /turf/simulated/floor/concrete/random,
 /area/warfare/battlefield/capture_point/red/two)
-"jJ" = (
-/obj/effect/darkout_teleporter{
-	id = "SUB_END";
-	entrance = 0;
-	twoway = 1
-	},
-/obj/hammereditor/nodraw/deco/shadowpaint{
-	dir = 1
-	},
-/turf/simulated/floor/trenches/underground{
-	icon_state = "trench";
-	color = "#ffffff"
-	},
-/area/space)
 "jT" = (
 /obj/structure/closet/crate,
 /obj/random/canned_food/blue,
@@ -3108,9 +3121,6 @@
 /obj/effect/landmark/start{
 	name = "Blue Practitioner"
 	},
-/obj/machinery/light/small{
-	dir = 8
-	},
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/red)
 "lE" = (
@@ -3187,6 +3197,17 @@
 	},
 /turf/simulated/floor/wood,
 /area/warfare/battlefield/trench_section/underground)
+"ma" = (
+/obj/machinery/sleeper{
+	dir = 4;
+	icon_state = "sleeper_0"
+	},
+/obj/structure/announcementspeaker/red{
+	id = "Bluecoats";
+	pixel_y = 32
+	},
+/turf/simulated/floor/concrete/random,
+/area/warfare/homebase/blue/div)
 "mc" = (
 /obj/structure/closet/crate,
 /obj/item/grenade/frag/warfare,
@@ -3319,6 +3340,10 @@
 /obj/item/clothing/suit/surgeon_apron,
 /obj/item/storage/backpack/satchel/warfare/prac/blue,
 /obj/item/storage/backpack/satchel/warfare/prac/blue,
+/obj/structure/announcementspeaker/red{
+	id = "Bluecoats";
+	pixel_y = 32
+	},
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/blue/div)
 "mW" = (
@@ -4103,14 +4128,6 @@
 	},
 /turf/simulated/floor/dirty/indestructable,
 /area/warfare/battlefield/trench_section)
-"qX" = (
-/obj/effect/sub_marker/surface{
-	id = "SUB_END"
-	},
-/turf/simulated/mineral{
-	health = 999999
-	},
-/area/warfare/homebase/red)
 "qY" = (
 /turf/unsimulated/wall/submarine/doors{
 	dir = 1
@@ -4181,17 +4198,6 @@
 	},
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/blue)
-"rk" = (
-/obj/machinery/light/small/bunker{
-	dir = 1
-	},
-/obj/structure/table/rack/nosmooth/wood,
-/obj/structure/closet/crate/wooden/large/meatball{
-	pixel_x = 0;
-	pixel_y = 11
-	},
-/turf/simulated/floor/wood,
-/area/warfare/homebase/blue/div)
 "rn" = (
 /obj/machinery/light/caged{
 	pixel_y = 30;
@@ -4344,6 +4350,17 @@
 	pixel_y = 15
 	},
 /turf/simulated/floor/concrete/random,
+/area/warfare/homebase/blue/div)
+"sk" = (
+/obj/machinery/light/small/bunker{
+	dir = 1
+	},
+/obj/structure/table/rack/nosmooth/wood,
+/obj/structure/closet/crate/wooden/large/meatball{
+	pixel_x = 0;
+	pixel_y = 11
+	},
+/turf/simulated/floor/wood,
 /area/warfare/homebase/blue/div)
 "sm" = (
 /obj/structure/bed/roller,
@@ -4712,12 +4729,13 @@
 /obj/structure/closet/cabinet,
 /turf/simulated/floor/stones,
 /area/warfare/homebase/red)
-"uJ" = (
-/obj/machinery/kaos/redcaptain{
-	pixel_y = 16
+"uH" = (
+/obj/structure/announcementspeaker/red{
+	id = "Bluecoats";
+	dir = 4
 	},
-/turf/simulated/floor/wood,
-/area/warfare/homebase/red/div)
+/turf/simulated/floor/concrete/random,
+/area/warfare/homebase/blue/div)
 "uK" = (
 /obj/machinery/light{
 	dir = 8
@@ -4857,6 +4875,14 @@
 /obj/structure/curtain,
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/red/div)
+"vE" = (
+/obj/effect/sub_marker/float{
+	id = "SUB_END"
+	},
+/turf/simulated/mineral{
+	health = 999999
+	},
+/area/warfare/homebase/red)
 "vH" = (
 /obj/item/storage/belt/medical/full,
 /obj/item/storage/belt/medical/full,
@@ -5175,12 +5201,6 @@
 	health = 999999
 	},
 /area/warfare/battlefield/trench_section/underground)
-"xF" = (
-/obj/machinery/kaos/bluecaptain{
-	pixel_y = 16
-	},
-/turf/simulated/floor/wood,
-/area/warfare/homebase/blue/div)
 "xK" = (
 /obj/item/flame/candle,
 /obj/item/ammo_box/shotgun,
@@ -5610,6 +5630,12 @@
 	},
 /turf/simulated/floor/urban/concrete,
 /area/warfare/homebase/blue)
+"Ao" = (
+/obj/structure/announcementspeaker/red{
+	pixel_y = 32
+	},
+/turf/simulated/floor/concrete/random,
+/area/warfare/homebase/red)
 "As" = (
 /obj/machinery/light/caged{
 	pixel_y = -14;
@@ -6383,6 +6409,20 @@
 	},
 /turf/simulated/floor/wood,
 /area/warfare/battlefield/capture_point/blue/one)
+"EC" = (
+/obj/effect/darkout_teleporter{
+	id = "SUB_END";
+	entrance = 0;
+	twoway = 1
+	},
+/obj/hammereditor/nodraw/deco/shadowpaint{
+	dir = 1
+	},
+/turf/simulated/floor/trenches/underground{
+	icon_state = "trench";
+	color = "#ffffff"
+	},
+/area/space)
 "EI" = (
 /obj/structure/dirt_wall,
 /obj/machinery/light/caged{
@@ -6794,6 +6834,12 @@
 	},
 /turf/simulated/floor/concrete/random,
 /area/space)
+"If" = (
+/obj/machinery/kaos/bluecaptain{
+	pixel_y = 16
+	},
+/turf/simulated/floor/wood,
+/area/warfare/homebase/blue/div)
 "Ig" = (
 /obj/effect/floor_decal/trench{
 	dir = 4
@@ -6951,7 +6997,9 @@
 /turf/space,
 /area/space)
 "Jv" = (
-/obj/structure/announcementspeaker/red,
+/obj/structure/announcementspeaker/red{
+	id = "Bluecoats"
+	},
 /turf/simulated/wall/perspecticrete,
 /area/warfare/homebase/blue/div)
 "Jy" = (
@@ -7254,13 +7302,16 @@
 /turf/simulated/floor/concrete/random,
 /area/warfare/battlefield/trench_section/underground)
 "LW" = (
-/obj/effect/sub_marker/float{
-	id = "SUB_END"
+/obj/item/device/flashlight/lantern{
+	on = 1;
+	pixel_x = -13;
+	pixel_y = -6
 	},
-/turf/simulated/mineral{
-	health = 999999
+/turf/simulated/floor/trenches/underground{
+	icon_state = "trench";
+	color = "#ffffff"
 	},
-/area/warfare/homebase/red)
+/area/space)
 "LX" = (
 /obj/effect/floor_decal/trench,
 /turf/simulated/floor/trenches/underground{
@@ -7521,6 +7572,12 @@
 	},
 /turf/simulated/floor/dirty/indestructable,
 /area/warfare/homebase/red)
+"NM" = (
+/obj/machinery/kaos/redcaptain{
+	pixel_y = 16
+	},
+/turf/simulated/floor/wood,
+/area/warfare/homebase/red/div)
 "NO" = (
 /obj/machinery/light/caged{
 	pixel_y = -14;
@@ -8703,6 +8760,14 @@
 	color = "#ffffff"
 	},
 /area/warfare/homebase/red)
+"VJ" = (
+/obj/structure/closet/secure_closet/medical1/warfare,
+/obj/structure/announcementspeaker/red{
+	id = "Bluecoats";
+	pixel_y = 32
+	},
+/turf/simulated/floor/concrete/random,
+/area/warfare/homebase/blue/div)
 "VL" = (
 /turf/unsimulated/wall/submarine/doors{
 	dir = 1
@@ -9264,6 +9329,13 @@
 	},
 /turf/simulated/floor/wood,
 /area/warfare/homebase/blue)
+"Zo" = (
+/obj/structure/announcementspeaker/red{
+	id = "Bluecoats";
+	pixel_y = 32
+	},
+/turf/simulated/floor/concrete/random,
+/area/warfare/homebase/blue/div)
 "Zp" = (
 /obj/machinery/light/small/bunker{
 	dir = 1
@@ -10624,9 +10696,9 @@ cH
 cH
 cH
 bb
-wG
+Zo
 bb
-cH
+VJ
 cH
 cH
 bb
@@ -10920,7 +10992,7 @@ NZ
 NZ
 NZ
 bb
-wG
+Zo
 wG
 wG
 bb
@@ -12129,7 +12201,7 @@ wG
 eD
 wG
 wG
-wG
+uH
 ev
 wG
 AB
@@ -12355,7 +12427,7 @@ ab
 dn
 dn
 dn
-Qb
+ej
 dn
 dn
 Qb
@@ -12720,7 +12792,7 @@ NZ
 NZ
 NZ
 bb
-wG
+Zo
 wG
 wG
 wG
@@ -13549,13 +13621,13 @@ aa
 VP
 ab
 ij
-dn
+eY
 Fb
 ab
-dn
+Ao
 ab
 ij
-dn
+eY
 Fb
 ab
 ab
@@ -27724,7 +27796,7 @@ bb
 pV
 pV
 bb
-jh
+cC
 wG
 wG
 wG
@@ -28624,7 +28696,7 @@ eh
 wG
 iB
 bb
-PV
+ma
 sg
 PV
 pI
@@ -29524,7 +29596,7 @@ dL
 wG
 wG
 bb
-wG
+Zo
 ey
 ey
 ey
@@ -29833,7 +29905,7 @@ bb
 EV
 XX
 XX
-rk
+sk
 ag
 VR
 av
@@ -30129,7 +30201,7 @@ bb
 bb
 bb
 ag
-xF
+If
 XX
 Tt
 XX
@@ -30339,7 +30411,7 @@ gS
 gR
 gR
 ab
-uJ
+NM
 kK
 oG
 kK
@@ -36613,8 +36685,8 @@ aa
 aa
 aa
 aa
-jJ
-eC
+EC
+LW
 FZ
 he
 FZ
@@ -36913,7 +36985,7 @@ aa
 aa
 aa
 aa
-jJ
+EC
 he
 sx
 he
@@ -38458,7 +38530,7 @@ VP
 VP
 VP
 VP
-LW
+vE
 VP
 VP
 VP
@@ -38758,8 +38830,8 @@ VP
 VP
 VP
 VP
-qX
-cC
+ei
+eo
 VP
 VP
 VP
