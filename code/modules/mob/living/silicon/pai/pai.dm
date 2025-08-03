@@ -89,8 +89,8 @@
 	//As a human made device, we'll understand sol common without the need of the translator
 	add_language(LANGUAGE_SOL_COMMON, 1)
 
-	verbs += /mob/living/silicon/pai/proc/choose_chassis
-	verbs += /mob/living/silicon/pai/proc/choose_verbs
+	add_verbs(/mob/living/silicon/pai/proc/choose_chassis)
+	add_verbs(/mob/living/silicon/pai/proc/choose_verbs)
 	verbs -= /mob/living/verb/ghost
 
 	..()
@@ -300,7 +300,7 @@
 
 	chassis = possible_chassis[choice]
 	verbs -= /mob/living/silicon/pai/proc/choose_chassis
-	verbs += /mob/living/proc/hide
+	add_verbs(/mob/living/proc/hide)
 
 /mob/living/silicon/pai/proc/choose_verbs()
 	set category = "pAI Commands"

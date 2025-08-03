@@ -27,8 +27,8 @@
 		verbs -= /obj/structure/disposalconstruct/proc/rotate
 		verbs -= /obj/structure/disposalconstruct/proc/flip
 	else
-		verbs += /obj/structure/disposalconstruct/proc/rotate
-		verbs += /obj/structure/disposalconstruct/proc/flip
+		add_verbs(/obj/structure/disposalconstruct/proc/rotate)
+		add_verbs(/obj/structure/disposalconstruct/proc/flip)
 
 // update iconstate and dpdir due to dir and type
 /obj/structure/disposalconstruct/proc/update()

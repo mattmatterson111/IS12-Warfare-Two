@@ -64,7 +64,7 @@
 
 /mob/living/carbon/slime/New(var/location, var/colour="grey")
 
-	verbs += /mob/living/proc/ventcrawl
+	add_verbs(/mob/living/proc/ventcrawl)
 
 	src.colour = colour
 	number = random_id(/mob/living/carbon/slime, 1, 1000)

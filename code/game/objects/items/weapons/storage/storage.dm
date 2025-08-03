@@ -344,12 +344,12 @@
 /obj/item/storage/Initialize()
 	. = ..()
 	if(allow_quick_empty)
-		verbs += /obj/item/storage/verb/quick_empty
+		add_verbs(/obj/item/storage/verb/quick_empty)
 	else
 		verbs -= /obj/item/storage/verb/quick_empty
 
 	if(allow_quick_gather)
-		verbs += /obj/item/storage/verb/toggle_gathering_mode
+		add_verbs(/obj/item/storage/verb/toggle_gathering_mode)
 	else
 		verbs -= /obj/item/storage/verb/toggle_gathering_mode
 

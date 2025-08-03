@@ -11,8 +11,8 @@
 /datum/job/captain/equip(var/mob/living/carbon/human/H)
 	. = ..()
 	if(H.client)
-		H.client.verbs += /client/proc/rename_ship
-		H.client.verbs += /client/proc/rename_company
+		H.client.add_verbs(/client/proc/rename_ship)
+		H.client.add_verbs(/client/proc/rename_company)
 
 /client/proc/rename_ship()
 	set name = "Rename Ship"

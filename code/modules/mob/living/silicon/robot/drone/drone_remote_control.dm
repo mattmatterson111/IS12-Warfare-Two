@@ -19,7 +19,7 @@
 
 	user.controlling_drone = src
 	controlling_ai = user
-	verbs += /mob/living/silicon/robot/drone/proc/release_ai_control_verb
+	add_verbs(/mob/living/silicon/robot/drone/proc/release_ai_control_verb)
 	local_transmit = FALSE
 	languages.Cut()
 	speech_synthesizer_langs.Cut()
@@ -61,7 +61,7 @@
 	var/mob/living/silicon/robot/drone/new_drone = create_drone()
 	user.controlling_drone = new_drone
 	new_drone.controlling_ai = user
-	new_drone.verbs += /mob/living/silicon/robot/drone/proc/release_ai_control_verb
+	new_drone.add_verbs(/mob/living/silicon/robot/drone/proc/release_ai_control_verb)
 	new_drone.local_transmit = FALSE
 	new_drone.languages.Cut()
 	new_drone.speech_synthesizer_langs.Cut()

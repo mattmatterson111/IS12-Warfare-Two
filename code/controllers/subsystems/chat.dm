@@ -4,11 +4,10 @@ SUBSYSTEM_DEF(chat)
 	wait = 1
 	priority = SS_PRIORITY_CHAT
 	init_order = INIT_ORDER_CHAT
-	var/list/payload = list()
+	var/static/list/payload = list()
 
 /datum/controller/subsystem/chat/fire()
-	for(var/i in payload)
-		var/client/C = i
+	for (var/client/C as anything in payload)
 		C << output(payload[C], "browseroutput:output")
 		payload -= C
 

@@ -22,7 +22,7 @@
 /obj/item/warflare/Initialize()
 	. = ..()
 	update_icon()
-	
+
 /obj/item/warflare/update_icon() //Copied and pasted, kinda gross, but I don't really care to make all lighting objects overlay based. Maybe some other time. ~Chaoko
 	overlays = overlays.Cut()
 	if(on)
@@ -57,8 +57,8 @@
 		return FALSE
 	on = TRUE
 	update_icon()
-	
-	addtimer(CALLBACK(src, .turn_off), rand(6 MINUTE, 10 MINUTES) )
+
+	addtimer(CALLBACK(src, PROC_REF(turn_off)), rand(6 MINUTE, 10 MINUTES) )
 	used = 1
 	return 1
 

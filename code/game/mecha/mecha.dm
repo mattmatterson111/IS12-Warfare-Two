@@ -166,7 +166,7 @@
 	verbs -= verb_path
 
 /obj/mecha/proc/addVerb(verb_path)
-	verbs += verb_path
+	add_verbs(verb_path)
 
 /obj/mecha/proc/add_airtank()
 	internal_tank = new /obj/machinery/portable_atmospherics/canister/air(src)
@@ -943,7 +943,7 @@
 	if(possible_port)
 		if(connect(possible_port))
 			src.occupant_message("<span class='notice'>\The [name] connects to the port.</span>")
-			src.verbs += /obj/mecha/verb/disconnect_from_port
+			src.add_verbs(/obj/mecha/verb/disconnect_from_port)
 			src.verbs -= /obj/mecha/verb/connect_to_port
 			return
 		else
@@ -964,7 +964,7 @@
 	if(disconnect())
 		src.occupant_message("<span class='notice'>[name] disconnects from the port.</span>")
 		src.verbs -= /obj/mecha/verb/disconnect_from_port
-		src.verbs += /obj/mecha/verb/connect_to_port
+		src.add_verbs(/obj/mecha/verb/connect_to_port)
 	else
 		src.occupant_message("<span class='danger'>[name] is not connected to the port at the moment.</span>")
 
@@ -1153,7 +1153,7 @@
 				occupant.loc = mmi
 			mmi.mecha = null
 			src.occupant.canmove = 0
-			src.verbs += /obj/mecha/verb/eject
+			src.add_verbs(/obj/mecha/verb/eject)
 		src.occupant = null
 		src.icon_state = src.reset_icon()+"-open"
 		src.set_dir(dir_in)

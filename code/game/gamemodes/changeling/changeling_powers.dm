@@ -55,7 +55,7 @@ var/global/list/possible_changeling_IDs = list("Alpha","Beta","Gamma","Delta","E
 	if(!mind)				return
 	if(!mind.changeling)	mind.changeling = new /datum/changeling(gender)
 
-	verbs += /datum/changeling/proc/EvolutionMenu
+	add_verbs(/datum/changeling/proc/EvolutionMenu)
 	add_language("Changeling")
 
 	if(iscarbon(src))
@@ -80,7 +80,7 @@ var/global/list/possible_changeling_IDs = list("Alpha","Beta","Gamma","Delta","E
 		if(P.isVerb)
 			if(lesser_form && !P.allowduringlesserform)	continue
 			if(!(P in src.verbs))
-				src.verbs += P.verbpath
+				src.add_verbs(P.verbpath)
 
 	for(var/language in languages)
 		mind.changeling.absorbed_languages |= language
@@ -301,7 +301,7 @@ var/global/list/possible_changeling_IDs = list("Alpha","Beta","Gamma","Delta","E
 
 	src.verbs -= /mob/proc/changeling_transform
 	spawn(10)
-		src.verbs += /mob/proc/changeling_transform
+		src.add_verbs(/mob/proc/changeling_transform)
 
 	changeling_update_languages(changeling.absorbed_languages)
 
@@ -456,7 +456,7 @@ var/global/list/possible_changeling_IDs = list("Alpha","Beta","Gamma","Delta","E
 			changeling.chem_charges -= 20
 
 			to_chat(C, "<span class='notice'><font size='5'>We are ready to rise.  Use the <b>Revive</b> verb when you are ready.</font></span>")
-			C.verbs += /mob/proc/changeling_revive
+			C.add_verbs(/mob/proc/changeling_revive)
 
 	feedback_add_details("changeling_powers","FD")
 	return 1
@@ -491,7 +491,7 @@ var/global/list/possible_changeling_IDs = list("Alpha","Beta","Gamma","Delta","E
 	to_chat(src, "<span class='notice'>Your throat adjusts to launch the sting.</span>")
 	changeling.sting_range = 2
 	src.verbs -= /mob/proc/changeling_boost_range
-	spawn(5)	src.verbs += /mob/proc/changeling_boost_range
+	spawn(5)	src.add_verbs(/mob/proc/changeling_boost_range)
 	feedback_add_details("changeling_powers","RS")
 	return 1
 
@@ -515,7 +515,7 @@ var/global/list/possible_changeling_IDs = list("Alpha","Beta","Gamma","Delta","E
 	C.update_canmove()
 
 	src.verbs -= /mob/proc/changeling_unstun
-	spawn(5)	src.verbs += /mob/proc/changeling_unstun
+	spawn(5)	src.add_verbs(/mob/proc/changeling_unstun)
 	feedback_add_details("changeling_powers","UNS")
 	return 1
 
@@ -551,7 +551,7 @@ var/global/list/possible_changeling_IDs = list("Alpha","Beta","Gamma","Delta","E
 			sleep(40)
 
 	src.verbs -= /mob/proc/changeling_digitalcamo
-	spawn(5)	src.verbs += /mob/proc/changeling_digitalcamo
+	spawn(5)	src.add_verbs(/mob/proc/changeling_digitalcamo)
 	feedback_add_details("changeling_powers","CAM")
 	return 1
 
@@ -577,7 +577,7 @@ var/global/list/possible_changeling_IDs = list("Alpha","Beta","Gamma","Delta","E
 				sleep(10)
 
 	src.verbs -= /mob/proc/changeling_rapidregen
-	spawn(5)	src.verbs += /mob/proc/changeling_rapidregen
+	spawn(5)	src.add_verbs(/mob/proc/changeling_rapidregen)
 	feedback_add_details("changeling_powers","RR")
 	return 1
 
@@ -724,7 +724,7 @@ var/list/datum/absorbed_dna/hivemind_bank = list()
 	changeling.chem_charges -= required_chems
 	changeling.sting_range = 1
 	src.verbs -= verb_path
-	spawn(10)	src.verbs += verb_path
+	spawn(10)	src.add_verbs(verb_path)
 	if(!loud)
 		to_chat(src, "<span class='notice'>We stealthily sting [T].</span>")
 	else

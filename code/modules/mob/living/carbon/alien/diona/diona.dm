@@ -49,7 +49,7 @@
 	species = all_species[SPECIES_DIONA]
 	add_language(LANGUAGE_ROOTGLOBAL)
 	add_language(LANGUAGE_GALCOM)
-	verbs += /mob/living/carbon/alien/diona/proc/merge
+	add_verbs(/mob/living/carbon/alien/diona/proc/merge)
 
 /mob/living/carbon/alien/diona/put_in_hands(var/obj/item/W) // No hands. Use mouth.
 	if(can_collect(W))

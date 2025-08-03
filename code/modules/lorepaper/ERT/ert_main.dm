@@ -108,8 +108,8 @@ SUBSYSTEM_DEF(squads)
 			return to_chat(usr, "The selected player is not a ghost.")
 		message_admins("[C] has been spawned as a squad leader for '[squad.name] squad'.")
 		var/mob/M = squad.spawn_leader(C)
-		M.verbs += /client/proc/place_squad_waypoint
-		M.verbs += /client/proc/clear_squad_waypoint
+		M.add_verbs(/client/proc/place_squad_waypoint)
+		M.add_verbs(/client/proc/clear_squad_waypoint)
 
 
 /client/proc/spawn_adminleader()
@@ -249,8 +249,8 @@ SUBSYSTEM_DEF(squads)
 
 	var/mob/H = input("SELECT A PAWN", "LAMB FOR THE SLAUGHTER") as mob in squad.members
 	squad.SL = H
-	squad.SL.verbs += /client/proc/place_squad_waypoint
-	squad.SL.verbs += /client/proc/clear_squad_waypoint
+	squad.SL.add_verbs(/client/proc/place_squad_waypoint)
+	squad.SL.add_verbs(/client/proc/clear_squad_waypoint)
 
 	for(var/mob/M in squad.members)
 		if(!M.client)

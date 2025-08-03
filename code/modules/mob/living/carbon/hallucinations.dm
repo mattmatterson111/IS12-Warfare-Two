@@ -247,7 +247,7 @@
 
 /datum/hallucination/telepahy/start()
 	to_chat(holder,"<span class = 'notice'>You expand your mind outwards.</span>")
-	holder.verbs += /mob/living/carbon/human/proc/fakeremotesay
+	holder.add_verbs(/mob/living/carbon/human/proc/fakeremotesay)
 
 /datum/hallucination/telepahy/end()
 	if(holder)

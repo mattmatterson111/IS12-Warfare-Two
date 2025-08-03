@@ -184,7 +184,7 @@
 
 			if("click on atom")
 				waiting_for_click = 1
-				C.verbs += /client/proc/cancel_callproc_select
+				C.add_verbs(/client/proc/cancel_callproc_select)
 				to_chat(C, "Click an atom to select it. Click an atom then click 'cancel', or use the Cancel-Callproc-Select verb to cancel selecting a target by click.")
 				return WAITING
 

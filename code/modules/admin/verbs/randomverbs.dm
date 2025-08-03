@@ -469,7 +469,7 @@ Ccomp's first proc.
 	else
 		for(var/mob/observer/ghost/g in get_ghosts())
 			if(!g.client.holder)						// Add the verb back for all non-admin ghosts
-				g.verbs += /mob/observer/ghost/verb/toggle_antagHUD
+				g.add_verbs(/mob/observer/ghost/verb/toggle_antagHUD)
 				to_chat(g, "<span class='notice'><B>The Administrator has enabled AntagHUD </B></span>")// Notify all observers they can now use AntagHUD
 
 		config.antag_hud_allowed = 1

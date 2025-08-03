@@ -370,8 +370,8 @@
 		verbs -= /obj/structure/window/proc/rotate
 		verbs -= /obj/structure/window/proc/revrotate
 	else
-		verbs += /obj/structure/window/proc/rotate
-		verbs += /obj/structure/window/proc/revrotate
+		add_verbs(/obj/structure/window/proc/rotate)
+		add_verbs(/obj/structure/window/proc/revrotate)
 
 //merges adjacent full-tile windows into one (blatant ripoff from game/smoothwall.dm)
 /obj/structure/window/update_icon()

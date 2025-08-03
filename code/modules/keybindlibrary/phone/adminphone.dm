@@ -77,7 +77,7 @@ GLOBAL_VAR(operator_target) //hacky way to fetch somebody who decides to be a ph
 	to_chat(GLOB.operator_target,"[attatched_being]")
 	ckey = attatched_being.ckey
 	to_chat(usr,"To return to your old body, use the 'Return To Old Body' verb in the 'PHONE GUY' catagory.")
-	verbs += /mob/living/carbon/human/phone_operator/proc/hotswap_to_old_body
+	add_verbs(/mob/living/carbon/human/phone_operator/proc/hotswap_to_old_body)
 	GLOB.operator_target = null
 
 /obj/effect/landmark/start/phoneoperator

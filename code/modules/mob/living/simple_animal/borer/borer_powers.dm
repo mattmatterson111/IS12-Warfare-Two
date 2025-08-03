@@ -339,9 +339,9 @@ GLOBAL_LIST_INIT(borer_reagent_types_by_name, setup_borer_reagents())
 
 			controlling = 1
 
-			host.verbs += /mob/living/carbon/proc/release_control
-			host.verbs += /mob/living/carbon/proc/punish_host
-			host.verbs += /mob/living/carbon/proc/spawn_larvae
+			host.add_verbs(/mob/living/carbon/proc/release_control)
+			host.add_verbs(/mob/living/carbon/proc/punish_host)
+			host.add_verbs(/mob/living/carbon/proc/spawn_larvae)
 
 			return
 

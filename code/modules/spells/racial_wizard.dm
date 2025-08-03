@@ -248,7 +248,7 @@
 	vision.possess(L)
 	GLOB.destroyed_event.register(L, src, /spell/camera_connection/proc/release)
 	GLOB.logged_out_event.register(L, src, /spell/camera_connection/proc/release)
-	L.verbs += /mob/living/proc/release_eye
+	L.add_verbs(/mob/living/proc/release_eye)
 
 /spell/camera_connection/proc/release(var/mob/living/L)
 	vision.release(L)

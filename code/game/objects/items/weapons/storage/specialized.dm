@@ -67,7 +67,7 @@
 	New()
 		..()
 		//verbs -= /obj/item/storage/verb/quick_empty
-		//verbs += /obj/item/storage/sheetsnatcher/quick_empty
+		//add_verbs(/obj/item/storage/sheetsnatcher/quick_empty)
 
 	can_be_inserted(obj/item/W, mob/user, stop_messages = 0)
 		if(!istype(W,/obj/item/stack/material))

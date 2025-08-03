@@ -78,7 +78,7 @@
 			user.drop_item()
 			W.forceMove(src)
 			key = W
-			verbs += /obj/vehicle/train/cargo/engine/verb/remove_key
+			add_verbs(/obj/vehicle/train/cargo/engine/verb/remove_key)
 		return
 	..()
 
@@ -133,9 +133,9 @@
 		verbs -= /obj/vehicle/train/cargo/engine/verb/start_engine
 
 		if(on)
-			verbs += /obj/vehicle/train/cargo/engine/verb/stop_engine
+			add_verbs(/obj/vehicle/train/cargo/engine/verb/stop_engine)
 		else
-			verbs += /obj/vehicle/train/cargo/engine/verb/start_engine
+			add_verbs(/obj/vehicle/train/cargo/engine/verb/start_engine)
 
 /obj/vehicle/train/cargo/engine/turn_off()
 	..()
@@ -144,9 +144,9 @@
 	verbs -= /obj/vehicle/train/cargo/engine/verb/start_engine
 
 	if(!on)
-		verbs += /obj/vehicle/train/cargo/engine/verb/start_engine
+		add_verbs(/obj/vehicle/train/cargo/engine/verb/start_engine)
 	else
-		verbs += /obj/vehicle/train/cargo/engine/verb/stop_engine
+		add_verbs(/obj/vehicle/train/cargo/engine/verb/stop_engine)
 
 /obj/vehicle/train/cargo/RunOver(var/mob/living/carbon/human/H)
 	var/list/parts = list(BP_HEAD, BP_CHEST, BP_L_LEG, BP_R_LEG, BP_L_ARM, BP_R_ARM)

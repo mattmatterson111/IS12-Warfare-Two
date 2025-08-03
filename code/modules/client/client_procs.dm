@@ -164,7 +164,12 @@
 
 	. = ..()	//calls mob.Login()
 	chatOutput.start() // Starts the chat
-	force_dark_theme()
+	spawn(10)
+		chatOutput.start() // mary save me
+		force_dark_theme()
+		var/datum/asset/stuff = get_asset_datum(/datum/asset/group/statpanel)
+		stuff.send(src)
+		show_browser(src, file('code/modules/sovlpanel/html/html/statpanel.html'), "window=outputwindow.browser;")
 	prefs.sanitize_preferences()
 
 	GLOB.using_map.map_info(src)

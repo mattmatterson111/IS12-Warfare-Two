@@ -58,6 +58,7 @@ GLOBAL_DATUM_INIT(iconCache, /savefile, new("tmp/iconCache.sav")) //Cache of ico
 
 	show_browser(owner, file('code/modules/goonchat/browserassets/html/browserOutput.html'), "window=browseroutput")
 
+
 /datum/chatOutput/Topic(href, list/href_list)
 	if(usr.client != owner)
 		return TRUE

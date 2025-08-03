@@ -1,0 +1,471 @@
+
+<style type="text/css">
+	@font-face {font-family: Gothic;src: url(gothic.ttf);}
+	@font-face {font-family: Book;src: url(book.ttf);}
+	@font-face {font-family: Hando;src: url(hando.ttf);}
+
+	@font-face { font-family: "Pterra"; src: url('pterra.ttf') format('truetype');}
+	@font-face {font-family: Type;src: url(type.ttf);}
+	@font-face {font-family: Enlightment;src: url(enlightment.ttf);}
+	@font-face {font-family: Arabic;src: url(arabic.ttf);}
+	@font-face {font-family: Digital;src: url(digital.ttf);}
+	@font-face {font-family: Cond;src: url(cond2.ttf);}
+	@font-face {font-family: Semi;src: url(semi.ttf);}
+	@font-face {font-family: Droser;src: url(Droser.ttf);}
+	.goth {font-family: Gothic, Verdana, sans-serif;}
+	.book {font-family: Book, serif;}
+	.hando {font-family: Hando, Verdana, sans-serif;}
+	.typewriter {font-family: Type, Verdana, sans-serif;}
+	.arabic {font-family: Arabic, serif; font-size:180%;}
+	.droser {font-family: Droser, Verdana, sans-serif;}
+</style>
+<HTML>
+<HEAD>
+
+<META http-equiv="X-UA-Compatible" content="IE=edge" charset="UTF-8"></META>
+
+<style type="text/css">
+	body {
+		background-image:url('chatbg.png');
+		background-attachment:scroll;
+		background-color:#000000;
+		overflow: hidden;
+		word-wrap: break-word;
+		font-family: "Droser","Verdana",sans-serif;
+		color:#9d9c96;
+		font-size:14px;
+		cursor: url('pointer.cur'), auto;
+		margin: 0px;
+		text-shadow: 0px 0px 4px rgba(0,0,0, 0.9);
+
+		border: 0px;
+		padding: 0px;
+	}
+
+	body::-webkit-scrollbar {
+		/* this sets the width of the bar, in the div.main (::-webkit-scrollbar is fro the body/html)*/
+		background-color: transparent; /* will leave after image loads */
+		width: 16px; /* change for scrollbar width */
+		background-image: url("chatscrollbar-bg-t.png"), url("chatscrollbar-bg-b.png"), url("chatscrollbar-bg.png");
+		background-position: center top, center bottom, center center;
+		background-size: 100% auto, 100% auto, contain;
+		background-repeat: no-repeat, no-repeat, round;
+		-ms-interpolation-mode: nearest-neighbor;
+		image-rendering: pixelated;
+	}
+
+	  /* The buttons are broken (dont show up), but it doesnt really matter since we didnt want em */
+	  /* keeping the awful CSS here incase someone wants to pick it up and use em */
+	/* Top button (scroll up) for vertical scrollbar */
+	body::-webkit-scrollbar-button:single-button:vertical:decrement {
+		background-color: transparent; /* will leave after image loads */
+		background-image: url('chatscrollbar-scrollup.png');
+		background-size: contain;
+		background-repeat: no-repeat;
+		background-position: top;
+		-ms-interpolation-mode: nearest-neighbor;
+		image-rendering: pixelated;
+		height: 100%;
+	}
+
+	body::-webkit-scrollbar-button:single-button:vertical:increment {
+		background-color: transparent; /* will leave after image loads */
+		background-image: url('chatscrollbar-scrolldown.png');
+		background-size: contain;
+		background-repeat: no-repeat;
+		background-position: bottom;
+		-ms-interpolation-mode: nearest-neighbor;
+		image-rendering: pixelated;
+		height: 100%;
+	}
+
+	body::-webkit-scrollbar-thumb {
+		background-color: transparent; /* will leave after image loads */
+		background-image: url("chatscroller-t.png"), url("chatscroller-b.png"), url("chatscroller-m.png");
+		background-position: center top, center bottom, center center;
+		background-size: 100% auto, 100% auto, contain;
+		background-repeat: no-repeat, no-repeat, round;
+		-ms-interpolation-mode: nearest-neighbor;
+		image-rendering: pixelated;
+		min-height: 32px;
+	}
+
+	.statstable
+	{
+	width:80%;
+	border-collapse: collapse;
+	margin-top:8px;
+	}
+	.trstats
+	{
+	background: rgba(255, 255, 0, 0.1);
+	}
+	.trstats:nth-child(2n)
+	{ background: rgba(255, 0, 0, 0.1);}
+
+	.ST
+	{
+		font-weight: bold;
+		font-size:150%;
+		font-family: "Cond",sans-serif;
+		color: #d87474;
+		text-shadow: 0px 0px 5px #ff0000;
+	}
+	.ST.SMALLER
+	{
+		font-size:120%;
+	}
+	.ST.MINOR
+	{
+		color: #c84040;
+
+	}
+	.ST.DES
+	{
+		color: #d8d874;
+		text-shadow: 0px 0px 5px #ffff00;
+	}
+	.smallstat
+	{
+		font-size:80%;
+		color: #a80404;
+		text-shadow: 0px 0px 3px #a80404;
+	}
+	.verb {float: top; font-family: "Cond";text-shadow: 0px 0px 3px #a81212;
+	color:#ac3b49; text-decoration:none;outline: none;border: none;}
+	.verb.dim { color:#707070; text-shadow: 0px 0px 3px #707070;}
+	.verb.smaller { font-size:80%;}
+	.verb.dim:hover{color: #f662ff }
+	.verb:hover {color:#999;background:rgba(255,0,0,0.2);outline: none;border: none;}
+	.verb:focus{outline:none;}
+
+	#buttonpanel {
+		position: absolute;
+		top: 18px;
+		left: -7px;
+		height: 75px;
+		width: 473px;
+		display: flex;
+		flex-direction: row;
+		overflow-x: auto;
+		white-space: nowrap;
+		gap: 6px;
+		padding: 0 6px;
+		z-index: 5;
+		scrollbar-width: thin;
+		overflow-y: hidden;
+	}
+
+
+	.button
+	{
+		margin: 0;
+		width: 44px;
+		height: 80px;
+		background-repeat:no-repeat;
+		flex: 0 0 auto;
+		overflow: visible;
+	}
+
+	.right
+	{
+		float: right;
+	}
+
+	.button:active {
+		transition: 0.1s;
+	  transform: translateY(4px);
+	}
+	#loading
+	{
+		font-size:110%;
+		color: #fd5b5b;
+		text-shadow: 0px 0px 2px rgba(255,0,0, 0.9);
+	}
+	#note
+	{
+	background-image:url('button_note.png');
+	}
+	#chrome
+	{
+	background-image:url('button_chrome.png');
+	}
+	#pig
+	{
+	background-image:url('button_pig.png');
+	}
+	#options
+	{
+	background-image:url('button_options.png');
+	}
+
+	#exit
+	{
+	background-image:url('button_exit.png');
+    top: 255px;
+    left: 420px;
+    position: absolute;
+	}
+
+	#statpanel {
+		background-image:url('stats.png');
+
+		overflow: hidden;
+		background-repeat:no-repeat;
+		background-size: auto, auto;
+		top:0px;
+		left:0px;
+		width: 478px;
+		height: 312px;
+		background-color: red;
+	}
+	#statcontainer
+	{
+		background: radial-gradient(#0c0c0c, #00000059);
+		position:absolute;
+		top:23px;
+		left:109px;
+		width: 170px;
+		padding: 5px;
+		height: 162px;
+	}
+
+	#scrollbar_container {
+		position:absolute;
+		top:120px;
+		left:15px;
+		width: 300px;
+		height: 160px;
+		padding: 5px;
+		z-index: 4;
+		overflow-y: auto;
+		scrollbar-face-color:#1A1A1A;
+		scrollbar-track-color:#171717;
+		scrollbar-highlight-color:#171717;
+	}
+
+	#scrollbar_container::-webkit-scrollbar {
+	/* this sets the width of the bar, in the div.main (::-webkit-scrollbar is fro the body/html)*/
+		background-color: transparent; /* will leave after image loads */
+		width: 16px; /* change for scrollbar width */
+		background-image: url("chatscrollbar-bg-t.png"), url("chatscrollbar-bg-b.png"), url("chatscrollbar-bg.png");
+		background-position: center top, center bottom, center center;
+		background-size: 100% auto, 100% auto, contain;
+		background-repeat: no-repeat, no-repeat, round;
+		-ms-interpolation-mode: nearest-neighbor;
+		image-rendering: pixelated;
+  }
+
+  /* The buttons are broken (dont show up), but it doesnt really matter since we didnt want em */
+  /* keeping the awful CSS here incase someone wants to pick it up and use em */
+/* Top button (scroll up) for vertical scrollbar */
+	#scrollbar_container::-webkit-scrollbar-button:single-button:vertical:decrement {
+		background-color: transparent; /* will leave after image loads */
+		background-image: url('chatscrollbar-scrollup.png');
+		background-size: contain;
+		background-repeat: no-repeat;
+		background-position: top;
+		-ms-interpolation-mode: nearest-neighbor;
+		image-rendering: pixelated;
+		height: 100%;
+  }
+
+	#scrollbar_container::-webkit-scrollbar-button:single-button:vertical:increment {
+		background-color: transparent; /* will leave after image loads */
+		background-image: url('chatscrollbar-scrolldown.png');
+		background-size: contain;
+		background-repeat: no-repeat;
+		background-position: bottom;
+		-ms-interpolation-mode: nearest-neighbor;
+		image-rendering: pixelated;
+		height: 100%;
+  }
+
+	#scrollbar_container::-webkit-scrollbar-thumb {
+		background-color: transparent; /* will leave after image loads */
+		background-image: url("chatscroller-t.png"), url("chatscroller-b.png"), url("chatscroller-m.png");
+		background-position: center top, center bottom, center center;
+		background-size: 100% auto, 100% auto, contain;
+		background-repeat: no-repeat, no-repeat, round;
+		-ms-interpolation-mode: nearest-neighbor;
+		image-rendering: pixelated;
+		min-height: 32px;
+  }
+
+
+	td
+	{
+	width:50%;
+	 vertical-align:top;
+	}
+	table
+	{
+	width:100%;
+	}
+
+
+	.button.dynamic{
+	background-color: transparent;
+	height: 32px;width: 32px;float: left;
+	}
+
+	#overpanel
+	{
+		background-image:url('panel.png');
+		top: 245px;
+		left:-10px;
+		width: 411px;
+		position: absolute;
+		z-index:1;
+		height:35px;
+		pointer-events:none;
+	}
+
+	#sidepanel
+	{
+		background-image:url('stats1.png');
+		top: 0px;
+		left: 478px;
+		position: absolute;
+		z-index:1;
+		overflow: hidden;
+		background-repeat:no-repeat;
+		background-size: auto, auto;
+		width: 478px;
+		height: 312px;
+		pointer-events:none;
+	}
+
+	#dynamicpanel
+	{
+
+		top: 210px;left:15px;
+		height: 45px;
+		width: 294px;
+		position: absolute;
+		z-index:0;
+	}
+	#dynamicpanel2
+	{
+
+		top: 256px;
+		left:15px;
+		height: 45px;
+		width: 294px;
+		position: absolute;
+		z-index:2;
+	}
+
+</style>
+
+<script type="text/javascript" src="prototype.js"></script>
+<script type="text/javascript" src="scriptaculous.js"></script>
+<script type="text/javascript" src="effects.js"></script>
+<script type="text/javascript" src="controls.js"></script>
+<script type="text/javascript" src="slider.js"></script>
+<script type="text/javascript" src="livepipe.js"></script>
+
+<body onload="redirect()" onpageshow="redirect2()">
+
+<div id='statpanel'>
+	<a href='byond://?_src_=stat;exitpanel=1'><div class='button right' id='exit'></div></a>
+	<div id='buttonpanel'>
+		<a href='byond://?_src_=stat;buttonpig=1' class='button' id='pig'></a>
+		<a href='byond://?_src_=stat;buttonchrome=1' class='button' id='chrome'></a>
+		<a href='byond://?_src_=stat;buttonoptions=1' class='button' id='options'></a>
+		<a href='byond://?_src_=stat;buttonnote=1' class='button' id='note'></a>
+
+		<a href='byond://?_src_=stat;buttonpig=1' class='button' id='pig'></a>
+		<a href='byond://?_src_=stat;buttonchrome=1' class='button' id='chrome'></a>
+		<a href='byond://?_src_=stat;buttonoptions=1' class='button' id='options'></a>
+		<a href='byond://?_src_=stat;buttonnote=1' class='button' id='note'></a>
+		<a href='byond://?_src_=stat;buttonpig=1' class='button' id='pig'></a>
+		<a href='byond://?_src_=stat;buttonchrome=1' class='button' id='chrome'></a>
+		<a href='byond://?_src_=stat;buttonoptions=1' class='button' id='options'></a>
+		<a href='byond://?_src_=stat;buttonnote=1' class='button' id='note'></a>
+	</div>
+	<div id="scrollbar_container">
+		<div id="scrollbar_content"></div>
+	</div>
+
+	<div id='dynamicpanel'></div>
+	<div id='dynamicpanel2'></div>
+	<div id='overpanel'></div>
+	<div id='sidepanel'></div>
+</div>
+<script type="text/javascript">
+
+	function redirect() {
+		location.href = "byond://?_src_=stat;spload=1";
+	}
+
+	function redirect2() {
+		setTimeout(function() {document.location.href = "byond://?_src_=stat;modernbrowser=1"; }, 500);
+	}
+
+	var elem = document.getElementById('scrollbar_content');
+	var E = document.getElementById('scrollbar_container');
+
+
+	function FI(e)
+	{
+		e.onerror=null;
+		setTimeout(reloadImg, 1000, e);
+	}
+
+	function reloadImg(e)
+	{
+		var source = e.src;
+		var  j =  source.indexOf('?');
+		var k = source;
+		if(j>0)k = source.substr(0,j);
+		k = k + '?t=' + new Date().getTime();
+		e.src = k;
+		e.alt = null;
+	}
+
+	function UpdateDynamicpanel(msgtext,msgtext2)
+	{
+		var dynpal = document.getElementById('dynamicpanel');
+		var dynpal2 = document.getElementById('dynamicpanel2');
+		if(msgtext != "" && msgtext != null) {msgtext = msgtext.split("$").join(";");}
+
+		if(msgtext2 != "" && msgtext2 != null) {msgtext2 = msgtext2.split("$").join(";"); }
+		if(msgtext==null) msgtext = "&nbsp;";
+		if(msgtext2==null) msgtext2 = "&nbsp;";
+
+		dynpal.innerHTML = msgtext + "<BR>";
+		dynpal2.innerHTML = msgtext2 + "<BR>";
+	}
+
+	function InputMsg(msgtext)
+	{
+		if(elem == null) return;
+		if(msgtext != "" && msgtext != null)
+		{msgtext = msgtext.split("$").join(";");}
+
+		elem.innerHTML = msgtext;
+	}
+
+	var theme = 0;
+	function ChangeTheme(newtheme)
+	{
+		if(theme == newtheme) return;
+
+		theme = newtheme;
+		if(theme==1)
+	{
+			document.getElementById('statpanel').style.backgroundImage = "url('stats.png')";
+		}
+		else
+		{
+			document.getElementById('statpanel').style.backgroundImage = "url('stats.png')";
+
+		}
+
+	}
+
+
+</script>
+</BODY>
+</HTML>

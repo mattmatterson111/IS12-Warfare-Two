@@ -171,16 +171,16 @@ var/datum/antagonist/cultist/cult
 	cult_rating = max(0, cult_rating - amount)
 
 /datum/antagonist/cultist/proc/add_cult_magic(var/mob/M)
-	M.verbs += Tier1Runes
+	M.add_verbs(Tier1Runes)
 
 	if(max_cult_rating >= CULT_RUNES_1)
-		M.verbs += Tier2Runes
+		M.add_verbs(Tier2Runes)
 
 		if(max_cult_rating >= CULT_RUNES_2)
-			M.verbs += Tier3Runes
+			M.add_verbs(Tier3Runes)
 
 			if(max_cult_rating >= CULT_RUNES_3)
-				M.verbs += Tier4Runes
+				M.add_verbs(Tier4Runes)
 
 /datum/antagonist/cultist/proc/remove_cult_magic(var/mob/M)
 	M.verbs -= Tier1Runes

@@ -46,7 +46,7 @@
 	equip(var/mob/living/carbon/human/H)
 		var/current_name = H.real_name
 		..()
-		H.verbs += /mob/living/carbon/human/proc/morale_boost
+		H.add_verbs(/mob/living/carbon/human/proc/morale_boost)
 		H.assign_squad_leader(BLUE_TEAM)
 		H.fully_replace_character_name("Sgt. [current_name]")
 		H.say(";[title] reporting for duty!")
@@ -189,13 +189,13 @@
 		var/obj/O = H.get_equipped_item(slot_s_store)
 		if(O)
 			qdel(O)
-		H.verbs += list(
+		H.add_verbs(list(
 			/mob/living/carbon/human/proc/help_me,
 			/mob/living/carbon/human/proc/retreat,
 			/mob/living/carbon/human/proc/announce,
 			/mob/living/carbon/human/proc/give_order,
 			/mob/living/carbon/human/proc/check_reinforcements
-		)
+		))
 		H.voice_in_head(pick(GLOB.lone_thoughts))
 		to_chat(H, "<b>Artillery Password</b>: [GLOB.cargo_password]")
 		H.mind.store_memory("<b>Artillery Password</b>: [GLOB.cargo_password]")

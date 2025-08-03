@@ -56,8 +56,8 @@
 /mob/living/simple_animal/mouse/New()
 	..()
 
-	verbs += /mob/living/proc/ventcrawl
-	verbs += /mob/living/proc/hide
+	add_verbs(/mob/living/proc/ventcrawl)
+	add_verbs(/mob/living/proc/hide)
 
 	if(name == initial(name))
 		name = "[name] ([sequential_id(/mob/living/simple_animal/mouse)])"

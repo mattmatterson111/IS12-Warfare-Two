@@ -509,7 +509,7 @@ BLIND     // can't see anything
 /obj/item/clothing/mask/New()
 	if(pull_mask)
 		action_button_name = "Adjust Mask"
-		verbs += /obj/item/clothing/mask/proc/adjust_mask
+		add_verbs(/obj/item/clothing/mask/proc/adjust_mask)
 	..()
 
 /obj/item/clothing/mask/update_clothing_icon()

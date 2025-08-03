@@ -1,0 +1,301 @@
+
+	@font-face {font-family: Gothic;src: url(gothic.ttf);}
+	@font-face {font-family: Book;src: url(book.ttf);}
+	@font-face {font-family: Hando;src: url(hando.ttf);}
+
+    @font-face { font-family: "Pterra"; src: url('pterra.ttf') format('truetype');}
+	@font-face {font-family: Type;src: url(type.ttf);}
+	@font-face {font-family: Enlightment;src: url(enlightment.ttf);}
+	@font-face {font-family: Arabic;src: url(arabic.ttf);}
+	@font-face {font-family: Digital;src: url(digital.ttf);}
+	@font-face {font-family: Cond;src: url(cond2.ttf);}
+	@font-face {font-family: Semi;src: url(semi.ttf);}
+	@font-face {font-family: Droser;src: url(Droser.ttf);}
+	.goth {font-family: Gothic, Verdana, sans-serif;}
+	.book {font-family: Book, serif;}
+	.hando {font-family: Hando, Verdana, sans-serif;}
+	.typewriter {font-family: Type, Verdana, sans-serif;}
+	.arabic {font-family: Arabic, serif; font-size:180%;}
+	.droser {font-family: Droser, Verdana, sans-serif;}
+
+	body {
+		background-image:url('chatbg.png');
+		background-attachment:scroll;
+		background-color:#000000;
+		overflow: hidden;
+		word-wrap: break-word;
+        font-family: "Droser","Verdana",sans-serif;
+		color:#9d9c96;
+		font-size:14px;
+		cursor: url('pointer.cur'), auto;
+		margin: 0px;
+		text-shadow: 0px 0px 4px rgba(0,0,0, 0.9);
+
+		border: 0px;
+		padding: 0px;
+	}
+	.statstable
+	{
+	width:80%;
+	border-collapse: collapse;
+		 margin-top:8px;
+	}
+	.trstats
+	{
+	background: rgba(255, 255, 0, 0.1);
+	}
+	.trstats:nth-child(2n)
+	{ background: rgba(255, 0, 0, 0.1);}
+
+	.ST
+	{
+		font-weight: bold;
+		font-size:150%;
+		font-family: "Cond",sans-serif;
+		color: #d87474;
+		text-shadow: 0px 0px 5px #ff0000;
+	}
+	.ST.SMALLER
+	{
+		font-size:120%;
+	}
+	.ST.MINOR
+	{
+		color: #c84040;
+
+	}
+	.ST.DES
+	{
+		color: #d8d874;
+		text-shadow: 0px 0px 5px #ffff00;
+	}
+	.smallstat
+	{
+		font-size:80%;
+		color: #a80404;
+		text-shadow: 0px 0px 3px #a80404;
+	}
+	.verb {float: top; font-family: "Cond";text-shadow: 0px 0px 3px #a81212;
+	color:#ac3b49; text-decoration:none;outline: none;border: none;}
+	.verb.dim { color:#707070; text-shadow: 0px 0px 3px #707070;}
+	.verb.smaller { font-size:80%;}
+	.verb.dim:hover{color: #f662ff }
+	.verb:hover {color:#999;background:rgba(255,0,0,0.2);outline: none;border: none;}
+	.verb:focus{outline:none;}
+
+	#buttonpanel
+	{
+		position: absolute;
+		top: 18px;
+		left: -7px;
+		height: 75px;
+		width: 300px;
+		display: flex;
+		flex-direction: row;
+		overflow-x: auto;
+		white-space: nowrap;
+		gap: 6px;
+		padding: 0 6px;
+		z-index: 5;
+		scrollbar-width: thin;
+	}
+
+	.button
+	{
+		margin: 0;
+		width: 44px;
+		height: 42px;
+		background-repeat:no-repeat;
+		flex: 0 0 auto;
+	}
+
+	.right
+	{
+		float: right;
+	}
+
+	.button:active {
+		transition: 0.1s;
+	  transform: translateY(4px);
+	}
+	#loading
+	{
+		font-size:110%;
+		color: #fd5b5b;
+		text-shadow: 0px 0px 2px rgba(255,0,0, 0.9);
+	}
+	#note
+	{
+	background-image:url('button_note.png');
+	}
+	#chrome
+	{
+	background-image:url('button_chrome.png');
+	}
+	#pig
+	{
+	background-image:url('button_pig.png');
+	}
+	#options
+	{
+	background-image:url('button_options.png');
+	}
+
+	#exit
+	{
+	background-image:url('button_exit.png');
+	}
+
+	#statpanel {
+		background-image:url('stats.png');
+
+		overflow: hidden;
+		background-repeat:no-repeat;
+		background-size: auto, auto;
+		top:0px;
+		left:0px;
+		width: 478px;
+		height: 312px;
+		background-color: red;
+	}
+	#statcontainer
+	{
+		position:absolute;
+		top:23px;
+		left:109px;
+		width: 170px;
+		padding: 5px;
+		height: 162px;
+	}
+
+	#scrollbar_container {
+		position:absolute; top:120px; left:15px; width: 280px; height: 160px; padding: 5px;
+	}
+
+	#scrollbar_track {
+		position:absolute; top:16px; right:0px; height:140px; width:16px; background-image:url('chatscrollbar-bg.png'); cursor:move;
+	}
+
+	#scrollbar_handle {
+		width:14px;
+		left:1px;
+		overflow:auto;
+		background-image:url('chatscroller-m.png');
+		cursor:move;
+	}
+
+	#scrollbar_content {
+		overflow:hidden;
+		width: 190px;
+		height: 162px;
+	}
+
+	.scrollbart {
+		position:relative;
+		width:14px;
+		height:50%;
+		overflow:auto;
+		background-image:url('chatscroller-t.png');
+		background-repeat:no-repeat;
+		cursor:move;
+		border:0px;
+		padding:0px;
+		margin:0px;
+	}
+
+	.scrollbarb {
+		position:relative;
+		width:14px;
+		height:50%;
+		overflow:auto;
+		background-image:url('chatscroller-b.png');
+		background-repeat:no-repeat;
+		background-position:left bottom;
+		cursor:move;
+		border:0px;
+		padding:0px;
+		margin:0px;
+	}
+
+	#scrollbtnup {
+		width:16px;
+		height:16px;
+		position:absolute;
+		top:1px;
+		right:0px;
+		overflow:auto;
+		background-image:url('chatscrollbar-scrollup.png');
+	}
+
+	#scrollbtndown {
+		width:16px;
+		height:16px;
+		position:absolute;
+		bottom:1px;
+		right:0px;
+		overflow:hidden;
+		background-image:url('chatscrollbar-scrolldown.png');
+	}
+
+	td
+	{
+	width:50%;
+	 vertical-align:top;
+	}
+	table
+	{
+	width:90%;
+	}
+
+
+	.button.dynamic{
+	background-color: transparent;
+	height: 32px;width: 32px;float: left;
+	}
+
+	#overpanel
+	{
+		background-image:url('panel.png');
+		top: 245px;
+		left:-10px;
+		width: 411px;
+		position: absolute;
+		z-index:1;
+		height:35px;
+		pointer-events:none;
+	}
+
+	#sidepanel
+	{
+		background-image:url('stats1.png');
+		top: 0px;
+		left: 478px;
+		position: absolute;
+		z-index:1;
+		overflow: hidden;
+		background-repeat:no-repeat;
+		background-size: auto, auto;
+		width: 478px;
+		height: 312px;
+		pointer-events:none;
+	}
+
+	#dynamicpanel
+	{
+
+		top: 210px;left:15px;
+		height: 45px;
+		width: 294px;
+		position: absolute;
+		z-index:0;
+	}
+	#dynamicpanel2
+	{
+
+		top: 256px;
+		left:15px;
+		height: 45px;
+		width: 294px;
+		position: absolute;
+		z-index:2;
+	}
