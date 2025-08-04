@@ -420,8 +420,7 @@ GLOBAL_LIST_EMPTY(running_alarms)
 	if(!length(speakers))
 		message_admins("Could not run [type]. No speakers of type: [speaker_id] available.")
 		return
-	if(include_text)
-		to_world(include_text)
+
 	for(var/obj/structure/announcementspeaker/spk in speakers)
 		spk.in_use_by = src
 		affecting |= spk

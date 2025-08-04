@@ -345,7 +345,8 @@ GLOBAL_LIST_EMPTY(chat_clients)
 			I.plane = EFFECTS_ABOVE_LIGHTING_PLANE
 			holder.holder.overlays += I
 	//var/page = return_to
-	refresh()
+	if(holder.current_page==src)
+		holder.load_page(src)
 	//holder.load_page(src)
 	//holder.previous_page = page
 	return
@@ -380,8 +381,9 @@ GLOBAL_LIST_EMPTY(chat_clients)
 	holder.holder.think(9)
 	add_choice("#", "Open message by #", 2, TRUE)
 	add_choice("SEND", "Send a message to another user", 2, TRUE)
-	add_choice("NAME", "Change the local username", 2, TRUE)
-	add_choice("BACK", "RETURN TO { [return_to.name] }", 2, TRUE)
+	//add_choice("NAME", "Change the local username", 2, TRUE)
+	if(return_to)
+		add_choice("BACK", "RETURN TO { [return_to.name] }", 2, TRUE)
 	if(!holder.holder.input)
 		toggle_input(3, TRUE)
 	return TRUE
@@ -392,15 +394,16 @@ GLOBAL_LIST_EMPTY(chat_clients)
 	if(!string)
 		holder.holder.deny_sound()
 		return
-	else if(lowertext(string) == "back")
+	else if(lowertext(string) == "back" && return_to)
 		holder.load_page(return_to)
 		return
 	else if(lowertext(string) == "send")
 		holder.load_page(message_sender)
 		return
+	/*
 	else if(lowertext(string) == "name")
 		holder.load_page(name_changer)
-		return
+		return*/
 	else
 		var/numb = text2num(string)
 		if(!isnum(numb) || numb > length(messages_dts))
@@ -420,9 +423,8 @@ GLOBAL_LIST_EMPTY(chat_clients)
 	if(!messages_dts && messages) messages_dts = messages
 	// debug
 
-
 	spawn(2 SECOND) // need the spawn 1 second.
-		if(!account_name && account_username) account_name = account_username
+		if(account_username) account_name = account_username
 		else account_name = GenerateKey()
 		message_sender = new /datum/terminal_page/send_message(account_name)
 		name_changer = new /datum/terminal_page/name_change()
@@ -529,7 +531,12 @@ GLOBAL_LIST_EMPTY(chat_clients)
 	else if(lowertext(string) == "back")
 		selected_user = null
 		holder.load_page(previous_page)
-	else if(!selected_user)
+		return
+	var/datum/terminal_page/my_messages/hub = holder.get_page("my_messages")
+	if(!selected_user)
+		if(hub.account_name == string)
+			holder.holder.deny_sound()
+			return
 		selected_user = get_chatclient(string)
 		if(!selected_user)
 			holder.holder.deny_sound()
@@ -539,12 +546,12 @@ GLOBAL_LIST_EMPTY(chat_clients)
 	else
 		selected_user.new_message(string, account_name, hidden)
 		selected_user = null
-		var/datum/terminal_page/my_messages/hub = holder.get_page("my_messages")
 		var/datum/terminal_page/terminal_msg/message = new (string, "OUTGOING", redacted = hidden)
 		message.seen = TRUE
 		hub.messages_dts += message
 		message.holder = hub.holder
 		holder.load_page(previous_page)
+		message_admins("Message sent: [string]; by user: [user]")
 		return
 
 /datum/terminal_page/money_manager
@@ -581,7 +588,7 @@ GLOBAL_LIST_EMPTY(chat_clients)
 		var/arty = /datum/snowflake_supply/artillery
 		if(arty in args[7])
 			args[7] -= arty
-			artillery = TRUE
+			//artillery = TRUE // REENABLE WHEN ARTY'S DONE
 		if(args[3])
 			supply = new (cargo_name = args[4], pad_override = args[6], products = args[7], manager = src)
 			supply.holder = holder
@@ -611,7 +618,8 @@ GLOBAL_LIST_EMPTY(chat_clients)
 		holder.holder.think(5, TRUE)
 		add_choice("ARTILLERY", "access the artillery barrage control menu", 2, TRUE)
 	add_choice("BALANCE", "refresh the visible balance", 4)
-	add_choice("BACK", "return to the main screen", 3, TRUE)
+	if(previous_page)
+		add_choice("BACK", "return to the main screen", 3, TRUE)
 	holder.holder.think(3, TRUE)
 	if(!holder.holder.input)
 		toggle_input(3, TRUE)
@@ -625,7 +633,7 @@ GLOBAL_LIST_EMPTY(chat_clients)
 		holder.load_page(src)
 		return
 	string = lowertext(string)
-	if(string == "back")
+	if(string == "back" && previous_page)
 		holder.holder.think(7, TRUE)
 		holder.load_page(previous_page)
 		return
@@ -633,6 +641,10 @@ GLOBAL_LIST_EMPTY(chat_clients)
 		holder.holder.think(7, TRUE)
 		holder.load_page(supply)
 		return
+	else
+		refresh()
+		if(!holder.holder.input)
+			toggle_input(3, TRUE)
 
 /datum/terminal_page/cargo
 	var/display_name = "" /// Display name for the manager to show. different than internal page name
@@ -650,6 +662,8 @@ GLOBAL_LIST_EMPTY(chat_clients)
 
 	src.pad_override = pad_override
 	if(!pad_override)	src.pad_override = src.manager.account // pull the account Id if we don't have a pad override.
+
+	pads = GLOB.cargo_pads[pad_override]
 
 	// Here we fucking go..
 	var/list/temporary_storage = list()
@@ -697,7 +711,6 @@ GLOBAL_LIST_EMPTY(chat_clients)
 		num++
 	add_line("</fieldset>", 6, TRUE)
 	add_choice("ENTER", "a corresponding number to view the category", 2, TRUE)
-	add_choice("CALIBRATE", "send out a ping to the nearby teleport pads", 2, TRUE)
 	add_choice("BALANCE", "inspect the balance of the current account", 4)
 	add_choice("BACK", "return to the main fund management screen", 3, TRUE)
 	holder.holder.think(3, TRUE)
@@ -716,10 +729,6 @@ GLOBAL_LIST_EMPTY(chat_clients)
 	if(string == "back")
 		holder.holder.think(7, TRUE)
 		holder.load_page(manager)
-		return
-	if(string == "calibrate")
-		holder.holder.think(8)
-		holder.load_page(calib_page)
 		return
 	else if(string == "balance")
 		clear_screen(4, TRUE)
@@ -804,11 +813,11 @@ GLOBAL_LIST_EMPTY(chat_clients)
 		toggle_input(3, TRUE)
 
 /datum/terminal_page/cargo_cat/receive_string(string, mob/user)
-	to_world("String")
+
 	if(holder.holder.input)
 		toggle_input(3, TRUE)
 	if(string && state)
-		to_world("Start")
+
 		if(!supply.manager.has_enough_money(selected.price))
 			clear_screen(3)
 			holder.holder.deny_sound(5)
@@ -819,33 +828,34 @@ GLOBAL_LIST_EMPTY(chat_clients)
 			state = 0
 			holder.load_page(src)
 			return
-		to_world("Yes")
+
 		clear_screen(3)
-		to_world("Cleared")
+
 		if(string == "y")
-			to_world("string was yes")
-			if(!length(supply.pads))
+
+			if(!length(supply.pads) && selected.container != null)
 				holder.holder.think(9)
 				add_line("<fieldset style='margin: 15px 0; opacity: 0.75; border: 3px double [holder.holder.Textcolor]; padding: 2px;'><legend style='background-color: [holder.holder.Textcolor]; color: black; margin-left: 1em; text-transform: uppercase; text-align: left;' class='blink'><b>CRITICAL ERROR</b></legend>", 7, TRUE)
 				holder.holder.think(7)
 				add_line("<legend style='background-color: [holder.holder.Textcolor]; color: black;'>NO PADS DETECTED</legend>", 3, TRUE)
-				add_line("<legend style='background-color: [holder.holder.Textcolor]; color: black;'>ATTEMPT CALIBRATION OR CONSULT A QUALIFIED TECHNICIAN</legend></fieldset>", 8, TRUE)
+				add_line("<legend style='background-color: [holder.holder.Textcolor]; color: black;'>ATTEMPTING CALIBRATION</legend></fieldset>", 8, TRUE)
 				holder.holder.think(7)
+				holder.load_page(supply.calib_page)
 				state = 0
 				selected = null
 				holder.load_page(src)
 				return
-			to_world("Checking")
-			var/obj/structure/cargo_pad/pad = pick(supply.pads)
-			to_world("Checking pad")
-			if(!pad)
+
+			var/obj/structure/cargo_pad/pad = safepick(supply.pads)
+
+			if(!pad && selected.container)
 				holder.holder.think(7)
 				state = 0
 				selected = null
 				holder.load_page(src)
 				return
 			if(selected.container == null)
-				selected.Spawn(pad.loc)
+				selected.Spawn(holder.holder.loc)
 				supply.manager.remove_money(selected.price)
 				holder.holder.think(7)
 				selected = null
@@ -860,7 +870,7 @@ GLOBAL_LIST_EMPTY(chat_clients)
 			holder.load_page(src)
 			return
 		if(string == "n")
-			add_line("NUH UH", 8, TRUE)
+			add_line("CANCELLED OPERATION -- RETURNING", 8, TRUE)
 			holder.holder.think(7)
 			selected = null
 			state = 0
@@ -1040,6 +1050,129 @@ GLOBAL_LIST_EMPTY(chat_clients)
 		)
 		)
 
+/obj/machinery/kaos/bluecaptain
+	Textcolor = "cyan"
+	pages = list(
+		list(
+			/datum/terminal_page/multiselect,
+			list(
+				list("code" = "1", "page_name" = "PAGE 2", "name" = "SECOND PAGE"),
+				list("code" = "2", "page_name" = "msg_staff_login", "name" = "MESSAGE COMMAND")
+				),
+			"PAGE 1"
+		),
+		list(
+			/datum/terminal_page/multiselect,
+			list(
+				list("code" = "1", "page_name" = "PAGE 1", "name" = "FIRST PAGE"),
+				list("code" = "2", "page_name" = "my_messages", "name" = "MESSAGE HUB" ),
+				list("code" = "3", "page_name" = "money_manager_main", "name" = "FUND MANAGEMENT - MAIN" ),
+				list("code" = "4", "page_name" = "money_manager_captain_login", "name" = "FUND MANAGEMENT - PRIVATE" )
+				),
+			"PAGE 2"
+		),
+		list(
+			/datum/terminal_page/message_staff,
+			null,
+			null
+		),
+		list(
+			/datum/terminal_page/login,
+			list("%CARGO", "msg_staff_login", "message_staff"), // list("password", "name", "redirect_to")
+			null
+		),
+		list(
+			/datum/terminal_page/my_messages,
+			"blucaptain",
+			null
+		),
+		list(
+			/datum/terminal_page/money_manager,
+			list(BLUE_TEAM, 500, TRUE, "B.L.U.E. CATALOGUE", "money_manager_main", BLUE_TEAM, list(/datum/snowflake_supply/shotgun_ammo_pack,/datum/snowflake_supply/rifle_ammo_pack,/datum/snowflake_supply/pistol_ammo_pack,/datum/snowflake_supply/revolver_ammo_pack,/datum/snowflake_supply/soulburn_ammo_pack,/datum/snowflake_supply/hmg_ammo_pack,/datum/snowflake_supply/warmonger_ammo,/datum/snowflake_supply/flamethrower_ammo_pack,/datum/snowflake_supply/ptsd_ammo_pack,/datum/snowflake_supply/mortar_ammo,/datum/snowflake_supply/illumination_mortar_blue,/datum/snowflake_supply/shotgun_pack,/datum/snowflake_supply/pistol_pack,/datum/snowflake_supply/harbinger_pack,/datum/snowflake_supply/warmonger_pack,/datum/snowflake_supply/shovel_pack,/datum/snowflake_supply/doublebarrel_shotgun_pack,/datum/snowflake_supply/bolt_action_rifle_pack,/datum/snowflake_supply/soulburn_pack,/datum/snowflake_supply/flamethrower_pack,/datum/snowflake_supply/frag_grenade_pack,/datum/snowflake_supply/trench_club_pack,/datum/snowflake_supply/mortar_pack,/datum/snowflake_supply/gas_mask_pack,/datum/snowflake_supply/barbwire_pack,/datum/snowflake_supply/canned_food_pack,/datum/snowflake_supply/bodybag_pack,/datum/snowflake_supply/cigarette_pack,/datum/snowflake_supply/first_aid_pack,/datum/snowflake_supply/advanced_first_aid_pack,/datum/snowflake_supply/medical_belt_pack,/datum/snowflake_supply/booze_pack,/datum/snowflake_supply/atepoine_pack,/datum/snowflake_supply/blood_injector_pack,/datum/snowflake_supply/smoke_grenade_pack,/datum/snowflake_supply/job/unit_blue_sniper,/datum/snowflake_supply/job/unit_blue_flametrooper,/datum/snowflake_supply/job/unit_blue_sentry,/datum/snowflake_supply/reinforcements/blue)), // list(Money ID in accordnace with the global list of dosh, Whether it has cargo, page name, Cargo name, cargo pad override, list of cargo shit)// list(Money ID in accordnace with the global list of dosh, Whether it has cargo, page name, Cargo name, cargo pad override, list of cargo shit)
+			null																												// List of cargo is just datum snowflake types
+		),
+		list(
+			/datum/terminal_page/money_manager,
+			list(BLUE_TEAM, 500, TRUE, "EXCLUSIVE CATALOGUE", "money_manager_captain", "Bluecoats_C", list(/datum/snowflake_supply/booze_pack, /datum/snowflake_supply/cigarette_pack, /datum/snowflake_supply/artillery)), // list(Money ID in accordnace with the global list of dosh, Whether it has cargo, page name, Cargo name, cargo pad override, list of cargo shit)
+			null																												// List of cargo is just datum snowflake types
+		),
+		list(
+			/datum/terminal_page/login,
+			list("%CARGO", "money_manager_captain_login", "money_manager_captain"), // list("password", "name", "redirect_to")
+			null
+		)
+		)
+
+/obj/machinery/kaos/redcaptain
+	pages = list(
+		list(
+			/datum/terminal_page/multiselect,
+			list(
+				list("code" = "1", "page_name" = "PAGE 2", "name" = "SECOND PAGE"),
+				list("code" = "2", "page_name" = "msg_staff_login", "name" = "MESSAGE COMMAND")
+				),
+			"PAGE 1"
+		),
+		list(
+			/datum/terminal_page/multiselect,
+			list(
+				list("code" = "1", "page_name" = "PAGE 1", "name" = "FIRST PAGE"),
+				list("code" = "2", "page_name" = "my_messages", "name" = "MESSAGE HUB" ),
+				list("code" = "3", "page_name" = "money_manager_main", "name" = "FUND MANAGEMENT - MAIN" ),
+				list("code" = "4", "page_name" = "money_manager_captain_login", "name" = "FUND MANAGEMENT - PRIVATE" )
+				),
+			"PAGE 2"
+		),
+		list(
+			/datum/terminal_page/message_staff,
+			null,
+			null
+		),
+		list(
+			/datum/terminal_page/login,
+			list("%CARGO", "msg_staff_login", "message_staff"), // list("password", "name", "redirect_to")
+			null
+		),
+		list(
+			/datum/terminal_page/my_messages,
+			"redcaptain",
+			null
+		),
+		list(
+			/datum/terminal_page/money_manager,
+			list(RED_TEAM, 500, TRUE, "R.E.D. CATALOGUE", "money_manager_main", RED_TEAM, list(/datum/snowflake_supply/shotgun_ammo_pack,/datum/snowflake_supply/rifle_ammo_pack,/datum/snowflake_supply/pistol_ammo_pack,/datum/snowflake_supply/revolver_ammo_pack,/datum/snowflake_supply/soulburn_ammo_pack,/datum/snowflake_supply/hmg_ammo_pack,/datum/snowflake_supply/warmonger_ammo,/datum/snowflake_supply/flamethrower_ammo_pack,/datum/snowflake_supply/ptsd_ammo_pack,/datum/snowflake_supply/mortar_ammo,/datum/snowflake_supply/illumination_mortar_red,/datum/snowflake_supply/shotgun_pack,/datum/snowflake_supply/pistol_pack,/datum/snowflake_supply/harbinger_pack,/datum/snowflake_supply/warmonger_pack,/datum/snowflake_supply/shovel_pack,/datum/snowflake_supply/doublebarrel_shotgun_pack,/datum/snowflake_supply/bolt_action_rifle_pack,/datum/snowflake_supply/soulburn_pack,/datum/snowflake_supply/flamethrower_pack,/datum/snowflake_supply/frag_grenade_pack,/datum/snowflake_supply/trench_club_pack,/datum/snowflake_supply/mortar_pack,/datum/snowflake_supply/gas_mask_pack,/datum/snowflake_supply/barbwire_pack,/datum/snowflake_supply/canned_food_pack,/datum/snowflake_supply/bodybag_pack,/datum/snowflake_supply/cigarette_pack,/datum/snowflake_supply/first_aid_pack,/datum/snowflake_supply/advanced_first_aid_pack,/datum/snowflake_supply/medical_belt_pack,/datum/snowflake_supply/booze_pack,/datum/snowflake_supply/atepoine_pack,/datum/snowflake_supply/blood_injector_pack,/datum/snowflake_supply/smoke_grenade_pack,/datum/snowflake_supply/job/unit_red_sniper,/datum/snowflake_supply/job/unit_red_flametrooper,/datum/snowflake_supply/job/unit_red_sentry,/datum/snowflake_supply/reinforcements/red)
+), // list(Money ID in accordnace with the global list of dosh, Whether it has cargo, page name, Cargo name, cargo pad override, list of cargo shit)
+			null																												// List of cargo is just datum snowflake types
+		),
+		list(
+			/datum/terminal_page/money_manager,
+			list(RED_TEAM, 500, TRUE, "EXCLUSIVE CATALOGUE", "money_manager_captain", "Redcoats_C", list(/datum/snowflake_supply/booze_pack, /datum/snowflake_supply/cigarette_pack, /datum/snowflake_supply/artillery)), // list(Money ID in accordnace with the global list of dosh, Whether it has cargo, page name, Cargo name, cargo pad override, list of cargo shit)
+			null																												// List of cargo is just datum snowflake types
+		),
+		list(
+			/datum/terminal_page/login,
+			list("%CARGO", "money_manager_captain_login", "money_manager_captain"), // list("password", "name", "redirect_to")
+			null
+		)
+		)
+
+
+/obj/machinery/kaos/redcargo
+	pages = list(
+			list(
+			/datum/terminal_page/money_manager,
+			list(RED_TEAM, 500, TRUE, "B.L.U.E. CATALOGUE", "money_manager_main", RED_TEAM, list(/datum/snowflake_supply/shotgun_ammo_pack,/datum/snowflake_supply/rifle_ammo_pack,/datum/snowflake_supply/pistol_ammo_pack,/datum/snowflake_supply/revolver_ammo_pack,/datum/snowflake_supply/soulburn_ammo_pack,/datum/snowflake_supply/hmg_ammo_pack,/datum/snowflake_supply/warmonger_ammo,/datum/snowflake_supply/flamethrower_ammo_pack,/datum/snowflake_supply/ptsd_ammo_pack,/datum/snowflake_supply/mortar_ammo,/datum/snowflake_supply/illumination_mortar_red,/datum/snowflake_supply/shotgun_pack,/datum/snowflake_supply/pistol_pack,/datum/snowflake_supply/harbinger_pack,/datum/snowflake_supply/warmonger_pack,/datum/snowflake_supply/shovel_pack,/datum/snowflake_supply/doublebarrel_shotgun_pack,/datum/snowflake_supply/bolt_action_rifle_pack,/datum/snowflake_supply/soulburn_pack,/datum/snowflake_supply/flamethrower_pack,/datum/snowflake_supply/frag_grenade_pack,/datum/snowflake_supply/trench_club_pack,/datum/snowflake_supply/mortar_pack,/datum/snowflake_supply/gas_mask_pack,/datum/snowflake_supply/barbwire_pack,/datum/snowflake_supply/canned_food_pack,/datum/snowflake_supply/bodybag_pack,/datum/snowflake_supply/cigarette_pack,/datum/snowflake_supply/first_aid_pack,/datum/snowflake_supply/advanced_first_aid_pack,/datum/snowflake_supply/medical_belt_pack,/datum/snowflake_supply/booze_pack,/datum/snowflake_supply/atepoine_pack,/datum/snowflake_supply/blood_injector_pack,/datum/snowflake_supply/smoke_grenade_pack,/datum/snowflake_supply/job/unit_red_sniper,/datum/snowflake_supply/job/unit_red_flametrooper,/datum/snowflake_supply/job/unit_red_sentry,/datum/snowflake_supply/reinforcements/red)), // list(Money ID in accordnace with the global list of dosh, Whether it has cargo, page name, Cargo name, cargo pad override, list of cargo shit)
+			null)
+			)
+/obj/machinery/kaos/bluecargo
+	Textcolor = "cyan"
+	pages = list(
+			list(
+			/datum/terminal_page/money_manager,
+			list(BLUE_TEAM, 500, TRUE, "B.L.U.E. CATALOGUE", "money_manager_main", BLUE_TEAM, list(/datum/snowflake_supply/shotgun_ammo_pack,/datum/snowflake_supply/rifle_ammo_pack,/datum/snowflake_supply/pistol_ammo_pack,/datum/snowflake_supply/revolver_ammo_pack,/datum/snowflake_supply/soulburn_ammo_pack,/datum/snowflake_supply/hmg_ammo_pack,/datum/snowflake_supply/warmonger_ammo,/datum/snowflake_supply/flamethrower_ammo_pack,/datum/snowflake_supply/ptsd_ammo_pack,/datum/snowflake_supply/mortar_ammo,/datum/snowflake_supply/illumination_mortar_blue,/datum/snowflake_supply/shotgun_pack,/datum/snowflake_supply/pistol_pack,/datum/snowflake_supply/harbinger_pack,/datum/snowflake_supply/warmonger_pack,/datum/snowflake_supply/shovel_pack,/datum/snowflake_supply/doublebarrel_shotgun_pack,/datum/snowflake_supply/bolt_action_rifle_pack,/datum/snowflake_supply/soulburn_pack,/datum/snowflake_supply/flamethrower_pack,/datum/snowflake_supply/frag_grenade_pack,/datum/snowflake_supply/trench_club_pack,/datum/snowflake_supply/mortar_pack,/datum/snowflake_supply/gas_mask_pack,/datum/snowflake_supply/barbwire_pack,/datum/snowflake_supply/canned_food_pack,/datum/snowflake_supply/bodybag_pack,/datum/snowflake_supply/cigarette_pack,/datum/snowflake_supply/first_aid_pack,/datum/snowflake_supply/advanced_first_aid_pack,/datum/snowflake_supply/medical_belt_pack,/datum/snowflake_supply/booze_pack,/datum/snowflake_supply/atepoine_pack,/datum/snowflake_supply/blood_injector_pack,/datum/snowflake_supply/smoke_grenade_pack,/datum/snowflake_supply/job/unit_blue_sniper,/datum/snowflake_supply/job/unit_blue_flametrooper,/datum/snowflake_supply/job/unit_blue_sentry,/datum/snowflake_supply/reinforcements/blue)), // list(Money ID in accordnace with the global list of dosh, Whether it has cargo, page name, Cargo name, cargo pad override, list of cargo shit)
+			null)
+			)
+
 GLOBAL_LIST_EMPTY(terminals)
 // THIS CODE IS FUCKING INSANE Oh MY GOd
 /obj/machinery/kaos/New()
@@ -1077,6 +1210,10 @@ GLOBAL_LIST_EMPTY(terminals)
 /obj/machinery/kaos/attack_hand(mob/user)
 	if (is_powered_on)
 		show_page(user)
+		return
+	else
+		is_powered_on = !is_powered_on
+		power_on(user)
 
 /obj/machinery/kaos/proc/show_page(mob/user)
 	user << browse({"
@@ -1223,10 +1360,10 @@ GLOBAL_LIST_EMPTY(terminals)
 			var/sfx = pick(clear_sfx - last_clear)
 			last_clear = sfx
 			playsound(src.loc, sfx, 100, 0)
-			sleep(delay)
+			sleep(delay * 0.5)  // shitty hacky change before i rewrite it all, I want it to be faster..
 			return
 		playsound(src.loc, sound, 100, 1)
-	sleep(delay)
+	sleep(delay * 0.5)
 
 /obj/machinery/kaos/proc/clear_screen(delay=0, sound)
 	t = ""
@@ -1276,7 +1413,7 @@ GLOBAL_LIST_EMPTY(terminals)
 	show_page(user)
 	clear_screen(3, TRUE)
 	add_line("<font size=5>", 5, TRUE)
-	add_line("CARMINE OS-", 10, TRUE)
+	add_line("-GENERIC OS NAME INDUSTRIES / OS-", 10, TRUE)
 
 /obj/machinery/kaos/proc/power_off(mob/user)
 	if(sound_token)
@@ -1324,12 +1461,12 @@ GLOBAL_LIST_EMPTY(terminals)
 		if(!term.get_page("my_messages")) continue
 		var/datum/terminal_page/my_messages/msgs = term.get_page("my_messages")
 		display[msgs.account_name] = term
-		to_world("Term: [term], Key:[term]")
+
 
 
 	terminal = input(usr, "Which terminal?", "By username, of course.") as anything in display
 	terminal = display[terminal]
-	to_world("Terminal: [terminal]")
+
 	if(!istype(terminal))
 		alert("Nope. Can't do it.")
 		return

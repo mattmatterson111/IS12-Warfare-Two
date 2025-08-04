@@ -26,8 +26,6 @@
 		H.fully_replace_character_name("Pvt. [H.real_name]")
 		H.warfare_language_shit(LANGUAGE_RED)
 		H.assign_random_quirk()
-		var/hex = "[num2hex(rand(150,255))][num2hex(rand(50,200))][num2hex(rand(5,75))]"
-		floating_chat_colors[H.name] = "#[hex]"
 		if(announced)
 			H.say(";Soldier reporting for duty!")
 		H.set_hud_stats()
@@ -486,6 +484,7 @@
 	gloves = null
 	r_pocket = /obj/item/device/binoculars
 	backpack_contents = list(/obj/item/grenade/smokebomb = 1)
+	r_hand = /obj/item/tagnabber
 
 /decl/hierarchy/outfit/job/redsoldier/scout/equip()
 	if(aspect_chosen(/datum/aspect/nightfare))

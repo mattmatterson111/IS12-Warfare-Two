@@ -10,8 +10,6 @@
 		SSwarfare.red.team += H
 		H.warfare_language_shit(LANGUAGE_RED)
 		H.assign_random_quirk()
-		var/hex = "[num2hex(rand(150,255))][num2hex(rand(50,200))][num2hex(rand(5,75))]"
-		floating_chat_colors[H.name] = "#[hex]"
 
 /datum/job/fortress/red/chef
 	title = "Red Chef"

@@ -44,7 +44,7 @@
 		static_pixel_x = -static_pixel_x
 	icon_state = ""
 
-	to_world("carriage amount: [carriage_amount] with filler states: [filler_states], ending states: [ending_states], and special carriage: [special_carriage]")
+
 
 	if(!carriage_amount)
 		carriage_amount = 1
@@ -67,7 +67,7 @@
 		else
 			state = get_or_cache_filler_state(i)
 
-		to_world("Carriage: [i] with state: [state]")
+
 
 		I = image(icon, src, state)
 		I.pixel_x = pixel_offset_x + static_pixel_x
@@ -106,9 +106,9 @@
 		dir = NORTH
 	generate_carriages()
 	for(var/obj/effect/landmark/train_marker/landmark in landmarks_list)
-		to_world("Got landmark")
+
 		if(landmark.id == id)
-			to_world("ID matches")
+
 			if(istype(landmark, /obj/effect/landmark/train_marker/entry) && !landmarks["entry"])
 				landmarks["entry"] = landmark
 				continue
@@ -120,7 +120,7 @@
 				continue
 		if(!length(landmarks_list) == 3)
 			message_admins("Train [id] has not enough landmarks, expected 3, got [length(landmarks)]")
-	to_world("Train [id] has landmarks: [length(landmarks)]")
+
 
 /obj/structure/vehicle/train/long_passenger
 	carriage_amount = 4
@@ -191,7 +191,7 @@
 	var/gettoy = static_pixel_y
 	var/getfromx = getpixel_x(landmarks["entry"]) + extra_distance
 	var/getfromy = getpixel_y(landmarks["entry"]) + static_pixel_y
-	to_world("Arriving at [anchor] with from: [getfromx], [getfromy] and to: [gettox], [gettoy]")
+
 	pixel_x = getfromx
 	pixel_y = getfromy
 	animate(src, pixel_x = gettox, pixel_y = gettoy, time = 8 SECONDS, easing = SINE_EASING)
@@ -206,7 +206,7 @@
 	var/getfromy = getpixel_y(landmarks["entry"]) + static_pixel_y
 	var/gettox = getpixel_x(landmarks["exit"]) + extra_distance
 	var/gettoy = getpixel_y(landmarks["exit"]) + static_pixel_y
-	to_world("Arriving at [anchor] with from: [getfromx], [getfromy] and to: [gettox], [gettoy]")
+
 	pixel_x = getfromx
 	pixel_y = getfromy
 	animate(src, pixel_x = gettox, pixel_y = gettoy, time = timetopass, easing = SINE_EASING)
@@ -240,7 +240,7 @@ SUBSYSTEM_DEF(respawn)
 	var/respawn_cycle = 0
 	var/next_respawn
 	var/last_respawn = 0
-	var/time_between_respawns = 60 SECONDS // in seconds
+	var/time_between_respawns = 90 SECONDS // in seconds
 
 	var/area/red_train
 	var/area/blue_train
@@ -294,7 +294,7 @@ SUBSYSTEM_DEF(respawn)
 		return
 
 	// Rarely try to spawn a passing train mid-cycle
-	if (respawning)
+	if (round_duration_in_ticks <= next_respawn && !respawning)
 		if (!prob(5)) return
 
 		var/obj/structure/vehicle/train/T = pick(trains)
@@ -304,7 +304,7 @@ SUBSYSTEM_DEF(respawn)
 		return
 	/*
 	if (!respawning && world.time - last_cargo_time >= time_between_cargo)
-		to_world("Attempting to send cargo train...")
+
 		send_cargo_train()
 		return
 	*/
@@ -314,7 +314,7 @@ SUBSYSTEM_DEF(respawn)
 			message_admins("Respawn cycle system is now online.")
 
 		respawning = TRUE
-		to_world("Respawn cycle #[respawn_cycle ? respawn_cycle : 0] started, next: [next_respawn ? next_respawn : "To be determined"], last: [last_respawn ? last_respawn : "Just now"]")
+
 		var/obj/structure/vehicle/train/long_passenger/TR = trains[RED_TEAM]
 		var/obj/structure/vehicle/train/long_passenger/TB = trains[BLUE_TEAM]
 
@@ -369,7 +369,7 @@ SUBSYSTEM_DEF(respawn)
 	if (!cargo_train) return
 	if (world.time - last_cargo_time < time_between_cargo) return
 
-	to_world("Cargo train arriving...")
+
 
 	cargo_train.generate_carriages()
 	cargo_train.arrive(-1000)

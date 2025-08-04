@@ -622,7 +622,7 @@ var/global/datum/controller/occupations/SSjobs
 	var/list/loc_list = list()
 	for(var/obj/effect/landmark/start/sloc in landmarks_list)
 		if(iswarfare() && SSwarfare.battle_time && faction)
-			to_world("Is battle time, sloc [sloc.name]")
+
 			if(!sloc.name == faction) continue
 			loc_list += sloc
 			continue

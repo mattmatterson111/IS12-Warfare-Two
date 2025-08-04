@@ -1106,7 +1106,6 @@ window "outputwindow"
 		size = 649x921
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		saved-params = "pos;size;is-minimized;is-maximized"
 		titlebar = false
 		statusbar = false

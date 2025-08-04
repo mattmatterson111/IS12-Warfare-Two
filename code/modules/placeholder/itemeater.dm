@@ -39,18 +39,13 @@
 			qdel(toof) // no you dont get to insert 0 teeth for cash.
 			flick("[initial(icon_state)]_o", src)
 			return
-		else if(toof.amount >= 1)
-			toof.amount--
-			GLOB.faction_dosh[id] += 5 // Nerfed, see thehatch structure to know why.
-			toof.update_icon()
-			playsound(src, 'sound/effects/thehatchin.ogg', 75, 0.25)
-			flick("[initial(icon_state)]_o", src)
-			if(toof.amount == 1)
-				qdel(toof)
-				return
-			return
-		else // huh?
-			return
+		var/to_grant = 0
+		for(var/I in toof.amount)
+			to_grant += 5
+		qdel(toof)
+		GLOB.faction_dosh[id] += to_grant
+		playsound(src, 'sound/effects/thehatchin.ogg', 75, 0.25)
+		flick("[initial(icon_state)]_o", src)
 	else if(istype(O, /obj/item/clothing/head/helmet/redhelmet) && id == BLUE_TEAM || istype(O, /obj/item/clothing/head/helmet/bluehelmet) && id == RED_TEAM ) // meh
 		GLOB.faction_dosh[id] += 12
 		qdel(O)
