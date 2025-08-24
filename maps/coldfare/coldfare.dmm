@@ -4214,6 +4214,12 @@
 	},
 /turf/simulated/floor/concrete/random,
 /area/warfare/battlefield/capture_point/red/one)
+"rq" = (
+/obj/structure/warfare_itemeater/blue{
+	pixel_y = 32
+	},
+/turf/simulated/floor/dirty/indestructable,
+/area/warfare/homebase/blue)
 "rs" = (
 /obj/structure/announcementspeaker/red{
 	pixel_x = 0;
@@ -4445,6 +4451,15 @@
 	},
 /turf/simulated/floor/concrete/random,
 /area/warfare/battlefield/capture_point/blue/one)
+"sN" = (
+/obj/structure/warfare_itemeater/blue{
+	pixel_y = 32
+	},
+/turf/simulated/floor/trenches/underground{
+	icon_state = "trench";
+	color = "#ffffff"
+	},
+/area/warfare/battlefield/trench_section/underground)
 "sU" = (
 /obj/item/paper/crumpled,
 /turf/simulated/floor/concrete/random,
@@ -9155,10 +9170,10 @@
 	},
 /area/warfare/battlefield/capture_point/red/one)
 "Yt" = (
-/obj/structure/poster/blue{
+/obj/structure/cargo_pad/bue/captain,
+/obj/structure/warfare_itemeater/blue{
 	pixel_y = 32
 	},
-/obj/structure/cargo_pad/bue/captain,
 /turf/simulated/floor/wood,
 /area/warfare/homebase/blue/div)
 "Yu" = (
@@ -17013,7 +17028,7 @@ oB
 DB
 TE
 Ln
-MM
+sN
 QS
 DK
 uW
@@ -30793,7 +30808,7 @@ av
 av
 av
 ag
-fR
+rq
 fR
 fW
 fX
