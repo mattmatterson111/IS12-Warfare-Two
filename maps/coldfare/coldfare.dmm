@@ -416,10 +416,10 @@
 /turf/simulated/floor/stones,
 /area/warfare/homebase/blue)
 "aZ" = (
-/obj/effect/landmark/train_marker/entry/red,
-/obj/structure/train_deco/tracks01,
-/obj/effect/lighting_dummy/daylight,
-/turf/simulated/floor/stones,
+/obj/structure/warfare_itemeater/blue{
+	pixel_y = 32
+	},
+/turf/simulated/floor/dirty/indestructable,
 /area/warfare/homebase/blue)
 "bb" = (
 /turf/simulated/wall/perspecticrete,
@@ -786,11 +786,6 @@
 	},
 /turf/simulated/floor/concrete/random,
 /area/warfare/battlefield/capture_point/blue/two)
-"cf" = (
-/obj/effect/lighting_dummy/daylight,
-/obj/effect/landmark/train_marker/idle/red,
-/turf/simulated/floor/stones,
-/area/warfare/homebase/blue)
 "cg" = (
 /obj/structure/stairs/trenchstairs,
 /turf/simulated/floor/trenches/underground{
@@ -4214,12 +4209,6 @@
 	},
 /turf/simulated/floor/concrete/random,
 /area/warfare/battlefield/capture_point/red/one)
-"rq" = (
-/obj/structure/warfare_itemeater/blue{
-	pixel_y = 32
-	},
-/turf/simulated/floor/dirty/indestructable,
-/area/warfare/homebase/blue)
 "rs" = (
 /obj/structure/announcementspeaker/red{
 	pixel_x = 0;
@@ -6607,12 +6596,6 @@
 /obj/structure/table/rack/nosmooth/metal,
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/blue/div)
-"Gh" = (
-/obj/effect/landmark/train_marker/teleport/red,
-/obj/effect/lighting_dummy/daylight,
-/obj/structure/train_deco/tracks01,
-/turf/simulated/floor/stones,
-/area/warfare/homebase/blue)
 "Gn" = (
 /obj/structure/bed/roller,
 /obj/machinery/light{
@@ -7712,11 +7695,6 @@
 /obj/structure/table/rack/nosmooth/wood,
 /turf/simulated/floor/stones,
 /area/warfare/homebase/red)
-"OK" = (
-/obj/effect/landmark/train_marker/exit/red,
-/obj/structure/train_deco/tracks01,
-/turf/space,
-/area/warfare/homebase/blue)
 "OQ" = (
 /obj/structure/closet/crate{
 	pixel_x = 0;
@@ -25372,7 +25350,7 @@ km
 Ti
 Ti
 Ti
-aZ
+km
 Ti
 Ti
 Ti
@@ -30808,7 +30786,7 @@ av
 av
 av
 ag
-rq
+aZ
 fR
 fW
 fX
@@ -31068,7 +31046,7 @@ Vd
 Ti
 Ti
 Ti
-Gh
+OC
 Ti
 Ti
 Ti
@@ -31368,7 +31346,7 @@ Vd
 Ti
 Ti
 Ti
-Gh
+OC
 Ti
 Ti
 Ti
@@ -31668,7 +31646,7 @@ Vd
 Ti
 Ti
 Ti
-Gh
+OC
 Ti
 Ti
 Ti
@@ -31967,8 +31945,8 @@ xm
 Vd
 Ti
 Ti
-cf
-Gh
+Ti
+OC
 Ti
 Ti
 Ti
@@ -38272,7 +38250,7 @@ Gv
 sJ
 sJ
 sJ
-OK
+Gv
 sJ
 sJ
 wC
