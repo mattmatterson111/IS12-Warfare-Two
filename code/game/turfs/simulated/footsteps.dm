@@ -310,8 +310,8 @@
 				playsound(T, safepick(footstepsounds_temp), volume, 1, range)
 		else
 			if(iswater(get_turf(src)) && wearingarmor) // this just makes it sound cooler..
-				playsound(T, safepick(T.footstep_sounds[FOOTSTEP_WATER]), volume, 1, range)
-			playsound(T, S, volume, 1, range)
+				playsound(src, safepick(T.footstep_sounds[FOOTSTEP_WATER]), volume, 1, range)
+			playsound(src, S, volume, 1, range)
 		var/list/clients_to_show = list()
 
 		for(var/mob/living/carbon/human/H in view())
