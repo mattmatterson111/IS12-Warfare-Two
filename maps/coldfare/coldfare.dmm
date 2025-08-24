@@ -415,6 +415,14 @@
 	},
 /turf/simulated/floor/stones,
 /area/warfare/homebase/blue)
+"aZ" = (
+/obj/hammereditor/nodraw/deco/shadowpaint,
+/obj/hammereditor/nodraw/deco/shadowpaint{
+	opacity = 1;
+	dir = 8
+	},
+/turf/simulated/floor/stones,
+/area/warfare/homebase/red)
 "bb" = (
 /turf/simulated/wall/perspecticrete,
 /area/warfare/homebase/blue/div)
@@ -781,11 +789,10 @@
 /turf/simulated/floor/concrete/random,
 /area/warfare/battlefield/capture_point/blue/two)
 "cf" = (
-/obj/structure/warfare_itemeater/blue{
-	pixel_y = 32
-	},
-/turf/simulated/floor/dirty/indestructable,
-/area/warfare/homebase/blue)
+/obj/effect/lighting_dummy/daylight,
+/obj/effect/landmark/train_marker/teleport/red,
+/turf/simulated/floor/urban/concrete,
+/area/warfare/homebase/red)
 "cg" = (
 /obj/structure/stairs/trenchstairs,
 /turf/simulated/floor/trenches/underground{
@@ -1481,6 +1488,7 @@
 /obj/effect/darkout_teleporter/bluecoats,
 /obj/effect/floor_decal/train_deco/stripes,
 /obj/effect/lighting_dummy/daylight,
+/obj/effect/landmark/train_marker/teleport/blue,
 /turf/simulated/floor/urban/concrete,
 /area/warfare/homebase/blue)
 "dO" = (
@@ -2365,6 +2373,7 @@
 	},
 /obj/effect/floor_decal/industrial/warning/dust,
 /obj/effect/lighting_dummy/daylight,
+/obj/effect/landmark/train_marker/teleport/red,
 /turf/simulated/floor/urban/concrete,
 /area/warfare/homebase/red)
 "he" = (
@@ -4210,13 +4219,14 @@
 /turf/simulated/floor/concrete/random,
 /area/warfare/battlefield/capture_point/red/one)
 "rq" = (
-/obj/hammereditor/nodraw/deco/shadowpaint,
-/obj/hammereditor/nodraw/deco/shadowpaint{
-	opacity = 1;
-	dir = 4
+/obj/structure/warfare_itemeater/blue{
+	pixel_y = 32
 	},
-/turf/simulated/floor/stones,
-/area/warfare/homebase/red)
+/turf/simulated/floor/trenches/underground{
+	icon_state = "trench";
+	color = "#ffffff"
+	},
+/area/warfare/battlefield/trench_section/underground)
 "rs" = (
 /obj/structure/announcementspeaker/red{
 	pixel_x = 0;
@@ -4234,6 +4244,7 @@
 	},
 /obj/effect/floor_decal/industrial/warning/dust,
 /obj/effect/lighting_dummy/daylight,
+/obj/effect/landmark/train_marker/teleport/red,
 /turf/simulated/floor/urban/concrete,
 /area/warfare/homebase/red)
 "rz" = (
@@ -4450,10 +4461,6 @@
 /area/warfare/battlefield/capture_point/blue/one)
 "sN" = (
 /obj/hammereditor/nodraw/deco/shadowpaint,
-/obj/hammereditor/nodraw/deco/shadowpaint{
-	opacity = 1;
-	dir = 8
-	},
 /turf/simulated/floor/stones,
 /area/warfare/homebase/red)
 "sU" = (
@@ -5620,6 +5627,7 @@
 	},
 /obj/effect/lighting_dummy/daylight,
 /obj/effect/darkout_teleporter/bluecoats,
+/obj/effect/landmark/train_marker/teleport/blue,
 /turf/simulated/floor/urban/concrete,
 /area/warfare/homebase/blue)
 "Ak" = (
@@ -5910,6 +5918,7 @@
 	dir = 1
 	},
 /obj/effect/lighting_dummy/daylight,
+/obj/effect/landmark/train_marker/teleport/blue,
 /turf/simulated/floor/urban/concrete,
 /area/warfare/homebase/blue)
 "BM" = (
@@ -6285,6 +6294,7 @@
 	dir = 4
 	},
 /obj/effect/lighting_dummy/daylight,
+/obj/effect/landmark/train_marker/teleport/blue,
 /turf/simulated/floor/urban/concrete,
 /area/warfare/homebase/blue)
 "DW" = (
@@ -6604,9 +6614,11 @@
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/blue/div)
 "Gh" = (
-/obj/hammereditor/nodraw/deco/shadowpaint,
-/turf/simulated/floor/stones,
-/area/warfare/homebase/red)
+/obj/structure/warfare_itemeater/blue{
+	pixel_y = 32
+	},
+/turf/simulated/floor/dirty/indestructable,
+/area/warfare/homebase/blue)
 "Gn" = (
 /obj/structure/bed/roller,
 /obj/machinery/light{
@@ -7333,6 +7345,7 @@
 	pixel_y = 16
 	},
 /obj/effect/lighting_dummy/daylight,
+/obj/effect/landmark/train_marker/teleport/blue,
 /turf/simulated/floor/urban/concrete,
 /area/warfare/homebase/blue)
 "Ml" = (
@@ -7707,14 +7720,13 @@
 /turf/simulated/floor/stones,
 /area/warfare/homebase/red)
 "OK" = (
-/obj/structure/warfare_itemeater/blue{
-	pixel_y = 32
+/obj/hammereditor/nodraw/deco/shadowpaint,
+/obj/hammereditor/nodraw/deco/shadowpaint{
+	opacity = 1;
+	dir = 4
 	},
-/turf/simulated/floor/trenches/underground{
-	icon_state = "trench";
-	color = "#ffffff"
-	},
-/area/warfare/battlefield/trench_section/underground)
+/turf/simulated/floor/stones,
+/area/warfare/homebase/red)
 "OQ" = (
 /obj/structure/closet/crate{
 	pixel_x = 0;
@@ -8028,6 +8040,7 @@
 	dir = 4
 	},
 /obj/effect/lighting_dummy/daylight,
+/obj/effect/landmark/train_marker/teleport/red,
 /turf/simulated/floor/urban/concrete,
 /area/warfare/homebase/red)
 "QW" = (
@@ -8159,6 +8172,7 @@
 	dir = 4
 	},
 /obj/effect/lighting_dummy/daylight,
+/obj/effect/landmark/train_marker/teleport/blue,
 /turf/simulated/floor/urban/concrete,
 /area/warfare/homebase/blue)
 "RK" = (
@@ -9017,6 +9031,7 @@
 	dir = 8
 	},
 /obj/effect/lighting_dummy/daylight,
+/obj/effect/landmark/train_marker/teleport/red,
 /turf/simulated/floor/urban/concrete,
 /area/warfare/homebase/red)
 "Xn" = (
@@ -17026,7 +17041,7 @@ oB
 DB
 TE
 Ln
-OK
+rq
 QS
 DK
 uW
@@ -25342,7 +25357,7 @@ ix
 ix
 ix
 Jb
-sN
+aZ
 "}
 (4,1,2) = {"
 Jj
@@ -25642,7 +25657,7 @@ ia
 ia
 ia
 ir
-Gh
+sN
 "}
 (5,1,2) = {"
 Jj
@@ -25942,7 +25957,7 @@ ia
 ia
 ia
 ir
-Gh
+sN
 "}
 (6,1,2) = {"
 Jj
@@ -26242,7 +26257,7 @@ ia
 ia
 ia
 ir
-Gh
+sN
 "}
 (7,1,2) = {"
 Jj
@@ -26542,7 +26557,7 @@ ia
 ia
 ia
 ir
-Gh
+sN
 "}
 (8,1,2) = {"
 Jj
@@ -26842,7 +26857,7 @@ ia
 ia
 ia
 ir
-Gh
+sN
 "}
 (9,1,2) = {"
 Jj
@@ -27142,7 +27157,7 @@ ia
 ia
 ia
 ir
-Gh
+sN
 "}
 (10,1,2) = {"
 Jj
@@ -27442,7 +27457,7 @@ ia
 ia
 ia
 ir
-Gh
+sN
 "}
 (11,1,2) = {"
 Jj
@@ -27742,7 +27757,7 @@ ia
 ia
 ia
 ir
-Gh
+sN
 "}
 (12,1,2) = {"
 Jj
@@ -28042,7 +28057,7 @@ ia
 ia
 ia
 ir
-Gh
+sN
 "}
 (13,1,2) = {"
 Jj
@@ -28342,7 +28357,7 @@ ia
 ia
 ia
 ir
-Gh
+sN
 "}
 (14,1,2) = {"
 Jj
@@ -28642,7 +28657,7 @@ ia
 ia
 ia
 ir
-Gh
+sN
 "}
 (15,1,2) = {"
 Jj
@@ -28942,7 +28957,7 @@ ia
 ia
 ia
 ir
-Gh
+sN
 "}
 (16,1,2) = {"
 Jj
@@ -29242,7 +29257,7 @@ ia
 ia
 ia
 ir
-Gh
+sN
 "}
 (17,1,2) = {"
 Jj
@@ -29542,7 +29557,7 @@ ia
 ia
 ia
 ir
-Gh
+sN
 "}
 (18,1,2) = {"
 Jj
@@ -29842,7 +29857,7 @@ ia
 ia
 ia
 ir
-Gh
+sN
 "}
 (19,1,2) = {"
 Jj
@@ -30142,7 +30157,7 @@ ia
 ia
 ia
 ir
-Gh
+sN
 "}
 (20,1,2) = {"
 Jj
@@ -30442,7 +30457,7 @@ ia
 ia
 ia
 ir
-Gh
+sN
 "}
 (21,1,2) = {"
 Jj
@@ -30742,7 +30757,7 @@ ia
 ia
 ia
 ir
-Gh
+sN
 "}
 (22,1,2) = {"
 Jj
@@ -30806,7 +30821,7 @@ av
 av
 av
 ag
-cf
+Gh
 fR
 fW
 fX
@@ -31042,7 +31057,7 @@ ia
 ia
 ia
 ir
-Gh
+sN
 "}
 (23,1,2) = {"
 Jj
@@ -31074,7 +31089,7 @@ km
 Ti
 Ti
 SZ
-OC
+ys
 Mg
 Xk
 ui
@@ -31342,7 +31357,7 @@ ia
 ia
 ia
 ir
-Gh
+sN
 "}
 (24,1,2) = {"
 Jj
@@ -31629,7 +31644,7 @@ in
 in
 ec
 in
-in
+cf
 ib
 Qx
 ia
@@ -31642,7 +31657,7 @@ ia
 ia
 ia
 ir
-Gh
+sN
 "}
 (25,1,2) = {"
 Jj
@@ -31929,7 +31944,7 @@ in
 in
 rx
 in
-in
+cf
 eB
 OH
 ia
@@ -31942,7 +31957,7 @@ ia
 ia
 ia
 ir
-Gh
+sN
 "}
 (26,1,2) = {"
 Jj
@@ -32229,7 +32244,7 @@ in
 in
 rx
 in
-in
+cf
 yq
 Qx
 ia
@@ -32242,7 +32257,7 @@ ia
 ia
 ia
 ir
-Gh
+sN
 "}
 (27,1,2) = {"
 Jj
@@ -32529,7 +32544,7 @@ in
 in
 Td
 in
-in
+cf
 IP
 Em
 ia
@@ -32542,7 +32557,7 @@ ia
 ia
 ia
 ir
-Gh
+sN
 "}
 (28,1,2) = {"
 Jj
@@ -32574,7 +32589,7 @@ km
 Ti
 Ti
 SZ
-OC
+ys
 DT
 jq
 uO
@@ -32842,7 +32857,7 @@ ia
 ia
 ia
 ir
-Gh
+sN
 "}
 (29,1,2) = {"
 Jj
@@ -33142,7 +33157,7 @@ ia
 ia
 ia
 ir
-Gh
+sN
 "}
 (30,1,2) = {"
 Jj
@@ -33442,7 +33457,7 @@ ia
 ia
 ia
 ir
-Gh
+sN
 "}
 (31,1,2) = {"
 Jj
@@ -33742,7 +33757,7 @@ ia
 ia
 ia
 ir
-Gh
+sN
 "}
 (32,1,2) = {"
 Jj
@@ -34042,7 +34057,7 @@ ia
 ia
 ia
 ir
-Gh
+sN
 "}
 (33,1,2) = {"
 Jj
@@ -34342,7 +34357,7 @@ ia
 ia
 ia
 ir
-Gh
+sN
 "}
 (34,1,2) = {"
 Jj
@@ -34642,7 +34657,7 @@ ia
 ia
 ia
 ir
-Gh
+sN
 "}
 (35,1,2) = {"
 Jj
@@ -34942,7 +34957,7 @@ ia
 ia
 ia
 ir
-Gh
+sN
 "}
 (36,1,2) = {"
 Jj
@@ -35242,7 +35257,7 @@ ia
 ia
 ia
 ir
-Gh
+sN
 "}
 (37,1,2) = {"
 Jj
@@ -35542,7 +35557,7 @@ ia
 ia
 ia
 ir
-Gh
+sN
 "}
 (38,1,2) = {"
 Jj
@@ -35842,7 +35857,7 @@ ia
 ia
 ia
 ir
-Gh
+sN
 "}
 (39,1,2) = {"
 Jj
@@ -36142,7 +36157,7 @@ ia
 ia
 ia
 ir
-Gh
+sN
 "}
 (40,1,2) = {"
 Jj
@@ -36442,7 +36457,7 @@ ia
 ia
 ia
 ir
-Gh
+sN
 "}
 (41,1,2) = {"
 Jj
@@ -36742,7 +36757,7 @@ ia
 ia
 ia
 ir
-Gh
+sN
 "}
 (42,1,2) = {"
 Jj
@@ -37042,7 +37057,7 @@ ia
 ia
 ia
 ir
-Gh
+sN
 "}
 (43,1,2) = {"
 Jj
@@ -37342,7 +37357,7 @@ ia
 ia
 ia
 ir
-Gh
+sN
 "}
 (44,1,2) = {"
 Jj
@@ -37642,7 +37657,7 @@ ia
 ia
 ia
 ir
-Gh
+sN
 "}
 (45,1,2) = {"
 Jj
@@ -37942,7 +37957,7 @@ ia
 ia
 ia
 ir
-Gh
+sN
 "}
 (46,1,2) = {"
 Jj
@@ -38242,7 +38257,7 @@ ia
 ia
 ia
 ir
-Gh
+sN
 "}
 (47,1,2) = {"
 Jj
@@ -38542,7 +38557,7 @@ vY
 vY
 vY
 Dw
-rq
+OK
 "}
 (48,1,2) = {"
 Jj
