@@ -274,9 +274,10 @@ SUBSYSTEM_DEF(respawn)
 		message_admins("No valid [team_name] team teleport markers found for respawn, aborting.")
 		return FALSE
 
-	for (var/mob/M in train_area)
+	for (var/mob/living/M in train_area)
 		var/obj/effect/landmark/train_marker/teleport/spot = pick(valid_tp)
 		M.forceMove(spot.loc)
+		M.resist()
 	return TRUE
 
 /datum/controller/subsystem/respawn/proc/open_train(var/obj/structure/vehicle/train/T)
