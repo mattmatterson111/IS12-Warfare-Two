@@ -127,14 +127,7 @@ GLOBAL_LIST_INIT(sentrystep,list('sound/effects/footsteps/armor/sentry/sentry1.o
 GLOBAL_LIST_INIT(pracstep,list('sound/effects/footsteps/prac/prac1.ogg','sound/effects/footsteps/prac/prac2.ogg','sound/effects/footsteps/prac/prac3.ogg'))
 GLOBAL_LIST_INIT(keypad,list('sound/effects/keypad/pad1.ogg','sound/effects/keypad/pad2.ogg'))
 
-/proc/get_topmost_atom(atom/A)
-	if(!A)
-		return null
-	if(isturf(A.loc))
-		return A
-	return get_topmost_atom(A.loc)
-
-/proc/playsound(atom/source, soundin, vol as num, vary, extrarange as num, falloff, is_global, frequency, is_ambiance = 0,  ignore_walls = TRUE, zrange = 2, override_env, envdry, envwet, var/forcerange = 0)
+/proc/playsound(atom/source, soundin, vol as num, vary, extrarange as num, falloff, is_global, frequency, is_ambiance = 0,  ignore_walls = TRUE, zrange = 2, override_env, envdry, envwet)
 	if(isarea(source))
 		error("[source] is an area and is trying to make the sound: [soundin]")
 		return
@@ -144,9 +137,8 @@ GLOBAL_LIST_INIT(keypad,list('sound/effects/keypad/pad1.ogg','sound/effects/keyp
 
 	var/turf/turf_source = get_turf(source)
 	var/maxdistance = (world.view + extrarange) * 2
-	if(forcerange >> 0)
-		maxdistance = forcerange
-	 // Looping through the player list has the added bonus of working for mobs inside containers
+
+ 	// Looping through the player list has the added bonus of working for mobs inside containers
 	var/list/listeners = GLOB.player_list
 	if(!ignore_walls) //these sounds don't carry through walls
 		listeners = listeners & hearers(maxdistance, turf_source)
@@ -160,11 +152,11 @@ GLOBAL_LIST_INIT(keypad,list('sound/effects/keypad/pad1.ogg','sound/effects/keyp
 			var/turf/T = get_turf(M)
 
 			if(T && (T.z == turf_source.z || (zrange && AreConnectedZLevels(T.z, turf_source.z) && abs(T.z - turf_source.z) <= zrange)) && (!is_ambiance || M.get_preference_value(/datum/client_preference/play_ambiance) == GLOB.PREF_YES))
-				M.playsound_local(source, soundin, vol, vary, frequency, falloff, is_global, extrarange, override_env, envdry, envwet)
+				M.playsound_local(turf_source, soundin, vol, vary, frequency, falloff, is_global, extrarange, override_env, envdry, envwet)
 
 var/const/FALLOFF_SOUNDS = 0.5
 
-/mob/proc/playsound_local(var/atom/source, soundin, vol as num, vary, frequency, falloff, is_global, extrarange, override_env, envdry, envwet)
+/mob/proc/playsound_local(var/turf/turf_source, soundin, vol as num, vary, frequency, falloff, is_global, extrarange, override_env, envdry, envwet)
 	if(!src.client || ear_deaf > 0)
 		return
 
@@ -172,53 +164,28 @@ var/const/FALLOFF_SOUNDS = 0.5
 	if(!istype(S))
 		soundin = get_sfx(soundin)
 		S = sound(soundin)
-		S.wait = 0
-		S.channel = 0
+		S.wait = 0 //No queue
+		S.channel = 0 //Any channel
 		S.volume = vol
 		S.environment = -1
 		if(frequency)
 			S.frequency = frequency
 		else if (vary)
 			S.frequency = get_rand_frequency()
-		var/client/C = client
-		var/ex = (C && C.pixel_x) ? (C.pixel_x / world.icon_size) : 0
-		var/ey = (C && C.pixel_y) ? (C.pixel_y / world.icon_size) : 0
-
-		var/xx = 1
-		var/xy = 0
-		var/xz = 0
-		var/yx = 0
-		var/yy = 1
-		var/yz = 0
-
-		// Camera offset compensation (derivation: cx=xx*ex+yx*ey, etc.)
-		var/cx = xx*ex + yx*ey
-		var/cy = xy*ex + yy*ey
-		var/cz = xz*ex + yz*ey
-
-		S.transform = list(xx,xy,xz,  yx,yy,yz,  cx,cy,cz)
 
 	//sound volume falloff with pressure
 	var/pressure_factor = 1.0
 
 	var/turf/T = get_turf(src)
-	var/turf/source_turf = get_turf(source)
-	// 3D sounds, the technology is here! // No, NOW it's here - Plasma
-	if(source)
-		if(!isturf(source) && !isturf(source.loc))
-			source = get_topmost_atom(source)
-
-		if(!source)
-			CRASH("No source for sound in playsound_local called by [src]! Original source was [source], topmost atom was [get_topmost_atom(source)]. Fix this!")
-
-		S.atom = source
-
-		var/distance = get_dist(T, source)
+	// 3D sounds, the technology is here!
+	if(isturf(turf_source))
+		//sound volume falloff with distance
+		var/distance = get_dist(T, turf_source)
 
 		S.volume -= max(distance - (world.view + extrarange), 0) * 2 //multiplicative falloff to add on top of natural audio falloff.
 
 		var/datum/gas_mixture/hearer_env = T.return_air()
-		var/datum/gas_mixture/source_env = source_turf.return_air()
+		var/datum/gas_mixture/source_env = turf_source.return_air()
 
 		if (hearer_env && source_env)
 			var/pressure = min(hearer_env.return_pressure(), source_env.return_pressure())
@@ -227,39 +194,49 @@ var/const/FALLOFF_SOUNDS = 0.5
 				pressure_factor = max((pressure - SOUND_MINIMUM_PRESSURE)/(ONE_ATMOSPHERE - SOUND_MINIMUM_PRESSURE), 0)
 		else //in space
 			pressure_factor = 0
+
 		if (distance <= 1)
-			pressure_factor = max(pressure_factor, 0.15)    //hearing through contact
+			pressure_factor = max(pressure_factor, 0.15)	//hearing through contact
 
 		S.volume *= pressure_factor
 
 		if (S.volume <= 0)
 			return //no volume means no sound
 
-		if(get_dist(src, source) > 9) // We don't have to check "if source in viewers" here. We only need to know if it's far enough away to be outside the render area. 9 is not a magic number: it's half the world.view size, with 2 extra turfs added since the engine tracks things up to 2 turfs outside the viewport. Sadly this is necessary because the client tracks atoms in its render area for sound.source, and anything outside the render area counts as having a sound.source of "null" and will just play on top of us
-			var/dx = source.x - T.x
-			S.x = dx
-			var/dy = source.y - T.y
-			S.y = dy
-		if(source.z != T.z)
-			var/dz = (source.z - T.z) * ZSOUND_DISTANCE_PER_Z
-			S.z = (dz < 0) ? dz - 1 : dz + 1
+		var/dx = turf_source.x - T.x // Hearing from the right/left
+		S.x = dx
+		var/dz = turf_source.y - T.y // Hearing from infront/behind
+		S.z = dz
+		var/dy = (turf_source.z - T.z) * ZSOUND_DISTANCE_PER_Z // Hearing from above/below. There is ceiling in 2d spessmans.
+		S.y = (dy < 0) ? dy - 1 : dy + 1 //We want to make sure there's *always* at least one extra unit of distance. This helps normalize sound that's emitting from the turf you're on.
 		S.falloff = (falloff ? falloff : FALLOFF_SOUNDS)
 
-		// Nearfield attenuation; should help restore the properties of sounds played on the same turf as the source that were affected by fake offsetting.
-		// Under the hood, FMOD uses the inverse rolloff formula: attenuation = (minDistance/distance)^2
-		// For us, falloff = minDistance, range = distance. So with a falloff of 1, we get the original behavior if
-		// we multiply the volume by (1/sqrt(2)). Sqrt operations are done at compile-time, so this is actually just multiplying
-		// the volume by 0.70710678118654752440 (roughly).
-		if(distance == 0 && source_turf == T)
-			var/nearfield_factor = 1/sqrt(2)
-			S.volume = round(S.volume * nearfield_factor)
-
 		if(!override_env)
-			envdry = abs(source.z - T.z) * ZSOUND_DRYLOSS_PER_Z
+			envdry = abs(turf_source.z - T.z) * ZSOUND_DRYLOSS_PER_Z
 
 	if(!is_global)
 
 		if(istype(src,/mob/living/))
+			var/mob/living/carbon/M = src
+			if (istype(M) && M.hallucination_power > 50 && M.chem_effects[CE_MIND] < 1)
+				S.environment = PSYCHOTIC
+			else if (M.druggy)
+				S.environment = DRUGGED
+			else if (M.drowsyness)
+				S.environment = DIZZY
+			else if (M.confused)
+				S.environment = DIZZY
+			else if (M.stat == UNCONSCIOUS)
+				S.environment = UNDERWATER
+			else if (pressure_factor < 0.5)
+				S.environment = SPACE
+			else
+				var/area/A = get_area(src)
+				S.environment = A.sound_env
+
+		else if (pressure_factor < 0.5)
+			S.environment = SPACE
+		else
 			var/area/A = get_area(src)
 			S.environment = A.sound_env
 
@@ -267,7 +244,6 @@ var/const/FALLOFF_SOUNDS = 0.5
 	echo_list[ECHO_DIRECT] = envdry
 	echo_list[ECHO_ROOM] = envwet
 	S.echo = echo_list
-	//last_environment = S.environment
 
 	sound_to(src, S)
 
