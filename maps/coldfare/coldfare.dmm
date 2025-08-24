@@ -415,12 +415,6 @@
 	},
 /turf/simulated/floor/stones,
 /area/warfare/homebase/blue)
-"aZ" = (
-/obj/structure/warfare_itemeater/blue{
-	pixel_y = 32
-	},
-/turf/simulated/floor/dirty/indestructable,
-/area/warfare/homebase/blue)
 "bb" = (
 /turf/simulated/wall/perspecticrete,
 /area/warfare/homebase/blue/div)
@@ -786,6 +780,12 @@
 	},
 /turf/simulated/floor/concrete/random,
 /area/warfare/battlefield/capture_point/blue/two)
+"cf" = (
+/obj/structure/warfare_itemeater/blue{
+	pixel_y = 32
+	},
+/turf/simulated/floor/dirty/indestructable,
+/area/warfare/homebase/blue)
 "cg" = (
 /obj/structure/stairs/trenchstairs,
 /turf/simulated/floor/trenches/underground{
@@ -4209,6 +4209,14 @@
 	},
 /turf/simulated/floor/concrete/random,
 /area/warfare/battlefield/capture_point/red/one)
+"rq" = (
+/obj/hammereditor/nodraw/deco/shadowpaint,
+/obj/hammereditor/nodraw/deco/shadowpaint{
+	opacity = 1;
+	dir = 4
+	},
+/turf/simulated/floor/stones,
+/area/warfare/homebase/red)
 "rs" = (
 /obj/structure/announcementspeaker/red{
 	pixel_x = 0;
@@ -4441,14 +4449,13 @@
 /turf/simulated/floor/concrete/random,
 /area/warfare/battlefield/capture_point/blue/one)
 "sN" = (
-/obj/structure/warfare_itemeater/blue{
-	pixel_y = 32
+/obj/hammereditor/nodraw/deco/shadowpaint,
+/obj/hammereditor/nodraw/deco/shadowpaint{
+	opacity = 1;
+	dir = 8
 	},
-/turf/simulated/floor/trenches/underground{
-	icon_state = "trench";
-	color = "#ffffff"
-	},
-/area/warfare/battlefield/trench_section/underground)
+/turf/simulated/floor/stones,
+/area/warfare/homebase/red)
 "sU" = (
 /obj/item/paper/crumpled,
 /turf/simulated/floor/concrete/random,
@@ -6596,6 +6603,10 @@
 /obj/structure/table/rack/nosmooth/metal,
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/blue/div)
+"Gh" = (
+/obj/hammereditor/nodraw/deco/shadowpaint,
+/turf/simulated/floor/stones,
+/area/warfare/homebase/red)
 "Gn" = (
 /obj/structure/bed/roller,
 /obj/machinery/light{
@@ -7695,6 +7706,15 @@
 /obj/structure/table/rack/nosmooth/wood,
 /turf/simulated/floor/stones,
 /area/warfare/homebase/red)
+"OK" = (
+/obj/structure/warfare_itemeater/blue{
+	pixel_y = 32
+	},
+/turf/simulated/floor/trenches/underground{
+	icon_state = "trench";
+	color = "#ffffff"
+	},
+/area/warfare/battlefield/trench_section/underground)
 "OQ" = (
 /obj/structure/closet/crate{
 	pixel_x = 0;
@@ -17006,7 +17026,7 @@ oB
 DB
 TE
 Ln
-sN
+OK
 QS
 DK
 uW
@@ -25322,7 +25342,7 @@ ix
 ix
 ix
 Jb
-ix
+sN
 "}
 (4,1,2) = {"
 Jj
@@ -25622,7 +25642,7 @@ ia
 ia
 ia
 ir
-ia
+Gh
 "}
 (5,1,2) = {"
 Jj
@@ -25922,7 +25942,7 @@ ia
 ia
 ia
 ir
-ia
+Gh
 "}
 (6,1,2) = {"
 Jj
@@ -26222,7 +26242,7 @@ ia
 ia
 ia
 ir
-ia
+Gh
 "}
 (7,1,2) = {"
 Jj
@@ -26522,7 +26542,7 @@ ia
 ia
 ia
 ir
-ia
+Gh
 "}
 (8,1,2) = {"
 Jj
@@ -26822,7 +26842,7 @@ ia
 ia
 ia
 ir
-ia
+Gh
 "}
 (9,1,2) = {"
 Jj
@@ -27122,7 +27142,7 @@ ia
 ia
 ia
 ir
-ia
+Gh
 "}
 (10,1,2) = {"
 Jj
@@ -27422,7 +27442,7 @@ ia
 ia
 ia
 ir
-ia
+Gh
 "}
 (11,1,2) = {"
 Jj
@@ -27722,7 +27742,7 @@ ia
 ia
 ia
 ir
-ia
+Gh
 "}
 (12,1,2) = {"
 Jj
@@ -28022,7 +28042,7 @@ ia
 ia
 ia
 ir
-ia
+Gh
 "}
 (13,1,2) = {"
 Jj
@@ -28322,7 +28342,7 @@ ia
 ia
 ia
 ir
-ia
+Gh
 "}
 (14,1,2) = {"
 Jj
@@ -28622,7 +28642,7 @@ ia
 ia
 ia
 ir
-ia
+Gh
 "}
 (15,1,2) = {"
 Jj
@@ -28922,7 +28942,7 @@ ia
 ia
 ia
 ir
-ia
+Gh
 "}
 (16,1,2) = {"
 Jj
@@ -29222,7 +29242,7 @@ ia
 ia
 ia
 ir
-ia
+Gh
 "}
 (17,1,2) = {"
 Jj
@@ -29522,7 +29542,7 @@ ia
 ia
 ia
 ir
-ia
+Gh
 "}
 (18,1,2) = {"
 Jj
@@ -29822,7 +29842,7 @@ ia
 ia
 ia
 ir
-ia
+Gh
 "}
 (19,1,2) = {"
 Jj
@@ -30122,7 +30142,7 @@ ia
 ia
 ia
 ir
-ia
+Gh
 "}
 (20,1,2) = {"
 Jj
@@ -30422,7 +30442,7 @@ ia
 ia
 ia
 ir
-ia
+Gh
 "}
 (21,1,2) = {"
 Jj
@@ -30722,7 +30742,7 @@ ia
 ia
 ia
 ir
-ia
+Gh
 "}
 (22,1,2) = {"
 Jj
@@ -30786,7 +30806,7 @@ av
 av
 av
 ag
-aZ
+cf
 fR
 fW
 fX
@@ -31022,7 +31042,7 @@ ia
 ia
 ia
 ir
-ia
+Gh
 "}
 (23,1,2) = {"
 Jj
@@ -31322,7 +31342,7 @@ ia
 ia
 ia
 ir
-ia
+Gh
 "}
 (24,1,2) = {"
 Jj
@@ -31622,7 +31642,7 @@ ia
 ia
 ia
 ir
-ia
+Gh
 "}
 (25,1,2) = {"
 Jj
@@ -31922,7 +31942,7 @@ ia
 ia
 ia
 ir
-ia
+Gh
 "}
 (26,1,2) = {"
 Jj
@@ -32222,7 +32242,7 @@ ia
 ia
 ia
 ir
-ia
+Gh
 "}
 (27,1,2) = {"
 Jj
@@ -32522,7 +32542,7 @@ ia
 ia
 ia
 ir
-ia
+Gh
 "}
 (28,1,2) = {"
 Jj
@@ -32822,7 +32842,7 @@ ia
 ia
 ia
 ir
-ia
+Gh
 "}
 (29,1,2) = {"
 Jj
@@ -33122,7 +33142,7 @@ ia
 ia
 ia
 ir
-ia
+Gh
 "}
 (30,1,2) = {"
 Jj
@@ -33422,7 +33442,7 @@ ia
 ia
 ia
 ir
-ia
+Gh
 "}
 (31,1,2) = {"
 Jj
@@ -33722,7 +33742,7 @@ ia
 ia
 ia
 ir
-ia
+Gh
 "}
 (32,1,2) = {"
 Jj
@@ -34022,7 +34042,7 @@ ia
 ia
 ia
 ir
-ia
+Gh
 "}
 (33,1,2) = {"
 Jj
@@ -34322,7 +34342,7 @@ ia
 ia
 ia
 ir
-ia
+Gh
 "}
 (34,1,2) = {"
 Jj
@@ -34622,7 +34642,7 @@ ia
 ia
 ia
 ir
-ia
+Gh
 "}
 (35,1,2) = {"
 Jj
@@ -34922,7 +34942,7 @@ ia
 ia
 ia
 ir
-ia
+Gh
 "}
 (36,1,2) = {"
 Jj
@@ -35222,7 +35242,7 @@ ia
 ia
 ia
 ir
-ia
+Gh
 "}
 (37,1,2) = {"
 Jj
@@ -35522,7 +35542,7 @@ ia
 ia
 ia
 ir
-ia
+Gh
 "}
 (38,1,2) = {"
 Jj
@@ -35822,7 +35842,7 @@ ia
 ia
 ia
 ir
-ia
+Gh
 "}
 (39,1,2) = {"
 Jj
@@ -36122,7 +36142,7 @@ ia
 ia
 ia
 ir
-ia
+Gh
 "}
 (40,1,2) = {"
 Jj
@@ -36422,7 +36442,7 @@ ia
 ia
 ia
 ir
-ia
+Gh
 "}
 (41,1,2) = {"
 Jj
@@ -36722,7 +36742,7 @@ ia
 ia
 ia
 ir
-ia
+Gh
 "}
 (42,1,2) = {"
 Jj
@@ -37022,7 +37042,7 @@ ia
 ia
 ia
 ir
-ia
+Gh
 "}
 (43,1,2) = {"
 Jj
@@ -37322,7 +37342,7 @@ ia
 ia
 ia
 ir
-ia
+Gh
 "}
 (44,1,2) = {"
 Jj
@@ -37622,7 +37642,7 @@ ia
 ia
 ia
 ir
-ia
+Gh
 "}
 (45,1,2) = {"
 Jj
@@ -37922,7 +37942,7 @@ ia
 ia
 ia
 ir
-ia
+Gh
 "}
 (46,1,2) = {"
 Jj
@@ -38222,7 +38242,7 @@ ia
 ia
 ia
 ir
-ia
+Gh
 "}
 (47,1,2) = {"
 Jj
@@ -38522,7 +38542,7 @@ vY
 vY
 vY
 Dw
-vY
+rq
 "}
 (48,1,2) = {"
 Jj
