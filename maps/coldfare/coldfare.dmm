@@ -3446,7 +3446,6 @@
 	},
 /area/warfare/battlefield/trench_section/underground)
 "nq" = (
-/obj/effect/phone_line,
 /obj/structure/table/rack/nosmooth/wood{
 	dir = 8
 	},
@@ -4215,10 +4214,6 @@
 	},
 /turf/simulated/floor/concrete/random,
 /area/warfare/battlefield/capture_point/red/one)
-"rq" = (
-/obj/effect/phone_line,
-/turf/simulated/floor/wood,
-/area/warfare/homebase/red/div)
 "rs" = (
 /obj/structure/announcementspeaker/red{
 	pixel_x = 0;
@@ -4450,10 +4445,6 @@
 	},
 /turf/simulated/floor/concrete/random,
 /area/warfare/battlefield/capture_point/blue/one)
-"sN" = (
-/obj/effect/phone_line,
-/turf/simulated/floor/wood,
-/area/warfare/homebase/blue/div)
 "sU" = (
 /obj/item/paper/crumpled,
 /turf/simulated/floor/concrete/random,
@@ -5538,7 +5529,6 @@
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/blue)
 "zJ" = (
-/obj/effect/phone_line,
 /obj/structure/cargo_pad/red/captain,
 /obj/structure/warfare_itemeater/red{
 	pixel_y = 32
@@ -9177,7 +9167,6 @@
 	},
 /area/warfare/battlefield/capture_point/red/one)
 "Yt" = (
-/obj/effect/phone_line,
 /obj/structure/poster/blue{
 	pixel_y = 32
 	},
@@ -30802,7 +30791,7 @@ oD
 oD
 ag
 Yt
-sN
+XX
 nq
 XX
 ZM
@@ -31012,7 +31001,7 @@ gR
 NJ
 ab
 zJ
-rq
+kK
 cD
 kK
 ZQ
