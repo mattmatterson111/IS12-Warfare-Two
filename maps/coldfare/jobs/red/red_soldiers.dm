@@ -462,6 +462,7 @@
 	l_ear = /obj/item/device/radio/headset/red_team/all
 	belt = /obj/item/gun/projectile/revolver/cpt
 	r_pocket = /obj/item/device/binoculars
+	l_pocket = /obj/item/key/captain
 	chest_holster = null
 	backpack_contents = list(/obj/item/ammo_magazine/handful/revolver = 2, /obj/item/grenade/smokebomb = 1, /obj/item/clothing/mask/gas/captaingasmask = 1)
 

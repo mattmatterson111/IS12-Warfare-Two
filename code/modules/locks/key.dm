@@ -111,3 +111,6 @@
 	new /obj/item/key/inn1 (src)
 	//new /obj/item/key/inn2 (src)
 	update_icon()
+
+/obj/item/key/captain
+	key_data = "captain"

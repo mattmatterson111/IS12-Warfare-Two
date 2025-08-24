@@ -5227,7 +5227,7 @@
 /area/warfare/homebase/red)
 "xS" = (
 /obj/machinery/door/unpowered/simple/wood/captain{
-	initial_lock_value = "red";
+	initial_lock_value = "captain";
 	locked = 1
 	},
 /turf/simulated/floor/wood,
@@ -5908,12 +5908,6 @@
 	pixel_y = 1;
 	icon = 'icons/obj/chembottles.dmi';
 	icon_state = "rag_world"
-	},
-/obj/item/key{
-	key_data = "red";
-	icon_state = "key3";
-	pixel_x = -11;
-	pixel_y = 3
 	},
 /obj/structure/table/nosmooth/capnew{
 	pixel_y = -4
@@ -8425,12 +8419,6 @@
 	pixel_x = 0;
 	pixel_y = 16
 	},
-/obj/item/key{
-	key_data = "blue";
-	icon_state = "key3";
-	pixel_x = -3;
-	pixel_y = 4
-	},
 /turf/simulated/floor/wood,
 /area/warfare/homebase/blue/div)
 "Tu" = (
@@ -9313,7 +9301,7 @@
 /area/warfare/battlefield/capture_point/blue/one)
 "Zm" = (
 /obj/machinery/door/unpowered/simple/wood/captain{
-	initial_lock_value = "blue";
+	initial_lock_value = "captain";
 	locked = 1
 	},
 /turf/simulated/floor/wood,
