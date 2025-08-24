@@ -614,9 +614,11 @@ GLOBAL_LIST_EMPTY(chat_clients)
 	add_line("<fieldset style='margin: 15px 0; opacity: 0.75; border: 3px double [holder.holder.Textcolor]; padding: 2px;'><legend style='background-color: [holder.holder.Textcolor]; color: black; margin-left: 1em; text-transform: uppercase; text-align: center;'><b>> [account] - [get_money_sum()] <</b></legend></fieldset>", 6, TRUE)
 	holder.holder.think(9, TRUE)
 	add_choice("SUPPLY", "access the [supply.display_name]", 2, TRUE)
+	/*
 	if(artillery)
 		holder.holder.think(5, TRUE)
 		add_choice("ARTILLERY", "access the artillery barrage control menu", 2, TRUE)
+	*/
 	add_choice("BALANCE", "refresh the visible balance", 4)
 	if(previous_page)
 		add_choice("BACK", "return to the main screen", 3, TRUE)
