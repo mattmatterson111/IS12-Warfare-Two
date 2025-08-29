@@ -1991,7 +1991,6 @@
 #include "code\modules\placeholder\itemeater.dm"
 #include "code\modules\placeholder\placeholder.dm"
 #include "code\modules\placeholder\snowflake.dm"
-#include "code\modules\placeholder\terminal.dm"
 #include "code\modules\power\apc.dm"
 #include "code\modules\power\batteryrack.dm"
 #include "code\modules\power\breaker_box.dm"

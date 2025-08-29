@@ -399,7 +399,7 @@
 
 	if(print_flavor_text()) msg += "[print_flavor_text()]\n"
 
-	msg += "</span></div><br>"
+	msg += "</span></div>"
 	msg += applying_pressure
 
 	if (pose)

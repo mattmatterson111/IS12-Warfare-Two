@@ -88,7 +88,7 @@ var/list/admin_verbs_admin = list(
 	/client/proc/reload_webhooks,
 	/client/proc/ping_webhook,
 	/client/proc/ping_wardog,
-	/client/proc/mail_message,
+	///client/proc/mail_message,
 	/client/proc/toggleghostwriters,
 	/client/proc/toggledrones,
 	/client/proc/check_customitem_activity,

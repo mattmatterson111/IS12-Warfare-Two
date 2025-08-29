@@ -23,6 +23,8 @@ body {
 	scrollbar-face-color:#1A1A1A;
 	scrollbar-track-color:#171717;
 	scrollbar-highlight-color:#171717;
+	padding-left: 5px;
+	padding-right: 5px;
 }
 
 #chat-decor {

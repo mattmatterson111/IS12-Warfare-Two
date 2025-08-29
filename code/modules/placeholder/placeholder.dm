@@ -21,7 +21,7 @@ GLOBAL_LIST_EMPTY(faction_dosh)
 	icon_state = "cargo_machine"
 	anchored = TRUE
 	density = TRUE
-	var/credits
+	var/credits // no longer used
 	var/loggedin = FALSE
 	var/list/INPUTS = list("BROWSE CATALOG", "CHECK BALANCE", "CANCEL")
 	var/list/pads

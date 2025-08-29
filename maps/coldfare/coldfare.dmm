@@ -22,9 +22,7 @@
 /obj/structure/announcementspeaker/red{
 	pixel_y = 32
 	},
-/obj/machinery/kaos/redcargo{
-	density = 1
-	},
+/obj/machinery/kaos/cargo_machine/red,
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/red)
 "ae" = (
@@ -55,9 +53,7 @@
 /turf/simulated/wall/perspecticrete,
 /area/warfare/homebase/blue)
 "aj" = (
-/obj/machinery/kaos/bluecargo{
-	density = 1
-	},
+/obj/machinery/kaos/cargo_machine/blue,
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/blue)
 "ak" = (
@@ -3273,22 +3269,6 @@
 "mw" = (
 /turf/simulated/floor/wood,
 /area/warfare/homebase/blue)
-"mC" = (
-/obj/machinery/light/caged{
-	pixel_y = 30;
-	pixel_x = 16
-	},
-/obj/structure/trench_wall{
-	dir = 5;
-	pixel_x = -32;
-	layer = 28
-	},
-/obj/machinery/kaos{
-	pixel_y = 22;
-	pages = list(list(/datum/terminal_page/my_messages,"blue_prac2",null))
-	},
-/turf/simulated/floor/wood,
-/area/warfare/battlefield/trench_section/underground)
 "mD" = (
 /obj/structure/trench_wall{
 	dir = 1
@@ -5671,10 +5651,6 @@
 	pixel_x = 32;
 	pixel_y = 31
 	},
-/obj/machinery/kaos{
-	pixel_y = 22;
-	pages = list(list(/datum/terminal_page/my_messages,"red_prac1",null))
-	},
 /turf/simulated/floor/wood,
 /area/warfare/battlefield/trench_section/underground)
 "AH" = (
@@ -6840,9 +6816,7 @@
 /turf/simulated/floor/concrete/random,
 /area/space)
 "If" = (
-/obj/machinery/kaos/bluecaptain{
-	pixel_y = 16
-	},
+/obj/machinery/kaos/cargo_machine/blue,
 /turf/simulated/floor/wood,
 /area/warfare/homebase/blue/div)
 "Ig" = (
@@ -7237,23 +7211,6 @@
 	color = "#ffffff"
 	},
 /area/warfare/homebase/red)
-"Lv" = (
-/obj/structure/trench_wall{
-	dir = 5;
-	pixel_x = 32;
-	layer = 28
-	},
-/obj/structure/trench_wall/innercorners{
-	dir = 1;
-	pixel_x = 32;
-	pixel_y = 31
-	},
-/obj/machinery/kaos{
-	pixel_y = 22;
-	pages = list(list(/datum/terminal_page/my_messages,"blue_prac1",null))
-	},
-/turf/simulated/floor/wood,
-/area/warfare/battlefield/trench_section/underground)
 "Lz" = (
 /obj/structure/defensive_barrier{
 	pixel_y = -4;
@@ -7579,9 +7536,7 @@
 /turf/simulated/floor/dirty/indestructable,
 /area/warfare/homebase/red)
 "NM" = (
-/obj/machinery/kaos/redcaptain{
-	pixel_y = 16
-	},
+/obj/machinery/kaos/cargo_machine/red,
 /turf/simulated/floor/wood,
 /area/warfare/homebase/red/div)
 "NO" = (
@@ -9245,10 +9200,6 @@
 	dir = 5;
 	pixel_x = -32;
 	layer = 28
-	},
-/obj/machinery/kaos{
-	pixel_y = 22;
-	pages = list(list(/datum/terminal_page/my_messages,"red_prac2",null))
 	},
 /turf/simulated/floor/wood,
 /area/warfare/battlefield/trench_section/underground)
@@ -14038,7 +13989,7 @@ aO
 bi
 cn
 WK
-Lv
+AC
 EO
 yA
 We
@@ -19738,7 +19689,7 @@ bi
 bi
 cn
 WK
-mC
+YM
 EO
 oT
 We

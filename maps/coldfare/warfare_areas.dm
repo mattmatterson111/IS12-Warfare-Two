@@ -252,6 +252,8 @@ GLOBAL_LIST_EMPTY(mortar_areas) // = list()
 
 /area/warfare/homebase/red/div
 
+/area/warfare/homebase/red/trainyard
+
 /area/warfare/homebase/red/Enter(atom/movable/AM)
 	if(ishuman(AM))
 		var/mob/living/carbon/human/H = AM
@@ -266,6 +268,8 @@ GLOBAL_LIST_EMPTY(mortar_areas) // = list()
 	icon_state = "showroom"
 
 /area/warfare/homebase/blue/div
+
+/area/warfare/homebase/blue/trainyard
 
 /area/warfare/homebase/blue/Enter(atom/movable/AM)
 	if(ishuman(AM))

@@ -436,6 +436,9 @@ client/proc/MayRespawn()
 /client/New()
 	..()
 	fullscreen()
+	if(byond_version >= 516) // Enable 516 compat browser storage mechanisms
+		if(holder)
+			winset(src, null, "browser-options=byondstorage,find,devtools")
 
 /client/verb/fullscreen_toggle()
 	set name = ".fullscreen_toggle"

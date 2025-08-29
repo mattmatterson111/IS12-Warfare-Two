@@ -97,7 +97,7 @@ mob/observer/check_airflow_movable()
 				stat("[RED_TEAM] reinforcements:", SSwarfare.red.left)
 				//stat("[RED_TEAM] capture points:", SSwarfare.red.points)
 			if(SSwarfare.battle_time)
-				var/next_respawn = SSrespawn.respawning ? "Now" : round(SSrespawn.next_respawn - world.time)
+				var/next_respawn = SSrespawn.respawning ? "Now" : round(SSrespawn.next_respawn - round_duration_in_ticks)
 				stat("Next respawn wave:", next_respawn)
 
 			for(var/area/A in GLOB.red_captured_zones)

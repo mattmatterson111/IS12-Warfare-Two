@@ -233,14 +233,14 @@ SUBSYSTEM_DEF(respawn)
 	priority = -40
 	flags = SS_KEEP_TIMING | SS_BACKGROUND
 	runlevels = RUNLEVEL_GAME
-	wait = 10 SECONDS
+	wait = 4 SECONDS
 
 	var/datum/team/blue
 	var/datum/team/red
 	var/respawn_cycle = 0
 	var/next_respawn
 	var/last_respawn = 0
-	var/time_between_respawns = 50 SECONDS // in seconds
+	var/time_between_respawns = 45 SECONDS // in seconds
 
 	var/area/red_train
 	var/area/blue_train
@@ -249,7 +249,7 @@ SUBSYSTEM_DEF(respawn)
 	var/respawning = FALSE
 
 	var/last_cargo_time = 0
-	var/time_between_cargo = 250 // or any value less than `time_between_respawns`
+	var/time_between_cargo = 250
 
 
 /datum/controller/subsystem/respawn/Initialize()
@@ -280,6 +280,11 @@ SUBSYSTEM_DEF(respawn)
 		M.resist()
 	return TRUE
 
+/datum/controller/subsystem/respawn/proc/playsound_area(var/area/train_area, sound)
+	for(var/mob/M in train_area)
+		if(ismob(M) && M.client)
+			sound_to(M, sound(sound, channel = 66, volume = 85))
+
 /datum/controller/subsystem/respawn/proc/open_train(var/obj/structure/vehicle/train/T)
 	if (!T) return
 	T.open = TRUE
@@ -294,10 +299,9 @@ SUBSYSTEM_DEF(respawn)
 	if (!SSwarfare.battle_time)
 		return
 
-	// Rarely try to spawn a passing train mid-cycle
+	// Rarely try to spawn a passing train when we're on cooldown
 	if (round_duration_in_ticks <= next_respawn && !respawning)
-		if (!prob(5)) return
-
+		if (!prob(15)) return
 		var/obj/structure/vehicle/train/T = pick(trains)
 		if (!istype(T, /obj/structure/vehicle/train)) return
 		message_admins("Trying to spawn a passing train: [T.id]")
@@ -310,29 +314,38 @@ SUBSYSTEM_DEF(respawn)
 		return
 	*/
 	// Start a new respawn cycle
-	if (world.time >= next_respawn || !next_respawn)
+	if (round_duration_in_ticks >= next_respawn || !next_respawn)
 		if (!respawn_cycle)
 			message_admins("Respawn cycle system is now online.")
+			respawn_cycle++
 
 		respawning = TRUE
 
 		var/obj/structure/vehicle/train/long_passenger/TR = trains[RED_TEAM]
 		var/obj/structure/vehicle/train/long_passenger/TB = trains[BLUE_TEAM]
 
+		playsound_area(red_train, 'sound/effects/trainhorn_inside.ogg')
+		playsound_area(blue_train, 'sound/effects/trainhorn_inside.ogg')
+
+		sleep(2 SECONDS)
+
 		TR?.generate_carriages()
 		TB?.generate_carriages()
 
-		TR?.arrive(-1000)
-		TB?.arrive(-1000)
+		TR?.arrive(-800)
+		TB?.arrive(-800)
 
-		sleep(3 SECONDS)
+		playsound(TR, 'sound/effects/train_horn.ogg', 75, 0)
+		playsound(TB, 'sound/effects/train_horn.ogg', 75, 0)
+
+		sleep(4 SECONDS)
 
 		playsound(TR, 'sound/effects/train_stop.ogg', 75, 0)
 		playsound(TR, 'sound/effects/train_brake.ogg', 75, 0)
 		playsound(TB, 'sound/effects/train_stop.ogg', 75, 0)
 		playsound(TB, 'sound/effects/train_brake.ogg', 75, 0)
 
-		sleep(5 SECONDS)
+		sleep(4 SECONDS)
 
 		open_train(TR)
 		open_train(TB)
@@ -342,7 +355,7 @@ SUBSYSTEM_DEF(respawn)
 		handle_team_respawn(red_train, /obj/effect/landmark/train_marker/teleport/red, "red")
 		handle_team_respawn(blue_train, /obj/effect/landmark/train_marker/teleport/blue, "blue")
 
-		sleep(8 SECONDS)
+		sleep(5 SECONDS)
 
 		close_train(TR)
 		close_train(TB)
@@ -355,11 +368,11 @@ SUBSYSTEM_DEF(respawn)
 		TR?.leave(1000)
 		TB?.leave(1000)
 
-		message_admins("Respawn cycle #[respawn_cycle] completed. Next: [next_respawn], Last: [last_respawn]")
+		message_admins("Respawn cycle #[respawn_cycle] completed.")
 
 		respawn_cycle++
-		next_respawn = world.time + time_between_respawns
-		last_respawn = world.time
+		next_respawn = round_duration_in_ticks + time_between_respawns
+		last_respawn = round_duration_in_ticks
 		respawning = FALSE
 
 

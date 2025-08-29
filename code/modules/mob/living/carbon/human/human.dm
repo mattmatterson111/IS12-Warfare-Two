@@ -75,8 +75,11 @@
 			//stat("[RED_TEAM] reinforcements:", SSwarfare.red.left)
 			//stat("[RED_TEAM] capture points:", SSwarfare.red.points)
 			if(SSwarfare.battle_time)
-				if(HasRoleSimpleCheck("Red Captain") || HasRoleSimpleCheck("Blue Captain") || HasRoleSimpleCheck("Red Squad Leader") || HasRoleSimpleCheck("Blue Squad Leader") || client?.holder)
-					var/next_respawn = SSrespawn.respawning ? "Now" : round(SSrespawn.next_respawn - world.time)
+				var/timeto = SSrespawn.next_respawn - round_duration_in_ticks
+				var/next_respawn = SSrespawn.respawning ? "Now" : "[round(timeto/10)] seconds"
+				if(istype(lastarea, /area/train))
+					stat("Time till arrival:", next_respawn)
+				else if(HasRoleSimpleCheck("Red Captain") || HasRoleSimpleCheck("Blue Captain") || HasRoleSimpleCheck("Red Squad Leader") || HasRoleSimpleCheck("Blue Squad Leader") || client?.holder)
 					stat("Next respawn wave:", next_respawn)
 
 			if(warfare_faction == RED_TEAM)
