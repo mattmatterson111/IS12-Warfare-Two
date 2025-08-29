@@ -276,20 +276,24 @@ GLOBAL_LIST_EMPTY(faction_dosh)
 									var/newcount = SSwarfare.blue.left + 5
 									SSwarfare.blue.left = newcount
 									playsound(src.loc, 'sound/machines/rpf/sendmsgcargo.ogg', 100, 0)
+									GLOB.faction_dosh[id] -= productprice
 									return
 								if(id == RED_TEAM)
 									var/newcount = SSwarfare.red.left + 5
 									SSwarfare.red.left = newcount
 									playsound(src.loc, 'sound/machines/rpf/sendmsgcargo.ogg', 100, 0)
+									GLOB.faction_dosh[id] -= productprice
 									return
 								else
 									playsound(src.loc, 'sound/machines/rpf/denybeep.ogg', 100, 0.5)
+									GLOB.faction_dosh[id] -= productprice
 									return
 							else
 								playsound(src.loc, 'sound/machines/rpf/sendmsgcargo.ogg', 100, 0)
 								var/datum/job/team_job = SSjobs.GetJobByType(productpath) //Open up the corresponding job on that team.
 								if(team_job.total_positions < 1)//You can only buy a guy if he's not dead.
 									SSjobs.allow_one_more(team_job.title)
+									GLOB.faction_dosh[id] -= productprice
 								else
 									playsound(src.loc, 'sound/machines/rpf/denybeep.ogg', 100, 0.5)
 									to_chat(user, "\icon[src]There are no more units available to send at the moment.")
