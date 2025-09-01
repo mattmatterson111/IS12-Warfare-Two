@@ -270,17 +270,6 @@
 	name = "LMG mag"
 	icon_state = "hmg"
 
-/obj/item/ammo_magazine/box/a556/grenades
-	name = "magazine box (40mm)"
-	icon_state = "LMG-mag"
-	origin_tech = list(TECH_COMBAT = 2)
-	mag_type = MAGAZINE
-	caliber = "a40mm"
-	matter = list(DEFAULT_WALL_MATERIAL = 4500)
-	ammo_type = /obj/item/ammo_casing/grenade/frag
-	max_ammo = 40
-	multiple_sprites = 1
-
 /obj/item/ammo_magazine/c556
 	name = "magazine (5.56mm)"
 	icon_state = "c762"

@@ -335,11 +335,7 @@
 /decl/hierarchy/outfit/job/redsoldier/sentry
 	suit = /obj/item/clothing/suit/armor/sentry/red
 	head = /obj/item/clothing/head/helmet/sentryhelm/red
-	if(prob(35))
-		suit_store = /obj/item/gun/projectile/automatic/mg08/grenade
-		backpack_contents = list(/obj/item/grenade/smokebomb = 1, /obj/item/ammo_magazine/box/a556/mg08/grenade = 2)
-	else
-		suit_store = /obj/item/gun/projectile/automatic/gpmg
+	suit_store = /obj/item/gun/projectile/automatic/gpmg
 	belt = /obj/item/melee/trench_axe
 	backpack_contents = list(/obj/item/ammo_magazine/box/a556/mg08 = 3, /obj/item/grenade/smokebomb = 1)
 
