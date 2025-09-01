@@ -300,6 +300,7 @@
 
 	magazine_type = /obj/item/ammo_magazine/a762/m14
 	allowed_magazines = /obj/item/ammo_magazine/a762/m14
+	gun_type = GUN_SEMIAUTO
 
 /obj/item/gun/projectile/automatic/m22/warmonger/m14/attackby(obj/item/W, mob/user)
 	. = ..()

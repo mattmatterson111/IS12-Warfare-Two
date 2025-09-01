@@ -399,7 +399,7 @@ GLOBAL_LIST_EMPTY(faction_dosh)
 		list("name" = "Pistol Ammo Pack", "price" = 50, "category" = "Ammunition", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/ammo_magazine/c45m/warfare = 10, /obj/item/ammo_magazine/a50 = 5)),
 		list("name" = "Revolver Ammo Pack", "price" = 50, "category" = "Ammunition", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/ammo_magazine/handful/revolver = 10)),
 		list("name" = "Soulburn Ammo Pack", "price" = 50, "category" = "Ammunition", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/ammo_magazine/mc9mmt/machinepistol = 10)),
-		list("name" = "HMG Ammo Pack", "price" = 100, "category" = "Ammunition", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/ammo_magazine/box/a556/mg08 = 5)),
+		list("name" = "HMG Ammo Pack", "price" = 50, "category" = "Ammunition", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/ammo_magazine/box/a556/mg08 = 5)),
 		list("name" = "Warmonger Ammo", "price" = 50, "category" = "Ammunition", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/ammo_magazine/c45rifle/akarabiner = 10)),
 		list("name" = "Flamethrower Ammo Pack", "price" = 100, "category" = "Ammunition", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/ammo_magazine/flamer = 5)),
 		list("name" = "PTSD Ammo Pack", "price" = 100, "category" = "Ammunition", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/ammo_box/ptsd = 5)),
