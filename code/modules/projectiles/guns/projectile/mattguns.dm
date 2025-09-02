@@ -575,6 +575,7 @@
 	user.visible_message("[user] starts to deploy the [src]")
 	user.doing_something = TRUE
 	if(!do_after(user,30))
+		user.doing_something = FALSE //Prevents Permanently being unable to deploy harbingers
 		return
 	user.doing_something = FALSE
 	var/obj/structure/mg08_structure/M = new(get_turf(user)) //Make a new one here.
