@@ -395,11 +395,16 @@ GLOBAL_LIST_EMPTY(faction_dosh)
 	products = list(
 		// general ammo stuff
 		list("name" = "Rifle Ammo Pack", "price" = 50, "category" = "Ammunition", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/ammo_box/rifle = 10)),
+		list("name" = "Modern Rifle Ammo Pack", "price" = 50, "category" = "Ammunition", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/ammo_box/rifle/modern = 10)),
+		list("name" = "M41 Ammo Pack", "price" = 50, "category" = "Ammunition", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/ammo_magazine/a762/m14 = 5)),
 		list("name" = "Shotgun Ammo Pack", "price" = 100, "category" = "Ammunition", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/ammo_box/shotgun = 10)),
 		list("name" = "Pistol Ammo Pack", "price" = 50, "category" = "Ammunition", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/ammo_magazine/c45m/warfare = 10, /obj/item/ammo_magazine/a50 = 5)),
 		list("name" = "Revolver Ammo Pack", "price" = 50, "category" = "Ammunition", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/ammo_magazine/handful/revolver = 10)),
 		list("name" = "Soulburn Ammo Pack", "price" = 50, "category" = "Ammunition", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/ammo_magazine/mc9mmt/machinepistol = 10)),
 		list("name" = "HMG Ammo Pack", "price" = 50, "category" = "Ammunition", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/ammo_magazine/box/a556/mg08 = 5)),
+		list("name" = "Old LMG Ammo Pack", "price" = 50, "category" = "Ammunition", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/ammo_magazine/c45rifle/flat = 5)),
+		list("name" = "Armageddon Ammo Pack", "price" = 50, "category" = "Ammunition", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/ammo_magazine/a762/m14/battlerifle_mag = 3, /obj/item/ammo_magazine/a762/rsc = 3)),
+		list("name" = "Warcrime Ammo Pack", "price" = 50, "category" = "Ammunition", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/ammo_magazine/autoshotty = 5)),
 		list("name" = "Warmonger Ammo", "price" = 50, "category" = "Ammunition", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/ammo_magazine/c45rifle/akarabiner = 10)),
 		list("name" = "Flamethrower Ammo Pack", "price" = 100, "category" = "Ammunition", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/ammo_magazine/flamer = 5)),
 		list("name" = "PTSD Ammo Pack", "price" = 100, "category" = "Ammunition", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/ammo_box/ptsd = 5)),
@@ -453,15 +458,20 @@ GLOBAL_LIST_EMPTY(faction_dosh)
 	products = list(
 		// general ammo stuff
 		list("name" = "Rifle Ammo Pack", "price" = 50, "category" = "Ammunition", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/ammo_box/rifle = 10)),
+		list("name" = "Modern Rifle Ammo Pack", "price" = 50, "category" = "Ammunition", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/ammo_box/rifle/modern = 10)),
+		list("name" = "M41 Ammo Pack", "price" = 50, "category" = "Ammunition", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/ammo_magazine/a762/m14 = 5)),
 		list("name" = "Shotgun Ammo Pack", "price" = 100, "category" = "Ammunition", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/ammo_box/shotgun = 10)),
 		list("name" = "Pistol Ammo Pack", "price" = 50, "category" = "Ammunition", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/ammo_magazine/c45m/warfare = 10, /obj/item/ammo_magazine/a50 = 5)),
 		list("name" = "Revolver Ammo Pack", "price" = 50, "category" = "Ammunition", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/ammo_magazine/handful/revolver = 10)),
 		list("name" = "Soulburn Ammo Pack", "price" = 50, "category" = "Ammunition", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/ammo_magazine/mc9mmt/machinepistol = 10)),
 		list("name" = "HMG Ammo Pack", "price" = 50, "category" = "Ammunition", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/ammo_magazine/box/a556/mg08 = 5)),
+		list("name" = "Old LMG Ammo Pack", "price" = 50, "category" = "Ammunition", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/ammo_magazine/c45rifle/flat = 5)),
+		list("name" = "Armageddon Ammo Pack", "price" = 50, "category" = "Ammunition", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/ammo_magazine/a762/m14/battlerifle_mag = 3, /obj/item/ammo_magazine/a762/rsc = 3)),
+		list("name" = "Warcrime Ammo Pack", "price" = 50, "category" = "Ammunition", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/ammo_magazine/autoshotty = 5)),
 		list("name" = "Warmonger Ammo", "price" = 50, "category" = "Ammunition", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/ammo_magazine/c45rifle/akarabiner = 10)),
 		list("name" = "Flamethrower Ammo Pack", "price" = 100, "category" = "Ammunition", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/ammo_magazine/flamer = 5)),
 		list("name" = "PTSD Ammo Pack", "price" = 100, "category" = "Ammunition", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/ammo_box/ptsd = 5)),
-		list("name" = "Mortar Ammo", "price" = 800, "category" = "Ammunition", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/mortar_shell = 8)),
+		list("name" = "Mortar Ammo", "price" = 100, "category" = "Ammunition", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/mortar_shell = 8)),
 
 		// general weapon stuff
 		list("name" = "Shotgun Pack", "price" = 100, "category" = "Weaponry", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/gun/projectile/shotgun/pump/shitty = 5)),
