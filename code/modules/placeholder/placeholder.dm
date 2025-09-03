@@ -485,7 +485,7 @@ GLOBAL_LIST_EMPTY(faction_dosh)
 		list("name" = "Flamethrower Pack", "price" = 200, "category" = "Weaponry", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/gun/projectile/automatic/flamer = 1, /obj/item/ammo_magazine/flamer = 2)),
 		list("name" = "Frag Grenade Pack", "price" = 350, "category" = "Weaponry", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/grenade/frag/warfare = 5)),
 		list("name" = "Trench Club Pack", "price" = 100, "category" = "Weaponry", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/melee/classic_baton/trench_club = 5)),
-		list("name" = "Mortar Pack", "price" = 600, "category" = "Weaponry", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/mortar_launcher = 2, /obj/item/mortar_shell = 6)),
+		list("name" = "Mortar Pack", "price" = 800, "category" = "Weaponry", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/mortar_launcher = 2, /obj/item/mortar_shell = 6)),
 
 		// medical and supply stuff
 		list("name" = "Gas Mask Pack", "price" = 50, "category" = "Miscellaneous", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/clothing/mask/gas/sniper/penal3 = 10)),
