@@ -389,6 +389,7 @@
 	magazine_type = /obj/item/ammo_magazine/a762/sks
 	allowed_magazines = /obj/item/ammo_magazine/a762/sks
 	condition = 200
+	gun_type = GUN_SEMIAUTO
 
 /obj/item/ammo_magazine/a762/sks
 	name = "Headhunter mag"
@@ -438,7 +439,8 @@
 
 	magazine_type = /obj/item/ammo_magazine/a762/m14/battlerifle_mag
 	allowed_magazines = list(/obj/item/ammo_magazine/a762/m14/battlerifle_mag, /obj/item/ammo_magazine/c45rifle/akarabiner)
-
+	gun_type = GUN_SEMIAUTO
+	
 	loaded_icon = "battlerifle"
 	unwielded_loaded_icon = "battlerifle"
 	wielded_loaded_icon = "battlerifle-wielded"
@@ -451,7 +453,7 @@
 
 
 /obj/item/gun/projectile/automatic/m22/warmonger/m14/battlerifle/rsc
-	name = "Mk.1 Armageddon"
+	name = "Mk.2 Armageddon"
 	desc = "An alternate version of the Armageddon carbine, utilizing a specific clip design. It might just hold up in a real fight."
 	icon_state = "rsc"
 	item_state = "rsc"
@@ -459,6 +461,7 @@
 
 	magazine_type = /obj/item/ammo_magazine/a762/rsc
 	allowed_magazines = /obj/item/ammo_magazine/a762/rsc
+	gun_type = GUN_SEMIAUTO
 
 	caliber = "763"
 
@@ -572,6 +575,7 @@
 	user.visible_message("[user] starts to deploy the [src]")
 	user.doing_something = TRUE
 	if(!do_after(user,30))
+		user.doing_something = FALSE //Prevents Permanently being unable to deploy harbingers
 		return
 	user.doing_something = FALSE
 	var/obj/structure/mg08_structure/M = new(get_turf(user)) //Make a new one here.
