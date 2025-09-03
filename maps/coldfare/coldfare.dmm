@@ -4117,12 +4117,10 @@
 	},
 /area/train/red)
 "ra" = (
-/obj/structure/bed/chair/throne{
-	color = "#FF0000"
-	},
 /obj/effect/landmark/start{
 	name = "Red Captain"
 	},
+/obj/structure/bed/chair/throne/red,
 /turf/simulated/floor/wood,
 /area/warfare/homebase/red/div)
 "rb" = (
