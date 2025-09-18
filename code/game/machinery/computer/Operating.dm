@@ -5,7 +5,8 @@
 	density = 1
 	anchored = 1.0
 	//icon_keyboard = "computah"
-	//icon_screen = "computah"
+	icon_screen = "crew"
+	light_color = "#00b000"
 	circuit = /obj/item/circuitboard/operating
 	//icon = 'icons/obj/surgery.dmi'
 	//icon_state = "computah"

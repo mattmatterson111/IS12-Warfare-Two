@@ -16,7 +16,7 @@
 /obj/item/storage/box/bodybags
 	name = "body bags"
 	desc = "This box contains body bags."
-	icon_state = "bodybags"
+	icon_state = "box"
 	New()
 		..()
 		new /obj/item/bodybag(src)
