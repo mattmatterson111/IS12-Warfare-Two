@@ -17,7 +17,7 @@
 
 /obj/structure/warfare_itemeater/blue
 	icon_state = "ie-b"
-	id = RED_TEAM
+	id = BLUE_TEAM
 
 /obj/structure/warfare_itemeater/attackby(obj/item/O, mob/user)
 	if(istype(O, /obj/item/spacecash))
