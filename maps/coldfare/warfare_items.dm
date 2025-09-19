@@ -493,6 +493,15 @@
 	desc = "A metal dog tag. Functions like an ID."
 	grab_sound = 'sound/effects/dogtag_handle.ogg'
 
+/obj/item/card/id/dog_tag/attack_hand(mob/user)
+	if(!ishuman(user))
+		return
+	var/mob/living/carbon/human/H = user
+
+	if(warfare_faction == H.warfare_faction)
+		return
+	. = ..()
+
 /obj/item/card/id/dog_tag/proc/split(mob/user)
 	return FALSE
 /*
@@ -1380,3 +1389,45 @@ obj/item/storage/backpack/satchel/warfare/chestrig/blue/oldlmg
 /obj/item/clothing/suit/fire/New()
 	..()
 	slowdown_per_slot[slot_wear_suit] = 2
+
+// we really should make this into a bunch of files, instead of one large file..
+
+/obj/item/clothing/mask/gas/prac_mask/newmask
+	icon_state = "prac_new"
+	item_state = "prac_new"
+
+/obj/item/clothing/suit/prac_arpon/newapron
+	icon_state = "pracnew"
+	item_state = "pracnew"
+
+/obj/item/clothing/gloves/prac_gloves/newgloves
+	item_state = "pracnew"
+
+/obj/item/clothing/accessory/prac_cloth
+	name = "neckwarmer"
+	desc = "Comfy."
+	icon_state = "redprac"
+	item_state = "redprac"
+	w_class = ITEM_SIZE_SMALL
+	slot_flags = SLOT_TIE
+	warfare_team = RED_TEAM
+	canremove = FALSE
+	use_alt_layer = TRUE
+
+/obj/item/clothing/accessory/prac_cloth/attack_hand(mob/user)
+	if(ismob(loc))
+		return . = ..()
+	return FALSE
+
+/obj/item/clothing/accessory/prac_cloth/bone
+	icon_state = "redprac_bone"
+	item_state = "redprac_bone"
+
+/obj/item/clothing/accessory/prac_cloth/blue
+	icon_state = "blueprac"
+	item_state = "blueprac"
+	warfare_team = BLUE_TEAM
+
+/obj/item/clothing/accessory/prac_cloth/blue/bone
+	icon_state = "blueprac_bone"
+	item_state = "blueprac_bone"

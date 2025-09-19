@@ -40,21 +40,21 @@
 			return
 		var/to_grant = 0
 		for(var/i = 1, i <= toof.amount, i++)
-			to_grant += 5
+			to_grant += 3
 		qdel(toof)
 		GLOB.faction_dosh[id] += to_grant
 		playsound(src, 'sound/effects/thehatchin.ogg', 75, 0.25)
 		flick("[icon_state]_o", src)
 		return
 	else if(istype(O, /obj/item/clothing/head/helmet/redhelmet) && id == BLUE_TEAM || istype(O, /obj/item/clothing/head/helmet/bluehelmet) && id == RED_TEAM ) // meh
-		GLOB.faction_dosh[id] += 12
+		GLOB.faction_dosh[id] += 18
 		qdel(O)
 		playsound(src, 'sound/effects/thehatchin.ogg', 75, 0.25)
 		flick("[icon_state]_o", src)
 		return
 
 	else if(istype(O, /obj/item/card/id/dog_tag/red) && id == BLUE_TEAM || istype(O, /obj/item/card/id/dog_tag/blue) && id == RED_TEAM ) // meh
-		GLOB.faction_dosh[id] += 12
+		GLOB.faction_dosh[id] += 18
 		qdel(O)
 		playsound(src, 'sound/effects/thehatchin.ogg', 75, 0.25)
 		flick("[icon_state]_o", src)

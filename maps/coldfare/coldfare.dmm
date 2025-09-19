@@ -3117,12 +3117,6 @@
 	color = "#ffffff"
 	},
 /area/warfare/battlefield/capture_point/red/one)
-"lC" = (
-/obj/effect/landmark/start{
-	name = "Blue Practitioner"
-	},
-/turf/simulated/floor/concrete/random,
-/area/warfare/homebase/red)
 "lE" = (
 /obj/machinery/light/small/bunker{
 	dir = 1
@@ -11481,7 +11475,7 @@ VP
 ab
 uw
 dn
-lC
+nb
 dn
 bJ
 ab

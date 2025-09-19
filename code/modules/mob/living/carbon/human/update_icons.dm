@@ -682,7 +682,7 @@ var/global/list/damage_icon_parts = list()
 
 /mob/living/carbon/human/update_inv_neck(var/update_icons=1)
 	if(tie_slot)
-		overlays_standing[COLLAR_LAYER] = tie_slot.get_mob_overlay(src,slot_tie_str)
+		overlays_standing[tie_slot.use_alt_layer ? CHEST_HOLSTER_LAYER : COLLAR_LAYER] = tie_slot.get_mob_overlay(src,slot_tie_str)
 	else
 		overlays_standing[COLLAR_LAYER]	= null
 	if(update_icons)   update_icons()
