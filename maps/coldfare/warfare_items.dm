@@ -1415,8 +1415,6 @@ obj/item/storage/backpack/satchel/warfare/chestrig/blue/oldlmg
 	use_alt_layer = TRUE
 
 /obj/item/clothing/accessory/prac_cloth/attack_hand(mob/user)
-	if(ismob(loc))
-		return . = ..()
 	return FALSE
 
 /obj/item/clothing/accessory/prac_cloth/bone
