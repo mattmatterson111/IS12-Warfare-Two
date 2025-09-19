@@ -11,7 +11,7 @@
 	//to_chat(usr, "[ckey] -[key] down") //(DEBUG)
 	// for writing stuff
 	if(key in list("1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "Numpad1", "Numpad2", "Numpad3", "Numpad4", "Numpad5", "Numpad6", "Numpad7", "Numpad8", "Numpad9", "Numpad0")) // for number stuff // TODO: Add numpad support.
-		switch(key)
+	/*	switch(key)
 			if("Numpad0") key = "0"
 			if("Numpad1") key = "1"
 			if("Numpad2") key = "2"
@@ -21,7 +21,7 @@
 			if("Numpad6") key = "6"
 			if("Numpad7") key = "7"
 			if("Numpad8") key = "8"
-			if("Numpad9") key = "9"
+			if("Numpad9") key = "9" */
 		var/atom/A = mob.get_active_hand()
 		if(A)
 			if(A.keyPress(null, mob)) // for items we hold

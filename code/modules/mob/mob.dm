@@ -1217,6 +1217,16 @@ mob/proc/yank_out_object()
 	set name = "body-l-leg"
 	set hidden = 1
 	toggle_zone_sel(list(BP_L_LEG,BP_L_FOOT))
+	
+/client/verb/body_throat()
+	set name = "body-throat"
+	set hidden = 1
+	toggle_zone_sel(list(BP_THROAT))
+
+/client/verb/body_mouth()
+	set name = "body-mouth"
+	set hidden = 1
+	toggle_zone_sel(list(BP_MOUTH))
 
 /client/proc/toggle_zone_sel(list/zones)
 	if(!check_has_body_select())

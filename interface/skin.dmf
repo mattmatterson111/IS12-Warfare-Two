@@ -541,6 +541,12 @@ macro "hotkeymode"
 		name = "Numpad8"
 		command = "body-toggle-head"
 	elem 
+		name = "Numpad7"
+		command = "body-throat"
+	elem 
+		name = "Numpad9"
+		command = "body-mouth"
+	elem 
 		name = "F1"
 		command = "adminhelp"
 	elem 
