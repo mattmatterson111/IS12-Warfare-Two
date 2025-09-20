@@ -45,96 +45,104 @@
 
 	var/dat
 
-	var/admin = {"<span class='interface'>
-<h3>Admin:</h3>
-<br>F5 = Aghost (admin-ghost)
-<br>F6 = player-panel-new
-<br>F7 = admin-pm
-<br>F8 = Invisimin
-</span>"}
+	var/admin = {"Admin:
+F5 = Aghost (admin-ghost)
+F6 = player-panel-new
+F7 = admin-pm
+F8 = Invisimin
+"}
 
-	var/hotkey_mode = {"<span class='interface'>
-<h3>Hotkey-Mode: (hotkey-mode must be on)</h3>
-<br>TAB = toggle hotkey-mode
-<br>a = left
-<br>s = down
-<br>d = right
-<br>w = up
-<br>pgup = move-upwards
-<br>pgdown = move-down
-<br>q = drop
-<br>e = equip
-<br>r = throw
-<br>t = say
-<br>c = toggle combat mode
-<br>o = OOC
-<br>5 = emote
-<br>x = swap-hand
-<br>z = activate held object (or y)
-<br>f = toggle fixeye
-<br>shift+f = look up
-<br>shift+x = wield weapon
-<br>shift+z = toggle safety/unjam gun
-<br>1 = help-intent
-<br>2 = disarm-intent
-<br>3 = grab-intent
-<br>4 = harm-intent
-<br>space OR v = crouch
-</span>"}
+	var/hotkey_mode = {"Hotkey-Mode: (hotkey-mode must be on)
+TAB = Selects chat bar at bottom right
+a = left
+s = down
+d = right
+w = up
+pgup = move-upwards
+pgdown = move-down
+q = drop
+e = equip/draw gun from back
+r = throw
+t = say
+g = toggle rest
+o = OOC
+x = swap-hand
+z/y = activate held object (or y)
+f = toggle fixeye
+shift+f = look up
+shift+x = wield weapon
+shift+z = toggle safety/unjam gun
+1 = help-intent
+2 = disarm-intent
+3 = grab-intent
+4 = harm-intent
+space OR v = crouch
+Numpad 1 - Target Left Leg/Left Foot
+Numpad 2 - Target Groin
+Numpad 3 - Target Right leg/Right Foot
+Numpad 4 - Target Left Arm/Hand
+Numpad 5 - Target Body
+Numpad 6 - Target Right Arm/Hand
+Numpad 7 - Target Neck
+Numpad 8 - Target Head/Neck/Eyes/Mouth
+Numpad 9 - Target Mouth
+_____________
+"}
 
-	var/other = {"<span class='interface'>
-<h3>Any-Mode: (hotkey doesn't need to be on)</h3>
-<br>Ctrl+a = left
-<br>Ctrl+s = down
-<br>Ctrl+d = right
-<br>Ctrl+w = up
-<br>Ctrl+q = drop
-<br>Ctrl+e = equip
-<br>Ctrl+r = throw
-<br>Ctrl+x or Middle Mouse = swap-hand
-<br>Ctrl+z = activate held object (or Ctrl+y)
-<br>Ctrl+f = cycle-intents-left
-<br>Ctrl+g = cycle-intents-right
-<br>Ctrl+1 = help-intent
-<br>Ctrl+2 = disarm-intent
-<br>Ctrl+3 = grab-intent
-<br>Ctrl+4 = harm-intent
-<br>F1 = adminhelp
-<br>F2 = ooc
-<br>F3 = say
-<br>F4 = emote
-<br>DEL = pull
-<br>INS = cycle-intents-right
-<br>HOME = drop
-<br>PGUP or Middle Mouse = swap-hand
-<br>PGDN = activate held object
-<br>END = throw
-<br>Ctrl + Click = drag
-<br>Shift + Click = examine
-<br>Alt + Click = show entities on turf
-<br>Ctrl + Alt + Click = interact with certain items
-</span>"}
+	var/other = {"Any-Mode: (hotkey doesn't need to be on)
+Ctrl+a = left
+Ctrl+s = down
+Ctrl+d = right
+Ctrl+w = up
+Ctrl+q = drop
+Ctrl+e = equip
+Ctrl+r = throw
+Ctrl+x or Middle Mouse (when jump or kick isn't selected) = swap-hand
+Ctrl+z = activate held object (or Ctrl+y)
+Ctrl+f = cycle-intents-left
+Ctrl+g = cycle-intents-right
+Ctrl+1 = help-intent
+Ctrl+2 = disarm-intent
+Ctrl+3 = grab-intent
+Ctrl+4 = harm-intent
+F1 = adminhelp
+F2 = ooc
+F3 = say
+F4 = emote
+DEL = pull
+INS = cycle-intents-right
+HOME = drop
+PGUP or Middle Mouse = swap-hand
+PGDN = activate held object
+END = throw
+Ctrl + Click = drag/undrag
+Shift + Click = examine
+Alt + Click = show entities on turf
+Ctrl + Alt + Click = interact with certain items
+_____________
+"}
 
-	var/special_controls = {"<span class='interface'>
-<h3>Speacial Controls:</h3>
-<br>look up = RMB+Fixeye button OR Shift+F
-<br>look into distance = ALT+RMB
-<br>give = RMB+help intent
-<br>wave friendly = RMB+help intent at a distance
-<br>threaten = RMB+harm intent at a distance
-<br>toggle fullscreen = CTRL+ENTER
-<br>jump = select "jump" on the UI and middle click
-<br>kick = select "kick" on the UI and middle click
-</span>"}
+	var/special_controls = {"Speacial Controls:
+look up = RMB+Fixeye button OR Shift+F
+look into distance = ALT+RMB
+give = RMB+help intent
+wave friendly = RMB+help intent at a distance
+threaten = RMB+harm intent at a distance
+crawl - When resting/prone click in a direction
+toggle fullscreen = CTRL+ENTER
+jump = select "jump" on the UI and middle click
+kick = select "kick" on the UI and middle click
+_____________
+"}
 
-	var/gun_controls = {"<span class='interface'>
-<h3>Weapon controls:</h3>
-<br>toggle safety = RMB on gun OR shift+z
-<br>do special attack = RMB + harm intent + combat mode
-<br>unload gun = click drag into empty hand
-<br>clean gun = ALT + Click on gun
-<br>unjam gun = RMB on gun when it's jammed
-</span>"}
+	var/gun_controls = {"Weapon controls:
+toggle safety = RMB on gun OR shift+z
+do special attack = RMB + harm intent + combat mode
+unload gun = click drag into empty hand
+clean gun = ALT + Click on gun
+unjam gun = RMB on gun when it's jammed
+_____________
+"}
 
 	var/robot_hotkey_mode = {"<span class='interface'>
 <h3>Hotkey-Mode: (hotkey-mode must be on)</h3>
