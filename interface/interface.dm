@@ -86,6 +86,7 @@ Numpad 6 - Target Right Arm/Hand
 Numpad 7 - Target Neck
 Numpad 8 - Target Head/Neck/Eyes/Mouth
 Numpad 9 - Target Mouth
+_____________
 "}
 
 	var/other = {"Any-Mode: (hotkey doesn't need to be on)
@@ -118,6 +119,7 @@ Ctrl + Click = drag/undrag
 Shift + Click = examine
 Alt + Click = show entities on turf
 Ctrl + Alt + Click = interact with certain items
+_____________
 "}
 
 	var/special_controls = {"Speacial Controls:
@@ -130,6 +132,7 @@ crawl - When resting/prone click in a direction
 toggle fullscreen = CTRL+ENTER
 jump = select "jump" on the UI and middle click
 kick = select "kick" on the UI and middle click
+_____________
 "}
 
 	var/gun_controls = {"Weapon controls:
@@ -138,6 +141,7 @@ do special attack = RMB + harm intent + combat mode
 unload gun = click drag into empty hand
 clean gun = ALT + Click on gun
 unjam gun = RMB on gun when it's jammed
+_____________
 "}
 
 	var/robot_hotkey_mode = {"<span class='interface'>
