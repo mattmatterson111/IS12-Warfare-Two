@@ -430,7 +430,7 @@
 
 
 /obj/item/gun/projectile/automatic/m22/warmonger/m14/battlerifle
-	name = "Mk.1 Armageddon"
+	name = "Mk.2 Armageddon"
 	desc = "A factory-produced and oiled semi-automatic carbine that's much nicer than whatever scraps those medics are using."
 	icon_state = "battlerifle"
 	item_state = "battlerifle"
@@ -440,7 +440,7 @@
 	magazine_type = /obj/item/ammo_magazine/a762/m14/battlerifle_mag
 	allowed_magazines = list(/obj/item/ammo_magazine/a762/m14/battlerifle_mag, /obj/item/ammo_magazine/c45rifle/akarabiner)
 	gun_type = GUN_SEMIAUTO
-	
+
 	loaded_icon = "battlerifle"
 	unwielded_loaded_icon = "battlerifle"
 	wielded_loaded_icon = "battlerifle-wielded"
@@ -453,8 +453,8 @@
 
 
 /obj/item/gun/projectile/automatic/m22/warmonger/m14/battlerifle/rsc
-	name = "Mk.2 Armageddon"
-	desc = "An alternate version of the Armageddon carbine, utilizing a specific clip design. It might just hold up in a real fight."
+	name = "Mk.1 Armageddon"
+	desc = "The first interation of the Armageddon carbine, utilizing a specific clip design. It's bad, but it might just hold up in a real fight."
 	icon_state = "rsc"
 	item_state = "rsc"
 	wielded_item_state = "rsc-wielded"
