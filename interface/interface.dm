@@ -77,6 +77,15 @@ shift+z = toggle safety/unjam gun
 3 = grab-intent
 4 = harm-intent
 space OR v = crouch
+Numpad 1 - Target Left Leg/Left Foot
+Numpad 2 - Target Groin
+Numpad 3 - Target Right leg/Right Foot
+Numpad 4 - Target Left Arm/Hand
+Numpad 5 - Target Body
+Numpad 6 - Target Right Arm/Hand
+Numpad 7 - Target Neck
+Numpad 8 - Target Head/Neck/Eyes/Mouth
+Numpad 9 - Target Mouth
 "}
 
 	var/other = {"Any-Mode: (hotkey doesn't need to be on)
