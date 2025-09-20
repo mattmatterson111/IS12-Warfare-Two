@@ -1175,8 +1175,7 @@ obj/item/storage/backpack/satchel/warfare/chestrig/blue/oldlmg
 //Adding names to the book
 /obj/item/black_book/proc/add_name(mob/target as mob, mob/user as mob) //Adding people to the book
 	GLOB.bright_futures.Add(target)
-	to_chat(user,SPAN_NOTICE("You add [target.name] to the lists of the book."))
-	user.visible_message(SPAN_WARNING("[user.name] writes down something in their little black book..."))
+	user.visible_message(SPAN_WARNING("[user.name] writes down something in their little black book..."), SPAN_NOTICE("You add [target.name] to the lists of the book."))
 
 //Checking for duplicates - causes a whole heap of shitcode issues if done outside of a proc
 /obj/item/black_book/proc/check_for_duplicate(mob/target as mob, mob/user as mob)
@@ -1196,7 +1195,7 @@ obj/item/storage/backpack/satchel/warfare/chestrig/blue/oldlmg
 //Interaction with a pen
 /obj/item/black_book/attackby(obj/item/P as obj, mob/user as mob)
 	if(istype(P,/obj/item/pen))
-		user.visible_message(SPAN_WARNING("[user.name] begins to open and flip through the pages of the [name]"))
+		user.visible_message(SPAN_WARNING("[user.name] begins to open and flip through the pages of the [name]"), "You open the book, flipping through the pages..")
 		var/luckcyFella = input(user,"Who would you like to write down in the book?","Political Morale Duties") as null|text
 		if(!luckcyFella)
 			return
@@ -1217,21 +1216,21 @@ obj/item/storage/backpack/satchel/warfare/chestrig/blue/oldlmg
 		return
 	if(user.a_intent == I_HURT && user.Adjacent(target) && user.zone_sel.selecting == BP_HEAD)
 		playsound(get_turf(src), 'sound/effects/slap.ogg', 100, 1)
-		target.ear_deaf += 15
-		target.ear_damage += 5
+		target.ear_deaf += 5
+		target.ear_damage += 2
 		target.apply_damage(10, BRUTE, BP_HEAD, target.run_armor_check(BP_HEAD, "melee"))
 		target.flash_pain()
-		user.visible_message(SPAN_WARNING("[user.name] slams the [name] shut, aiming for [target.name]'s head and delivering a swift smack to the side of it."))
+		user.visible_message(SPAN_WARNING("[user.name] slams the [name] against the side of [target]'s head!."), "You smack them :)")
 		return
 	if((istype(target,/mob/living/carbon/human)) && !check_for_duplicate(target,user) && check_for_the_pen(user))
-		user.visible_message(SPAN_WARNING("[user.name] begins to open and flip through the pages of the [name]"))
+		user.visible_message(SPAN_WARNING("[user.name] begins to open and flip through the pages of the [name]"), "You open the book, flipping through the pages..")
 		var/confirmation = alert("Are you sure [target.name] should be added to the book?", "Political Morale Duties", "Yes", "No")
 		if(confirmation == "Yes")
 			target.add_event("booked",/datum/happiness_event/booked)
 			add_name(target,user)
 			playsound(get_turf(src), "sound/effects/paper/sign[rand(1,4)].ogg", 75, 0.25)
 		else
-			user.visible_message(SPAN_WARNING("[user.name] slams the [name] shut, their gaze shooting towards [target.name] for a split second."))
+			user.visible_message(SPAN_WARNING("[user.name] slams the [name] shut, their gaze shooting towards [target.name] for a split second."), SPAN_NOTICE("You glare at [target.name]."))
 
 
 //BLACK BOOK END
@@ -1324,9 +1323,10 @@ obj/item/storage/backpack/satchel/warfare/chestrig/blue/oldlmg
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 	helmet_vision = FALSE
 	worldicons = "sniperworld"
+	canremove = FALSE
 
 /obj/item/clothing/mask/gas/blue/flamer
-	icon_state = "flamer_blue"
+	icon_state = "flamer_red"
 	item_state = "flamer_blue"
 	flags_inv = HIDEEARS|HIDEEYES|HIDEFACE|BLOCKHAIR
 	body_parts_covered = FACE|EYES
@@ -1334,21 +1334,23 @@ obj/item/storage/backpack/satchel/warfare/chestrig/blue/oldlmg
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 	helmet_vision = FALSE
 	worldicons = "sniperworld"
-
-/obj/item/clothing/shoes/jackboots/warfare/red/flamer
-	item_state = "flamer_red"
-
-/obj/item/clothing/shoes/jackboots/warfare/blue/flamer
-	item_state = "flamer_blue"
-
+	canremove = FALSE
 
 /obj/item/clothing/gloves/thick/swat/combat/warfare/red/flamer
 	icon_state = "flamer_red"
 	item_state = "flamer_red"
+	canremove = FALSE
 
 /obj/item/clothing/gloves/thick/swat/combat/warfare/blue/flamer
-	icon_state = "flamer_blue"
-	item_state = "flamer_blue"
+	icon_state = "flamer_red"
+	item_state = "flamer_red"
+	canremove = FALSE
+
+/obj/item/clothing/shoes/jackboots/warfare/red/flamer
+	item_state = "soldier"
+
+/obj/item/clothing/shoes/jackboots/warfare/blue/flamer
+	item_state = "soldier"
 
 /obj/item/clothing/suit/fire
 	var/last_sound = null
@@ -1365,6 +1367,7 @@ obj/item/storage/backpack/satchel/warfare/chestrig/blue/oldlmg
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 	flags_inv = null
+	canremove = FALSE
 
 /obj/item/clothing/suit/fire/blue
 	name = "Bluecoats Firesuit"
@@ -1374,6 +1377,7 @@ obj/item/storage/backpack/satchel/warfare/chestrig/blue/oldlmg
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 	flags_inv = null
+	canremove = FALSE
 
 /obj/item/clothing/suit/fire/handle_movement(var/turf/walking, var/running)
 	last_sound = pick(footstep_sounds - last_sound)

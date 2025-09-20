@@ -133,7 +133,7 @@
 	shotgun_skill = 3
 	lmg_skill = 10
 	smg_skill = 3
-	can_be_in_squad = TRUE
+	can_be_in_squad = FALSE
 	// open_when_dead = TRUE
 
 	squad_overlay = "heavy_weaponry"
@@ -160,7 +160,7 @@
 	shotgun_skill = 3
 	lmg_skill = 3
 	smg_skill = 3
-	can_be_in_squad = TRUE
+	can_be_in_squad = FALSE
 	close_when_dead = TRUE
 
 	spawn_in_cryopod = TRUE
