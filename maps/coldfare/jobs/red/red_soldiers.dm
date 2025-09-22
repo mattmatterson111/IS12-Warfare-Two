@@ -277,17 +277,11 @@
 		backpack_contents = initial(backpack_contents)
 		belt = null
 
-	else if (prob(5))
+	else if(prob(5))
 		suit_store = /obj/item/gun/projectile/automatic/m22/warmonger/m14/battlerifle/rsc
 		r_pocket =  /obj/item/ammo_magazine/a762/rsc
 		backpack_contents = list(/obj/item/grenade/smokebomb = 1)
 		belt = /obj/item/storage/belt/armageddon
-
-	else if (prob(15))
-		suit_store = /obj/item/gun/projectile/shotgun/pump/boltaction/good
-		r_pocket =  /obj/item/ammo_box/rifle/modern
-		backpack_contents = initial(backpack_contents)
-		belt = null
 
 	else if(prob(25))
 		suit_store = /obj/item/gun/projectile/shotgun/pump/boltaction/shitty/leverchester
@@ -314,31 +308,35 @@
 	..()
 
 /decl/hierarchy/outfit/job/redsoldier/sgt
+	suit_store = /obj/item/gun/projectile/shotgun/pump/boltaction/shitty/leverchester
+	r_pocket = /obj/item/ammo_box/rifle
+	backpack_contents = list(/obj/item/grenade/smokebomb = 1, /obj/item/clothing/mask/gas/red = 1)
 
 /decl/hierarchy/outfit/job/redsoldier/sgt/equip()
-	if(prob(1))
+	if(prob(10))
 		suit_store = /obj/item/gun/projectile/shotgun/pump/shitty/sawn
 		r_pocket = /obj/item/ammo_box/shotgun
-	else if(prob(40))
+
+	else if(prob(25))
+		suit_store = /obj/item/gun/projectile/shotgun/pump/shitty
+		r_pocket = /obj/item/ammo_box/shotgun
+
+	else if(prob(5))
+		suit_store = /obj/item/gun/projectile/automatic/m22/warmonger/m14/battlerifle/rsc
+		r_pocket =  /obj/item/ammo_magazine/a762/rsc
+		backpack_contents = list(/obj/item/grenade/smokebomb = 1)
+		belt = /obj/item/storage/belt/armageddon
+
+	else if(prob(5))
 		suit_store = /obj/item/gun/projectile/automatic/m22/warmonger/fully_auto
 		backpack_contents = list(/obj/item/clothing/mask/gas/red = 1)
 		r_pocket = /obj/item/grenade/smokebomb
-		chest_holster = /obj/item/storage/backpack/satchel/warfare/chestrig/red/soldier
-	else if(prob(25))
-		suit_store = /obj/item/gun/projectile/automatic/m22/warmonger/fully_auto/ersatz
-		r_pocket = /obj/item/grenade/smokebomb
-		backpack_contents = list(/obj/item/clothing/mask/gas/red = 1)
 		chest_holster = /obj/item/storage/backpack/satchel/warfare/chestrig/red/soldier
 	else if(prob(5)) //I am light weapons guy. And this is my weapon.
 		suit_store = /obj/item/gun/projectile/automatic/m22/warmonger/fully_auto/oldlmg
 		r_pocket = /obj/item/grenade/smokebomb
 		backpack_contents = list(/obj/item/clothing/mask/gas/red = 1)
 		chest_holster = /obj/item/storage/backpack/satchel/warfare/chestrig/red/oldlmg
-	else
-		suit_store =/obj/item/gun/projectile/automatic/m22/warmonger/m14
-		r_pocket = /obj/item/grenade/smokebomb
-		chest_holster = /obj/item/storage/backpack/satchel/warfare/chestrig/red/sl
-		backpack_contents = list(/obj/item/clothing/mask/gas/red = 1)
 /*
 	if(prob(50))//Give them an MRE. They're going to be out there a while.
 		backpack_contents += list(/obj/item/storage/box/mre = 1)

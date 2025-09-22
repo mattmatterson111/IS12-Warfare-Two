@@ -307,31 +307,35 @@
 	..()
 
 /decl/hierarchy/outfit/job/bluesoldier/sgt
+	suit_store = /obj/item/gun/projectile/shotgun/pump/boltaction/shitty/leverchester
+	r_pocket = /obj/item/ammo_box/rifle
+	backpack_contents = list(/obj/item/grenade/smokebomb = 1, /obj/item/clothing/mask/gas/blue = 1)
 
 /decl/hierarchy/outfit/job/bluesoldier/sgt/equip()
-	if(prob(1))
+	if(prob(10))
 		suit_store = /obj/item/gun/projectile/shotgun/pump/shitty/sawn
 		r_pocket = /obj/item/ammo_box/shotgun
-	else if(prob(40))
-		suit_store = /obj/item/gun/projectile/automatic/m22/warmonger/fully_auto/nemesis
-		r_pocket = /obj/item/grenade/smokebomb
-		backpack_contents = list(/obj/item/clothing/mask/gas/blue = 1)
-		chest_holster = /obj/item/storage/backpack/satchel/warfare/chestrig/blue/soldier
+
 	else if(prob(25))
-		suit_store = /obj/item/gun/projectile/automatic/m22/warmonger/fully_auto/ersatz
-		r_pocket = /obj/item/grenade/smokebomb
+		suit_store = /obj/item/gun/projectile/shotgun/pump/shitty
+		r_pocket = /obj/item/ammo_box/shotgun
+
+	else if(prob(5))
+		suit_store = /obj/item/gun/projectile/automatic/m22/warmonger/m14/battlerifle/rsc
+		r_pocket =  /obj/item/ammo_magazine/a762/rsc
+		backpack_contents = list(/obj/item/grenade/smokebomb = 1)
+		belt = /obj/item/storage/belt/armageddon
+
+	else if(prob(5))
+		suit_store = /obj/item/gun/projectile/automatic/m22/warmonger/fully_auto
 		backpack_contents = list(/obj/item/clothing/mask/gas/blue = 1)
+		r_pocket = /obj/item/grenade/smokebomb
 		chest_holster = /obj/item/storage/backpack/satchel/warfare/chestrig/blue/soldier
 	else if(prob(5)) //I am light weapons guy. And this is my weapon.
 		suit_store = /obj/item/gun/projectile/automatic/m22/warmonger/fully_auto/oldlmg
 		r_pocket = /obj/item/grenade/smokebomb
 		backpack_contents = list(/obj/item/clothing/mask/gas/blue = 1)
 		chest_holster = /obj/item/storage/backpack/satchel/warfare/chestrig/blue/oldlmg
-	else
-		suit_store =/obj/item/gun/projectile/automatic/m22/warmonger/m14/battlerifle
-		r_pocket = /obj/item/grenade/smokebomb
-		chest_holster = /obj/item/storage/backpack/satchel/warfare/chestrig/blue/sl
-		backpack_contents = list(/obj/item/clothing/mask/gas/blue = 1)
 /*
 	if(prob(50))//Give them an MRE. They're going to be out there a while.
 		backpack_contents += list(/obj/item/storage/box/mre = 1)
@@ -343,9 +347,9 @@
 	..()
 
 /decl/hierarchy/outfit/job/bluesoldier/engineer
-	r_pocket = /obj/item/ammo_magazine/mc9mmt/machinepistol
+	//r_pocket = /obj/item/ammo_magazine/mc9mmt/machinepistol
 	l_pocket = /obj/item/wirecutters
-	suit_store = /obj/item/gun/projectile/automatic/machinepistol
+	//suit_store = /obj/item/gun/projectile/automatic/machinepistol
 	back = /obj/item/storage/backpack/warfare
 	backpack_contents = list(/obj/item/stack/barbwire = 1, /obj/item/shovel = 1, /obj/item/defensive_barrier = 4, /obj/item/storage/box/ifak = 1)
 
