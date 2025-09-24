@@ -509,6 +509,7 @@ GLOBAL_LIST_EMPTY(running_alarms)
 	icon_state = "loudspeaker"
 	anchored = TRUE
 	plane = ABOVE_HUMAN_PLANE
+	desc = "Something your captain will shout at you from."
 	var/id = 0
 	var/in_use_by = null
 
