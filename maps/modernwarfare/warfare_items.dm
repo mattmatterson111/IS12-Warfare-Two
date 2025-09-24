@@ -791,7 +791,7 @@
 
 /obj/item/storage/belt/armageddon
 	name = "ammo belt"
-	desc = "Great for holding ammo! This one starts with Armageddon magazines."
+	desc = "Great for holding ammo! This one starts with Armageddon clips."
 	icon_state = "warfare_belt"
 	item_state = "warfare_belt"
 	can_hold = list(

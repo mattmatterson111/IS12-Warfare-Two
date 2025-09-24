@@ -106,7 +106,7 @@
 
 /obj/item/ammo_magazine/brifle
 	name = "Rifle Box"
-	desc = "A box of rifle ammo"
+	desc = "A box of rifle ammo."
 	icon_state = "rbox"
 	caliber = "763"
 	ammo_type = /obj/item/ammo_casing/brifle
@@ -142,7 +142,7 @@
 
 /obj/item/gun/projectile/shotgun/pump/shitty/sawn
 	name = "\improper Sawn Off WTX Frontier Special"
-	desc = "Purposely cut down and made shorter, it still packs the same punch as its longer brother but in a more compact package. , I can’t help but wonder if it’s even reliable."
+	desc = "Purposely cut down and made shorter, it still packs the same punch as its longer brother but in a more compact package. I can’t help but wonder if it’s even reliable."
 	icon_state = "sawnchester"
 	item_state = "sawnchester"
 	wielded_item_state = "sawnchester-wielded"
@@ -476,6 +476,7 @@
 	icon_state = "rsc"
 	name = "Armageddon clip"
 	max_ammo = 5
+	desc = "A clip for the MK.1 Armageddon."
 	caliber = "763"
 	ammo_type = /obj/item/ammo_casing/brifle
 
@@ -884,7 +885,7 @@
 	unloaded_icon = "colt-e"
 	item_state = "handgun"
 	fire_sound = "sound/weapons/guns/fire/pistol1.ogg"
-	desc = "Potent handgun that fires an unwieldy and unusual caliber, denotated 'Wristfucker'"
+	desc = "Potent handgun that fires an unwieldy and unusual caliber, denotated 'Wristfucker'."
 	magazine_type = /obj/item/ammo_magazine/a50
 	allowed_magazines = /obj/item/ammo_magazine/a50
 	caliber = ".50"
