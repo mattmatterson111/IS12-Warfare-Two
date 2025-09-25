@@ -255,7 +255,7 @@
 		H.say(";Scav reporting for duty!")
 
 /decl/hierarchy/outfit/job/redsoldier
-	name = OUTFIT_JOB_NAME("Soldier")
+	name = OUTFIT_JOB_NAME("Red Soldier")
 	head = /obj/item/clothing/head/helmet/redhelmet
 	uniform = /obj/item/clothing/under/red_uniform
 	shoes = /obj/item/clothing/shoes/jackboots/warfare/red
@@ -454,6 +454,7 @@
 	..()
 
 /decl/hierarchy/outfit/job/redsoldier/leader
+	name = OUTFIT_JOB_NAME("Red Captain")
 	glasses = /obj/item/clothing/glasses/sunglasses
 	suit = /obj/item/clothing/suit/armor/redcoat/leader
 	head = /obj/item/clothing/head/warfare_officer/redofficer

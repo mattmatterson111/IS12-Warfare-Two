@@ -63,6 +63,7 @@
 			to_chat(H, SPAN_YELLOW("You brought a nice hat from home."))
 
 /decl/hierarchy/outfit/job/medical/doctor/red
+	name = "RED PRACTITIONER"
 	uniform = /obj/item/clothing/under/prac_under
 	back = /obj/item/storage/backpack/satchel/warfare
 	gloves = /obj/item/clothing/gloves/prac_gloves/newgloves

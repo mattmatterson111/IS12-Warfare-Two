@@ -64,6 +64,7 @@
 
 
 /decl/hierarchy/outfit/job/medical/doctor/blue
+	name = "BLUE PRACTITIONER"
 	uniform = /obj/item/clothing/under/prac_under
 	back = /obj/item/storage/backpack/satchel/warfare
 	gloves = /obj/item/clothing/gloves/prac_gloves

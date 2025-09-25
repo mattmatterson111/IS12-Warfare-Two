@@ -24,6 +24,7 @@
 	warfare_team = ""
 
 /decl/hierarchy/outfit/soldier
+	name = "SOLDIER"
 	suit = /obj/item/clothing/suit/storage/toggle/soldier
 	mask = /obj/item/clothing/mask/soldier
 	chest_holster = /obj/item/storage/backpack/satchel/warfare/chestrig/soldier
@@ -33,4 +34,5 @@
 	flags = OUTFIT_NO_BACKPACK|OUTFIT_NO_SURVIVAL_GEAR
 
 /decl/hierarchy/outfit/soldier/leader
+	name = "SOLDIER LEADER"
 	head = /obj/item/clothing/head/warfare_officer/redofficer/squadleader

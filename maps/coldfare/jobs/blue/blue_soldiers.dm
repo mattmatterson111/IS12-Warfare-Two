@@ -453,6 +453,7 @@
 	..()
 
 /decl/hierarchy/outfit/job/bluesoldier/leader
+	name = OUTFIT_JOB_NAME("Blue Captain")
 	glasses = /obj/item/clothing/glasses/sunglasses
 	suit = /obj/item/clothing/suit/armor/bluecoat/leader
 	head = /obj/item/clothing/head/warfare_officer/blueofficer

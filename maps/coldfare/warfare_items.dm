@@ -1139,6 +1139,7 @@ obj/item/storage/backpack/satchel/warfare/chestrig/blue/oldlmg
 
 
 /decl/hierarchy/outfit/moraleofficer
+	name = "Morale Officer's Outfit"
 	gloves = /obj/item/clothing/gloves/moraleofficer
 	glasses = /obj/item/clothing/glasses/sunglasses
 	suit = /obj/item/clothing/suit/armor/officer
@@ -1152,6 +1153,7 @@ obj/item/storage/backpack/satchel/warfare/chestrig/blue/oldlmg
 	back = /obj/item/storage/backpack/satchel
 	chest_holster = null
 	uniform = /obj/item/clothing/under/moraleofficer
+
 
 
 //MORALE OFFICER'S BLACK BOOK
