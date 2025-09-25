@@ -455,14 +455,15 @@
 	hud_elements |= mymob.pain
 
 	mymob.noise = new /obj/screen()
-	mymob.noise.icon = 'icons/mob/noise.dmi'
-	mymob.noise.icon_state = "[rand(1,9)]h"
+	mymob.noise.icon = 'icons/mob/largenoise.dmi'//'icons/mob/noise.dmi'
+	mymob.noise.icon_state = "1"//"[rand(1,9)]h"
 	mymob.noise.name = " "
-	mymob.noise.screen_loc = "WEST, SOUTH to EAST, NORTH"
+	mymob.noise.screen_loc = "WEST, SOUTH"
 	mymob.noise.plane = FULLSCREEN_PLANE
 	mymob.noise.layer = 1
 	mymob.noise.mouse_opacity = 0
-	mymob.noise.filters += filter(type="alpha", render_source="*Light_mask_RT")
+	mymob.noise.blend_mode = BLEND_OVERLAY
+	mymob.noise.alpha = 15
 	hud_elements |= mymob.noise
 
 	mymob.combat_icon = new /obj/screen()//combat mode
