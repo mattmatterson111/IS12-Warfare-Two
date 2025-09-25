@@ -192,10 +192,6 @@
 /area/warfare/homebase/red/div)
 "aB" = (
 /obj/structure/closet/crate,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
@@ -316,10 +312,6 @@
 /area/warfare/battlefield/capture_point/blue/two)
 "aQ" = (
 /obj/structure/closet/crate,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /obj/item/ammo_magazine/a762/m14,
@@ -348,18 +340,10 @@
 /area/warfare/battlefield/capture_point/blue/two)
 "aS" = (
 /obj/structure/closet/crate,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/blue)
 "aT" = (
 /obj/structure/closet/crate,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /obj/item/ammo_magazine/a762/m14,
 /obj/item/ammo_magazine/a762/m14,
@@ -667,10 +651,6 @@
 /area/warfare/battlefield/capture_point/red/two)
 "bQ" = (
 /obj/structure/closet/crate,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
@@ -832,10 +812,6 @@
 /area/warfare/homebase/red)
 "cm" = (
 /obj/structure/closet/crate,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
@@ -1067,10 +1043,6 @@
 /area/warfare/battlefield/capture_point/blue/one)
 "cQ" = (
 /obj/structure/closet/crate,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
@@ -1120,10 +1092,6 @@
 /area/warfare/battlefield/capture_point/blue/one)
 "cW" = (
 /obj/structure/closet/crate,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
@@ -1134,10 +1102,6 @@
 /area/warfare/battlefield/capture_point/blue/one)
 "cX" = (
 /obj/structure/closet/crate,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
@@ -1151,10 +1115,6 @@
 /area/warfare/battlefield/capture_point/blue/one)
 "cY" = (
 /obj/structure/closet/crate,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /obj/item/ammo_magazine/a762/m14,
@@ -1289,10 +1249,6 @@
 /area/warfare/battlefield/capture_point/red/one)
 "du" = (
 /obj/structure/closet/crate,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
@@ -1391,10 +1347,6 @@
 /area/warfare/battlefield/capture_point/red/two)
 "dG" = (
 /obj/structure/closet/crate,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
@@ -1410,10 +1362,6 @@
 /area/warfare/battlefield/capture_point/red/one)
 "dH" = (
 /obj/structure/closet/crate,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
@@ -1465,10 +1413,6 @@
 /area/warfare/homebase/blue/div)
 "dM" = (
 /obj/structure/closet/crate,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
@@ -1489,10 +1433,6 @@
 /area/warfare/homebase/blue)
 "dO" = (
 /obj/structure/closet/crate,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /obj/item/ammo_magazine/a762/m14,
@@ -1849,10 +1789,6 @@
 /area/warfare/homebase/blue)
 "eX" = (
 /obj/structure/closet/crate,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
@@ -2194,10 +2130,6 @@
 /area/warfare/battlefield/capture_point/blue/two)
 "gf" = (
 /obj/structure/closet/crate,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /obj/item/ammo_magazine/a762/m14/battlerifle_mag,
 /obj/item/ammo_magazine/a762/m14/battlerifle_mag,
@@ -2911,10 +2843,6 @@
 /area/warfare/battlefield/capture_point/blue/one)
 "jD" = (
 /obj/structure/closet/crate,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /obj/item/ammo_magazine/a762/m14,
@@ -3326,10 +3254,6 @@
 /area/warfare/homebase/blue/div)
 "mW" = (
 /obj/structure/closet/crate,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
@@ -3507,10 +3431,6 @@
 /area/space)
 "nD" = (
 /obj/structure/closet/crate,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /obj/item/ammo_magazine/a762/m14,
 /obj/item/ammo_magazine/a762/m14,
@@ -3848,10 +3768,6 @@
 /area/train/red)
 "pC" = (
 /obj/structure/closet/crate,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /obj/item/ammo_magazine/a762/m14,
 /obj/item/ammo_magazine/a762/m14,
@@ -3950,10 +3866,6 @@
 /area/warfare/battlefield/trench_section/underground)
 "qk" = (
 /obj/structure/closet/crate,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /obj/item/ammo_magazine/a762/m14,
 /obj/item/ammo_magazine/a762/m14,
@@ -5062,10 +4974,6 @@
 /area/warfare/homebase/blue)
 "wF" = (
 /obj/structure/closet/crate,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
@@ -5527,10 +5435,6 @@
 /area/warfare/homebase/red/div)
 "zO" = (
 /obj/structure/closet/crate,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
 /obj/item/ammo_magazine/a762/m14,
 /obj/item/ammo_magazine/a762/m14,
 /obj/item/ammo_magazine/a762/m14,
@@ -5582,7 +5486,7 @@
 /area/warfare/homebase/blue)
 "Ag" = (
 /obj/effect/landmark/start{
-	name = "Blue Practitioner"
+	name = "Red Practitioner"
 	},
 /turf/simulated/floor/stones,
 /area/warfare/homebase/red)
@@ -5751,10 +5655,6 @@
 /area/warfare/homebase/red/div)
 "Bc" = (
 /obj/structure/closet/crate,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/red)
 "Be" = (
@@ -6045,10 +5945,6 @@
 /area/warfare/battlefield/trench_section)
 "CA" = (
 /obj/structure/closet/crate,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
@@ -7819,10 +7715,6 @@
 /area/warfare/battlefield/capture_point/red/one)
 "Qh" = (
 /obj/structure/closet/crate,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
@@ -8344,10 +8236,6 @@
 /area/warfare/homebase/red)
 "Te" = (
 /obj/structure/closet/crate,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /obj/item/ammo_magazine/a762/m14/battlerifle_mag,
 /obj/item/ammo_magazine/a762/m14/battlerifle_mag,
@@ -8566,10 +8454,6 @@
 /area/warfare/battlefield/capture_point/red/one)
 "UC" = (
 /obj/structure/closet/crate,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
@@ -8881,10 +8765,6 @@
 /area/warfare/homebase/blue)
 "WS" = (
 /obj/structure/closet/crate,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
@@ -9066,10 +8946,6 @@
 /area/warfare/battlefield/capture_point/red/two)
 "Yd" = (
 /obj/structure/closet/crate,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /obj/item/ammo_magazine/a762/m14,
@@ -9097,10 +8973,6 @@
 /area/warfare/homebase/blue)
 "Yh" = (
 /obj/structure/closet/crate,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
@@ -9211,10 +9083,6 @@
 /area/warfare/homebase/blue)
 "YW" = (
 /obj/structure/closet/crate,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
-/obj/item/ammo_magazine/mc9mmt/machinepistol,
 /obj/item/ammo_magazine/a762/m14,
 /obj/item/ammo_magazine/a762/m14,
 /obj/item/ammo_magazine/a762/m14,
