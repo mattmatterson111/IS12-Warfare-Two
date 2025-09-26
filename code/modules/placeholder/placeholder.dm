@@ -395,7 +395,7 @@ GLOBAL_LIST_EMPTY(faction_dosh)
 	products = list(
 		// general ammo stuff
 		list("name" = "Rifle Ammo Pack", "price" = 50, "category" = "Brass.Co Ammunitions", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/ammo_box/rifle = 10)),
-		//list("name" = "Modern Rifle Ammo Pack", "price" = 50, "category" = "Brass.Co Ammunitions", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/ammo_box/rifle/modern = 10)),
+		list("name" = "Modern Rifle Ammo Pack", "price" = 50, "category" = "Brass.Co Ammunitions", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/ammo_box/rifle/modern = 10)),
 		//list("name" = "M41 Ammo Pack", "price" = 50, "category" = "Brass.Co Ammunitions", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/ammo_magazine/a762/m14 = 5)),
 		list("name" = "Shotgun Ammo Pack", "price" = 100, "category" = "Brass.Co Ammunitions", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/ammo_box/shotgun = 10)),
 		list("name" = "Pistol Ammo Pack", "price" = 50, "category" = "Brass.Co Ammunitions", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/ammo_magazine/c45m/warfare = 10, /obj/item/ammo_magazine/a50 = 5)),
