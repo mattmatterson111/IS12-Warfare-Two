@@ -67,6 +67,7 @@ SHIFT+e = Click on Belt slot
 CTRL+1 = Click on Left Pocket
 CTRL+2 = Click on Right Pocket
 CTRL+3 = Click on Chest Storage
+b = resist
 r = throw
 t = say
 g = toggle rest
