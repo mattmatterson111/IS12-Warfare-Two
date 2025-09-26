@@ -1,6 +1,7 @@
 /obj/item/organ/external/stump
 	name = "limb stump"
 	icon_name = ""
+	icon_state = ""
 	dislocated = -1
 
 /obj/item/organ/external/stump/New(var/mob/living/carbon/holder, var/internal, var/obj/item/organ/external/limb)

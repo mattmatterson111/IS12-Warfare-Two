@@ -84,7 +84,7 @@ GLOBAL_LIST_EMPTY(speaker_ids)
 /client/proc/set_warf_broadcast_id()
 	set name = "set warfare broadcast ID"
 	set desc = "redacted"
-	set category = "map control"
+	set category = "roleplay"
 
 	var/list/ids = list("CANCEL", "ALL") // Start with "ALL"
 	for(var/id in GLOB.speaker_ids)
@@ -97,7 +97,7 @@ GLOBAL_LIST_EMPTY(speaker_ids)
 /client/proc/set_warf_broadcast_template()
 	set name = "set warfare broadcast template"
 	set desc = "redacted"
-	set category = "map control"
+	set category = "roleplay"
 
 	var/choice = input("Select a template to use.") as anything in subtypesof(/datum/speakercast_template)
 	if(!choice) return
@@ -106,7 +106,7 @@ GLOBAL_LIST_EMPTY(speaker_ids)
 /client/proc/toggle_on_warf_speakers()
 	set name = "toggle on broadcast"
 	set desc = "redacted"
-	set category = "map control"
+	set category = "roleplay"
 
 	if(!holder) return
 	if(!length(GLOB.speakers)) return
@@ -123,7 +123,7 @@ GLOBAL_LIST_EMPTY(speaker_ids)
 /client/proc/toggle_off_warf_speakers()
 	set name = "toggle off broadcast"
 	set desc = "redacted"
-	set category = "map control"
+	set category = "roleplay"
 
 	if(!holder) return
 	if(!length(GLOB.speakers)) return
@@ -140,7 +140,7 @@ GLOBAL_LIST_EMPTY(speaker_ids)
 /client/proc/warfare_announcement()
 	set name = "make broadcast"
 	set desc = "redacted"
-	set category = "map control"
+	set category = "roleplay"
 
 	if(!holder) return
 	if(!length(GLOB.speakers)) return
@@ -175,15 +175,16 @@ GLOBAL_LIST_EMPTY(speaker_ids)
 		this_sound = pick(shuffle(broadcast_template.additional_talk_sound))
 	for(var/obj/structure/announcementspeaker/s in filtered)
 		for(var/mob/m in view(world.view + 8, get_turf(s)))
-			if(m.stat == UNCONSCIOUS || m.is_deaf() || m.stat == DEAD)
-				continue
+			if(!isobserver(m))
+				if(m.stat == UNCONSCIOUS || m.is_deaf() || m.stat == DEAD)
+					continue
 			mobstosendto |= m
 			soundoverlay(s, newplane = FOOTSTEP_ALERT_PLANE)
 			if(m.client)
 				clients |= m.client
 		// it got annoying REALLY FAST having them all being different..
 		playsound(get_turf(s), this_sound , broadcast_template.additional_talk_sound_volume, broadcast_template.additional_talk_sound_vary, ignore_walls = FALSE, extrarange = 4)
-		INVOKE_ASYNC(s, /atom/movable/proc/animate_chat, "<font color='[broadcast_template.rune_color]'><b>[text]", null, 0, clients, 5 SECONDS, 1)
+		INVOKE_ASYNC(s, PROC_BY_TYPE(/atom/movable, animate_chat), "<font color='[broadcast_template.rune_color]'><b>[text]", null, 0, clients, 5 SECONDS, 1)
 	for(var/mob/m in mobstosendto)
 		to_chat(m,"<h2><span class='[broadcast_template.speakerstyle]'>[broadcast_template.voice_name] [broadcast_template.voice_verb], \"<span class='[broadcast_template.textstyle]'>[text]</span>\"</span></h2>")
 
@@ -286,15 +287,16 @@ GLOBAL_LIST_EMPTY(speaker_ids)
 		if(id != s.id)
 			continue
 		for(var/mob/m in view(world.view + broadcast_range, get_turf(s)))
-			if(m.stat == UNCONSCIOUS || m.is_deaf() || m.stat == DEAD)
-				continue
+			if(!isobserver(m))
+				if(m.stat == UNCONSCIOUS || m.is_deaf() || m.stat == DEAD)
+					continue
 			mobstosendto |= m
 			soundoverlay(s, newplane = FOOTSTEP_ALERT_PLANE)
 			if(m.client)
 				clients |= m.client
 		// it got annoying REALLY FAST having them all being different..
 		playsound(get_turf(s), this_sound , speakercast.additional_talk_sound_volume, speakercast.additional_talk_sound_vary, ignore_walls = FALSE, extrarange = 4)
-		INVOKE_ASYNC(s, /atom/movable/proc/animate_chat, "<font color='[speakercast.rune_color]'><b>[msg]", null, 0, clients, 5 SECONDS, 1)
+		INVOKE_ASYNC(s, PROC_BY_TYPE(/atom/movable, animate_chat), "<font color='[speakercast.rune_color]'><b>[msg]", null, 0, clients, 5 SECONDS, 1)
 	for(var/mob/m in mobstosendto)
 		to_chat(m,"<h2><span class='[speakercast.speakerstyle]'>[spkrname] [verbtxt], \"<span class='[speakercast.textstyle]'>[msg]</span>\"</span></h2>")
 /*
@@ -418,8 +420,7 @@ GLOBAL_LIST_EMPTY(running_alarms)
 	if(!length(speakers))
 		message_admins("Could not run [type]. No speakers of type: [speaker_id] available.")
 		return
-	if(include_text)
-		to_world(include_text)
+
 	for(var/obj/structure/announcementspeaker/spk in speakers)
 		spk.in_use_by = src
 		affecting |= spk
@@ -433,7 +434,7 @@ GLOBAL_LIST_EMPTY(running_alarms)
 /client/proc/speaker_alarm_start()
 	set name = "start speaker alarm"
 	set desc = "redacted"
-	set category = "map control"
+	set category = "roleplay"
 
 	if(!holder) return
 
@@ -461,7 +462,7 @@ GLOBAL_LIST_EMPTY(running_alarms)
 /client/proc/speaker_alarm_stop()
 	set name = "stop speaker alarm"
 	set desc = "redacted"
-	set category = "map control"
+	set category = "roleplay"
 
 	if(!holder) return
 
@@ -485,7 +486,7 @@ GLOBAL_LIST_EMPTY(running_alarms)
 /client/proc/nuke_server()
 	set name = "nuke_server"
 	set desc = "redacted"
-	set category = "map control"
+	set category = "roleplay"
 
 	if(!holder) return
 
@@ -508,6 +509,7 @@ GLOBAL_LIST_EMPTY(running_alarms)
 	icon_state = "loudspeaker"
 	anchored = TRUE
 	plane = ABOVE_HUMAN_PLANE
+	desc = "Something your captain will shout at you from."
 	var/id = 0
 	var/in_use_by = null
 

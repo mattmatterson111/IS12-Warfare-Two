@@ -184,9 +184,13 @@
 	active_power_usage = 10
 
 /obj/machinery/light/small/emergency
+	base_state = "firelight"
+	icon_state = "bulb1"
 	light_type = /obj/item/light/bulb/red
 
 /obj/machinery/light/small/red
+	base_state = "firelight"
+	icon_state = "firelight1"
 	light_type = /obj/item/light/bulb/red
 
 /obj/machinery/light/spot
@@ -243,9 +247,13 @@
 
 		if(trigger && changed && get_status() == LIGHT_OK)
 			switch_check()
+		var/image/I = image(icon=src.icon, icon_state = "[base_state]-glow")
+		I.plane = GLOW_PLANE
+		overlays += I
 	else
 		use_power = 0
 		set_light(0)
+		overlays.Cut()
 
 	active_power_usage = ((light_range * light_power) * LIGHTING_POWER_FACTOR)
 
@@ -402,7 +410,7 @@
 				if(get_status() != LIGHT_OK) break
 				on = !on
 				update_icon(0)
-				sleep(rand(5, 15))
+				sleep(rand(3, 13))
 			on = (get_status() == LIGHT_OK)
 			update_icon(0)
 		flickering = 0
@@ -606,7 +614,8 @@
 	brightness_power = 5
 
 /obj/item/light/bulb/red
-	color = "#da0205"
+	icon_state = "flight"
+	//color = "#da0205"
 	brightness_color = "#da0205"
 
 /obj/item/light/bulb/red/readylight

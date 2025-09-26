@@ -131,7 +131,7 @@
 	shotgun_skill = 3
 	lmg_skill = 3
 	smg_skill = 3
-	can_be_in_squad = TRUE
+	can_be_in_squad = FALSE
 	close_when_dead = TRUE
 
 	announced = FALSE
@@ -153,7 +153,7 @@
 	shotgun_skill = 3
 	lmg_skill = 10
 	smg_skill = 3
-	can_be_in_squad = TRUE
+	can_be_in_squad = FALSE
 	// open_when_dead = TRUE
 
 	squad_overlay = "heavy_weaponry"
@@ -205,10 +205,12 @@
 			if(phone.phonename == RED_TEAM)
 				to_chat(H, "<b>Enemy captain's phone number</b>: [phone.fullphonenumber]")
 				H.mind.store_memory("<b>Enemy captain's phone number</b>: [phone.fullphonenumber]")
+		/*
 		for(var/obj/structure/phone/phone in GLOB.phone_list)
 			if(phone.phonename == "BLUE COMMAND")
 				to_chat(H, "<b>Blusnian High Command's Number</b>: [phone.fullphonenumber]")
 				H.mind.store_memory("<b>Blusnian High Command's Number</b>: [phone.fullphonenumber]")
+		*/ // Dont call twice, and we no longer give them high command
 		H.say(";[H.real_name] [pick("taking","in")] command!")
 		H.add_language(LANGUAGE_DIPLOMATIC)
 		to_chat(H,SPAN_NOTICE("You are fluent in <u>Diplomatic Standard</u>, allowing you to communicate with the opposing captain. <b>Check the language tab for more details.</b>"))
@@ -305,31 +307,35 @@
 	..()
 
 /decl/hierarchy/outfit/job/bluesoldier/sgt
+	suit_store = /obj/item/gun/projectile/shotgun/pump/boltaction/shitty/leverchester
+	r_pocket = /obj/item/ammo_box/rifle
+	backpack_contents = list(/obj/item/grenade/smokebomb = 1, /obj/item/clothing/mask/gas/blue = 1)
 
 /decl/hierarchy/outfit/job/bluesoldier/sgt/equip()
-	if(prob(1))
+	if(prob(10))
 		suit_store = /obj/item/gun/projectile/shotgun/pump/shitty/sawn
 		r_pocket = /obj/item/ammo_box/shotgun
-	else if(prob(40))
-		suit_store = /obj/item/gun/projectile/automatic/m22/warmonger/fully_auto/nemesis
-		r_pocket = /obj/item/grenade/smokebomb
-		backpack_contents = list(/obj/item/clothing/mask/gas/blue = 1)
-		chest_holster = /obj/item/storage/backpack/satchel/warfare/chestrig/blue/soldier
+
 	else if(prob(25))
-		suit_store = /obj/item/gun/projectile/automatic/m22/warmonger/fully_auto/ersatz
-		r_pocket = /obj/item/grenade/smokebomb
+		suit_store = /obj/item/gun/projectile/shotgun/pump/shitty
+		r_pocket = /obj/item/ammo_box/shotgun
+
+	else if(prob(5))
+		suit_store = /obj/item/gun/projectile/automatic/m22/warmonger/m14/battlerifle/rsc
+		r_pocket =  /obj/item/ammo_magazine/a762/rsc
+		backpack_contents = list(/obj/item/grenade/smokebomb = 1)
+		belt = /obj/item/storage/belt/armageddon
+
+	else if(prob(5))
+		suit_store = /obj/item/gun/projectile/automatic/m22/warmonger/fully_auto
 		backpack_contents = list(/obj/item/clothing/mask/gas/blue = 1)
+		r_pocket = /obj/item/grenade/smokebomb
 		chest_holster = /obj/item/storage/backpack/satchel/warfare/chestrig/blue/soldier
 	else if(prob(5)) //I am light weapons guy. And this is my weapon.
 		suit_store = /obj/item/gun/projectile/automatic/m22/warmonger/fully_auto/oldlmg
 		r_pocket = /obj/item/grenade/smokebomb
 		backpack_contents = list(/obj/item/clothing/mask/gas/blue = 1)
 		chest_holster = /obj/item/storage/backpack/satchel/warfare/chestrig/blue/oldlmg
-	else
-		suit_store =/obj/item/gun/projectile/automatic/m22/warmonger/m14/battlerifle
-		r_pocket = /obj/item/grenade/smokebomb
-		chest_holster = /obj/item/storage/backpack/satchel/warfare/chestrig/blue/sl
-		backpack_contents = list(/obj/item/clothing/mask/gas/blue = 1)
 /*
 	if(prob(50))//Give them an MRE. They're going to be out there a while.
 		backpack_contents += list(/obj/item/storage/box/mre = 1)
@@ -341,9 +347,9 @@
 	..()
 
 /decl/hierarchy/outfit/job/bluesoldier/engineer
-	r_pocket = /obj/item/ammo_magazine/mc9mmt/machinepistol
+	//r_pocket = /obj/item/ammo_magazine/mc9mmt/machinepistol
 	l_pocket = /obj/item/wirecutters
-	suit_store = /obj/item/gun/projectile/automatic/machinepistol
+	//suit_store = /obj/item/gun/projectile/automatic/machinepistol
 	back = /obj/item/storage/backpack/warfare
 	backpack_contents = list(/obj/item/stack/barbwire = 1, /obj/item/shovel = 1, /obj/item/defensive_barrier = 4, /obj/item/storage/box/ifak = 1)
 
@@ -447,12 +453,14 @@
 	..()
 
 /decl/hierarchy/outfit/job/bluesoldier/leader
+	name = OUTFIT_JOB_NAME("Blue Captain")
 	glasses = /obj/item/clothing/glasses/sunglasses
 	suit = /obj/item/clothing/suit/armor/bluecoat/leader
 	head = /obj/item/clothing/head/warfare_officer/blueofficer
 	l_ear = /obj/item/device/radio/headset/blue_team/all
 	belt = /obj/item/gun/projectile/revolver/cpt
 	r_pocket = /obj/item/device/binoculars
+	l_pocket = /obj/item/key/captain
 	chest_holster = null
 	backpack_contents = list(/obj/item/ammo_magazine/handful/revolver = 2, /obj/item/grenade/smokebomb = 1)
 
@@ -475,6 +483,7 @@
 	gloves = null
 	r_pocket = /obj/item/device/binoculars
 	backpack_contents = list(/obj/item/grenade/smokebomb = 1)
+	r_hand = /obj/item/tagnabber
 
 /decl/hierarchy/outfit/job/bluesoldier/scout/equip()
 	if(aspect_chosen(/datum/aspect/nightfare))

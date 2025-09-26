@@ -340,7 +340,7 @@
 
 	var/datum/spawnpoint/spawnpoint = SSjobs.get_spawnpoint_for(client, job.title)
 	var/turf/spawn_turf = pick(spawnpoint.turfs)
-	if(job.latejoin_at_spawnpoints)
+	if(job.latejoin_at_spawnpoints && !job.spawn_in_cryopod)
 		var/obj/S = SSjobs.get_roundstart_spawnpoint(job.title)
 		spawn_turf = get_turf(S)
 	var/radlevel = radiation_repository.get_rads_at_turf(spawn_turf)
@@ -633,17 +633,19 @@ mob/new_player/MayRespawn()
 	show_new_information()
 
 /mob/new_player/proc/show_new_information()
-	var/dat = {"<h2>IS12 Warfare</h2>
-Hello! It appears you are new here! Thanks for joining IS12 Warfare. Here is some important information to get you started!
-<h3>Discord Link</h3>
-<font size='4'><a href=\"https://discord.gg/FVRctMD\">Discord</a></font>
-<h3>Wiki Link</h3>
-<font size='4'><a href=\"http://is12wiki.xyz/index.php/Main_Page\">Wiki</a></font>
-<h3>Server Summary</h3>
+	var/dat = {"Hello! It appears you are new here! Thanks for joining IS12 Warfare. Here is some important information to get you started!
+
+Discord - https://discord.com/invite/FVRctMD
+
+Wiki - http://is12wiki.xyz/index.php/Main_Page
+
+Updated Guide - https://docs.google.com/document/d/16ZuJXQf2LfSfWjGYLDJCxoGPwU4g-Zz3wFlD2iv_268/edit?usp=sharing
+
 IS12 Warfare is a WW1-esque team deathmatch game with visual influences from Gone With The Blastwave. You're either red, or blue, and your objective is to either deplete all the other sides reinforcements, or take over their trenches and activate the point of no return. It plays a bit like how rush plays from the battlefield series, if you've played that before. While it takes some visual influence from Gone With The Blastwave it is not related to it in any other way. This is not a fan game, it does not take place in the same universe as the comic, it is not affiliated with the comic in any way.
-<h3>Some Notes</h3>
+
 Just as a general note, chat bar commands in game do not work. You will have to use the panels on the side if you wish to use any commands. Typing in the command bar will use OOC if you are in the lobby, and it will use say automatically if you're in game.
-Controls are ingame under the \"view controls\" button in OOC.
-Rules are ingame under the \"rules\" button in OOC.
-<h3>Enjoy your stay!</h3>"}
+Controls are ingame under the "view controls" button in OOC.
+Rules are ingame under the "rules" button in OOC.
+
+Enjoy your stay!"}
 	src << browse(dat, "window=welcome")

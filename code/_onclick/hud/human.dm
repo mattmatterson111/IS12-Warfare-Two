@@ -24,7 +24,7 @@
 	using.icon = 'icons/mob/screen/custom/interhud.dmi'
 	using.icon_state = "zionhud"
 	using.screen_loc = "WEST-3,SOUTH"
-	using.layer = HUD_ITEM_LAYER
+	using.layer = 2 // shitty hack
 	adding += using
 
 	using = new /obj/screen() //hud hud hud hud
@@ -455,14 +455,15 @@
 	hud_elements |= mymob.pain
 
 	mymob.noise = new /obj/screen()
-	mymob.noise.icon = 'icons/mob/noise.dmi'
-	mymob.noise.icon_state = "[rand(1,9)]h"
+	mymob.noise.icon = 'icons/mob/largenoise.dmi'//'icons/mob/noise.dmi'
+	mymob.noise.icon_state = "1"//"[rand(1,9)]h"
 	mymob.noise.name = " "
-	mymob.noise.screen_loc = "WEST, SOUTH to EAST, NORTH"
+	mymob.noise.screen_loc = "WEST, SOUTH"
 	mymob.noise.plane = FULLSCREEN_PLANE
 	mymob.noise.layer = 1
 	mymob.noise.mouse_opacity = 0
-	mymob.noise.filters += filter(type="alpha", render_source="*Light_mask_RT")
+	mymob.noise.blend_mode = BLEND_OVERLAY
+	mymob.noise.alpha = 15
 	hud_elements |= mymob.noise
 
 	mymob.combat_icon = new /obj/screen()//combat mode
@@ -564,6 +565,10 @@
 		H.tracking.owner = H
 		hud_elements |= H.tracking
 
+		H.waypoint = new /obj/screen/arrow_to/waypoint()
+		H.waypoint.owner = H
+		hud_elements |= H.waypoint
+
 	mymob.client.screen = list()
 
 	mymob.client.screen += hud_elements
@@ -591,7 +596,7 @@
 	var/obj/screen/plane_master/vision_cone/primary/lyingmob = new//ditto
 	var/obj/screen/plane_master/vision_cone/primary/human = new//ditto
 	var/obj/screen/plane_master/vision_cone/primary/lyinghuman = new//ditto
-	var/obj/screen/plane_master/vision_cone/primary/effectsabove = new//ditto
+	var/obj/screen/plane_master/lights_filterer/effectsabove = new//ditto
 	//var/obj/screen/plane_master/vision_cone/primary
 	//var/obj/screen/plane_master/vision_cone/primary/aboveturf = new
 	var/obj/screen/plane_master/vision_cone/inverted/footsteps = new//This master specifically makes it so the footstep stuff ONLY appears where it can't be seen.
@@ -603,7 +608,9 @@
 	lyinghuman.plane =LYING_HUMAN_PLANE
 	//aboveturf.plane = ABOVE_TURF_PLANE
 	footsteps.plane = FOOTSTEP_ALERT_PLANE
-	effectsabove.plane = EFFECTS_ABOVE_LIGHTING_PLANE
+	effectsabove.plane = GLOW_PLANE
+
+
 
 	client.screen += VC // Is this necessary? Yes.
 	client.screen += mob
@@ -613,3 +620,6 @@
 	//client.screen += aboveturf //Comment this out if you don't like it
 	client.screen += footsteps
 	client.screen += effectsabove
+	client.screen += new /obj/screen/plane_master/bloom_filter
+	client.screen += new /obj/screen/plane_master/radial_filter
+	client.screen += new /obj/screen/plane_master/blur/effects_blur

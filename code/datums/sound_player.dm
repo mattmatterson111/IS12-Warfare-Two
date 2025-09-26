@@ -239,6 +239,8 @@ datum/sound_token/proc/PrivAddListener(var/atom/listener)
 
 /datum/sound_token/proc/PrivUpdateListener(var/listener, var/update_sound = TRUE)
 	var/sound/S = listeners[listener]
+	if(!S)
+		return
 	S.volume = volume
 	S.status = status|listener_status[listener]
 	if(update_sound)

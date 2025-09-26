@@ -1,6 +1,85 @@
+/*
+	** We have several types of bottles **
+
+	- Slim
+	- Wide
+	- Tall
+	- And the wide + tall generic one.
+
+		(  and 'Vial' )
+
+	** Each bottle has color variations **
+	- _gr (green)
+	- _mtl (metallic)
+	- _rd (red)
+	- _bl (blue)
+	- none (brown)
+
+	'has_label' var
+	** Each bottle has a label type **
+	- Large
+	- Tall
+		- Long (smaller)
+	- Wide
+	- Slim
+		- Lorrieson
+		- slim_formaldehyde (chloroform)
+
+	- Vial
+		- 'vial'
+		- 'vial_a'
+		- 'vial_b'
+
+
+	** You can add text to the label, and an image to show when examined. **
+	** This is an example of how to do it. **
+
+	'special_label' var
+	** If true, the label can be examined for more info. **
+
+	'special_label_text' var
+	** Text to show in chat when examined. **
+
+	'special_label_image' var
+	** Image to show in a new window when examined. **
+
+		'special_label_width' and 'special_label_height' vars
+		** Size of the image window. **
+
+*/
+
+#define LARGE_BOTTLE "large"
+#define TALL_BOTTLE "tall"
+#define WIDE_BOTTLE "wide"
+#define SLIM_BOTTLE "slim"
+
+#define RED_COLOR "_rd"
+#define BLUE_COLOR "_bl"
+#define GREEN_COLOR "_gr"
+#define METALLIC_COLOR "_mtl"
+#define BROWN_COLOR null
+
+#define LARGE_LABEL "large"
+#define TALL_LABEL "tall"
+#define WIDE_LABEL "wide"
+#define SLIM_LABEL "slim"
+#define VIAL "vial"
+
+#define LORRIESON_LABEL "lorrieson"
+#define SLIM_FORMALDEHYDE_LABEL "slim_formaldehyde"
+
+
+
+#define VOLUME_ANTIQUE_BOTTLE 60
+#define VOLUME_SLIM_ANTIQUE_BOTTLE 40
+#define VOLUME_WIDE_ANTIQUE_BOTTLE 40
+#define VOLUME_TALL_ANTIQUE_BOTTLE 50
+
 /obj/item/reagent_containers/glass/bottle/antique
 	icon = 'icons/obj/chembottles.dmi'
 	icon_state = "large"
+	var/bottle_color = BROWN_COLOR /// Controls the icon_state suffix for color variations
+
 	fill_state = "tall" /// Controls both the cork icon state and the reagentfillings.dmi icon state
 
 	lid_on = "You put the cork into"
@@ -14,7 +93,7 @@
 
 	var/start_uncorked = FALSE
 
-	var/has_label = "large" /// Generic white label
+	var/has_label = LARGE_LABEL /// Generic white label
 	var/special_label = FALSE /// Whether there is a special label to be examined
 	var/special_label_text = null /// text in chat when you examine the label
 
@@ -26,6 +105,17 @@
 	. = ..()
 	if(!start_uncorked)
 		atom_flags ^= ATOM_FLAG_OPEN_CONTAINER
+	switch(icon_state)
+		if(LARGE_BOTTLE)
+			volume = VOLUME_ANTIQUE_BOTTLE
+		if(TALL_BOTTLE)
+			volume = VOLUME_TALL_ANTIQUE_BOTTLE
+		if(WIDE_BOTTLE)
+			volume = VOLUME_WIDE_ANTIQUE_BOTTLE
+		if(VIAL)
+			volume = 35
+	reagents.maximum_volume = volume
+	icon_state = "[icon_state][bottle_color]"
 	update_icon()
 
 /obj/item/reagent_containers/glass/bottle/antique/update_icon()
@@ -64,27 +154,28 @@
 	)
 
 /obj/item/reagent_containers/glass/bottle/antique/tall
-	icon_state = "tall"
-	has_label = "tall"
-	fill_state = "tall"
+	icon_state = TALL_BOTTLE
+	has_label = TALL_LABEL
+	fill_state = TALL_BOTTLE
 
 /obj/item/reagent_containers/glass/bottle/antique/wide
-	icon_state = "wide"
-	has_label = "wide"
-	fill_state = "wide"
+	icon_state = WIDE_BOTTLE
+	has_label = WIDE_BOTTLE
+	fill_state = WIDE_BOTTLE
 	lid_off_sound = 'sound/effects/small_corkopen.ogg'
 	volume = 35
 
 /obj/item/reagent_containers/glass/bottle/antique/slim
-	icon_state = "slim"
-	has_label = "slim"
-	fill_state = "slim"
+	icon_state = SLIM_BOTTLE
+	has_label = SLIM_BOTTLE
+	fill_state = SLIM_BOTTLE
 	lid_off_sound = 'sound/effects/small_corkopen.ogg'
 	volume = 35
 
 /obj/item/reagent_containers/glass/bottle/antique/tall/lorrieson
-	icon_state = "tall_gr"
-	has_label = "lorrieson"
+	icon_state = TALL_BOTTLE
+	bottle_color = GREEN_COLOR
+	has_label = LORRIESON_LABEL
 	special_label = TRUE
 	special_label_text = "<span class='yel'>A Lorrieson Tinctures brand label!</span>"
 	special_label_image = "lorrieson_basic.png"
@@ -92,8 +183,9 @@
 	label_height = 228
 
 /obj/item/reagent_containers/glass/bottle/antique/tall/metal
-	icon_state = "tall_mtl"
-	has_label = "tall_long"
+	icon_state = TALL_BOTTLE
+	bottle_color = METALLIC_COLOR
+	has_label = TALL_LABEL
 
 /obj/item/reagent_containers/glass/bottle/antique/slim/chloroform
 	has_label = "slim_formaldehyde"
@@ -103,8 +195,92 @@
 
 /obj/item/reagent_containers/glass/bottle/antique/slim/chloroform/New()
 	..()
-	reagents.add_reagent(/datum/reagent/chloroform, 35)
+	reagents.add_reagent(/datum/reagent/chloroform, volume)
 	update_icon()
+
+
+/obj/item/reagent_containers/glass/bottle/antique/vial
+	name = "vial"
+	desc = "A small glass vial, typically used to store samples or small amounts of chemicals."
+	icon_state = VIAL
+	has_label = VIAL
+	fill_state = VIAL
+	lid_off_sound = 'sound/effects/small_corkopen.ogg'
+	volume = 25
+
+/obj/item/reagent_containers/glass/bottle/antique/vial/spaceacillin
+	has_label = "vial_a"
+	special_label = TRUE
+	special_label_text = "<span class='yel'>A label that reads:\n\"<center><font size=4>Acriflavine</font>\n<font size=2>Antiseptic</font>\nAn antiseptic used to prevent infection in wounds and minor abrasions.\n\nRecommended dosage: 5 to 10 units.\"</font></span>"
+
+/obj/item/reagent_containers/glass/bottle/antique/vial/spaceacillin/New()
+	..()
+	reagents.add_reagent(/datum/reagent/spaceacillin, volume)
+	update_icon()
+
+/obj/item/reagent_containers/glass/bottle/antique/vial/dexalin
+	has_label = "vial_b"
+	special_label = TRUE
+	special_label_text = "<span class='yel'>A label that reads:\n\"<center><font size=4>Ephedrine</font>\n<font size=2>Stimulant</font>\nA stimulant used to treat oxygen deprivation and support respiratory function.\n\nRecommended dosage: 5 to 15 units.\"</font></span>"
+
+/obj/item/reagent_containers/glass/bottle/antique/vial/dexalin/New()
+	..()
+	reagents.add_reagent(/datum/reagent/dexalin, volume)
+	update_icon()
+
+/obj/item/reagent_containers/glass/bottle/antique/vial/dylovene
+	has_label = "vial_a"
+	special_label = TRUE
+	special_label_text = "<span class='yel'>A label that reads:\n\"<center><font size=4>Charcoal Powder</font>\n<font size=2>Antitoxin</font>\nA medicinal powder used to treat poisoning and toxin exposure.\n\nRecommended dosage: 5 to 20 units, depending on severity of symptoms.\"</font></span>"
+
+/obj/item/reagent_containers/glass/bottle/antique/vial/dylovene/New()
+	..()
+	reagents.add_reagent(/datum/reagent/dylovene, volume)
+	update_icon()
+
+/obj/item/reagent_containers/glass/bottle/antique/slim/dylovene
+	special_label = TRUE
+	special_label_text = "<span class='yel'>A label that reads:\n\"<center><font size=4>Charcoal Powder</font>\n<font size=2>Antitoxin</font>\nA medicinal powder used to treat poisoning and toxin exposure.\n\nRecommended dosage: 5 to 20 units, depending on severity of symptoms.\"</font></span>"
+
+/obj/item/reagent_containers/glass/bottle/antique/slim/dylovene/New()
+	..()
+	reagents.add_reagent(/datum/reagent/dylovene, volume)
+	update_icon()
+
+
+#undef LARGE_BOTTLE
+#undef TALL_BOTTLE
+#undef WIDE_BOTTLE
+#undef SLIM_BOTTLE
+#undef VIAL
+
+#undef RED_COLOR
+#undef BLUE_COLOR
+#undef GREEN_COLOR
+#undef METALLIC_COLOR
+#undef BROWN_COLOR
+
+#undef LARGE_LABEL
+#undef TALL_LABEL
+#undef WIDE_LABEL
+#undef SLIM_LABEL
+
+#undef LORRIESON_LABEL
+#undef SLIM_FORMALDEHYDE_LABEL
+
+#undef VOLUME_ANTIQUE_BOTTLE
+#undef VOLUME_SLIM_ANTIQUE_BOTTLE
+#undef VOLUME_WIDE_ANTIQUE_BOTTLE
+#undef VOLUME_TALL_ANTIQUE_BOTTLE
+
+/obj/structure/table/woodentable/shelf
+	name = "shelf"
+	icon = 'icons/obj/chembottles.dmi'
+	icon_state = "shelf"
+	color = COLOR_WHITE
+
+/obj/structure/table/woodentable/can_climb(mob/living/user, post_climb_check)
+	return FALSE
 
 // Not a bottle but still
 
@@ -165,12 +341,3 @@
 		to_chat(user, "You wring out \the [src].")
 		reagents.clear_reagents()
 	return
-
-/obj/structure/table/woodentable/shelf
-	name = "shelf"
-	icon = 'icons/obj/chembottles.dmi'
-	icon_state = "shelf"
-	color = COLOR_WHITE
-
-/obj/structure/table/woodentable/can_climb(mob/living/user, post_climb_check)
-	return FALSE

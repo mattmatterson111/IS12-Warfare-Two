@@ -125,7 +125,7 @@
 
 #define QDEL_NULL(x) if(x) { qdel(x) ; x = null }
 
-#define QDEL_IN(item, time) addtimer(CALLBACK(GLOBAL_PROC, .proc/qdel, item), time, TIMER_STOPPABLE)
+#define QDEL_IN(item, time) addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(qdel), item), time, TIMER_STOPPABLE)
 
 #define ARGS_DEBUG log_debug("[__FILE__] - [__LINE__]") ; for(var/arg in args) { log_debug("\t[log_info_line(arg)]") }
 
@@ -165,6 +165,6 @@
 #define send_link(target, url) target << link(url)
 
 // Spawns multiple objects of the same type
-#define cast_new(type, num, args...) if((num) == 1) { new type(args) } else { for(var/i=0;i<(num),i++) { new type(args) } }
+#define cast_new(type, num, args...) if((num) == 1) { new type(args) } else { for(var/i=0,i<(num),i++) { new type(args) } }
 
 #define FLAGS_EQUALS(flag, flags) ((flag & (flags)) == (flags))

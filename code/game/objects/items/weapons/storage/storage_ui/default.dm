@@ -194,31 +194,39 @@
 	closer.screen_loc = "[mx+1],[my]"
 	return
 
-//This proc determins the size of the inventory to be displayed. Please touch it only if you know what you're doing.
+//This proc determines the size of the inventory to be displayed.
+//Only adjust if you know what you're doing.
 /datum/storage_ui/default/proc/slot_orient_objs()
-	var/adjusted_contents = storage.contents.len
-	var/row_num = 0
-	var/col_count = min(7,storage.storage_slots) -1
-	if (adjusted_contents > 7)
-		row_num = round((adjusted_contents-1) / 7) // 7 is the maximum allowed width.
+	var/slot_count = storage.storage_slots
+	var/col_count = min(7, slot_count) - 1
+
+	// Calculate number of rows based purely on available slots
+	var/row_num = floor((slot_count - 1) / (col_count + 1))
+
 	arrange_item_slots(row_num, col_count)
 
-//This proc draws out the inventory and places the items on it. It uses the standard position.
+//This proc draws out the inventory and places the items on it. Rows now expand DOWNWARD.
 /datum/storage_ui/default/proc/arrange_item_slots(var/rows, var/cols)
 	var/cx = 4
-	var/cy = 1+rows
-	boxes.screen_loc = "4:16,1:16 to [4+cols]:16,[2+rows]:16"//"4:16,2:16 to [4+cols]:16,[2+rows]:16"
+	var/cy = 1 // Always start drawing from the top row
+
+	// Expand the visible area to cover all rows (if rows > 0)
+	if(rows > 0)
+		boxes.screen_loc = "4:16,1:16 to [4+cols]:16,[1+rows]:16"
+	else
+		boxes.screen_loc = "4:16,1:16 to [4+cols]:16,1:16"
 
 	for(var/obj/O in storage.contents)
-		O.screen_loc = "[cx]:16,[cy]:16"//"[cx]:16,[cy]:16"
+		O.screen_loc = "[cx]:16,[cy]:16"
 		O.maptext = ""
 		O.hud_layerise()
 		cx++
 		if (cx > (4+cols))
 			cx = 4
-			cy--
+			cy++ // Move DOWN to next row
 
-	closer.screen_loc = "[4+cols+1]:16,1:16"//"[4+cols+1]:16,2:16"
+	closer.screen_loc = "[4+cols+1]:16,1:16"
+
 
 /datum/storage_ui/default/proc/space_orient_objs()
 

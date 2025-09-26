@@ -1,0 +1,2000 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"au" = (
+/turf/unsimulated/wall/submarine/innercorners{
+	dir = 9
+	},
+/area/vehicle/submarine/start_zone)
+"aw" = (
+/turf/template_noop,
+/area/warfare/battlefield/trench_section/underground)
+"bd" = (
+/turf/unsimulated/wall/submarine/innercorners{
+	dir = 5
+	},
+/area/vehicle/submarine/start_zone)
+"bZ" = (
+/turf/unsimulated/wall/submarine/innercorners/plus,
+/area/vehicle/submarine/start_zone)
+"cj" = (
+/turf/template_noop,
+/area/space)
+"cl" = (
+/obj/machinery/light/small/bunker{
+	pixel_y = 39
+	},
+/obj/effect/landmark/squad/leader,
+/obj/structure/bed/chair/throne/red,
+/turf/simulated/floor/ert/metal01,
+/area/vehicle/submarine/start_zone)
+"cw" = (
+/obj/machinery/vending/soldier/blue,
+/obj/structure/announcementspeaker{
+	pixel_y = 40;
+	pixel_x = 15;
+	id = "ERT"
+	},
+/turf/simulated/floor/ert/metal02,
+/area/vehicle/submarine/start_zone)
+"dc" = (
+/obj/machinery/light/caged{
+	dir = 8;
+	pixel_y = 16;
+	pixel_x = 16
+	},
+/turf/simulated/floor/ert/metal01,
+/area/vehicle/submarine/start_zone)
+"dr" = (
+/obj/structure/table/rack/shelf/red,
+/obj/item/gun/projectile/automatic/m22/warmonger/fully_auto/oldlmg,
+/obj/item/gun/projectile/automatic/m22/warmonger/fully_auto/oldlmg,
+/obj/item/gun/projectile/automatic/m22/warmonger/fully_auto/oldlmg,
+/obj/machinery/light/small/red{
+	dir = 4;
+	pixel_x = 23
+	},
+/turf/simulated/floor/ert/metal02,
+/area/vehicle/submarine/start_zone)
+"dQ" = (
+/obj/machinery/light/spot{
+	dir = 8;
+	pixel_x = -16;
+	pixel_y = 16
+	},
+/turf/simulated/floor/ert/metal01,
+/area/vehicle/submarine/start_zone)
+"dV" = (
+/obj/structure/table/rack/nosmooth/metal,
+/turf/simulated/floor/ert/metal01,
+/area/vehicle/submarine/start_zone)
+"fm" = (
+/obj/machinery/light/caged{
+	dir = 4;
+	pixel_y = 16;
+	pixel_x = -16
+	},
+/turf/simulated/floor/ert/metal01,
+/area/vehicle/submarine/start_zone)
+"gS" = (
+/obj/machinery/light/small/red{
+	dir = 1;
+	pixel_y = 39
+	},
+/turf/simulated/floor/ert/metal02,
+/area/vehicle/submarine/start_zone)
+"gV" = (
+/turf/simulated/floor/ert/metal02,
+/area/vehicle/submarine/start_zone)
+"hj" = (
+/obj/structure/table/rack/shelf/red,
+/obj/item/ammo_magazine/flamer,
+/obj/item/ammo_magazine/flamer,
+/obj/item/ammo_magazine/flamer,
+/obj/item/ammo_magazine/flamer,
+/obj/item/ammo_magazine/flamer,
+/obj/item/ammo_magazine/flamer,
+/obj/item/ammo_magazine/flamer,
+/obj/item/ammo_magazine/flamer,
+/obj/item/ammo_magazine/flamer,
+/obj/item/ammo_magazine/flamer,
+/obj/item/ammo_magazine/flamer,
+/obj/item/ammo_magazine/flamer,
+/obj/item/ammo_magazine/flamer,
+/obj/item/ammo_magazine/flamer,
+/obj/item/ammo_magazine/flamer,
+/obj/item/ammo_magazine/flamer,
+/turf/simulated/floor/ert/metal02,
+/area/vehicle/submarine/start_zone)
+"ir" = (
+/obj/machinery/vending/soldier,
+/turf/simulated/floor/ert/metal02,
+/area/vehicle/submarine/start_zone)
+"iy" = (
+/obj/hammereditor/nodraw/deco/shadowpaint{
+	dir = 8;
+	density = 0
+	},
+/obj/hammereditor/nodraw/deco/shadowpaint{
+	dir = 8;
+	density = 0
+	},
+/obj/hammereditor/nodraw/deco/shadowpaint{
+	dir = 8;
+	density = 0
+	},
+/turf/unsimulated/wall/submarine/innercorners{
+	dir = 9;
+	color = "#000000"
+	},
+/area/vehicle/submarine/start_zone)
+"kI" = (
+/obj/structure/table/rack/shelf/red,
+/obj/item/storage/belt/medical/full,
+/obj/item/storage/belt/medical/full,
+/obj/item/storage/belt/medical/full,
+/obj/item/storage/belt/medical/full,
+/obj/item/storage/belt/medical/full,
+/obj/item/storage/belt/medical/full,
+/obj/item/storage/belt/medical/full,
+/obj/item/storage/belt/medical/full,
+/obj/item/storage/belt/medical/full,
+/obj/item/storage/belt/medical/full,
+/obj/item/storage/belt/medical/full,
+/turf/simulated/floor/ert/metal02,
+/area/vehicle/submarine/start_zone)
+"kQ" = (
+/turf/unsimulated/wall/submarine/innercorners/plus{
+	dir = 6
+	},
+/area/vehicle/submarine/start_zone)
+"lt" = (
+/obj/machinery/door/unpowered/simple/sub,
+/turf/simulated/floor/ert/metal01,
+/area/vehicle/submarine/start_zone)
+"mk" = (
+/obj/structure/table/rack/shelf/red,
+/obj/item/gun/projectile/shotgun/pump/shitty/sawn/smallshotty,
+/obj/item/gun/projectile/shotgun/pump/shitty/sawn/smallshotty,
+/obj/item/gun/projectile/shotgun/pump/shitty/sawn/smallshotty,
+/obj/item/storage/box/shotgunammo,
+/obj/item/storage/box/shotgunammo,
+/obj/item/storage/box/shotgunammo,
+/obj/item/storage/box/shotgunammo,
+/obj/item/storage/box/shotgunammo,
+/obj/item/storage/box/shotgunammo,
+/obj/item/storage/box/shotgunshells,
+/obj/item/storage/box/shotgunshells,
+/obj/item/storage/box/shotgunshells,
+/obj/item/storage/box/shotgunshells,
+/obj/item/storage/box/shotgunshells,
+/obj/item/storage/box/shotgunshells,
+/obj/item/storage/box/shotgunshells,
+/obj/machinery/light/small/red{
+	dir = 4;
+	pixel_x = 23
+	},
+/turf/simulated/floor/ert/metal02,
+/area/vehicle/submarine/start_zone)
+"mJ" = (
+/turf/unsimulated/wall/submarine/innercorners/plus{
+	dir = 4
+	},
+/area/vehicle/submarine/start_zone)
+"mW" = (
+/obj/effect/landmark/squad,
+/turf/simulated/floor/ert/metal01,
+/area/vehicle/submarine/start_zone)
+"qm" = (
+/turf/unsimulated/wall/submarine/innercorners{
+	dir = 4
+	},
+/area/vehicle/submarine/start_zone)
+"qI" = (
+/turf/unsimulated/wall/submarine{
+	dir = 5
+	},
+/area/vehicle/submarine/start_zone)
+"rg" = (
+/obj/structure/table/rack/nosmooth/metal,
+/obj/machinery/button/transport_controller,
+/turf/simulated/floor/ert/metal01,
+/area/vehicle/submarine/start_zone)
+"rh" = (
+/obj/effect/sub_marker/float{
+	id = "SUB_START"
+	},
+/turf/template_noop,
+/area/warfare/battlefield/trench_section/underground)
+"rv" = (
+/obj/machinery/light/small/red,
+/turf/simulated/floor/ert/metal02,
+/area/vehicle/submarine/start_zone)
+"rD" = (
+/turf/unsimulated/wall/submarine/doors{
+	dir = 4
+	},
+/area/vehicle/submarine/start_zone)
+"sA" = (
+/turf/unsimulated/wall/submarine{
+	dir = 9
+	},
+/area/vehicle/submarine/start_zone)
+"sW" = (
+/obj/machinery/door/unpowered/simple/sub,
+/turf/simulated/floor/ert/metal02,
+/area/vehicle/submarine/start_zone)
+"tb" = (
+/obj/structure/table/rack/shelf/red,
+/obj/random/canned_food/red,
+/obj/random/canned_food/red,
+/obj/random/canned_food/red,
+/obj/random/canned_food/red,
+/obj/random/canned_food/red,
+/obj/random/canned_food/red,
+/obj/random/canned_food/red,
+/obj/random/canned_food/red,
+/obj/random/canned_food/red,
+/turf/simulated/floor/ert/metal02,
+/area/vehicle/submarine/start_zone)
+"tw" = (
+/obj/effect/landmark/squad,
+/obj/structure/announcementspeaker{
+	pixel_y = 40;
+	pixel_x = 15;
+	id = "ERT"
+	},
+/turf/simulated/floor/ert/metal01,
+/area/vehicle/submarine/start_zone)
+"tW" = (
+/turf/unsimulated/wall/submarine{
+	dir = 6
+	},
+/area/vehicle/submarine/start_zone)
+"uh" = (
+/obj/structure/table/rack/shelf/red,
+/obj/item/gun/projectile/heavysniper,
+/obj/item/gun/projectile/heavysniper,
+/obj/item/gun/projectile/heavysniper,
+/obj/item/gun/projectile/heavysniper,
+/turf/simulated/floor/ert/metal02,
+/area/vehicle/submarine/start_zone)
+"us" = (
+/turf/unsimulated/wall/submarine/outside/plus{
+	dir = 4
+	},
+/area/vehicle/submarine/start_zone)
+"uV" = (
+/obj/structure/announcementspeaker{
+	pixel_y = 40;
+	id = "ERT"
+	},
+/turf/simulated/floor/ert/metal02,
+/area/vehicle/submarine/start_zone)
+"vT" = (
+/obj/structure/table/rack/shelf/red,
+/obj/item/gun/projectile/automatic/flamer,
+/obj/item/gun/projectile/automatic/flamer,
+/obj/machinery/light/small/red{
+	dir = 8;
+	pixel_x = -23
+	},
+/turf/simulated/floor/ert/metal02,
+/area/vehicle/submarine/start_zone)
+"wF" = (
+/obj/structure/announcementspeaker{
+	pixel_y = 40;
+	id = "ERT";
+	pixel_x = -16
+	},
+/obj/structure/announcementmicrophone/blue{
+	id = "ERT";
+	speakercast = /datum/speakercast_template/male_yell;
+	pixel_y = 3;
+	name = "SQUAD LEADER's microphone"
+	},
+/obj/structure/table/rack/nosmooth/metal,
+/turf/simulated/floor/ert/metal01,
+/area/vehicle/submarine/start_zone)
+"wR" = (
+/turf/unsimulated/wall/submarine/outside{
+	dir = 9
+	},
+/area/vehicle/submarine/start_zone)
+"yc" = (
+/turf/unsimulated/wall/submarine{
+	dir = 4
+	},
+/area/vehicle/submarine/start_zone)
+"yv" = (
+/turf/unsimulated/wall/submarine/long{
+	dir = 1
+	},
+/area/vehicle/submarine/start_zone)
+"AU" = (
+/turf/unsimulated/wall/submarine/innercorners{
+	dir = 8
+	},
+/area/vehicle/submarine/start_zone)
+"CY" = (
+/obj/effect/darkout_teleporter{
+	id = "SUB_START";
+	entrance = 0;
+	twoway = 1
+	},
+/turf/simulated/floor/ert/metal02,
+/area/vehicle/submarine/start_zone)
+"Dz" = (
+/obj/machinery/light/small/bunker{
+	pixel_y = 39
+	},
+/turf/simulated/floor/ert/metal01,
+/area/vehicle/submarine/start_zone)
+"EE" = (
+/obj/machinery/light/caged{
+	dir = 4;
+	pixel_x = -8
+	},
+/turf/simulated/floor/ert/metal01,
+/area/vehicle/submarine/start_zone)
+"EG" = (
+/obj/machinery/door/unpowered/simple/sub{
+	dir = 2
+	},
+/turf/simulated/floor/ert/metal01,
+/area/vehicle/submarine/start_zone)
+"FD" = (
+/obj/structure/table/rack/shelf/red,
+/obj/machinery/light/small/red{
+	dir = 4;
+	pixel_x = 23
+	},
+/obj/item/ammo_magazine/c45rifle/flat,
+/obj/item/ammo_magazine/c45rifle/flat,
+/obj/item/ammo_magazine/c45rifle/flat,
+/obj/item/ammo_magazine/c45rifle/flat,
+/obj/item/ammo_magazine/c45rifle/flat,
+/obj/item/ammo_magazine/c45rifle/flat,
+/obj/item/ammo_magazine/c45rifle/flat,
+/obj/item/ammo_magazine/c45rifle/flat,
+/obj/item/ammo_magazine/c45rifle/flat,
+/obj/item/ammo_magazine/c45rifle/flat,
+/obj/item/ammo_magazine/c45rifle/flat,
+/obj/item/ammo_magazine/c45rifle/flat,
+/obj/item/ammo_magazine/c45rifle/flat,
+/obj/item/ammo_magazine/c45rifle/flat,
+/obj/item/ammo_magazine/c45rifle/flat,
+/turf/simulated/floor/ert/metal02,
+/area/vehicle/submarine/start_zone)
+"FH" = (
+/turf/unsimulated/wall/submarine/long,
+/area/vehicle/submarine/start_zone)
+"Ix" = (
+/obj/machinery/door/unpowered/simple/sub{
+	dir = 2
+	},
+/turf/simulated/floor/ert/metal02,
+/area/vehicle/submarine/start_zone)
+"IE" = (
+/obj/machinery/light/small/red{
+	dir = 4;
+	pixel_x = 23
+	},
+/turf/simulated/floor/ert/metal02,
+/area/vehicle/submarine/start_zone)
+"JR" = (
+/obj/effect/sub_marker/dive{
+	id = "SUB_START"
+	},
+/turf/template_noop,
+/area/warfare/battlefield/trench_section/underground)
+"Kh" = (
+/turf/unsimulated/wall/submarine/innercorners/plus{
+	dir = 1
+	},
+/area/vehicle/submarine/start_zone)
+"Kw" = (
+/obj/structure/table/rack/shelf/red,
+/obj/structure/announcementspeaker{
+	pixel_y = 40;
+	pixel_x = 15;
+	id = "ERT"
+	},
+/obj/item/storage/toggle/vialbox,
+/obj/item/storage/toggle/vialbox,
+/obj/item/storage/toggle/vialbox,
+/obj/item/storage/toggle/vialbox,
+/obj/item/storage/toggle/vialbox,
+/obj/item/storage/toggle/vialbox,
+/obj/machinery/light/small/red{
+	dir = 8;
+	pixel_x = -23
+	},
+/turf/simulated/floor/ert/metal02,
+/area/vehicle/submarine/start_zone)
+"MK" = (
+/obj/machinery/light/small/red{
+	dir = 8;
+	pixel_x = -23;
+	pixel_y = 14
+	},
+/turf/simulated/floor/ert/metal02,
+/area/vehicle/submarine/start_zone)
+"Nl" = (
+/obj/effect/sub_marker/surface{
+	id = "SUB_START"
+	},
+/turf/template_noop,
+/area/warfare/battlefield/trench_section/underground)
+"NZ" = (
+/obj/hammereditor/nodraw/deco/shadowpaint{
+	dir = 8;
+	density = 0
+	},
+/obj/hammereditor/nodraw/deco/shadowpaint{
+	dir = 8;
+	density = 0
+	},
+/obj/hammereditor/nodraw/deco/shadowpaint{
+	dir = 8;
+	density = 0
+	},
+/turf/unsimulated/wall/submarine/outside/plus{
+	dir = 6
+	},
+/area/vehicle/submarine/start_zone)
+"Oz" = (
+/obj/machinery/light/small/red{
+	dir = 8;
+	pixel_x = -23
+	},
+/obj/item/ammo_box/ptsd,
+/obj/item/ammo_box/ptsd,
+/obj/item/ammo_box/ptsd,
+/obj/item/ammo_box/ptsd,
+/obj/item/ammo_box/ptsd,
+/obj/item/ammo_box/ptsd,
+/obj/item/ammo_box/ptsd,
+/obj/item/ammo_box/ptsd,
+/obj/item/ammo_box/ptsd,
+/obj/item/ammo_box/ptsd,
+/obj/item/ammo_box/ptsd,
+/obj/structure/table/rack/shelf/red,
+/turf/simulated/floor/ert/metal02,
+/area/vehicle/submarine/start_zone)
+"PZ" = (
+/turf/simulated/floor/ert/metal01,
+/area/vehicle/submarine/start_zone)
+"Qf" = (
+/turf/unsimulated/wall/submarine{
+	dir = 8
+	},
+/area/vehicle/submarine/start_zone)
+"Sr" = (
+/obj/machinery/light/caged{
+	dir = 4;
+	pixel_x = -16
+	},
+/obj/structure/announcementspeaker{
+	pixel_y = 40;
+	id = "ERT"
+	},
+/turf/simulated/floor/ert/metal01,
+/area/vehicle/submarine/start_zone)
+"SE" = (
+/turf/unsimulated/wall/submarine{
+	dir = 1
+	},
+/area/vehicle/submarine/start_zone)
+"Tu" = (
+/obj/hammereditor/nodraw/deco/shadowpaint{
+	dir = 8;
+	density = 0
+	},
+/obj/hammereditor/nodraw/deco/shadowpaint{
+	dir = 8;
+	density = 0
+	},
+/obj/hammereditor/nodraw/deco/shadowpaint{
+	dir = 8;
+	density = 0
+	},
+/obj/hammereditor/nodraw/deco/shadowpaint{
+	dir = 8;
+	density = 0
+	},
+/turf/unsimulated/wall/submarine{
+	dir = 1
+	},
+/area/vehicle/submarine/start_zone)
+"Tz" = (
+/turf/unsimulated/wall/submarine,
+/area/vehicle/submarine/start_zone)
+"TS" = (
+/obj/machinery/telecomms/allinone{
+	intercept = 1
+	},
+/turf/template_noop,
+/area/vehicle/submarine/start_zone)
+"Ue" = (
+/turf/unsimulated/wall/submarine/doors,
+/area/vehicle/submarine/start_zone)
+"Vf" = (
+/obj/machinery/light/small/bunker{
+	pixel_y = 39
+	},
+/obj/structure/announcementspeaker{
+	pixel_y = 40;
+	pixel_x = 15;
+	id = "ERT"
+	},
+/turf/simulated/floor/ert/metal01,
+/area/vehicle/submarine/start_zone)
+"VB" = (
+/obj/machinery/door/unpowered/simple/sub{
+	dir = 8
+	},
+/turf/simulated/floor/ert/metal02,
+/area/vehicle/submarine/start_zone)
+"VP" = (
+/obj/effect/darkout_teleporter{
+	id = "SUB_START";
+	entrance = 2;
+	twoway = 1
+	},
+/obj/hammereditor/nodraw/deco/shadowpaint{
+	dir = 8;
+	density = 0
+	},
+/obj/machinery/door/blast/shutters{
+	dir = 4;
+	id = 555
+	},
+/turf/simulated/floor/ert/metal02,
+/area/vehicle/submarine/start_zone)
+"WD" = (
+/obj/machinery/light/spot{
+	dir = 4;
+	pixel_x = 16;
+	pixel_y = 16
+	},
+/turf/simulated/floor/ert/metal01,
+/area/vehicle/submarine/start_zone)
+"Xy" = (
+/obj/machinery/light/caged{
+	dir = 8;
+	pixel_x = 16
+	},
+/turf/simulated/floor/ert/metal01,
+/area/vehicle/submarine/start_zone)
+"Yb" = (
+/obj/machinery/door/unpowered/simple/sub{
+	dir = 8
+	},
+/turf/simulated/floor/ert/metal01,
+/area/vehicle/submarine/start_zone)
+"Yl" = (
+/obj/machinery/light/small/red{
+	dir = 8;
+	pixel_x = -23
+	},
+/turf/simulated/floor/ert/metal02,
+/area/vehicle/submarine/start_zone)
+"ZB" = (
+/obj/machinery/light/caged{
+	dir = 8;
+	pixel_x = 8
+	},
+/turf/simulated/floor/ert/metal01,
+/area/vehicle/submarine/start_zone)
+"ZR" = (
+/obj/effect/landmark/squad_locker,
+/turf/template_noop,
+/area/warfare/battlefield/trench_section/underground)
+
+(1,1,1) = {"
+cj
+cj
+cj
+cj
+cj
+cj
+cj
+cj
+cj
+cj
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+"}
+(2,1,1) = {"
+cj
+cj
+cj
+cj
+cj
+cj
+cj
+cj
+cj
+cj
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+"}
+(3,1,1) = {"
+cj
+cj
+cj
+cj
+cj
+cj
+cj
+cj
+cj
+cj
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+"}
+(4,1,1) = {"
+cj
+cj
+cj
+cj
+cj
+cj
+cj
+cj
+cj
+cj
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+"}
+(5,1,1) = {"
+cj
+cj
+cj
+cj
+cj
+cj
+cj
+cj
+cj
+cj
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+"}
+(6,1,1) = {"
+cj
+cj
+cj
+cj
+cj
+cj
+cj
+cj
+cj
+cj
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+"}
+(7,1,1) = {"
+cj
+cj
+cj
+cj
+cj
+cj
+cj
+cj
+cj
+cj
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+"}
+(8,1,1) = {"
+cj
+cj
+cj
+cj
+cj
+cj
+cj
+cj
+cj
+cj
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+"}
+(9,1,1) = {"
+cj
+cj
+cj
+cj
+cj
+cj
+cj
+cj
+cj
+cj
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+"}
+(10,1,1) = {"
+cj
+cj
+cj
+cj
+cj
+cj
+cj
+cj
+cj
+cj
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+"}
+(11,1,1) = {"
+cj
+cj
+cj
+cj
+cj
+cj
+cj
+cj
+cj
+cj
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+"}
+(12,1,1) = {"
+cj
+cj
+cj
+cj
+cj
+cj
+cj
+cj
+cj
+cj
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+"}
+(13,1,1) = {"
+cj
+cj
+cj
+cj
+cj
+cj
+cj
+cj
+cj
+cj
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+"}
+(14,1,1) = {"
+cj
+cj
+cj
+cj
+cj
+cj
+cj
+cj
+cj
+cj
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+"}
+(15,1,1) = {"
+cj
+cj
+cj
+cj
+cj
+cj
+cj
+cj
+cj
+cj
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+"}
+(16,1,1) = {"
+cj
+cj
+cj
+cj
+cj
+cj
+cj
+cj
+cj
+cj
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+"}
+(17,1,1) = {"
+cj
+cj
+cj
+cj
+cj
+cj
+cj
+cj
+cj
+cj
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+"}
+(18,1,1) = {"
+cj
+cj
+cj
+cj
+cj
+cj
+cj
+cj
+cj
+cj
+aw
+aw
+aw
+ZR
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+"}
+(19,1,1) = {"
+cj
+cj
+cj
+cj
+cj
+cj
+cj
+cj
+cj
+cj
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+Tu
+iy
+iy
+NZ
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+"}
+(20,1,1) = {"
+cj
+cj
+cj
+cj
+cj
+au
+yc
+AU
+au
+yc
+AU
+au
+yc
+AU
+wR
+au
+yc
+yc
+yc
+yc
+AU
+au
+mJ
+VP
+VP
+bZ
+au
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+"}
+(21,1,1) = {"
+cj
+cj
+cj
+cj
+cj
+SE
+tw
+dV
+SE
+tw
+dV
+SE
+tw
+dV
+qI
+SE
+Kw
+kI
+Oz
+uh
+vT
+SE
+MK
+gV
+gV
+Yl
+SE
+aw
+aw
+aw
+aw
+Nl
+aw
+aw
+aw
+aw
+rh
+aw
+aw
+aw
+JR
+aw
+"}
+(22,1,1) = {"
+cj
+cj
+cj
+cj
+cj
+SE
+Dz
+PZ
+SE
+Dz
+PZ
+SE
+Dz
+PZ
+tW
+SE
+tb
+gV
+gV
+gV
+hj
+SE
+gV
+gV
+gV
+gV
+SE
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+"}
+(23,1,1) = {"
+cj
+au
+yc
+yc
+au
+yc
+Yb
+yc
+yc
+Yb
+yc
+yc
+Yb
+yc
+yc
+yv
+sA
+FH
+VB
+sA
+sA
+SE
+gS
+gV
+gV
+gV
+bd
+au
+yc
+yc
+AU
+wR
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+"}
+(24,1,1) = {"
+au
+mJ
+wF
+dQ
+SE
+Sr
+PZ
+PZ
+fm
+PZ
+PZ
+fm
+PZ
+PZ
+fm
+Ix
+PZ
+EE
+gV
+EE
+PZ
+EG
+gV
+gV
+gV
+gV
+gV
+Ue
+gV
+gV
+CY
+qI
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+"}
+(25,1,1) = {"
+SE
+cl
+PZ
+PZ
+EG
+PZ
+PZ
+PZ
+PZ
+PZ
+PZ
+PZ
+PZ
+PZ
+PZ
+Tz
+PZ
+PZ
+gV
+PZ
+PZ
+Tz
+uV
+gV
+gV
+gV
+rv
+Tz
+gS
+gV
+CY
+Ue
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+"}
+(26,1,1) = {"
+bd
+kQ
+rg
+WD
+SE
+Xy
+PZ
+PZ
+dc
+PZ
+PZ
+dc
+PZ
+PZ
+dc
+Ix
+PZ
+ZB
+gV
+ZB
+PZ
+EG
+gV
+gV
+gV
+gV
+gV
+Ue
+gV
+gV
+CY
+tW
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+"}
+(27,1,1) = {"
+cj
+bd
+Qf
+Qf
+bd
+Qf
+lt
+Qf
+Qf
+lt
+Qf
+Qf
+lt
+Qf
+Qf
+yv
+sA
+FH
+sW
+sA
+sA
+Tz
+gS
+gV
+gV
+gV
+Kh
+bd
+Qf
+Qf
+qm
+us
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+"}
+(28,1,1) = {"
+cj
+cj
+cj
+cj
+cj
+SE
+Vf
+PZ
+SE
+Vf
+PZ
+SE
+Vf
+PZ
+qI
+SE
+cw
+gV
+gV
+gV
+ir
+SE
+gV
+gV
+gV
+gV
+tW
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+"}
+(29,1,1) = {"
+cj
+cj
+cj
+cj
+cj
+SE
+mW
+dV
+SE
+mW
+dV
+SE
+mW
+dV
+qI
+SE
+dr
+gV
+FD
+gV
+mk
+SE
+gV
+gV
+IE
+gV
+qI
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+"}
+(30,1,1) = {"
+cj
+cj
+cj
+cj
+cj
+bd
+Qf
+qm
+bd
+Qf
+qm
+bd
+Qf
+qm
+us
+bd
+Qf
+Qf
+Qf
+Qf
+qm
+bd
+Qf
+rD
+Qf
+qm
+us
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+"}
+(31,1,1) = {"
+cj
+cj
+cj
+cj
+cj
+cj
+cj
+cj
+cj
+cj
+aw
+aw
+aw
+aw
+TS
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+"}
+(32,1,1) = {"
+cj
+cj
+cj
+cj
+cj
+cj
+cj
+cj
+cj
+cj
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+"}

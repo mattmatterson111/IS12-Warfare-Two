@@ -106,7 +106,7 @@
 
 /obj/item/ammo_magazine/brifle
 	name = "Rifle Box"
-	desc = "A box of rifle ammo"
+	desc = "A box of rifle ammo."
 	icon_state = "rbox"
 	caliber = "763"
 	ammo_type = /obj/item/ammo_casing/brifle
@@ -142,7 +142,7 @@
 
 /obj/item/gun/projectile/shotgun/pump/shitty/sawn
 	name = "\improper Sawn Off WTX Frontier Special"
-	desc = "Purposely cut down and made shorter, it still packs the same punch as its longer brother but in a more compact package. , I can’t help but wonder if it’s even reliable."
+	desc = "Purposely cut down and made shorter, it still packs the same punch as its longer brother but in a more compact package. I can’t help but wonder if it’s even reliable."
 	icon_state = "sawnchester"
 	item_state = "sawnchester"
 	wielded_item_state = "sawnchester-wielded"
@@ -300,6 +300,7 @@
 
 	magazine_type = /obj/item/ammo_magazine/a762/m14
 	allowed_magazines = /obj/item/ammo_magazine/a762/m14
+	gun_type = GUN_SEMIAUTO
 
 /obj/item/gun/projectile/automatic/m22/warmonger/m14/attackby(obj/item/W, mob/user)
 	. = ..()
@@ -388,6 +389,7 @@
 	magazine_type = /obj/item/ammo_magazine/a762/sks
 	allowed_magazines = /obj/item/ammo_magazine/a762/sks
 	condition = 200
+	gun_type = GUN_SEMIAUTO
 
 /obj/item/ammo_magazine/a762/sks
 	name = "Headhunter mag"
@@ -428,7 +430,7 @@
 
 
 /obj/item/gun/projectile/automatic/m22/warmonger/m14/battlerifle
-	name = "Mk.1 Armageddon"
+	name = "Mk.2 Armageddon"
 	desc = "A factory-produced and oiled semi-automatic carbine that's much nicer than whatever scraps those medics are using."
 	icon_state = "battlerifle"
 	item_state = "battlerifle"
@@ -437,6 +439,7 @@
 
 	magazine_type = /obj/item/ammo_magazine/a762/m14/battlerifle_mag
 	allowed_magazines = list(/obj/item/ammo_magazine/a762/m14/battlerifle_mag, /obj/item/ammo_magazine/c45rifle/akarabiner)
+	gun_type = GUN_SEMIAUTO
 
 	loaded_icon = "battlerifle"
 	unwielded_loaded_icon = "battlerifle"
@@ -451,13 +454,14 @@
 
 /obj/item/gun/projectile/automatic/m22/warmonger/m14/battlerifle/rsc
 	name = "Mk.1 Armageddon"
-	desc = "An alternate version of the Armageddon carbine, utilizing a specific clip design. It might just hold up in a real fight."
+	desc = "The first interation of the Armageddon carbine, utilizing a specific clip design. It's bad, but it might just hold up in a real fight."
 	icon_state = "rsc"
 	item_state = "rsc"
 	wielded_item_state = "rsc-wielded"
 
 	magazine_type = /obj/item/ammo_magazine/a762/rsc
 	allowed_magazines = /obj/item/ammo_magazine/a762/rsc
+	gun_type = GUN_SEMIAUTO
 
 	caliber = "763"
 
@@ -472,6 +476,7 @@
 	icon_state = "rsc"
 	name = "Armageddon clip"
 	max_ammo = 5
+	desc = "A clip for the MK.1 Armageddon."
 	caliber = "763"
 	ammo_type = /obj/item/ammo_casing/brifle
 
@@ -571,6 +576,7 @@
 	user.visible_message("[user] starts to deploy the [src]")
 	user.doing_something = TRUE
 	if(!do_after(user,30))
+		user.doing_something = FALSE //Prevents Permanently being unable to deploy harbingers
 		return
 	user.doing_something = FALSE
 	var/obj/structure/mg08_structure/M = new(get_turf(user)) //Make a new one here.
@@ -775,7 +781,8 @@
 	caliber = "flamer"
 	one_hand_penalty = 50
 	str_requirement = 18
-	fire_sound = "combust"
+	fire_sound = "flamer_fire"
+	handle_casings = CLEAR_CASINGS
 	casingsound = null//No eject sound for you.
 	firemodes = list()
 	automatic = 0.1
@@ -784,6 +791,9 @@
 	magazine_type = /obj/item/ammo_magazine/flamer
 	allowed_magazines = /obj/item/ammo_magazine/flamer
 	can_jam = FALSE
+
+	unload_sound = 'sound/weapons/guns/interact/flamer_remove.ogg'
+	reload_sound = 'sound/weapons/guns/interact/flamer_insert.ogg'
 
 	loaded_icon = "flamer"
 	unwielded_loaded_icon = "flamer"
@@ -875,7 +885,7 @@
 	unloaded_icon = "colt-e"
 	item_state = "handgun"
 	fire_sound = "sound/weapons/guns/fire/pistol1.ogg"
-	desc = "Potent handgun that fires an unwieldy and unusual caliber, denotated 'Wristfucker'"
+	desc = "Potent handgun that fires an unwieldy and unusual caliber, denotated 'Wristfucker'."
 	magazine_type = /obj/item/ammo_magazine/a50
 	allowed_magazines = /obj/item/ammo_magazine/a50
 	caliber = ".50"
@@ -981,3 +991,49 @@
 	var/turf/T = src.loc
 	qdel(src)
 	new/obj/effect/abstract/smoke(T)
+
+
+	//Shig 420
+/obj/item/gun/projectile/warfare/shig
+	name = "Shig 420"
+	icon_state = "handgun"
+	item_state = "handgun"
+	fire_sound = "gunshot"//Pistol sounds.
+	desc = "A cutting edge innovation in weapons technology. It always lands a shot. The fact that it's your own skin half the time doesn't matter. It's the Shig 420! It'll win us the war!"
+
+/obj/item/gun/projectile/warfare/shig/attackby(obj/item/W, mob/user)
+	. = ..()
+	handleMisfire(user)
+
+/obj/item/gun/projectile/warfare/shig/grab_sound(mob/living/carbon/human/user)
+	. = ..()
+	handleMisfire(user)
+
+/obj/item/gun/projectile/warfare/shig/examine(mob/user)
+	. = ..()
+	if(get_dist(user, src) > 1)
+		return
+	to_chat(user,SPAN_MINDVOICE("Who even allowed this to be sent to the front?"))
+	if(user.HasRoleSimpleCheck("Red Captain") || user.HasRoleSimpleCheck("Blue Captain"))
+		to_chat(user,SPAN_MINDVOICE("<b>I did. Everyone on the War Council did. Do they not understand how desperate the situation is?</b>"))
+
+/obj/item/gun/projectile/warfare/shig/proc/handleMisfire(mob/victim)
+	if(calculateMisfire())
+		to_chat(victim,SPAN_DANGER("The Shig 420 misfires! Why did our team purchase this stupid thing?!"))
+		Fire(victim,victim)
+
+/obj/item/gun/projectile/warfare/shig/proc/calculateMisfire() //straight 50/50 chance. It's the shig420 after all.
+	var/willMisfire = rand(1,2)
+	if(willMisfire == 1)
+		return TRUE
+	else if(willMisfire == 2)
+		return FALSE
+	else
+		//to_chat(usr,"DIVINE INTERVENTION! NOFITFY AN ADMIN!") //here to check if actually doing a fair 50/50 roll
+		return FALSE
+
+/*
+/obj/item/gun/projectile/warfare/shig/evil
+	name = "Shig 420"
+	desc = SPAN_DANGER("I shouldn't touch this... I shouldn't even look at it...\n\nBy god... What have we done?")
+*/

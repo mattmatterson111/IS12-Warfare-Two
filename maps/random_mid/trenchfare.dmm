@@ -7,14 +7,23 @@
 	dir = 1
 	},
 /obj/effect/lighting_dummy/daylight,
+/obj/hammereditor/playerclip,
+/obj/hammereditor/bulletclip,
 /turf/simulated/floor/urban/concrete,
 /area/warfare/battlefield/capture_point/mid)
 "c" = (
 /obj/effect/floor_decal/urban/trim3{
 	dir = 9
 	},
-/obj/structure/barbwire,
 /obj/effect/lighting_dummy/daylight,
+/obj/structure/defensive_barrier,
+/obj/structure/defensive_barrier{
+	secured = 1;
+	dir = 8;
+	pixel_x = 4;
+	pixel_y = 2
+	},
+/obj/structure/barbwire,
 /turf/simulated/floor/urban/concrete,
 /area/warfare/battlefield/capture_point/mid)
 "d" = (
@@ -26,7 +35,7 @@
 /obj/hammereditor/nodraw,
 /turf/simulated/wall/perspecticrete{
 	layer = 29;
-	plane = -15
+	plane = -150
 	},
 /area/template_noop)
 "h" = (
@@ -44,8 +53,19 @@
 /obj/effect/floor_decal/urban/trim3{
 	dir = 6
 	},
-/obj/structure/barbwire,
 /obj/effect/lighting_dummy/daylight,
+/obj/structure/defensive_barrier{
+	dir = 1;
+	pixel_y = 12;
+	secured = 1
+	},
+/obj/structure/defensive_barrier{
+	secured = 1;
+	dir = 4;
+	pixel_x = 2;
+	pixel_y = 1
+	},
+/obj/structure/barbwire,
 /turf/simulated/floor/urban/concrete,
 /area/warfare/battlefield/capture_point/mid)
 "l" = (
@@ -59,6 +79,8 @@
 	dir = 8
 	},
 /obj/effect/lighting_dummy/daylight,
+/obj/hammereditor/playerclip,
+/obj/hammereditor/bulletclip,
 /turf/simulated/floor/urban/concrete,
 /area/warfare/battlefield/capture_point/mid)
 "q" = (
@@ -68,16 +90,14 @@
 /obj/effect/floor_decal/urban/trim3{
 	dir = 1
 	},
-/obj/structure/barbwire,
 /obj/effect/lighting_dummy/daylight,
+/obj/structure/defensive_barrier,
+/obj/structure/barbwire,
 /turf/simulated/floor/urban/concrete,
 /area/warfare/battlefield/capture_point/mid)
 "s" = (
-/obj/effect/floor_decal/urban/trim3{
-	dir = 4
-	},
 /obj/effect/lighting_dummy/daylight,
-/turf/simulated/floor/urban/concrete,
+/turf/simulated/floor/trench,
 /area/warfare/battlefield/capture_point/mid)
 "t" = (
 /obj/structure/landmine/red,
@@ -103,24 +123,38 @@
 	},
 /area/template_noop)
 "y" = (
-/obj/effect/floor_decal/urban/trim3{
-	dir = 8
-	},
 /obj/effect/lighting_dummy/daylight,
-/turf/simulated/floor/urban/concrete,
+/obj/structure/defensive_barrier{
+	secured = 1;
+	dir = 8;
+	pixel_x = 4;
+	pixel_y = 2
+	},
+/turf/simulated/floor/trench,
 /area/warfare/battlefield/capture_point/mid)
 "z" = (
 /obj/effect/floor_decal/urban/trim3{
 	dir = 4
 	},
-/obj/structure/barbwire,
 /obj/effect/lighting_dummy/daylight,
+/obj/structure/defensive_barrier{
+	secured = 1;
+	dir = 4;
+	pixel_x = 2;
+	pixel_y = 1
+	},
+/obj/structure/barbwire,
 /turf/simulated/floor/urban/concrete,
 /area/warfare/battlefield/capture_point/mid)
 "A" = (
 /obj/effect/floor_decal/urban/trim3,
-/obj/structure/barbwire,
 /obj/effect/lighting_dummy/daylight,
+/obj/structure/defensive_barrier{
+	dir = 1;
+	pixel_y = 12;
+	secured = 1
+	},
+/obj/structure/barbwire,
 /turf/simulated/floor/urban/concrete,
 /area/warfare/battlefield/capture_point/mid)
 "B" = (
@@ -156,8 +190,19 @@
 /obj/effect/floor_decal/urban/trim3{
 	dir = 10
 	},
-/obj/structure/barbwire,
 /obj/effect/lighting_dummy/daylight,
+/obj/structure/defensive_barrier{
+	dir = 1;
+	pixel_y = 12;
+	secured = 1
+	},
+/obj/structure/defensive_barrier{
+	secured = 1;
+	dir = 8;
+	pixel_x = 4;
+	pixel_y = 2
+	},
+/obj/structure/barbwire,
 /turf/simulated/floor/urban/concrete,
 /area/warfare/battlefield/capture_point/mid)
 "J" = (
@@ -165,8 +210,11 @@
 /obj/effect/lighting_dummy/daylight,
 /obj/structure/vague_statue/random{
 	name = "statue";
-	pixel_y = 16
+	pixel_y = 16;
+	anchored = 1
 	},
+/obj/hammereditor/playerclip,
+/obj/hammereditor/bulletclip,
 /turf/simulated/floor/urban/concrete,
 /area/warfare/battlefield/capture_point/mid)
 "L" = (
@@ -199,14 +247,27 @@
 /area/template_noop)
 "R" = (
 /obj/effect/lighting_dummy/daylight,
-/turf/simulated/floor/urban/concrete,
+/obj/structure/defensive_barrier{
+	secured = 1;
+	dir = 4;
+	pixel_x = 2;
+	pixel_y = 1
+	},
+/turf/simulated/floor/trench,
 /area/warfare/battlefield/capture_point/mid)
 "S" = (
 /obj/effect/floor_decal/urban/trim3{
 	dir = 5
 	},
-/obj/structure/barbwire,
 /obj/effect/lighting_dummy/daylight,
+/obj/structure/defensive_barrier,
+/obj/structure/defensive_barrier{
+	secured = 1;
+	dir = 4;
+	pixel_x = 2;
+	pixel_y = 1
+	},
+/obj/structure/barbwire,
 /turf/simulated/floor/urban/concrete,
 /area/warfare/battlefield/capture_point/mid)
 "T" = (
@@ -214,14 +275,22 @@
 	dir = 4
 	},
 /obj/effect/lighting_dummy/daylight,
+/obj/hammereditor/playerclip,
+/obj/hammereditor/bulletclip,
 /turf/simulated/floor/urban/concrete,
 /area/warfare/battlefield/capture_point/mid)
 "U" = (
 /obj/effect/floor_decal/urban/trim3{
 	dir = 8
 	},
-/obj/structure/barbwire,
 /obj/effect/lighting_dummy/daylight,
+/obj/structure/defensive_barrier{
+	secured = 1;
+	dir = 8;
+	pixel_x = 4;
+	pixel_y = 2
+	},
+/obj/structure/barbwire,
 /turf/simulated/floor/urban/concrete,
 /area/warfare/battlefield/capture_point/mid)
 "V" = (
@@ -17123,13 +17192,13 @@ m
 E
 Q
 i
-Q
-m
-m
-m
-m
-m
-m
+i
+i
+i
+i
+i
+i
+i
 m
 m
 m
@@ -17378,8 +17447,8 @@ m
 m
 m
 m
-m
-m
+i
+i
 m
 m
 m
@@ -17628,8 +17697,8 @@ m
 m
 H
 U
-y
-y
+s
+s
 U
 c
 m
@@ -17877,10 +17946,10 @@ Q
 m
 m
 A
-R
-R
-R
-R
+s
+s
+s
+s
 r
 m
 m
@@ -18127,10 +18196,10 @@ Q
 m
 m
 A
-R
+s
 b
 J
-R
+y
 r
 m
 m
@@ -18380,7 +18449,7 @@ A
 R
 T
 o
-R
+s
 r
 m
 m
@@ -18627,10 +18696,10 @@ Q
 m
 m
 A
-R
-R
-R
-R
+s
+s
+s
+s
 r
 m
 m
@@ -19128,8 +19197,8 @@ m
 m
 m
 m
-m
-m
+i
+i
 m
 m
 m
@@ -19379,12 +19448,12 @@ m
 m
 m
 m
-m
-m
-m
-m
-m
-Q
+i
+i
+i
+i
+i
+i
 i
 Q
 E

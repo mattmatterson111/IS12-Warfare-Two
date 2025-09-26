@@ -663,6 +663,16 @@
 		to_chat(user, "<span class='notice'>You toggle the safety [safety ? "on":"off"].</span>")
 	return TRUE
 
+/obj/item/gun/AltRightClick(mob/user)
+	if(user.incapacitated(INCAPACITATION_STUNNED|INCAPACITATION_RESTRAINED|INCAPACITATION_KNOCKOUT))
+		return
+	if(src != user.get_active_hand())
+		return
+	if(!ishuman(user))
+		return
+
+	remove_bayonet(user)
+
 /obj/item/gun/AltClick(mob/user)
 	if(user.incapacitated(INCAPACITATION_STUNNED|INCAPACITATION_RESTRAINED|INCAPACITATION_KNOCKOUT))
 		return
@@ -809,6 +819,17 @@
 	attack_verb = list ("stabbed", "sliced")
 	playsound(get_turf(src), 'sound/items/holster_knife.ogg', 65, 0.5)
 	desc += " This one has a bayonet."
+
+/obj/item/gun/proc/remove_bayonet(mob/living/user)
+	if(can_have_bayonet == FALSE && hitsound == "bayonet_stab")//Only way I know how to do this ok?
+		hitsound = initial(hitsound)
+		overlays.Cut()//We re-apply them in a sec relax.
+		desc = initial(desc)
+		can_have_bayonet = TRUE
+		attack_verb = list("bashes","smacks")
+		var/obj/item/material/sword/combat_knife/C = new(get_turf(src))
+		user.put_in_hands(C)
+		update_icon()
 
 /obj/item/gun/proc/unload_ammo(mob/user, var/allow_dump=1)
 	return

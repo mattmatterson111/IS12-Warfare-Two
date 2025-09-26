@@ -64,5 +64,15 @@
 	if(tracking)
 		tracking.update()
 
+	if(waypoint)
+		waypoint.update()
+
 /proc/iswarfare()
     return (istype(ticker.mode, /datum/game_mode/warfare) || master_mode=="warfare")
+
+//Simple job check. Not meant to be used for any serious backend stuff. The "role" var is meant to be a string. - Stuff
+/mob/proc/HasRoleSimpleCheck(var/role)
+	if(mind.assigned_role == role)
+		return TRUE
+	else
+		return FALSE

@@ -59,145 +59,132 @@ What is the naming convention for planes or layers?
 
 	FLOAT_PLANE = -32767
 */
+// honestly, its not optimal, it's shit, but I just wanted space to easily add new planes if I wanted to
 
-#define CLICKCATCHER_PLANE -500
+#define CLICKCATCHER_PLANE           -340
+#define HIDDEN_SHIT_PLANE            -330
+#define SPACE_PLANE                  -320
+#define SKYBOX_PLANE                 -310
 
-#define HIDDEN_SHIT_PLANE  -499 //Used for the hiding of the vision cone masking object.
-#define SPACE_PLANE -498
-#define SKYBOX_PLANE SPACE_PLANE + 1
+#define DUST_PLANE                   -300
+    #define DEBRIS_LAYER            1
+    #define DUST_LAYER              2
 
-#define DUST_PLANE SPACE_PLANE + 2
-	#define DEBRIS_LAYER 1
-	#define DUST_LAYER 2
+#define UNDER_OPENSPACE_PLANE        -210
+#define OPENSPACE_PLANE              -200
+#define BELOW_TURF_PLANE             -190
 
-//Reserve planes for openspace
-#define OPENSPACE_PLANE_START -462
-#define OPENSPACE_PLANE_END -22
-#define OPENSPACE_PLANE -99 //-463
-#define UNDER_OPENSPACE_PLANE -100
-#define OVER_OPENSPACE_PLANE -17
+#define PLATING_PLANE                -180
+    #define PLATING_LAYER           1
 
+#define ABOVE_PLATING_PLANE          -170
+    #define HOLOMAP_LAYER           2
+    #define DECAL_PLATING_LAYER     3
+    #define DISPOSALS_PIPE_LAYER    4
+    #define LATTICE_LAYER           5
+    #define PIPE_LAYER              6
+    #define WIRE_LAYER              7
+    #define WIRE_TERMINAL_LAYER     8
+    #define ABOVE_WIRE_LAYER        9
 
-#define BELOW_TURF_PLANE             -22 // objects that are below turfs. Useful for asteroid smoothing or other such magic.
-	// TURF_LAYER 2
+#define OVER_OPENSPACE_PLANE         -170  // Placed above openspace range
 
-#define PLATING_PLANE                -21
-	#define PLATING_LAYER 1
+#define TURF_PLANE                   -160
+    #define BASE_TURF_LAYER         -999
+    #define TURF_DETAIL_LAYER       11
 
-#define ABOVE_PLATING_PLANE          -20
+#define WALL_PLANE                   -150
 
-	#define HOLOMAP_LAYER        2 // NOTE: ENSURE this is equal to the one at ABOVE_TURF_PLANE!
-	#define DECAL_PLATING_LAYER  3
-	#define DISPOSALS_PIPE_LAYER 4
-	#define LATTICE_LAYER        5
-	#define PIPE_LAYER           6
-	#define WIRE_LAYER           7
-	#define WIRE_TERMINAL_LAYER  8
-	#define ABOVE_WIRE_LAYER     9
+#define ABOVE_TURF_PLANE             -140
+    #define DECAL_LAYER             12
+    #define RUNE_LAYER              13
+    #define ABOVE_TILE_LAYER        14
+    #define EXPOSED_PIPE_LAYER      15
+    #define EXPOSED_WIRE_LAYER      16
+    #define EXPOSED_WIRE_TERMINAL_LAYER 17
+    #define CATWALK_LAYER           18
+    #define BLOOD_LAYER             19
+    #define MOUSETRAP_LAYER         20
+    #define PLANT_LAYER             21
+    #define AO_LAYER                22
 
-#define TURF_PLANE				-19
+#define HIDING_MOB_PLANE             -130
+    #define HIDING_MOB_LAYER        0
 
-	#define BASE_TURF_LAYER -999
-	#define TURF_DETAIL_LAYER 11
+#define OBJ_PLANE                    -120
+    #define BELOW_DOOR_LAYER        23
+    #define OPEN_DOOR_LAYER         24
+    #define BELOW_TABLE_LAYER       25
+    #define TABLE_LAYER             26
+    #define BELOW_OBJ_LAYER         27
+    #define BASE_OBJ_LAYER          28
+    #define ABOVE_OBJ_LAYER         29
+    #define CLOSED_DOOR_LAYER       30
+    #define ABOVE_DOOR_LAYER        31
+    #define SIDE_WINDOW_LAYER       32
+    #define FULL_WINDOW_LAYER       33
+    #define ABOVE_WINDOW_LAYER      34
 
-#define WALL_PLANE 				-18
+#define LYING_MOB_PLANE              -110
+    #define LYING_MOB_LAYER         35
 
+#define LYING_HUMAN_PLANE            -100
+    #define LYING_HUMAN_LAYER       36
 
-#define ABOVE_TURF_PLANE              -16 // For items which should appear above turfs but below other objects and hiding mobs, eg: wires & pipes
+#define ABOVE_OBJ_PLANE              -90
+    #define BASE_ABOVE_OBJ_LAYER    37
 
-	//#define HOLOMAP_LAYER               1 // NOTE: ENSURE this is equal to the one at ABOVE_PLATING_PLANE!
-	#define DECAL_LAYER                 12
-	#define RUNE_LAYER                  13
-	#define ABOVE_TILE_LAYER            14
-	#define EXPOSED_PIPE_LAYER          15
-	#define EXPOSED_WIRE_LAYER          16
-	#define EXPOSED_WIRE_TERMINAL_LAYER 17
-	#define CATWALK_LAYER               18
-	#define BLOOD_LAYER                 19
-	#define MOUSETRAP_LAYER             20
-	#define PLANT_LAYER                 21
-	#define AO_LAYER 					22
+#define HUMAN_PLANE                  -80
+    #define BASE_MOB_LAYER          38
 
-#define HIDING_MOB_PLANE              -16 // for hiding mobs like MoMMIs or spiders or whatever, under most objects but over pipes & such.
+#define ANON_PLANE                   -75  // Anonymous blur effect
 
-	#define HIDING_MOB_LAYER 0
+#define MOB_PLANE                    -70  // For non-human mobs
 
-#define OBJ_PLANE                     -15 // For objects which appear below humans.
-	#define BELOW_DOOR_LAYER        23
-	#define OPEN_DOOR_LAYER         24
-	#define BELOW_TABLE_LAYER       25
-	#define TABLE_LAYER             26
-	#define BELOW_OBJ_LAYER         27
-	#define BASE_OBJ_LAYER          28
-	#define ABOVE_OBJ_LAYER         29
-	#define CLOSED_DOOR_LAYER       30
-	#define ABOVE_DOOR_LAYER        31
-	#define SIDE_WINDOW_LAYER       32
-	#define FULL_WINDOW_LAYER       33
-	#define ABOVE_WINDOW_LAYER      34
+#define ABOVE_HUMAN_PLANE            -60
+    #define ABOVE_HUMAN_LAYER       39
+    #define VEHICLE_LOAD_LAYER      40
+    #define CAMERA_LAYER            41
 
-#define LYING_MOB_PLANE               -14 // other mobs that are lying down.
+#define BLOB_PLANE                   -55
+    #define BLOB_SHIELD_LAYER		42
+    #define BLOB_NODE_LAYER			43
+    #define BLOB_CORE_LAYER			44
 
-	#define LYING_MOB_LAYER 35
+#define BULLET_PLANE                 -50  // Bullets in combat
 
-#define LYING_HUMAN_PLANE             -13 // humans that are lying down
+#define EFFECTS_BELOW_LIGHTING_PLANE -40
+    #define BELOW_PROJECTILE_LAYER  45
+    #define FIRE_LAYER              46
+    #define PROJECTILE_LAYER        47
+    #define ABOVE_PROJECTILE_LAYER  48
+    #define SINGULARITY_LAYER       49
+    #define POINTER_LAYER           50
 
-	#define LYING_HUMAN_LAYER 36
+#define BLURRED_EFFECTS_PLANE -39 // Reserved for blurred effects/particles, eg: smoke
 
-#define ABOVE_OBJ_PLANE               -12 // for objects that are below humans when they are standing but above them when they are not. - eg, blankets.
+#define OBSERVER_PLANE               -30  // For observers and ghosts
 
-	#define BASE_ABOVE_OBJ_LAYER 37
+#define DARKNESS_PLANE				 -19
+#define LIGHTING_PLANE               -20
+    #define LIGHTBULB_LAYER         0
+    #define ABOVE_LIGHTING_LAYER    2
+    #define SUPER_PORTAL_LAYER      3
+    #define NARSIE_GLOW             4
 
-#define HUMAN_PLANE                   -10 // For Humans that are standing up.
-	#define BASE_MOB_LAYER 38
+#define EFFECTS_ABOVE_LIGHTING_PLANE -10
+    #define EYE_GLOW_LAYER          1
+    #define BEAM_PROJECTILE_LAYER   2
+    #define SUPERMATTER_WALL_LAYER  3
 
-#define ANON_PLANE					   -9 //For the anonymous blur effect.
-
-#define MOB_PLANE                      -11 // For Mobs.
-	// MOB_LAYER 4
-
-#define ABOVE_HUMAN_PLANE              -6 // For things that should appear above humans.
-
-	#define ABOVE_HUMAN_LAYER  39
-	#define VEHICLE_LOAD_LAYER 40
-	#define CAMERA_LAYER       41
-
-#define BLOB_PLANE                     -5 // For Blobs, which are above humans.
-
-	#define BLOB_SHIELD_LAYER		42
-	#define BLOB_NODE_LAYER			43
-	#define BLOB_CORE_LAYER			44
-
-#define BULLET_PLANE 				   -5 //Same as blob plane but blobs are not used in warfare.
-
-#define EFFECTS_BELOW_LIGHTING_PLANE   -4 // For special effects.
-
-	#define BELOW_PROJECTILE_LAYER  45
-	#define FIRE_LAYER              46
-	#define PROJECTILE_LAYER        47
-	#define ABOVE_PROJECTILE_LAYER  48
-	#define SINGULARITY_LAYER       49
-	#define POINTER_LAYER           50
-
-#define OBSERVER_PLANE                 -3 // For observers and ghosts
-
-#define LIGHTING_PLANE 			       -2 // For Lighting. - The highest plane (ignoring all other even higher planes)
-
-	#define LIGHTBULB_LAYER        0
-	//#define LIGHTING_LAYER         1
-	#define ABOVE_LIGHTING_LAYER   2
-	#define SUPER_PORTAL_LAYER     3
-	#define NARSIE_GLOW            4
-
-#define EFFECTS_ABOVE_LIGHTING_PLANE   -1 // For glowy eyes, laser beams, etc. that shouldn't be affected by darkness
-	#define EYE_GLOW_LAYER         1
-	#define BEAM_PROJECTILE_LAYER  2
-	#define SUPERMATTER_WALL_LAYER 3
+#define GLOW_PLANE 					 -6  // What feeds into those two below, basically a combo
+#define GLARE_PLANE                  -5  // Lens flare and glare overlays
+#define BLOOM_PLANE                  -4  // Bloom/glow pass effects
 
 #define BASE_PLANE 				        0 // Not for anything, but this is the default.
 	#define BASE_AREA_LAYER 999
 
-#define OBSCURITY_PLANE 		        2 // For visualnets, such as the AI's static.
+#define OBSCURITY_PLANE 		        2 // visualnets?
 
 #define FULLSCREEN_PLANE                3 // for fullscreen overlays that do not cover the hud.
 
@@ -222,7 +209,7 @@ What is the naming convention for planes or layers?
 	#define HUD_ABOVE_ITEM_LAYER 3
 
 //This is difference between highest and lowest visible
-#define PLANE_DIFFERENCE              22
+#define PLANE_DIFFERENCE              22 // unused.
 /image
 	plane = FLOAT_PLANE			// this is defunct, lummox fixed this on recent compilers, but it will bug out if I remove it for coders not on the most recent compile.
 
@@ -308,7 +295,7 @@ What is the naming convention for planes or layers?
 	plane = PLATING_PLANE
 
 /obj/screen/plane_master/blur/effects_blur
-	plane = EFFECTS_BELOW_LIGHTING_PLANE
+	plane = BLURRED_EFFECTS_PLANE
 
 /obj/screen/plane_master/ghost_dummy
 	// this avoids a bug which means plane masters which have nothing to control get angry and mess with the other plane masters out of spite
@@ -320,6 +307,29 @@ GLOBAL_LIST_INIT(ghost_master, list(
 	new /obj/screen/plane_master/blur/ghost_master(),
 	new /obj/screen/plane_master/ghost_dummy()
 ))
+
+/obj/screen/plane_master/lights_filterer
+	render_target = "*TO_LIGHTFILT"
+
+/obj/screen/plane_master/bloom_filter
+	name = "bloom filter"
+	plane = BLOOM_PLANE
+	layer = FLOAT_LAYER
+
+/obj/screen/plane_master/bloom_filter/Initialize()
+	..()
+	filters += filter(type = "layer", render_source = "*TO_LIGHTFILT")
+	filters += filter(type = "bloom", size = 3, offset = 2, alpha = 75)
+
+
+/obj/screen/plane_master/radial_filter
+	name = "radial blur filter"
+	plane = GLARE_PLANE
+
+/obj/screen/plane_master/radial_filter/Initialize()
+	..()
+	filters += filter(type = "layer", render_source = "*TO_LIGHTFILT")
+	filters += filter(type = "radial_blur", size = 0.015)
 
 /obj/screen/plane_master/ao
 	// no vars set, here to make searching easier

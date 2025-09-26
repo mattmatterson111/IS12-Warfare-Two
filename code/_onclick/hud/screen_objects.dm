@@ -291,7 +291,7 @@
 
 /obj/screen/intent/update_icon()
 	icon_state = "intent_[intent]"
-	
+
 /obj/screen/Click(location, control, params)
 	if(!usr)	return 1
 	var/list/modifiers = params2list(params)
@@ -576,42 +576,97 @@
 
 /obj/screen/arrow_to
 	name = "tracking"
-	icon_state = "arrow_to"
-	screen_loc = "CENTER, CENTER"
+	icon = 'icons/mob/evil96.dmi'
+	icon_state = "arrow"
+	screen_loc = "CENTER,CENTER"
 	invisibility = 100
+	mouse_opacity = FALSE
 	var/angle
 	var/mob/owner
 	var/atom/target
-	var/atom/last_target
+	var/tracking_id = 0
 
-/obj/screen/arrow_to/proc/track(var/mob/T)
+/obj/screen/arrow_to/proc/setup(var/mob/M)
+	owner = M
+	invisibility = 100
+
+/obj/screen/arrow_to/proc/track(var/atom/T)
 	if(T == target)
 		return
-	last_target = target
 	target = T
 	invisibility = 0
 	update()
+
+	tracking_id++
+	var/current_id = tracking_id
 	spawn(3 MINUTES)
-		end_tracking(T)
+		if(tracking_id == current_id)
+			end_tracking(T)
 
 /obj/screen/arrow_to/proc/update()
-
-	if(!target)
+	if(!target || !owner)
 		return
 
 	var/turf/O = get_turf(owner)
 	var/turf/T = get_turf(target)
-	var/target_angle = Get_Angle(O, T)
-	var/difference = target_angle - angle
-	angle = target_angle
-	var/matrix/final = matrix(transform)
+	if(!O || !T)
+		return
 
-	final.Turn(difference)
+	angle = Get_Angle(O, T)
+	var/matrix/final = matrix()
+	final.Turn(angle)
+	var/color_to = "#FFFFFF"
+	if(O.z != T.z)
+		color_to = "#8b8b8b"
+	animate(src, transform = final, time = 5, loop = 0, color = color_to, easing = EASE_IN|EASE_OUT)
 
-	animate(src, transform = final, time = 5, loop = 0)
-
-/obj/screen/arrow_to/proc/end_tracking(var/mob/T)
-	if(T == last_target)
-		return // target has changed
+/obj/screen/arrow_to/proc/end_tracking(var/atom/T)
+	if(T != target)
+		return
 	target = null
 	invisibility = 100
+
+/obj/screen/arrow_to/waypoint
+	screen_loc = "CENTER-1,CENTER-1"
+	var/image/overlay_image  // the image shown only to the client
+
+/obj/screen/arrow_to/waypoint/track(atom/T, maptext_text, template)
+	. = ..()
+
+	// Clean up old overlay if it exists
+	if(overlay_image)
+		owner?.client?.images -= overlay_image
+		qdel(overlay_image)
+
+	// Create a new overlay image and apply it to the turf the target is on
+	var/turf/T_turf = get_turf(T)
+	overlay_image = image('icons/mob/evil96.dmi', template, T_turf, "waypoint")
+	overlay_image.maptext_width = 96
+	overlay_image.maptext_height = 64
+	overlay_image.pixel_x = -32
+	overlay_image.pixel_y = -32
+	overlay_image.maptext = "<font size=1><center>[maptext_text]</center></font>"
+	overlay_image.maptext_y = 64
+	overlay_image.plane = EFFECTS_ABOVE_LIGHTING_PLANE
+	overlay_image.icon_state = template
+	owner?.client?.images += overlay_image
+
+/obj/screen/arrow_to/waypoint/update()
+	..()
+	if(!target || !owner || !overlay_image)
+		return
+
+	var/turf/new_turf = get_turf(target)
+	if(!new_turf)
+		return
+
+	// Move the overlay to the new turf if it changed
+	if(overlay_image.loc != new_turf)
+		overlay_image.loc = new_turf
+
+/obj/screen/arrow_to/waypoint/end_tracking(atom/T)
+	. = ..()
+	if(overlay_image)
+		owner?.client?.images -= overlay_image
+		qdel(overlay_image)
+		overlay_image = null

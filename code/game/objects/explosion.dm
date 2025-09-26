@@ -178,26 +178,31 @@ ARTILLERY BARAGE
 ==============*/
 //only works on no man land z level (2)
 //checks for valid spot within range.
-proc/artillery_barage(var/x, var/y)
+proc/artillery_barage(var/x, var/y, var/z, mortartype="shrapnel", bypass_restrictions = FALSE, maxamount = 10)
 
 	var/x_random = x
 	var/y_random = y
 	var/sleep_randomizer = 10
 	var/turf/turf_to_drop
 
-	for(var/i = 1, i< 10, i++)//value may need to tweak
+	for(var/i = 1, i< maxamount, i++)//value may need to tweak
 		x_random = x + (rand(0, 6) -3 )
 		y_random = y + (rand(0, 6) -3 )
 		//randomize sleep time to get more dynamic artillery
 		sleep_randomizer = rand(8, 25)
-		turf_to_drop = locate(x_random, y_random, 2)
+		turf_to_drop = locate(x_random, y_random, z)
+		if(bypass_restrictions)
+			//bypass restrictions for testing
+			drop_mortar(turf_to_drop, mortartype)
+			sleep(sleep_randomizer)
+			continue
 		if(istype(turf_to_drop.loc, /area/warfare/battlefield/no_mans_land) || istype(turf_to_drop.loc, /area/warfare/battlefield/capture_point/mid))
-			drop_mortar(turf_to_drop, "shrapnel")
+			drop_mortar(turf_to_drop, mortartype)
 		else
 			//if we fail to find a valid place just drop on the target
 			world.log << "Invalid landing zone. [x_random], [y_random]... defaulting to original position."
 			turf_to_drop = locate(x,y,2)
-			drop_mortar(turf_to_drop, "shrapnel")
+			drop_mortar(turf_to_drop, mortartype)
 
 
 		sleep(sleep_randomizer)

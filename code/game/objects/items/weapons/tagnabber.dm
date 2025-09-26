@@ -10,6 +10,8 @@
 	. = ..()
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
+		if(H.warfare_faction == user.warfare_faction)
+			return FALSE // NO STOP FUCKING DOING THIS SCAVS DO NOT TAKE YOUR OWN DOGTAGS I AM TIRED OF THE COMPLAINTS
 		var/obj/item/card/id/O = H.get_equipped_item(slot_wear_id)
 		var/obj/item/storage/S = user.get_equipped_item(slot_back)
 
@@ -20,6 +22,7 @@
 				return
 
 		if(O && istype(O))  // if there is a dog tag
+			H.drop_from_inventory(O)
 			if(S && istype(S))  // if there is a backpack
 				if(S.can_be_inserted(O, user))  // if the backpack can take the dog tag
 					S.handle_item_insertion(O)

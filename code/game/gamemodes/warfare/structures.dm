@@ -541,7 +541,7 @@
 		if(prob(50))
 			glow_state = "[glow_state]_alt"
 	var/image/I = image(icon=src.icon, icon_state=glow_state)
-	I.plane = EFFECTS_ABOVE_LIGHTING_PLANE
+	I.plane = BLOOM_PLANE
 	overlays += I
 	if(!can_be_armed)
 		overlays.Cut()
@@ -627,7 +627,7 @@
 /obj/structure/destruction_computer/attack_hand(mob/user)
 	. = ..()
 	if(REALTIMEOFDAY - last_use < 2 SECONDS)
-		to_chat(user, "The device is scorching hot! I must wait a few seconds!")
+		to_chat(user, "The device is scorching hot! I must wait a few seconds!") // Fuck the people that were spamming it
 		return
 	if(used_by_person)
 		return
@@ -941,7 +941,8 @@
 		// sound1
 		var/list/people = list() // let's make it a fair lottery..
 		for(var/mob/living/carbon/human/H in get_turf(tray))
-			//if(H.stat == DEAD)
+			if(H.stat != DEAD)
+				continue
 			people |= H
 			continue
 		inside = safepick(shuffle(people)) // shuffle them around..

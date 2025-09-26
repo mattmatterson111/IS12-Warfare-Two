@@ -440,6 +440,10 @@
 	if(mob.check_is_holy_turf(T))
 		to_chat(mob, "<span class='warning'>You cannot enter holy grounds while you are in this plane of existence!</span>")
 		return
+	for (var/obj/I in get_turf(T))
+		if ((I.atom_flags & ATOM_FLAG_GHOSTCLIP))
+			if(!mob.client.holder)
+				return
 
 	if(T)
 		mob.forceMove(T)

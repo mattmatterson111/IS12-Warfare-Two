@@ -164,6 +164,8 @@
 
 	. = ..()	//calls mob.Login()
 	chatOutput.start() // Starts the chat
+	spawn(10)
+		chatOutput.start() // Starts the chat
 	force_dark_theme()
 	prefs.sanitize_preferences()
 
@@ -379,6 +381,9 @@
 /client/proc/send_resources()
 
 	getFiles(
+		'html/browser/terminal.css',
+		'html/spinner.js',
+		'html/images/scanlines.png',
 		'html/search.js',
 		'html/panels.css',
 		'html/spacemag.css',
@@ -431,6 +436,9 @@ client/proc/MayRespawn()
 /client/New()
 	..()
 	fullscreen()
+	if(byond_version >= 516) // Enable 516 compat browser storage mechanisms
+		if(holder)
+			winset(src, null, "browser-options=byondstorage,find,devtools")
 
 /client/verb/fullscreen_toggle()
 	set name = ".fullscreen_toggle"

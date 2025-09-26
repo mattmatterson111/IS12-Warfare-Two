@@ -8,6 +8,8 @@
 		else
 			E.attack_hand(src)
 	else
+		if(!W)
+			return 0 // come on stop runtiming
 		if(W.time_to_equip)
 			if(!do_after(src, W.time_to_equip, stay_still = FALSE))
 				to_chat(src, "You stop putting on \the [W].")

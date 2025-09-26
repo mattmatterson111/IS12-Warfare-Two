@@ -19,6 +19,7 @@
 #define ARMOR_FOOTSTEP_DIRT_CROUCHING "armordirtcrouch"
 #define ARMOR_FOOTSTEP_WATER "armorwatercrouch"
 #define ARMOR_FOOTSTEP_WATER_CROUCHING "armorwatercrouch"
+#define FOOTSTEP_ARMORED_HULL "armoredhull"
 
 
 /turf/simulated/var/global/list/footstep_sounds = list(
@@ -55,7 +56,6 @@
 		'sound/effects/footstep/dirt1.ogg',
 		'sound/effects/footstep/dirt2.ogg',
 		'sound/effects/footstep/dirt3.ogg'),
-
 	FOOTSTEP_GRASS = list(
 		'sound/effects/footstep/grass1.ogg',
 		'sound/effects/footstep/grass2.ogg',
@@ -137,7 +137,12 @@
 		'sound/effects/footsteps/armor/water/crouch2.ogg',
 		'sound/effects/footsteps/armor/water/crouch3.ogg',
 		'sound/effects/footsteps/armor/water/crouch4.ogg',
-		'sound/effects/footsteps/armor/water/crouch5.ogg'))
+		'sound/effects/footsteps/armor/water/crouch5.ogg'),
+	FOOTSTEP_ARMORED_HULL = list(
+		'sound/effects/footstep/hull1.ogg',
+		'sound/effects/footstep/hull2.ogg',
+		'sound/effects/footstep/hull3.ogg',
+		'sound/effects/footstep/hull4.ogg'))
 
 /decl/flooring/var/footstep_type
 /decl/flooring/footstep_type = FOOTSTEP_BLANK

@@ -118,6 +118,8 @@ var/list/name_to_material
 	var/tableslam_noise = 'sound/weapons/tablehit1.ogg'
 	// Noise made when a simple door made of this material opens or closes.
 	var/dooropen_noise = 'sound/effects/stonedoor_openclose.ogg'
+	var/doorclose_noise = 'sound/effects/stonedoor_openclose.ogg'
+
 	// Noise made when you hit structure made of this material.
 	var/hitsound = 'sound/weapons/genhit.ogg'
 	// Path to resulting stacktype. Todo remove need for this.
@@ -371,6 +373,19 @@ var/list/name_to_material
 	icon_colour = "#666666"
 	hitsound = 'sound/effects/doors/metal_door_impact.wav'
 	dooropen_noise = 'sound/effects/doors/metal_door_open.wav'
+	apply_icon_colour_to_walls = FALSE
+
+/material/reinforced_steel
+	name = REINFORCED_STEEL_MATERIAL
+	stack_type = /obj/item/stack/material/steel
+	integrity = 2500
+	brute_armor = 25
+	icon_base = "solid"
+	icon_reinf = "reinf_over"
+	icon_colour = "#FFFFFF"
+	hitsound = 'sound/effects/doors/metal_door_impact.wav'
+	dooropen_noise = 'sound/effects/ert/subdooropen.ogg'
+	doorclose_noise = 'sound/effects/ert/subdoorclose.ogg'
 	apply_icon_colour_to_walls = FALSE
 
 /material/diona

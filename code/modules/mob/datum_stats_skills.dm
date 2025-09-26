@@ -52,7 +52,7 @@
 	name = "melee"
 
 /datum/skill/ranged
-	 name = "ranged"
+	name = "ranged"
 
 /datum/skill/medical
 	name = "medicine"

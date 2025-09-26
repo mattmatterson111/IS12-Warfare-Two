@@ -23,7 +23,72 @@ body {
 	scrollbar-face-color:#1A1A1A;
 	scrollbar-track-color:#171717;
 	scrollbar-highlight-color:#171717;
+	padding-left: 5px;
+	padding-right: 5px;
 }
+
+#chat-decor {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-image: url("chatbg-w-ct.png"), url("chatbg-w-cb.png"), url("chatbg-t.png"), url("chatbg-b.png"), url("chatbg-w.png");
+	background-repeat: no-repeat no-repeat, no-repeat no-repeat, repeat no-repeat, repeat no-repeat, no-repeat repeat;
+	background-size: auto auto, auto auto, auto auto, auto auto, auto auto;
+	background-attachment: fixed, fixed, fixed, fixed, fixed;
+	background-position: left top, left bottom, center top, center bottom, left bottom;
+	pointer-events: none;
+	z-index: 1;
+}
+
+body::-webkit-scrollbar {
+	/* this sets the width of the bar, in the div.main (::-webkit-scrollbar is fro the body/html)*/
+	background-color: transparent; /* will leave after image loads */
+	width: 16px; /* change for scrollbar width */
+	background-image: url("chatscrollbar-bg-t.png"), url("chatscrollbar-bg-b.png"), url("chatscrollbar-bg.png");
+	background-position: center top, center bottom, center center;
+	background-size: 100% auto, 100% auto, contain;
+	background-repeat: no-repeat, no-repeat, round;
+	-ms-interpolation-mode: nearest-neighbor;
+	image-rendering: pixelated;
+  }
+
+  /* The buttons are broken (dont show up), but it doesnt really matter since we didnt want em */
+  /* keeping the awful CSS here incase someone wants to pick it up and use em */
+/* Top button (scroll up) for vertical scrollbar */
+body::-webkit-scrollbar-button:single-button:vertical:decrement {
+	background-color: transparent; /* will leave after image loads */
+	background-image: url('chatscrollbar-scrollup.png');
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: top;
+	-ms-interpolation-mode: nearest-neighbor;
+	image-rendering: pixelated;
+	height: 100%;
+  }
+
+body::-webkit-scrollbar-button:single-button:vertical:increment {
+	background-color: transparent; /* will leave after image loads */
+	background-image: url('chatscrollbar-scrolldown.png');
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: bottom;
+	-ms-interpolation-mode: nearest-neighbor;
+	image-rendering: pixelated;
+	height: 100%;
+  }
+
+body::-webkit-scrollbar-thumb {
+	background-color: transparent; /* will leave after image loads */
+	background-image: url("chatscroller-t.png"), url("chatscroller-b.png"), url("chatscroller-m.png");
+	background-position: center top, center bottom, center center;
+	background-size: 100% auto, 100% auto, contain;
+	background-repeat: no-repeat, no-repeat, round;
+	-ms-interpolation-mode: nearest-neighbor;
+	image-rendering: pixelated;
+	min-height: 32px;
+  }
 
 em {
 	font-style: normal;
