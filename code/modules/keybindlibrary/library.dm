@@ -33,7 +33,7 @@
 					C.keyPress(key, mob)
 					return TRUE
 			continue
-		switch(key) // AUGH
+		/* switch(key) // AUGH
 			if("1")
 				usr.a_intent_change(I_HELP)
 				return
@@ -50,7 +50,8 @@
 			if(istype(I, /obj/item))
 				I.showoff(src.mob)
 				return
-			*/
+			*/   
+		*/ //CURSED HELLCODE
 	//	keyRelease(key as text) // TO-DO, figure out how to make it so we can check if we're holding shif whilst typing! ^v^
 	//		set instant = 1, hidden = 1
 			//to_chat(usr, "[ckey] -[key] up") //(DEBUG)

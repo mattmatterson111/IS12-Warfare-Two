@@ -197,12 +197,6 @@
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
-/obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/m14,
 /obj/structure/announcementspeaker/blue{
 	pixel_y = 0;
 	dir = 8
@@ -314,10 +308,6 @@
 /obj/structure/closet/crate,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
-/obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/m14,
 /obj/machinery/light/caged{
 	pixel_y = -14;
 	dir = 1;
@@ -345,12 +335,6 @@
 "aT" = (
 /obj/structure/closet/crate,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
-/obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/m14,
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/blue)
 "aU" = (
@@ -656,12 +640,6 @@
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
-/obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/m14,
 /obj/structure/trench_wall{
 	dir = 8;
 	pixel_x = 32;
@@ -1048,12 +1026,6 @@
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
-/obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/m14,
 /turf/simulated/floor/wood,
 /area/warfare/battlefield/capture_point/blue/one)
 "cR" = (
@@ -1107,20 +1079,12 @@
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
-/obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/m14,
 /turf/simulated/floor/wood,
 /area/warfare/battlefield/capture_point/blue/one)
 "cY" = (
 /obj/structure/closet/crate,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
-/obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/m14,
 /obj/structure/trench_wall{
 	dir = 8;
 	pixel_x = 32;
@@ -1352,12 +1316,6 @@
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
-/obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/m14,
 /turf/simulated/floor/concrete/random,
 /area/warfare/battlefield/capture_point/red/one)
 "dH" = (
@@ -1367,12 +1325,6 @@
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
-/obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/m14,
 /turf/simulated/floor/concrete/random,
 /area/warfare/battlefield/capture_point/red/two)
 "dJ" = (
@@ -1435,10 +1387,6 @@
 /obj/structure/closet/crate,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
-/obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/m14,
 /obj/structure/trench_wall{
 	dir = 8;
 	pixel_x = 32;
@@ -1794,12 +1742,6 @@
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
-/obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/m14,
 /obj/structure/trench_wall{
 	dir = 8;
 	pixel_x = 32;
@@ -2851,10 +2793,6 @@
 /obj/structure/closet/crate,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
-/obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/m14,
 /obj/machinery/light/small/bunker{
 	dir = 1
 	},
@@ -3280,10 +3218,6 @@
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
-/obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/m14,
 /turf/simulated/floor/concrete/random,
 /area/warfare/battlefield/capture_point/blue/two)
 "mX" = (
@@ -3453,10 +3387,6 @@
 "nD" = (
 /obj/structure/closet/crate,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
-/obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/m14,
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/blue)
 "nJ" = (
@@ -3798,10 +3728,6 @@
 "pC" = (
 /obj/structure/closet/crate,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
-/obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/m14,
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/red)
 "pF" = (
@@ -3896,12 +3822,6 @@
 "qk" = (
 /obj/structure/closet/crate,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
-/obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/m14,
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/red)
 "qn" = (
@@ -5051,10 +4971,6 @@
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
-/obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/m14,
 /turf/simulated/floor/concrete/random,
 /area/warfare/battlefield/capture_point/red/two)
 "wG" = (
@@ -5507,13 +5423,6 @@
 /area/warfare/homebase/red/div)
 "zO" = (
 /obj/structure/closet/crate,
-/obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/m14,
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/red)
 "zR" = (
@@ -6040,12 +5949,6 @@
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
-/obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/m14,
 /turf/simulated/floor/concrete/random,
 /area/warfare/battlefield/capture_point/blue/two)
 "CB" = (
@@ -7826,10 +7729,6 @@
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
-/obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/m14,
 /turf/simulated/floor/concrete/random,
 /area/warfare/battlefield/capture_point/red/one)
 "Qj" = (
@@ -8579,11 +8478,6 @@
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
-/obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/m14,
 /turf/simulated/floor/concrete/random,
 /area/warfare/battlefield/capture_point/red/two)
 "UD" = (
@@ -8904,10 +8798,6 @@
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
-/obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/m14,
 /turf/simulated/floor/wood,
 /area/warfare/battlefield/capture_point/red/two)
 "WU" = (
@@ -9085,10 +8975,6 @@
 /obj/structure/closet/crate,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
-/obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/m14,
 /obj/machinery/light/caged{
 	pixel_y = -14;
 	dir = 1;
@@ -9115,12 +9001,6 @@
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
-/obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/m14,
 /turf/simulated/floor/wood,
 /area/warfare/battlefield/capture_point/red/two)
 "Yl" = (
@@ -9224,12 +9104,6 @@
 /area/warfare/homebase/blue)
 "YW" = (
 /obj/structure/closet/crate,
-/obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/m14,
-/obj/item/ammo_magazine/a762/m14,
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/red)
 "Zb" = (
