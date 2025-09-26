@@ -197,6 +197,12 @@
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
+/obj/item/ammo_magazine/a762/m14,
+/obj/item/ammo_magazine/a762/m14,
+/obj/item/ammo_magazine/a762/m14,
+/obj/item/ammo_magazine/a762/m14,
+/obj/item/ammo_magazine/a762/m14,
+/obj/item/ammo_magazine/a762/m14,
 /obj/structure/announcementspeaker/blue{
 	pixel_y = 0;
 	dir = 8
@@ -308,6 +314,10 @@
 /obj/structure/closet/crate,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
+/obj/item/ammo_magazine/a762/m14,
+/obj/item/ammo_magazine/a762/m14,
+/obj/item/ammo_magazine/a762/m14,
+/obj/item/ammo_magazine/a762/m14,
 /obj/machinery/light/caged{
 	pixel_y = -14;
 	dir = 1;
@@ -335,6 +345,12 @@
 "aT" = (
 /obj/structure/closet/crate,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
+/obj/item/ammo_magazine/a762/m14,
+/obj/item/ammo_magazine/a762/m14,
+/obj/item/ammo_magazine/a762/m14,
+/obj/item/ammo_magazine/a762/m14,
+/obj/item/ammo_magazine/a762/m14,
+/obj/item/ammo_magazine/a762/m14,
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/blue)
 "aU" = (
@@ -640,6 +656,12 @@
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
+/obj/item/ammo_magazine/a762/m14,
+/obj/item/ammo_magazine/a762/m14,
+/obj/item/ammo_magazine/a762/m14,
+/obj/item/ammo_magazine/a762/m14,
+/obj/item/ammo_magazine/a762/m14,
+/obj/item/ammo_magazine/a762/m14,
 /obj/structure/trench_wall{
 	dir = 8;
 	pixel_x = 32;
@@ -768,6 +790,14 @@
 /obj/structure/table/rack/shelf/red,
 /turf/simulated/floor/wood,
 /area/warfare/battlefield/trench_section/underground)
+"ci" = (
+/obj/effect/sub_marker/dive{
+	id = "MISSION"
+	},
+/turf/simulated/mineral{
+	health = 999999
+	},
+/area/warfare/battlefield)
 "cj" = (
 /obj/structure/bed,
 /turf/simulated/floor/stones,
@@ -1026,6 +1056,12 @@
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
+/obj/item/ammo_magazine/a762/m14,
+/obj/item/ammo_magazine/a762/m14,
+/obj/item/ammo_magazine/a762/m14,
+/obj/item/ammo_magazine/a762/m14,
+/obj/item/ammo_magazine/a762/m14,
+/obj/item/ammo_magazine/a762/m14,
 /turf/simulated/floor/wood,
 /area/warfare/battlefield/capture_point/blue/one)
 "cR" = (
@@ -1079,12 +1115,20 @@
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
+/obj/item/ammo_magazine/a762/m14,
+/obj/item/ammo_magazine/a762/m14,
+/obj/item/ammo_magazine/a762/m14,
+/obj/item/ammo_magazine/a762/m14,
 /turf/simulated/floor/wood,
 /area/warfare/battlefield/capture_point/blue/one)
 "cY" = (
 /obj/structure/closet/crate,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
+/obj/item/ammo_magazine/a762/m14,
+/obj/item/ammo_magazine/a762/m14,
+/obj/item/ammo_magazine/a762/m14,
+/obj/item/ammo_magazine/a762/m14,
 /obj/structure/trench_wall{
 	dir = 8;
 	pixel_x = 32;
@@ -1316,6 +1360,12 @@
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
+/obj/item/ammo_magazine/a762/m14,
+/obj/item/ammo_magazine/a762/m14,
+/obj/item/ammo_magazine/a762/m14,
+/obj/item/ammo_magazine/a762/m14,
+/obj/item/ammo_magazine/a762/m14,
+/obj/item/ammo_magazine/a762/m14,
 /turf/simulated/floor/concrete/random,
 /area/warfare/battlefield/capture_point/red/one)
 "dH" = (
@@ -1325,6 +1375,12 @@
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
+/obj/item/ammo_magazine/a762/m14,
+/obj/item/ammo_magazine/a762/m14,
+/obj/item/ammo_magazine/a762/m14,
+/obj/item/ammo_magazine/a762/m14,
+/obj/item/ammo_magazine/a762/m14,
+/obj/item/ammo_magazine/a762/m14,
 /turf/simulated/floor/concrete/random,
 /area/warfare/battlefield/capture_point/red/two)
 "dJ" = (
@@ -1387,6 +1443,10 @@
 /obj/structure/closet/crate,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
+/obj/item/ammo_magazine/a762/m14,
+/obj/item/ammo_magazine/a762/m14,
+/obj/item/ammo_magazine/a762/m14,
+/obj/item/ammo_magazine/a762/m14,
 /obj/structure/trench_wall{
 	dir = 8;
 	pixel_x = 32;
@@ -1742,6 +1802,12 @@
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
+/obj/item/ammo_magazine/a762/m14,
+/obj/item/ammo_magazine/a762/m14,
+/obj/item/ammo_magazine/a762/m14,
+/obj/item/ammo_magazine/a762/m14,
+/obj/item/ammo_magazine/a762/m14,
+/obj/item/ammo_magazine/a762/m14,
 /obj/structure/trench_wall{
 	dir = 8;
 	pixel_x = 32;
@@ -1786,11 +1852,21 @@
 	},
 /turf/simulated/floor/stones,
 /area/warfare/homebase/blue)
-"fd" = (
-/obj/hammereditor/nodraw/deco/shadowpaint{
-	dir = 1
+"fe" = (
+/obj/structure/defensive_barrier{
+	secured = 1;
+	dir = 8;
+	pixel_x = -5;
+	pixel_y = 3
 	},
-/turf/simulated/wall/perspecticrete,
+/obj/machinery/door/blast/shutters{
+	dir = 8;
+	id = 666
+	},
+/turf/simulated/floor/trenches/underground{
+	icon_state = "trench";
+	color = "#ffffff"
+	},
 /area/warfare/battlefield/trench_section/underground/stormsystem/hall)
 "fi" = (
 /obj/effect/landmark/start{
@@ -1888,6 +1964,17 @@
 	},
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/blue)
+"fz" = (
+/obj/item/device/flashlight/lantern{
+	on = 1;
+	pixel_x = -13;
+	pixel_y = -6
+	},
+/turf/simulated/floor/trenches/underground{
+	icon_state = "trench";
+	color = "#ffffff"
+	},
+/area/warfare/battlefield/trench_section/underground/stormsystem/hall)
 "fA" = (
 /obj/item/flame/candle,
 /obj/item/storage/box/matches,
@@ -2793,6 +2880,10 @@
 /obj/structure/closet/crate,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
+/obj/item/ammo_magazine/a762/m14,
+/obj/item/ammo_magazine/a762/m14,
+/obj/item/ammo_magazine/a762/m14,
+/obj/item/ammo_magazine/a762/m14,
 /obj/machinery/light/small/bunker{
 	dir = 1
 	},
@@ -2859,12 +2950,6 @@
 "kK" = (
 /turf/simulated/floor/wood,
 /area/warfare/homebase/red/div)
-"kP" = (
-/obj/machinery/button/remote/blast_door{
-	id = 666
-	},
-/turf/simulated/wall/perspecticrete,
-/area/warfare/battlefield/trench_section/underground/stormsystem/hall)
 "kS" = (
 /obj/structure/toilet{
 	dir = 8;
@@ -3118,15 +3203,6 @@
 /obj/item/device/compass,
 /turf/simulated/floor/stones,
 /area/warfare/homebase/red)
-"mn" = (
-/obj/item/device/flashlight/lamp/captain/urban_streetlamp/floodlamp/short{
-	pixel_y = -13
-	},
-/turf/simulated/floor/trenches/underground{
-	icon_state = "trench";
-	color = "#ffffff"
-	},
-/area/warfare/battlefield/trench_section/underground/stormsystem/hall)
 "mo" = (
 /obj/structure/table/rack/holorack,
 /turf/simulated/floor/concrete/random,
@@ -3218,6 +3294,10 @@
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
+/obj/item/ammo_magazine/a762/m14,
+/obj/item/ammo_magazine/a762/m14,
+/obj/item/ammo_magazine/a762/m14,
+/obj/item/ammo_magazine/a762/m14,
 /turf/simulated/floor/concrete/random,
 /area/warfare/battlefield/capture_point/blue/two)
 "mX" = (
@@ -3387,6 +3467,10 @@
 "nD" = (
 /obj/structure/closet/crate,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
+/obj/item/ammo_magazine/a762/m14,
+/obj/item/ammo_magazine/a762/m14,
+/obj/item/ammo_magazine/a762/m14,
+/obj/item/ammo_magazine/a762/m14,
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/blue)
 "nJ" = (
@@ -3508,6 +3592,15 @@
 	health = 999999
 	},
 /area/warfare/battlefield/capture_point/red/one)
+"ot" = (
+/obj/item/device/flashlight/lamp/captain/urban_streetlamp/floodlamp/short{
+	pixel_y = -13
+	},
+/turf/simulated/floor/trenches/underground{
+	icon_state = "trench";
+	color = "#ffffff"
+	},
+/area/warfare/battlefield/trench_section/underground/stormsystem/hall)
 "oy" = (
 /obj/machinery/light/small/bunker{
 	dir = 1
@@ -3626,14 +3719,6 @@
 /obj/structure/table/rack/holorack,
 /turf/simulated/floor/wood,
 /area/warfare/battlefield/trench_section/underground)
-"oU" = (
-/obj/effect/sub_marker/dive{
-	id = "MISSION"
-	},
-/turf/simulated/mineral{
-	health = 999999
-	},
-/area/warfare/battlefield)
 "oV" = (
 /obj/machinery/light/caged{
 	dir = 4;
@@ -3728,6 +3813,10 @@
 "pC" = (
 /obj/structure/closet/crate,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
+/obj/item/ammo_magazine/a762/m14,
+/obj/item/ammo_magazine/a762/m14,
+/obj/item/ammo_magazine/a762/m14,
+/obj/item/ammo_magazine/a762/m14,
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/red)
 "pF" = (
@@ -3822,6 +3911,12 @@
 "qk" = (
 /obj/structure/closet/crate,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
+/obj/item/ammo_magazine/a762/m14,
+/obj/item/ammo_magazine/a762/m14,
+/obj/item/ammo_magazine/a762/m14,
+/obj/item/ammo_magazine/a762/m14,
+/obj/item/ammo_magazine/a762/m14,
+/obj/item/ammo_magazine/a762/m14,
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/red)
 "qn" = (
@@ -3867,6 +3962,15 @@
 /obj/structure/announcementspeaker/red,
 /turf/simulated/wall/perspecticrete,
 /area/warfare/homebase/red)
+"qE" = (
+/obj/structure/announcementspeaker/blue{
+	pixel_y = 32
+	},
+/turf/simulated/floor/trenches/underground{
+	icon_state = "trench";
+	color = "#ffffff"
+	},
+/area/warfare/battlefield/trench_section/underground)
 "qF" = (
 /obj/machinery/vending/soldier,
 /turf/simulated/floor/tiled,
@@ -3971,22 +4075,6 @@
 	dir = 1
 	},
 /area/train/red)
-"qZ" = (
-/obj/structure/defensive_barrier{
-	secured = 1;
-	dir = 8;
-	pixel_x = -5;
-	pixel_y = 3
-	},
-/obj/machinery/door/blast/shutters{
-	dir = 8;
-	id = 666
-	},
-/turf/simulated/floor/trenches/underground{
-	icon_state = "trench";
-	color = "#ffffff"
-	},
-/area/warfare/battlefield/trench_section/underground/stormsystem/hall)
 "ra" = (
 /obj/effect/landmark/start{
 	name = "Red Captain"
@@ -4231,12 +4319,6 @@
 /obj/structure/table/rack/nosmooth/wood/alt,
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/red)
-"sp" = (
-/turf/simulated/floor/trenches/underground{
-	icon_state = "trench";
-	color = "#ffffff"
-	},
-/area/warfare/battlefield/trench_section/underground/stormsystem/hall)
 "sx" = (
 /obj/structure/trench_wall/innercorners{
 	dir = 4
@@ -4553,19 +4635,6 @@
 /obj/machinery/light/small/bunker,
 /turf/simulated/wall/perspecticrete,
 /area/warfare/homebase/blue)
-"uu" = (
-/obj/structure/trench_wall/innercorners{
-	dir = 4
-	},
-/obj/structure/trench_wall/innercorners{
-	dir = 8;
-	pixel_x = 32
-	},
-/turf/simulated/floor/trenches/underground{
-	icon_state = "trench";
-	color = "#ffffff"
-	},
-/area/warfare/battlefield/trench_section/underground/stormsystem/hall)
 "uw" = (
 /obj/structure/closet/secure_closet/medical1/warfare,
 /obj/item/clothing/suit/surgeon_apron,
@@ -4688,14 +4757,6 @@
 /obj/effect/lighting_dummy/daylight,
 /turf/simulated/floor/stones,
 /area/warfare/homebase/blue)
-"vc" = (
-/obj/effect/sub_marker/surface{
-	id = "MISSION"
-	},
-/turf/simulated/mineral{
-	health = 999999
-	},
-/area/warfare/battlefield)
 "vd" = (
 /obj/structure/trench_wall{
 	dir = 4
@@ -4946,6 +5007,16 @@
 	},
 /turf/simulated/floor/wood,
 /area/warfare/battlefield/trench_section/underground)
+"wu" = (
+/obj/structure/trench_wall/innercorners{
+	dir = 4
+	},
+/obj/structure/trench_wall/innercorners{
+	dir = 8;
+	pixel_x = 32
+	},
+/turf/simulated/wall/perspecticrete,
+/area/warfare/battlefield/trench_section/underground/stormsystem/hall)
 "wz" = (
 /obj/machinery/light/small/bunker{
 	pixel_x = 0;
@@ -4971,6 +5042,10 @@
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
+/obj/item/ammo_magazine/a762/m14,
+/obj/item/ammo_magazine/a762/m14,
+/obj/item/ammo_magazine/a762/m14,
+/obj/item/ammo_magazine/a762/m14,
 /turf/simulated/floor/concrete/random,
 /area/warfare/battlefield/capture_point/red/two)
 "wG" = (
@@ -5058,6 +5133,14 @@
 /obj/effect/lighting_dummy/daylight,
 /turf/simulated/floor/stones,
 /area/warfare/homebase/red)
+"xw" = (
+/obj/effect/sub_marker/float{
+	id = "MISSION"
+	},
+/turf/simulated/mineral{
+	health = 999999
+	},
+/area/warfare/battlefield)
 "xx" = (
 /obj/machinery/light/caged{
 	dir = 8;
@@ -5241,6 +5324,19 @@
 /obj/structure/table/rack/nosmooth/wood/alt,
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/red)
+"yE" = (
+/obj/structure/trench_wall/innercorners{
+	dir = 4
+	},
+/obj/structure/trench_wall/innercorners{
+	dir = 8;
+	pixel_x = 32
+	},
+/turf/simulated/floor/trenches/underground{
+	icon_state = "trench";
+	color = "#ffffff"
+	},
+/area/warfare/battlefield/trench_section/underground/stormsystem/hall)
 "yF" = (
 /obj/hammereditor/nodraw/deco/shutter_quarter{
 	dir = 4
@@ -5423,6 +5519,13 @@
 /area/warfare/homebase/red/div)
 "zO" = (
 /obj/structure/closet/crate,
+/obj/item/ammo_magazine/a762/m14,
+/obj/item/ammo_magazine/a762/m14,
+/obj/item/ammo_magazine/a762/m14,
+/obj/item/ammo_magazine/a762/m14,
+/obj/item/ammo_magazine/a762/m14,
+/obj/item/ammo_magazine/a762/m14,
+/obj/item/ammo_magazine/a762/m14,
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/red)
 "zR" = (
@@ -5465,14 +5568,6 @@
 	},
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/blue)
-"Ae" = (
-/obj/effect/sub_marker/float{
-	id = "MISSION"
-	},
-/turf/simulated/mineral{
-	health = 999999
-	},
-/area/warfare/battlefield)
 "Ag" = (
 /obj/effect/landmark/start{
 	name = "Red Practitioner"
@@ -5807,16 +5902,6 @@
 	},
 /turf/simulated/floor/concrete/random,
 /area/warfare/battlefield/capture_point/blue/one)
-"BS" = (
-/obj/structure/trench_wall/innercorners{
-	dir = 4
-	},
-/obj/structure/trench_wall/innercorners{
-	dir = 8;
-	pixel_x = 32
-	},
-/turf/simulated/wall/perspecticrete,
-/area/warfare/battlefield/trench_section/underground/stormsystem/hall)
 "BT" = (
 /obj/structure/reagent_dispensers/watertank{
 	pixel_x = 1;
@@ -5923,6 +6008,9 @@
 /obj/structure/bed/chair/red,
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/red)
+"Cj" = (
+/turf/simulated/floor/concrete/random,
+/area/warfare/battlefield/no_mans_land)
 "Cm" = (
 /obj/effect/floor_decal/stones,
 /turf/simulated/floor/dirty/indestructable,
@@ -5949,6 +6037,12 @@
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
+/obj/item/ammo_magazine/a762/m14,
+/obj/item/ammo_magazine/a762/m14,
+/obj/item/ammo_magazine/a762/m14,
+/obj/item/ammo_magazine/a762/m14,
+/obj/item/ammo_magazine/a762/m14,
+/obj/item/ammo_magazine/a762/m14,
 /turf/simulated/floor/concrete/random,
 /area/warfare/battlefield/capture_point/blue/two)
 "CB" = (
@@ -6285,9 +6379,6 @@
 	color = "#ffffff"
 	},
 /area/space)
-"EF" = (
-/turf/simulated/floor/concrete/random,
-/area/warfare/battlefield/no_mans_land)
 "EI" = (
 /obj/structure/dirt_wall,
 /obj/machinery/light/caged{
@@ -6614,6 +6705,15 @@
 /obj/effect/lighting_dummy/daylight,
 /turf/simulated/floor/stones,
 /area/warfare/homebase/red)
+"Hy" = (
+/obj/structure/barbwire,
+/obj/machinery/camera{
+	dir = 4;
+	pixel_x = 2;
+	pixel_y = 0
+	},
+/turf/simulated/floor,
+/area/warfare/battlefield/no_mans_land)
 "HH" = (
 /obj/structure/stairs/trenchstairs{
 	dir = 1
@@ -7028,6 +7128,10 @@
 /obj/effect/floor_decal/stones,
 /turf/simulated/floor/dirty/indestructable,
 /area/warfare/battlefield/capture_point/blue/one)
+"KO" = (
+/obj/structure/barbwire,
+/turf/simulated/floor,
+/area/warfare/battlefield/no_mans_land)
 "KU" = (
 /obj/structure/trench_wall{
 	dir = 1
@@ -7395,6 +7499,11 @@
 	color = "#ffffff"
 	},
 /area/warfare/battlefield/capture_point/red/two)
+"NH" = (
+/turf/simulated/wall/perspecticrete{
+	color = "#000000"
+	},
+/area/warfare/battlefield)
 "NI" = (
 /obj/effect/landmark/start{
 	name = "Red Soldier"
@@ -7486,19 +7595,6 @@
 	},
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/blue)
-"Oc" = (
-/obj/structure/trench_wall/innercorners{
-	dir = 4;
-	pixel_x = -32
-	},
-/obj/structure/trench_wall/innercorners{
-	dir = 8
-	},
-/turf/simulated/floor/trenches/underground{
-	icon_state = "trench";
-	color = "#ffffff"
-	},
-/area/warfare/battlefield/trench_section/underground/stormsystem/hall)
 "Ol" = (
 /obj/structure/banner/red/small{
 	pixel_y = 32
@@ -7611,6 +7707,12 @@
 /obj/structure/table/rack/shelf/red,
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/red)
+"Pg" = (
+/turf/simulated/floor/trenches/underground{
+	icon_state = "trench";
+	color = "#ffffff"
+	},
+/area/warfare/battlefield/trench_section/underground/stormsystem/hall)
 "Pi" = (
 /obj/machinery/light/small/bunker{
 	dir = 1
@@ -7729,6 +7831,10 @@
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
+/obj/item/ammo_magazine/a762/m14,
+/obj/item/ammo_magazine/a762/m14,
+/obj/item/ammo_magazine/a762/m14,
+/obj/item/ammo_magazine/a762/m14,
 /turf/simulated/floor/concrete/random,
 /area/warfare/battlefield/capture_point/red/one)
 "Qj" = (
@@ -7930,15 +8036,6 @@
 	},
 /turf/simulated/floor/concrete/random,
 /area/warfare/battlefield/capture_point/blue/one)
-"Rh" = (
-/obj/structure/barbwire,
-/obj/machinery/camera{
-	dir = 4;
-	pixel_x = 2;
-	pixel_y = 0
-	},
-/turf/simulated/floor,
-/area/warfare/battlefield/no_mans_land)
 "Ri" = (
 /obj/item/flame/candle,
 /obj/item/wirecutters,
@@ -7948,6 +8045,19 @@
 	},
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/red)
+"Rj" = (
+/obj/structure/trench_wall/innercorners{
+	dir = 4;
+	pixel_x = -32
+	},
+/obj/structure/trench_wall/innercorners{
+	dir = 8
+	},
+/turf/simulated/floor/trenches/underground{
+	icon_state = "trench";
+	color = "#ffffff"
+	},
+/area/warfare/battlefield/trench_section/underground/stormsystem/hall)
 "Rk" = (
 /obj/structure/poster/nixon,
 /turf/simulated/mineral{
@@ -8072,11 +8182,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/warfare/battlefield/trench_section/underground)
-"Se" = (
-/turf/simulated/wall/perspecticrete{
-	color = "#000000"
-	},
-/area/warfare/battlefield)
 "Sf" = (
 /obj/machinery/light/small/bunker{
 	dir = 1
@@ -8096,6 +8201,12 @@
 /obj/effect/lighting_dummy/daylight,
 /turf/simulated/floor/stones,
 /area/warfare/homebase/blue)
+"Sh" = (
+/obj/hammereditor/nodraw/deco/shadowpaint{
+	dir = 1
+	},
+/turf/simulated/wall/perspecticrete,
+/area/warfare/battlefield/trench_section/underground/stormsystem/hall)
 "Si" = (
 /obj/machinery/light/caged{
 	pixel_y = 30;
@@ -8411,6 +8522,14 @@
 /obj/effect/lighting_dummy/daylight,
 /turf/simulated/floor/urban/concrete,
 /area/warfare/homebase/red)
+"Uh" = (
+/obj/effect/sub_marker/surface{
+	id = "MISSION"
+	},
+/turf/simulated/mineral{
+	health = 999999
+	},
+/area/warfare/battlefield)
 "Ui" = (
 /obj/structure/trench_wall{
 	dir = 8
@@ -8478,6 +8597,11 @@
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
+/obj/item/ammo_magazine/a762/m14,
+/obj/item/ammo_magazine/a762/m14,
+/obj/item/ammo_magazine/a762/m14,
+/obj/item/ammo_magazine/a762/m14,
+/obj/item/ammo_magazine/a762/m14,
 /turf/simulated/floor/concrete/random,
 /area/warfare/battlefield/capture_point/red/two)
 "UD" = (
@@ -8556,6 +8680,12 @@
 /obj/structure/table/rack/shelf/red,
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/blue/div)
+"UY" = (
+/obj/machinery/button/remote/blast_door{
+	id = 666
+	},
+/turf/simulated/wall/perspecticrete,
+/area/warfare/battlefield/trench_section/underground/stormsystem/hall)
 "Vc" = (
 /obj/structure/dirt_wall,
 /turf/simulated/floor/dirty/tough,
@@ -8632,6 +8762,9 @@
 	health = 999999
 	},
 /area/warfare/homebase/red)
+"VQ" = (
+/turf/simulated/wall/perspecticrete,
+/area/warfare/battlefield/trench_section/underground/stormsystem/hall)
 "VR" = (
 /obj/structure/announcementspeaker/blue{
 	pixel_y = 32
@@ -8680,6 +8813,20 @@
 /obj/hammereditor/sound_probe/basement,
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/blue)
+"Wj" = (
+/obj/effect/darkout_teleporter{
+	id = "MISSION";
+	entrance = 0;
+	twoway = 1
+	},
+/obj/hammereditor/nodraw/deco/shadowpaint{
+	dir = 1
+	},
+/turf/simulated/floor/trenches/underground{
+	icon_state = "trench";
+	color = "#ffffff"
+	},
+/area/warfare/battlefield/trench_section/underground/stormsystem/hall)
 "Wl" = (
 /obj/effect/floor_decal/trench{
 	dir = 5
@@ -8717,20 +8864,6 @@
 	color = "#ffffff"
 	},
 /area/warfare/homebase/red)
-"Wz" = (
-/obj/effect/darkout_teleporter{
-	id = "MISSION";
-	entrance = 0;
-	twoway = 1
-	},
-/obj/hammereditor/nodraw/deco/shadowpaint{
-	dir = 1
-	},
-/turf/simulated/floor/trenches/underground{
-	icon_state = "trench";
-	color = "#ffffff"
-	},
-/area/warfare/battlefield/trench_section/underground/stormsystem/hall)
 "WD" = (
 /obj/structure/stairs/trenchstairs,
 /obj/structure/announcementspeaker/blue{
@@ -8798,6 +8931,10 @@
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
+/obj/item/ammo_magazine/a762/m14,
+/obj/item/ammo_magazine/a762/m14,
+/obj/item/ammo_magazine/a762/m14,
+/obj/item/ammo_magazine/a762/m14,
 /turf/simulated/floor/wood,
 /area/warfare/battlefield/capture_point/red/two)
 "WU" = (
@@ -8959,9 +9096,6 @@
 	health = 999999
 	},
 /area/warfare/battlefield/trench_section/underground/bunker)
-"XW" = (
-/turf/simulated/wall/perspecticrete,
-/area/warfare/battlefield/trench_section/underground/stormsystem/hall)
 "XX" = (
 /turf/simulated/floor/wood,
 /area/warfare/homebase/blue/div)
@@ -8975,6 +9109,10 @@
 /obj/structure/closet/crate,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
+/obj/item/ammo_magazine/a762/m14,
+/obj/item/ammo_magazine/a762/m14,
+/obj/item/ammo_magazine/a762/m14,
+/obj/item/ammo_magazine/a762/m14,
 /obj/machinery/light/caged{
 	pixel_y = -14;
 	dir = 1;
@@ -9001,6 +9139,12 @@
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
 /obj/item/ammo_magazine/c45rifle/akarabiner,
+/obj/item/ammo_magazine/a762/m14,
+/obj/item/ammo_magazine/a762/m14,
+/obj/item/ammo_magazine/a762/m14,
+/obj/item/ammo_magazine/a762/m14,
+/obj/item/ammo_magazine/a762/m14,
+/obj/item/ammo_magazine/a762/m14,
 /turf/simulated/floor/wood,
 /area/warfare/battlefield/capture_point/red/two)
 "Yl" = (
@@ -9030,10 +9174,6 @@
 	dir = 4
 	},
 /area/train/red)
-"Yv" = (
-/obj/structure/barbwire,
-/turf/simulated/floor,
-/area/warfare/battlefield/no_mans_land)
 "Yz" = (
 /obj/structure/trench_wall/innercorners{
 	dir = 4;
@@ -9104,6 +9244,12 @@
 /area/warfare/homebase/blue)
 "YW" = (
 /obj/structure/closet/crate,
+/obj/item/ammo_magazine/a762/m14,
+/obj/item/ammo_magazine/a762/m14,
+/obj/item/ammo_magazine/a762/m14,
+/obj/item/ammo_magazine/a762/m14,
+/obj/item/ammo_magazine/a762/m14,
+/obj/item/ammo_magazine/a762/m14,
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/red)
 "Zb" = (
@@ -9119,17 +9265,6 @@
 	health = 999999
 	},
 /area/warfare/battlefield)
-"Zd" = (
-/obj/item/device/flashlight/lantern{
-	on = 1;
-	pixel_x = -13;
-	pixel_y = -6
-	},
-/turf/simulated/floor/trenches/underground{
-	icon_state = "trench";
-	color = "#ffffff"
-	},
-/area/warfare/battlefield/trench_section/underground/stormsystem/hall)
 "Zf" = (
 /obj/structure/trench_wall{
 	dir = 1;
@@ -16578,7 +16713,7 @@ MM
 hB
 yo
 AW
-qQ
+qE
 iU
 nz
 IZ
@@ -34060,7 +34195,7 @@ gx
 gx
 gx
 gx
-EF
+gx
 gx
 gx
 gx
@@ -35264,10 +35399,10 @@ gx
 gx
 gx
 gx
-Yv
+KO
 gx
 gx
-Yv
+KO
 gx
 gx
 gx
@@ -35564,10 +35699,10 @@ gx
 gx
 gx
 gx
-Rh
-EF
-EF
-Rh
+Hy
+Cj
+Cj
+Hy
 gx
 gx
 gx
@@ -35864,10 +35999,10 @@ Zc
 Zc
 Zc
 Zc
-XW
-qZ
-qZ
-XW
+VQ
+fe
+fe
+VQ
 Zc
 Zc
 Zc
@@ -36160,14 +36295,14 @@ Zc
 Zc
 Zc
 Zc
-Se
-fd
-XW
-XW
-kP
-sp
-sp
-BS
+NH
+Sh
+VQ
+VQ
+UY
+Pg
+Pg
+wu
 Zc
 Zc
 Zc
@@ -36460,14 +36595,14 @@ Zc
 Zc
 Zc
 Zc
-Se
-Wz
-Zd
-Oc
-sp
-Oc
-sp
-XW
+NH
+Wj
+fz
+Rj
+Pg
+Rj
+Pg
+VQ
 Zc
 Zc
 Zc
@@ -36760,14 +36895,14 @@ Zc
 Zc
 Zc
 Zc
-Se
-Wz
-sp
-uu
-sp
-uu
-mn
-BS
+NH
+Wj
+Pg
+yE
+Pg
+yE
+ot
+wu
 Zc
 Zc
 Zc
@@ -37060,14 +37195,14 @@ Zc
 Zc
 Zc
 Zc
-Se
-fd
-XW
-XW
-XW
-XW
-XW
-XW
+NH
+Sh
+VQ
+VQ
+VQ
+VQ
+VQ
+VQ
 Zc
 Zc
 Zc
@@ -38573,9 +38708,9 @@ Zc
 Zc
 Zc
 Zc
-vc
-Ae
-oU
+Uh
+xw
+ci
 Zc
 Zc
 Zc

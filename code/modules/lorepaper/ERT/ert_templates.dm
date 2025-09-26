@@ -203,8 +203,21 @@
 	H.warfare_language_shit(LANGUAGE_RED)
 	H.set_hud_stats()
 
+/datum/ert_squad/red
+	warfare_faction = RED_TEAM
+	basic_template = /datum/squadmember/basic
+	leader_template = /datum/squadmember/basic
+	admin_leader_template = /datum/squadmember/debug
+
+/datum/ert_squad/blue
+	warfare_faction = BLUE_TEAM
+	basic_template = /datum/squadmember/basic
+	leader_template = /datum/squadmember/basic
+	admin_leader_template = /datum/squadmember/debug
+
 /datum/ert_squad/test
 	warfare_faction = RED_TEAM
 	basic_template = /datum/squadmember/basic
 	leader_template = /datum/squadmember/basic
 	admin_leader_template = /datum/squadmember/debug
+
