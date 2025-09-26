@@ -258,13 +258,13 @@ macro "macro"
 		command = "delete-key-pressed"
 	elem 
 		name = "CTRL+1"
-		command = "a-intent help"
+		command = "quick-equip-left-pocket"
 	elem 
 		name = "CTRL+2"
-		command = "a-intent disarm"
+		command = "quick-equip-right-pocket"
 	elem 
 		name = "CTRL+3"
-		command = "a-intent grab"
+		command = "quick-equip-chest"
 	elem 
 		name = "CTRL+4"
 		command = "a-intent harm"
@@ -404,13 +404,13 @@ macro "hotkeymode"
 		command = "delete-key-pressed"
 	elem 
 		name = "CTRL+1"
-		command = "a-intent help"
+		command = "quick-equip-left-pocket"
 	elem 
 		name = "CTRL+2"
-		command = "a-intent disarm"
+		command = "quick-equip-right-pocket"
 	elem 
 		name = "CTRL+3"
-		command = "a-intent grab"
+		command = "quick-equip-suit-pocket"
 	elem 
 		name = "CTRL+4"
 		command = "a-intent harm"
@@ -438,6 +438,9 @@ macro "hotkeymode"
 	elem 
 		name = "CTRL+E"
 		command = "quick-equip-boots"
+	elem
+		name = "SHIFT+E"
+		command = "quick-equip-belt"
 	elem 
 		name = "F"
 		command = "set-fixeye"
