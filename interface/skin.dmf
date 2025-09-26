@@ -420,6 +420,9 @@ macro "hotkeymode"
 	elem 
 		name = "CTRL+2"
 		command = "quick-equip-right-pocket"
+	elem
+		name = "B"
+		command = "Resist"
 	elem 
 		name = "CTRL+3"
 		command = "quick-equip-suit-pocket"
