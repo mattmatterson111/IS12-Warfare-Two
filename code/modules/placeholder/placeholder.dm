@@ -395,7 +395,7 @@ GLOBAL_LIST_EMPTY(faction_dosh)
 	products = list(
 		// general ammo stuff
 		list("name" = "Rifle Ammo Pack", "price" = 50, "category" = "Ammunition", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/ammo_box/rifle = 10)),
-		//list("name" = "Modern Rifle Ammo Pack", "price" = 50, "category" = "Ammunition", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/ammo_box/rifle/modern = 10)),
+		list("name" = "Modern Rifle Ammo Pack", "price" = 50, "category" = "Ammunition", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/ammo_box/rifle/modern = 10)),
 		//list("name" = "M41 Ammo Pack", "price" = 50, "category" = "Ammunition", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/ammo_magazine/a762/m14 = 5)),
 		list("name" = "Shotgun Ammo Pack", "price" = 100, "category" = "Ammunition", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/ammo_box/shotgun = 10)),
 		list("name" = "Pistol Ammo Pack", "price" = 50, "category" = "Ammunition", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/ammo_magazine/c45m/warfare = 10, /obj/item/ammo_magazine/a50 = 5)),
@@ -422,6 +422,7 @@ GLOBAL_LIST_EMPTY(faction_dosh)
 		list("name" = "Flamethrower Pack", "price" = 200, "category" = "Weaponry", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/gun/projectile/automatic/flamer = 1, /obj/item/ammo_magazine/flamer = 2)),
 		list("name" = "Frag Grenade Pack", "price" = 350, "category" = "Weaponry", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/grenade/frag/warfare = 5)),
 		list("name" = "Trench Club Pack", "price" = 100, "category" = "Weaponry", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/melee/classic_baton/trench_club = 5)),
+		list("name" = "Trenchman Revolver Pack", "price" = 200, "category" = "Weaponry", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/gun/projectile/revolver/manual/ = 5)),
 		list("name" = "Mortar Pack", "price" = 800, "category" = "Weaponry", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/mortar_launcher = 2, /obj/item/mortar_shell = 6)),
 
 		// medical and supply stuff
@@ -435,6 +436,7 @@ GLOBAL_LIST_EMPTY(faction_dosh)
 		list("name" = "Medical Belt Pack", "price" = 50, "category" = "Miscellaneous", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/storage/belt/medical/full = 10)),
 		list("name" = "Booze Pack", "price" = 100, "category" = "Miscellaneous", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/random/drinkbottle = 8)),
 		list("name" = "Atepoine Pack", "price" = 50, "category" = "Miscellaneous", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/reagent_containers/hypospray/autoinjector/revive = 10)),
+		list("name" = "Plastic Explosives Pack", "price" = 150, "category" = "Miscellaneous", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/plastique = 5)),
 		list("name" = "Smoke Grenade Pack", "price" = 150, "category" = "Miscellaneous", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/grenade/smokebomb = 5)),
 		list("name" = "Prosthetic Limbs Pack", "price" = 200, "category" = "Miscellaneous", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/organ/external/arm/robo_arm = 2, /obj/item/organ/external/arm/right/robo_arm = 2,
 			/obj/item/organ/external/hand/robo_hand = 2, /obj/item/organ/external/hand/right/robo_hand = 2, /obj/item/organ/external/leg/robo_leg = 2, /obj/item/organ/external/leg/right/robo_leg = 2,
@@ -461,7 +463,7 @@ GLOBAL_LIST_EMPTY(faction_dosh)
 	products = list(
 		// general ammo stuff
 		list("name" = "Rifle Ammo Pack", "price" = 50, "category" = "Ammunition", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/ammo_box/rifle = 10)),
-		//list("name" = "Modern Rifle Ammo Pack", "price" = 50, "category" = "Ammunition", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/ammo_box/rifle/modern = 10)),
+		list("name" = "Modern Rifle Ammo Pack", "price" = 50, "category" = "Ammunition", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/ammo_box/rifle/modern = 10)),
 		//list("name" = "M41 Ammo Pack", "price" = 50, "category" = "Ammunition", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/ammo_magazine/a762/m14 = 5)),
 		list("name" = "Shotgun Ammo Pack", "price" = 100, "category" = "Ammunition", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/ammo_box/shotgun = 10)),
 		list("name" = "Pistol Ammo Pack", "price" = 50, "category" = "Ammunition", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/ammo_magazine/c45m/warfare = 10, /obj/item/ammo_magazine/a50 = 5)),
@@ -488,6 +490,7 @@ GLOBAL_LIST_EMPTY(faction_dosh)
 		list("name" = "Flamethrower Pack", "price" = 200, "category" = "Weaponry", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/gun/projectile/automatic/flamer = 1, /obj/item/ammo_magazine/flamer = 2)),
 		list("name" = "Frag Grenade Pack", "price" = 350, "category" = "Weaponry", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/grenade/frag/warfare = 5)),
 		list("name" = "Trench Club Pack", "price" = 100, "category" = "Weaponry", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/melee/classic_baton/trench_club = 5)),
+		list("name" = "Trenchman Revolver Pack", "price" = 200, "category" = "Weaponry", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/gun/projectile/revolver/manual/ = 5)),
 		list("name" = "Mortar Pack", "price" = 800, "category" = "Weaponry", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/mortar_launcher = 2, /obj/item/mortar_shell = 6)),
 
 		// medical and supply stuff
@@ -506,6 +509,7 @@ GLOBAL_LIST_EMPTY(faction_dosh)
 			/obj/item/organ/external/hand/robo_hand = 2, /obj/item/organ/external/hand/right/robo_hand = 2, /obj/item/organ/external/leg/robo_leg = 2, /obj/item/organ/external/leg/right/robo_leg = 2,
 			/obj/item/organ/external/foot/robo_foot = 2, /obj/item/organ/external/foot/right/robo_foot = 2)),
 		list("name" = "Smoke Grenade Pack", "price" = 150, "category" = "Miscellaneous", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/grenade/smokebomb = 5)),
+		list("name" = "Plastic Explosives Pack", "price" = 150, "category" = "Miscellaneous", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/plastique = 5)),
 		//list("name" = "Trench Bridge Pack", "price" = 150, "category" = "Miscellaneous", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/grenade_box/trench_bridge = 2)),
 
 		// team stuff
