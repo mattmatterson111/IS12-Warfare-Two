@@ -73,11 +73,24 @@
 		to_chat(user, "<span class='danger'>I need a free hand for this.</span>")
 		return
 	log_and_message_admins("[user] has fired a mortar at [A]!", user)
-	launch_mortar(A, user, loaded_with)
+	if(user.has_trait)
+	launch_mortar(A, user, loaded_with, extra_inaccuracy)
 	QDEL_NULL(loaded)
 
 
 /obj/item/mortar_launcher/proc/launch_mortar(atom/A, mob/living/user, var/mortar_type)
+	if(user.HasRoleSimpleCheck("Red Scavenger") || user.HasRoleSimpleCheck("Blue Scavenger"))
+		if(prob(1))
+			user.visible_message("<span class='danger'>[user] fires the [src]- OH- A <i>MISFIRE!</i> RUN RUN! <i>RUN!!</i></span>")
+			playsound(src, 'sound/weapons/mortar_fire.ogg', 100, FALSE)
+			spawn(65)
+				drop_mortar(get_turf(user),mortar_type)
+			loaded = FALSE
+			return
+		else
+			var/direction = pick(GLOB.cardinal)
+			for(var/i in 1 to rand(1,3))
+				A = get_step(A,direction)
 	user.visible_message("<span class='danger'>[user] fires the [src]!</span>")
 	playsound(src, 'sound/weapons/mortar_fire.ogg', 100, FALSE)
 	spawn(35)

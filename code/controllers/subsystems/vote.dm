@@ -363,7 +363,7 @@ SUBSYSTEM_DEF(vote)
 				question = sanitizeSafe(input(usr,"What is the vote for?") as text|null)
 				if(!question)	return 0
 				for(var/i=1,i<=10,i++)
-					var/option = capitalize(sanitizeSafe(input(usr,"Please enter an option or hit cancel to finish")) as text|null)
+					var/option = capitalize(sanitizeSafe(input(usr,"Please enter an option or hit cancel to finish")))
 					if(!option || mode || !usr.client)	break
 					choices.Add(option)
 			else

@@ -941,7 +941,8 @@
 		// sound1
 		var/list/people = list() // let's make it a fair lottery..
 		for(var/mob/living/carbon/human/H in get_turf(tray))
-			//if(H.stat == DEAD)
+			if(H.stat != DEAD)
+				continue
 			people |= H
 			continue
 		inside = safepick(shuffle(people)) // shuffle them around..
