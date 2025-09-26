@@ -436,7 +436,7 @@ GLOBAL_LIST_EMPTY(faction_dosh)
 		list("name" = "Medical Belt Pack", "price" = 50, "category" = "Miscellaneous", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/storage/belt/medical/full = 10)),
 		list("name" = "Booze Pack", "price" = 100, "category" = "Miscellaneous", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/random/drinkbottle = 8)),
 		list("name" = "Atepoine Pack", "price" = 50, "category" = "Miscellaneous", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/reagent_containers/hypospray/autoinjector/revive = 10)),
-		list("name" = "Plastic Explosives Pack", "price" = 150, "category" = "Miscellaneous", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/plastique = 5)),
+		list("name" = "Plastic Explosives Pack", "price" = 150, "category" = "Miscellaneous", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/plastique/red = 5)),
 		list("name" = "Smoke Grenade Pack", "price" = 150, "category" = "Miscellaneous", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/grenade/smokebomb = 5)),
 		list("name" = "Prosthetic Limbs Pack", "price" = 200, "category" = "Miscellaneous", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/organ/external/arm/robo_arm = 2, /obj/item/organ/external/arm/right/robo_arm = 2,
 			/obj/item/organ/external/hand/robo_hand = 2, /obj/item/organ/external/hand/right/robo_hand = 2, /obj/item/organ/external/leg/robo_leg = 2, /obj/item/organ/external/leg/right/robo_leg = 2,
@@ -509,7 +509,7 @@ GLOBAL_LIST_EMPTY(faction_dosh)
 			/obj/item/organ/external/hand/robo_hand = 2, /obj/item/organ/external/hand/right/robo_hand = 2, /obj/item/organ/external/leg/robo_leg = 2, /obj/item/organ/external/leg/right/robo_leg = 2,
 			/obj/item/organ/external/foot/robo_foot = 2, /obj/item/organ/external/foot/right/robo_foot = 2)),
 		list("name" = "Smoke Grenade Pack", "price" = 150, "category" = "Miscellaneous", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/grenade/smokebomb = 5)),
-		list("name" = "Plastic Explosives Pack", "price" = 150, "category" = "Miscellaneous", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/plastique = 5)),
+		list("name" = "Plastic Explosives Pack", "price" = 150, "category" = "Miscellaneous", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/plastique/blue = 5)),
 		//list("name" = "Trench Bridge Pack", "price" = 150, "category" = "Miscellaneous", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/grenade_box/trench_bridge = 2)),
 
 		// team stuff
