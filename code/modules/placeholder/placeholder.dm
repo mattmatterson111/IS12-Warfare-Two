@@ -411,6 +411,7 @@ GLOBAL_LIST_EMPTY(faction_dosh)
 		list("name" = "Mortar Ammo", "price" = 100, "category" = "Brass.Co Ammunitions", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/mortar_shell = 8)),
 
 		// general weapon stuff
+		list("name" = "Shig 420 Pack (HANDLE WITH CARE)", "price" = 10, "category" = "Brass.Co Top-Brass", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/gun/projectile/warfare/shig = 20)), //this gun is worse than useless, it being cheap doesn't matter
 		list("name" = "Shotgun Pack", "price" = 100, "category" = "Brass.Co Top-Brass", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/gun/projectile/shotgun/pump/shitty = 5)),
 		list("name" = "Pistol Pack", "price" = 100, "category" = "Brass.Co Top-Brass", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/gun/projectile/golt = 2, /obj/item/gun/projectile/warfare = 3)),
 		list("name" = "Harbinger Pack", "price" = 100, "category" = "Brass.Co Top-Brass", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/gun/projectile/automatic/mg08 = 2)),
@@ -479,6 +480,7 @@ GLOBAL_LIST_EMPTY(faction_dosh)
 		list("name" = "Mortar Ammo", "price" = 100, "category" = "Brass.Co Ammunitions", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/mortar_shell = 8)),
 
 		// general weapon stuff
+		list("name" = "Shig 420 Pack (HANDLE WITH CARE)", "price" = 10, "category" = "Brass.Co Top-Brass", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/gun/projectile/warfare/shig = 20)),
 		list("name" = "Shotgun Pack", "price" = 100, "category" = "Brass.Co Top-Brass", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/gun/projectile/shotgun/pump/shitty = 5)),
 		list("name" = "Pistol Pack", "price" = 100, "category" = "Brass.Co Top-Brass", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/gun/projectile/golt = 2, /obj/item/gun/projectile/warfare = 3)),
 		list("name" = "Harbinger Pack", "price" = 100, "category" = "Brass.Co Top-Brass", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/gun/projectile/automatic/mg08 = 2)),
