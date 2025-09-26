@@ -31,12 +31,40 @@ This saves us from having to call add_fingerprint() any time something is put in
 		else
 			to_chat(H, "<span class='warning'>You are unable to equip that.</span>")
 			
-/mob/living/carbon/human/verb/quick_equip_boots()
+/mob/living/carbon/human/verb/quick_equip_boots() //this and bottom 4 is literally just the same as clicking the relevant spot on the UI because I dunno how to do it better
     set name = "quick-equip-boots"
     set hidden = 1
 
     if(ishuman(src))
-        attack_ui(slot_shoes)
+        attack_ui(slot_shoes) 
+
+/mob/living/carbon/human/verb/quick_equip_belt()
+    set name = "quick-equip-belt"
+    set hidden = 1
+
+    if(ishuman(src))
+        attack_ui(slot_belt)
+		
+/mob/living/carbon/human/verb/quick_equip_left_pocket()
+    set name = "quick-equip-left-pocket"
+    set hidden = 1
+
+    if(ishuman(src))
+        attack_ui(slot_l_store)
+
+/mob/living/carbon/human/verb/quick_equip_right_pocket()
+    set name = "quick-equip-right-pocket"
+    set hidden = 1
+
+    if(ishuman(src))
+        attack_ui(slot_r_store)
+		
+/mob/living/carbon/human/verb/quick_equip_chest()
+    set name = "quick-equip-suit-pocket"
+    set hidden = 1
+
+    if(ishuman(src))
+        attack_ui(slot_chest)
 
 /mob/living/carbon/human/proc/equip_in_one_of_slots(obj/item/W, list/slots, del_on_fail = 1)
 	for (var/slot in slots)
