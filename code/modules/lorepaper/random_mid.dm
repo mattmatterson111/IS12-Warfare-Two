@@ -54,3 +54,11 @@
 	suffixes = list("trenchfare.dmm")
 	category = "PLACE"
 	spawn_weight = 1
+
+/datum/map_template/ruin/warfare_mid/blitz
+	name = "Blitz Fare"
+	id = "blitz_fare"
+	description = "The under-mid-bunker experience."
+	suffixes = list("blitzfare.dmm")
+	category = "PLACE"
+	spawn_weight = 1

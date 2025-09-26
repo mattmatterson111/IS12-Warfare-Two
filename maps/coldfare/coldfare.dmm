@@ -1844,6 +1844,12 @@
 	},
 /turf/simulated/floor/stones,
 /area/warfare/homebase/blue)
+"fd" = (
+/obj/hammereditor/nodraw/deco/shadowpaint{
+	dir = 1
+	},
+/turf/simulated/wall/perspecticrete,
+/area/warfare/battlefield/trench_section/underground/stormsystem/hall)
 "fi" = (
 /obj/effect/landmark/start{
 	name = "Blue Soldier"
@@ -2915,6 +2921,12 @@
 "kK" = (
 /turf/simulated/floor/wood,
 /area/warfare/homebase/red/div)
+"kP" = (
+/obj/machinery/button/remote/blast_door{
+	id = 666
+	},
+/turf/simulated/wall/perspecticrete,
+/area/warfare/battlefield/trench_section/underground/stormsystem/hall)
 "kS" = (
 /obj/structure/toilet{
 	dir = 8;
@@ -3168,6 +3180,15 @@
 /obj/item/device/compass,
 /turf/simulated/floor/stones,
 /area/warfare/homebase/red)
+"mn" = (
+/obj/item/device/flashlight/lamp/captain/urban_streetlamp/floodlamp/short{
+	pixel_y = -13
+	},
+/turf/simulated/floor/trenches/underground{
+	icon_state = "trench";
+	color = "#ffffff"
+	},
+/area/warfare/battlefield/trench_section/underground/stormsystem/hall)
 "mo" = (
 /obj/structure/table/rack/holorack,
 /turf/simulated/floor/concrete/random,
@@ -3675,6 +3696,14 @@
 /obj/structure/table/rack/holorack,
 /turf/simulated/floor/wood,
 /area/warfare/battlefield/trench_section/underground)
+"oU" = (
+/obj/effect/sub_marker/dive{
+	id = "MISSION"
+	},
+/turf/simulated/mineral{
+	health = 999999
+	},
+/area/warfare/battlefield)
 "oV" = (
 /obj/machinery/light/caged{
 	dir = 4;
@@ -4022,6 +4051,22 @@
 	dir = 1
 	},
 /area/train/red)
+"qZ" = (
+/obj/structure/defensive_barrier{
+	secured = 1;
+	dir = 8;
+	pixel_x = -5;
+	pixel_y = 3
+	},
+/obj/machinery/door/blast/shutters{
+	dir = 8;
+	id = 666
+	},
+/turf/simulated/floor/trenches/underground{
+	icon_state = "trench";
+	color = "#ffffff"
+	},
+/area/warfare/battlefield/trench_section/underground/stormsystem/hall)
 "ra" = (
 /obj/effect/landmark/start{
 	name = "Red Captain"
@@ -4266,6 +4311,12 @@
 /obj/structure/table/rack/nosmooth/wood/alt,
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/red)
+"sp" = (
+/turf/simulated/floor/trenches/underground{
+	icon_state = "trench";
+	color = "#ffffff"
+	},
+/area/warfare/battlefield/trench_section/underground/stormsystem/hall)
 "sx" = (
 /obj/structure/trench_wall/innercorners{
 	dir = 4
@@ -4582,6 +4633,19 @@
 /obj/machinery/light/small/bunker,
 /turf/simulated/wall/perspecticrete,
 /area/warfare/homebase/blue)
+"uu" = (
+/obj/structure/trench_wall/innercorners{
+	dir = 4
+	},
+/obj/structure/trench_wall/innercorners{
+	dir = 8;
+	pixel_x = 32
+	},
+/turf/simulated/floor/trenches/underground{
+	icon_state = "trench";
+	color = "#ffffff"
+	},
+/area/warfare/battlefield/trench_section/underground/stormsystem/hall)
 "uw" = (
 /obj/structure/closet/secure_closet/medical1/warfare,
 /obj/item/clothing/suit/surgeon_apron,
@@ -4704,6 +4768,14 @@
 /obj/effect/lighting_dummy/daylight,
 /turf/simulated/floor/stones,
 /area/warfare/homebase/blue)
+"vc" = (
+/obj/effect/sub_marker/surface{
+	id = "MISSION"
+	},
+/turf/simulated/mineral{
+	health = 999999
+	},
+/area/warfare/battlefield)
 "vd" = (
 /obj/structure/trench_wall{
 	dir = 4
@@ -5484,6 +5556,14 @@
 	},
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/blue)
+"Ae" = (
+/obj/effect/sub_marker/float{
+	id = "MISSION"
+	},
+/turf/simulated/mineral{
+	health = 999999
+	},
+/area/warfare/battlefield)
 "Ag" = (
 /obj/effect/landmark/start{
 	name = "Red Practitioner"
@@ -5818,6 +5898,16 @@
 	},
 /turf/simulated/floor/concrete/random,
 /area/warfare/battlefield/capture_point/blue/one)
+"BS" = (
+/obj/structure/trench_wall/innercorners{
+	dir = 4
+	},
+/obj/structure/trench_wall/innercorners{
+	dir = 8;
+	pixel_x = 32
+	},
+/turf/simulated/wall/perspecticrete,
+/area/warfare/battlefield/trench_section/underground/stormsystem/hall)
 "BT" = (
 /obj/structure/reagent_dispensers/watertank{
 	pixel_x = 1;
@@ -6292,6 +6382,9 @@
 	color = "#ffffff"
 	},
 /area/space)
+"EF" = (
+/turf/simulated/floor/concrete/random,
+/area/warfare/battlefield/no_mans_land)
 "EI" = (
 /obj/structure/dirt_wall,
 /obj/machinery/light/caged{
@@ -7490,6 +7583,19 @@
 	},
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/blue)
+"Oc" = (
+/obj/structure/trench_wall/innercorners{
+	dir = 4;
+	pixel_x = -32
+	},
+/obj/structure/trench_wall/innercorners{
+	dir = 8
+	},
+/turf/simulated/floor/trenches/underground{
+	icon_state = "trench";
+	color = "#ffffff"
+	},
+/area/warfare/battlefield/trench_section/underground/stormsystem/hall)
 "Ol" = (
 /obj/structure/banner/red/small{
 	pixel_y = 32
@@ -7925,6 +8031,15 @@
 	},
 /turf/simulated/floor/concrete/random,
 /area/warfare/battlefield/capture_point/blue/one)
+"Rh" = (
+/obj/structure/barbwire,
+/obj/machinery/camera{
+	dir = 4;
+	pixel_x = 2;
+	pixel_y = 0
+	},
+/turf/simulated/floor,
+/area/warfare/battlefield/no_mans_land)
 "Ri" = (
 /obj/item/flame/candle,
 /obj/item/wirecutters,
@@ -8058,6 +8173,11 @@
 	},
 /turf/simulated/floor/wood,
 /area/warfare/battlefield/trench_section/underground)
+"Se" = (
+/turf/simulated/wall/perspecticrete{
+	color = "#000000"
+	},
+/area/warfare/battlefield)
 "Sf" = (
 /obj/machinery/light/small/bunker{
 	dir = 1
@@ -8703,6 +8823,20 @@
 	color = "#ffffff"
 	},
 /area/warfare/homebase/red)
+"Wz" = (
+/obj/effect/darkout_teleporter{
+	id = "MISSION";
+	entrance = 0;
+	twoway = 1
+	},
+/obj/hammereditor/nodraw/deco/shadowpaint{
+	dir = 1
+	},
+/turf/simulated/floor/trenches/underground{
+	icon_state = "trench";
+	color = "#ffffff"
+	},
+/area/warfare/battlefield/trench_section/underground/stormsystem/hall)
 "WD" = (
 /obj/structure/stairs/trenchstairs,
 /obj/structure/announcementspeaker/blue{
@@ -8935,6 +9069,9 @@
 	health = 999999
 	},
 /area/warfare/battlefield/trench_section/underground/bunker)
+"XW" = (
+/turf/simulated/wall/perspecticrete,
+/area/warfare/battlefield/trench_section/underground/stormsystem/hall)
 "XX" = (
 /turf/simulated/floor/wood,
 /area/warfare/homebase/blue/div)
@@ -9013,6 +9150,10 @@
 	dir = 4
 	},
 /area/train/red)
+"Yv" = (
+/obj/structure/barbwire,
+/turf/simulated/floor,
+/area/warfare/battlefield/no_mans_land)
 "Yz" = (
 /obj/structure/trench_wall/innercorners{
 	dir = 4;
@@ -9104,6 +9245,17 @@
 	health = 999999
 	},
 /area/warfare/battlefield)
+"Zd" = (
+/obj/item/device/flashlight/lantern{
+	on = 1;
+	pixel_x = -13;
+	pixel_y = -6
+	},
+/turf/simulated/floor/trenches/underground{
+	icon_state = "trench";
+	color = "#ffffff"
+	},
+/area/warfare/battlefield/trench_section/underground/stormsystem/hall)
 "Zf" = (
 /obj/structure/trench_wall{
 	dir = 1;
@@ -34034,7 +34186,7 @@ gx
 gx
 gx
 gx
-gx
+EF
 gx
 gx
 gx
@@ -35238,10 +35390,10 @@ gx
 gx
 gx
 gx
+Yv
 gx
 gx
-gx
-gx
+Yv
 gx
 gx
 gx
@@ -35538,10 +35690,10 @@ gx
 gx
 gx
 gx
-gx
-gx
-gx
-gx
+Rh
+EF
+EF
+Rh
 gx
 gx
 gx
@@ -35838,10 +35990,10 @@ Zc
 Zc
 Zc
 Zc
-Zc
-Zc
-Zc
-Zc
+XW
+qZ
+qZ
+XW
 Zc
 Zc
 Zc
@@ -36134,14 +36286,14 @@ Zc
 Zc
 Zc
 Zc
-Zc
-Zc
-Zc
-Zc
-Zc
-Zc
-Zc
-Zc
+Se
+fd
+XW
+XW
+kP
+sp
+sp
+BS
 Zc
 Zc
 Zc
@@ -36434,14 +36586,14 @@ Zc
 Zc
 Zc
 Zc
-Zc
-Zc
-Zc
-Zc
-Zc
-Zc
-Zc
-Zc
+Se
+Wz
+Zd
+Oc
+sp
+Oc
+sp
+XW
 Zc
 Zc
 Zc
@@ -36734,14 +36886,14 @@ Zc
 Zc
 Zc
 Zc
-Zc
-Zc
-Zc
-Zc
-Zc
-Zc
-Zc
-Zc
+Se
+Wz
+sp
+uu
+sp
+uu
+mn
+BS
 Zc
 Zc
 Zc
@@ -37034,14 +37186,14 @@ Zc
 Zc
 Zc
 Zc
-Zc
-Zc
-Zc
-Zc
-Zc
-Zc
-Zc
-Zc
+Se
+fd
+XW
+XW
+XW
+XW
+XW
+XW
 Zc
 Zc
 Zc
@@ -38547,9 +38699,9 @@ Zc
 Zc
 Zc
 Zc
-Zc
-Zc
-Zc
+vc
+Ae
+oU
 Zc
 Zc
 Zc

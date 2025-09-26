@@ -110,7 +110,14 @@ SUBSYSTEM_DEF(squads)
 		var/mob/M = squad.spawn_leader(C)
 		M.verbs += /client/proc/place_squad_waypoint
 		M.verbs += /client/proc/clear_squad_waypoint
-
+	for(var/mob/M in squad.members)
+		if(!M.client)
+			continue
+		if(M == C.mob)
+			continue
+		sound_to(M.client, sound('sound/effects/ert/evil_announcement.ogg'))
+		spawn(5)
+			M.play_screen_text("<font size=1>ATTENTION PLEASE\n\nSQUAD LEADER AWOKEN\n<i>[uppertext(C.mob)]</i> IS IN COMMAND</font>", alert = /atom/movable/screen/text/screen_text/screen)
 
 /client/proc/spawn_adminleader()
 	set category = "roleplay"

@@ -216,7 +216,7 @@
 	w_class = ITEM_SIZE_TINY //half the volume of a bottle, half the size
 	amount_per_transfer_from_this = 10
 	possible_transfer_amounts = "5;10;15;30"
-	atom_flags = ATOM_FLAG_OPEN_CONTAINER
+	//atom_flags = ATOM_FLAG_OPEN_CONTAINER
 
 /obj/item/reagent_containers/glass/beaker/cryoxadone
 	New()

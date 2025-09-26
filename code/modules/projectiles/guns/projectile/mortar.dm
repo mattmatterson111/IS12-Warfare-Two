@@ -73,8 +73,7 @@
 		to_chat(user, "<span class='danger'>I need a free hand for this.</span>")
 		return
 	log_and_message_admins("[user] has fired a mortar at [A]!", user)
-	if(user.has_trait)
-	launch_mortar(A, user, loaded_with, extra_inaccuracy)
+	launch_mortar(A, user, loaded_with)
 	QDEL_NULL(loaded)
 
 

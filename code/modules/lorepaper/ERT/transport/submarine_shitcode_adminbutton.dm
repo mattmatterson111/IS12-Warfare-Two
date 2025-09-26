@@ -69,20 +69,17 @@
 	flick("open", vehiclefx)
 	var/sound = sound_surface(TRUE)
 	for(var/mob/M in get_people_inside())
-		to_chat(M, "Sound is [sound]")
 		sound_to(M, sound(sound, volume = 85))
 
 /obj/machinery/button/transport_controller/proc/on_transit() // transit, basically unused tbh
 	var/sound = sound_transit()
 	for(var/mob/M in get_people_inside())
-		to_chat(M, "Sound is [sound]")
 		sound_to(M, sound(sound, volume = 85))
 
 /obj/machinery/button/transport_controller/proc/on_dive() // Leaving
 	anim_fx_to(dive_pos, idle_pos, 255, 0)
 	var/sound = sound_dive(TRUE)
 	for(var/mob/M in get_people_inside(TRUE))
-		to_chat(M, "Sound is [sound]")
 		sound_to(M, sound(sound, volume = 85))
 
 
@@ -152,7 +149,7 @@
 
 
 	if(!moved)
-		addtimer(CALLBACK(src, PROC_REF(move_to_transport), destination_id), 60 SECONDS)
+		addtimer(CALLBACK(src, PROC_REF(move_to_transport), destination_id), 40 SECONDS)
 		moved = TRUE
 		update_marker_positions(destination_id)
 /*
@@ -164,7 +161,6 @@
 	playsound(src, sound_dive(), 100)
 	sleep(2 SECONDS)
 	for(var/mob/M in get_people_inside())
-		to_chat(M, "playing the loop")
 		sound_to(M, sound(sound_loop(), channel = 76, volume = 100, repeat = 1))
 
 
@@ -190,7 +186,7 @@
 	update_teleports(start_id)
 	update_teleports(current_id)
 	on_transit()
-	addtimer(CALLBACK(src, PROC_REF(move_to_destination), destination_id), 60 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(move_to_destination), destination_id), 40 SECONDS)
 
 /obj/machinery/button/transport_controller/proc/move_to_destination(destination_id)
 	playsound_from_speakers(speaker_alarm(), 85)

@@ -83,7 +83,7 @@
 
 /mob/living/carbon/human/objective/Stat()
 	. = ..()
-	stat("<b>CURRENT DIRECTIVE:</b>", "<b>[ertsquad.directive ? ertsquad.directive : "STAND BY"]</b>")
+	stat("<b>CURRENT DIRECTIVE:</b>", "<b>[member.squad.directive ? member.squad.directive : "STAND BY"]</b>")
 /*
 /mob/living/carbon/human/objective/ClickOn(var/atom/A, params)
 	if(world.time <= next_click)

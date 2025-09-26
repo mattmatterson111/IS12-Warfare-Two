@@ -127,8 +127,8 @@
 	icon = 'icons/obj/items.dmi'
 	icon_state = "sheet-wetleather"
 	color = "#897e9b"
-	item_open_sound = 'sound/effects/teleretract3.ogg'
-	item_close_sound = 'sound/effects/teleextend4.ogg'
+	open_sound = 'sound/effects/teleretract3.ogg'
+	close_sound = 'sound/effects/teleextend4.ogg'
 	startswith = list(/obj/item/reagent_containers/syringe/ = 2)
 	can_hold = list(/obj/item/reagent_containers/syringe/)
 	storage_ui = /datum/storage_ui/default/slotted

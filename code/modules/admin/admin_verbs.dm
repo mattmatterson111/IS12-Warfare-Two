@@ -82,6 +82,7 @@ var/list/admin_verbs_admin = list(
 	/client/proc/clear_squad_waypoint,
 	/client/proc/play_ert_voiceline,
 	/client/proc/control_ert_ship,
+	/client/proc/artillery,
 	/client/proc/promote_to_squadleader,
 	/client/proc/demote_squadleader,
 	/client/proc/change_squad_directive,

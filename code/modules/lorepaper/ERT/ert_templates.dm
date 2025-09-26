@@ -174,9 +174,22 @@
 
 /datum/squadmember/debug/post_spawn(mob/living/carbon/human/objective/H)
 	. = ..()
-	H.add_stats(rand(12,17), rand(10,16), rand(8,12))
-	H.warfare_language_shit(LANGUAGE_RED)
+	H.add_stats(rand(12,17), rand(10,16), rand(8,14), rand(10, 18))
+	H.warfare_language_shit(squad.warfare_faction)
 	H.set_hud_stats()
+	H.SKILL_LEVEL(medical) = 15
+	H.SKILL_LEVEL(surgery) = 15
+	H.SKILL_LEVEL(ranged) = 15
+	H.SKILL_LEVEL(engineering) = 15
+	H.SKILL_LEVEL(melee) = 15
+	//Gun skills
+	H.SKILL_LEVEL(auto_rifle) = 15
+	H.SKILL_LEVEL(semi_rifle) = 15
+	H.SKILL_LEVEL(sniper) = 15
+	H.SKILL_LEVEL(shotgun) = 15
+	H.SKILL_LEVEL(lmg) = 15
+	H.SKILL_LEVEL(smg) = 15
+	H.SKILL_LEVEL(boltie) = 15
 
 /datum/squadmember/basic
 	outfit = /decl/hierarchy/outfit/soldier

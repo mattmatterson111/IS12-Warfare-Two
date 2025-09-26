@@ -143,6 +143,8 @@
 	health = 75 // tough.
 
 /obj/structure/vague_statue
+	name = "Statue of.. whoever it was."
+	desc = "A statue, it could be anything really."
 	icon = 'icons/obj/urban/the_statue.dmi'
 	icon_state = "statue_ambiguous"
 	plane = ABOVE_HUMAN_PLANE

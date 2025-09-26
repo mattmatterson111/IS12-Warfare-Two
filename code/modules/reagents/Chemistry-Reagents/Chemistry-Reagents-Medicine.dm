@@ -85,11 +85,11 @@
 		M.heal_organ_damage(0, 12 * removed)
 
 /datum/reagent/dylovene
-	name = "Dylovene"
-	description = "Dylovene is a broad-spectrum antitoxin used to neutralize poisons before they can do significant harm."
-	taste_description = "a roll of gauze"
+	name = "Charcoal Powder"
+	description = "A medicinal powder used to treat poisoning and toxin exposure."
+	taste_description = "charcoal"
 	reagent_state = REAGENT_LIQUID
-	color = "#00a000"
+	color = "#333333"
 	scannable = 1
 	flags = IGNORE_MOB_SIZE
 	var/static/list/remove_toxins = list(
@@ -114,11 +114,11 @@
 			return
 
 /datum/reagent/dexalin
-	name = "Dexalin"
-	description = "Dexalin is used in the treatment of oxygen deprivation."
+	name = "Ephedrine"
+	description = "A potent stimulant used to treat oxygen deprivation and support respiratory function."
 	taste_description = "bitterness"
 	reagent_state = REAGENT_LIQUID
-	color = "#0080ff"
+	color = "#6200ff"
 	overdose = REAGENTS_OVERDOSE
 	scannable = 1
 	flags = IGNORE_MOB_SIZE
@@ -465,11 +465,11 @@
 		M.take_organ_damage(4 * removed, 0)
 
 /datum/reagent/spaceacillin
-	name = "Spaceacillin"
-	description = "An all-purpose antiviral agent."
-	taste_description = "bitterness"
+	name = "Acriflavine"
+	description = "A potent antiseptic used to prevent infection in wounds and minor abrasions."
+	taste_description = "sharp, bitter chemical taste"
 	reagent_state = REAGENT_LIQUID
-	color = "#c1c1c1"
+	color = "#FFB500"
 	metabolism = REM * 0.1
 	overdose = REAGENTS_OVERDOSE/2
 	scannable = 1
