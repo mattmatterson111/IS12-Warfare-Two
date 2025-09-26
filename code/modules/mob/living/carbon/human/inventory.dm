@@ -30,6 +30,13 @@ This saves us from having to call add_fingerprint() any time something is put in
 				update_inv_r_hand(0)
 		else
 			to_chat(H, "<span class='warning'>You are unable to equip that.</span>")
+			
+/mob/living/carbon/human/verb/quick_equip_boots()
+    set name = "quick-equip-boots"
+    set hidden = 1
+
+    if(ishuman(src))
+        attack_ui(slot_shoes)
 
 /mob/living/carbon/human/proc/equip_in_one_of_slots(obj/item/W, list/slots, del_on_fail = 1)
 	for (var/slot in slots)

@@ -437,7 +437,7 @@ macro "hotkeymode"
 		command = "quick-equip"
 	elem 
 		name = "CTRL+E"
-		command = "quick-equip"
+		command = "quick-equip-boots"
 	elem 
 		name = "F"
 		command = "set-fixeye"
