@@ -537,6 +537,9 @@
 	name = "Red Headset"
 	origin_tech = list(TECH_ILLEGAL = 3)
 	syndie = 1
+	icon_state = "rednewradio"
+	item_state = "rednewradio"
+	worldicons = "redradioworld"
 	ks1type = /obj/item/device/encryptionkey/red
 	sprite_sheets = list(SPECIES_CHILD = 'icons/mob/species/child/ears.dmi')
 
@@ -591,6 +594,9 @@
 	name = "Blue Headset"
 	origin_tech = list(TECH_ILLEGAL = 2)
 	syndie = 1
+	icon_state = "bluenewradio"
+	item_state = "bluenewradio"
+	worldicons = "blueradioworld"
 	ks1type = /obj/item/device/encryptionkey/blue
 
 /obj/item/device/radio/headset/blue_team/Initialize()
