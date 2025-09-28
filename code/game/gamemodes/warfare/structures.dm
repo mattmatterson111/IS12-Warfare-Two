@@ -716,6 +716,7 @@
 	var/datum/sound_token/sound_token
 	var/range = 3
 	var/list/particleslist = list()
+	var/bannercolor = nocolor
 
 /obj/structure/factionbanner/CanPass(atom/movable/mover, turf/target, height, air_group)
 	return TRUE
@@ -797,7 +798,12 @@
 			if(do_after(user, 60))
 				playsound(src.loc, "sound/effects/teleretract[progress].ogg", 85, 1)
 				user.doing_something = FALSE
-				new /obj/item/melee/classic_baton/factionbanner(loc)
+				if(bannercolor == red)
+					new /obj/item/melee/classic_baton/factionbanner/red(loc)
+				else if (bannercolor == blue)
+					new /obj/item/melee/classic_baton/factionbanner/blue(loc)
+				else //for debug
+					new /obj/item/melee/classic_baton/factionbanner 
 				qdel(src)
 				return
 			else
@@ -874,9 +880,11 @@
 
 /obj/item/melee/classic_baton/factionbanner/red //yes it behaves as normal if someone reports that this is deploying as other color I ain't fixin that
 	name = "Red Faction Banner"
+	bannercolor = red
 
 /obj/item/melee/classic_baton/factionbanner/blue
 	name = "Blue Faction Banner"
+	bannercolor = blue
 
 /obj/structure/warfare/thehatch
 	name = "the hatch"
