@@ -872,6 +872,12 @@
 				user.doing_something = FALSE
 				return
 
+/obj/item/melee/classic_baton/factionbanner/red //yes it behaves as normal if someone reports that this is deploying as other color I ain't fixin that
+	name = "Red Faction Banner"
+
+/obj/item/melee/classic_baton/factionbanner/blue
+	name = "Blue Faction Banner"
+
 /obj/structure/warfare/thehatch
 	name = "the hatch"
 	desc = "\"The dead are to be put into this, as it is my decree.\"\n\"Then you are to knock on this here door.. twice.. no more, no less..\"\n\"And then, you shall wait for the confirmation..\""
