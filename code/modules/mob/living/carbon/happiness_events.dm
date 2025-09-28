@@ -231,3 +231,16 @@
 	description = "<span class='danger'>Why was that officer looking at me as he wrote in his book? Did I do something wrong?\n"
 	happiness = -10
 	timeout = 3000
+
+
+//EATING A BABY AS A BLUE
+/datum/happiness_event/ate_baby
+	description = "<span class='binfo'>I fucking love eating babies! I feel like I'm back home in Blue York already!</span>\n"
+	happiness = 500 // Blues fucking love babies
+	timeout = FALSE
+
+//seeing a baby
+/datum/happiness_event/seen_baby
+	description = "<span class='danger'>IS THAT A DEEP FRIED BABY? WHAT THE FUCK IS WRONG WITH THESE PEOPLE?</span>\n"
+	happiness = -50 //one time i saw a deep fried baby, it wasn't very pleasent
+	timeout = 1800
