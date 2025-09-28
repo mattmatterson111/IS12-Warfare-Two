@@ -59,3 +59,24 @@
 		playsound(src, 'sound/effects/thehatchin.ogg', 75, 0.25)
 		flick("[icon_state]_o", src)
 		return
+
+	else if(istype(O, /obj/item/clothing/head/helmet/sentryhelm/red) && id == BLUE_TEAM || istype(O, /obj/item/clothing/head/helmet/sentryhelm/blue) && id == RED_TEAM ) // meh
+		GLOB.faction_dosh[id] += 150
+		qdel(O)
+		playsound(src, 'sound/effects/thehatchin.ogg', 75, 0.25)
+		flick("[icon_state]_o", src)
+		return
+
+	else if(istype(O, /obj/item/clothing/head/helmet/redhelmet/fire) && id == BLUE_TEAM || istype(O, /obj/item/clothing/head/helmet/bluehelmet/fire) && id == RED_TEAM ) // meh
+		GLOB.faction_dosh[id] += 250
+		qdel(O)
+		playsound(src, 'sound/effects/thehatchin.ogg', 75, 0.25)
+		flick("[icon_state]_o", src)
+		return
+
+	else if(istype(O, /obj/item/clothing/head/warfare_officer/redofficer) && id == BLUE_TEAM || istype(O, /obj/item/clothing/head/warfare_officer/blueofficer) && id == RED_TEAM ) // meh
+		GLOB.faction_dosh[id] += 500
+		qdel(O)
+		playsound(src, 'sound/effects/thehatchin.ogg', 75, 0.25)
+		flick("[icon_state]_o", src)
+		return
