@@ -716,7 +716,8 @@
 	var/datum/sound_token/sound_token
 	var/range = 3
 	var/list/particleslist = list()
-	var/bannercolor = nocolor
+	var/bannercolor = "nocolor"
+	var/bannercolorchanged = FALSE
 
 /obj/structure/factionbanner/CanPass(atom/movable/mover, turf/target, height, air_group)
 	return TRUE
@@ -727,10 +728,28 @@
 	currentfaction = null
 	// just gonna place this here as a small sanity thing + it gets called anytime it gets changed so yeah
 	if(progress>4 || 0>=progress) // it just hard resets it to 1 if multiple people were to try to raise it or lower it
+		if(lastuser.warfare_faction == RED_TEAM && bannercolorchanged == FALSE) //bleh
+			bannercolor = "red"
+			bannercolorchanged = TRUE //ONLY ONCE
+		else if (lastuser.warfare_faction == BLUE_TEAM && bannercolorchanged == FALSE)
+			bannercolor = "blue"
+			bannercolorchanged = TRUE
 		progress = 1
 	if(progress == 4)
+		if(lastuser.warfare_faction == RED_TEAM && bannercolorchanged == FALSE)
+			bannercolor = "red"
+			bannercolorchanged = TRUE
+		else if (lastuser.warfare_faction == BLUE_TEAM && bannercolorchanged == FALSE)
+			bannercolor = "blue"
+			bannercolorchanged = TRUE
 		icon_state = "flag3"
 	else
+		if(lastuser.warfare_faction == RED_TEAM && bannercolorchanged == FALSE)
+			bannercolor = "red"
+			bannercolorchanged = TRUE
+		else if (lastuser.warfare_faction == BLUE_TEAM && bannercolorchanged == FALSE)
+			bannercolor = "blue"
+			bannercolorchanged = TRUE
 		icon_state = "flag[progress]"
 	overlays.Cut()
 	if(progress == 4)
@@ -750,6 +769,9 @@
 			sound_token = sound_player.PlayLoopingSound(src, sound_id, 'sound/ambience/space_loop.ogg', volume = 75, range = 4, falloff = 0.5, prefer_mute = TRUE, ignore_vis = TRUE)
 			overlays += "redbanner"
 			currentfaction = RED_TEAM
+			if(lastuser.warfare_faction == RED_TEAM && bannercolorchanged == FALSE)
+				bannercolor = "red"
+				bannercolorchanged = TRUE
 		else
 			for(var/turf/simulated/floor/T in view(range, src))
 				if(!istype(T, /turf/simulated/open))
@@ -767,6 +789,9 @@
 			sound_token = sound_player.PlayLoopingSound(src, sound_id, 'sound/ambience/space_loop.ogg', volume = 75, range = 4, falloff = 0.5, prefer_mute = TRUE, ignore_vis = TRUE)
 			overlays += "bluebanner"
 			currentfaction = BLUE_TEAM
+			if (lastuser.warfare_faction == BLUE_TEAM && bannercolorchanged == FALSE)
+				bannercolor = "blue"
+				bannercolorchanged = TRUE
 
 /obj/structure/factionbanner/New() // I PROMISE this makes it look nicer
 	. = ..()
@@ -798,12 +823,12 @@
 			if(do_after(user, 60))
 				playsound(src.loc, "sound/effects/teleretract[progress].ogg", 85, 1)
 				user.doing_something = FALSE
-				if(bannercolor == red)
+				if(bannercolor == "red")
 					new /obj/item/melee/classic_baton/factionbanner/red(loc)
-				else if (bannercolor == blue)
+				else if (bannercolor == "blue")
 					new /obj/item/melee/classic_baton/factionbanner/blue(loc)
 				else //for debug
-					new /obj/item/melee/classic_baton/factionbanner 
+					new /obj/item/melee/classic_baton/factionbanner(loc)
 				qdel(src)
 				return
 			else
@@ -880,11 +905,9 @@
 
 /obj/item/melee/classic_baton/factionbanner/red //yes it behaves as normal if someone reports that this is deploying as other color I ain't fixin that
 	name = "Red Faction Banner"
-	bannercolor = red
 
 /obj/item/melee/classic_baton/factionbanner/blue
 	name = "Blue Faction Banner"
-	bannercolor = blue
 
 /obj/structure/warfare/thehatch
 	name = "the hatch"
