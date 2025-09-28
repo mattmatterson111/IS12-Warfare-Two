@@ -656,19 +656,12 @@ obj/random/obstruction/spawn_choices()
 
 /obj/random/smokes/spawn_choices()
 	return list(/obj/item/storage/fancy/cigarettes = 5,
-				/obj/item/storage/fancy/cigarettes/dromedaryco = 4,
-				/obj/item/storage/fancy/cigarettes/killthroat = 1,
 				/obj/item/storage/fancy/cigarettes/luckystars = 3,
 				/obj/item/storage/fancy/cigarettes/jerichos = 3,
-				/obj/item/storage/fancy/cigarettes/menthols = 2,
 				/obj/item/storage/fancy/cigarettes/carcinomas = 3,
-				/obj/item/storage/fancy/cigarettes/professionals = 2,
 				/obj/item/storage/fancy/cigar = 1,
 				/obj/item/clothing/mask/smokable/cigarette = 2,
-				/obj/item/clothing/mask/smokable/cigarette/menthol = 2,
-				/obj/item/clothing/mask/smokable/cigarette/cigar = 1,
-				/obj/item/clothing/mask/smokable/cigarette/cigar/cohiba = 1,
-				/obj/item/clothing/mask/smokable/cigarette/cigar/havana = 1)
+				/obj/item/clothing/mask/smokable/cigarette/cigar = 1)
 
 /obj/random/masks
 	name = "random mask"

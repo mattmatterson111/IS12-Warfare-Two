@@ -35,7 +35,7 @@
 	..()
 	var/cigar_type = list()
 	cigar_type["premium"] = /obj/item/clothing/mask/smokable/cigarette/cigar
-	cigar_type["Cohiba Robusto"] = /obj/item/clothing/mask/smokable/cigarette/cigar/cohiba
+	cigar_type["Presidential Reserve"] = /obj/item/clothing/mask/smokable/cigarette/cigar
 	gear_tweaks += new/datum/gear_tweak/path(cigar_type)
 
 /datum/gear/ecig

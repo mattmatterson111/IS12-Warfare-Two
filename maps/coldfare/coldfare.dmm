@@ -979,6 +979,10 @@
 	pixel_x = -8;
 	pixel_y = -3
 	},
+/obj/item/storage/fancy/cigarettes/cigarillo{
+	pixel_x = 9;
+	pixel_y = 7
+	},
 /turf/simulated/floor/wood,
 /area/warfare/homebase/red/div)
 "cE" = (
@@ -3387,14 +3391,16 @@
 	dir = 8
 	},
 /obj/item/paper_bin{
-	pixel_x = -11;
+	pixel_x = -9;
 	pixel_y = 6
 	},
 /obj/item/pen/blue{
-	pixel_x = -12;
+	pixel_x = -9;
 	pixel_y = 7
 	},
-/obj/item/device/megaphone/blue,
+/obj/item/device/megaphone/blue{
+	pixel_x = 4
+	},
 /turf/simulated/floor/wood,
 /area/warfare/homebase/blue/div)
 "nt" = (
@@ -4694,7 +4700,7 @@
 	},
 /obj/item/paper/crumpled{
 	info = "Note to self..<br> I jotted down the number to <b><i>High Command</i></b> in my personal notes.. <br><i>Best to only use it when things get dicey..</i>";
-	pixel_x = -1;
+	pixel_x = 9;
 	pixel_y = 3
 	},
 /turf/simulated/floor/wood,
@@ -8410,6 +8416,10 @@
 /obj/item/device/flashlight/lamp/captain{
 	pixel_x = 0;
 	pixel_y = 16
+	},
+/obj/item/storage/fancy/cigar{
+	pixel_x = 20;
+	pixel_y = 8
 	},
 /turf/simulated/floor/wood,
 /area/warfare/homebase/blue/div)

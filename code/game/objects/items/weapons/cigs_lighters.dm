@@ -221,6 +221,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	desc = "A small paper cylinder filled with processed tobacco and various fillers."
 	icon_state = "cigoff"
 	throw_speed = 0.5
+	icon = 'icons/obj/cigarettes.dmi'
 	item_state = "cigoff"
 	w_class = ITEM_SIZE_TINY
 	slot_flags = SLOT_EARS | SLOT_MASK
@@ -233,8 +234,9 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	zippomes = "<span class='rose'>With a flick of their wrist, USER lights their NAME with their FLAME.</span>"
 	weldermes = "<span class='notice'>USER casually lights the NAME with FLAME.</span>"
 	ignitermes = "<span class='notice'>USER fiddles with FLAME, and manages to light their NAME.</span>"
-	brand = "\improper FrozenNova"
+	brand = "\improper Smokey Boys"
 	var/list/filling = list(/datum/reagent/tobacco = 1)
+	var/flame_onmob_icon = "cigember"
 
 /obj/item/clothing/mask/smokable/cigarette/New()
 	..()
@@ -247,11 +249,11 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	if(lit)
 		overlays += overlay_image(icon, "cigon", flags=RESET_COLOR)
 
-/obj/item/clothing/mask/smokable/cigarette/trident/update_icon()
+/obj/item/clothing/mask/smokable/cigarette/cigarillo/update_icon()
 	..()
 	overlays.Cut()
 	if(lit)
-		overlays += overlay_image(icon, "cigarello-on", flags=RESET_COLOR)
+		overlays += overlay_image(icon, "cigarillo-on", flags=RESET_COLOR)
 
 /obj/item/clothing/mask/smokable/cigarette/die(var/nomessage = 0)
 	..()
@@ -268,28 +270,16 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 			M.remove_from_mob(src) //un-equip it so the overlays can update
 		qdel(src)
 
-/obj/item/clothing/mask/smokable/cigarette/menthol
-	name = "menthol cigarette"
-	desc = "A cigarette with a little minty kick. Well, minty in theory."
-	icon_state = "cigmentol"
-	brand = "\improper Temperamento Menthol"
-	color = "#ddffe8"
-	type_butt = /obj/item/cigbutt/menthol
-	filling = list(/datum/reagent/tobacco = 1, /datum/reagent/menthol = 1)
-
-/obj/item/cigbutt/menthol
-	icon_state = "cigbuttmentol"
-
 /obj/item/clothing/mask/smokable/cigarette/heavy
 	name = "unfiltered cigarette"
 	brand = "\improper Heavy Industries"
 	desc = "A roll of tobacco and nicotine. A true mans Cigarrete"
-	icon_state = "ucigoff"
+	icon_state = "TOHAHeavyIndustriesCig"
 	type_butt = /obj/item/cigbutt/heavy
 	filling = list(/datum/reagent/tobacco/bad = 1.5)
 
 /obj/item/cigbutt/heavy
-	icon_state = "cigbuttjer"
+	icon_state = "TOHAHeavyIndustriesCigButt"
 
 /obj/item/clothing/mask/smokable/cigarette/luckystars
 	brand = "\improper Brouzefs"//It's spelled wrong on purpose.
@@ -320,62 +310,21 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 /obj/item/cigbutt/tannhauser
 	icon_state = "TannhauserGateCigButt"
 
-/obj/item/clothing/mask/smokable/cigarette/professionals
-	name = "thin cigarette"
-	brand = "\improper Professional"
-	icon_state = "cigpro"
-	type_butt = /obj/item/cigbutt/professionals
-	filling = list(/datum/reagent/tobacco/bad = 1)
-
-/obj/item/cigbutt/professionals
-	icon_state = "cigbuttpro"
-
-/obj/item/clothing/mask/smokable/cigarette/killthroat
-	brand = "\improper Acme Co. cigarette"
-
-/obj/item/clothing/mask/smokable/cigarette/dromedaryco
-	brand = "\improper Dromedary Co. cigarette"
-
-/obj/item/clothing/mask/smokable/cigarette/trident
-	name = "wood tip cigar"
-	brand = "\improper Trident cigar"
-	desc = "A narrow cigar with a wooden tip."
-	icon_state = "cigarello"
-	item_state = "cigaroff"
+/obj/item/clothing/mask/smokable/cigarette/cigarillo
+	name = "Redlin Bull cigarillo"
+	brand = "\improper Redlin Bull"
+	desc = "A narrow machine made cigar, has a small red band with a Redlin Bull written on it."
+	icon_state = "cigarillo"
+	item_state = "cigarillo"
 	smoketime = 600
 	chem_volume = 10
-	type_butt = /obj/item/cigbutt/woodbutt
+	type_butt = /obj/item/cigbutt/cigarillo
 	filling = list(/datum/reagent/tobacco/fine = 2)
 
-/obj/item/clothing/mask/smokable/cigarette/trident/mint
-	icon_state = "cigarelloMi"
-	filling = list(/datum/reagent/tobacco/fine = 2, /datum/reagent/menthol = 2)
-
-/obj/item/clothing/mask/smokable/cigarette/trident/berry
-	icon_state = "cigarelloBe"
-	filling = list(/datum/reagent/tobacco/fine = 2, /datum/reagent/drink/juice/berry = 2)
-
-/obj/item/clothing/mask/smokable/cigarette/trident/cherry
-	icon_state = "cigarelloCh"
-	filling = list(/datum/reagent/tobacco/fine = 2, /datum/reagent/nutriment/cherryjelly = 2)
-
-/obj/item/clothing/mask/smokable/cigarette/trident/grape
-	icon_state = "cigarelloGr"
-	filling = list(/datum/reagent/tobacco/fine = 2, /datum/reagent/drink/juice/grape = 2)
-
-/obj/item/clothing/mask/smokable/cigarette/trident/watermelon
-	icon_state = "cigarelloWm"
-	filling = list(/datum/reagent/tobacco/fine = 2, /datum/reagent/drink/juice/watermelon = 2)
-
-/obj/item/clothing/mask/smokable/cigarette/trident/orange
-	icon_state = "cigarelloOr"
-	filling = list(/datum/reagent/tobacco/fine = 2, /datum/reagent/drink/juice/orange = 2)
-
-/obj/item/cigbutt/woodbutt
-	name = "wooden tip"
-	desc = "A wooden mouthpiece from a cigar. Smells rather bad."
-	icon_state = "woodbutt"
-	matter = list("Wood" = 1)
+/obj/item/cigbutt/cigarillo
+	name = "cigarillo butt"
+	desc = "A fancy and expensive butt."
+	icon_state = "cigarillobutt"
 
 /obj/item/clothing/mask/smokable/cigarette/attackby(obj/item/W as obj, mob/user as mob)
 	..()
@@ -429,7 +378,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 /obj/item/clothing/mask/smokable/cigarette/get_mob_overlay(mob/user_mob, slot)
 	var/image/res = ..()
 	if(lit == 1)
-		var/image/ember = overlay_image(res.icon, "cigember")//, flags=RESET_COLOR)
+		var/image/ember = overlay_image(res.icon, flame_onmob_icon)//, flags=RESET_COLOR)
 		//ember.layer = ABOVE_LIGHTING_LAYER
 		//ember.plane = EFFECTS_ABOVE_LIGHTING_PLANE
 		res.overlays += ember
@@ -439,11 +388,11 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 // CIGARS //
 ////////////
 /obj/item/clothing/mask/smokable/cigarette/cigar
-	name = "premium cigar"
-	desc = "A brown roll of tobacco and... well, you're not quite sure. This thing's huge!"
-	icon_state = "cigar2off"
-	icon_on = "cigar2on"
+	name = "Presidential Reserve cigar"
+	desc = "A brown roll of tobacco and... well, you're not quite sure. This thing's huge! Has a small portrait of the current Blusnian president on the band."
+	icon_state = "cigaroff"
 	type_butt = /obj/item/cigbutt/cigarbutt
+	brand = "\improper Presidential Reserve"
 	throw_speed = 0.5
 	item_state = "cigaroff"
 	smoketime = 1500
@@ -454,26 +403,19 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	weldermes = "<span class='notice'>USER insults NAME by lighting it with FLAME.</span>"
 	ignitermes = "<span class='notice'>USER fiddles with FLAME, and manages to light their NAME with the power of science.</span>"
 	filling = list(/datum/reagent/tobacco/fine = 5)
+	flame_onmob_icon = "cigaron"
 
-/obj/item/clothing/mask/smokable/cigarette/cigar/cohiba
-	name = "\improper Cohiba Robusto cigar"
-	desc = "There's little more you could want from a cigar."
-	icon_state = "cigar2off"
-	icon_on = "cigar2on"
 
-/obj/item/clothing/mask/smokable/cigarette/cigar/havana
-	name = "premium Havanian cigar"
-	desc = "A cigar fit for only the best of the best."
-	icon_state = "cigar2off"
-	icon_on = "cigar2on"
-	smoketime = 3000
-	chem_volume = 20
-	filling = list(/datum/reagent/tobacco/fine = 10)
+/obj/item/clothing/mask/smokable/cigarette/cigar/update_icon()
+	..()
+	overlays.Cut()
+	if(lit)
+		overlays += overlay_image(icon, "cigar-on", flags=RESET_COLOR)
 
 /obj/item/cigbutt
 	name = "cigarette butt"
 	desc = "A manky old cigarette butt."
-	icon = 'icons/obj/clothing/masks.dmi'
+	icon = 'icons/obj/cigarettes.dmi'
 	icon_state = "cigbutt"
 	randpixel = 10
 	w_class = ITEM_SIZE_TINY

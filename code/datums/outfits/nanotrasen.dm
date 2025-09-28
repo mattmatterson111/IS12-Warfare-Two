@@ -34,7 +34,7 @@
 /decl/hierarchy/outfit/nanotrasen/commander
 	name = "NanoTrasen Commander"
 	head = /obj/item/clothing/head/centhat
-	mask = /obj/item/clothing/mask/smokable/cigarette/cigar/cohiba
+	mask = /obj/item/clothing/mask/smokable/cigarette/cigar
 	shoes = /obj/item/clothing/shoes/swat
 	uniform = /obj/item/clothing/under/rank/centcom_captain
 	suit = /obj/item/clothing/suit/armor/bulletproof
