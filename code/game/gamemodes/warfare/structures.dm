@@ -888,7 +888,7 @@
 				user.doing_something = FALSE
 				return
 
-/obj/item/melee/classic_baton/factionbanner/red
+/obj/item/melee/classic_baton/factionbanner/red //yes it behaves as normal if someone reports that this is deploying as other color I ain't fixin that
 	name = "Red Flagpole"
 
 /obj/item/melee/classic_baton/factionbanner/blue
