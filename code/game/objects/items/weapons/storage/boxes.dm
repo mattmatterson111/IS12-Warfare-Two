@@ -502,21 +502,8 @@
 		/obj/item/implantcase/imprinting = 3
 		)
 
-/obj/item/storage/box/matches/small
-	name = "matchbox"
-	desc = "A small box of windproof matches."
-	icon = 'icons/obj/cigarettes.dmi'
-	icon_state = "matchboxsmall"
-	item_state = "zippo"
-	w_class = 1
-	slot_flags = SLOT_BELT
-	can_hold = list(/obj/item/flame/match)
-	startswith = list(/obj/item/flame/match = 6)
-	max_storage_space = 6
-
-
 /obj/item/storage/box/mre
-	can_hold = list(/obj/item/storage/box/matches/small, /obj/item/reagent_containers/food, /obj/item/storage/fancy/cigarettes)
+	can_hold = list(/obj/item/storage/box/matches, /obj/item/reagent_containers/food, /obj/item/storage/fancy/cigarettes)
 
 /obj/item/storage/box/mre
 	name = "Genericstan \"meat\" rations"
@@ -525,7 +512,7 @@
 	max_storage_space = 11
 	desc = "A ration back that contains the bare essentials, and also cigarettes... so just the bare essentials."
 	icon_state = "irp"
-	startswith = list(/obj/item/storage/box/matches/small = 1,
+	startswith = list(
 				/obj/item/reagent_containers/food/snacks/warfare/rat = 1,
 				/obj/item/reagent_containers/food/snacks/warfare/milk = 1,
 				/obj/item/reagent_containers/food/condiment/instantcoffee = 1,
@@ -537,7 +524,7 @@
 	w_class = 3
 	desc = "A ration back that contains the bare essentials, and also cigarettes... so just the bare essentials. This one has veggies instead of meat."
 	max_storage_space = 11
-	startswith = list(/obj/item/storage/box/matches/small = 1,
+	startswith = list(/obj/item/storage/box/matches = 1,
 				/obj/item/reagent_containers/food/snacks/warfare/flower = 1,
 				/obj/item/reagent_containers/food/snacks/warfare/milk = 1,
 				/obj/item/reagent_containers/food/condiment/instantcoffee = 1,

@@ -11,7 +11,7 @@
 			/obj/item/reagent_containers/food/drinks/bottle/patron,
 			/obj/item/reagent_containers/food/drinks/bottle/goldschlager,
 			/obj/item/reagent_containers/food/drinks/bottle/specialwhiskey,
-			/obj/item/storage/fancy/cigarettes/dromedaryco,
+			/obj/item/storage/fancy/cigarettes,
 			/obj/item/lipstick/random,
 			/obj/item/reagent_containers/food/drinks/bottle/small/ale = 2,
 			/obj/item/reagent_containers/food/drinks/bottle/small/beer = 4,

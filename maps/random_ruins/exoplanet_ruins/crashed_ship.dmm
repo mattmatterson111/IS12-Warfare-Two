@@ -24,7 +24,7 @@
 "ax" = (/obj/random/trash,/turf/simulated/floor/tiled,/area/icarus/vessel)
 "ay" = (/obj/structure/bed/chair{icon_state = "chair_preview"; dir = 8},/obj/effect/landmark/corpse/bridgeofficer,/turf/simulated/floor/tiled,/area/icarus/vessel)
 "az" = (/obj/structure/bed/chair{dir = 4},/turf/simulated/floor/tiled,/area/icarus/vessel)
-"aA" = (/obj/structure/table/steel_reinforced,/obj/item/storage/fancy/cigarettes/killthroat,/turf/simulated/floor/tiled,/area/icarus/vessel)
+"aA" = (/obj/structure/table/steel_reinforced,/obj/item/storage/fancy/cigarettes,/turf/simulated/floor/tiled,/area/icarus/vessel)
 "aB" = (/mob/living/simple_animal/hostile/mining_borg/behemoth,/turf/simulated/floor/tiled,/area/icarus/vessel)
 "aC" = (/obj/effect/floor_decal/plaque,/turf/simulated/floor/tiled,/area/icarus/vessel)
 "aD" = (/obj/random/loot,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/tiled,/area/icarus/vessel)
