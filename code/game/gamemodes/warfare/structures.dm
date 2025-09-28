@@ -797,7 +797,12 @@
 			if(do_after(user, 60))
 				playsound(src.loc, "sound/effects/teleretract[progress].ogg", 85, 1)
 				user.doing_something = FALSE
-				new /obj/item/melee/classic_baton/factionbanner(loc)
+				if(name == "Red faction banner") //work goddamit
+					new /obj/item/melee/classic_baton/factionbanner/red(loc)
+				else if(name == "Blue faction banner")
+					new /obj/item/melee/classic_baton/factionbanner/blue(loc)
+				else
+					new /obj/item/melee/classic_baton/factionbanner(loc)
 				qdel(src)
 				return
 			else
@@ -839,6 +844,12 @@
 				// if you cant fix it, stuff, make it give some other kind of boost maybe? idk.. like pain tolerance or smth?
 		else
 			H.add_event("banner deboost", /datum/happiness_event/banner_deboost)
+			
+/obj/structure/factionbanner/red //sigh
+	name = "Red faction banner"
+
+/obj/structure/factionbanner/blue
+	name = "Blue faction banner"
 
 /obj/item/melee/classic_baton/factionbanner
 	name = "Flagpole"
@@ -867,10 +878,21 @@
 				playsound(T, "sound/effects/teleextend[rand(2,3)].ogg", 85, 1)
 				user.doing_something = FALSE
 				qdel(src)
-				new /obj/structure/factionbanner(T)
+				if(name == "Red Flagpole")
+					new /obj/structure/factionbanner/red(T)
+				else if(name == "Blue Flagpole")
+					new /obj/structure/factionbanner/blue(T)
+				else
+					new /obj/structure/factionbanner(T)
 			else
 				user.doing_something = FALSE
 				return
+
+/obj/item/melee/classic_baton/factionbanner/red //yes it behaves as normal if someone reports that this is deploying as other color I ain't fixin that
+	name = "Red Flagpole"
+
+/obj/item/melee/classic_baton/factionbanner/blue
+	name = "Blue Flagpole"
 
 /obj/structure/warfare/thehatch
 	name = "the hatch"
