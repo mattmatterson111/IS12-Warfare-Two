@@ -788,15 +788,6 @@
 /obj/structure/closet/secure_closet/warfare,
 /turf/simulated/floor/stones,
 /area/warfare/homebase/red)
-"cm" = (
-/obj/structure/closet/crate,
-/obj/item/ammo_magazine/c45rifle/akarabiner,
-/obj/item/ammo_magazine/c45rifle/akarabiner,
-/obj/item/ammo_magazine/c45rifle/akarabiner,
-/obj/item/ammo_magazine/c45rifle/akarabiner,
-/obj/item/ammo_magazine/c45rifle/akarabiner,
-/turf/simulated/floor/concrete/random,
-/area/warfare/battlefield/capture_point/blue/two)
 "cn" = (
 /turf/simulated/mineral{
 	health = 999999
@@ -1019,15 +1010,6 @@
 /obj/random/canned_food/blue,
 /turf/simulated/floor/wood,
 /area/warfare/battlefield/capture_point/blue/one)
-"cQ" = (
-/obj/structure/closet/crate,
-/obj/item/ammo_magazine/c45rifle/akarabiner,
-/obj/item/ammo_magazine/c45rifle/akarabiner,
-/obj/item/ammo_magazine/c45rifle/akarabiner,
-/obj/item/ammo_magazine/c45rifle/akarabiner,
-/obj/item/ammo_magazine/c45rifle/akarabiner,
-/turf/simulated/floor/wood,
-/area/warfare/battlefield/capture_point/blue/one)
 "cR" = (
 /obj/machinery/light{
 	dir = 1;
@@ -1211,15 +1193,6 @@
 /obj/random/canned_food/red,
 /turf/simulated/floor/concrete/random,
 /area/warfare/battlefield/capture_point/red/one)
-"du" = (
-/obj/structure/closet/crate,
-/obj/item/ammo_magazine/c45rifle/akarabiner,
-/obj/item/ammo_magazine/c45rifle/akarabiner,
-/obj/item/ammo_magazine/c45rifle/akarabiner,
-/obj/item/ammo_magazine/c45rifle/akarabiner,
-/obj/item/ammo_magazine/c45rifle/akarabiner,
-/turf/simulated/floor/concrete/random,
-/area/warfare/battlefield/capture_point/red/one)
 "dv" = (
 /obj/structure/closet/crate,
 /obj/item/grenade/frag/warfare,
@@ -1319,14 +1292,12 @@
 /turf/simulated/floor/concrete/random,
 /area/warfare/battlefield/capture_point/red/one)
 "dH" = (
-/obj/structure/closet/crate,
-/obj/item/ammo_magazine/c45rifle/akarabiner,
-/obj/item/ammo_magazine/c45rifle/akarabiner,
-/obj/item/ammo_magazine/c45rifle/akarabiner,
-/obj/item/ammo_magazine/c45rifle/akarabiner,
-/obj/item/ammo_magazine/c45rifle/akarabiner,
+/obj/structure/table/rack/nosmooth/wood/alt{
+	dir = 4
+	},
+/obj/item/reagent_containers/food/snacks/baby,
 /turf/simulated/floor/concrete/random,
-/area/warfare/battlefield/capture_point/red/two)
+/area/warfare/homebase/blue)
 "dJ" = (
 /obj/item/storage/fancy/cigarettes,
 /obj/item/flame/lighter/random,
@@ -3211,15 +3182,6 @@
 	},
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/blue/div)
-"mW" = (
-/obj/structure/closet/crate,
-/obj/item/ammo_magazine/c45rifle/akarabiner,
-/obj/item/ammo_magazine/c45rifle/akarabiner,
-/obj/item/ammo_magazine/c45rifle/akarabiner,
-/obj/item/ammo_magazine/c45rifle/akarabiner,
-/obj/item/ammo_magazine/c45rifle/akarabiner,
-/turf/simulated/floor/concrete/random,
-/area/warfare/battlefield/capture_point/blue/two)
 "mX" = (
 /obj/structure/table/rack/nosmooth/metal,
 /obj/item/storage/box/bodybags{
@@ -3385,8 +3347,8 @@
 	},
 /area/space)
 "nD" = (
-/obj/structure/closet/crate,
-/obj/item/ammo_magazine/c45rifle/akarabiner,
+/obj/structure/table/rack/nosmooth/wood/alt,
+/obj/item/reagent_containers/food/snacks/baby,
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/blue)
 "nJ" = (
@@ -3727,9 +3689,11 @@
 /area/train/red)
 "pC" = (
 /obj/structure/closet/crate,
-/obj/item/ammo_magazine/c45rifle/akarabiner,
+/obj/item/reagent_containers/food/snacks/baby,
+/obj/item/reagent_containers/food/snacks/baby,
+/obj/item/reagent_containers/food/snacks/baby,
 /turf/simulated/floor/concrete/random,
-/area/warfare/homebase/red)
+/area/warfare/homebase/blue)
 "pF" = (
 /turf/simulated/wall/perspecticrete,
 /area/space)
@@ -4964,15 +4928,6 @@
 "wC" = (
 /turf/simulated/floor/urban/destroyed,
 /area/warfare/homebase/blue)
-"wF" = (
-/obj/structure/closet/crate,
-/obj/item/ammo_magazine/c45rifle/akarabiner,
-/obj/item/ammo_magazine/c45rifle/akarabiner,
-/obj/item/ammo_magazine/c45rifle/akarabiner,
-/obj/item/ammo_magazine/c45rifle/akarabiner,
-/obj/item/ammo_magazine/c45rifle/akarabiner,
-/turf/simulated/floor/concrete/random,
-/area/warfare/battlefield/capture_point/red/two)
 "wG" = (
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/blue/div)
@@ -5643,9 +5598,12 @@
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/red/div)
 "Bc" = (
-/obj/structure/closet/crate,
+/obj/structure/table/rack/nosmooth/wood/alt{
+	dir = 10
+	},
+/obj/item/reagent_containers/food/snacks/baby,
 /turf/simulated/floor/concrete/random,
-/area/warfare/homebase/red)
+/area/warfare/homebase/blue)
 "Be" = (
 /obj/effect/landmark/start{
 	name = "Blue Engineer"
@@ -7722,15 +7680,6 @@
 	color = "#ffffff"
 	},
 /area/warfare/battlefield/capture_point/red/one)
-"Qh" = (
-/obj/structure/closet/crate,
-/obj/item/ammo_magazine/c45rifle/akarabiner,
-/obj/item/ammo_magazine/c45rifle/akarabiner,
-/obj/item/ammo_magazine/c45rifle/akarabiner,
-/obj/item/ammo_magazine/c45rifle/akarabiner,
-/obj/item/ammo_magazine/c45rifle/akarabiner,
-/turf/simulated/floor/concrete/random,
-/area/warfare/battlefield/capture_point/red/one)
 "Qj" = (
 /obj/effect/landmark/start{
 	name = "Blue Soldier"
@@ -8791,15 +8740,6 @@
 /obj/effect/lighting_dummy/daylight,
 /turf/simulated/floor/urban/concrete,
 /area/warfare/homebase/blue)
-"WS" = (
-/obj/structure/closet/crate,
-/obj/item/ammo_magazine/c45rifle/akarabiner,
-/obj/item/ammo_magazine/c45rifle/akarabiner,
-/obj/item/ammo_magazine/c45rifle/akarabiner,
-/obj/item/ammo_magazine/c45rifle/akarabiner,
-/obj/item/ammo_magazine/c45rifle/akarabiner,
-/turf/simulated/floor/wood,
-/area/warfare/battlefield/capture_point/red/two)
 "WU" = (
 /obj/effect/floor_decal/trench{
 	dir = 9
@@ -9102,10 +9042,6 @@
 /obj/effect/lighting_dummy/daylight,
 /turf/simulated/floor/urban/concrete,
 /area/warfare/homebase/blue)
-"YW" = (
-/obj/structure/closet/crate,
-/turf/simulated/floor/concrete/random,
-/area/warfare/homebase/red)
 "Zb" = (
 /obj/item/device/flashlight{
 	on = 1;
@@ -14171,7 +14107,7 @@ bk
 tX
 be
 jT
-cm
+CA
 bi
 cn
 xC
@@ -14326,7 +14262,7 @@ pL
 RC
 NQ
 dt
-du
+dG
 dl
 di
 xC
@@ -14471,7 +14407,7 @@ qb
 be
 be
 CA
-mW
+CA
 bi
 cn
 WK
@@ -14480,7 +14416,7 @@ EO
 Mp
 We
 bo
-cQ
+cX
 cX
 qe
 qe
@@ -14626,7 +14562,7 @@ CI
 NQ
 NQ
 dG
-Qh
+dG
 dl
 di
 WK
@@ -14636,7 +14572,7 @@ Mp
 We
 rI
 Yh
-WS
+Yh
 TW
 TW
 wJ
@@ -23364,8 +23300,8 @@ IX
 bG
 bM
 DJ
-Bc
-Bc
+zO
+zO
 dn
 dn
 dn
@@ -27952,7 +27888,7 @@ bK
 fa
 ag
 fa
-bB
+nD
 mQ
 bK
 fr
@@ -28247,7 +28183,7 @@ Oa
 av
 hi
 aI
-uf
+Bc
 fj
 Bq
 ag
@@ -29638,8 +29574,8 @@ Cy
 Gf
 QQ
 QQ
-dH
-wF
+UC
+UC
 dD
 gG
 gG
@@ -29752,7 +29688,7 @@ ag
 VR
 av
 hi
-aI
+dH
 uf
 fj
 fr
@@ -29938,7 +29874,7 @@ gj
 vW
 dD
 nw
-dH
+UC
 jD
 dD
 vU
@@ -32450,7 +32386,7 @@ ag
 av
 av
 HN
-HN
+pC
 bV
 aC
 VS
@@ -32750,7 +32686,7 @@ AA
 av
 av
 MG
-MG
+pC
 hi
 aD
 aF
@@ -34438,8 +34374,8 @@ Cy
 Gf
 QQ
 QQ
-dH
-wF
+UC
+UC
 dD
 gG
 gG
@@ -34550,13 +34486,13 @@ ag
 Oa
 av
 aT
-nD
+aT
 au
 ZY
 Xy
 aw
 aT
-nD
+aT
 ag
 fR
 fR
@@ -34738,7 +34674,7 @@ gj
 vW
 dD
 nw
-dH
+UC
 jD
 dD
 vU
@@ -34753,14 +34689,14 @@ gS
 gR
 gR
 ab
-YW
+zO
 zO
 IX
 Ql
 xK
 DJ
 qk
-pC
+qk
 dn
 Ds
 ab
@@ -35450,7 +35386,7 @@ ag
 Tu
 av
 HN
-HN
+pC
 bV
 bz
 aH
@@ -35750,7 +35686,7 @@ ag
 Oa
 av
 MG
-MG
+pC
 hi
 fx
 Qu
@@ -37760,7 +37696,7 @@ bG
 Ri
 DJ
 qk
-pC
+qk
 dn
 dn
 yP

@@ -105,3 +105,13 @@
 	name = "BOOM HEADSHOT"
 	difficulty = DIFF_MEDIUM
 	description = "In all likelyhood, they had a helmet, and you accomplished pretty much nothing."
+
+/datum/achievement/ate_baby
+	name = "Ludonarrative Harmony"
+	difficulty = DIFF_HARD
+	description = "Lore matches gampleay, perfection."
+
+/datum/achievement/ate_baby_red
+	name = "Trans-Dimensional Separatism"
+	difficulty = DIFF_HARD
+	description = "Gilles, Alekseev, Brasser. Now joined by You."

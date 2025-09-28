@@ -499,6 +499,7 @@ GLOBAL_LIST_EMPTY(faction_dosh)
 		list("name" = "Gas Mask Pack", "price" = 50, "category" = "Sil's Utility Corps", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/clothing/mask/gas/sniper/penal3 = 10)),
 		list("name" = "Barbwire Pack", "price" = 50, "category" = "Sil's Utility Corps", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/stack/barbwire = 5)),
 		list("name" = "Canned Food Pack", "price" = 20, "category" = "ChowField Provisions", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/random/canned_food/blue = 10)),
+		list("name" = "Deepfried Baby Pack", "price" = 50, "category" = "ChowField Provisions", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/reagent_containers/food/snacks/baby = 10)),
 		list("name" = "Bodybag Pack", "price" = 5, "category" = "Daisy's Panacea", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/storage/box/bodybags = 3)),
 		list("name" = "Cigarette Pack", "price" = 50, "category" = "ChowField Provisions", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/storage/fancy/cigarettes = 10)),
 		list("name" = "First Aid Pack", "price" = 100, "category" = "Daisy's Panacea", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/storage/firstaid/regular = 5)),
