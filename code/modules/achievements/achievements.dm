@@ -114,4 +114,4 @@
 /datum/achievement/ate_baby_red
 	name = "Trans-Dimensional Separatism"
 	difficulty = DIFF_HARD
-	description = "True True & True! Joined by False!"
+	description = "(TRUE) (TRUE) & (TRUE)! Joined by (FALSE)!"
