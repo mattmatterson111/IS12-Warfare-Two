@@ -3501,38 +3501,3 @@
 /obj/item/reagent_containers/food/snacks/warfare/team/blue/bluechew
 	name = "BlueChew Can"
 	icon_state = "bluechew"
-
-//da baby...
-/obj/item/reagent_containers/food/snacks/baby
-	name = "Deepfried Baby"
-	desc = "A deepfried baby, a popular delicacy hailing from Blue York."
-	icon_state = "poorfella"
-	//filling_color = "#e8c31e"
-	center_of_mass = "x=15;y=15"
-	nutriment_amt = 3
-	nutriment_desc = list("blue" = 1, "fried baby" = 2)
-	New()
-		..()
-		bitesize = 1
-
-/obj/item/reagent_containers/food/snacks/baby/examine(mob/user)
-	. = ..()
-	var/mob/living/carbon/human/H = user
-	if(H.warfare_faction == BLUE_TEAM)
-		to_chat(H,SPAN_MINDVOICE(pick("Just how my ma made it","YOU AIN'T FROM BLUE YORK IF YOU AIN'T ATE THIS BEFORE!","The classic Blue Yorker Glizzy","So glad my captain bought this, we need a reprieve from the horrors of war","A classic","Finally! Some real food!")))
-	else
-		H.add_event("seen_baby",/datum/happiness_event/seen_baby)
-
-	if(H.warfare_faction == RED_TEAM)
-		to_chat(H,SPAN_WARNING("<h1><span class='phobia'<big>Oh GREAT LEADER...</span></h1>"))
-
-/obj/item/reagent_containers/food/snacks/baby/On_Consume(mob/M)
-	. = ..()
-	var/mob/living/carbon/human/H = M
-	if(H.warfare_faction == BLUE_TEAM)
-		H.unlock_achievement(/datum/achievement/ate_baby)
-		H.add_event("ate_baby",/datum/happiness_event/ate_baby)
-	else if(H.warfare_faction == RED_TEAM) //reds should not eat this, nobody should to be honest
-		to_chat(H,"<span class='phobia'<big>What the FUCK have you done?! You crossed the fucking line! Your patriotic body self-immolates in shame!</span></big>")
-		H.unlock_achievement(/datum/achievement/ate_baby_red)
-		H.gib()
