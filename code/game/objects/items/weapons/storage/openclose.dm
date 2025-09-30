@@ -123,7 +123,6 @@
 	var/index = 1
 	for(var/obj/item/I in contents)
 		var/mutable_appearance/content_overlay = mutable_appearance(icon, "[get_contentstate(I)][index]")
-		to_world("[get_contentstate(I)][listgetindex(contents, I)] - [src]")
 		content_overlays += content_overlay
 		index++
 	add_contentoverlays()
