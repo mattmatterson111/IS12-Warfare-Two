@@ -464,7 +464,7 @@
 	mymob.noise.layer = 1
 	mymob.noise.mouse_opacity = 0
 	mymob.noise.blend_mode = BLEND_OVERLAY
-	mymob.noise.alpha = 15
+	mymob.noise.alpha = 20
 	hud_elements |= mymob.noise
 
 	mymob.combat_icon = new /obj/screen()//combat mode
