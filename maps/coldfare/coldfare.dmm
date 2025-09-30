@@ -172,7 +172,6 @@
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/blue)
 "ay" = (
-/obj/structure/table/woodentable,
 /obj/machinery/light/caged{
 	pixel_y = -14;
 	dir = 1;
@@ -180,6 +179,7 @@
 	},
 /obj/item/device/compass,
 /obj/item/device/compass,
+/obj/structure/table/rack/nosmooth/wood,
 /turf/simulated/floor/stones,
 /area/warfare/homebase/blue)
 "az" = (
@@ -1867,6 +1867,7 @@
 	dir = 8;
 	id = 666
 	},
+/obj/hammereditor/nodraw,
 /turf/simulated/floor/trenches/underground{
 	icon_state = "trench";
 	color = "#ffffff"
@@ -3208,7 +3209,6 @@
 /turf/simulated/floor/fixed,
 /area/warfare/homebase/blue)
 "ml" = (
-/obj/structure/table/woodentable,
 /obj/machinery/light/caged{
 	pixel_y = -14;
 	dir = 1;
@@ -3216,6 +3216,7 @@
 	},
 /obj/item/device/compass,
 /obj/item/device/compass,
+/obj/structure/table/rack/nosmooth/wood,
 /turf/simulated/floor/stones,
 /area/warfare/homebase/red)
 "mo" = (
@@ -4672,9 +4673,9 @@
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/red)
 "uD" = (
-/obj/structure/closet/cabinet,
-/turf/simulated/floor/stones,
-/area/warfare/homebase/red)
+/obj/hammereditor/nodraw,
+/turf/simulated/wall/perspecticrete,
+/area/warfare/battlefield/trench_section/underground/stormsystem/hall)
 "uH" = (
 /obj/structure/announcementspeaker/red{
 	id = "Bluecoats";
@@ -5285,6 +5286,17 @@
 	color = "#ffffff"
 	},
 /area/warfare/battlefield/capture_point/blue/one)
+"yx" = (
+/obj/structure/trench_wall/innercorners{
+	dir = 4
+	},
+/obj/structure/trench_wall/innercorners{
+	dir = 8;
+	pixel_x = 32
+	},
+/obj/hammereditor/nodraw,
+/turf/simulated/wall/perspecticrete,
+/area/warfare/battlefield/trench_section/underground/stormsystem/hall)
 "yA" = (
 /obj/structure/trench_wall{
 	dir = 9;
@@ -6506,6 +6518,16 @@
 	},
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/blue)
+"FU" = (
+/obj/structure/announcementspeaker/blue{
+	pixel_x = 0;
+	dir = 1
+	},
+/turf/simulated/floor/trenches/underground{
+	icon_state = "trench";
+	color = "#ffffff"
+	},
+/area/warfare/battlefield/trench_section/underground)
 "FW" = (
 /obj/machinery/door/airlock/multi_tile/metal/maintenance/blue,
 /turf/simulated/floor/concrete/random,
@@ -7130,9 +7152,12 @@
 	},
 /area/warfare/homebase/red)
 "KV" = (
-/obj/structure/closet/cabinet,
-/turf/simulated/floor/stones,
-/area/warfare/homebase/blue)
+/obj/hammereditor/nodraw,
+/turf/simulated/floor/trenches/underground{
+	icon_state = "trench";
+	color = "#ffffff"
+	},
+/area/warfare/battlefield/trench_section/underground/stormsystem/hall)
 "KY" = (
 /obj/item/device/flashlight/lantern{
 	on = 1;
@@ -8677,6 +8702,7 @@
 /obj/machinery/button/remote/blast_door{
 	id = 666
 	},
+/obj/hammereditor/nodraw,
 /turf/simulated/wall/perspecticrete,
 /area/warfare/battlefield/trench_section/underground/stormsystem/hall)
 "Vc" = (
@@ -16999,7 +17025,7 @@ bk
 qb
 FE
 yG
-oB
+FU
 DB
 TE
 Ln
@@ -23497,7 +23523,7 @@ dn
 ab
 cS
 cd
-uD
+cl
 ab
 VP
 aa
@@ -23569,7 +23595,7 @@ ag
 ag
 rK
 xm
-KV
+aJ
 ag
 aa
 aa
@@ -33768,7 +33794,7 @@ ag
 eK
 eK
 ag
-KV
+aJ
 No
 Eu
 ag
@@ -34968,7 +34994,7 @@ aq
 aq
 aq
 ag
-KV
+aJ
 No
 Eu
 ag
@@ -35989,10 +36015,10 @@ Zc
 Zc
 Zc
 Zc
-VQ
+uD
 fe
 fe
-VQ
+uD
 Zc
 Zc
 Zc
@@ -36168,7 +36194,7 @@ aq
 aq
 aq
 ag
-KV
+aJ
 LD
 VZ
 ag
@@ -36290,9 +36316,9 @@ Sh
 VQ
 VQ
 UY
-Pg
-Pg
-wu
+KV
+KV
+yx
 Zc
 Zc
 Zc
@@ -37368,7 +37394,7 @@ aq
 aq
 aq
 ag
-KV
+aJ
 LD
 VZ
 ag
