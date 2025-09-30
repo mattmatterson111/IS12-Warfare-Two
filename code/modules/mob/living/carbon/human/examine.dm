@@ -9,7 +9,7 @@
 					if(aspect_chosen(/datum/aspect/trenchmas))
 						to_chat(user, "<span class='warning'><big><b>THEY ARE A FRIEND! HUG THEM!</b></big></span>")
 					if(src.warfare_faction == "neutral" || isnull(src.warfare_faction))
-						to_chat(user, SPAN_YELLOW_LARGE("<big>Neither a foe- a friend..</big></span>"))
+						to_chat(user, SPAN_YELLOW_LARGE("\n<center><big>Neither a foe nor a friend..</big>\n[SPAN_YELLOW("<i>I should remain cautious..</i>")]</center>\n"))
 					else
 						to_chat(user, "<span class='warning'><big><b>THEY ARE THE ENEMY! KILL THEM!</b></big></span>")
 
@@ -79,7 +79,7 @@
 			if(aspect_chosen(/datum/aspect/trenchmas))
 				msg += "<span class='warning'><big><b>THEY ARE A FRIEND! HUG THEM!</b></big></span>\n"
 			if(src.warfare_faction == "neutral" || isnull(src.warfare_faction))
-				msg += SPAN_YELLOW_LARGE("<big>Neither a foe- a friend..</big></span>")
+				msg += SPAN_YELLOW_LARGE("\n<center><big>Neither a foe nor a friend..</big>\n[SPAN_YELLOW("<i>I should remain cautious..</i>")]</center>\n")
 			else
 				msg += "<span class='warning'><big><b>THEY ARE THE ENEMY! KILL THEM!</b></big></span>\n"
 
