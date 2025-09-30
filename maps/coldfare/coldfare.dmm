@@ -110,7 +110,7 @@
 "ar" = (
 /obj/machinery/light/caged{
 	dir = 4;
-	pixel_x = -19;
+	pixel_x = -10;
 	pixel_y = 0
 	},
 /mob/living/simple_animal/hostile/retaliate/rat,
@@ -304,7 +304,7 @@
 /obj/item/grenade/frag/warfare,
 /obj/item/grenade/frag/warfare,
 /obj/machinery/light/caged{
-	pixel_y = -14;
+	pixel_y = -1;
 	dir = 1;
 	pixel_x = 0
 	},
@@ -319,7 +319,7 @@
 /obj/item/ammo_magazine/a762/m14,
 /obj/item/ammo_magazine/a762/m14,
 /obj/machinery/light/caged{
-	pixel_y = -14;
+	pixel_y = -1;
 	dir = 1;
 	pixel_x = 0
 	},
@@ -329,7 +329,7 @@
 /obj/item/storage/fancy/cigarettes,
 /obj/item/flame/lighter/random,
 /obj/machinery/light/caged{
-	pixel_y = -14;
+	pixel_y = -1;
 	dir = 1;
 	pixel_x = 0
 	},
@@ -369,7 +369,7 @@
 /obj/item/storage/fancy/cigarettes,
 /obj/item/flame/lighter/zippo,
 /obj/machinery/light/caged{
-	pixel_y = -14;
+	pixel_y = -1;
 	dir = 1;
 	pixel_x = 0
 	},
@@ -778,7 +778,7 @@
 /area/warfare/battlefield/capture_point/blue/two)
 "ch" = (
 /obj/machinery/light/caged{
-	pixel_y = -14;
+	pixel_y = -1;
 	dir = 1;
 	pixel_x = 16
 	},
@@ -935,7 +935,7 @@
 	dir = 8
 	},
 /obj/machinery/light/caged{
-	pixel_y = -14;
+	pixel_y = -1;
 	dir = 1;
 	pixel_x = 0
 	},
@@ -1275,7 +1275,7 @@
 /obj/item/grenade/frag/warfare,
 /obj/item/grenade/frag/warfare,
 /obj/machinery/light/caged{
-	pixel_y = -14;
+	pixel_y = -1;
 	dir = 1;
 	pixel_x = 0
 	},
@@ -1293,7 +1293,7 @@
 /obj/item/storage/fancy/cigarettes,
 /obj/item/flame/lighter/random,
 /obj/machinery/light/caged{
-	pixel_y = -14;
+	pixel_y = -1;
 	dir = 1;
 	pixel_x = 0
 	},
@@ -1310,7 +1310,7 @@
 /obj/item/storage/fancy/cigarettes,
 /obj/item/flame/lighter/zippo,
 /obj/machinery/light/caged{
-	pixel_y = -14;
+	pixel_y = -1;
 	dir = 1;
 	pixel_x = 0
 	},
@@ -2014,7 +2014,7 @@
 "fG" = (
 /obj/machinery/button/remote/blast_door/lever{
 	id = "blue";
-	pixel_x = 0;
+	pixel_x = -1;
 	pixel_y = -32
 	},
 /obj/structure/announcementspeaker/blue{
@@ -2225,6 +2225,17 @@
 /obj/structure/barbwire,
 /turf/simulated/floor/dirty/fake,
 /area/warfare/battlefield/capture_point/blue/one)
+"gv" = (
+/obj/machinery/light/caged{
+	dir = 8;
+	pixel_x = 10;
+	pixel_y = 0
+	},
+/turf/simulated/floor/trenches/underground{
+	icon_state = "trench";
+	color = "#ffffff"
+	},
+/area/warfare/battlefield/trench_section/underground)
 "gx" = (
 /turf/simulated/floor,
 /area/warfare/battlefield/no_mans_land)
@@ -2449,7 +2460,7 @@
 	dir = 10
 	},
 /obj/machinery/light/caged{
-	pixel_y = -14;
+	pixel_y = -1;
 	dir = 1;
 	pixel_x = 0
 	},
@@ -2533,14 +2544,14 @@
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/red)
 "hL" = (
-/obj/structure/closet/crate,
+/obj/structure/closet/crate/medical,
 /obj/item/wirecutters,
 /obj/item/wirecutters,
 /obj/item/storage/firstaid/regular,
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/red)
 "hM" = (
-/obj/structure/closet/crate,
+/obj/structure/closet/crate/medical,
 /obj/item/wirecutters,
 /obj/item/storage/firstaid/regular,
 /turf/simulated/floor/concrete/random,
@@ -2808,7 +2819,7 @@
 "iU" = (
 /obj/machinery/light/caged{
 	dir = 4;
-	pixel_x = -19;
+	pixel_x = -10;
 	pixel_y = 0
 	},
 /turf/simulated/floor/trenches/underground{
@@ -2996,7 +3007,7 @@
 "la" = (
 /obj/machinery/light/caged{
 	dir = 4;
-	pixel_x = -19;
+	pixel_x = -1;
 	pixel_y = 0
 	},
 /turf/simulated/floor/concrete/random,
@@ -3075,7 +3086,7 @@
 	dir = 4
 	},
 /obj/machinery/light/caged{
-	pixel_y = -14;
+	pixel_y = -1;
 	dir = 1;
 	pixel_x = 0
 	},
@@ -3254,7 +3265,7 @@
 "mN" = (
 /obj/machinery/light/caged{
 	dir = 4;
-	pixel_x = -19;
+	pixel_x = -10;
 	pixel_y = 0
 	},
 /turf/simulated/floor/trenches/underground{
@@ -3340,7 +3351,7 @@
 /obj/structure/lattice,
 /obj/machinery/light/caged{
 	dir = 4;
-	pixel_x = -19;
+	pixel_x = -10;
 	pixel_y = 0
 	},
 /turf/simulated/floor/concrete/random,
@@ -3568,7 +3579,7 @@
 /obj/item/storage/firstaid/regular,
 /obj/item/storage/firstaid/regular,
 /obj/machinery/light/caged{
-	pixel_y = -14;
+	pixel_y = -1;
 	dir = 1;
 	pixel_x = -16
 	},
@@ -3646,8 +3657,8 @@
 "oE" = (
 /obj/machinery/light/caged{
 	dir = 4;
-	pixel_x = -19;
-	pixel_y = 0
+	pixel_x = -10;
+	pixel_y = 16
 	},
 /turf/simulated/floor/trenches/underground{
 	icon_state = "trench";
@@ -3713,7 +3724,7 @@
 /area/warfare/homebase/blue)
 "oT" = (
 /obj/machinery/light/caged{
-	pixel_y = -14;
+	pixel_y = -2;
 	dir = 1;
 	pixel_x = 16
 	},
@@ -3727,16 +3738,12 @@
 /area/warfare/battlefield/trench_section/underground)
 "oV" = (
 /obj/machinery/light/caged{
-	dir = 4;
-	pixel_x = -19;
-	pixel_y = 0
+	pixel_y = -1;
+	dir = 1;
+	pixel_x = 0
 	},
-/obj/structure/announcementspeaker/blue{
-	pixel_y = 0;
-	dir = 4
-	},
-/turf/simulated/floor/concrete/random,
-/area/warfare/homebase/blue)
+/turf/simulated/floor/dirty/indestructable,
+/area/warfare/homebase/red)
 "pd" = (
 /obj/item/flame/candle,
 /obj/item/storage/box/matches,
@@ -3753,7 +3760,7 @@
 	dir = 5
 	},
 /obj/machinery/light/caged{
-	pixel_y = -14;
+	pixel_y = -1;
 	dir = 1;
 	pixel_x = 0
 	},
@@ -3784,27 +3791,15 @@
 /area/warfare/battlefield/capture_point/blue/one)
 "pv" = (
 /obj/machinery/light/caged{
-	pixel_y = -14;
-	dir = 1;
-	pixel_x = 0
+	dir = 8;
+	pixel_x = 10;
+	pixel_y = 14
 	},
-/obj/machinery/light/caged{
-	pixel_y = -14;
-	dir = 1;
-	pixel_x = 0
+/turf/simulated/floor/trenches/underground{
+	icon_state = "trench";
+	color = "#ffffff"
 	},
-/obj/machinery/light/caged{
-	pixel_y = -14;
-	dir = 1;
-	pixel_x = 0
-	},
-/obj/machinery/light/caged{
-	pixel_y = -14;
-	dir = 1;
-	pixel_x = 0
-	},
-/turf/simulated/floor/dirty/indestructable,
-/area/warfare/battlefield/capture_point/red/two)
+/area/warfare/battlefield/trench_section/underground)
 "pw" = (
 /obj/structure/toilet{
 	dir = 4;
@@ -3898,7 +3893,7 @@
 "qf" = (
 /obj/machinery/light/caged{
 	dir = 8;
-	pixel_x = 14;
+	pixel_x = 10;
 	pixel_y = 0
 	},
 /turf/simulated/floor/concrete/random,
@@ -3959,7 +3954,7 @@
 "qx" = (
 /obj/machinery/light/caged{
 	dir = 4;
-	pixel_x = -19;
+	pixel_x = -10;
 	pixel_y = 0
 	},
 /turf/simulated/floor/concrete/random,
@@ -4109,8 +4104,7 @@
 /area/warfare/homebase/red)
 "re" = (
 /obj/machinery/light/caged{
-	dir = 4;
-	pixel_x = -19;
+	pixel_x = -32;
 	pixel_y = 0
 	},
 /obj/effect/floor_decal/trench{
@@ -4464,7 +4458,7 @@
 /area/warfare/battlefield/capture_point/red/two)
 "tj" = (
 /obj/machinery/light/caged{
-	pixel_y = -14;
+	pixel_y = -1;
 	dir = 1;
 	pixel_x = 0
 	},
@@ -4592,7 +4586,7 @@
 	dir = 8
 	},
 /obj/machinery/light/caged{
-	pixel_y = -14;
+	pixel_y = -1;
 	dir = 1;
 	pixel_x = 0
 	},
@@ -4877,27 +4871,11 @@
 /area/warfare/battlefield/capture_point/red/one)
 "vN" = (
 /obj/machinery/light/caged{
-	pixel_y = -14;
-	dir = 1;
-	pixel_x = 0
-	},
-/obj/machinery/light/caged{
-	pixel_y = -14;
-	dir = 1;
-	pixel_x = 0
-	},
-/obj/machinery/light/caged{
-	pixel_y = -14;
-	dir = 1;
-	pixel_x = 0
-	},
-/obj/machinery/light/caged{
-	pixel_y = -14;
-	dir = 1;
+	pixel_y = 25;
 	pixel_x = 0
 	},
 /turf/simulated/floor/dirty/indestructable,
-/area/warfare/battlefield/capture_point/blue/one)
+/area/warfare/homebase/blue)
 "vP" = (
 /obj/effect/landmark/start{
 	name = "Blue Soldier"
@@ -4937,7 +4915,7 @@
 /area/warfare/battlefield/capture_point/red/two)
 "vW" = (
 /obj/machinery/light/caged{
-	pixel_y = -14;
+	pixel_y = -1;
 	dir = 1;
 	pixel_x = 0
 	},
@@ -4989,7 +4967,7 @@
 	dir = 5
 	},
 /obj/machinery/light/caged{
-	pixel_y = -14;
+	pixel_y = -1;
 	dir = 1;
 	pixel_x = 0
 	},
@@ -5150,7 +5128,7 @@
 "xx" = (
 /obj/machinery/light/caged{
 	dir = 8;
-	pixel_x = 19;
+	pixel_x = 10;
 	pixel_y = 0
 	},
 /obj/effect/floor_decal/trench{
@@ -5351,8 +5329,7 @@
 /area/warfare/homebase/blue)
 "yG" = (
 /obj/machinery/light/caged{
-	dir = 8;
-	pixel_x = 14;
+	pixel_x = 33;
 	pixel_y = 0
 	},
 /turf/simulated/floor/trenches/underground{
@@ -5453,7 +5430,7 @@
 /area/warfare/battlefield/capture_point/blue/two)
 "zs" = (
 /obj/machinery/light/caged{
-	pixel_y = -14;
+	pixel_y = -1;
 	dir = 1;
 	pixel_x = 0
 	},
@@ -5498,7 +5475,7 @@
 	dir = 10
 	},
 /obj/machinery/light/caged{
-	pixel_y = -14;
+	pixel_y = -1;
 	dir = 1;
 	pixel_x = 0
 	},
@@ -5613,7 +5590,7 @@
 /area/warfare/homebase/red)
 "As" = (
 /obj/machinery/light/caged{
-	pixel_y = -14;
+	pixel_y = -2;
 	dir = 1;
 	pixel_x = 16
 	},
@@ -6062,8 +6039,7 @@
 /area/warfare/homebase/red/div)
 "CG" = (
 /obj/machinery/light/caged{
-	dir = 4;
-	pixel_x = -19;
+	pixel_x = -34;
 	pixel_y = 0
 	},
 /obj/effect/floor_decal/trench{
@@ -6105,7 +6081,7 @@
 "CT" = (
 /obj/effect/floor_decal/trench,
 /obj/machinery/light/caged{
-	pixel_y = -14;
+	pixel_y = -1;
 	dir = 1;
 	pixel_x = 0
 	},
@@ -6143,7 +6119,7 @@
 /obj/structure/dirt_wall,
 /obj/machinery/light/caged{
 	dir = 8;
-	pixel_x = 14;
+	pixel_x = 1;
 	pixel_y = 0
 	},
 /turf/simulated/floor/dirty/indestructable,
@@ -6153,7 +6129,7 @@
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/blue/div)
 "Ds" = (
-/obj/structure/closet/crate,
+/obj/structure/closet/crate/medical,
 /obj/item/wirecutters,
 /obj/item/wirecutters,
 /obj/item/storage/firstaid/regular,
@@ -6221,7 +6197,7 @@
 /obj/item/storage/firstaid/adv,
 /obj/item/storage/firstaid/adv,
 /obj/machinery/light/caged{
-	pixel_y = -14;
+	pixel_y = -1;
 	dir = 1;
 	pixel_x = 16
 	},
@@ -6267,7 +6243,7 @@
 "Ec" = (
 /obj/effect/floor_decal/trench,
 /obj/machinery/light/caged{
-	pixel_y = -14;
+	pixel_y = -1;
 	dir = 1;
 	pixel_x = 0
 	},
@@ -6771,6 +6747,14 @@
 	},
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/red)
+"HU" = (
+/obj/machinery/light/caged{
+	pixel_y = -1;
+	dir = 1;
+	pixel_x = 16
+	},
+/turf/simulated/floor/wood,
+/area/warfare/battlefield/trench_section/underground)
 "HZ" = (
 /obj/item/storage/firstaid/surgery,
 /obj/item/reagent_containers/spray/cleaner/warfare/red{
@@ -6791,8 +6775,8 @@
 "Id" = (
 /obj/machinery/light/caged{
 	dir = 8;
-	pixel_x = 14;
-	pixel_y = 0
+	pixel_x = 10;
+	pixel_y = 13
 	},
 /turf/simulated/floor/trenches/underground{
 	icon_state = "trench";
@@ -6814,7 +6798,7 @@
 	dir = 4
 	},
 /obj/machinery/light/caged{
-	pixel_y = -14;
+	pixel_y = -1;
 	dir = 1;
 	pixel_x = 0
 	},
@@ -6991,8 +6975,7 @@
 /area/warfare/battlefield/capture_point/blue/two)
 "JH" = (
 /obj/machinery/light/caged{
-	dir = 8;
-	pixel_x = 14;
+	pixel_x = 34;
 	pixel_y = 0
 	},
 /turf/simulated/floor/trenches/underground{
@@ -7252,7 +7235,7 @@
 /obj/structure/lattice,
 /obj/machinery/light/caged{
 	dir = 8;
-	pixel_x = 19;
+	pixel_x = 10;
 	pixel_y = 0
 	},
 /turf/simulated/floor/concrete/random,
@@ -7521,7 +7504,7 @@
 	buckle_pixel_shift = "x=0;y=11"
 	},
 /obj/machinery/light/caged{
-	pixel_y = -14;
+	pixel_y = -1;
 	dir = 1;
 	pixel_x = -16
 	},
@@ -7821,7 +7804,7 @@
 /area/warfare/homebase/red)
 "Qc" = (
 /obj/machinery/light/caged{
-	pixel_y = -14;
+	pixel_y = -1;
 	dir = 1;
 	pixel_x = 0
 	},
@@ -7980,7 +7963,7 @@
 "QS" = (
 /obj/machinery/light/caged{
 	dir = 8;
-	pixel_x = 19;
+	pixel_x = 10;
 	pixel_y = 0
 	},
 /obj/effect/floor_decal/trench{
@@ -8229,7 +8212,7 @@
 /obj/item/storage/firstaid/regular,
 /obj/item/storage/firstaid/regular,
 /obj/machinery/light/caged{
-	pixel_y = -14;
+	pixel_y = -2;
 	dir = 1;
 	pixel_x = -16
 	},
@@ -8307,7 +8290,7 @@
 /area/warfare/battlefield/capture_point/blue/two)
 "SO" = (
 /obj/machinery/light/caged{
-	pixel_y = -14;
+	pixel_y = -1;
 	dir = 1;
 	pixel_x = 0
 	},
@@ -8424,7 +8407,7 @@
 /turf/simulated/floor/wood,
 /area/warfare/homebase/blue/div)
 "Tu" = (
-/obj/structure/closet/crate,
+/obj/structure/closet/crate/medical,
 /obj/item/wirecutters,
 /obj/item/wirecutters,
 /obj/item/storage/firstaid/regular,
@@ -8441,7 +8424,7 @@
 /obj/item/storage/firstaid/adv,
 /obj/item/storage/firstaid/adv,
 /obj/machinery/light/caged{
-	pixel_y = -14;
+	pixel_y = -2;
 	dir = 1;
 	pixel_x = 16
 	},
@@ -8551,7 +8534,7 @@
 "Uj" = (
 /obj/structure/closet/crate/trashcart,
 /obj/machinery/light/caged{
-	pixel_y = -14;
+	pixel_y = -1;
 	dir = 1;
 	pixel_x = 0
 	},
@@ -9124,7 +9107,7 @@
 /obj/item/ammo_magazine/a762/m14,
 /obj/item/ammo_magazine/a762/m14,
 /obj/machinery/light/caged{
-	pixel_y = -14;
+	pixel_y = -1;
 	dir = 1;
 	pixel_x = 0
 	},
@@ -9392,9 +9375,6 @@
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/red/div)
 "ZI" = (
-/obj/machinery/light/small/bunker{
-	dir = 4
-	},
 /obj/structure/announcementspeaker/red{
 	pixel_x = 0;
 	dir = 8
@@ -13877,7 +13857,7 @@ di
 WK
 mX
 EO
-As
+HU
 We
 yH
 dA
@@ -17622,7 +17602,7 @@ uz
 ao
 Id
 iV
-Id
+gv
 MM
 lf
 cK
@@ -17775,9 +17755,9 @@ mD
 di
 oR
 ao
-Id
+pv
 iV
-Id
+gv
 MM
 uN
 dA
@@ -27490,14 +27470,14 @@ wG
 eN
 la
 av
-av
-oV
+la
+cu
 av
 av
 la
 av
-av
-oV
+la
+cu
 av
 av
 la
@@ -29003,7 +28983,7 @@ ag
 av
 fG
 ag
-cE
+vN
 fR
 fW
 fX
@@ -29025,7 +29005,7 @@ gj
 Xj
 gj
 gj
-vN
+SO
 cN
 sK
 BR
@@ -29180,7 +29160,7 @@ gj
 Xj
 gj
 gj
-pv
+vW
 dD
 nw
 Qt
@@ -29196,7 +29176,7 @@ gO
 gQ
 gS
 gR
-yR
+oV
 ab
 dn
 hp
@@ -31296,7 +31276,7 @@ gO
 gQ
 gS
 gR
-yR
+oV
 ab
 Fr
 LE
@@ -32200,7 +32180,7 @@ gN
 ha
 dn
 dn
-dn
+tN
 ZI
 dn
 dn
@@ -32796,7 +32776,7 @@ gO
 gQ
 gS
 gR
-yR
+oV
 ab
 Bi
 Bi

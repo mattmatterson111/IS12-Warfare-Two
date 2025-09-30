@@ -281,7 +281,8 @@
 		using.dir = NORTH
 		using.icon = ui_style
 		using.icon_state = "hand"
-		using.screen_loc = ui_swaphand1
+		using.screen_loc = "SOUTH+3:56,WEST-2"
+		using.layer = 2
 		src.swaphands_hud_object = using
 		src.adding += using
 
