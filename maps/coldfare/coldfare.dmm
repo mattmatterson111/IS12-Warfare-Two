@@ -4673,6 +4673,13 @@
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/red)
 "uD" = (
+/obj/structure/trench_wall/innercorners{
+	dir = 4
+	},
+/obj/structure/trench_wall/innercorners{
+	dir = 8;
+	pixel_x = 32
+	},
 /obj/hammereditor/nodraw,
 /turf/simulated/wall/perspecticrete,
 /area/warfare/battlefield/trench_section/underground/stormsystem/hall)
@@ -5286,17 +5293,6 @@
 	color = "#ffffff"
 	},
 /area/warfare/battlefield/capture_point/blue/one)
-"yx" = (
-/obj/structure/trench_wall/innercorners{
-	dir = 4
-	},
-/obj/structure/trench_wall/innercorners{
-	dir = 8;
-	pixel_x = 32
-	},
-/obj/hammereditor/nodraw,
-/turf/simulated/wall/perspecticrete,
-/area/warfare/battlefield/trench_section/underground/stormsystem/hall)
 "yA" = (
 /obj/structure/trench_wall{
 	dir = 9;
@@ -6518,16 +6514,6 @@
 	},
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/blue)
-"FU" = (
-/obj/structure/announcementspeaker/blue{
-	pixel_x = 0;
-	dir = 1
-	},
-/turf/simulated/floor/trenches/underground{
-	icon_state = "trench";
-	color = "#ffffff"
-	},
-/area/warfare/battlefield/trench_section/underground)
 "FW" = (
 /obj/machinery/door/airlock/multi_tile/metal/maintenance/blue,
 /turf/simulated/floor/concrete/random,
@@ -7025,6 +7011,16 @@
 	},
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/blue)
+"JT" = (
+/obj/structure/announcementspeaker/blue{
+	pixel_x = 0;
+	dir = 1
+	},
+/turf/simulated/floor/trenches/underground{
+	icon_state = "trench";
+	color = "#ffffff"
+	},
+/area/warfare/battlefield/trench_section/underground)
 "JU" = (
 /obj/structure/trench_wall/innercorners{
 	dir = 8;
@@ -7153,10 +7149,7 @@
 /area/warfare/homebase/red)
 "KV" = (
 /obj/hammereditor/nodraw,
-/turf/simulated/floor/trenches/underground{
-	icon_state = "trench";
-	color = "#ffffff"
-	},
+/turf/simulated/wall/perspecticrete,
 /area/warfare/battlefield/trench_section/underground/stormsystem/hall)
 "KY" = (
 /obj/item/device/flashlight/lantern{
@@ -8928,6 +8921,13 @@
 /obj/effect/lighting_dummy/daylight,
 /turf/simulated/floor/stones,
 /area/warfare/homebase/blue)
+"WJ" = (
+/obj/hammereditor/nodraw,
+/turf/simulated/floor/trenches/underground{
+	icon_state = "trench";
+	color = "#ffffff"
+	},
+/area/warfare/battlefield/trench_section/underground/stormsystem/hall)
 "WK" = (
 /obj/structure/trench_wall,
 /turf/simulated/mineral{
@@ -17025,7 +17025,7 @@ bk
 qb
 FE
 yG
-FU
+JT
 DB
 TE
 Ln
@@ -36015,10 +36015,10 @@ Zc
 Zc
 Zc
 Zc
-uD
+KV
 fe
 fe
-uD
+KV
 Zc
 Zc
 Zc
@@ -36316,9 +36316,9 @@ Sh
 VQ
 VQ
 UY
-KV
-KV
-yx
+WJ
+WJ
+uD
 Zc
 Zc
 Zc

@@ -1521,6 +1521,7 @@
 #include "code\modules\lorepaper\cargo_extension.dm"
 #include "code\modules\lorepaper\location.dm"
 #include "code\modules\lorepaper\medical_expansion.dm"
+#include "code\modules\lorepaper\more_endings.dm"
 #include "code\modules\lorepaper\random_mid.dm"
 #include "code\modules\lorepaper\special_unit_spawn.dm"
 #include "code\modules\lorepaper\ERT\ert_base_turfs.dm"
