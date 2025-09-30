@@ -136,6 +136,9 @@
 
 	announced = FALSE
 
+	spawn_in_cryopod = TRUE
+	cryopod_id = BLUE_TEAM
+
 	equip(var/mob/living/carbon/human/H)
 		var/current_name = H.real_name
 		..()
@@ -159,6 +162,9 @@
 	squad_overlay = "heavy_weaponry"
 
 	announced = FALSE
+
+	spawn_in_cryopod = TRUE
+	cryopod_id = BLUE_TEAM
 
 	equip(var/mob/living/carbon/human/H)
 		var/current_name = H.real_name
