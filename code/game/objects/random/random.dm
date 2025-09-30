@@ -183,7 +183,7 @@
 				/obj/item/storage/firstaid/toxin = 3,
 				/obj/item/storage/firstaid/o2 = 3,
 				/obj/item/storage/firstaid/adv = 2,
-				/obj/item/storage/firstaid/combat = 1,
+				///obj/item/storage/firstaid/combat = 1,
 				/obj/item/storage/firstaid/empty = 2,
 				/obj/item/storage/firstaid/fire = 3)
 
