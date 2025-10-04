@@ -481,7 +481,7 @@ client/proc/MayRespawn()
 	return
 
 /mob/living/carbon/onMouseMove(var/atom/object, location, control, params)
-	if(weapon_readied && !zoomed) //If aiming and zoomed don't turn
+	if(weapon_readied && !zoomed) //If aiming and not zoomed then turn
 		face_atom(object)
 
 
