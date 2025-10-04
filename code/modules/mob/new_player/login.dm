@@ -60,6 +60,9 @@
 		for(var/x = 1, x < GLOB.background_music.len, x++)//Load in the songs ahead of time.
 			sound_to(src, sound(GLOB.background_music[x], repeat = 1, volume = 50, wait = 0, channel = 1))
 			sound_to(src, sound(null, repeat = 1, volume = 50, wait = 0, channel = 1))
+	// cache all the fonts PLEASE
+	//var/datum/asset/assets = get_asset_datum(/datum/asset/simple/fonts)
+	//assets.send(user)
 	spawn(40)
 		if(client)
 			client.playtitlemusic()

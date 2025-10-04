@@ -89,7 +89,7 @@ SUBSYSTEM_DEF(warfare)
 		H.set_squad_huds()
 		H.set_team_huds()
 		H.play_screen_text(where_are_we, alert = /atom/movable/screen/text/screen_text/battlefield)
-		to_chat(H, "<span class='maptext'>Name: [GLOB.war_lore.name].</span>")
+		//to_chat(H, "<span class='maptext'>Name: [GLOB.war_lore.name].</span>")
 
 /datum/controller/subsystem/warfare/proc/check_completion()
 	if(red.left <= 0)

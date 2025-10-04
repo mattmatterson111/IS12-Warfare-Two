@@ -287,3 +287,33 @@
 		to_chat(src, "<span class='info'>You are now visible.</span>")
 		set_invisibility(0)
 		mouse_opacity = 0 // This is so they don't make people invincible to melee attacks by hovering over them
+
+/mob/observer/ghost/add_filter_effects()
+	. = ..()
+	var/obj/noise = new /obj/screen()
+	noise.icon = 'icons/mob/largenoise.dmi'//'icons/mob/noise.dmi'
+	noise.icon_state = "1"//"[rand(1,9)]h"
+	noise.name = " "
+	noise.screen_loc = "CENTER-7,CENTER-7"
+	noise.plane = FULLSCREEN_PLANE
+	noise.layer = 1
+	noise.mouse_opacity = 0
+	noise.blend_mode = BLEND_OVERLAY
+	noise.alpha = 20
+	client.screen += noise
+
+	var/obj/vignette = new /obj/screen()
+	vignette.icon = 'icons/mob/extra_overlays_fuck.dmi'//'icons/mob/noise.dmi'
+	vignette.icon_state = "stylized_vig" // "vig"
+	vignette.name = "vignette"
+	vignette.screen_loc = "CENTER-7,CENTER-7"
+	vignette.plane = FULLSCREEN_PLANE
+	vignette.layer = 2
+	vignette.mouse_opacity = 0
+	vignette.blend_mode = BLEND_DEFAULT
+	vignette.alpha = 255
+	client.screen += vignette
+	client.screen += new /obj/screen/plane_master/bloom_filter
+	client.screen += new /obj/screen/plane_master/radial_filter
+	client.screen += new /obj/screen/plane_master/blur/effects_blur
+	client.screen += new /obj/screen/plane_master/exposure_filter

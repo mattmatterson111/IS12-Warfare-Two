@@ -40,7 +40,7 @@
 	name = "concrete"
 	icon = 'icons/turf/floors.dmi'
 	icon_state = "concrete"
-	atom_flags = ATOM_FLAG_CLIMBABLE
+	//atom_flags = ATOM_FLAG_CLIMBABLE
 
 /turf/simulated/floor/urban/concrete/New()
 	. = ..()
@@ -49,6 +49,28 @@
 		icon_state = "concrete_cracked"
 		dir = pick(GLOB.alldirs)
 
+/turf/simulated/floor/urban/tiles
+	name = "tiles"
+	icon = 'icons/turf/floors.dmi'
+	icon_state = "tiles"
+	//atom_flags = ATOM_FLAG_CLIMBABLE
+
+/turf/simulated/floor/urban/tiles/New()
+	. = ..()
+	dir = pick(GLOB.alldirs)
+
+/turf/simulated/floor/urban/tiles/blue
+	icon_state = "tiles_b"
+
+/turf/simulated/floor/urban/cinder
+	name = "tiles"
+	icon = 'icons/turf/floors.dmi'
+	icon_state = "cinder"
+	//atom_flags = ATOM_FLAG_CLIMBABLE
+
+/turf/simulated/floor/urban/cinder/New()
+	. = ..()
+	dir = pick(GLOB.alldirs)
 
 //[[-- Decals --]]
 

@@ -2001,6 +2001,7 @@
 #include "code\modules\power\debug_items.dm"
 #include "code\modules\power\generator.dm"
 #include "code\modules\power\gravitygenerator.dm"
+#include "code\modules\power\light_fluff.dm"
 #include "code\modules\power\lighting.dm"
 #include "code\modules\power\port_gen.dm"
 #include "code\modules\power\power.dm"

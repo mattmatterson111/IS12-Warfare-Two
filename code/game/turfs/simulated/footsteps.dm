@@ -11,6 +11,7 @@
 #define FOOTSTEP_SNOW		"snow"
 #define FOOTSTEP_MUD 		"mud"
 #define FOOTSTEP_CONCRETE	"concrete"
+#define FOOTSTEP_CERAMIC "ceramic"
 #define ARMOR_FOOTSTEP_CONCRETE "armorcrete"
 #define ARMOR_FOOTSTEP_CONCRETE_CROUCHING "armorcretecrouch"
 #define ARMOR_FOOTSTEP_BRIDGE "armorwood"
@@ -40,6 +41,13 @@
 		'sound/effects/footstep/plating3.ogg',
 		'sound/effects/footstep/plating4.ogg',
 		'sound/effects/footstep/plating5.ogg'),
+	FOOTSTEP_CERAMIC =  list(
+		'sound/effects/footstep/ceramic1.ogg',
+		'sound/effects/footstep/ceramic2.ogg',
+		'sound/effects/footstep/ceramic3.ogg',
+		'sound/effects/footstep/ceramic4.ogg',
+		'sound/effects/footstep/ceramic5.ogg',
+		'sound/effects/footstep/ceramic6.ogg'),
 	FOOTSTEP_CARPET = list(
 		'sound/effects/footstep/carpet1.ogg',
 		'sound/effects/footstep/carpet2.ogg',
@@ -184,6 +192,18 @@
 		return "armorwalk"
 	return safepick(footstep_sounds[FOOTSTEP_PLATING])
 
+/turf/simulated/floor/urban/tiles/get_footstep_sound(crouching, wearingarmor)
+	//if(wearingarmor)
+	//	return "armorwalk"
+	return safepick(footstep_sounds[FOOTSTEP_CERAMIC])
+
+/turf/simulated/floor/urban/cinder/get_footstep_sound(crouching, wearingarmor)
+	if(wearingarmor)
+		if(crouching)
+			return safepick(footstep_sounds[ARMOR_FOOTSTEP_CONCRETE_CROUCHING])
+		return safepick(footstep_sounds[ARMOR_FOOTSTEP_CONCRETE])
+	return safepick(footstep_sounds[FOOTSTEP_CONCRETE])
+
 /turf/simulated/floor/plating/reinforced/get_footstep_sound(crouching, wearingarmor)
 	if(wearingarmor)
 		return "armorwalk"
@@ -220,6 +240,13 @@
 	return safepick(footstep_sounds[FOOTSTEP_CONCRETE])
 
 /turf/simulated/floor/stones/get_footstep_sound(crouching, wearingarmor)
+	if(wearingarmor)
+		if(crouching)
+			return safepick(footstep_sounds[ARMOR_FOOTSTEP_CONCRETE_CROUCHING])
+		return safepick(footstep_sounds[ARMOR_FOOTSTEP_CONCRETE])
+	return safepick(footstep_sounds[FOOTSTEP_CONCRETE])
+
+/turf/simulated/floor/urban/concrete/get_footstep_sound(crouching, wearingarmor)
 	if(wearingarmor)
 		if(crouching)
 			return safepick(footstep_sounds[ARMOR_FOOTSTEP_CONCRETE_CROUCHING])

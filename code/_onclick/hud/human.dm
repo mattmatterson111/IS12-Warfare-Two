@@ -459,13 +459,25 @@
 	mymob.noise.icon = 'icons/mob/largenoise.dmi'//'icons/mob/noise.dmi'
 	mymob.noise.icon_state = "1"//"[rand(1,9)]h"
 	mymob.noise.name = " "
-	mymob.noise.screen_loc = "WEST, SOUTH"
+	mymob.noise.screen_loc = "CENTER-7,CENTER-7"
 	mymob.noise.plane = FULLSCREEN_PLANE
 	mymob.noise.layer = 1
 	mymob.noise.mouse_opacity = 0
 	mymob.noise.blend_mode = BLEND_OVERLAY
 	mymob.noise.alpha = 20
 	hud_elements |= mymob.noise
+
+	mymob.vignette = new /obj/screen()
+	mymob.vignette.icon = 'icons/mob/extra_overlays_fuck.dmi'//'icons/mob/noise.dmi'
+	mymob.vignette.icon_state = "stylized_vig" // "vig"
+	mymob.vignette.name = "vignette"
+	mymob.vignette.screen_loc = "CENTER-7,CENTER-7"
+	mymob.vignette.plane = FULLSCREEN_PLANE
+	mymob.vignette.layer = 2
+	mymob.vignette.mouse_opacity = 0
+	mymob.vignette.blend_mode = BLEND_DEFAULT
+	mymob.vignette.alpha = 255
+	hud_elements |= mymob.vignette
 
 	mymob.combat_icon = new /obj/screen()//combat mode
 	mymob.combat_icon.name = "combat mode"
@@ -624,3 +636,4 @@
 	client.screen += new /obj/screen/plane_master/bloom_filter
 	client.screen += new /obj/screen/plane_master/radial_filter
 	client.screen += new /obj/screen/plane_master/blur/effects_blur
+	client.screen += new /obj/screen/plane_master/exposure_filter

@@ -159,6 +159,9 @@
 
 	events[category] = the_event
 	update_happiness()
+	var/regex/tag_re = regex("<\[^>\]+>")
+	var/cleaned = replacetext(the_event.description, tag_re, "")
+	play_screen_text(cleaned, alert = /atom/movable/screen/text/screen_text/audible/mood/hl2)
 
 	if(the_event.timeout)
 		spawn(the_event.timeout)

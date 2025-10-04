@@ -157,12 +157,27 @@
 	var/obj/item/light/lightbulb
 
 	var/current_mode = null
+/*
+	var/glow_icon = 'icons/obj/lamps.dmi'
+	var/exposure_icon = 'icons/effects/exposures.dmi'
+
+	var/glow_icon_state
+	var/glow_colored = FALSE */
+
+	var/exposure_icon_state = "cone"
+	/*
+*/	//var/exposure_colored = TRUE
+ // someday someday :) when im not lazy :(
+	var/image/glow_overlay
+	var/image/exposure_overlay
+	var/obj/exposure // god fucking damn it
 
 /obj/machinery/light/caged
 	icon_state = "caged1"
 	base_state = "caged"
 	light_type = /obj/item/light/bulb
 	construct_type = /obj/machinery/light_construct/small
+	exposure_icon_state = "cone_small"
 
 /obj/machinery/light/small/bunker
 	icon_state = "bunkerlight1"
@@ -182,6 +197,7 @@
 	construct_type = /obj/machinery/light_construct/small
 	idle_power_usage = 1
 	active_power_usage = 10
+	exposure_icon_state = "cone_small"
 
 /obj/machinery/light/small/emergency
 	base_state = "firelight"
@@ -236,6 +252,16 @@
 			icon_state = "[base_state]-broken"
 			on = 0
 
+	cut_overlay(glow_overlay)
+
+	// hacky, but, otherwise- it just extends the clickable range to unreasonable amounts
+	if(!exposure)
+		exposure = new /obj/effect(loc)
+		exposure.anchored = TRUE
+		exposure.mouse_opacity = FALSE
+		exposure.dir = src.dir
+	exposure.cut_overlay(exposure_overlay)
+
 	if(on)
 		use_power = 2
 
@@ -247,9 +273,24 @@
 
 		if(trigger && changed && get_status() == LIGHT_OK)
 			switch_check()
-		var/image/I = image(icon=src.icon, icon_state = "[base_state]-glow")
-		I.plane = GLOW_PLANE
-		overlays += I
+
+		if(!glow_overlay)
+			glow_overlay = image(icon=src.icon, icon_state = "[base_state]-glow")
+		glow_overlay.plane = GLOW_PLANE
+		add_overlay(glow_overlay)
+
+		if(exposure_icon_state)
+			if(!exposure_overlay)
+				exposure_overlay = image(icon='icons/effects/exposures.dmi', icon_state = exposure_icon_state)
+			exposure_overlay.plane = EXPOSURE_PLANE
+			//exposure_overlay.dir = src.dir
+			exposure_overlay.color = lightbulb.brightness_color
+			exposure_overlay.blend_mode = BLEND_ADD
+			exposure_overlay.appearance_flags = RESET_COLOR|RESET_ALPHA
+			exposure_overlay.pixel_x = -32 + pixel_x
+			exposure_overlay.pixel_y = -32 + pixel_y
+			exposure_overlay.mouse_opacity = FALSE
+			exposure.add_overlay(exposure_overlay)
 	else
 		use_power = 0
 		set_light(0)
@@ -401,16 +442,17 @@
 	var/area/A = get_area(src)
 	return A && A.lightswitch && ..(power_channel)
 
-/obj/machinery/light/proc/flicker(var/amount = rand(10, 20))
+/obj/machinery/light/proc/flicker(var/amount = rand(2, 9))
 	if(flickering) return
 	flickering = 1
 	spawn(0)
 		if(on && get_status() == LIGHT_OK)
-			for(var/i = 0; i < amount; i++)
+			for(var/i = 0, i < amount, i++)
 				if(get_status() != LIGHT_OK) break
 				on = !on
+				playsound(src, pick('sound/effects/fluor_ping1.ogg','sound/effects/fluor_ping2.ogg','sound/effects/fluor_ping3.ogg','sound/effects/fluor_ping4.ogg','sound/effects/fluor_ping5.ogg'), 100, 1)
 				update_icon(0)
-				sleep(rand(3, 13))
+				sleep(rand(1, 12))
 			on = (get_status() == LIGHT_OK)
 			update_icon(0)
 		flickering = 0
@@ -511,11 +553,15 @@
 			qdel(src)
 			return
 		if(2)
-			if (prob(75))
+			if (prob(45))
 				broken()
+			else
+				flicker(rand(3,8))
 		if(3)
-			if (prob(50))
+			if (prob(5))
 				broken()
+			else
+				flicker(rand(1,3	))
 
 // timed process
 // use power
@@ -654,6 +700,7 @@
 
 /obj/item/light/New(atom/newloc, obj/machinery/light/fixture = null)
 	..()
+
 	update_icon()
 
 // attack bulb/tube with object

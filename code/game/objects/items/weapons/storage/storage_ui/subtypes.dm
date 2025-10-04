@@ -16,3 +16,6 @@
 /datum/storage_ui/default/pills // the close button is
 	icon_override = 'icons/mob/screen/storage/pills.dmi'
 	closer_x = 4
+
+/datum/storage_ui/default/envelope
+	icon_override = 'icons/mob/screen/storage/envelope.dmi'

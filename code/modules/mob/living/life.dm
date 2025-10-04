@@ -138,7 +138,14 @@
 			ST.PrivUpdateListener(src)
 	else if(!deaf_loop && !ambience_is_playing)
 		ambience_is_playing = TRUE
-		sound_to(src, sound(current_ambience, repeat = 1, volume = 50, wait = 0, channel = 1))
+		var/sound/s = sound(current_ambience)
+		s.channel = 1
+		s.repeat = 1
+		s.wait = 0
+		s.volume = 50
+		s.environment = -1
+
+		sound_to(src, s)
 		for(var/datum/sound_token/ST)
 			ST.listener_status[src] &= ~SOUND_MUTE
 			ST.PrivUpdateListener(src)

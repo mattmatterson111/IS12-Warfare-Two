@@ -181,6 +181,8 @@ What is the naming convention for planes or layers?
 #define GLARE_PLANE                  -5  // Lens flare and glare overlays
 #define BLOOM_PLANE                  -4  // Bloom/glow pass effects
 
+#define EXPOSURE_PLANE -3 // Exposure plane for lights, don't worry about it
+
 #define BASE_PLANE 				        0 // Not for anything, but this is the default.
 	#define BASE_AREA_LAYER 999
 
@@ -319,7 +321,7 @@ GLOBAL_LIST_INIT(ghost_master, list(
 /obj/screen/plane_master/bloom_filter/Initialize()
 	..()
 	filters += filter(type = "layer", render_source = "*TO_LIGHTFILT")
-	filters += filter(type = "bloom", size = 3, offset = 2, alpha = 75)
+	filters += filter(type = "bloom", size = 5, offset = 2, alpha = 90)
 
 
 /obj/screen/plane_master/radial_filter
@@ -329,7 +331,20 @@ GLOBAL_LIST_INIT(ghost_master, list(
 /obj/screen/plane_master/radial_filter/Initialize()
 	..()
 	filters += filter(type = "layer", render_source = "*TO_LIGHTFILT")
-	filters += filter(type = "radial_blur", size = 0.015)
+	filters += filter(type = "radial_blur", size = 0.02)
+
+/obj/screen/plane_master/exposure_filter
+	name = "exposure filter plane"
+	alpha = 25
+	plane = EXPOSURE_PLANE
+	blend_mode = BLEND_ADD
+
+/obj/screen/plane_master/exposure_filter/Initialize()
+	..()
+
+	filters += filter(type = "blur", size = 20)
+	//filters += filter(type = "bloom", size = 10, offset = 2, alpha = 100)
+
 
 /obj/screen/plane_master/ao
 	// no vars set, here to make searching easier

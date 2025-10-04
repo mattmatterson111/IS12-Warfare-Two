@@ -122,6 +122,14 @@
 	if(randpixel && (!pixel_x && !pixel_y) && isturf(loc)) //hopefully this will prevent us from messing with mapper-set pixel_x/y
 		pixel_x = rand(-randpixel, randpixel)
 		pixel_y = rand(-randpixel, randpixel)
+	if(worldicons && !ismob(loc))
+		if(islist(worldicons))
+			if(LAZYLEN(worldicons))
+				originalstate = icon_state
+				icon_state = safepick(worldicons)
+		else
+			originalstate = icon_state
+			icon_state = worldicons
 
 /obj/item/Destroy()
 	qdel(hidden_uplink)

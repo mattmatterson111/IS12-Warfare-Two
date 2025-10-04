@@ -20,9 +20,8 @@
 /area/warfare/battlefield/trench_section/underground/indoors
 	icon = 'icons/turf/urban/areas.dmi'
 	icon_state = "building"
-	sound_env = STONE_CORRIDOR
+	sound_env = ROOM
 	music = null
-	can_pre_enter = 0
 
 /area/warfare/battlefield/no_mans_land/no_mine
 	icon = 'icons/turf/urban/areas.dmi'

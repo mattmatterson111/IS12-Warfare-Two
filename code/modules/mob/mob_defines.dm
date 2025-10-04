@@ -41,6 +41,7 @@
 	var/obj/screen/kick_icon = null
 	var/obj/screen/jump_icon = null
 	var/obj/screen/noise = null
+	var/obj/screen/vignette = null
 	var/obj/screen/fixeye = null
 	var/obj/screen/rest = null
 	var/obj/screen/combat_icon = null
@@ -110,6 +111,7 @@
 	var/default_pixel_y = 0
 
 	var/music_lastplayed = "null"
+	var/music_secondary_lastplayed = "null"
 
 	var/a_intent = I_HELP//Living
 	var/defense_intent = I_DODGE//Living. For dodging and parrying.

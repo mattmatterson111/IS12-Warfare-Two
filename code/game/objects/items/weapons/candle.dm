@@ -3,10 +3,19 @@
 	desc = "A small pillar candle. Its specially-formulated fuel-oxidizer wax mixture allows continued combustion in airless environments."
 	icon = 'icons/obj/candle.dmi'
 	icon_state = "candle1"
+	var/base_state = "candle"
 	item_state = "candle1"
 	w_class = ITEM_SIZE_TINY
 	light_color = "#e09d37"
 	var/wax = 2000
+
+	var/waxtype = "red"
+
+/obj/item/flame/candle/blue
+	icon_state = "candleb1"
+	base_State = "candleb"
+
+	waxtype = "blue"
 
 /obj/item/flame/candle/New()
 	wax = rand(800, 1000) // Enough for 27-33 minutes. 30 minutes on average.
@@ -19,7 +28,7 @@
 	else if(wax > 800)
 		i = 2
 	else i = 3
-	icon_state = "candle[i][lit ? "_lit" : ""]"
+	icon_state = "[base_state][i][lit ? "_lit" : ""]"
 
 
 /obj/item/flame/candle/attackby(obj/item/W as obj, mob/user as mob)

@@ -116,8 +116,8 @@
 	. = ..()
 
 /obj/structure/closet/crate/wooden/large/meatball/Process()
-	if(prob(5))
-		playsound(src, 'sound/effects/meatball.ogg', 100, TRUE)
+	if(prob(2))
+		playsound(src, 'sound/effects/meatball.ogg', 25, TRUE, ignore_walls = FALSE, falloff = 3)
 		visible_message(SPAN_DANGER("\the [src] growls.."))
 		receive_damage()
 

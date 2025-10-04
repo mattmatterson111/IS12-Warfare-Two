@@ -32,12 +32,29 @@ GLOBAL_LIST_EMPTY(mortar_areas) // = list()
 	var/can_pre_enter = FALSE
 
 /area/warfare/battlefield/trench_section//So they can cross atop their trench section.
+	sound_env = AUDITORIUM
+	icon_state = "nocoats"
 	can_pre_enter = TRUE
 	turf_initializer = null
+
+/area/warfare/battlefield/trench_section/hallway
+	icon = 'icons/turf/urban/areas.dmi'
+	icon_state = "building"
+
+/area/warfare/battlefield/trench_section/stoneroom
+	icon = 'icons/turf/urban/areas.dmi'
+	icon_state = "building"
+
+/area/warfare/battlefield/trench_section/room
+	icon = 'icons/turf/urban/areas.dmi'
+	icon_state = "building"
+	sound_env = BATHROOM
+
 
 /area/warfare/battlefield/trench_section/underground//So it doesn't spawn random shit underground.
 	forced_ambience = null
 	base_turf = /turf/simulated/floor/trenches/underground
+	sound_env = PLAIN
 
 
 /area/warfare/battlefield/trench_section/underground/Entered(mob/living/L, area/A)
@@ -49,10 +66,12 @@ GLOBAL_LIST_EMPTY(mortar_areas) // = list()
 
 /area/warfare/battlefield/no_mans_land
 	name = "\improper No Man\'s Land"
+	icon_state = "nocoats"
+	sound_env = AUDITORIUM
 
-	New()
-		..()
-		GLOB.mortar_areas += src
+/area/warfare/battlefield/no_mans_land/New()
+	..()
+	GLOB.mortar_areas += src
 
 /area/warfare/battlefield/Entered(mob/living/L,  atom/A)
 	. = ..()
@@ -74,6 +93,7 @@ GLOBAL_LIST_EMPTY(mortar_areas) // = list()
 	var/blue_capture_points = 0
 	var/list/blues = list()
 	var/list/reds = list()
+	sound_env = AUDITORIUM
 
 /area/warfare/battlefield/capture_point/New()
 	..()
@@ -158,7 +178,7 @@ GLOBAL_LIST_EMPTY(mortar_areas) // = list()
 	icon_state = "start"
 
 /area/warfare/battlefield/capture_point/red
-	icon_state = "red"
+	icon_state = "redcoats"
 	captured = RED_TEAM
 
 	New()//They start out having these by default.
@@ -182,7 +202,7 @@ GLOBAL_LIST_EMPTY(mortar_areas) // = list()
 	name = "Second South Trench"
 
 /area/warfare/battlefield/capture_point/blue
-	icon_state = "blue"
+	icon_state = "bluecoats"
 	captured = BLUE_TEAM
 
 	New()
@@ -248,11 +268,22 @@ GLOBAL_LIST_EMPTY(mortar_areas) // = list()
 
 /area/warfare/homebase/red
 	name = "\improper Red Base"
-	icon_state = "security"
+	icon_state = "redcoats"
+	sound_env = AUDITORIUM
 
-/area/warfare/homebase/red/div
+/area/warfare/homebase/red/caproom
+	sound_env = ROOM
+/area/warfare/homebase/red/largeroom
+	sound_env = CAVE
+/area/warfare/homebase/red/stoneroom
+	sound_env = STONEROOM
+/area/warfare/homebase/red/hallway
+	sound_env = HALLWAY
+/area/warfare/homebase/red/room
+	sound_env = BATHROOM
 
 /area/warfare/homebase/red/trainyard
+	sound_env = AUDITORIUM
 
 /area/warfare/homebase/red/Enter(atom/movable/AM)
 	if(ishuman(AM))
@@ -265,11 +296,23 @@ GLOBAL_LIST_EMPTY(mortar_areas) // = list()
 
 /area/warfare/homebase/blue
 	name = "\improper Blue Base"
-	icon_state = "showroom"
+	icon_state = "bluecoats"
+
+/area/warfare/homebase/blue/caproom
+	sound_env = ROOM
+/area/warfare/homebase/blue/largeroom
+	sound_env = CAVE
+/area/warfare/homebase/blue/stoneroom
+	sound_env = STONEROOM
+/area/warfare/homebase/blue/hallway
+	sound_env = HALLWAY
+/area/warfare/homebase/blue/room
+	sound_env = BATHROOM
 
 /area/warfare/homebase/blue/div
 
 /area/warfare/homebase/blue/trainyard
+	sound_env = AUDITORIUM
 
 /area/warfare/homebase/blue/Enter(atom/movable/AM)
 	if(ishuman(AM))
