@@ -464,7 +464,10 @@ client/proc/MayRespawn()
 
 /client/MouseMove(object,location,control,params)
 	if(mob && combat_mode_aim)
-		mob.onMouseMove(object, location, control, params)
+		var/mob/living/user = usr
+		if(istype(user))
+			if(!user.zoomed) //if already looking into distance don't turn
+				mob.onMouseMove(object, location, control, params)
 	..()
 
 /client/verb/combat_mode_aim_toggle()
