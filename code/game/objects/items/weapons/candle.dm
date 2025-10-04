@@ -13,7 +13,7 @@
 
 /obj/item/flame/candle/blue
 	icon_state = "candleb1"
-	base_State = "candleb"
+	base_state = "candleb"
 
 	waxtype = "blue"
 
