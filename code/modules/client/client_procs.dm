@@ -464,10 +464,7 @@ client/proc/MayRespawn()
 
 /client/MouseMove(object,location,control,params)
 	if(mob && combat_mode_aim)
-		var/mob/living/user = usr
-		if(istype(user))
-			if(user.client.mouse_pointer_icon == 'icons/effects/standard/weapon_pointer.dmi' && !user.zoomed) //this feels like a bad way to do this, but it checks if the user is aiming and not zoomed
-				mob.onMouseMove(object, location, control, params)
+		mob.onMouseMove(object, location, control, params)
 	..()
 
 /client/verb/combat_mode_aim_toggle()
@@ -484,7 +481,8 @@ client/proc/MayRespawn()
 	return
 
 /mob/living/carbon/onMouseMove(var/atom/object, location, control, params)
-	face_atom(object)
+	if(weapon_readied)
+		face_atom(object)
 
 
 /client/verb/fit_viewport()
