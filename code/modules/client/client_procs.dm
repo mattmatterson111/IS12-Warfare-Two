@@ -464,10 +464,7 @@ client/proc/MayRespawn()
 
 /client/MouseMove(object,location,control,params)
 	if(mob && combat_mode_aim)
-		var/mob/living/user = usr
-		if(istype(user))
-			if(!user.zoomed) //if already looking into distance don't turn
-				mob.onMouseMove(object, location, control, params)
+		mob.onMouseMove(object, location, control, params)
 	..()
 
 /client/verb/combat_mode_aim_toggle()
@@ -484,7 +481,7 @@ client/proc/MayRespawn()
 	return
 
 /mob/living/carbon/onMouseMove(var/atom/object, location, control, params)
-	if(weapon_readied)
+	if(weapon_readied && !zoomed) //If aiming and zoomed don't turn
 		face_atom(object)
 
 
