@@ -464,25 +464,27 @@ client/proc/MayRespawn()
 
 /client/MouseMove(object,location,control,params)
 	if(mob && combat_mode_aim)
-		mob.onMouseMove(object, location, control, params)
+		var/mob/living/user = usr
+		if(istype(user))
+			if(user.client.mouse_pointer_icon == 'icons/effects/standard/weapon_pointer.dmi' && !user.zoomed) //this feels like a bad way to do this, but it checks if the user is aiming and not zoomed
+				mob.onMouseMove(object, location, control, params)
 	..()
 
 /client/verb/combat_mode_aim_toggle()
-	set name = "Toggle Combat Mode Aim"
+	set name = "Toggle Aim Tracking"
 	set category = "OOC"
 
 	combat_mode_aim = !combat_mode_aim
 	if(combat_mode_aim)
-		to_chat(src, "You will now face the direction your mouse points when in combat mode.")
+		to_chat(src, "You will now automatically face the direction your mouse points when aiming.")
 	else
-		to_chat(src, "You will no longer face the direction your mouse points when in combat mode.")
+		to_chat(src, "You will no longer automatically face the direction your mouse points when aiming.")
 
 /atom/proc/onMouseMove(object, location, control, params)
 	return
 
 /mob/living/carbon/onMouseMove(var/atom/object, location, control, params)
-	if(combat_mode)
-		face_atom(object)
+	face_atom(object)
 
 
 /client/verb/fit_viewport()
