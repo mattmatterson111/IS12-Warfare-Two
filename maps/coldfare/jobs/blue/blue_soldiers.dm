@@ -5,7 +5,7 @@
 	selection_color = "#60a0ca"
 	supervisors = "the president, the chain of command, and the drums of war"
 	auto_rifle_skill = 10
-	semi_rifle_skill = 7
+	semi_rifle_skill = 9
 	sniper_skill = 3
 	shotgun_skill = 6
 	lmg_skill = 3
