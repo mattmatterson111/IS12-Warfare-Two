@@ -124,7 +124,6 @@
 	var/firelevel = 12 //Tracks how much "fire" there is. Basically the timer of how long the fire burns
 	var/burnlevel = 10 //Tracks how HOT the fire is. This is basically the heat level of the fire and determines the temperature.
 	var/flame_color = "red"
-	//var/list/particlestodel
 
 /obj/flamer_fire/New(loc, fire_lvl, burn_lvl, f_color, fire_spread_amount)
 	..()
@@ -142,12 +141,6 @@
 		qdel(src)
 	playsound(src, "combust", 50, FALSE)
 	particles = new/particles/fire_sparks
-	//var/obj/fire = new/obj/particle_emitter/fire(get_turf(src))
-	//var/obj/smoke = new/obj/particle_emitter/firesmoke(get_turf(src))
-	//var/obj/embers = new/obj/emitter/sparks/fire(get_turf(src))
-	//particlestodel |= fire
-	//particlestodel |= smoke
-	//particlestodel |= embers
 	if (f_color)
 		flame_color = f_color
 
@@ -173,8 +166,6 @@
 
 
 /obj/flamer_fire/Destroy()
-	//for(var/obj/o in particles)
-	//	qdel(o)
 	set_light(0)
 	STOP_PROCESSING(SSobj,src)
 	. = ..()
