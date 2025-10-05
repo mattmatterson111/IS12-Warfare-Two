@@ -121,42 +121,64 @@ GLOBAL_LIST_EMPTY(faction_dosh)
 		GLOB.faction_dosh[id] = 500
 	reconnectpads()
 
-/obj/machinery/kaos/cargo_machine/attackby(obj/item/C as obj, mob/user as mob)
-	if(istype(C, /obj/item/spacecash))
-		var/obj/item/spacecash/dolla = C
+/obj/machinery/kaos/cargo_machine/attackby(obj/item/O as obj, mob/user as mob)
+	if(istype(O, /obj/item/spacecash))
+		var/obj/item/spacecash/dolla = O
 		if(dolla.worth <= 0)
 			to_chat(user, "\icon[src]You cannot insert that into the machine.")
 			playsound(src.loc, 'sound/machines/rpf/denybeep.ogg', 100, 0.5)
 		else
-			to_chat(user, "\icon[src]You insert [C.name] into the machine.")
+			to_chat(user, "\icon[src]You insert [O.name] into the machine.")
 			playsound(user.loc, 'sound/machines/rpf/audiotapein.ogg', 50, 0.4)
 			GLOB.faction_dosh[id] += dolla.worth
-			qdel(C)
-	else if(istype(C, /obj/item/stack/teeth/human)) // FUCK YOU SCAVS, YOU DID TIS TO ME
-		var/obj/item/stack/teeth/human/toof = C
+			qdel(O)
+	else if(istype(O, /obj/item/stack/teeth))
+		var/obj/item/stack/teeth/toof = O
 		if(toof.amount <= 0)
 			qdel(toof) // no you dont get to insert 0 teeth for cash.
 			return
-		else if(toof.amount >= 1)
-			toof.amount--
-			GLOB.faction_dosh[id] += 3 // Nerfed, see thehatch structure to know why.
-			playsound(user.loc, 'sound/machines/rpf/audiotapein.ogg', 50, 0.4) // it sounds nicer when its played from the person ngl
-			toof.update_icon()
-			if(toof.amount == 1) // fuck you..
-				qdel(toof)
-				return
-			return
-		else // huh?
-			return
-	else if(istype(C, /obj/item/clothing/head/helmet/redhelmet) && id == BLUE_TEAM || istype(C, /obj/item/clothing/head/helmet/bluehelmet) && id == RED_TEAM ) // meh
-		GLOB.faction_dosh[id] += 10
+		var/to_grant = 0
+		for(var/i = 1, i <= toof.amount, i++)
+			to_grant += 2
+		qdel(toof)
+		GLOB.faction_dosh[id] += to_grant
 		playsound(user.loc, 'sound/machines/rpf/audiotapein.ogg', 50, 0.4)
-		qdel(C)
+		return
+	else if(istype(O, /obj/item/clothing/head/helmet/redhelmet) && id == BLUE_TEAM || istype(O, /obj/item/clothing/head/helmet/bluehelmet) && id == RED_TEAM ) // meh
+		GLOB.faction_dosh[id] += 35
+		qdel(O)
+		playsound(user.loc, 'sound/machines/rpf/audiotapein.ogg', 50, 0.4)
+		return
 
-	else if(istype(C, /obj/item/card/id/dog_tag/red) && id == BLUE_TEAM || istype(C, /obj/item/card/id/dog_tag/blue) && id == RED_TEAM ) // meh
-		GLOB.faction_dosh[id] += 10
+	else if(istype(O, /obj/item/card/id/dog_tag/red) && id == BLUE_TEAM || istype(O, /obj/item/card/id/dog_tag/blue) && id == RED_TEAM ) // meh
+		GLOB.faction_dosh[id] += 40
+		qdel(O)
 		playsound(user.loc, 'sound/machines/rpf/audiotapein.ogg', 50, 0.4)
-		qdel(C)
+		return
+
+	else if(istype(O, /obj/item/clothing/head/helmet/sentryhelm/red) && id == BLUE_TEAM || istype(O, /obj/item/clothing/head/helmet/sentryhelm/blue) && id == RED_TEAM ) // meh
+		GLOB.faction_dosh[id] += 150
+		qdel(O)
+		playsound(user.loc, 'sound/machines/rpf/audiotapein.ogg', 50, 0.4)
+		return
+
+	else if(istype(O, /obj/item/clothing/head/helmet/redhelmet/fire) && id == BLUE_TEAM || istype(O, /obj/item/clothing/head/helmet/bluehelmet/fire) && id == RED_TEAM ) // meh
+		GLOB.faction_dosh[id] += 250
+		qdel(O)
+		playsound(user.loc, 'sound/machines/rpf/audiotapein.ogg', 50, 0.4)
+		return
+
+	else if(istype(O, /obj/item/clothing/head/warfare_officer/redofficer) && id == BLUE_TEAM || istype(O, /obj/item/clothing/head/warfare_officer/blueofficer) && id == RED_TEAM ) // meh
+		GLOB.faction_dosh[id] += 500
+		qdel(O)
+		playsound(user.loc, 'sound/machines/rpf/audiotapein.ogg', 50, 0.4)
+		return
+	
+	else if(istype(O, /obj/item/melee/classic_baton/factionbanner/red) && id == BLUE_TEAM || istype(O, /obj/item/melee/classic_baton/factionbanner/blue) && id == RED_TEAM ) // JACKPOT!!!
+		GLOB.faction_dosh[id] += 750
+		qdel(O)
+		playsound(user.loc, 'sound/machines/rpf/audiotapein.ogg', 50, 0.4)
+		return
 
 /obj/machinery/kaos/cargo_machine/attack_hand(mob/living/user as mob) // notice: find a way to sync both versions without having them be duplicates // Done, ignore this notice
 	var/machine_input
