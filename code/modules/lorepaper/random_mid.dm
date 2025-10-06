@@ -54,7 +54,7 @@
 	suffixes = list("trenchfare.dmm")
 	category = "PLACE"
 	spawn_weight = 1
-
+/* // experiments concluded, underground mid maps = bad
 /datum/map_template/ruin/warfare_mid/blitz
 	name = "Blitz Fare"
 	id = "blitz_fare"
@@ -62,3 +62,4 @@
 	suffixes = list("blitzfare.dmm")
 	category = "PLACE"
 	spawn_weight = 1
+*/
