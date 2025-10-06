@@ -139,7 +139,6 @@
 /obj/structure/soldiercryo
 	icon = 'icons/obj/cryostart.dmi'
 	name = "C.S. Unit"
-	desc = "A Cyrogenic Storage Unit."
 
 	icon_state = "cryo_loaded"
 	var/empty_state = "cryo_used"
