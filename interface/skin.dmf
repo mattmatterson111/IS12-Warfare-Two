@@ -114,6 +114,9 @@ macro "borghotkeymode"
 		name = "CTRL+G"
 		command = "a-intent right"
 	elem 
+		name = "J"
+		command = "toggle-gun-mode"
+	elem 
 		name = "CTRL+J"
 		command = "toggle-gun-mode"
 	elem 
@@ -462,12 +465,6 @@ macro "hotkeymode"
 	elem 
 		name = "CTRL+E"
 		command = "quick-equip-boots"
-	elem
-		name = "K"
-		command = "toggle-kick"
-	elem
-		name = "J"
-		command = "toggle-jump"
 	elem
 		name = "SHIFT+E"
 		command = "quick-equip-belt"
