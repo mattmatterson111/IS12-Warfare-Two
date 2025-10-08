@@ -1116,16 +1116,10 @@
 /turf/simulated/floor/urban/tiles/blue,
 /area/warfare/homebase/blue/stoneroom)
 "du" = (
-/obj/structure/trench_wall/innercorners{
-	dir = 8;
-	pixel_x = 32;
-	pixel_y = -32
-	},
 /obj/machinery/optable{
 	dir = 1;
 	pixel_x = -4
 	},
-/obj/structure/trench_wall,
 /turf/simulated/floor/wood,
 /area/warfare/battlefield/trench_section/underground/indoors)
 "dv" = (
@@ -3874,18 +3868,6 @@
 /obj/effect/floor_decal/urban/trim1,
 /turf/simulated/floor/urban/tiles,
 /area/warfare/homebase/red/room)
-"qn" = (
-/obj/machinery/optable{
-	dir = 1;
-	pixel_x = -4
-	},
-/obj/structure/trench_wall/innercorners{
-	dir = 8;
-	pixel_x = 32;
-	pixel_y = -32
-	},
-/turf/simulated/floor/wood,
-/area/warfare/battlefield/trench_section/underground/indoors)
 "qt" = (
 /obj/machinery/light/small/bunker{
 	dir = 1
@@ -19174,7 +19156,7 @@ NP
 nN
 VO
 VO
-qn
+du
 aT
 bT
 TW
