@@ -375,6 +375,55 @@
 			to_chat(user, "<span class='notice'>You try to use your hand, but realize it is no longer attached!</span>")
 			return
 
+	if(user.doing_something)
+		return
+
+	if(isworld(src.loc) && src.loc != user.loc)
+
+		var/direction = get_dir(user, src)
+
+		var/angle = dir2angle(direction)
+		var/obj/effect/abstract/interact/interactive = new(get_turf(user))
+		interactive.icon_state = "handgrab_open"
+		var/new_transform = interactive.transform.Turn(angle)//180 + angle)
+		//new_transform = matrix(new_transform) * 0.6
+		interactive.transform = new_transform
+		interactive.alpha = 0
+		var/old_px = interactive.pixel_x
+		var/old_py = interactive.pixel_y
+		var/time_to_pick_up = 5
+		switch(w_class)
+			if(ITEM_SIZE_TINY)
+				time_to_pick_up = 0.1 SECONDS
+			if(ITEM_SIZE_SMALL)
+				time_to_pick_up = 0.2 SECONDS
+			if(ITEM_SIZE_NORMAL)
+				time_to_pick_up = 0.3 SECONDS
+			if(ITEM_SIZE_NO_CONTAINER)
+				time_to_pick_up = 0.45 SECONDS
+			if(ITEM_SIZE_LARGE)
+				time_to_pick_up = 0.6 SECONDS
+			if(ITEM_SIZE_HUGE)
+				time_to_pick_up = 0.75 SECONDS
+			if(ITEM_SIZE_GARGANTUAN)
+				time_to_pick_up = 0.9 SECOND
+		// let's fudge the numbers a bit, make it feel slightly more dynamic
+
+		// Animate moving from player to item (centered)
+		animate(interactive, time = round(time_to_pick_up), alpha = 255, pixel_w = ((src.x - user.x) * 32 + src.pixel_x), pixel_z = ((src.y - user.y) * 32 + src.pixel_y), easing = SINE_EASING)
+		user.doing_something = TRUE
+		if(!do_after(user, time_to_pick_up, src, TRUE, same_direction = TRUE, stay_still = TRUE, progress = FALSE))
+			animate(interactive, time = 0.3 SECONDS, pixel_w = old_px, pixel_z = old_py, alpha = 0, easing = SINE_EASING)
+			QDEL_IN(interactive, 0.3 SECONDS)
+			user.doing_something = FALSE
+			return FALSE
+		user.doing_something = FALSE
+		interactive.icon_state = "handgrab_closed"
+
+		// Fade out smoothly after successful pickup
+		animate(interactive, time = 0.3 SECONDS, pixel_w = old_px, pixel_z = old_py, alpha = 0, easing = SINE_EASING)
+		QDEL_IN(interactive, time_to_pick_up)
+
 	var/old_loc = src.loc
 
 	src.pickup(user)
