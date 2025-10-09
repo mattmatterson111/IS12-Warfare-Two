@@ -2915,6 +2915,9 @@
 	density = 1;
 	icon_state = "console"
 	},
+/obj/machinery/light/caged{
+	dir = 1
+	},
 /turf/simulated/floor/wood,
 /area/warfare/battlefield/trench_section/underground/indoors)
 "kz" = (
@@ -3839,6 +3842,15 @@
 /obj/effect/floor_decal/urban/trim1,
 /turf/simulated/floor/urban/tiles,
 /area/warfare/homebase/red/room)
+"qq" = (
+/obj/item/storage/firstaid/surgery,
+/obj/structure/table/rack/nosmooth/metal,
+/obj/item/reagent_containers/spray/cleaner/warfare{
+	pixel_x = 4;
+	pixel_y = 17
+	},
+/turf/simulated/floor/wood,
+/area/warfare/battlefield/trench_section/underground/indoors)
 "qt" = (
 /obj/machinery/light/small/bunker{
 	dir = 1
@@ -6359,6 +6371,9 @@
 	pixel_x = -32;
 	pixel_y = -32
 	},
+/obj/machinery/light/caged{
+	dir = 1
+	},
 /turf/simulated/floor/wood,
 /area/warfare/battlefield/trench_section/underground/indoors)
 "Fi" = (
@@ -7266,6 +7281,15 @@
 	},
 /turf/simulated/wall/perspecticrete,
 /area/warfare/homebase/red/room)
+"MB" = (
+/obj/item/storage/firstaid/surgery,
+/obj/structure/table/rack/nosmooth/metal,
+/obj/item/reagent_containers/spray/cleaner/warfare{
+	pixel_x = 4;
+	pixel_y = 18
+	},
+/turf/simulated/floor/wood,
+/area/warfare/battlefield/trench_section/underground/indoors)
 "MG" = (
 /obj/structure/closet/crate,
 /obj/random/canned_food/blue,
@@ -8852,6 +8876,9 @@
 	pixel_x = -32;
 	layer = 28
 	},
+/obj/machinery/light/caged{
+	dir = 1
+	},
 /turf/simulated/floor/wood,
 /area/warfare/battlefield/trench_section/underground/indoors)
 "Ww" = (
@@ -9095,6 +9122,9 @@
 "Yb" = (
 /obj/machinery/computer/operating{
 	icon_state = "console"
+	},
+/obj/machinery/light/caged{
+	dir = 1
 	},
 /turf/simulated/floor/wood,
 /area/warfare/battlefield/trench_section/underground/indoors)
@@ -14857,7 +14887,7 @@ NP
 Ek
 VO
 VO
-Tv
+qq
 aT
 eX
 dO
@@ -18457,7 +18487,7 @@ NP
 Ek
 VO
 VO
-Tv
+MB
 JU
 yH
 Qh
