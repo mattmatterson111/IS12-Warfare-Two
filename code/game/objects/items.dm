@@ -378,6 +378,8 @@
 	if(user.doing_something)
 		return
 
+	var/old_loc = src.loc
+
 	if(isworld(src.loc) && src.loc != user.loc)
 
 		var/direction = get_dir(user, src)
@@ -386,7 +388,7 @@
 		var/obj/effect/abstract/interact/interactive = new(get_turf(user))
 		interactive.icon_state = "handgrab_open"
 		var/new_transform = interactive.transform.Turn(angle)//180 + angle)
-		//new_transform = matrix(new_transform) * 0.6
+		new_transform = matrix(new_transform) * 0.6
 		interactive.transform = new_transform
 		interactive.alpha = 0
 		var/old_px = interactive.pixel_x
@@ -424,7 +426,7 @@
 		animate(interactive, time = 0.3 SECONDS, pixel_w = old_px, pixel_z = old_py, alpha = 0, easing = SINE_EASING)
 		QDEL_IN(interactive, time_to_pick_up)
 
-	var/old_loc = src.loc
+		if(loc != old_loc) return // stop two ppl from picking it up at once, but let them try none the lesser
 
 	src.pickup(user)
 	if (istype(src.loc, /obj/item/storage))
