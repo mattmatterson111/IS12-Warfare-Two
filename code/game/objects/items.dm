@@ -388,7 +388,7 @@
 		var/obj/effect/abstract/interact/interactive = new(get_turf(user))
 		interactive.icon_state = "handgrab_open"
 		var/new_transform = interactive.transform.Turn(angle)//180 + angle)
-		new_transform = matrix(new_transform) * 0.6
+		new_transform = matrix(new_transform) * 0.65
 		interactive.transform = new_transform
 		interactive.alpha = 0
 		var/old_px = interactive.pixel_x
