@@ -2916,7 +2916,8 @@
 	icon_state = "console"
 	},
 /obj/machinery/light/caged{
-	dir = 1
+	dir = 1;
+	pixel_y = -1
 	},
 /turf/simulated/floor/wood,
 /area/warfare/battlefield/trench_section/underground/indoors)
@@ -6372,7 +6373,8 @@
 	pixel_y = -32
 	},
 /obj/machinery/light/caged{
-	dir = 1
+	dir = 1;
+	pixel_y = -1
 	},
 /turf/simulated/floor/wood,
 /area/warfare/battlefield/trench_section/underground/indoors)
@@ -8877,7 +8879,8 @@
 	layer = 28
 	},
 /obj/machinery/light/caged{
-	dir = 1
+	dir = 1;
+	pixel_y = -1
 	},
 /turf/simulated/floor/wood,
 /area/warfare/battlefield/trench_section/underground/indoors)
@@ -9124,7 +9127,8 @@
 	icon_state = "console"
 	},
 /obj/machinery/light/caged{
-	dir = 1
+	dir = 1;
+	pixel_y = -1
 	},
 /turf/simulated/floor/wood,
 /area/warfare/battlefield/trench_section/underground/indoors)
