@@ -2909,6 +2909,14 @@
 	health = 999999
 	},
 /area/space)
+"kw" = (
+/obj/machinery/computer/operating{
+	dir = 1;
+	density = 1;
+	icon_state = "console"
+	},
+/turf/simulated/floor/wood,
+/area/warfare/battlefield/trench_section/underground/indoors)
 "kz" = (
 /obj/machinery/light/caged{
 	pixel_y = 30;
@@ -4804,12 +4812,12 @@
 /turf/simulated/floor/urban/tiles,
 /area/warfare/homebase/red/stoneroom)
 "vC" = (
-/obj/structure/trench_wall/innercorners{
-	dir = 1
+/obj/machinery/optable{
+	dir = 8;
+	pixel_x = 6;
+	pixel_y = 4
 	},
-/turf/simulated/mineral{
-	health = 999999
-	},
+/turf/simulated/floor/wood,
 /area/warfare/battlefield/trench_section/underground/indoors)
 "vE" = (
 /obj/effect/sub_marker/float{
@@ -6332,7 +6340,9 @@
 /turf/simulated/floor/dirty/indestructable,
 /area/train/red)
 "Fb" = (
-/obj/machinery/computer/operating,
+/obj/machinery/computer/operating{
+	icon_state = "console"
+	},
 /turf/simulated/floor/urban/tiles,
 /area/warfare/homebase/red/room)
 "Fc" = (
@@ -6342,6 +6352,15 @@
 /obj/effect/lighting_dummy/daylight,
 /turf/simulated/wall/perspecticrete,
 /area/warfare/homebase/blue/trainyard)
+"Fg" = (
+/obj/machinery/sleeper,
+/obj/structure/trench_wall/innercorners{
+	dir = 4;
+	pixel_x = -32;
+	pixel_y = -32
+	},
+/turf/simulated/floor/wood,
+/area/warfare/battlefield/trench_section/underground/indoors)
 "Fi" = (
 /obj/hammereditor/nodraw/deco/shadowpaint{
 	opacity = 1;
@@ -7105,7 +7124,9 @@
 /turf/simulated/wall/perspectisub,
 /area/train/red)
 "Lm" = (
-/obj/machinery/computer/operating,
+/obj/machinery/computer/operating{
+	icon_state = "console"
+	},
 /turf/simulated/floor/urban/tiles/blue,
 /area/warfare/homebase/blue/room)
 "Ln" = (
@@ -8193,7 +8214,8 @@
 "Sl" = (
 /obj/machinery/optable{
 	dir = 8;
-	pixel_x = -4
+	pixel_x = 6;
+	pixel_y = 3
 	},
 /turf/simulated/floor/wood,
 /area/warfare/battlefield/trench_section/underground/indoors)
@@ -9072,8 +9094,7 @@
 /area/warfare/homebase/red/largeroom)
 "Yb" = (
 /obj/machinery/computer/operating{
-	dir = 1;
-	density = 1
+	icon_state = "console"
 	},
 /turf/simulated/floor/wood,
 /area/warfare/battlefield/trench_section/underground/indoors)
@@ -14391,7 +14412,7 @@ Da
 IQ
 Pk
 xj
-vC
+OD
 zz
 tT
 dM
@@ -14536,7 +14557,7 @@ NP
 nN
 VO
 VO
-Wu
+Fg
 aT
 Yh
 Yh
@@ -14691,7 +14712,7 @@ NP
 nN
 VO
 VO
-Wu
+Fg
 aT
 Yh
 Yh
@@ -15291,7 +15312,7 @@ du
 nv
 VO
 VO
-Sl
+vC
 WS
 Qh
 Qh
@@ -15436,7 +15457,7 @@ NP
 gF
 VO
 VO
-Yb
+kw
 lf
 cK
 bo
@@ -18891,7 +18912,7 @@ du
 nv
 VO
 VO
-Sl
+vC
 zO
 Wf
 NT
@@ -19036,7 +19057,7 @@ NP
 nN
 VO
 VO
-Yb
+kw
 aT
 bT
 TW
@@ -19191,7 +19212,7 @@ NP
 nN
 VO
 VO
-Yb
+kw
 aT
 dJ
 TW
