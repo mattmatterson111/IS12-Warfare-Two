@@ -226,6 +226,7 @@
 
 //TODO: make it so this is called more reliably, instead of sometimes by bullet_act() and sometimes not
 /obj/item/projectile/proc/on_hit(var/atom/target, var/blocked = 0, var/def_zone = null)
+	set waitfor = 0
 	if(blocked >= 100)	//Full block
 		return FALSE
 	if(!isliving(target))
@@ -261,6 +262,7 @@
 
 //called when the projectile stops flying because it collided with something
 /obj/item/projectile/proc/on_impact(var/atom/A)
+	set waitfor = 0
 	var/turf/T = get_turf(A)
 	if(T)
 		T.visual_effect(src)
@@ -760,6 +762,7 @@
 	return TRUE
 
 /obj/item/projectile/Bump(atom/A as mob|obj|turf|area, forced=0)
+	set waitfor = 0
 	. = ..()
 	if(A == src)
 		return FALSE	//no.
@@ -922,6 +925,7 @@
 	return
 
 /obj/item/projectile/Crossed(atom/movable/AM) //A mob moving on a tile with a projectile is hit by it.
+	set waitfor = 0
 	..()
 	if(isliving(AM) && (AM.density || AM == original) && !(pass_flags & PASS_FLAG_MOB))
 		Bump(AM)

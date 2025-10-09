@@ -74,6 +74,7 @@
 
 	var/path = browse_files("data/logs/")
 	if(!path)
+		to_chat(src, "No path found.")
 		return
 
 	if(file_spam_check())

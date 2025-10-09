@@ -380,7 +380,7 @@
 
 	var/old_loc = src.loc
 
-	if(isworld(src.loc) && src.loc != user.loc)
+	if(isturf(loc) && src.loc != user.loc)
 
 		var/direction = get_dir(user, src)
 
