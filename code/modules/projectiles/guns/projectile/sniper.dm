@@ -62,9 +62,12 @@
 	update_icon()
 
 /obj/item/gun/projectile/heavysniper/special_check(mob/user)
+
 	if(bolt_open)
-		to_chat(user, "<span class='warning'>You can't fire [src] while the bolt is open!</span>")
+		to_chat(user, "<span class='warning'>The PTSD 41 can't fire [src] while the bolt is open!</span>")
 		return 0
+	if(misfire)
+		return 1
 	if(!user.zoomed)
 		to_chat(user, "<span class='warning'>You can't get a clear shot to fire without looking down the scope!</span>")
 		return 0

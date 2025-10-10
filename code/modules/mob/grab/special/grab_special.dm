@@ -75,12 +75,15 @@
 	var/mob/living/carbon/human/affecting = G.affecting
 	assailant.doing_something = TRUE // can't spam use the bone breakage anymore.
 	if(assailant.doing_something)
+		assailant.doing_something = FALSE //so it doesn't break everything with a doafter
 		return
 	if(!O)
 		to_chat(assailant, "<span class='warning'>[affecting] is missing that body part!</span>")
+		assailant.doing_something = FALSE
 		return
 	if(!G.wielded)
 		to_chat(assailant, "<span class='warning'>We must wield them in both hands to break their limb.</span>")
+		assailant.doing_something = FALSE
 		return
 
 	if(!do_after(assailant, 30, affecting))

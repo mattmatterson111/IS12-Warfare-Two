@@ -39,4 +39,4 @@ The major change here is that if you host a server using any code licensed under
 
 ## How do I get this to compile?
 
-You need the latest version of BYOND 514. 515 and 516 does not work currently.
+You need the latest version of BYOND 516.

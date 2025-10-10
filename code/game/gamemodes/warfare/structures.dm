@@ -733,7 +733,7 @@
 		icon_state = "flag[progress]"
 	overlays.Cut()
 	if(progress == 4)
-		if(lastuser.warfare_faction == RED_TEAM)
+		if(name == "Red faction banner")
 			for(var/turf/simulated/floor/T in view(range, src))
 				if(!istype(T, /turf/simulated/open))
 					set_light(4, 1, "#ee8080")
@@ -890,8 +890,8 @@
 				user.doing_something = FALSE
 				return
 
-/obj/item/melee/classic_baton/factionbanner/red //yes it behaves as normal if someone reports that this is deploying as other color I ain't fixin that
-	name = "Red Flagpole"
+/obj/item/melee/classic_baton/factionbanner/red //yes it behaves as normal if someone reports that this is deploying as other color I ain't fixin that 
+	name = "Red Flagpole" //well I did end up fixin that anyway loooool
 
 /obj/item/melee/classic_baton/factionbanner/blue
 	name = "Blue Flagpole"

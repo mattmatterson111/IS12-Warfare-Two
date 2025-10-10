@@ -553,6 +553,8 @@
 	var/deployed = FALSE
 
 /obj/item/gun/projectile/automatic/mg08/special_check(var/mob/user)
+	if(misfire)
+		return 1
 	if(!deployed)//Can't fire.
 		to_chat(user, "<span class='danger'>I can't fire it if it's not deployed.</span>")
 		return 0

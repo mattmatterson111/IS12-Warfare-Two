@@ -94,6 +94,7 @@
 	var/jammed_icon
 	var/gun_type = "generic"
 	var/bayonet_icon
+	var/misfire = FALSE //for guns with special checks like the PTSD41 and Harbinger
 
 	var/next_fire_time = 0
 
@@ -704,10 +705,12 @@
 
 /obj/item/gun/proc/check_gun_safety(mob/user)//Used in inventory.dm to see whether or not you fucking shoot someone when you drop your gun on the ground.
 	if(!safety && prob(10))
+		misfire = TRUE
 		user.visible_message("<span class='warning'>[src] goes off!</span>")
 		var/list/targets = list(user)
 		targets += trange(2, src)
 		afterattack(pick(targets), user)
+		misfire = FALSE
 
 
 
