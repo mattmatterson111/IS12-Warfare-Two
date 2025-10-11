@@ -80,9 +80,16 @@
 		playsound(src, 'sound/effects/thehatchin.ogg', 75, 0.25)
 		flick("[icon_state]_o", src)
 		return
-	
+
 	else if(istype(O, /obj/item/melee/classic_baton/factionbanner/red) && id == BLUE_TEAM || istype(O, /obj/item/melee/classic_baton/factionbanner/blue) && id == RED_TEAM ) // JACKPOT!!!
 		GLOB.faction_dosh[id] += 750
+		qdel(O)
+		playsound(src, 'sound/effects/thehatchin.ogg', 75, 0.25)
+		flick("[icon_state]_o", src)
+		return
+	//more shitcode from me!
+	else if(istype(O, /obj/item/clothing/accessory/medal/red) && id == BLUE_TEAM || istype(O, /obj/item/clothing/accessory/medal/blue) && id == RED_TEAM ) // Elite down
+		GLOB.faction_dosh[id] += 200
 		qdel(O)
 		playsound(src, 'sound/effects/thehatchin.ogg', 75, 0.25)
 		flick("[icon_state]_o", src)
