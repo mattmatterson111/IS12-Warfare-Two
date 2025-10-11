@@ -247,3 +247,15 @@
 	description = "<span class='danger'>That trench kiss just felt horrible! I can't shake off this feeling, I need to do it RIGHT!</span>\n"
 	happiness = -25
 	timeout = FALSE
+
+//Awarded a medal
+/datum/happiness_event/awarded
+	description = "<span class='binfo'>I have been awarded by the captain! I've done a great job!\n"
+	happiness = 10
+	timeout = 3000
+
+//and taketh away
+/datum/happiness_event/demoted
+	description = "<span class='danger'>I must've done something wrong... My medal has been taken away from me.\n"
+	happiness = -10
+	timeout = 3000

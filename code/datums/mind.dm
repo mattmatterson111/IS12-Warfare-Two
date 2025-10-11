@@ -46,6 +46,7 @@
 	var/role_alt_title
 
 	var/datum/job/assigned_job
+	var/datum/backstory/backstory //this may be useful in the future
 
 	var/list/datum/objective/objectives = list()
 	var/list/datum/objective/special_verbs = list()

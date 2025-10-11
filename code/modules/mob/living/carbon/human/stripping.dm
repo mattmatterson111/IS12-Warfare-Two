@@ -94,6 +94,13 @@
 	else if(user.unEquip(held, TRUE))
 		var/obj/item/clothing/C = get_equipped_item(text2num(slot_to_strip_text))
 		if(istype(C) && C.can_attach_accessory(held))
+			//MEDAL TRACKING
+			if(istype(held, /obj/item/clothing/accessory/medal))
+				var/obj/item/clothing/accessory/medal/M = held
+				if(!M.try_award_medal(user, src))
+					user.put_in_active_hand(held)
+					return
+			// Only attach if validation succeeded
 			C.attach_accessory(user, held)
 		else if(!equip_to_slot_if_possible(held, text2num(slot_to_strip_text), del_on_fail=0, disable_warning=1, redraw_mob=1))
 			user.put_in_active_hand(held)

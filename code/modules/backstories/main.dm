@@ -17,7 +17,7 @@
 	if(!backstory) // you get nothing
 		return
 	backstory.apply(user)
-	user.backstory = backstory
+	user.mind.backstory = backstory //trve and fvcking real (fuck my interwar life)
 
 /datum/backstory/
 	var/name = "BASE NAME"
