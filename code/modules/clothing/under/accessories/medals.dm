@@ -122,11 +122,13 @@
 	//Check medal team matches captain team
 	if(warfare_team != captain_team)
 		to_chat(awarder, SPAN_MINDVOICE("THIS IS BORDERLINE TREASON! THE COMMAND HAS BEEN NOTIFIED!"))
+		log_and_message_admins("attempted to award a [warfare_team] medal while being on [captain_team] team.", awarder)
 		return FALSE
 
 	//Check recipient is on same team
 	if(awarder.warfare_faction != recipient.warfare_faction)
 		to_chat(awarder, SPAN_MINDVOICE("THIS IS BORDERLINE TREASON! THE COMMAND HAS BEEN NOTIFIED!"))
+		log_and_message_admins("attempted to award a [warfare_team] medal to [key_name(recipient)] who is on the enemy team.", awarder)
 		return FALSE
 
 	//Self-awarding check
