@@ -179,7 +179,15 @@ GLOBAL_LIST_EMPTY(faction_dosh)
 		qdel(O)
 		playsound(user.loc, 'sound/machines/rpf/audiotapein.ogg', 50, 0.4)
 		return
+
+
+	else if(istype(O, /obj/item/clothing/accessory/medal/red) && id == BLUE_TEAM || istype(O, /obj/item/clothing/accessory/medal/blue) && id == RED_TEAM )
+		GLOB.faction_dosh[id] += 200
+		qdel(O)
+		playsound(user.loc, 'sound/machines/rpf/audiotapein.ogg', 50, 0.4)
+		return
 */
+
 /obj/machinery/kaos/cargo_machine/attack_hand(mob/living/user as mob) // notice: find a way to sync both versions without having them be duplicates // Done, ignore this notice
 	var/machine_input
 	if(!CanPhysicallyInteract(user))
