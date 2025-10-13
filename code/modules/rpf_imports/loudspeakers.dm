@@ -25,6 +25,7 @@ GLOBAL_LIST_EMPTY(speaker_ids)
 	var/rune_color = "#f5d0a6"
 
 	var/local = TRUE
+	var/warfare_faction // used for a funny thing
 
 /datum/speakercast_template/male_yell
 	additional_talk_sound = list('sound/effects/b_templates/male_yell01.ogg','sound/effects/b_templates/male_yell02.ogg','sound/effects/b_templates/male_yell03.ogg')//list('sound/effects/megaphone_03.ogg','sound/effects/megaphone_04.ogg')
@@ -50,12 +51,14 @@ GLOBAL_LIST_EMPTY(speaker_ids)
 	speakerstyle = "boldannounce_blue" // h3 + warning makes it CURLY (disco freaky) :>
 	textstyle = "staffwarn_blue"
 	rune_color = "#0077cc"
+	warfare_faction = BLUE_TEAM
 
 /datum/speakercast_template/red
 	voice_name = "UNKNOWN"
 	rune_color = "#c51e1e"
 	speakerstyle = "boldannounce" // h3 + warning makes it CURLY (disco freaky) :>
 	textstyle = "staffwarn"
+	warfare_faction = RED_TEAM
 
 /datum/speakercast_template/red/highcom
 	broadcast_start_sound = 'sound/effects/b_templates/friendcast_start.ogg'
@@ -154,6 +157,7 @@ GLOBAL_LIST_EMPTY(speaker_ids)
 	var/sound/start_sound = sound(broadcast_template.broadcast_start_sound, repeat = 0, volume=90)
 	for(var/mob/m in GLOB.player_list)
 		if(!m.client) continue
+	//	if(broadcast_template.warfare_faction && !broadcast_template.warfare_faction == m.warfare_faction && !isobserver(m)) continue
 		sound_to(m, start_sound)
 		to_chat(m,"<h2><span class='[broadcast_template.speakerstyle]'>PREPARE FOR A PRIORITY ANNOUNCEMENT</span></h2>")
 
@@ -178,6 +182,7 @@ GLOBAL_LIST_EMPTY(speaker_ids)
 	var/sound/end_sound = sound(broadcast_template.broadcast_end_sound, repeat = 0, volume=90)
 	for(var/mob/m in GLOB.player_list)
 		if(!m.client) continue
+		//if(broadcast_template.warfare_faction && !broadcast_template.warfare_faction == m.warfare_faction && !isobserver(m)) continue
 		sound_to(m, end_sound)
 
 /client/proc/warfare_announcement()
@@ -232,6 +237,7 @@ GLOBAL_LIST_EMPTY(speaker_ids)
 	else
 		for(var/mob/m in GLOB.player_list)
 			if(!m.client) continue
+		//	if(broadcast_template.warfare_faction && !broadcast_template.warfare_faction == m.warfare_faction && !isobserver(m)) continue
 			mobstosendto |= m
 			clients |= m.client
 		for(var/obj/structure/announcementspeaker/s in filtered)

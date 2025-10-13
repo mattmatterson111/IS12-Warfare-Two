@@ -120,7 +120,7 @@ GLOBAL_LIST_EMPTY(faction_dosh)
 	if(id)
 		GLOB.faction_dosh[id] = 500
 	reconnectpads()
-
+/*
 /obj/machinery/kaos/cargo_machine/attackby(obj/item/O as obj, mob/user as mob)
 	if(istype(O, /obj/item/spacecash))
 		var/obj/item/spacecash/dolla = O
@@ -173,13 +173,13 @@ GLOBAL_LIST_EMPTY(faction_dosh)
 		qdel(O)
 		playsound(user.loc, 'sound/machines/rpf/audiotapein.ogg', 50, 0.4)
 		return
-	
+
 	else if(istype(O, /obj/item/melee/classic_baton/factionbanner/red) && id == BLUE_TEAM || istype(O, /obj/item/melee/classic_baton/factionbanner/blue) && id == RED_TEAM ) // JACKPOT!!!
 		GLOB.faction_dosh[id] += 750
 		qdel(O)
 		playsound(user.loc, 'sound/machines/rpf/audiotapein.ogg', 50, 0.4)
 		return
-
+*/
 /obj/machinery/kaos/cargo_machine/attack_hand(mob/living/user as mob) // notice: find a way to sync both versions without having them be duplicates // Done, ignore this notice
 	var/machine_input
 	if(!CanPhysicallyInteract(user))
@@ -294,6 +294,7 @@ GLOBAL_LIST_EMPTY(faction_dosh)
 					if(useable && selected_category == "- Units")
 						if(productprice <= GLOB.faction_dosh[id])
 							if(productname == "Reinforcements")
+								/*
 								if(id == BLUE_TEAM)
 									var/newcount = SSwarfare.blue.left + 5
 									SSwarfare.blue.left = newcount
@@ -310,6 +311,10 @@ GLOBAL_LIST_EMPTY(faction_dosh)
 									playsound(src.loc, 'sound/machines/rpf/denybeep.ogg', 100, 0.5)
 									GLOB.faction_dosh[id] -= productprice
 									return
+								*/
+								to_chat(user, "\icon[src]You have been barred from further purchases of reinforcements\n\nPlease consult a technician if you believe this decision was made in error.")
+								playsound(src.loc, 'sound/machines/rpf/denybeep.ogg', 100, 0.5)
+								return
 							else
 								playsound(src.loc, 'sound/machines/rpf/sendmsgcargo.ogg', 100, 0)
 								var/datum/job/team_job = SSjobs.GetJobByType(productpath) //Open up the corresponding job on that team.
