@@ -188,13 +188,10 @@
 /turf/simulated/floor/urban/tiles,
 /area/warfare/homebase/red/stoneroom)
 "aB" = (
-/obj/structure/closet/crate,
-/obj/random/canned_food/blue,
-/obj/random/canned_food/blue,
-/obj/random/canned_food/blue,
-/obj/structure/table/rack/holorack,
-/turf/simulated/floor/concrete/random,
-/area/warfare/battlefield/trench_section/room)
+/obj/effect/floor_decal/newcorner/grey,
+/obj/effect/decal/cleanable/generic,
+/turf/simulated/floor/urban/cinder,
+/area/warfare/homebase/red/hallway)
 "aC" = (
 /obj/item/storage/fancy/cigarettes/jerichos,
 /obj/item/flame/lighter/random,
@@ -908,12 +905,12 @@
 /turf/simulated/floor/urban/cinder,
 /area/warfare/homebase/blue/room)
 "cO" = (
-/obj/machinery/light/small/bunker{
-	pixel_x = 0;
-	pixel_y = 32
+/obj/structure/sign/warning/biohazard,
+/obj/effect/floor_decal/industrial/warning/dust{
+	dir = 4
 	},
-/turf/simulated/floor/concrete/random,
-/area/warfare/battlefield/trench_section/stoneroom)
+/turf/simulated/floor/urban/cinder,
+/area/warfare/homebase/red/hallway)
 "cP" = (
 /obj/structure/closet/crate,
 /obj/random/canned_food/blue,
@@ -953,10 +950,11 @@
 /turf/simulated/floor/wood,
 /area/warfare/battlefield/trench_section/room)
 "cY" = (
-/obj/effect/floor_decal/industrial/warning/dust{
-	dir = 1
+/obj/effect/floor_decal/newcorner/grey/diagonal,
+/obj/effect/floor_decal/newcorner/grey/corner{
+	dir = 4
 	},
-/turf/simulated/floor/concrete/random,
+/turf/simulated/floor/urban/cinder,
 /area/warfare/homebase/red/hallway)
 "cZ" = (
 /obj/structure/table/rack/nosmooth/metal,
@@ -1231,7 +1229,6 @@
 /turf/simulated/floor/urban/tiles/blue,
 /area/warfare/homebase/blue/stoneroom)
 "dM" = (
-/obj/effect/floor_decal/newcorner/grey/diagonal,
 /obj/effect/floor_decal/newcorner/grey/corner{
 	dir = 4
 	},
@@ -1571,9 +1568,10 @@
 /turf/simulated/open,
 /area/warfare/homebase/blue/hallway)
 "eL" = (
-/obj/machinery/door/airlock/multi_tile/metal/maintenance/red,
-/obj/effect/decal/cleanable/ash,
-/turf/simulated/floor/urban/tiles,
+/obj/effect/floor_decal/newcorner/grey/corner,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/urban/cinder,
 /area/warfare/homebase/red/hallway)
 "eN" = (
 /obj/machinery/door/airlock/multi_tile/metal/maintenance/blue,
@@ -1981,12 +1979,8 @@
 /turf/simulated/open,
 /area/warfare/battlefield/capture_point/blue/two)
 "gf" = (
-/obj/effect/floor_decal/newcorner/grey/corner{
-	dir = 4
-	},
-/obj/effect/floor_decal/newcorner/grey/corner{
-	dir = 1
-	},
+/obj/effect/floor_decal/newcorner/grey/corner,
+/obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/urban/cinder,
 /area/warfare/homebase/red/hallway)
 "gg" = (
@@ -1994,9 +1988,10 @@
 /turf/simulated/wall/perspecticrete,
 /area/warfare/homebase/blue/room)
 "gh" = (
-/obj/effect/floor_decal/newcorner/grey,
-/obj/effect/decal/cleanable/generic,
-/turf/simulated/floor/urban/cinder,
+/obj/effect/floor_decal/industrial/warning/dust{
+	dir = 1
+	},
+/turf/simulated/floor/concrete/random,
 /area/warfare/homebase/red/hallway)
 "gi" = (
 /turf/simulated/floor/dirty/indestructable,
@@ -2842,11 +2837,12 @@
 	},
 /area/warfare/battlefield/trench_section/room)
 "ke" = (
-/obj/effect/floor_decal/newcorner/grey/corner{
-	dir = 4
-	},
-/turf/simulated/floor/urban/cinder,
-/area/warfare/homebase/red/hallway)
+/obj/structure/closet/crate,
+/obj/random/canned_food/blue,
+/obj/random/canned_food/blue,
+/obj/structure/table/rack/holorack,
+/turf/simulated/floor/concrete/random,
+/area/warfare/battlefield/trench_section/room)
 "kl" = (
 /turf/simulated/floor/urban/cinder,
 /area/warfare/homebase/red/hallway)
@@ -3110,9 +3106,12 @@
 /turf/simulated/floor/urban/tiles/blue,
 /area/warfare/homebase/blue/room)
 "mc" = (
-/obj/effect/floor_decal/newcorner/grey/diagonal,
-/turf/simulated/floor/urban/cinder,
-/area/warfare/homebase/red/hallway)
+/obj/machinery/light/small/bunker{
+	pixel_x = 0;
+	pixel_y = 32
+	},
+/turf/simulated/floor/concrete/random,
+/area/warfare/battlefield/trench_section/stoneroom)
 "mf" = (
 /obj/effect/landmark/start{
 	name = "Red Soldier"
@@ -3387,10 +3386,9 @@
 	},
 /area/space)
 "nD" = (
-/obj/structure/closet/crate,
-/obj/item/ammo_magazine/c45rifle/akarabiner,
-/turf/simulated/floor/concrete/random,
-/area/warfare/homebase/blue/largeroom)
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/urban/cinder,
+/area/warfare/homebase/red/largeroom)
 "nJ" = (
 /obj/structure/trench_wall/innercorners{
 	dir = 8
@@ -3691,10 +3689,9 @@
 /turf/unsimulated/wall/submarine/doors,
 /area/train/red)
 "pC" = (
-/obj/structure/closet/crate,
-/obj/item/ammo_magazine/c45rifle/akarabiner,
-/turf/simulated/floor/concrete/random,
-/area/warfare/homebase/red/largeroom)
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/urban/tiles,
+/area/warfare/homebase/red/hallway)
 "pF" = (
 /turf/simulated/wall/perspecticrete,
 /area/space)
@@ -4925,10 +4922,6 @@
 /obj/effect/lighting_dummy/daylight,
 /turf/simulated/floor/stones,
 /area/warfare/homebase/red/trainyard)
-"wa" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/urban/tiles,
-/area/warfare/homebase/red/hallway)
 "wc" = (
 /obj/effect/floor_decal/trench{
 	dir = 6
@@ -5061,7 +5054,7 @@
 	},
 /area/warfare/homebase/blue/room)
 "xd" = (
-/obj/effect/floor_decal/newcorner/grey/quarter,
+/obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/urban/cinder,
 /area/warfare/homebase/red/hallway)
 "xe" = (
@@ -6472,10 +6465,9 @@
 /turf/simulated/floor/concrete/random,
 /area/warfare/battlefield/trench_section/underground/stormsystem/hall)
 "FT" = (
-/obj/effect/floor_decal/newcorner/grey/corner,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/urban/cinder,
+/obj/machinery/door/airlock/multi_tile/metal/maintenance/red,
+/obj/effect/decal/cleanable/ash,
+/turf/simulated/floor/urban/tiles,
 /area/warfare/homebase/red/hallway)
 "FW" = (
 /obj/machinery/door/airlock/multi_tile/metal/maintenance/blue,
@@ -6523,11 +6515,6 @@
 	},
 /turf/simulated/floor/dirty/indestructable,
 /area/warfare/homebase/blue)
-"Gk" = (
-/obj/effect/floor_decal/newcorner/grey/corner,
-/obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/urban/cinder,
-/area/warfare/homebase/red/hallway)
 "Gn" = (
 /obj/structure/bed/roller,
 /obj/machinery/light{
@@ -8386,9 +8373,11 @@
 /turf/simulated/floor/urban/concrete,
 /area/warfare/homebase/red/trainyard)
 "Te" = (
-/obj/structure/sign/warning/biohazard,
-/obj/effect/floor_decal/industrial/warning/dust{
+/obj/effect/floor_decal/newcorner/grey/corner{
 	dir = 4
+	},
+/obj/effect/floor_decal/newcorner/grey/corner{
+	dir = 1
 	},
 /turf/simulated/floor/urban/cinder,
 /area/warfare/homebase/red/hallway)
@@ -8614,6 +8603,7 @@
 /area/warfare/battlefield/capture_point/red/one)
 "UC" = (
 /obj/structure/closet/crate,
+/obj/random/canned_food/blue,
 /obj/random/canned_food/blue,
 /obj/random/canned_food/blue,
 /obj/structure/table/rack/holorack,
@@ -9048,9 +9038,9 @@
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/red/hallway)
 "Xx" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/floor_decal/newcorner/grey/diagonal,
 /turf/simulated/floor/urban/cinder,
-/area/warfare/homebase/red/largeroom)
+/area/warfare/homebase/red/hallway)
 "Xy" = (
 /obj/item/ammo_box/shotgun,
 /obj/structure/table/rack/nosmooth/wood/alt{
@@ -9133,7 +9123,7 @@
 /turf/simulated/floor/wood,
 /area/warfare/battlefield/trench_section/underground/indoors)
 "Yd" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/floor_decal/newcorner/grey/quarter,
 /turf/simulated/floor/urban/cinder,
 /area/warfare/homebase/red/hallway)
 "Ye" = (
@@ -14276,7 +14266,7 @@ bk
 ZP
 NQ
 NQ
-UC
+ke
 dl
 cn
 Da
@@ -14576,7 +14566,7 @@ qb
 NQ
 NQ
 NQ
-aB
+UC
 dl
 cn
 NP
@@ -25564,12 +25554,12 @@ VP
 VP
 VP
 jP
-xd
-Gk
-FT
 Yd
+gf
+eL
+xd
+cY
 dM
-ke
 Qt
 VP
 VP
@@ -25865,10 +25855,10 @@ VP
 VP
 jP
 kl
-mc
-gh
-mc
-gf
+Xx
+aB
+Xx
+Te
 kl
 Qt
 VP
@@ -26165,7 +26155,7 @@ jP
 jP
 jP
 qm
-Te
+cO
 SV
 jP
 jP
@@ -26463,8 +26453,8 @@ wR
 wR
 Qb
 wR
-eL
-wa
+FT
+pC
 wR
 wR
 jD
@@ -26765,8 +26755,8 @@ Wq
 wR
 wR
 wR
-wa
-wa
+pC
+pC
 wR
 wR
 Wq
@@ -27365,8 +27355,8 @@ Br
 bg
 Km
 bq
-Xx
-Xx
+nD
+nD
 Km
 bg
 Br
@@ -28975,7 +28965,7 @@ gd
 ge
 ge
 bi
-cO
+mc
 be
 MW
 bi
@@ -29875,7 +29865,7 @@ gd
 ge
 ge
 bi
-cO
+mc
 be
 Sf
 bi
@@ -33775,7 +33765,7 @@ gd
 ge
 qR
 bi
-cO
+mc
 be
 Sf
 bi
@@ -34654,14 +34644,14 @@ rM
 rM
 Oa
 Wi
-nD
-nD
+Wi
+Wi
 au
 ZY
 Xy
 aw
-nD
-nD
+Wi
+Wi
 Cj
 fR
 fR
@@ -34675,7 +34665,7 @@ gd
 ge
 qR
 bi
-cO
+mc
 be
 MW
 bi
@@ -34864,8 +34854,8 @@ IX
 Ql
 xK
 DJ
-pC
-pC
+dn
+dn
 dn
 Ds
 Fr
@@ -38758,7 +38748,7 @@ he
 Cb
 Cb
 xf
-cY
+gh
 tk
 zM
 tk
