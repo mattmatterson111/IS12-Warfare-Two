@@ -75,10 +75,10 @@ GLOBAL_LIST_EMPTY(speaker_ids)
 /datum/speakercast_template/male_yell/glob
 	local = FALSE
 
-/datum/speakercast_template/male_mumble
+/datum/speakercast_template/male_mumble/glob
 	local = FALSE
 
-/datum/speakercast_template/female_mumble
+/datum/speakercast_template/female_mumble/glob
 	local = FALSE
 
 /obj/structure/announcementmicrophone
