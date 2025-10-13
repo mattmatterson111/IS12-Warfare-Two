@@ -63,7 +63,7 @@ GLOBAL_LIST_EMPTY(speaker_ids)
 /datum/speakercast_template/red/highcom
 	broadcast_start_sound = 'sound/effects/b_templates/friendcast_start.ogg'
 	broadcast_end_sound = 'sound/effects/b_templates/friendcast_end.ogg'
-/datum/speakercast_template/blue
+/datum/speakercast_template/blue/highcom
 	broadcast_start_sound = 'sound/effects/b_templates/friendcast_start.ogg'
 	broadcast_end_sound = 'sound/effects/b_templates/friendcast_end.ogg'
 
