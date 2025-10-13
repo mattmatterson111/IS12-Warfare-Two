@@ -259,9 +259,9 @@
 	icon_state = "bogchair_preview"
 
 /obj/structure/bed/chair/red
-	icon_state = "greenchair_preview"
+	icon_state = "metalchair_preview"
 	color = "#FFFFFF"
-	base_icon = "greenchair"
+	base_icon = "metalchair"
 /obj/structure/bed/chair/blue
 	icon_state = "bluechair_preview"
 	color = "#FFFFFF"
@@ -270,3 +270,8 @@
 	icon_state = "metalchair_preview"
 	color = "#FFFFFF"
 	base_icon = "metalchair"
+
+/obj/structure/bed/chair/green
+	icon_state = "greenchair_preview"
+	color = "#FFFFFF"
+	base_icon = "greenchair"

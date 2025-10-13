@@ -24,19 +24,27 @@ GLOBAL_LIST_EMPTY(speaker_ids)
 
 	var/rune_color = "#f5d0a6"
 
+	var/local = TRUE
+
 /datum/speakercast_template/male_yell
 	additional_talk_sound = list('sound/effects/b_templates/male_yell01.ogg','sound/effects/b_templates/male_yell02.ogg','sound/effects/b_templates/male_yell03.ogg')//list('sound/effects/megaphone_03.ogg','sound/effects/megaphone_04.ogg')
+	broadcast_start_sound = 'sound/effects/b_templates/friendcast_start.ogg'
+	broadcast_end_sound = 'sound/effects/b_templates/friendcast_end.ogg'
 
 /datum/speakercast_template/male_mumble
 	additional_talk_sound = list('sound/effects/b_templates/male_mumble01.ogg','sound/effects/b_templates/male_mumble02.ogg','sound/effects/b_templates/male_mumble03.ogg')//list('sound/effects/megaphone_03.ogg','sound/effects/megaphone_04.ogg')
+	broadcast_start_sound = 'sound/effects/b_templates/friendcast_start.ogg'
+	broadcast_end_sound = 'sound/effects/b_templates/friendcast_end.ogg'
 
 /datum/speakercast_template/female_mumble
 	additional_talk_sound = list('sound/effects/b_templates/fem_01.ogg','sound/effects/b_templates/fem_02.ogg','sound/effects/b_templates/fem_03.ogg','sound/effects/b_templates/fem_04.ogg','sound/effects/b_templates/fem_05.ogg')//list('sound/effects/megaphone_03.ogg','sound/effects/megaphone_04.ogg')
+	broadcast_start_sound = 'sound/effects/b_templates/friendcast_start.ogg'
+	broadcast_end_sound = 'sound/effects/b_templates/friendcast_end.ogg'
 
 /datum/speakercast_template/blue
 	name = "Blue"
 
-	voice_name = "Blusnian High Command"
+	voice_name = "UNKNOWN"
 	additional_talk_sound = list('sound/effects/loudspeaker_01.ogg','sound/effects/loudspeaker_02.ogg','sound/effects/loudspeaker_03.ogg','sound/effects/loudspeaker_04.ogg','sound/effects/loudspeaker_05.ogg')
 	additional_talk_sound_volume = 55
 	speakerstyle = "boldannounce_blue" // h3 + warning makes it CURLY (disco freaky) :>
@@ -48,6 +56,27 @@ GLOBAL_LIST_EMPTY(speaker_ids)
 	rune_color = "#c51e1e"
 	speakerstyle = "boldannounce" // h3 + warning makes it CURLY (disco freaky) :>
 	textstyle = "staffwarn"
+
+/datum/speakercast_template/red/highcom
+	broadcast_start_sound = 'sound/effects/b_templates/friendcast_start.ogg'
+	broadcast_end_sound = 'sound/effects/b_templates/friendcast_end.ogg'
+/datum/speakercast_template/blue
+	broadcast_start_sound = 'sound/effects/b_templates/friendcast_start.ogg'
+	broadcast_end_sound = 'sound/effects/b_templates/friendcast_end.ogg'
+
+/datum/speakercast_template/red/highcom/glob
+	local = FALSE
+/datum/speakercast_template/blue/highcom/glob
+	local = FALSE
+
+/datum/speakercast_template/male_yell/glob
+	local = FALSE
+
+/datum/speakercast_template/male_mumble
+	local = FALSE
+
+/datum/speakercast_template/female_mumble
+	local = FALSE
 
 /obj/structure/announcementmicrophone
 	name = "captain's microphone"
@@ -116,9 +145,17 @@ GLOBAL_LIST_EMPTY(speaker_ids)
 	var/list/filtered = broadcast_template.get_speakers(broadcast_id)
 	if(!length(filtered)) return message_admins("[ckey] attempted to toggle on a warfare announcement.\nThere are no speakers under that ID.") // we need these
 
+
 	for(var/obj/o in filtered)
 		soundoverlay(o, newplane = FOOTSTEP_ALERT_PLANE)
-		playsound(o.loc, broadcast_template.broadcast_start_sound, broadcast_template.broadcast_start_sound_volume, 0)
+		if(broadcast_template.local)
+			playsound(o.loc, broadcast_template.broadcast_start_sound, broadcast_template.broadcast_start_sound_volume, 0)
+	if(broadcast_template.local) return
+	var/sound/start_sound = sound(broadcast_template.broadcast_start_sound, repeat = 0, volume=90)
+	for(var/mob/m in GLOB.player_list)
+		if(!m.client) continue
+		sound_to(m, start_sound)
+		to_chat(m,"<h2><span class='[broadcast_template.speakerstyle]'>PREPARE FOR A PRIORITY ANNOUNCEMENT</span></h2>")
 
 /client/proc/toggle_off_warf_speakers()
 	set name = "toggle off broadcast"
@@ -135,7 +172,13 @@ GLOBAL_LIST_EMPTY(speaker_ids)
 
 	for(var/obj/o in filtered)
 		soundoverlay(o, newplane = FOOTSTEP_ALERT_PLANE)
-		playsound(o.loc, broadcast_template.broadcast_end_sound, broadcast_template.broadcast_end_sound_volume, 0)
+		if(broadcast_template.local)
+			playsound(o.loc, broadcast_template.broadcast_end_sound, broadcast_template.broadcast_end_sound_volume, 0)
+	if(broadcast_template.local) return
+	var/sound/end_sound = sound(broadcast_template.broadcast_end_sound, repeat = 0, volume=90)
+	for(var/mob/m in GLOB.player_list)
+		if(!m.client) continue
+		sound_to(m, end_sound)
 
 /client/proc/warfare_announcement()
 	set name = "make broadcast"
@@ -173,19 +216,31 @@ GLOBAL_LIST_EMPTY(speaker_ids)
 	var/this_sound = null
 	if(broadcast_template.additional_talk_sound)
 		this_sound = pick(shuffle(broadcast_template.additional_talk_sound))
-	for(var/obj/structure/announcementspeaker/s in filtered)
-		for(var/mob/m in view(world.view + 8, get_turf(s)))
-			if(!isobserver(m))
-				if(m.stat == UNCONSCIOUS || m.is_deaf() || m.stat == DEAD)
-					continue
+	if(broadcast_template.local)
+		for(var/obj/structure/announcementspeaker/s in filtered)
+			for(var/mob/m in view(world.view + 8, get_turf(s)))
+				if(!isobserver(m))
+					if(m.stat == UNCONSCIOUS || m.is_deaf() || m.stat == DEAD)
+						continue
+				mobstosendto |= m
+				soundoverlay(s, newplane = FOOTSTEP_ALERT_PLANE)
+				if(m.client)
+					clients |= m.client
+			// it got annoying REALLY FAST having them all being different..
+			playsound(get_turf(s), this_sound , broadcast_template.additional_talk_sound_volume, broadcast_template.additional_talk_sound_vary, ignore_walls = FALSE, extrarange = 4)
+			INVOKE_ASYNC(s, PROC_BY_TYPE(/atom/movable, animate_chat), "<font color='[broadcast_template.rune_color]'><b>[text]", null, 0, clients, 5 SECONDS, 1)
+	else
+		for(var/mob/m in GLOB.player_list)
+			if(!m.client) continue
 			mobstosendto |= m
+			clients |= m.client
+		for(var/obj/structure/announcementspeaker/s in filtered)
+			playsound(get_turf(s), this_sound , broadcast_template.additional_talk_sound_volume, broadcast_template.additional_talk_sound_vary, ignore_walls = FALSE, extrarange = 4)
+			INVOKE_ASYNC(s, PROC_BY_TYPE(/atom/movable, animate_chat), "<font color='[broadcast_template.rune_color]'><b>[text]", null, 0, clients, 5 SECONDS, 1)
 			soundoverlay(s, newplane = FOOTSTEP_ALERT_PLANE)
-			if(m.client)
-				clients |= m.client
-		// it got annoying REALLY FAST having them all being different..
-		playsound(get_turf(s), this_sound , broadcast_template.additional_talk_sound_volume, broadcast_template.additional_talk_sound_vary, ignore_walls = FALSE, extrarange = 4)
-		INVOKE_ASYNC(s, PROC_BY_TYPE(/atom/movable, animate_chat), "<font color='[broadcast_template.rune_color]'><b>[text]", null, 0, clients, 5 SECONDS, 1)
+	var/sound/talk_sound = sound(this_sound, repeat = 0, volume=broadcast_template.additional_talk_sound_volume)
 	for(var/mob/m in mobstosendto)
+		sound_to(m, talk_sound)
 		to_chat(m,"<h2><span class='[broadcast_template.speakerstyle]'>[broadcast_template.voice_name] [broadcast_template.voice_verb], \"<span class='[broadcast_template.textstyle]'>[text]</span>\"</span></h2>")
 
 /obj/structure/announcementmicrophone/Initialize()

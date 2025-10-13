@@ -60,6 +60,13 @@ obj/item/board/attackby(obj/item/I as obj, mob/user as mob)
 
 	return 1
 
+/datum/asset/simple/boardgame
+	verify = TRUE
+	assets = list(
+	"dark.png" = 'code/modules/games/resources/dark.png',
+	"white.png" = 'code/modules/games/resources/white.png',
+	"select_overlay.png" = 'code/modules/games/resources/select_overlay.png',
+	)
 
 /obj/item/board/interact(mob/user as mob)
 	if(user.is_physically_disabled() || (!isAI(user) && !user.Adjacent(src))) //can't see if you arent conscious. If you are not an AI you can't see it unless you are next to it, either.
@@ -67,45 +74,128 @@ obj/item/board/attackby(obj/item/I as obj, mob/user as mob)
 		user.unset_machine()
 		return
 
+	var/datum/asset/stuff = get_asset_datum(/datum/asset/simple/boardgame)
+	stuff.send(user.client)
+
 	var/list/dat = list({"
 	<html><head><style type='text/css'>
-	td,td a{height:50px;width:50px}table{border-spacing:0;border:none;border-collapse:collapse}td{text-align:center;padding:0;background-repeat:no-repeat;background-position:center center}td.light{background-color:#6cf}td.dark{background-color:#544b50}td.selected{background-color:#c8dbc3}td a{display:table-cell;text-decoration:none;position:relative;line-height:50px;height:50px;width:50 px;vertical-align:middle}
+	body {
+		margin:0px;
+		[selected ? "cursor: grabbing" : "cursor: grab"];
+	}
+	td,td a{
+		height:50px;
+		width:50px;
+		background-size:100% 100%;
+		image-rendering:pixelated;
+	}
+	table{
+		border-spacing:0;
+		border:none;
+		border-collapse:collapse;
+	}
+	td{
+		text-align:center;
+		padding:0;
+		background-repeat:no-repeat;
+		background-position:center center;
+		background-size:100% 100%;
+		image-rendering:pixelated;
+		max-width:50px;
+		max-height:50px;
+	}
+	td.light{
+		background-image: url('white.png');
+	}
+	td.dark{
+		background-image: url('dark.png');
+	}
+	td.selected{
+		background-color:#c8dbc3;
+	}
+	td a{
+		display:table-cell;
+		text-decoration:none;
+		position:relative;
+		line-height:50px;
+		height:50px;
+		width:50px;
+		vertical-align:middle;
+		background-size:100% 100%;
+		image-rendering:pixelated;
+	}
+	a.remove {
+		position: relative;
+		top: -15px;
+		right: 15px;
+		color: white;
+		font-size: x-large;
+		font-weight: normal;
+		font-family: 'courier';
+		cursor: pointer;
+	}
+	span.img {
+		padding:0;
+		background-repeat:no-repeat;
+		background-position:center center;
+		background-size:100% 100%;
+		image-rendering:pixelated;
+		height: 50px;
+		width: 50px;
+		display: block;
+	}
 	</style></head><body><table>
 	"})
+
 	var i, stagger
 	stagger = 0 //so we can have the checkerboard effect
-	for(i=0, i<64, i++)
-		if(i%8 == 0)
+	for(i = 0, i < 64, i++)
+		if(i % 8 == 0)
 			dat += "<tr>"
 			stagger = !stagger
-		if(selected == i)
-			dat += "<td class='selected'"
-		else if((i + stagger)%2 == 0)
-			dat += "<td class='dark'"
+
+		else if((i + stagger) % 2 == 0)
+			dat += "<td class='dark'>"
 		else
-			dat += "<td class='light'"
+			dat += "<td class='light'>"
 
 		if(board["[i]"])
 			var/obj/item/I = board["[i]"]
-			user << browse_rsc(board_icons["[I.icon] [I.icon_state]"],"[I.icon_state].png")
-			dat += " style='background-image:url([I.icon_state].png)'>"
-		else
-			dat+= ">"
-		if(!isobserver(user))
-			dat += "<a href='?src=\ref[src];select=[i];person=\ref[user]'></a>"
-		dat += "</td>"
+			user << browse_rsc(board_icons["[I.icon] [I.icon_state]"], "[I.icon_state].png")
+
+			// combine the <a> and <img> if not an observer
+			if(!isobserver(user))
+				dat += "<a href='?src=\ref[src];select=[i];person=\ref[user]'>"
+				dat += "<span class='img' style='background-image:url([I.icon_state].png)'></span>"
+				dat += "</a>"
+			else
+				dat += "<span class='img' style='background-image:url([I.icon_state].png)'></span>"
+		else if(!isobserver(user))
+			// empty slot, clickable but no image
+			dat += "<a href='?src=\ref[src];select=[i];person=\ref[user]' class='empty'></a>"
+
+		if(selected == i && !isobserver(user))
+			dat += "<a href='?src=\ref[src];remove=0' class='remove'>X</a>"
+
+	dat += "</td>"
+
 
 	dat += "</table>"
 
+/*
 	if(selected >= 0 && !isobserver(user))
 		dat += "<br><A href='?src=\ref[src];remove=0'>Remove Selected Piece</A>"
-	user << browse(jointext(dat, null),"window=boardgame;size=430x500") // 50px * 8 squares + 30 margin
+*/
+	user << browse(jointext(dat, null),"window=boardgame;size=400x400;can_maximize=0;can_resize=0;can_minimize=0;border=0") // 50px * 8 squares + 30 margin
 	onclose(usr, "boardgame")
 
 /obj/item/board/Topic(href, href_list)
 	if(!usr.Adjacent(src))
 		usr.unset_machine()
 		usr << browse(null, "window=boardgame")
+		if(usr.client.byond_version >= 516) // Enable 516 compat browser storage mechanisms
+			if(usr.client.holder)
+				winset(src, null, "window=boardgame-options=byondstorage,find,devtools")
 		return
 
 	if(!usr.incapacitated()) //you can't move pieces if you can't move

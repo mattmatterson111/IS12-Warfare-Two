@@ -151,6 +151,8 @@
 	var/allow_reentry = TRUE
 	var/locked = FALSE
 
+	anchored = TRUE
+
 /obj/structure/soldiercryo/RightClick(mob/user)
 	if(CanPhysicallyInteract(user))
 		eject()
