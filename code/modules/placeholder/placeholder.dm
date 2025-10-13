@@ -180,7 +180,6 @@ GLOBAL_LIST_EMPTY(faction_dosh)
 		playsound(user.loc, 'sound/machines/rpf/audiotapein.ogg', 50, 0.4)
 		return
 
-
 	else if(istype(O, /obj/item/clothing/accessory/medal/red) && id == BLUE_TEAM || istype(O, /obj/item/clothing/accessory/medal/blue) && id == RED_TEAM )
 		GLOB.faction_dosh[id] += 200
 		qdel(O)
