@@ -1,6 +1,6 @@
 /obj/structure/warfare_itemeater
 	name = "Hand eater"
-	desc = "Now accepting dogtags, helmets, teeth and souls at a higher price!"
+	desc = "Now accepting dogtags, helmets, medals, teeth and souls at a higher price!"
 	icon = 'icons/obj/warfare.dmi'
 	icon_state = "ie"
 	anchored = TRUE
@@ -87,7 +87,7 @@
 		playsound(src, 'sound/effects/thehatchin.ogg', 75, 0.25)
 		flick("[icon_state]_o", src)
 		return
-	//more shitcode from me!
+
 	else if(istype(O, /obj/item/clothing/accessory/medal/red) && id == BLUE_TEAM || istype(O, /obj/item/clothing/accessory/medal/blue) && id == RED_TEAM ) // Elite down
 		GLOB.faction_dosh[id] += 200
 		qdel(O)
