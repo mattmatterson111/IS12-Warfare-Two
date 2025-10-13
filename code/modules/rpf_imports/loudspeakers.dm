@@ -241,7 +241,7 @@ GLOBAL_LIST_EMPTY(speaker_ids)
 			mobstosendto |= m
 			clients |= m.client
 		for(var/obj/structure/announcementspeaker/s in filtered)
-			playsound(get_turf(s), this_sound , broadcast_template.additional_talk_sound_volume, broadcast_template.additional_talk_sound_vary, ignore_walls = FALSE, extrarange = 4)
+			//playsound(get_turf(s), this_sound , broadcast_template.additional_talk_sound_volume, broadcast_template.additional_talk_sound_vary, ignore_walls = FALSE, extrarange = 4)
 			INVOKE_ASYNC(s, PROC_BY_TYPE(/atom/movable, animate_chat), "<font color='[broadcast_template.rune_color]'><b>[text]", null, 0, clients, 5 SECONDS, 1)
 			soundoverlay(s, newplane = FOOTSTEP_ALERT_PLANE)
 	var/sound/talk_sound = sound(this_sound, repeat = 0, volume=broadcast_template.additional_talk_sound_volume)
