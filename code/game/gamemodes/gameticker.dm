@@ -463,12 +463,13 @@ var/global/datum/controller/gameticker/ticker
 				// Multiple medals for this person
 				for(var/list/medal_info in medal_data)
 					if(medal_info["team"] == RED_TEAM)
-						to_world("- <B>[medal_info["name"]]</B> received a medal from <B>[medal_info["awarded_by"]]</B>")
+						to_world("- <B>[medal_info["name"]]</B> received a <B>[medal_info["medal_name"]]</B> from <B>[medal_info["awarded_by"]]</B>")
 						red_medals_found = TRUE
 			else
 				// Single medal
 				if(medal_data["team"] == RED_TEAM)
-					to_world("- <B>[medal_data["name"]]</B> received a medal from <B>[medal_data["awarded_by"]]</B>")
+					var/posthumous_text = medal_data["posthumous"] ? " <i>(†)</i>" : ""
+					to_world("- <B>[medal_data["name"]]</B> received a <B>[medal_data["medal_name"]]</B> from <B>[medal_data["awarded_by"]]</B>[posthumous_text]")
 					red_medals_found = TRUE
 		if(!red_medals_found)
 			to_world("<i>No medals were awarded to [RED_TEAM] this round.</i>")
@@ -484,12 +485,13 @@ var/global/datum/controller/gameticker/ticker
 				// Multiple medals for this person
 				for(var/list/medal_info in medal_data)
 					if(medal_info["team"] == BLUE_TEAM)
-						to_world("- <B>[medal_info["name"]]</B> received a medal from <B>[medal_info["awarded_by"]]</B>")
+						to_world("- <B>[medal_info["name"]]</B> received a <B>[medal_info["medal_name"]]</B> from <B>[medal_info["awarded_by"]]</B>")
 						blue_medals_found = TRUE
 			else
 				// Single medal
 				if(medal_data["team"] == BLUE_TEAM)
-					to_world("- <B>[medal_data["name"]]</B> received a medal from <B>[medal_data["awarded_by"]]</B>")
+					var/posthumous_text = medal_data["posthumous"] ? " <i>(†)</i>" : ""
+					to_world("- <B>[medal_data["name"]]</B> received a <B>[medal_data["medal_name"]]</B> from <B>[medal_data["awarded_by"]]</B>[posthumous_text]")
 					blue_medals_found = TRUE
 		if(!blue_medals_found)
 			to_world("<i>No medals were awarded to [BLUE_TEAM] this round.</i>")

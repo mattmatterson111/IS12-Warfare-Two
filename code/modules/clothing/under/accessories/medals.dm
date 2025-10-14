@@ -166,7 +166,8 @@
 		existing += list(list(
 			"name" = recipient.real_name,
 			"awarded_by" = awarder.real_name,
-			"team" = warfare_team
+			"team" = warfare_team,
+			"medal_name" = name
 		))
 		GLOB.medals_awarded[recipient.real_name] = existing
 	else
@@ -174,7 +175,9 @@
 		GLOB.medals_awarded[recipient.real_name] = list(
 			"name" = recipient.real_name,
 			"awarded_by" = awarder.real_name,
-			"team" = warfare_team
+			"team" = warfare_team,
+			"medal_name" = name,
+			"posthumous" = (recipient.stat == DEAD)
 		)
 
 	return TRUE
