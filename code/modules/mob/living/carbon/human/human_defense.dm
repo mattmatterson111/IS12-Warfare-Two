@@ -54,7 +54,7 @@ meteor_act
 		SP.SetName((P.name != "shrapnel")? "[P.name] shrapnel" : "shrapnel")
 		SP.desc = "[SP.desc] It looks like it was fired from [P.shot_from]."
 		SP.loc = organ
-		organ.embed(SP)
+		organ.embed(SP, silent = TRUE)
 
 	var/blocked = ..(P, def_zone)
 
