@@ -118,14 +118,12 @@
 	GLOB.sound_started_event.register(E, src, nameof(src::start_hearing()))
 	GLOB.sound_stopped_event.register(E, src, nameof(src::stop_hearing()))
 	GLOB.sound_pushed_event.register(E, src, nameof(src::hear_once()))
-	to_world("subscribed [src]")
 
 /datum/sound_listener_context/proc/unsubscribe_from(datum/sound_emitter/E)
 	GLOB.sound_updated_event.unregister(E, src, nameof(src::on_sound_update()))
 	GLOB.sound_started_event.unregister(E, src, nameof(src::start_hearing()))
 	GLOB.sound_stopped_event.unregister(E, src, nameof(src::stop_hearing()))
 	GLOB.sound_pushed_event.unregister(E, src, nameof(src::hear_once()))
-	to_world("unsubscribed [src]")
 
 /datum/sound_listener_context/proc/start_hearing(datum/sound_emitter/emitter)
 	if (!emitter.is_currently_playing())
@@ -135,7 +133,6 @@
 		CRASH("Sound emitter on [emitter.source] failed to reserve a channel for [src]")
 	var/sound/S = emitter.active_sound.get()
 
-	to_world("we have [S.file]")
 	// important note - clearing SOUND_UPDATE means that the sound will play FROM THE BEGINNING.
 	// this system was originally built with short repeating sounds in mind (machine hum, etc) however
 	// if you try to do something longer and more varied like music then this is very noticeable and unwanted.
@@ -144,17 +141,14 @@
 	S.status &= ~SOUND_UPDATE
 	S.channel = chan
 	apply_proxymob_effects(S)
-	to_world("hearing")
 	sound_to(client, S)
 
 /datum/sound_listener_context/proc/hear_once(sound/S, datum/sound_emitter/emitter)
 	apply_proxymob_effects(S)
-	to_world("hearing once")
 	sound_to(client, S)
 
 /datum/sound_listener_context/proc/stop_hearing(datum/sound_emitter/emitter)
 	release(emitter)
-	to_world("stopping hearing")
 
 /datum/sound_listener_context/proc/on_sound_update(datum/sound_emitter/emitter)
 	var/chan = current_channels_by_emitter[emitter]
@@ -166,17 +160,14 @@
 	S.status |= SOUND_UPDATE
 	S.channel = chan
 	apply_proxymob_effects(S)
-	to_world("sound update")
 	sound_to(client, S)
 
 /datum/sound_listener_context/proc/on_enter_range(datum/sound_emitter/E)
 	start_hearing(E) // this can throw if channel reservation fails, subscribe after its safe
 	subscribe_to(E)
-	to_world("enter range")
 	audible_emitters |= E
 
 /datum/sound_listener_context/proc/on_exit_range(datum/sound_emitter/E)
 	stop_hearing(E)
 	unsubscribe_from(E)
-	to_world("exit range")
 	audible_emitters -= E
