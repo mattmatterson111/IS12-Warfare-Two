@@ -645,7 +645,6 @@
 				to_world(uppertext("<big>[H.warfare_faction] have disarmed the [src]!</big>"))
 				playsound(src, 'sound/effects/mine_arm.ogg', 100, FALSE)
 				sound_to(world, 'sound/effects/ponr_activate.ogg')
-				stop_alarm("[name]_[faction]_PONR_Alarm")
 				last_use = REALTIMEOFDAY
 			else
 				used_by_person = FALSE
@@ -656,7 +655,6 @@
 			used_by_person = TRUE
 			if(do_after(H, 30))
 				in_use = FALSE
-				start_alarm("[name]_[faction]_PONR_Alarm", /datum/speaker_alarm/evil, faction)
 				user.unlock_achievement(new/datum/achievement/point_of_no_return())
 				playsound(src, 'sound/effects/mine_arm.ogg', 100, FALSE)
 				sound_to(world, 'sound/effects/ponr_activate.ogg')
@@ -669,7 +667,6 @@
 			used_by_person = FALSE
 
 /obj/structure/destruction_computer/proc/kaboom()
-	stop_alarm("[name]_[faction]_PONR_Alarm")
 	SSwarfare.end_warfare(faction)//really simple I know.
 
 /obj/structure/destruction_computer/red
@@ -890,7 +887,7 @@
 				user.doing_something = FALSE
 				return
 
-/obj/item/melee/classic_baton/factionbanner/red //yes it behaves as normal if someone reports that this is deploying as other color I ain't fixin that 
+/obj/item/melee/classic_baton/factionbanner/red //yes it behaves as normal if someone reports that this is deploying as other color I ain't fixin that
 	name = "Red Flagpole" //well I did end up fixin that anyway loooool
 
 /obj/item/melee/classic_baton/factionbanner/blue

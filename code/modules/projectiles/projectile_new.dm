@@ -263,6 +263,8 @@
 //called when the projectile stops flying because it collided with something
 /obj/item/projectile/proc/on_impact(var/atom/A)
 	set waitfor = 0
+	if(ismob(A))
+		return
 	var/turf/T = get_turf(A)
 	if(T)
 		T.visual_effect(src)
@@ -731,7 +733,7 @@
 			if(parse_zone(def_zone) == BP_HEAD)//Boom headshot bitch.
 				firer.unlock_achievement(new/datum/achievement/headshot())
 
-	playsound(target_mob, pick(mob_hit_sound), 40, 1)
+	playsound(target_mob, safepick(mob_hit_sound), 85, 1)
 	//admin logs
 	if(!no_attack_log)
 		if(istype(firer, /mob))

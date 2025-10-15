@@ -120,6 +120,18 @@ GLOBAL_LIST_EMPTY(faction_dosh)
 	if(id)
 		GLOB.faction_dosh[id] = 500
 	reconnectpads()
+	setup_sound()
+
+/obj/machinery/kaos/cargo_machine/setup_sound()
+	sound_emitter = new(src, is_static = TRUE, audio_range = 1)
+
+	var/sound/audio = sound('sound/effects/pc_idle.ogg')
+	audio.repeat = TRUE
+	audio.volume = 3
+	sound_emitter.add(audio, "idle")
+
+	sound_emitter.play("idle") // <3
+
 /*
 /obj/machinery/kaos/cargo_machine/attackby(obj/item/O as obj, mob/user as mob)
 	if(istype(O, /obj/item/spacecash))
@@ -232,6 +244,9 @@ GLOBAL_LIST_EMPTY(faction_dosh)
 									playsound(src.loc, "sound/machines/rpf/press1.ogg", 100, 0.7)
 									to_chat(user, "\icon[src]<span class='danger'>ENGAGING ARTILLERY FIRE AT LOCATION: \n\icon[src]X coordinate[x], Y coordinate [y].\n")
 									to_chat(world, uppertext("<font size=5><b>INCOMING!! NO MAN'S LAND!!</b></font>"))
+									for(var/obj/machinery/light/l in GLOB.lights)
+										if(!prob(7)) continue
+										l.flicker()
 									spawn(1 SECOND)
 										for(var/i = 1, i<3, i++) // it sounds nicer when its delayed.
 											sound_to(world, 'sound/effects/arty_distant.ogg')
@@ -578,6 +593,7 @@ GLOBAL_LIST_EMPTY(faction_dosh)
 GLOBAL_LIST_EMPTY(cargo_pads)
 
 /obj/structure/cargo_pad/New()
+	setup_sound()
 	sleep(50)
 	if(!id || broken)
 		return
@@ -585,6 +601,16 @@ GLOBAL_LIST_EMPTY(cargo_pads)
 		GLOB.cargo_pads[id] = list()
 		var/list/agh = GLOB.cargo_pads[id]
 		agh += src
+
+/obj/structure/cargo_pad/setup_sound()
+	sound_emitter = new(src, is_static = TRUE, audio_range = 1)
+
+	var/sound/audio = sound('sound/effects/cargopad_idle.ogg')
+	audio.repeat = TRUE
+	audio.volume = 1
+	sound_emitter.add(audio, "idle")
+
+	sound_emitter.play("idle") // <3
 
 proc/get_dense_objects_on_turf(turf/T)
 	var/list/dense_objects_on_turf = list()

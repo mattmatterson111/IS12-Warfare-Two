@@ -11,6 +11,9 @@
 
 	var/mortar_type = pick("gas", "shrapnel") // , "fire") //Fire lags the entire game, have to remove it for now.
 	to_chat(world, uppertext("<font size=5><b>INCOMING!! [area_hit.name]!!</b></font>"))
+	for(var/obj/machinery/light/l in GLOB.lights)
+		if(!prob(7)) continue
+		l.flicker()
 	for(var/i = 1, i<3, i++)
 		sound_to(world, 'sound/effects/arty_distant.ogg')
 		sleep(50)
