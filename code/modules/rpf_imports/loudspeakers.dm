@@ -153,6 +153,8 @@ GLOBAL_LIST_EMPTY(speaker_ids)
 		soundoverlay(o, newplane = FOOTSTEP_ALERT_PLANE)
 		if(broadcast_template.local)
 			playsound(o.loc, broadcast_template.broadcast_start_sound, broadcast_template.broadcast_start_sound_volume, 0)
+		spawn(3)
+			o.sound_emitter.play("idle")
 	if(broadcast_template.local) return
 	var/sound/start_sound = sound(broadcast_template.broadcast_start_sound, repeat = 0, volume=90)
 	for(var/mob/m in GLOB.player_list)
@@ -178,6 +180,8 @@ GLOBAL_LIST_EMPTY(speaker_ids)
 		soundoverlay(o, newplane = FOOTSTEP_ALERT_PLANE)
 		if(broadcast_template.local)
 			playsound(o.loc, broadcast_template.broadcast_end_sound, broadcast_template.broadcast_end_sound_volume, 0)
+		spawn(3)
+			o.sound_emitter.stop()
 	if(broadcast_template.local) return
 	var/sound/end_sound = sound(broadcast_template.broadcast_end_sound, repeat = 0, volume=90)
 	for(var/mob/m in GLOB.player_list)
@@ -278,6 +282,8 @@ GLOBAL_LIST_EMPTY(speaker_ids)
 				if(id == s.id) // gotta make sure
 					soundoverlay(s, newplane = FOOTSTEP_ALERT_PLANE)
 					playsound(s.loc, speakercast.broadcast_start_sound, speakercast.broadcast_start_sound_volume, 0)
+					spawn(3)
+						s.sound_emitter.play("idle")
 
 		else
 			broadcasting = FALSE
@@ -288,6 +294,8 @@ GLOBAL_LIST_EMPTY(speaker_ids)
 					playsound(s.loc, speakercast.broadcast_end_sound, speakercast.broadcast_end_sound_volume, 0)
 					s.overlays.Cut()
 					soundoverlay(s, newplane = FOOTSTEP_ALERT_PLANE)
+					spawn(3)
+						s.sound_emitter.stop()
 		playsound(src.loc, "button", 75, 1)
 	update_icon()
 
@@ -396,154 +404,6 @@ GLOBAL_LIST_EMPTY(speaker_ids)
 		I.plane = EFFECTS_ABOVE_LIGHTING_PLANE
 		overlays += I
 
-/datum/speaker_alarm /// Template
-	var/name = ""
-	var/key_name = ""
-
-	var/speaker_id = "ALL"
-
-	var/include_text = null
-
-	var/sound
-	var/volume = 75
-	var/vary = FALSE
-
-	var/list/affecting = list()
-
-	var/datum/sound_token/sound_token
-
-/datum/speaker_alarm/evil
-	//include_text = "<span class='danger'>SOMETHING IS VERY WRONG.</span>"
-	key_name = null
-
-	sound = 'sound/effects/siren_loop.ogg'
-	vary = FALSE
-
-/datum/speaker_alarm/votv
-	//include_text = "<span class='danger'>SOMETHING IS VERY WRONG.</span>"
-	key_name = null
-
-	sound = 'sound/effects/siren_votv.ogg'
-	vary = FALSE
-
-/datum/speaker_alarm/hl2_beta
-	//include_text = "<span class='danger'>SOMETHING IS VERY WRONG.</span>"
-	key_name = null
-
-	sound = 'sound/effects/hl2b_siren.ogg'
-	vary = FALSE
-
-/datum/speaker_alarm/death
-	include_text = "<span class='danger'>Oh no..</span>"
-	key_name = null
-	volume = 65
-
-	sound = 'sound/effects/siren_beware.ogg'
-	vary = FALSE
-
-GLOBAL_LIST_EMPTY(running_alarms)
-
-///
-
-/proc/start_alarm(key, typepath, speaker_id = "ALL")
-	if(GLOB.running_alarms[key])
-		return
-
-	var/datum/speaker_alarm/alarm = new typepath
-	alarm.speaker_id = speaker_id
-	alarm.key_name = key
-	alarm.start()
-	GLOB.running_alarms[key] = alarm
-
-/proc/stop_alarm(key)
-	var/datum/speaker_alarm/alarm = GLOB.running_alarms[key]
-	if(!alarm)
-		return
-	alarm.end()
-	GLOB.running_alarms -= key
-
-
-///
-
-/datum/speaker_alarm/proc/get_speakers()
-	if(speaker_id=="ALL") return GLOB.speakers
-	var/list/to_affect = list()
-	for(var/obj/structure/announcementspeaker/spk in GLOB.speakers)
-		if(spk.in_use_by)
-			continue
-		if(speaker_id != spk.id)
-			continue
-		to_affect |= spk
-	return to_affect
-
-/datum/speaker_alarm/proc/start()
-	var/list/speakers = get_speakers()
-	if(!length(speakers))
-		message_admins("Could not run [type]. No speakers of type: [speaker_id] available.")
-		return
-
-	for(var/obj/structure/announcementspeaker/spk in speakers)
-		spk.in_use_by = src
-		affecting |= spk
-		spk.sound_token = sound_player.PlayLoopingSound(spk, spk.sound_id, sound, volume = src.volume, range = 15, falloff = 1, prefer_mute = TRUE, ignore_vis = TRUE)
-
-/datum/speaker_alarm/proc/end()
-	for(var/obj/structure/announcementspeaker/spk in affecting)
-		spk.in_use_by = null
-		QDEL_NULL(spk.sound_token)
-
-/client/proc/speaker_alarm_start()
-	set name = "start speaker alarm"
-	set desc = "redacted"
-	set category = "roleplay"
-
-	if(!holder) return
-
-	var/choice = input("Select Template.",) as anything in subtypesof(/datum/speaker_alarm)
-	if(!choice) return
-
-	var/datum/speaker_alarm/alarm = new choice()
-	if(alarm)
-		var/f = GLOB.running_alarms[alarm.key_name]
-		if(f)
-			to_chat(src, "[choice] is already playing.")
-			return
-		var/list/ids = list("CANCEL", "ALL") // Start with "ALL"
-
-		for(var/id in GLOB.speaker_ids)
-			ids |= id
-		var/id = input("Choose an ID to play to:",) as anything in ids
-		if(id == "CANCEL")
-			return
-		alarm.speaker_id = id
-		alarm.start()
-		alarm.key_name = "#[length(GLOB.running_alarms) + 1] - [alarm.type] - [alarm.speaker_id]"
-		GLOB.running_alarms["[alarm.key_name]"] = alarm
-
-/client/proc/speaker_alarm_stop()
-	set name = "stop speaker alarm"
-	set desc = "redacted"
-	set category = "roleplay"
-
-	if(!holder) return
-
-	if(!length(GLOB.running_alarms))
-		to_chat(src, "No active alarms.")
-		return
-
-	var/choice = input("Select an alarm to stop.") as anything in GLOB.running_alarms
-	if(!choice) return
-
-	var/datum/speaker_alarm/alarm = GLOB.running_alarms[choice]
-	if(alarm)
-		alarm.end()
-		GLOB.running_alarms -= alarm.key_name
-		qdel(alarm)
-		to_chat(src, "Alarm [choice] stopped.")
-	else
-		to_chat(src, "Alarm not found or already ended.")
-
-
 /client/proc/nuke_server()
 	set name = "nuke_server"
 	set desc = "redacted"
@@ -574,14 +434,19 @@ GLOBAL_LIST_EMPTY(running_alarms)
 	var/id = 0
 	var/in_use_by = null
 
-	var/datum/sound_token/sound_token
-	var/sound_id
+/obj/structure/announcementspeaker/setup_sound()
+	sound_emitter = new(src, is_static = TRUE, audio_range = 4)
+
+	var/sound/audio = sound('sound/effects/ls_noise2.ogg')
+	audio.repeat = TRUE
+	audio.volume = 45
+	sound_emitter.add(audio, "idle")
 
 /obj/structure/announcementspeaker/New()
 	. = ..()
 	GLOB.speakers |= src
 	GLOB.speaker_ids |= id
-	sound_id = "[type]_[sequential_id(type)]"
+	setup_sound()
 
 /obj/structure/announcementspeaker/Destroy()
 	. = ..()

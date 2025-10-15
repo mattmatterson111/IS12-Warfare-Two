@@ -14,6 +14,9 @@
 	if(playsound == "Yes")
 		sound_to(world, 'sound/effects/arty_distant.ogg')
 		sleep(4 SECONDS)
+	for(var/obj/machinery/light/l in GLOB.lights)
+		if(!prob(30)) continue
+		l.flicker()
 	artillery_barage(mob.x, mob.y, mob.z, mortartype=key, bypass_restrictions = TRUE, maxamount = amount)
 
 	message_admins("[ckey] began a '[key]' artillery barrage.")

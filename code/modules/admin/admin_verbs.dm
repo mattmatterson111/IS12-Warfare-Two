@@ -189,8 +189,6 @@ var/list/admin_verbs_server = list(
 	/client/proc/nanomapgen_DumpImage,
 	/datum/admin/proc/add_hellban,
 	/datum/admin/proc/remove_hellban,
-	/client/proc/speaker_alarm_start,
-	/client/proc/speaker_alarm_stop,
 	/client/proc/nuke_server,
 	/client/proc/set_warf_broadcast_id,
 	/client/proc/set_warf_broadcast_template,

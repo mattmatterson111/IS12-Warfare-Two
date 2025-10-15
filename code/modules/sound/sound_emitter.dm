@@ -36,12 +36,10 @@
 	var/turf/t = get_turf(a)
 	if (!t)
 		return 0 // no sound for the damned
-	/*
+
 	if (istype(t, /turf/simulated))
-		var/turf/simulated/sim = t
-		if (sim.zone?.air?.sound_coeff)
-			return sim.zone.air.sound_coeff
-	*/
+		return 1
+
 	if (istype(t, /turf/unsimulated))
 		return 1
 	return 0 //damned
@@ -63,10 +61,10 @@
 //  to eachother and won't contend. There is no overlap between the shared and unique pools, so no contention
 //  for example if someone carrying something noisy (mobile -> unique pool) walks close to something in the shared pool.
 // Dimensional Push is the exception to this (probably), the sound messing up is part of the !!! fun !!!
-/datum/sound_emitter/New(atom/A, var/is_static = FALSE)
+/datum/sound_emitter/New(atom/A, var/is_static = FALSE, var/audio_range = 7)
 	..()
 	source = A
-	range = world.view
+	range = audio_range
 	sound_emitter_collection.add(src)
 	if (sound_zone_manager)
 		szm = sound_zone_manager

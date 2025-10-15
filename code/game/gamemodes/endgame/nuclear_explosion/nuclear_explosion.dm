@@ -26,7 +26,6 @@
 	if(ticker && ticker.mode)
 		ticker.mode.explosion_in_progress = 1
 
-	start_alarm("THE_END", /datum/speaker_alarm/death, "ALL")
 	sleep(dramatic_time)
 	sound_to(world, sound('sound/effects/fadetoblack.ogg'))
 	start_cinematic_intro()
@@ -63,7 +62,6 @@
 		ticker.mode.explosion_in_progress = 0
 		if(!ticker.mode.check_finished())//If the mode does not deal with the nuke going off so just reboot because everyone is stuck as is
 			universe_has_ended = 1
-			stop_alarm("THE_END")
 			sleep(15)
 			for(var/client/C in GLOB.clients)
 				winset(C, "", "command=.quit")

@@ -174,6 +174,8 @@
 
 	var/ambient_noise = 'sound/effects/fluor_hum.ogg'
 
+	var/flicker_allowed = 10
+
 /obj/machinery/light/caged
 	icon_state = "caged1"
 	base_state = "caged"
@@ -216,6 +218,8 @@
 	desc = "A more robust socket for light tubes that demand more power."
 	light_type = /obj/item/light/tube/large
 
+GLOBAL_LIST_EMPTY(lights)
+
 // create a new lighting fixture
 /obj/machinery/light/New(atom/newloc, obj/machinery/light_construct/construct = null)
 	..(newloc)
@@ -235,26 +239,28 @@
 
 	on = powered()
 	update_icon(0)
+	GLOB.lights += src
 
 /obj/machinery/light/Destroy()
 	QDEL_NULL(lightbulb)
 	QDEL_NULL(s)
 	. = ..()
 
+/obj/machinery/light/Process()
+	flicker_allowed-- // Count down, just so they don't flicker without a 10 second break between everything.
+	if(prob(1) && prob(50))
+		if(flicker_allowed <= 0)
+			flicker()
+			flicker_allowed = 10 SECONDS
+
 /obj/machinery/light/setup_sound()
-	sound_emitter = new(src)
+	sound_emitter = new(src, is_static = TRUE, audio_range = 1)
 	if (sound_emitter)
 		var/sound/hum = sound()
 		hum.file = src.ambient_noise
 		hum.repeat = 1
-		hum.volume = 100
+		hum.volume = 22
 		sound_emitter.add(hum, "ambient_hum")
-
-		var/sound/ping = sound()
-		ping.file = "sound/effects/fluor_ping[rand(1,5)].ogg"
-		ping.repeat = 0
-		ping.volume = 100
-		sound_emitter.add(ping, "bulb_ping")
 
 /obj/machinery/light/update_icon(var/trigger = 1)
 
@@ -469,6 +475,7 @@
 
 
 /obj/machinery/light/proc/flicker(var/amount = rand(2, 9))
+	set waitfor = 0
 	if(flickering) return
 	flickering = 1
 	spawn(0)
@@ -476,7 +483,7 @@
 			for(var/i = 0, i < amount, i++)
 				if(get_status() != LIGHT_OK) break
 				on = !on
-				sound_emitter.play("bulb_ping")
+				playsound(loc, pick(list('sound/effects/fluor_ping1.ogg','sound/effects/fluor_ping2.ogg','sound/effects/fluor_ping3.ogg','sound/effects/fluor_ping4.ogg','sound/effects/fluor_ping5.ogg')), 75	)
 				update_icon(0)
 				sleep(rand(1, 12))
 			on = (get_status() == LIGHT_OK)
