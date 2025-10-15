@@ -57,24 +57,68 @@
 /obj/item/clothing/accessory/medal/red
 	name = "Red medal"
 	desc = "A medal given to those who served in combat well!"
-	icon_state = "bronze"
-	item_state = "bronze"
 	warfare_team = RED_TEAM
+
+/obj/item/clothing/accessory/medal/red/brass
+	name = "Volunteer of Redistan medal"
+	desc = "A medal given to redistani soldiers who achieved minor accomplishments!"
+	icon_state = "brass"
+	item_state = "brass"
+
+/obj/item/clothing/accessory/medal/red/pig_iron
+	name = "Carmine liberator medal"
+	desc = "A medal given to redistani soldiers who achieved significant accomplishments!"
+	icon_state = "pig_iron"
+	item_state = "pig_iron"
+
+/obj/item/clothing/accessory/medal/red/gold
+	name = "Crimson triumph medal"
+	desc = "A medal given to redistani soldiers who achieved major accomplishments!"
+	icon_state = "gold_red"
+	item_state = "gold_red"
+
+/obj/item/clothing/accessory/medal/red/captain/cross1
+	name = "GREAT LEADER Cross 1st class"
+	desc = "A medal given to redistani captains who command their troops to victory!"
+	icon_state = "great_leader_cross_with_leaves_and_swords"
+	item_state = "great_leader_cross_with_leaves_and_swords"
 
 /obj/item/clothing/accessory/medal/blue
 	name = "Blue medal"
 	desc = "A medal given to those who served in combat well!"
-	icon_state = "iron"
-	item_state = "iron"
 	warfare_team = BLUE_TEAM
+
+/obj/item/clothing/accessory/medal/blue/stainless_steel
+	name = "Citizen of Blusnia medal"
+	desc = "A medal given to blusnian soldiers who achieved minor accomplishments!"
+	icon_state = "stainless_steel"
+	item_state = "stainless_steel"
+
+/obj/item/clothing/accessory/medal/blue/silver
+	name = "Ultramarine defender medal"
+	desc = "A medal given to blusnian soldiers who achieved significant accomplishments!"
+	icon_state = "silver_blue"
+	item_state = "silver_blue"
+
+/obj/item/clothing/accessory/medal/blue/platinum
+	name = "Cobalt sigil medal"
+	desc = "A medal given to blusnian soldiers who achieved major accomplishments!"
+	icon_state = "platinum"
+	item_state = "platinum"
+
+/obj/item/clothing/accessory/medal/blue/captain/order1
+	name = "Order of Democracy 1st class"
+	desc = "A medal given to blusnian captains who command their troops to victory!"
+	icon_state = "order_of_democracy_first_class"
+	item_state = "order_of_democracy_first_class"
 
 //WARMEDALS PROCS//
 
 //MORALE BUFF/DEBUFF!!!
-/obj/item/clothing/accessory/medal/on_attached(var/obj/item/clothing/S, var/mob/user)
+/obj/item/clothing/accessory/medal/on_attached(var/obj/item/clothing/S, var/mob/user, var/initial_equip = FALSE)
 	..()
 	// Give happiness buff to the wearer
-	if(S.loc && ishuman(S.loc))
+	if(!initial_equip && S.loc && ishuman(S.loc))
 		var/mob/living/carbon/human/H = S.loc
 		H.clear_event("Awarded")
 		H.add_event("Awarded", /datum/happiness_event/awarded)

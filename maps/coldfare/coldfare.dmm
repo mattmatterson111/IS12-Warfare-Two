@@ -3545,19 +3545,19 @@
 	pixel_x = -1;
 	pixel_y = 7
 	},
-/obj/item/clothing/accessory/medal/red{
+/obj/item/clothing/accessory/medal/red/brass{
 	pixel_x = 8;
 	pixel_y = 2
 	},
-/obj/item/clothing/accessory/medal/red{
+/obj/item/clothing/accessory/medal/red/brass{
 	pixel_x = 12;
 	pixel_y = 2
 	},
-/obj/item/clothing/accessory/medal/red{
+/obj/item/clothing/accessory/medal/red/pig_iron{
 	pixel_x = 16;
 	pixel_y = 2
 	},
-/obj/item/clothing/accessory/medal/red{
+/obj/item/clothing/accessory/medal/red/gold{
 	pixel_x = 20;
 	pixel_y = 2
 	},
@@ -8442,19 +8442,19 @@
 	pixel_x = 0;
 	pixel_y = 16
 	},
-/obj/item/clothing/accessory/medal/blue{
+/obj/item/clothing/accessory/medal/blue/stainless_steel{
 	pixel_x = 8;
 	pixel_y = 2
 	},
-/obj/item/clothing/accessory/medal/blue{
+/obj/item/clothing/accessory/medal/blue/stainless_steel{
 	pixel_x = 12;
 	pixel_y = 2
 	},
-/obj/item/clothing/accessory/medal/blue{
+/obj/item/clothing/accessory/medal/blue/silver{
 	pixel_x = 16;
 	pixel_y = 2
 	},
-/obj/item/clothing/accessory/medal/blue{
+/obj/item/clothing/accessory/medal/blue/platinum{
 	pixel_x = 20;
 	pixel_y = 2
 	},

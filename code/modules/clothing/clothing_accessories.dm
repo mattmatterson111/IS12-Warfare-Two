@@ -77,9 +77,9 @@
  *  user is the user doing the attaching. Can be null, such as when attaching
  *  items on spawn
  */
-/obj/item/clothing/proc/attach_accessory(mob/user, obj/item/clothing/accessory/A)
+/obj/item/clothing/proc/attach_accessory(mob/user, obj/item/clothing/accessory/A, var/initial_equip = FALSE)
 	accessories += A
-	A.on_attached(src, user)
+	A.on_attached(src, user, initial_equip)
 	//src.verbs |= /obj/item/clothing/proc/removetie_verb
 	update_accessory_slowdown()
 	update_clothing_icon()

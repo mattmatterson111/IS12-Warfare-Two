@@ -269,7 +269,7 @@
 	icon_state = "tangzhuang"  //This was originally intended to have the ability to roll sleeves. I can't into code. Will be done later (hopefully.)
 
 //Self-equip medal checks (Yes this is shitcode)
-/obj/item/clothing/attach_accessory(var/mob/user, var/obj/item/clothing/accessory/A)
+/obj/item/clothing/attach_accessory(var/mob/user, var/obj/item/clothing/accessory/A, var/initial_equip = FALSE)
 	if(istype(A, /obj/item/clothing/accessory/medal))
 		var/obj/item/clothing/accessory/medal/M = A
 
@@ -284,9 +284,9 @@
 		var/mob/living/carbon/human/wearer = src.loc
 
 		// Self-equipping case: user is the wearer
-		if(!user || user == wearer)
-			if(!M.try_award_medal(wearer, wearer))
+		if(!initial_equip && (!user || user == wearer))
+			if(!M.try_award_medal(wearer, wearer, initial_equip))
 				if(wearer)
 					wearer.put_in_active_hand(M)
 				return FALSE
-	return ..()
+	return ..(user, A, initial_equip)
