@@ -221,16 +221,18 @@ GLOBAL_LIST_EMPTY(faction_dosh)
 						playsound(src, "switch_sound", 100, 1)
 						to_chat(user, "\icon[src]Welcome, <span class='warning'>Captain</span>.")
 						playsound(src.loc, 'sound/machines/rpf/consolebeep.ogg', 100, 0.5)
-						var/x = input(user, "Please input the X coordinate.") as num
-						if(x)
+						var/x_input = input(user, "Please input the X coordinate.") as num
+						if(x_input)
 							playsound(src.loc, "sound/machines/rpf/press1.ogg", 100, 0.7)
-							var/y = input(user, "Please input the Y coordinate.") as num
+							var/y_input = input(user, "Please input the Y coordinate.") as num
 							var/costofartillery = 550 // shitty way to go about it. redo this someday.
-							if(y && GLOB.faction_dosh[id] >= costofartillery && CanPhysicallyInteract(user))
-								var/turf/turf_to_drop = locate(x,y,2)
+							if(y_input && GLOB.faction_dosh[id] >= costofartillery && CanPhysicallyInteract(user))
+								var/unscrambled_x = x_input - SSwarfare.global_coordinate_shift_x
+								var/unscrambled_y = y_input - SSwarfare.global_coordinate_shift_y
+								var/turf/turf_to_drop = locate(unscrambled_x,unscrambled_y,2)
 								if(istype(turf_to_drop.loc, /area/warfare/battlefield/no_mans_land) || istype(turf_to_drop.loc, /area/warfare/battlefield/capture_point/mid))
 									playsound(src.loc, "sound/machines/rpf/press1.ogg", 100, 0.7)
-									to_chat(user, "\icon[src]<span class='danger'>ENGAGING ARTILLERY FIRE AT LOCATION: \n\icon[src]X coordinate[x], Y coordinate [y].\n")
+									to_chat(user, "\icon[src]<span class='danger'>ENGAGING ARTILLERY FIRE AT LOCATION: \n\icon[src]X coordinate[unscrambled_x], Y coordinate [unscrambled_y].\n")
 									to_chat(world, uppertext("<font size=5><b>INCOMING!! NO MAN'S LAND!!</b></font>"))
 									spawn(1 SECOND)
 										for(var/i = 1, i<3, i++) // it sounds nicer when its delayed.
@@ -312,7 +314,7 @@ GLOBAL_LIST_EMPTY(faction_dosh)
 									GLOB.faction_dosh[id] -= productprice
 									return
 								*/
-								to_chat(user, "\icon[src]You have been barred from further purchases of reinforcements\n\nPlease consult a technician if you believe this decision was made in error.")
+								to_chat(user, SPAN_YELLOW("\icon[src]You have been barred from further purchases of reinforcements\n\n\icon[src]Please consult a technician if you believe this decision was made in error."))
 								playsound(src.loc, 'sound/machines/rpf/denybeep.ogg', 100, 0.5)
 								return
 							else
