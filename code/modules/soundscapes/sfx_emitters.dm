@@ -1,5 +1,9 @@
 /obj/sound_emitter/
 	icon = 'icons/hammer/source.dmi'
+	anchored = 1.0
+	unacidable = 1
+	simulated = 0
+	invisibility = 101
 
 /obj/sound_emitter/loop
 	var/list/sounds = list(
