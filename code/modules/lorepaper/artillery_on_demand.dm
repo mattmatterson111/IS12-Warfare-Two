@@ -15,7 +15,7 @@
 		sound_to(world, 'sound/effects/arty_distant.ogg')
 		sleep(4 SECONDS)
 	for(var/obj/machinery/light/l in GLOB.lights)
-		if(!prob(30)) continue
+		if(!prob(7)) continue
 		l.flicker()
 	artillery_barage(mob.x, mob.y, mob.z, mortartype=key, bypass_restrictions = TRUE, maxamount = amount)
 
