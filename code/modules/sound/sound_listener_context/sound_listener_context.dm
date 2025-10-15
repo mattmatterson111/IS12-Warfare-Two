@@ -91,7 +91,7 @@
 	if (!chan)
 		return //no channel to release, no sound to stop (hopefully)
 	// flush it
-	client << sound(file = null, channel = chan)
+	sound_to(client, sound(file = null, channel = chan))
 
 	current_channels_by_emitter -= E
 	free_channels += chan
@@ -141,11 +141,11 @@
 	S.status &= ~SOUND_UPDATE
 	S.channel = chan
 	apply_proxymob_effects(S)
-	client << S
+	sound_to(client, S)
 
 /datum/sound_listener_context/proc/hear_once(sound/S, datum/sound_emitter/emitter)
 	apply_proxymob_effects(S)
-	client << S
+	sound_to(client, S)
 
 /datum/sound_listener_context/proc/stop_hearing(datum/sound_emitter/emitter)
 	release(emitter)
@@ -160,7 +160,7 @@
 	S.status |= SOUND_UPDATE
 	S.channel = chan
 	apply_proxymob_effects(S)
-	client << S
+	sound_to(client, S)
 
 /datum/sound_listener_context/proc/on_enter_range(datum/sound_emitter/E)
 	start_hearing(E) // this can throw if channel reservation fails, subscribe after its safe

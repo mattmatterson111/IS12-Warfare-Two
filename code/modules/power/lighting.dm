@@ -172,6 +172,8 @@
 	var/image/exposure_overlay
 	var/obj/exposure // god fucking damn it
 
+	var/ambient_noise = 'sound/effects/fluor_hum.ogg'
+
 /obj/machinery/light/caged
 	icon_state = "caged1"
 	base_state = "caged"
@@ -220,6 +222,8 @@
 
 	s.set_up(1, 1, src)
 
+	setup_sound()
+
 	if(construct)
 		construct_type = construct.type
 		construct.transfer_fingerprints_to(src)
@@ -236,6 +240,21 @@
 	QDEL_NULL(lightbulb)
 	QDEL_NULL(s)
 	. = ..()
+
+/obj/machinery/light/setup_sound()
+	sound_emitter = new(src)
+	if (sound_emitter)
+		var/sound/hum = sound()
+		hum.file = src.ambient_noise
+		hum.repeat = 1
+		hum.volume = 100
+		sound_emitter.add(hum, "ambient_hum")
+
+		var/sound/ping = sound()
+		ping.file = "sound/effects/fluor_ping[rand(1,5)].ogg"
+		ping.repeat = 0
+		ping.volume = 100
+		sound_emitter.add(ping, "bulb_ping")
 
 /obj/machinery/light/update_icon(var/trigger = 1)
 
@@ -297,6 +316,11 @@
 		overlays.Cut()
 
 	active_power_usage = ((light_range * light_power) * LIGHTING_POWER_FACTOR)
+
+	if(!on)
+		sound_emitter.stop()
+	else
+		sound_emitter.play("ambient_hum")
 
 /obj/machinery/light/proc/get_status()
 	if(!lightbulb)
@@ -442,6 +466,8 @@
 	var/area/A = get_area(src)
 	return A && A.lightswitch && ..(power_channel)
 
+
+
 /obj/machinery/light/proc/flicker(var/amount = rand(2, 9))
 	if(flickering) return
 	flickering = 1
@@ -450,7 +476,7 @@
 			for(var/i = 0, i < amount, i++)
 				if(get_status() != LIGHT_OK) break
 				on = !on
-				playsound(src, pick('sound/effects/fluor_ping1.ogg','sound/effects/fluor_ping2.ogg','sound/effects/fluor_ping3.ogg','sound/effects/fluor_ping4.ogg','sound/effects/fluor_ping5.ogg'), 100, 1)
+				sound_emitter.play("bulb_ping")
 				update_icon(0)
 				sleep(rand(1, 12))
 			on = (get_status() == LIGHT_OK)

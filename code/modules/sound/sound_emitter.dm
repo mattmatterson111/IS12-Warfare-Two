@@ -116,7 +116,7 @@
 	if (!S.volume)
 		return
 
-	GLOB.sound_pushed_event.raise_event(src, "S" = copy_sound(S), "emitter" = src)
+	GLOB.sound_pushed_event.raise_event(src, copy_sound(S), src)
 
 /datum/sound_emitter/proc/is_currently_playing()
 	return (active_sound != null)
@@ -134,7 +134,7 @@
 
 	var/sound/S = active_sound.get()
 	S.status |= SOUND_UPDATE
-	GLOB.sound_updated_event.raise_event(src, "emitter" = src)
+	GLOB.sound_updated_event.raise_event(src, src)
 
 /datum/sound_emitter/proc/stop()
 	if (!is_currently_playing())
@@ -198,13 +198,13 @@
 		CRASH("[key] not found in sounds cache for emitter on [source]")
 
 	update_env_effect()
-	GLOB.sound_started_event.raise_event(src, "emitter" = src)
+	GLOB.sound_started_event.raise_event(src, src)
 
 // halt sounds to clients, unregister from dynamic updates
 /datum/sound_emitter/proc/deactivate()
 	active_sound = null
 
-	GLOB.sound_stopped_event.raise_event(src, "emitter" = src)
+	GLOB.sound_stopped_event.raise_event(src, src)
 
 /datum/sound_emitter/proc/update_env_effect()
 	if (!is_currently_playing())
