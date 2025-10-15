@@ -458,6 +458,10 @@
 /obj/item/flame/candle/blue,
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/blue/largeroom)
+"bt" = (
+/obj/sound_emitter/periodic/env_leak,
+/turf/simulated/floor/concrete/random,
+/area/warfare/homebase/blue/largeroom)
 "bu" = (
 /obj/structure/closet/crate,
 /obj/random/canned_food/red,
@@ -914,6 +918,13 @@
 	health = 999999
 	},
 /area/warfare/battlefield/capture_point/blue/one)
+"cL" = (
+/obj/machinery/light/small/bunker{
+	dir = 8
+	},
+/obj/sound_emitter/periodic/env_leak,
+/turf/simulated/floor/concrete/random,
+/area/warfare/homebase/red/hallway)
 "cN" = (
 /obj/structure/table/rack/holorack,
 /turf/simulated/floor/urban/cinder,
@@ -1621,10 +1632,6 @@
 	health = 999999
 	},
 /area/warfare/battlefield/capture_point/blue/one)
-"eU" = (
-/obj/sound_emitter/periodic/env_leak,
-/turf/simulated/floor/concrete/random,
-/area/warfare/homebase/blue/stoneroom)
 "eW" = (
 /obj/item/device/compass,
 /obj/structure/table/rack/nosmooth/wood/alt,
@@ -1769,6 +1776,13 @@
 	},
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/blue/largeroom)
+"fv" = (
+/obj/structure/curtain/medical{
+	color = "#b8dddddd"
+	},
+/obj/sound_emitter/periodic/env_leak,
+/turf/simulated/floor/urban/tiles/blue,
+/area/warfare/homebase/blue/stoneroom)
 "fw" = (
 /obj/effect/landmark/start{
 	name = "Blue Squad Leader"
@@ -2677,10 +2691,6 @@
 	health = 999999
 	},
 /area/warfare/homebase/red)
-"iG" = (
-/obj/sound_emitter/periodic/env_leak,
-/turf/simulated/floor/concrete/random,
-/area/warfare/homebase/blue/hallway)
 "iQ" = (
 /obj/structure/closet/crate,
 /obj/machinery/light/small/bunker{
@@ -2724,6 +2734,10 @@
 /area/warfare/battlefield/trench_section/underground/stormsystem/hall)
 "iZ" = (
 /obj/structure/closet/body_bag,
+/turf/simulated/floor/wood,
+/area/warfare/battlefield/trench_section/underground/indoors)
+"jc" = (
+/obj/sound_emitter/periodic/env_leak,
 /turf/simulated/floor/wood,
 /area/warfare/battlefield/trench_section/underground/indoors)
 "jh" = (
@@ -2809,10 +2823,6 @@
 /obj/machinery/door/airlock/multi_tile/metal/maintenance/red,
 /turf/simulated/floor/urban/tiles,
 /area/warfare/homebase/red/hallway)
-"jF" = (
-/obj/sound_emitter/periodic/env_leak,
-/turf/simulated/floor/urban/tiles,
-/area/warfare/homebase/red/stoneroom)
 "jO" = (
 /obj/structure/curtain/tarp{
 	dir = 8
@@ -2822,14 +2832,6 @@
 "jP" = (
 /turf/simulated/wall/perspecticrete,
 /area/warfare/homebase/red/hallway)
-"jQ" = (
-/obj/machinery/body_scanconsole{
-	dir = 4;
-	icon_state = "body_scannerconsole"
-	},
-/obj/sound_emitter/periodic/env_leak,
-/turf/simulated/floor/urban/tiles,
-/area/warfare/homebase/red/room)
 "jT" = (
 /obj/structure/table/rack/holorack,
 /turf/simulated/floor/concrete/random,
@@ -2927,9 +2929,12 @@
 	},
 /area/warfare/battlefield/capture_point/red/two)
 "kG" = (
+/obj/effect/landmark/start{
+	name = "Blue Sentry"
+	},
 /obj/sound_emitter/periodic/env_leak,
-/turf/simulated/floor/wood,
-/area/warfare/homebase/red/caproom)
+/turf/simulated/floor/concrete/random,
+/area/warfare/homebase/blue/largeroom)
 "kK" = (
 /turf/simulated/floor/wood,
 /area/warfare/homebase/red/caproom)
@@ -3510,10 +3515,6 @@
 /obj/structure/table/rack/shelf/red,
 /turf/simulated/floor/wood,
 /area/warfare/battlefield/trench_section/underground/indoors)
-"on" = (
-/obj/sound_emitter/periodic/env_leak,
-/turf/simulated/floor/urban/cinder,
-/area/warfare/homebase/blue/largeroom)
 "oo" = (
 /obj/structure/closet/crate/wooden{
 	pixel_x = -10;
@@ -3532,10 +3533,6 @@
 "ot" = (
 /turf/simulated/floor/stones,
 /area/warfare/homebase/blue/room)
-"ov" = (
-/obj/sound_emitter/periodic/env_leak,
-/turf/simulated/floor/urban/tiles/blue,
-/area/warfare/homebase/blue/stoneroom)
 "oy" = (
 /obj/machinery/light/small/bunker{
 	dir = 1
@@ -3666,6 +3663,10 @@
 	},
 /turf/simulated/floor/dirty/indestructable,
 /area/warfare/homebase/red)
+"pb" = (
+/obj/sound_emitter/periodic/env_leak,
+/turf/simulated/floor/urban/tiles,
+/area/warfare/homebase/red/stoneroom)
 "pd" = (
 /obj/item/flame/candle,
 /obj/item/storage/box/matches,
@@ -3701,13 +3702,6 @@
 	color = "#ffffff"
 	},
 /area/warfare/battlefield/capture_point/blue/one)
-"pn" = (
-/obj/structure/curtain/medical{
-	color = "#b8dddddd"
-	},
-/obj/sound_emitter/periodic/env_leak,
-/turf/simulated/floor/urban/tiles/blue,
-/area/warfare/homebase/blue/stoneroom)
 "pq" = (
 /obj/structure/announcementspeaker/blue{
 	pixel_y = 0;
@@ -3715,6 +3709,13 @@
 	},
 /turf/simulated/open,
 /area/warfare/battlefield/capture_point/blue/two)
+"pr" = (
+/obj/effect/landmark/start{
+	name = "Red Soldier"
+	},
+/obj/sound_emitter/periodic/env_leak,
+/turf/simulated/floor/stones,
+/area/warfare/homebase/red/room)
 "pt" = (
 /obj/structure/announcementspeaker/red{
 	pixel_x = 0;
@@ -3722,6 +3723,10 @@
 	},
 /turf/simulated/floor/urban/tiles,
 /area/warfare/homebase/red/room)
+"pu" = (
+/obj/sound_emitter/loop/env_canal,
+/turf/simulated/floor/concrete/random,
+/area/warfare/battlefield/trench_section/underground/stormsystem/hall)
 "pv" = (
 /obj/machinery/light/caged{
 	dir = 8;
@@ -3935,18 +3940,6 @@
 	},
 /turf/simulated/floor/concrete/random,
 /area/warfare/battlefield/trench_section/underground)
-"qy" = (
-/obj/structure/toilet{
-	dir = 4;
-	icon_state = "toilet00"
-	},
-/obj/machinery/light/caged{
-	pixel_y = 30;
-	pixel_x = 0
-	},
-/obj/sound_emitter/periodic/env_leak,
-/turf/simulated/floor/concrete/random,
-/area/warfare/battlefield/trench_section/room)
 "qD" = (
 /obj/structure/announcementspeaker/red,
 /turf/simulated/wall/perspecticrete,
@@ -4130,6 +4123,13 @@
 	},
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/blue/largeroom)
+"rm" = (
+/obj/effect/landmark/start{
+	name = "Red Bartender"
+	},
+/obj/sound_emitter/periodic/env_leak,
+/turf/simulated/floor/stones,
+/area/warfare/homebase/red/room)
 "rn" = (
 /obj/machinery/light/caged{
 	pixel_y = 30;
@@ -4242,10 +4242,6 @@
 	},
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/red/hallway)
-"rH" = (
-/obj/sound_emitter/periodic/env_leak,
-/turf/simulated/floor/concrete/random,
-/area/warfare/homebase/red/largeroom)
 "rI" = (
 /obj/structure/trench_wall,
 /turf/simulated/mineral{
@@ -4373,10 +4369,10 @@
 	health = 999999
 	},
 /area/warfare/battlefield/trench_section/underground/indoors)
-"ss" = (
+"sw" = (
 /obj/sound_emitter/periodic/env_leak,
-/turf/simulated/floor/urban/tiles,
-/area/warfare/homebase/red/hallway)
+/turf/simulated/floor/concrete/random,
+/area/warfare/homebase/blue/hallway)
 "sx" = (
 /obj/structure/trench_wall/innercorners{
 	dir = 4
@@ -4827,6 +4823,10 @@
 	},
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/red/largeroom)
+"vk" = (
+/obj/sound_emitter/periodic/env_leak,
+/turf/simulated/floor/urban/tiles/blue,
+/area/warfare/homebase/blue/room)
 "vl" = (
 /obj/effect/floor_decal/urban/trim1,
 /turf/simulated/floor/urban/tiles,
@@ -4858,6 +4858,10 @@
 	},
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/red/hallway)
+"vt" = (
+/obj/sound_emitter/periodic/env_leak,
+/turf/simulated/floor/urban/cinder,
+/area/warfare/homebase/blue/largeroom)
 "vu" = (
 /obj/structure/defensive_barrier{
 	dir = 1;
@@ -5064,13 +5068,16 @@
 "wu" = (
 /turf/simulated/floor/urban/tiles/blue,
 /area/warfare/homebase/blue/hallway)
-"wy" = (
-/obj/machinery/light/small/bunker{
-	dir = 8
+"wv" = (
+/obj/effect/landmark/start{
+	name = "Blue Soldier"
+	},
+/obj/structure/bed/chair/blue{
+	dir = 4
 	},
 /obj/sound_emitter/periodic/env_leak,
 /turf/simulated/floor/concrete/random,
-/area/warfare/homebase/red/hallway)
+/area/warfare/homebase/blue/largeroom)
 "wz" = (
 /obj/machinery/light/small/bunker{
 	pixel_x = 0;
@@ -5140,6 +5147,10 @@
 	dir = 1
 	},
 /area/warfare/homebase/blue/room)
+"xc" = (
+/obj/sound_emitter/periodic/env_leak,
+/turf/simulated/floor/urban/tiles,
+/area/warfare/homebase/red/hallway)
 "xd" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/urban/cinder,
@@ -5224,13 +5235,6 @@
 	health = 999999
 	},
 /area/warfare/battlefield/trench_section/underground)
-"xH" = (
-/obj/effect/landmark/start{
-	name = "Red Squad Leader"
-	},
-/obj/sound_emitter/periodic/env_leak,
-/turf/simulated/floor/stones,
-/area/warfare/homebase/red/room)
 "xK" = (
 /obj/item/flame/candle,
 /obj/item/ammo_box/shotgun,
@@ -5298,13 +5302,6 @@
 	},
 /turf/simulated/floor/concrete/random,
 /area/warfare/battlefield/trench_section/room)
-"ye" = (
-/obj/effect/landmark/start{
-	name = "Red Scavenger"
-	},
-/obj/sound_emitter/periodic/env_leak,
-/turf/simulated/floor/stones,
-/area/warfare/homebase/red/room)
 "yf" = (
 /obj/effect/floor_decal/industrial/warning/dust/corner{
 	dir = 8
@@ -5683,6 +5680,10 @@
 	},
 /turf/simulated/floor/urban/concrete,
 /area/warfare/homebase/blue/trainyard)
+"Al" = (
+/obj/sound_emitter/periodic/env_leak,
+/turf/simulated/floor/urban/tiles/blue,
+/area/warfare/homebase/blue/hallway)
 "Ao" = (
 /obj/structure/announcementspeaker/red{
 	pixel_y = 32
@@ -5747,12 +5748,9 @@
 /turf/simulated/floor/wood,
 /area/warfare/battlefield/trench_section/underground/indoors)
 "AM" = (
-/obj/effect/landmark/start{
-	name = "Blue Sentry"
-	},
 /obj/sound_emitter/periodic/env_leak,
-/turf/simulated/floor/concrete/random,
-/area/warfare/homebase/blue/largeroom)
+/turf/simulated/floor/wood,
+/area/warfare/homebase/red/caproom)
 "AO" = (
 /obj/structure/closet/crate/wooden/hardhats,
 /turf/simulated/floor/concrete/random,
@@ -5842,10 +5840,6 @@
 /obj/random/canned_food/red,
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/red/largeroom)
-"Bn" = (
-/obj/sound_emitter/periodic/env_leak,
-/turf/simulated/floor/concrete/random,
-/area/warfare/homebase/red/room)
 "Bo" = (
 /obj/structure/trench_wall/innercorners{
 	dir = 4
@@ -5876,6 +5870,10 @@
 	},
 /turf/space,
 /area/space)
+"Bu" = (
+/obj/sound_emitter/periodic/env_leak,
+/turf/simulated/floor/concrete/random,
+/area/warfare/battlefield/trench_section/room)
 "By" = (
 /obj/structure/storage/cabinet{
 	dir = 4;
@@ -5913,9 +5911,13 @@
 /turf/simulated/floor/wood,
 /area/warfare/homebase/red/caproom)
 "Bz" = (
+/obj/machinery/light{
+	dir = 1;
+	pixel_y = 32
+	},
 /obj/sound_emitter/periodic/env_leak,
-/turf/simulated/floor/wood,
-/area/warfare/battlefield/trench_section/underground/indoors)
+/turf/simulated/floor/urban/tiles/blue,
+/area/warfare/homebase/blue/room)
 "BC" = (
 /turf/simulated/mineral{
 	health = 999999
@@ -6071,6 +6073,10 @@
 	},
 /turf/simulated/floor/wood,
 /area/warfare/battlefield/trench_section/underground/indoors)
+"Cq" = (
+/obj/sound_emitter/periodic/env_leak,
+/turf/simulated/floor/urban/cinder,
+/area/warfare/homebase/blue/room)
 "Cr" = (
 /obj/machinery/door/airlock/multi_tile/metal/maintenance/red,
 /turf/simulated/floor/wood,
@@ -6425,14 +6431,6 @@
 	},
 /turf/simulated/floor/dirty/indestructable,
 /area/warfare/battlefield/trench_section)
-"EQ" = (
-/obj/structure/announcementspeaker/blue{
-	pixel_y = 0;
-	dir = 4
-	},
-/obj/sound_emitter/periodic/env_leak,
-/turf/simulated/floor/concrete/random,
-/area/warfare/homebase/blue/hallway)
 "EU" = (
 /obj/machinery/light{
 	dir = 1;
@@ -6537,6 +6535,18 @@
 /obj/structure/bed/chair/red,
 /turf/simulated/floor/ert/metal01,
 /area/train/blue)
+"Fw" = (
+/obj/structure/toilet{
+	dir = 4;
+	icon_state = "toilet00"
+	},
+/obj/machinery/light/caged{
+	pixel_y = 30;
+	pixel_x = 0
+	},
+/obj/sound_emitter/periodic/env_leak,
+/turf/simulated/floor/concrete/random,
+/area/warfare/battlefield/trench_section/room)
 "Fx" = (
 /obj/structure/trench_wall/sequel{
 	dir = 8
@@ -6665,14 +6675,6 @@
 /obj/structure/train_deco/tracks01,
 /turf/space,
 /area/warfare/homebase/blue/trainyard)
-"Gz" = (
-/obj/machinery/light/small/bunker{
-	pixel_x = 0;
-	pixel_y = 32
-	},
-/obj/sound_emitter/periodic/env_leak,
-/turf/simulated/floor/stones,
-/area/warfare/homebase/red/room)
 "GA" = (
 /obj/item/device/compass,
 /obj/item/device/compass,
@@ -6696,10 +6698,6 @@
 	},
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/red/largeroom)
-"GP" = (
-/obj/sound_emitter/periodic/env_leak,
-/turf/simulated/floor/urban/tiles/blue,
-/area/warfare/homebase/blue/room)
 "GR" = (
 /obj/effect/decal/cleanable/cobweb,
 /turf/simulated/floor/concrete/random,
@@ -6720,10 +6718,6 @@
 	health = 999999
 	},
 /area/warfare/battlefield/trench_section/underground/indoors)
-"GZ" = (
-/obj/sound_emitter/periodic/env_leak,
-/turf/simulated/floor/wood,
-/area/warfare/battlefield/trench_section/room)
 "Ha" = (
 /obj/structure/railing/urban{
 	dir = 4
@@ -6761,14 +6755,10 @@
 	},
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/red/largeroom)
-"Hi" = (
-/obj/machinery/body_scanconsole{
-	dir = 4;
-	icon_state = "body_scannerconsole"
-	},
+"Hj" = (
 /obj/sound_emitter/periodic/env_leak,
-/turf/simulated/floor/urban/tiles/blue,
-/area/warfare/homebase/blue/room)
+/turf/simulated/floor/urban/tiles,
+/area/warfare/homebase/red/room)
 "Hm" = (
 /obj/effect/landmark/start{
 	name = "Blue Soldier"
@@ -6826,6 +6816,14 @@
 	color = "#ffffff"
 	},
 /area/warfare/battlefield/capture_point/red/one)
+"HL" = (
+/obj/machinery/body_scanconsole{
+	dir = 4;
+	icon_state = "body_scannerconsole"
+	},
+/obj/sound_emitter/periodic/env_leak,
+/turf/simulated/floor/urban/tiles/blue,
+/area/warfare/homebase/blue/room)
 "HN" = (
 /obj/structure/closet/crate,
 /obj/random/canned_food/blue,
@@ -7026,6 +7024,14 @@
 /obj/structure/sign/medholo,
 /turf/simulated/wall/perspecticrete,
 /area/warfare/homebase/blue/stoneroom)
+"IW" = (
+/obj/machinery/light/small/bunker{
+	pixel_x = 0;
+	pixel_y = 32
+	},
+/obj/sound_emitter/periodic/env_leak,
+/turf/simulated/floor/stones,
+/area/warfare/homebase/red/room)
 "IX" = (
 /obj/effect/landmark/start{
 	name = "Red Soldier"
@@ -7036,10 +7042,6 @@
 	},
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/red/largeroom)
-"IY" = (
-/obj/sound_emitter/periodic/env_leak,
-/turf/simulated/floor/urban/cinder,
-/area/warfare/homebase/blue/room)
 "IZ" = (
 /obj/effect/floor_decal/trench{
 	dir = 9
@@ -7065,22 +7067,29 @@
 	},
 /turf/simulated/floor/urban/tiles/blue,
 /area/warfare/homebase/blue/room)
+"Jd" = (
+/obj/effect/landmark/start{
+	name = "Red Scavenger"
+	},
+/obj/sound_emitter/periodic/env_leak,
+/turf/simulated/floor/stones,
+/area/warfare/homebase/red/room)
 "Je" = (
 /turf/simulated/floor/urban/cinder,
 /area/warfare/homebase/red/room)
 "Jj" = (
 /turf/space,
 /area/space)
+"Jm" = (
+/obj/sound_emitter/periodic/env_leak,
+/turf/simulated/floor/concrete/random,
+/area/warfare/homebase/red/hallway)
 "Jv" = (
 /obj/structure/announcementspeaker/red{
 	id = "Bluecoats"
 	},
 /turf/simulated/wall/perspecticrete,
 /area/warfare/homebase/blue/room)
-"Jx" = (
-/obj/sound_emitter/periodic/env_leak,
-/turf/simulated/floor/concrete/random,
-/area/warfare/homebase/blue/largeroom)
 "Jy" = (
 /obj/effect/landmark/start{
 	name = "Blue Soldier"
@@ -7218,6 +7227,14 @@
 	health = 999999
 	},
 /area/warfare/homebase/red)
+"KG" = (
+/obj/machinery/body_scanconsole{
+	dir = 4;
+	icon_state = "body_scannerconsole"
+	},
+/obj/sound_emitter/periodic/env_leak,
+/turf/simulated/floor/urban/tiles,
+/area/warfare/homebase/red/room)
 "KH" = (
 /obj/structure/trench_wall/innercorners{
 	dir = 8;
@@ -7294,13 +7311,10 @@
 "Ls" = (
 /turf/simulated/floor/urban/tiles,
 /area/warfare/homebase/red/stoneroom)
-"Lv" = (
-/obj/machinery/light{
-	dir = 8
-	},
+"Lt" = (
 /obj/sound_emitter/periodic/env_leak,
 /turf/simulated/floor/urban/tiles/blue,
-/area/warfare/homebase/blue/hallway)
+/area/warfare/homebase/blue/stoneroom)
 "Lz" = (
 /obj/structure/defensive_barrier{
 	pixel_y = -4;
@@ -7475,10 +7489,6 @@
 /obj/effect/decal/cleanable/blood,
 /turf/simulated/floor/urban/tiles,
 /area/warfare/homebase/red/room)
-"MT" = (
-/obj/sound_emitter/periodic/env_leak,
-/turf/simulated/floor/concrete/random,
-/area/warfare/battlefield/trench_section/room)
 "MV" = (
 /obj/structure/defensive_barrier{
 	secured = 1;
@@ -7505,10 +7515,6 @@
 	health = 999999
 	},
 /area/warfare/battlefield/capture_point/blue/two)
-"Na" = (
-/obj/sound_emitter/periodic/env_leak,
-/turf/simulated/floor/wood,
-/area/warfare/homebase/blue/caproom)
 "Nb" = (
 /turf/simulated/floor/trenches/underground{
 	icon_state = "trench";
@@ -7606,6 +7612,10 @@
 /obj/hammereditor/playerclip,
 /turf/simulated/floor/stones,
 /area/warfare/homebase/blue/trainyard)
+"Nz" = (
+/obj/sound_emitter/periodic/env_leak,
+/turf/simulated/floor/concrete/random,
+/area/warfare/homebase/red/largeroom)
 "NA" = (
 /obj/machinery/light/small/bunker{
 	dir = 4
@@ -7863,6 +7873,10 @@
 	},
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/blue/room)
+"OR" = (
+/obj/sound_emitter/periodic/env_leak,
+/turf/simulated/floor/wood,
+/area/warfare/battlefield/trench_section/room)
 "OS" = (
 /obj/structure/trench_wall{
 	dir = 8
@@ -7871,12 +7885,25 @@
 	health = 999999
 	},
 /area/warfare/battlefield/capture_point/red/one)
+"OU" = (
+/obj/sound_emitter/periodic/env_leak,
+/turf/simulated/floor/concrete/random,
+/area/warfare/homebase/blue/stoneroom)
 "OX" = (
 /obj/machinery/light{
 	dir = 4
 	},
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/red/hallway)
+"OY" = (
+/obj/machinery/light/caged{
+	dir = 4;
+	pixel_x = -1;
+	pixel_y = 0
+	},
+/obj/sound_emitter/periodic/env_leak,
+/turf/simulated/floor/concrete/random,
+/area/warfare/homebase/blue/largeroom)
 "Pd" = (
 /obj/structure/table/rack/shelf/red,
 /turf/simulated/floor/concrete/random,
@@ -7909,6 +7936,13 @@
 /obj/effect/lighting_dummy/daylight,
 /turf/simulated/floor/urban/concrete,
 /area/warfare/homebase/red/trainyard)
+"Pt" = (
+/obj/effect/landmark/start{
+	name = "Red Squad Leader"
+	},
+/obj/sound_emitter/periodic/env_leak,
+/turf/simulated/floor/stones,
+/area/warfare/homebase/red/room)
 "Pw" = (
 /obj/machinery/light/caged{
 	pixel_y = 30;
@@ -8054,17 +8088,6 @@
 	color = "#ffffff"
 	},
 /area/warfare/battlefield/capture_point/red/one)
-"Qq" = (
-/obj/machinery/light/small/bunker{
-	dir = 8
-	},
-/obj/sound_emitter/periodic/env_leak,
-/turf/simulated/floor/concrete/random,
-/area/warfare/homebase/red/largeroom)
-"Qs" = (
-/obj/sound_emitter/periodic/env_leak,
-/turf/simulated/floor/concrete/random,
-/area/warfare/homebase/red/hallway)
 "Qt" = (
 /turf/simulated/floor/urban/cinder,
 /area/warfare/homebase/red)
@@ -8252,20 +8275,6 @@
 /obj/hammereditor/nodraw,
 /turf/simulated/floor/urban/cinder,
 /area/warfare/homebase/blue/stoneroom)
-"Rm" = (
-/obj/structure/trench_wall{
-	dir = 5;
-	pixel_x = 32;
-	layer = 28
-	},
-/obj/structure/trench_wall/innercorners{
-	dir = 1;
-	pixel_x = 32;
-	pixel_y = 31
-	},
-/obj/sound_emitter/periodic/env_leak,
-/turf/simulated/floor/wood,
-/area/warfare/battlefield/trench_section/underground/indoors)
 "Rr" = (
 /obj/effect/lighting_dummy/daylight,
 /obj/structure/train_deco/platform{
@@ -8493,16 +8502,6 @@
 	},
 /turf/simulated/floor/urban/tiles/blue,
 /area/warfare/homebase/blue/room)
-"SL" = (
-/obj/effect/landmark/start{
-	name = "Blue Soldier"
-	},
-/obj/structure/bed/chair/blue{
-	dir = 4
-	},
-/obj/sound_emitter/periodic/env_leak,
-/turf/simulated/floor/concrete/random,
-/area/warfare/homebase/blue/largeroom)
 "SN" = (
 /obj/structure/trench_wall{
 	dir = 4
@@ -8598,13 +8597,16 @@
 /obj/effect/lighting_dummy/daylight,
 /turf/simulated/floor/stones,
 /area/warfare/homebase/blue/trainyard)
+"Tj" = (
+/obj/machinery/light/small/bunker{
+	dir = 8
+	},
+/obj/sound_emitter/periodic/env_leak,
+/turf/simulated/floor/concrete/random,
+/area/warfare/homebase/red/largeroom)
 "Tk" = (
 /turf/simulated/floor/stones,
 /area/warfare/homebase/red/room)
-"Tn" = (
-/obj/sound_emitter/periodic/env_leak,
-/turf/simulated/floor/urban/cinder,
-/area/warfare/battlefield/trench_section/underground/stormsystem/hall)
 "Tq" = (
 /obj/machinery/optable{
 	dir = 1;
@@ -8613,10 +8615,10 @@
 /obj/machinery/light,
 /turf/simulated/floor/urban/tiles,
 /area/warfare/homebase/red/room)
-"Ts" = (
-/obj/sound_emitter/loop/env_canal,
-/turf/simulated/floor/concrete/random,
-/area/warfare/battlefield/trench_section/underground/stormsystem/hall)
+"Tr" = (
+/obj/sound_emitter/periodic/env_leak,
+/turf/simulated/floor/wood,
+/area/warfare/homebase/blue/caproom)
 "Tt" = (
 /obj/structure/table/rack/nosmooth/wood{
 	dir = 1
@@ -8794,14 +8796,10 @@
 	color = "#ffffff"
 	},
 /area/space)
-"Up" = (
-/obj/machinery/light{
-	dir = 1;
-	pixel_y = 32
-	},
+"Ur" = (
 /obj/sound_emitter/periodic/env_leak,
-/turf/simulated/floor/urban/tiles/blue,
-/area/warfare/homebase/blue/room)
+/turf/simulated/floor/urban/cinder,
+/area/warfare/battlefield/trench_section/underground/stormsystem/hall)
 "Uv" = (
 /obj/effect/landmark/start/phoneoperator,
 /turf/simulated/floor/wood,
@@ -8849,13 +8847,6 @@
 /obj/effect/lighting_dummy/daylight,
 /turf/simulated/floor/urban/concrete,
 /area/warfare/homebase/blue/trainyard)
-"UF" = (
-/obj/effect/landmark/start{
-	name = "Red Soldier"
-	},
-/obj/sound_emitter/periodic/env_leak,
-/turf/simulated/floor/stones,
-/area/warfare/homebase/red/room)
 "UI" = (
 /obj/structure/trench_wall/sequel{
 	dir = 8
@@ -8899,6 +8890,14 @@
 	color = "#ffffff"
 	},
 /area/warfare/battlefield/capture_point/red/two)
+"UP" = (
+/obj/structure/announcementspeaker/blue{
+	pixel_y = 0;
+	dir = 4
+	},
+/obj/sound_emitter/periodic/env_leak,
+/turf/simulated/floor/concrete/random,
+/area/warfare/homebase/blue/hallway)
 "UV" = (
 /obj/random/canned_food/blue{
 	pixel_x = -7;
@@ -8964,6 +8963,28 @@
 /obj/structure/dirt_wall,
 /turf/simulated/floor/dirty/fake,
 /area/warfare/battlefield/capture_point/blue/one)
+"Vu" = (
+/obj/machinery/light/small{
+	dir = 1;
+	pixel_y = 32
+	},
+/obj/sound_emitter/periodic/env_leak,
+/turf/simulated/floor/urban/tiles,
+/area/warfare/homebase/red/room)
+"VC" = (
+/obj/structure/trench_wall{
+	dir = 5;
+	pixel_x = 32;
+	layer = 28
+	},
+/obj/structure/trench_wall/innercorners{
+	dir = 1;
+	pixel_x = 32;
+	pixel_y = 31
+	},
+/obj/sound_emitter/periodic/env_leak,
+/turf/simulated/floor/wood,
+/area/warfare/battlefield/trench_section/underground/indoors)
 "VE" = (
 /obj/machinery/door/airlock/multi_tile/metal/maintenance/red,
 /turf/simulated/floor/concrete/random,
@@ -9038,13 +9059,6 @@
 	health = 999999
 	},
 /area/warfare/battlefield/trench_section/room)
-"Wh" = (
-/obj/effect/landmark/start{
-	name = "Red Bartender"
-	},
-/obj/sound_emitter/periodic/env_leak,
-/turf/simulated/floor/stones,
-/area/warfare/homebase/red/room)
 "Wi" = (
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/blue/largeroom)
@@ -9119,15 +9133,6 @@
 "Ww" = (
 /turf/simulated/wall/perspecticrete,
 /area/warfare/homebase/red/stoneroom)
-"WB" = (
-/obj/machinery/light/caged{
-	dir = 4;
-	pixel_x = -1;
-	pixel_y = 0
-	},
-/obj/sound_emitter/periodic/env_leak,
-/turf/simulated/floor/concrete/random,
-/area/warfare/homebase/blue/largeroom)
 "WD" = (
 /obj/structure/stairs/trenchstairs,
 /obj/structure/announcementspeaker/blue{
@@ -9249,16 +9254,19 @@
 	},
 /turf/simulated/floor/wood,
 /area/warfare/battlefield/trench_section/room)
-"Xd" = (
-/obj/sound_emitter/periodic/env_leak,
-/turf/simulated/floor/urban/tiles,
-/area/warfare/homebase/red/room)
 "Xe" = (
 /obj/machinery/light/small/bunker{
 	dir = 1
 	},
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/blue/largeroom)
+"Xf" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/obj/sound_emitter/periodic/env_leak,
+/turf/simulated/floor/urban/tiles/blue,
+/area/warfare/homebase/blue/hallway)
 "Xj" = (
 /obj/effect/floor_decal/stones{
 	dir = 8
@@ -9450,6 +9458,10 @@
 /obj/effect/lighting_dummy/daylight,
 /turf/simulated/floor/urban/destroyed,
 /area/warfare/homebase/blue/trainyard)
+"YO" = (
+/obj/sound_emitter/periodic/env_leak,
+/turf/simulated/floor/concrete/random,
+/area/warfare/homebase/red/room)
 "YS" = (
 /obj/effect/landmark/test/safe_turf,
 /turf/simulated/mineral{
@@ -9563,14 +9575,6 @@
 	health = 999999
 	},
 /area/space)
-"Zw" = (
-/obj/machinery/light/small{
-	dir = 1;
-	pixel_y = 32
-	},
-/obj/sound_emitter/periodic/env_leak,
-/turf/simulated/floor/urban/tiles,
-/area/warfare/homebase/red/room)
 "Zz" = (
 /obj/effect/lighting_dummy/daylight,
 /turf/simulated/floor/urban/destroyed,
@@ -9634,10 +9638,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/warfare/homebase/red/caproom)
-"ZS" = (
-/obj/sound_emitter/periodic/env_leak,
-/turf/simulated/floor/urban/tiles/blue,
-/area/warfare/homebase/blue/hallway)
 "ZV" = (
 /obj/hammereditor/nodraw,
 /turf/simulated/floor/urban/cinder,
@@ -11726,7 +11726,7 @@ Fr
 uw
 It
 Ag
-Xd
+Hj
 bJ
 Fr
 VP
@@ -11786,7 +11786,7 @@ aa
 aa
 NZ
 rM
-Up
+Bz
 rb
 He
 rM
@@ -12392,7 +12392,7 @@ Ry
 vX
 yg
 wu
-Lv
+Xf
 wu
 wu
 wu
@@ -12401,7 +12401,7 @@ wu
 wu
 uH
 ev
-Tn
+Ur
 AB
 oo
 VQ
@@ -12622,7 +12622,7 @@ EU
 Zr
 it
 Fr
-ss
+xc
 wR
 wR
 ej
@@ -12703,7 +12703,7 @@ wu
 eF
 Hy
 AB
-Ts
+pu
 VQ
 VQ
 VQ
@@ -12920,13 +12920,13 @@ VP
 qD
 MS
 Ag
-Xd
+Hj
 Fr
 cR
 wR
 wR
 wR
-ss
+xc
 wR
 wR
 wR
@@ -12996,7 +12996,7 @@ wu
 wu
 wu
 Vf
-ZS
+Al
 wu
 wu
 wu
@@ -13594,7 +13594,7 @@ Ai
 Ai
 rM
 mU
-GP
+vk
 ms
 bw
 xq
@@ -14118,7 +14118,7 @@ aa
 aa
 VP
 Fr
-Zw
+Vu
 Ag
 Tq
 Fr
@@ -14386,7 +14386,7 @@ sL
 dl
 Qh
 NP
-Rm
+VC
 VO
 om
 FC
@@ -14426,7 +14426,7 @@ ql
 FP
 It
 It
-Xd
+Hj
 Fr
 VP
 VP
@@ -14680,7 +14680,7 @@ NX
 dh
 pL
 dT
-MT
+Bu
 NQ
 Mf
 dl
@@ -14833,7 +14833,7 @@ cn
 NP
 nN
 VO
-Bz
+jc
 Fg
 aT
 Yh
@@ -18991,7 +18991,7 @@ Wi
 Wi
 Wi
 Wi
-Jx
+bt
 Wi
 Wi
 Cj
@@ -19032,7 +19032,7 @@ dl
 cn
 NP
 Kv
-Bz
+jc
 VO
 Sl
 zO
@@ -19180,7 +19180,7 @@ NX
 dh
 hw
 dl
-qy
+Fw
 dp
 dl
 dl
@@ -19325,7 +19325,7 @@ NX
 bd
 bk
 ZP
-MT
+Bu
 NQ
 aR
 dl
@@ -19337,7 +19337,7 @@ VO
 kw
 aT
 bT
-GZ
+OR
 TW
 kZ
 IZ
@@ -19522,7 +19522,7 @@ Br
 GO
 dn
 dn
-rH
+Nz
 dn
 dn
 Fr
@@ -19792,7 +19792,7 @@ Fq
 GX
 zz
 dK
-GZ
+OR
 TW
 TW
 HQ
@@ -19886,7 +19886,7 @@ aa
 Cj
 cp
 ap
-on
+vt
 KV
 Wi
 Wi
@@ -20116,7 +20116,7 @@ qL
 cq
 lK
 bq
-rH
+Nz
 dn
 dn
 dn
@@ -20494,7 +20494,7 @@ Xy
 aw
 Wi
 Wi
-Jx
+bt
 Wi
 Xe
 rM
@@ -20727,7 +20727,7 @@ dn
 dn
 Fr
 wz
-Wh
+rm
 cj
 Fr
 Nq
@@ -21024,7 +21024,7 @@ Br
 xR
 bS
 dn
-rH
+Nz
 yP
 bY
 cb
@@ -21987,7 +21987,7 @@ aa
 aa
 Cj
 Wi
-Jx
+bt
 Wi
 Wi
 Wi
@@ -22217,7 +22217,7 @@ Br
 GO
 dn
 dn
-rH
+Nz
 dn
 dn
 dn
@@ -23121,12 +23121,12 @@ dn
 dn
 dn
 dn
-rH
+Nz
 dn
 dn
 dn
 Fr
-Gz
+IW
 ca
 cj
 Fr
@@ -23193,7 +23193,7 @@ bz
 aM
 fr
 Wi
-Jx
+bt
 Wi
 Wi
 Wi
@@ -23414,7 +23414,7 @@ nQ
 aa
 aa
 Br
-rH
+Nz
 dn
 mf
 pd
@@ -26503,7 +26503,7 @@ Pg
 zI
 gw
 bc
-iG
+sw
 aP
 lw
 Pg
@@ -27701,7 +27701,7 @@ av
 hj
 la
 Wi
-WB
+OY
 Hc
 Wi
 Wi
@@ -27910,7 +27910,7 @@ VP
 VP
 Br
 aL
-Qq
+Tj
 eY
 Ce
 dn
@@ -27922,10 +27922,10 @@ Ce
 eY
 Ce
 dn
-Qq
+Tj
 hN
 lL
-Bn
+YO
 lL
 Bb
 Fr
@@ -27996,7 +27996,7 @@ pV
 UY
 cC
 av
-eU
+OU
 av
 rZ
 Wi
@@ -28009,7 +28009,7 @@ Wi
 Wi
 Wi
 fi
-SL
+wv
 fi
 Wi
 qO
@@ -28891,7 +28891,7 @@ yn
 yn
 bb
 eh
-ov
+Lt
 iB
 rM
 ma
@@ -29129,7 +29129,7 @@ Ls
 Ls
 Ls
 uK
-jF
+pb
 Ls
 uK
 Ww
@@ -29194,7 +29194,7 @@ wA
 dt
 dt
 Df
-GP
+vk
 bw
 bw
 bw
@@ -29205,7 +29205,7 @@ Wi
 Wi
 Wi
 Wi
-Jx
+bt
 Wi
 Wi
 Cj
@@ -29415,7 +29415,7 @@ dn
 dn
 dn
 dn
-rH
+Nz
 dn
 dn
 Br
@@ -29725,7 +29725,7 @@ dn
 zB
 Ww
 kq
-jF
+pb
 Ls
 ih
 sm
@@ -29797,7 +29797,7 @@ rM
 Zo
 ey
 ey
-Hi
+HL
 KO
 KO
 KO
@@ -30403,7 +30403,7 @@ If
 XX
 Tt
 XX
-Na
+Tr
 KO
 Oa
 Wi
@@ -30630,7 +30630,7 @@ Ls
 FP
 It
 It
-Xd
+Hj
 It
 Fr
 in
@@ -30691,7 +30691,7 @@ pe
 En
 bb
 ip
-ov
+Lt
 dt
 dt
 dt
@@ -30918,7 +30918,7 @@ xS
 dn
 dn
 dn
-rH
+Nz
 tN
 dn
 dn
@@ -30995,7 +30995,7 @@ dt
 dt
 oD
 oD
-pn
+fv
 oD
 oD
 KO
@@ -31212,7 +31212,7 @@ Ot
 zJ
 kK
 cD
-kG
+AM
 ZQ
 Ot
 GO
@@ -31229,7 +31229,7 @@ Ls
 hP
 Fr
 It
-jQ
+KG
 iu
 CA
 Fr
@@ -31526,7 +31526,7 @@ hW
 Ww
 ic
 Ls
-jF
+pb
 FP
 It
 iv
@@ -31902,7 +31902,7 @@ eN
 aP
 aP
 aP
-EQ
+UP
 aP
 aP
 aP
@@ -32113,7 +32113,7 @@ hl
 Xn
 tk
 tk
-wy
+cL
 tk
 tk
 tk
@@ -32192,7 +32192,7 @@ En
 Tx
 aP
 aP
-iG
+sw
 aP
 aP
 aP
@@ -32429,7 +32429,7 @@ tk
 tk
 rF
 tk
-tk
+Jm
 tk
 rF
 kl
@@ -33104,7 +33104,7 @@ ot
 ot
 AA
 Wi
-Jx
+bt
 MG
 MG
 hi
@@ -33617,7 +33617,7 @@ tN
 dn
 dn
 dn
-rH
+Nz
 dn
 Py
 Fr
@@ -34011,7 +34011,7 @@ Cj
 fw
 fw
 Wi
-AM
+kG
 fK
 fN
 fR
@@ -34512,7 +34512,7 @@ bg
 JL
 dn
 dn
-rH
+Nz
 Ce
 dn
 dn
@@ -34521,7 +34521,7 @@ dn
 dn
 yP
 bY
-UF
+pr
 OJ
 Fr
 VP
@@ -35204,7 +35204,7 @@ No
 Eu
 rM
 Tu
-Jx
+bt
 Cj
 Cj
 Cj
@@ -36021,7 +36021,7 @@ dn
 dn
 Fr
 Tk
-ye
+Jd
 cl
 Fr
 VP
@@ -36616,7 +36616,7 @@ dn
 tN
 dn
 dn
-rH
+Nz
 dn
 hM
 Fr
@@ -36704,7 +36704,7 @@ vK
 ot
 AA
 Wi
-Jx
+bt
 ft
 Be
 Cj
@@ -37010,7 +37010,7 @@ ft
 Cj
 fw
 fw
-Jx
+bt
 fC
 Wi
 fN
@@ -37813,7 +37813,7 @@ vQ
 fo
 JL
 dn
-rH
+Nz
 dn
 dn
 dn
@@ -38120,7 +38120,7 @@ dn
 dn
 dn
 yP
-xH
+Pt
 cb
 OJ
 Fr
@@ -38505,7 +38505,7 @@ rM
 gg
 gg
 Qk
-IY
+Cq
 yE
 cr
 gg
@@ -39315,7 +39315,7 @@ zM
 tk
 tk
 tk
-Qs
+Jm
 wj
 OX
 tk
