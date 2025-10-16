@@ -51,3 +51,177 @@
 	name = "\improper NanoTrasen merit medal"
 	desc = "An iron medal awarded to NanoTrasen employees for merit."
 	icon_state = "iron_nt"
+
+//WARMEDALS
+
+/obj/item/clothing/accessory/medal/red
+	name = "Red medal"
+	desc = "A medal given to those who served in combat well!"
+	warfare_team = RED_TEAM
+
+/obj/item/clothing/accessory/medal/red/brass
+	name = "Volunteer of Redistan medal"
+	desc = "A medal given to redistani soldiers who achieved minor accomplishments!"
+	icon_state = "brass"
+	item_state = "brass"
+
+/obj/item/clothing/accessory/medal/red/pig_iron
+	name = "Carmine liberator medal"
+	desc = "A medal given to redistani soldiers who achieved significant accomplishments!"
+	icon_state = "pig_iron"
+	item_state = "pig_iron"
+
+/obj/item/clothing/accessory/medal/red/gold
+	name = "Crimson triumph medal"
+	desc = "A medal given to redistani soldiers who achieved major accomplishments!"
+	icon_state = "gold_red"
+	item_state = "gold_red"
+
+/obj/item/clothing/accessory/medal/red/captain/cross1
+	name = "GREAT LEADER Cross 1st class"
+	desc = "A medal given to redistani captains who command their troops to victory!"
+	icon_state = "great_leader_cross_with_leaves_and_swords"
+	item_state = "great_leader_cross_with_leaves_and_swords"
+
+/obj/item/clothing/accessory/medal/blue
+	name = "Blue medal"
+	desc = "A medal given to those who served in combat well!"
+	warfare_team = BLUE_TEAM
+
+/obj/item/clothing/accessory/medal/blue/stainless_steel
+	name = "Citizen of Blusnia medal"
+	desc = "A medal given to blusnian soldiers who achieved minor accomplishments!"
+	icon_state = "stainless_steel"
+	item_state = "stainless_steel"
+
+/obj/item/clothing/accessory/medal/blue/silver
+	name = "Ultramarine defender medal"
+	desc = "A medal given to blusnian soldiers who achieved significant accomplishments!"
+	icon_state = "silver_blue"
+	item_state = "silver_blue"
+
+/obj/item/clothing/accessory/medal/blue/platinum
+	name = "Cobalt sigil medal"
+	desc = "A medal given to blusnian soldiers who achieved major accomplishments!"
+	icon_state = "platinum"
+	item_state = "platinum"
+
+/obj/item/clothing/accessory/medal/blue/captain/order1
+	name = "Order of Democracy 1st class"
+	desc = "A medal given to blusnian captains who command their troops to victory!"
+	icon_state = "order_of_democracy_first_class"
+	item_state = "order_of_democracy_first_class"
+
+//WARMEDALS PROCS//
+
+//MORALE BUFF/DEBUFF!!!
+/obj/item/clothing/accessory/medal/on_attached(var/obj/item/clothing/S, var/mob/user, var/initial_equip = FALSE)
+	..()
+	// Give happiness buff to the wearer
+	if(!initial_equip && S.loc && ishuman(S.loc))
+		var/mob/living/carbon/human/H = S.loc
+		H.clear_event("Awarded")
+		H.add_event("Awarded", /datum/happiness_event/awarded)
+
+/obj/item/clothing/accessory/medal/on_removed(var/mob/user)
+	// Get the wearer BEFORE calling parent (which nulls has_suit)
+	var/mob/living/carbon/human/H = null
+	if(has_suit && ishuman(has_suit.loc))
+		H = has_suit.loc
+
+	..() // Now call parent
+
+	// Combined check: both wearer and remover must be human
+	if(H && ishuman(user))
+		var/mob/living/carbon/human/remover = user
+
+		// Check if remover is captain and on same team
+		var/is_red_captain = remover.HasRoleSimpleCheck("Red Captain")
+		var/is_blue_captain = remover.HasRoleSimpleCheck("Blue Captain")
+
+		// Make sure both have warfare_faction set and captain is on same team
+		if(H.warfare_faction && remover.warfare_faction)
+			if((is_red_captain || is_blue_captain) && H.warfare_faction == remover.warfare_faction)
+				// Clear positive buff and apply negative one
+				H.clear_event("Awarded")
+				H.add_event("Demoted", /datum/happiness_event/demoted)
+
+				// Remove from medal tracking
+				GLOB.medals_awarded -= H.real_name
+				to_chat(remover, SPAN_WARNING("You have revoked [H.real_name]'s medal. Serves them right."))
+				to_chat(H, SPAN_DANGER("Your medal has been revoked by [remover.real_name]!"))
+
+//MAIN CHECKS!!
+/obj/item/clothing/accessory/medal/proc/can_be_awarded_by(var/mob/living/carbon/human/awarder, var/mob/living/carbon/human/recipient)
+	//Determine Kapittan's team
+	var/captain_team = null
+	if(awarder.HasRoleSimpleCheck("Red Captain"))
+		captain_team = RED_TEAM
+	else if(awarder.HasRoleSimpleCheck("Blue Captain"))
+		captain_team = BLUE_TEAM
+	else //Your rank is not high enough soldier!
+		to_chat(awarder, SPAN_WARNING("My rank is not high enough to bestow such honours...</i></b>"))
+		return FALSE
+
+	//Check medal team matches captain team
+	if(warfare_team != captain_team)
+		to_chat(awarder, SPAN_MINDVOICE("THIS IS BORDERLINE TREASON! THE COMMAND HAS BEEN NOTIFIED!"))
+		log_and_message_admins("attempted to award a [warfare_team] medal while being on [captain_team] team.", awarder)
+		return FALSE
+
+	//Check recipient is on same team
+	if(awarder.warfare_faction != recipient.warfare_faction)
+		to_chat(awarder, SPAN_MINDVOICE("THIS IS BORDERLINE TREASON! THE COMMAND HAS BEEN NOTIFIED!"))
+		log_and_message_admins("attempted to award a [warfare_team] medal to [key_name(recipient)] who is on the enemy team.", awarder)
+		return FALSE
+
+	//Self-awarding check
+	if(awarder == recipient)
+		//You can't award yourself Kapittan!
+		if(!awarder.mind || !awarder.mind.backstory)
+			to_chat(awarder, SPAN_WARNING("You cannot award medals to yourself!</i></b>"))
+			return FALSE
+
+		//Unless you are corrupt :)
+		if(!istype(awarder.mind.backstory, /datum/backstory/nepotismcaptain))
+			to_chat(awarder, SPAN_WARNING("You cannot award medals to yourself!</i></b>"))
+			return FALSE
+
+		return TRUE
+
+	return TRUE
+
+//MEDAL TRAKKER
+/obj/item/clothing/accessory/medal/proc/try_award_medal(var/mob/living/carbon/human/awarder, var/mob/living/carbon/human/recipient)
+	if(!can_be_awarded_by(awarder, recipient))
+		return FALSE
+
+	//Check if already awarded (unless nepotism self-praise and glory)
+	if(recipient.real_name in GLOB.medals_awarded)
+		var/is_nepotism_self_award = (awarder == recipient && awarder.mind?.backstory?.type == /datum/backstory/nepotismcaptain)
+		if(!is_nepotism_self_award)
+			to_chat(awarder, SPAN_WARNING("[recipient.real_name] has already been awarded a medal during this battle!"))
+			return FALSE
+
+		//OUR DECORATED NOT SO HEROIC NEPO CAPTAIN!
+		var/list/existing = GLOB.medals_awarded[recipient.real_name]
+		if(!islist(existing[1]))
+			existing = list(existing)
+		existing += list(list(
+			"name" = recipient.real_name,
+			"awarded_by" = awarder.real_name,
+			"team" = warfare_team,
+			"medal_name" = name
+		))
+		GLOB.medals_awarded[recipient.real_name] = existing
+	else
+		//OUR DECORATED WAR HEROES! (Roundend Tracker)
+		GLOB.medals_awarded[recipient.real_name] = list(
+			"name" = recipient.real_name,
+			"awarded_by" = awarder.real_name,
+			"team" = warfare_team,
+			"medal_name" = name,
+			"posthumous" = (recipient.stat == DEAD)
+		)
+
+	return TRUE

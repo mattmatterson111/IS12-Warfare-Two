@@ -448,6 +448,56 @@ var/global/datum/controller/gameticker/ticker
 
 	round_end_stats += "First victim: <B>[GLOB.first_death]</B>.\nTheir last words were: <b>\"[GLOB.final_words]\"</b>\n "
 
+	//OUR DECORATED WAR HEROES!!!
+	if(LAZYLEN(GLOB.medals_awarded))
+		to_world("<br><FONT size = 2><B>Medals Awarded This Round:</B></FONT>")
+
+		//REDS
+		to_world("<br><B><span class='red_team'>[RED_TEAM] Medals:</span></B>")
+		var/red_medals_found = FALSE
+		for(var/recipient_name in GLOB.medals_awarded)
+			var/medal_data = GLOB.medals_awarded[recipient_name]
+
+			// Check if it's a list of medals (nepotism captain) or single medal
+			if(islist(medal_data[1]))
+				// Multiple medals for this person
+				for(var/list/medal_info in medal_data)
+					if(medal_info["team"] == RED_TEAM)
+						to_world("- <B>[medal_info["name"]]</B> received a <B>[medal_info["medal_name"]]</B> from <B>[medal_info["awarded_by"]]</B>")
+						red_medals_found = TRUE
+			else
+				// Single medal
+				if(medal_data["team"] == RED_TEAM)
+					var/posthumous_text = medal_data["posthumous"] ? " <i>(†)</i>" : ""
+					to_world("- <B>[medal_data["name"]]</B> received a <B>[medal_data["medal_name"]]</B> from <B>[medal_data["awarded_by"]]</B>[posthumous_text]")
+					red_medals_found = TRUE
+		if(!red_medals_found)
+			to_world("<i>No medals were awarded to [RED_TEAM] this round.</i>")
+
+
+		//BLUES
+		to_world("<br><B><span class='blue_team'>[BLUE_TEAM] Medals:</span></B>")
+		var/blue_medals_found = FALSE
+		for(var/recipient_name in GLOB.medals_awarded)
+			var/medal_data = GLOB.medals_awarded[recipient_name]
+			// Check if it's a list of medals (nepotism captain) or single medal
+			if(islist(medal_data[1]))
+				// Multiple medals for this person
+				for(var/list/medal_info in medal_data)
+					if(medal_info["team"] == BLUE_TEAM)
+						to_world("- <B>[medal_info["name"]]</B> received a <B>[medal_info["medal_name"]]</B> from <B>[medal_info["awarded_by"]]</B>")
+						blue_medals_found = TRUE
+			else
+				// Single medal
+				if(medal_data["team"] == BLUE_TEAM)
+					var/posthumous_text = medal_data["posthumous"] ? " <i>(†)</i>" : ""
+					to_world("- <B>[medal_data["name"]]</B> received a <B>[medal_data["medal_name"]]</B> from <B>[medal_data["awarded_by"]]</B>[posthumous_text]")
+					blue_medals_found = TRUE
+		if(!blue_medals_found)
+			to_world("<i>No medals were awarded to [BLUE_TEAM] this round.</i>")
+	else
+		to_world("<br><FONT size = 2><B>No medals were awarded to either team this round.</B></FONT>")
+
 	if(LAZYLEN(GLOB.bright_futures))
 		round_end_stats += SPAN_DANGER("The following people have a bright future ahead of them:")
 		for(var/mob/living/M in GLOB.bright_futures)
