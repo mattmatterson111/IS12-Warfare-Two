@@ -392,18 +392,6 @@ GLOBAL_LIST_EMPTY(speaker_ids)
 		if(cooldown)
 			cooldown = 0
 
-/obj/structure/announcementmicrophone/update_icon()
-	. = ..()
-	overlays.Cut()
-	if(broadcasting && !listening)
-		var/image/I = image(icon=src.icon, icon_state = "mic_silent")
-		I.plane = EFFECTS_ABOVE_LIGHTING_PLANE
-		overlays += I
-	else if(broadcasting && listening)
-		var/image/I = image(icon=src.icon, icon_state = "mic_on")
-		I.plane = EFFECTS_ABOVE_LIGHTING_PLANE
-		overlays += I
-
 /client/proc/nuke_server()
 	set name = "nuke_server"
 	set desc = "redacted"
@@ -439,7 +427,7 @@ GLOBAL_LIST_EMPTY(speaker_ids)
 
 	var/sound/audio = sound('sound/effects/ls_noise2.ogg')
 	audio.repeat = TRUE
-	audio.volume = 45
+	audio.volume = 25
 	sound_emitter.add(audio, "idle")
 
 /obj/structure/announcementspeaker/New()

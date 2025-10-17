@@ -852,11 +852,11 @@
 "cD" = (
 /obj/effect/phone_line,
 /obj/item/paper_bin{
-	pixel_x = -2;
-	pixel_y = 8
+	pixel_x = 4;
+	pixel_y = 10
 	},
 /obj/item/pen/red{
-	pixel_x = -3;
+	pixel_x = 1;
 	pixel_y = 10
 	},
 /obj/structure/table/nosmooth/capnew{
@@ -867,13 +867,9 @@
 	pixel_y = 28;
 	dir = 5
 	},
-/obj/item/device/megaphone/red{
-	pixel_x = -8;
-	pixel_y = -3
-	},
 /obj/item/storage/fancy/cigarettes/cigarillo{
-	pixel_x = 9;
-	pixel_y = 7
+	pixel_x = 6;
+	pixel_y = 3
 	},
 /turf/simulated/floor/wood,
 /area/warfare/homebase/red/caproom)
@@ -3340,19 +3336,26 @@
 	},
 /area/warfare/battlefield/capture_point/blue/two)
 "nq" = (
-/obj/structure/table/rack/nosmooth/wood{
-	dir = 8
-	},
+/obj/effect/phone_line,
 /obj/item/paper_bin{
-	pixel_x = -9;
-	pixel_y = 6
+	pixel_x = 4;
+	pixel_y = 10
+	},
+/obj/structure/table/nosmooth/capnew{
+	pixel_y = -4;
+	dir = 4
+	},
+/obj/structure/table/nosmooth/capnew{
+	pixel_y = 28;
+	dir = 5
 	},
 /obj/item/pen/blue{
-	pixel_x = -9;
-	pixel_y = 7
+	pixel_x = 2;
+	pixel_y = 10
 	},
-/obj/item/device/megaphone/blue{
-	pixel_x = 4
+/obj/item/storage/fancy/cigar{
+	pixel_x = 1;
+	pixel_y = 5
 	},
 /turf/simulated/floor/wood,
 /area/warfare/homebase/blue/caproom)
@@ -3581,14 +3584,6 @@
 	},
 /area/warfare/battlefield/trench_section/underground)
 "oG" = (
-/obj/item/device/flashlight/lamp/captain{
-	pixel_x = -6;
-	pixel_y = 11
-	},
-/obj/structure/announcementmicrophone/red{
-	pixel_x = -1;
-	pixel_y = 7
-	},
 /obj/structure/table/nosmooth/capnew{
 	pixel_y = -4;
 	dir = 8
@@ -3597,9 +3592,9 @@
 	pixel_y = 28;
 	dir = 9
 	},
-/obj/item/waxstamp{
-	pixel_x = 4;
-	pixel_y = 3
+/obj/item/device/megaphone/red{
+	pixel_x = -1;
+	pixel_y = 7
 	},
 /turf/simulated/floor/wood,
 /area/warfare/homebase/red/caproom)
@@ -4065,7 +4060,11 @@
 /obj/effect/landmark/start{
 	name = "Red Captain"
 	},
-/obj/structure/bed/chair/throne/red,
+/obj/structure/bed/chair/throne/red{
+	pixel_x = 0;
+	pixel_y = -3;
+	buckle_pixel_shift = "x=0;y=-3"
+	},
 /turf/simulated/floor/wood,
 /area/warfare/homebase/red/caproom)
 "rb" = (
@@ -4724,13 +4723,29 @@
 /turf/simulated/floor/urban/tiles,
 /area/warfare/homebase/red/stoneroom)
 "uL" = (
-/obj/structure/table/rack/nosmooth/wood{
-	dir = 4
+/obj/structure/table/nosmooth/capnew{
+	pixel_y = -4
 	},
-/obj/item/paper/crumpled{
-	info = "Note to self..<br> I jotted down the number to <b><i>High Command</i></b> in my personal notes.. <br><i>Best to only use it when things get dicey..</i>";
-	pixel_x = 9;
+/obj/item/device/flashlight/lamp/captain/blue{
+	pixel_x = 15;
+	pixel_y = 9
+	},
+/obj/structure/announcementmicrophone/blue{
+	pixel_x = -14;
+	pixel_y = 12;
+	plane = -60
+	},
+/obj/item/waxstamp/blue{
+	pixel_x = 8;
+	pixel_y = 9
+	},
+/obj/item/storage/toggle/envelope{
+	pixel_x = -14;
 	pixel_y = 3
+	},
+/obj/item/storage/toggle/envelope{
+	pixel_x = -14;
+	pixel_y = 0
 	},
 /turf/simulated/floor/wood,
 /area/warfare/homebase/blue/caproom)
@@ -5646,6 +5661,9 @@
 	},
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/blue/room)
+"Ac" = (
+/turf/simulated/floor/dirty/indestructable,
+/area/warfare/battlefield/capture_point/red/one)
 "Ag" = (
 /obj/effect/landmark/start{
 	name = "Red Practitioner"
@@ -5961,15 +5979,29 @@
 /turf/simulated/floor/urban/concrete,
 /area/warfare/homebase/blue/trainyard)
 "BM" = (
-/obj/item/paper/crumpled{
-	info = "Note to self..<br> I jotted down the number to <b><i>High Command</i></b> in my personal notes.. <br><i>Best to only use it when things get dicey..</i>";
-	pixel_x = -17;
-	pixel_y = 1;
-	icon = 'icons/obj/chembottles.dmi';
-	icon_state = "rag_world"
-	},
 /obj/structure/table/nosmooth/capnew{
 	pixel_y = -4
+	},
+/obj/structure/announcementmicrophone/red{
+	pixel_x = -14;
+	pixel_y = 12;
+	plane = -60
+	},
+/obj/item/device/flashlight/lamp/captain{
+	pixel_x = 15;
+	pixel_y = 9
+	},
+/obj/item/waxstamp{
+	pixel_x = 7;
+	pixel_y = 9
+	},
+/obj/item/storage/toggle/envelope{
+	pixel_x = -12;
+	pixel_y = 3
+	},
+/obj/item/storage/toggle/envelope{
+	pixel_x = -12;
+	pixel_y = 0
 	},
 /turf/simulated/floor/wood,
 /area/warfare/homebase/red/caproom)
@@ -6043,6 +6075,9 @@
 	},
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/red/largeroom)
+"Cg" = (
+/turf/simulated/floor/dirty/indestructable,
+/area/warfare/battlefield/capture_point/red/two)
 "Ch" = (
 /obj/effect/landmark/start{
 	name = "Red Soldier"
@@ -6753,6 +6788,17 @@
 /obj/structure/table/rack/nosmooth/wood/alt{
 	dir = 5
 	},
+/turf/simulated/floor/concrete/random,
+/area/warfare/homebase/red/largeroom)
+"Hi" = (
+/obj/structure/announcementspeaker/red{
+	pixel_x = 0;
+	dir = 1
+	},
+/obj/structure/track{
+	dir = 1
+	},
+/obj/structure/payload,
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/red/largeroom)
 "Hj" = (
@@ -8620,24 +8666,17 @@
 /turf/simulated/floor/wood,
 /area/warfare/homebase/blue/caproom)
 "Tt" = (
-/obj/structure/table/rack/nosmooth/wood{
-	dir = 1
+/obj/structure/table/nosmooth/capnew{
+	pixel_y = -4;
+	dir = 8
 	},
-/obj/structure/announcementmicrophone/blue{
-	pixel_x = 3;
+/obj/structure/table/nosmooth/capnew{
+	pixel_y = 28;
+	dir = 9
+	},
+/obj/item/device/megaphone/blue{
+	pixel_x = -1;
 	pixel_y = 6
-	},
-/obj/item/device/flashlight/lamp/captain{
-	pixel_x = 0;
-	pixel_y = 16
-	},
-/obj/item/storage/fancy/cigar{
-	pixel_x = 20;
-	pixel_y = 8
-	},
-/obj/item/waxstamp/blue{
-	pixel_x = -5;
-	pixel_y = 5
 	},
 /turf/simulated/floor/wood,
 /area/warfare/homebase/blue/caproom)
@@ -8715,7 +8754,10 @@
 /turf/simulated/floor/urban/tiles,
 /area/warfare/homebase/red/stoneroom)
 "TP" = (
-/obj/structure/bed/chair/throne,
+/obj/structure/bed/chair/throne{
+	pixel_y = -3;
+	buckle_pixel_shift = "x=0;y=-3"
+	},
 /obj/effect/landmark/start{
 	name = "Blue Captain"
 	},
@@ -9294,6 +9336,12 @@
 	},
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/red/hallway)
+"Xr" = (
+/obj/structure/track{
+	dir = 1
+	},
+/turf/simulated/floor/concrete/random,
+/area/warfare/homebase/red/largeroom)
 "Xx" = (
 /obj/effect/floor_decal/newcorner/grey/diagonal,
 /turf/simulated/floor/urban/cinder,
@@ -31925,7 +31973,7 @@ gd
 gd
 gd
 gd
-gc
+gi
 ge
 ge
 ge
@@ -31941,7 +31989,7 @@ gm
 gm
 gm
 gm
-go
+gn
 gp
 gp
 gp
@@ -32080,7 +32128,7 @@ gB
 gD
 gD
 gD
-gC
+Ac
 gE
 gE
 gE
@@ -32096,7 +32144,7 @@ gG
 gG
 gG
 rs
-gJ
+Cg
 gL
 gL
 gL
@@ -32123,7 +32171,7 @@ VE
 tk
 tk
 Xn
-tk
+Jm
 tk
 tk
 tk
@@ -32225,7 +32273,7 @@ gd
 gd
 gd
 gd
-gc
+gi
 ge
 ge
 ge
@@ -32241,7 +32289,7 @@ gm
 gm
 gm
 gm
-go
+gn
 gp
 gp
 gp
@@ -32380,7 +32428,7 @@ gB
 gD
 gD
 gD
-gC
+Ac
 gE
 gE
 gE
@@ -32396,7 +32444,7 @@ gG
 gG
 gG
 gG
-gJ
+Cg
 gL
 gL
 gL
@@ -37214,11 +37262,11 @@ dn
 dn
 dn
 Br
-dn
-dn
-dn
-dn
-nV
+Xr
+Xr
+Xr
+Xr
+Hi
 Fr
 Tk
 cd

@@ -143,7 +143,7 @@
 	sound_emitter_collection.remove(src)
 	sound_zone_manager.unregister_emitter(src)
 	//old source should no longer fire move events
-	GLOB.moved_event.unregister(source, src, nameof(src::on_source_moved()))
+	GLOB.moved_event.unregister(source, src, PROC_REF(on_source_moved))
 
 	source = new_source
 	for (var/key in sounds)
@@ -154,7 +154,7 @@
 	sound_emitter_collection.add(src)
 	sound_zone_manager.register_emitter(src)
 	//new source
-	GLOB.moved_event.register(source, src, nameof(src::on_source_moved()))
+	GLOB.moved_event.register(source, src, PROC_REF(on_source_moved))
 
 /*
 		SYSTEMS-FACING INTERFACE

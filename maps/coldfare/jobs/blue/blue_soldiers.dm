@@ -431,18 +431,20 @@
 	..()
 
 /decl/hierarchy/outfit/job/bluesoldier/flamer
+	name = OUTFIT_JOB_NAME("Blue Flamer")
 	l_ear = /obj/item/device/radio/headset/blue_team/all
 	suit = /obj/item/clothing/suit/fire/blue
 	mask = /obj/item/clothing/mask/gas/blue/flamer
 	gloves = /obj/item/clothing/gloves/thick/swat/combat/warfare/blue/flamer
 	head = null
 	shoes = /obj/item/clothing/shoes/jackboots/warfare/blue/flamer
-	belt = /obj/item/gun/projectile/automatic/flamer
-	suit_store = /obj/item/melee/trench_axe
 	r_pocket = /obj/item/grenade/fire
-	backpack_contents = list(/obj/item/ammo_magazine/flamer = 4, /obj/item/grenade/smokebomb = 1)
+	backpack_contents = list(/obj/item/grenade/smokebomb = 1)
+	chest_holster = /obj/item/storage/backpack/satchel/warfare/chestrig/blue
+	chestholster_contents = list(/obj/item/ammo_magazine/flamer = 4)
 
 /decl/hierarchy/outfit/job/bluesoldier/sentry
+	name = OUTFIT_JOB_NAME("Blue Sentry")
 	l_ear = /obj/item/device/radio/headset/blue_team/all
 	suit = /obj/item/clothing/suit/armor/sentry/blue
 	head = /obj/item/clothing/head/helmet/sentryhelm/blue

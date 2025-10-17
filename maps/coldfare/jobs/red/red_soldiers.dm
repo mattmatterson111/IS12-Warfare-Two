@@ -351,7 +351,7 @@
 /decl/hierarchy/outfit/job/redsoldier/engineer
 	r_pocket = /obj/item/ammo_magazine/mc9mmt/machinepistol
 	l_pocket = /obj/item/wirecutters
-	suit_store = /obj/item/gun/projectile/automatic/machinepistol/wooden
+	//suit_store = /obj/item/gun/projectile/automatic/machinepistol/wooden
 	back = /obj/item/storage/backpack/warfare
 	backpack_contents = list(/obj/item/stack/barbwire = 1, /obj/item/shovel = 1, /obj/item/defensive_barrier = 4, /obj/item/storage/box/ifak = 1)
 
@@ -361,12 +361,30 @@
 		r_pocket = /obj/item/shovel
 		belt = /obj/item/storage/belt/autoshotty
 		backpack_contents = list(/obj/item/stack/barbwire = 1, /obj/item/defensive_barrier = 3, /obj/item/storage/box/ifak = 1, /obj/item/grenade/smokebomb = 1)
-	else // if(prob(50))
+
+	else if(prob(7))
 		suit_store = /obj/item/gun/projectile/shotgun/pump/shitty
 		r_pocket = /obj/item/ammo_box/shotgun
 		belt = /obj/item/shovel
 		backpack_contents = list(/obj/item/stack/barbwire = 1, /obj/item/defensive_barrier = 3, /obj/item/storage/box/ifak = 1, /obj/item/grenade/smokebomb = 1)
-	/*
+
+	else if(prob(25))
+		suit_store = /obj/item/gun/projectile/shotgun/pump/boltaction/shitty/leverchester
+		r_pocket = /obj/item/ammo_box/rifle
+		backpack_contents = list(/obj/item/grenade/smokebomb = 1)
+		belt = null
+
+	else if(prob(50))
+		suit_store = /obj/item/gun/projectile/shotgun/pump/boltaction/shitty/bayonet
+		r_pocket = /obj/item/ammo_box/rifle
+		backpack_contents = list(/obj/item/grenade/smokebomb = 1)
+		belt = null
+
+	else
+		suit_store = /obj/item/gun/projectile/shotgun/pump/boltaction/shitty
+		r_pocket = /obj/item/ammo_box/rifle
+		backpack_contents = list(/obj/item/grenade/smokebomb = 1)
+		belt = null	/*
 	else
 		suit_store = /obj/item/gun/projectile/automatic/machinepistol
 		r_pocket = /obj/item/shovel
@@ -381,6 +399,7 @@
 
 
 /decl/hierarchy/outfit/job/redsoldier/sentry
+	name = OUTFIT_JOB_NAME("Red Sentry")
 	l_ear = /obj/item/device/radio/headset/red_team/all
 	suit = /obj/item/clothing/suit/armor/sentry/red
 	head = /obj/item/clothing/head/helmet/sentryhelm/red
@@ -396,6 +415,7 @@
 	..()
 
 /decl/hierarchy/outfit/job/redsoldier/flamer
+	name = OUTFIT_JOB_NAME("Red Flamer")
 	l_ear = /obj/item/device/radio/headset/red_team/all
 	suit = /obj/item/clothing/suit/fire/red
 	mask = /obj/item/clothing/mask/gas/red/flamer
@@ -405,7 +425,10 @@
 	belt = /obj/item/gun/projectile/automatic/flamer
 	suit_store = /obj/item/melee/trench_axe
 	r_pocket = /obj/item/grenade/fire
-	backpack_contents = list(/obj/item/ammo_magazine/flamer = 4, /obj/item/grenade/smokebomb = 1)
+	backpack_contents = list(/obj/item/grenade/smokebomb = 1)
+	chest_holster = /obj/item/storage/backpack/satchel/warfare/chestrig/red
+	chestholster_contents = list(/obj/item/ammo_magazine/flamer = 4)
+
 
 /decl/hierarchy/outfit/job/redsoldier/sniper
 	l_ear = /obj/item/device/radio/headset/red_team/all
@@ -462,7 +485,6 @@
 	belt = /obj/item/gun/projectile/revolver/cpt
 	r_pocket = /obj/item/device/binoculars
 	l_pocket = /obj/item/key/captain
-	chest_holster = null
 	backpack_contents = list(/obj/item/ammo_magazine/handful/revolver = 2, /obj/item/grenade/smokebomb = 1, /obj/item/clothing/mask/gas/captaingasmask = 1)
 
 /decl/hierarchy/outfit/job/redsoldier/leader/equip()

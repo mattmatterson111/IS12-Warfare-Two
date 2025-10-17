@@ -1,7 +1,19 @@
 #define NONE 1
-#define FORWARD 2
-#define BACKWARD 3
+#define FORWRD 2
+#define BCKWRD 3
 #define BOTH 4
+
+#define CONTESTED 1
+#define MOVING_FORWARD 2
+#define MOVING_BACKWARD 3
+#define IDLE_STATE 4
+
+/obj/structure/fluff_track/
+	name = "tracks"
+	desc = "It tracks."
+	icon = 'code/modules/payload_gamemode/icons/tracks.dmi'
+	icon_state = "main"
+	anchored = TRUE
 
 /obj/structure/track/
 	icon = 'code/modules/payload_gamemode/icons/tracks.dmi'
@@ -11,19 +23,68 @@
 	var/speed = 1
 	var/canmove = TRUE
 	var/angle = null
+	invisibility = 101
+	anchored = TRUE
+	mouse_opacity = FALSE
+	//var/track_icon = "v1"
 
 /obj/structure/track/Initialize()
 	. = ..()
-	next_track = locate(/obj/structure/track) in get_step(src, src.dir)
-	next_track.prev_track = src
+	//icon_state = track_icon
+	switch(dir)
+		if(EAST)
+			next_track = locate(/obj/structure/track) in get_step(src, EAST)
+		if(WEST)
+			next_track = locate(/obj/structure/track) in get_step(src, WEST)
+		if(NORTH)
+			next_track = locate(/obj/structure/track) in get_step(src, NORTH)
+		if(SOUTH)
+			next_track = locate(/obj/structure/track) in get_step(src, SOUTH)
+		if(NORTHWEST)
+			next_track = locate(/obj/structure/track) in get_step(src, NORTH)
+			if(!next_track)
+				next_track = locate(/obj/structure/track) in get_step(src, NORTHWEST)
+			if(!next_track)
+				next_track = locate(/obj/structure/track) in get_step(src, WEST)
+
+		if(NORTHEAST)
+			next_track = locate(/obj/structure/track) in get_step(src, NORTH)
+			if(!next_track)
+				next_track = locate(/obj/structure/track) in get_step(src, NORTHEAST)
+			if(!next_track)
+				next_track = locate(/obj/structure/track) in get_step(src, EAST)
+
+		if(SOUTHWEST)
+			next_track = locate(/obj/structure/track) in get_step(src, SOUTH)
+			if(!next_track)
+				next_track = locate(/obj/structure/track) in get_step(src, SOUTHWEST)
+			if(!next_track)
+				next_track = locate(/obj/structure/track) in get_step(src, WEST)
+
+		if(SOUTHEAST)
+			next_track = locate(/obj/structure/track) in get_step(src, SOUTH)
+			if(!next_track)
+				next_track = locate(/obj/structure/track) in get_step(src, SOUTHEAST)
+			if(!next_track)
+				next_track = locate(/obj/structure/track) in get_step(src, EAST)
+	//next_track.prev_track = src
 	//prev_track = locate(/obj/structure/track) in get_step(src, turn(src.dir, 180))
-	canmove = BOTH
-	if(prev_track && !next_track)
-		canmove = BACKWARD
-	else if(next_track && !prev_track)
-		canmove = FORWARD
-	else if(!next_track && !prev_track)
+	canmove = NONE
+	if(next_track)
+		next_track.prev_track = src
+
+	if(next_track && !prev_track)
+		canmove = FORWRD
+
+	if(!next_track && prev_track)
+		canmove = BCKWRD
+
+	if(!next_track && !prev_track)
 		canmove = NONE
+
+	if(next_track && prev_track)
+		canmove = BOTH
+
 	angle = dir2angle(dir)
 
 /obj/structure/track/Crossed(O)
@@ -32,25 +93,32 @@
 		var/obj/structure/payload/pl = O
 		pl.current_track = src
 
-/obj/structure/payload
+GLOBAL_LIST_EMPTY(payloads)
 
+/obj/structure/payload
 	icon = 'code/modules/payload_gamemode/icons/payload.dmi'
 	icon_state = "editor"
+	plane = -110
 
 	var/obj/structure/track/current_track
 
 	var/body_icon = "base"
 	var/payload_icon = "red_payload"
 
-	var/speed_per_player = 1
+	var/speed_mod = 1
 	var/warfare_faction = RED_TEAM
 
 	/// Mob list to keep track of who's pushing
 	var/list/pushers = list()
 	/// Time since it last got pushed
 	var/time_since_last_push = null
-	/// Keeps track of how many times we've gone backwards
-	var/tracks_passed = 0
+	var/obj/checkpoint = null // checkpoint
+
+	var/state = IDLE_STATE
+
+	var/move_override = FALSE
+
+	var/current_angle = 0
 
 	anchored = TRUE
 	density = TRUE
@@ -64,18 +132,23 @@
 		return
 	src.current_track = track
 
-	var/current_dir = src.dir
 	update_icon()
 
-	var/angle = dir2angle(current_dir)
+	src.current_angle = dir2angle(src.dir)
 
 	if(track)
-		angle = current_track.angle
+		src.current_angle = current_track.angle
 
-	var/new_transform = src.transform.Turn(angle)
+	var/new_transform = src.transform.Turn(current_angle)
 	src.transform = new_transform
 
+	setup_sound()
+
 	START_PROCESSING(SSfastprocess, src)
+
+	sound_emitter.play("bomb_tick_loop")
+
+	GLOB.payloads += src
 
 /obj/structure/payload/update_icon()
 	. = ..()
@@ -87,48 +160,127 @@
 	STOP_PROCESSING(SSfastprocess, src)
 	. = ..()
 
-/obj/structure/payload/Process()
+/obj/structure/payload/setup_sound()
+	sound_emitter = new(src, is_static = TRUE, audio_range = 4)
 
-	/// Find all valid mobs nearby who can push
+	var/sound/bomb_tick_loop = sound('sound/effects/payload/bomb_tick_loop.ogg')
+	bomb_tick_loop.repeat = TRUE
+	bomb_tick_loop.volume = 5
+	sound_emitter.add(bomb_tick_loop, "bomb_tick_loop")
+
+	var/sound/cart_move_loop = sound('sound/effects/payload/cart_move_loop.ogg')
+	cart_move_loop.repeat = TRUE
+	cart_move_loop.volume = 45
+	sound_emitter.add(cart_move_loop, "cart_move_loop")
+
+	var/sound/cart_regress = sound('sound/effects/payload/cart_regress.ogg')
+	cart_regress.repeat = TRUE
+	cart_regress.volume = 45
+	sound_emitter.add(cart_regress, "cart_regress_loop")
+
+/obj/structure/payload/Process()
+	if(!SSwarfare.battle_time) return
+	if(move_override) return
+
+	var/speed = 1
+
 	var/list/nearby_pushers = list()
-	for (var/mob/m in view(1, src))
+	for (var/mob/m in GLOB.player_list)
+		if(get_dist(src, m) > 1) continue
+		if(can_push(m)) continue
 		nearby_pushers |= m
 
-	/// Remove anyone no longer in range
-	for (var/mob/m in pushers)
+	speed = clamp(friendly_amount(nearby_pushers), 0, 4)
+	speed *= speed_mod
+
+	for (var/mob/m in pushers.Copy())
 		if (!(m in nearby_pushers))
 			pushers -= m
-			to_world("removed [m]")
 
-	/// I won't bother to comment the rest of this shit
 	for (var/mob/m in nearby_pushers)
 		if (!(m in pushers))
 			pushers |= m
-			to_world("added [m]")
 
-	if(length(pushers) && can_we_move(pushers, FORWARD))
-		increment_to_track(src.speed_per_player * current_track.speed, current_track.next_track)
+	if(!length(nearby_pushers))
+		if(state != IDLE_STATE && state != MOVING_BACKWARD)
+			sound_emitter.play("bomb_tick_loop")
+			state = IDLE_STATE
+
+	var/should_we_stop = check_contested(nearby_pushers)
+
+	if(should_we_stop == CONTESTED && state != CONTESTED)
+		playsound(loc, "sound/effects/payload/cart_contested_[rand(1,3)].ogg", 75, FALSE)
+		sound_emitter.play("bomb_tick_loop")
+		state = CONTESTED
+		return
+
+	if(state == CONTESTED)
+		state = should_we_stop
+		return
+
+	if(length(pushers))
+		if(!current_track.next_track)
+			if(state == IDLE_STATE) return
+			playsound(loc, "sound/effects/payload/cart_contested_[rand(1,3)].ogg", 75, FALSE)
+			sound_emitter.play("bomb_tick_loop")
+			state = IDLE_STATE
+			return
+		increment_to_track(speed * current_track.speed, current_track.next_track)
 		src.time_since_last_push = world.time
-		to_world("push")
-
+		if(state != MOVING_FORWARD)
+			sound_emitter.play("cart_move_loop")
+			state = MOVING_FORWARD
 	if(isnull(time_since_last_push)) return
-	if(world.time - time_since_last_push > 10 SECONDS && !(tracks_passed >= 2) && can_we_move(pushers, BACKWARD))
-		to_world("going back")
-		increment_to_track(src.speed_per_player * current_track.speed, current_track.prev_track, BACKWARD)
+
+	if(world.time - time_since_last_push > 10 SECONDS)
+		if(!current_track.prev_track || current_track == checkpoint)
+			if(state == IDLE_STATE) return
+			playsound(loc, "sound/effects/payload/cart_contested_[rand(1,3)].ogg", 75, FALSE)
+			sound_emitter.play("bomb_tick_loop")
+			state = IDLE_STATE
+			return
+		if(state != MOVING_BACKWARD)
+			sound_emitter.play("cart_regress_loop")
+			state = MOVING_BACKWARD
+		increment_to_track(speed * current_track.speed, current_track.prev_track, BCKWRD)
 
 /obj/structure/payload/proc/can_push(var/mob/m)
 	if(isobserver(m)) return FALSE
 	if(m.stat == DEAD || m.stat == UNCONSCIOUS) return FALSE
-	if(m.warfare_faction == src.warfare_faction) return TRUE
+	if(ishuman(m))
+		var/mob/living/carbon/human/H = m
+		if(H.lying) return FALSE
+
+/obj/structure/payload/proc/friendly_amount(var/list/mobs)
+	var/friendlies = 0
+	for(var/mob/living/m in mobs)
+		if(!src.warfare_faction == m.warfare_faction || !m.warfare_faction)
+			continue
+		friendlies++
+	return friendlies
+
+
+/obj/structure/payload/proc/check_contested(var/list/mobs)
+	var/friendly = FALSE
+	var/enemy = FALSE
+	for(var/mob/living/m in mobs)
+		if(m.lying) continue // gotta make sure
+		if(src.warfare_faction != m.warfare_faction || !m.warfare_faction)
+			enemy = TRUE
+		else
+			friendly = TRUE
+		if(friendly && enemy) break
+	if(friendly && enemy || enemy && !friendly)
+		return CONTESTED
+	else return FALSE
 
 /obj/structure/payload/proc/can_we_move(var/list/mobs, movedir)
 	var/canmove = FALSE
-
 	if(current_track.canmove == NONE) return canmove
-	if((movedir == FORWARD && current_track.canmove == BOTH) || (movedir == FORWARD && current_track.canmove == FORWARD))
+	if((movedir == FORWRD && current_track.canmove == BOTH) || (movedir == FORWRD && current_track.canmove == FORWRD))
 		canmove = TRUE
 		return canmove
-	if((movedir == BACKWARD && current_track.canmove == BOTH) || (movedir == BACKWARD && current_track.canmove == BACKWARD))
+	if((movedir == BCKWRD && current_track.canmove == BOTH) || (movedir == BCKWRD && current_track.canmove == BCKWRD))
 		canmove = TRUE
 		return canmove
 	if(movedir == BOTH)
@@ -136,52 +288,61 @@
 		return canmove
 
 	for(var/mob/m in mobs)
-		if(!can_push(m)) continue
-		if(m.warfare_faction != src.warfare_faction && movedir != BACKWARD)
-			break
+		if(can_push(m)) continue
 		else
 			canmove = TRUE
 			break
 
 	return canmove
 
-/obj/structure/payload/proc/return_to_middle(var/amount = 1)
-
-/obj/structure/payload/proc/increment_to_track(var/amount = 1, var/obj/structure/track/track, movedir = FORWARD)
+/obj/structure/payload/proc/increment_to_track(var/amount = 1, var/obj/structure/track/track, movedir = FORWRD)
 	if (!current_track || !track)
 		return
 
-	// Get pixel-space offsets toward next track
-	var/pixel_w = ((track.x - src.x) * 32 + (track.pixel_x - src.pixel_x))
-	var/pixel_z = ((track.y - src.y) * 32 + (track.pixel_y - src.pixel_y))
+	var/pixel_w_total = ((track.x - src.x) + (track.pixel_x - src.pixel_x))
+	var/pixel_z_total = ((track.y - src.y) + (track.pixel_y - src.pixel_y))
 
-	// Move fractionally toward next track
-	src.pixel_w += pixel_w * (amount / 32)
-	src.pixel_z += pixel_z * (amount / 32)
+	pixel_w += pixel_w_total * amount
+	pixel_z += pixel_z_total * amount
 
-	// Smooth rotation toward next track’s angle
-	if (isnum(track.angle))
-		var/angle_diff = track.angle - current_track.angle
-		if(!angle_diff == 0)
+	if (isnum(track.angle) && isnum(current_track.angle))
+		var/target_angle = track.angle
+		var/current_angle = current_track.angle
+		var/angle_diff = target_angle - current_angle
 
-			// Normalize to shortest rotation path
-			if (angle_diff > 180)
-				angle_diff -= 360
-			else if (angle_diff < -180)
-				angle_diff += 360
+		var/fuck = current_angle + angle_diff
 
-			src.transform = src.transform.Turn(angle_diff * (amount / 32))
+		// --- Apply the rotation ---
+		var/matrix/M = matrix()
+		M.Turn(fuck)
+		src.transform = M
 
-	// --- Check for tile crossing ---
 	if (abs(src.pixel_w) >= 32 || abs(src.pixel_z) >= 32)
-		// Optional overshoot correction (keeps leftover pixel travel)
+		for(var/mob/m in loc)
+			m.Move(track.loc)
 
 		src.forceMove(track.loc)
+
+		var/obj/effect/payload/C = locate(/obj/effect/payload) in track.loc // only one do not stack them i dont want you to
+		if (C)
+			C.on_run(src)
+
 		src.pixel_w = 0
 		src.pixel_z = 0
 		current_track = track
-		if(movedir == BACKWARD)
-			tracks_passed++
 
+/obj/structure/payload/blue
+	payload_icon = "blue_payload"
+	warfare_faction = BLUE_TEAM
 
-/obj/structure/payload/proc/decrement_to_previous_track(var/amount = 1)
+/obj/structure/payload/red
+
+#undef CONTESTED
+#undef MOVING_FORWARD
+#undef MOVING_BACKWARD
+#undef IDLE_STATE
+
+#undef NONE
+#undef FORWRD
+#undef BCKWRD
+#undef BOTH

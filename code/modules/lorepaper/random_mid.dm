@@ -63,3 +63,10 @@
 	category = "PLACE"
 	spawn_weight = 1
 */
+/datum/map_template/ruin/warfare_mid/blitz
+	name = "Payload Fare"
+	id = "payload_fare"
+	description = "The payload experience."
+	suffixes = list("payloadfare.dmm")
+	category = "PLACE"
+	spawn_weight = 100

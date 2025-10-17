@@ -101,6 +101,7 @@ GLOBAL_LIST_EMPTY(mortar_areas) // = list()
 
 /area/warfare/battlefield/capture_point/Entered(atom/A)
 	. = ..()
+	if(length(GLOB.payloads)) return
 	if(ishuman(A))
 		var/mob/living/carbon/human/H = A
 		if(H.warfare_faction != captured)
@@ -109,6 +110,7 @@ GLOBAL_LIST_EMPTY(mortar_areas) // = list()
 			to_chat(H, "Now defending [src]!")
 
 /area/warfare/battlefield/capture_point/Process()
+	if(length(GLOB.payloads)) return . = ..()
 	for(var/mob/living/carbon/human/H in src)
 		if(!istype(H))
 			continue
@@ -167,6 +169,7 @@ GLOBAL_LIST_EMPTY(mortar_areas) // = list()
 
 /area/warfare/battlefield/capture_point/Exit(mob/living/L)
 	. = ..()
+	if(length(GLOB.payloads)) return
 	if(ishuman(L))
 		if(L in blues)
 			blues -= L

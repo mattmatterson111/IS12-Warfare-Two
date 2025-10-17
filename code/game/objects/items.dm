@@ -665,6 +665,14 @@ var/list/global/slot_flags_enumeration = list(
 					allow = 1
 			if(!allow)
 				return 0
+		if(slot_in_chestholster) // kill me
+			var/allow = 0
+			if(H.back && istype(H.chest_holster, /obj/item/storage/backpack/))
+				var/obj/item/storage/backpack/B = H.chest_holster
+				if(B.can_be_inserted(src,M,1))
+					allow = 1
+			if(!allow)
+				return 0
 	return 1
 
 /obj/item/proc/mob_can_unequip(mob/M, slot, disable_warning = 0)
