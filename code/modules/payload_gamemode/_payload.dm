@@ -14,6 +14,7 @@
 	icon = 'code/modules/payload_gamemode/icons/tracks.dmi'
 	icon_state = "main"
 	anchored = TRUE
+	mouse_opacity = FALSE
 
 /obj/structure/track/
 	icon = 'code/modules/payload_gamemode/icons/tracks.dmi'
@@ -103,7 +104,7 @@ GLOBAL_LIST_EMPTY(payloads)
 	var/obj/structure/track/current_track
 
 	var/body_icon = "base"
-	var/payload_icon = "red_payload"
+	var/payload_icon = ""
 
 	var/speed_mod = 1
 	var/warfare_faction = RED_TEAM
@@ -332,10 +333,13 @@ GLOBAL_LIST_EMPTY(payloads)
 		current_track = track
 
 /obj/structure/payload/blue
+	base = "blue"
 	payload_icon = "blue_payload"
 	warfare_faction = BLUE_TEAM
 
 /obj/structure/payload/red
+	base = "red"
+	payload_icon = "red_payload"
 
 #undef CONTESTED
 #undef MOVING_FORWARD
