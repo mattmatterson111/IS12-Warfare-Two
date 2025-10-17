@@ -264,6 +264,9 @@ SUBSYSTEM_DEF(respawn)
 	red_train = locate(/area/train/red) in world
 	blue_train = locate(/area/train/blue) in world
 
+	if(length(GLOB.payloads))
+		time_between_respawns = 1 MINUTE
+
 /datum/controller/subsystem/respawn/proc/handle_team_respawn(var/area/train_area, var/landmark_type, var/team_name)
 	var/list/valid_tp = list()
 	for (var/obj/effect/landmark/train_marker/teleport/tp in landmarks_list)
