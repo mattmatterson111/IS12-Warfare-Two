@@ -83,8 +83,8 @@
 	title = "Red Engineer"
 	outfit_type = /decl/hierarchy/outfit/job/redsoldier/engineer
 	engineering_skill = 10
-	auto_rifle_skill = 5
-	semi_rifle_skill = 5
+	//auto_rifle_skill = 5
+	//semi_rifle_skill = 5
 	smg_skill = 10
 	shotgun_skill = 10
 	total_positions = -1
