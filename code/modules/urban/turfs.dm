@@ -63,9 +63,10 @@
 	icon_state = "tiles_b"
 
 /turf/simulated/floor/urban/cinder
-	name = "tiles"
+	name = "concrete"
 	icon = 'icons/turf/floors.dmi'
 	icon_state = "cinder"
+	atom_flags = ATOM_FLAG_CLIMBABLE
 	//atom_flags = ATOM_FLAG_CLIMBABLE
 
 /turf/simulated/floor/urban/cinder/New()

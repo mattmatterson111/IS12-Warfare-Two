@@ -243,7 +243,7 @@ GLOBAL_LIST_EMPTY(payloads)
 		if(state != MOVING_BACKWARD)
 			sound_emitter.play("cart_regress_loop")
 			state = MOVING_BACKWARD
-		increment_to_track(speed * current_track.speed, current_track.prev_track, BCKWRD)
+		increment_to_track((1 * speed_mod) * current_track.speed, current_track.prev_track, BCKWRD)
 
 /obj/structure/payload/proc/can_push(var/mob/m)
 	if(isobserver(m)) return FALSE
