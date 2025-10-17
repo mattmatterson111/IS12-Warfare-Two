@@ -186,7 +186,7 @@ GLOBAL_LIST_EMPTY(payloads)
 	var/speed = 1
 
 	var/list/nearby_pushers = list()
-	for (var/mob/m in GLOB.player_list)
+	for (var/mob/living/m in GLOB.player_list)
 		if(m.stat == DEAD || m.stat == UNCONSCIOUS || m.resting) continue // this is checked like 5 times over i need to make it only here later idgaf rn
 		if(get_dist(src, m) > 1) continue
 		if(can_push(m)) continue
@@ -195,11 +195,11 @@ GLOBAL_LIST_EMPTY(payloads)
 	speed = clamp(friendly_amount(nearby_pushers), 0, 4)
 	speed *= speed_mod
 
-	for (var/mob/m in pushers.Copy())
+	for (var/mob/living/m in pushers.Copy())
 		if (!(m in nearby_pushers))
 			pushers -= m
 
-	for (var/mob/m in nearby_pushers)
+	for (var/mob/living/m in nearby_pushers)
 		if (!(m in pushers))
 			pushers |= m
 
@@ -278,7 +278,6 @@ GLOBAL_LIST_EMPTY(payloads)
 			friendly = TRUE
 		if(friendly && enemy) break
 	if(friendly && enemy || enemy && !friendly)
-		if(!friendly) return FALSE // there's no friendlies to contest it with go for it
 		return CONTESTED
 	else return FALSE
 
