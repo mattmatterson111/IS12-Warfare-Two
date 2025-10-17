@@ -138,7 +138,7 @@ GLOBAL_LIST_EMPTY(payloads)
 	src.current_angle = dir2angle(src.dir)
 
 	if(track)
-		src.current_angle = current_track.angle
+		src.current_angle = dir2angle(track.dir)
 
 	var/new_transform = src.transform.Turn(current_angle)
 	src.transform = new_transform

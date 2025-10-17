@@ -5,13 +5,14 @@
 /obj/effect/workinprogress
 	name = "Interstation12"
 	desc = "This shouldn't be read."
-	screen_loc = "WEST,NORTH-3"
+	icon = 'icons/workinprogress.dmi'
+	icon_state = "wip"
+	screen_loc = "WEST,NORTH-6"
 	plane = EFFECTS_ABOVE_LIGHTING_PLANE
 	mouse_opacity = FALSE
 
 /obj/effect/workinprogress/Initialize()
-	icon = 'icons/workinprogress.dmi'
-	icon_state = "wip"
+	icon_state = "payload"
 	. = ..()
 
 /obj/effect/lobby_image

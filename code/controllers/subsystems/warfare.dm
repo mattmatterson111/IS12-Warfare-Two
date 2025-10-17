@@ -88,7 +88,10 @@ SUBSYSTEM_DEF(warfare)
 	if(battle_time)  // so if it starts early, it doesnt @everyone again
 		return
 	battle_time = TRUE
-	to_world("<big>I AM READY TO DIE NOW!</big>")
+	if(!length(GLOB.payloads))
+		to_world("<big>I AM READY TO DIE NOW!</big>")
+	else
+		to_world("<big>I AM READY TO PUSH THE CART NOW!</big>")
 	sound_to(world, 'sound/effects/ready_to_die.ogg')//Sound notifying them.
 	for(var/turf/simulated/floor/dirty/fake/F in world)//Make all the fake dirt into real dirt.
 		F.ChangeTurf(/turf/simulated/floor/dirty)
