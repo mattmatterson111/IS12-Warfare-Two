@@ -86,7 +86,7 @@
 	//semi_rifle_skill = 5
 	smg_skill = 10
 	shotgun_skill = 10
-	boltie_skill = 5
+	//boltie_skill = 5
 
 	squad_overlay = "sapper"
 
