@@ -333,12 +333,12 @@ GLOBAL_LIST_EMPTY(payloads)
 		current_track = track
 
 /obj/structure/payload/blue
-	base = "blue"
+	body_icon = "blue"
 	payload_icon = "blue_payload"
 	warfare_faction = BLUE_TEAM
 
 /obj/structure/payload/red
-	base = "red"
+	body_icon = "red"
 	payload_icon = "red_payload"
 
 #undef CONTESTED
