@@ -10,7 +10,7 @@
 	shotgun_skill = 5
 	lmg_skill = 3
 	smg_skill = 3
-	//boltie_skill = 10
+	boltie_skill = 10
 
 	squad_overlay = "rifleman"
 
