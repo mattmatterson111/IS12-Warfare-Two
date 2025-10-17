@@ -187,6 +187,7 @@ GLOBAL_LIST_EMPTY(payloads)
 
 	var/list/nearby_pushers = list()
 	for (var/mob/m in GLOB.player_list)
+		if(m.stat == DEAD || m.stat == UNCONSCIOUS || m.resting) continue // this is checked like 5 times over i need to make it only here later idgaf rn
 		if(get_dist(src, m) > 1) continue
 		if(can_push(m)) continue
 		nearby_pushers |= m
