@@ -82,8 +82,8 @@
 	title = "Blue Engineer"
 	outfit_type = /decl/hierarchy/outfit/job/bluesoldier/engineer
 	engineering_skill = 10
-	auto_rifle_skill = 5
-	semi_rifle_skill = 5
+	//auto_rifle_skill = 5
+	//semi_rifle_skill = 5
 	smg_skill = 10
 	shotgun_skill = 10
 	boltie_skill = 5
@@ -369,31 +369,22 @@
 		suit_store = /obj/item/gun/projectile/shotgun/pump/shitty
 		r_pocket = /obj/item/ammo_box/shotgun
 		belt = /obj/item/shovel
-		backpack_contents = list(/obj/item/stack/barbwire = 1, /obj/item/defensive_barrier = 3, /obj/item/storage/box/ifak = 1, /obj/item/grenade/smokebomb = 1)
 
 	else if (prob(15))
 		suit_store = /obj/item/gun/projectile/shotgun/pump/boltaction/good
 		r_pocket =  /obj/item/ammo_box/rifle/modern
-		backpack_contents = initial(backpack_contents)
-		belt = null
 
 	else if(prob(25))
 		suit_store = /obj/item/gun/projectile/shotgun/pump/boltaction/shitty/leverchester
 		r_pocket = /obj/item/ammo_box/rifle
-		backpack_contents = list(/obj/item/grenade/smokebomb = 1)
-		belt = null
 
 	else if(prob(50))
 		suit_store = /obj/item/gun/projectile/shotgun/pump/boltaction/shitty/bayonet
 		r_pocket = /obj/item/ammo_box/rifle
-		backpack_contents = list(/obj/item/grenade/smokebomb = 1)
-		belt = null
 
 	else
 		suit_store = /obj/item/gun/projectile/shotgun/pump/boltaction/shitty
 		r_pocket = /obj/item/ammo_box/rifle
-		backpack_contents = list(/obj/item/grenade/smokebomb = 1)
-		belt = null
 	/*
 	else
 		suit_store = /obj/item/gun/projectile/automatic/machinepistol

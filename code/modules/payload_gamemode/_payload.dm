@@ -248,14 +248,19 @@ GLOBAL_LIST_EMPTY(payloads)
 /obj/structure/payload/proc/can_push(var/mob/m)
 	if(isobserver(m)) return FALSE
 	if(m.stat == DEAD || m.stat == UNCONSCIOUS) return FALSE
+	if(m.resting) return FALSE
 	if(ishuman(m))
 		var/mob/living/carbon/human/H = m
-		if(H.lying) return FALSE
+		if(H.resting) return FALSE
 
 /obj/structure/payload/proc/friendly_amount(var/list/mobs)
 	var/friendlies = 0
 	for(var/mob/living/m in mobs)
 		if(!src.warfare_faction == m.warfare_faction || !m.warfare_faction)
+			continue
+		if(m.stat == UNCONSCIOUS || m.stat == DEAD)
+			continue
+		if(m.resting)
 			continue
 		friendlies++
 	return friendlies
@@ -265,13 +270,14 @@ GLOBAL_LIST_EMPTY(payloads)
 	var/friendly = FALSE
 	var/enemy = FALSE
 	for(var/mob/living/m in mobs)
-		if(m.lying) continue // gotta make sure
+		if(m.resting || m.stat == DEAD) continue // gotta make sure
 		if(src.warfare_faction != m.warfare_faction || !m.warfare_faction)
 			enemy = TRUE
 		else
 			friendly = TRUE
 		if(friendly && enemy) break
 	if(friendly && enemy || enemy && !friendly)
+		if(!friendly) return FALSE // there's no friendlies to contest it with go for it
 		return CONTESTED
 	else return FALSE
 
@@ -319,8 +325,6 @@ GLOBAL_LIST_EMPTY(payloads)
 		src.transform = M
 
 	if (abs(src.pixel_w) >= 32 || abs(src.pixel_z) >= 32)
-		for(var/mob/m in loc)
-			m.Move(track.loc)
 
 		src.forceMove(track.loc)
 

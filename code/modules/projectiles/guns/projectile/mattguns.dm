@@ -555,6 +555,7 @@
 /obj/item/gun/projectile/automatic/mg08/special_check(var/mob/user)
 	if(misfire)
 		return 1
+	if(length(GLOB.payloads)) return ..()
 	if(!deployed)//Can't fire.
 		to_chat(user, "<span class='danger'>I can't fire it if it's not deployed.</span>")
 		return 0
@@ -563,6 +564,7 @@
 
 /obj/item/gun/projectile/automatic/mg08/attack_self(mob/user)
 	. = ..()
+	if(length(GLOB.payloads)) return
 	if(deployed)//If there's an mg deployed, then pack it up again.
 		pack_up_mg(user)
 	else

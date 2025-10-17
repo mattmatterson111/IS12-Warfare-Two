@@ -122,7 +122,6 @@
 		H.fully_replace_character_name("Sniper [current_name]")
 		H.say(";Sniper reporting for duty!")
 
-
 /datum/job/soldier/red_soldier/sentry
 	title = "Red Sentry"
 	total_positions = 0
@@ -366,26 +365,19 @@
 		suit_store = /obj/item/gun/projectile/shotgun/pump/shitty
 		r_pocket = /obj/item/ammo_box/shotgun
 		belt = /obj/item/shovel
-		backpack_contents = list(/obj/item/stack/barbwire = 1, /obj/item/defensive_barrier = 3, /obj/item/storage/box/ifak = 1, /obj/item/grenade/smokebomb = 1)
 
 	else if(prob(25))
 		suit_store = /obj/item/gun/projectile/shotgun/pump/boltaction/shitty/leverchester
 		r_pocket = /obj/item/ammo_box/rifle
-		backpack_contents = list(/obj/item/grenade/smokebomb = 1)
-		belt = null
 
 	else if(prob(50))
 		suit_store = /obj/item/gun/projectile/shotgun/pump/boltaction/shitty/bayonet
 		r_pocket = /obj/item/ammo_box/rifle
-		backpack_contents = list(/obj/item/grenade/smokebomb = 1)
-		belt = null
 
 	else
 		suit_store = /obj/item/gun/projectile/shotgun/pump/boltaction/shitty
 		r_pocket = /obj/item/ammo_box/rifle
-		backpack_contents = list(/obj/item/grenade/smokebomb = 1)
-		belt = null	/*
-	else
+	/*else
 		suit_store = /obj/item/gun/projectile/automatic/machinepistol
 		r_pocket = /obj/item/shovel
 		belt = /obj/item/storage/belt/warfare
