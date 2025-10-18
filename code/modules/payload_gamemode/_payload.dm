@@ -205,6 +205,7 @@ GLOBAL_LIST_EMPTY(payloads)
 
 	if(!length(nearby_pushers))
 		if(state != IDLE_STATE && state != MOVING_BACKWARD)
+			sound_emitter.stop()
 			sound_emitter.play("bomb_tick_loop")
 			state = IDLE_STATE
 
@@ -212,6 +213,7 @@ GLOBAL_LIST_EMPTY(payloads)
 
 	if(should_we_stop == CONTESTED && state != CONTESTED)
 		playsound(loc, "sound/effects/payload/cart_contested_[rand(1,3)].ogg", 75, FALSE)
+		sound_emitter.stop()
 		sound_emitter.play("bomb_tick_loop")
 		state = CONTESTED
 		return
@@ -224,12 +226,14 @@ GLOBAL_LIST_EMPTY(payloads)
 		if(!current_track.next_track)
 			if(state == IDLE_STATE) return
 			playsound(loc, "sound/effects/payload/cart_contested_[rand(1,3)].ogg", 75, FALSE)
+			sound_emitter.stop()
 			sound_emitter.play("bomb_tick_loop")
 			state = IDLE_STATE
 			return
 		increment_to_track(speed * current_track.speed, current_track.next_track)
 		src.time_since_last_push = world.time
 		if(state != MOVING_FORWARD)
+			sound_emitter.stop()
 			sound_emitter.play("cart_move_loop")
 			state = MOVING_FORWARD
 	if(isnull(time_since_last_push)) return
@@ -238,10 +242,12 @@ GLOBAL_LIST_EMPTY(payloads)
 		if(!current_track.prev_track || current_track == checkpoint)
 			if(state == IDLE_STATE) return
 			playsound(loc, "sound/effects/payload/cart_contested_[rand(1,3)].ogg", 75, FALSE)
+			sound_emitter.stop()
 			sound_emitter.play("bomb_tick_loop")
 			state = IDLE_STATE
 			return
 		if(state != MOVING_BACKWARD)
+			sound_emitter.stop()
 			sound_emitter.play("cart_regress_loop")
 			state = MOVING_BACKWARD
 		increment_to_track((1 * speed_mod) * current_track.speed, current_track.prev_track, BCKWRD)

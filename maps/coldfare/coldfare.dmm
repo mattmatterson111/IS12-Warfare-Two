@@ -6790,17 +6790,6 @@
 	},
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/red/largeroom)
-"Hi" = (
-/obj/structure/announcementspeaker/red{
-	pixel_x = 0;
-	dir = 1
-	},
-/obj/structure/track{
-	dir = 1
-	},
-/obj/structure/payload,
-/turf/simulated/floor/concrete/random,
-/area/warfare/homebase/red/largeroom)
 "Hj" = (
 /obj/sound_emitter/periodic/env_leak,
 /turf/simulated/floor/urban/tiles,
@@ -9336,12 +9325,6 @@
 	},
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/red/hallway)
-"Xr" = (
-/obj/structure/track{
-	dir = 1
-	},
-/turf/simulated/floor/concrete/random,
-/area/warfare/homebase/red/largeroom)
 "Xx" = (
 /obj/effect/floor_decal/newcorner/grey/diagonal,
 /turf/simulated/floor/urban/cinder,
@@ -37262,11 +37245,11 @@ dn
 dn
 dn
 Br
-Xr
-Xr
-Xr
-Xr
-Hi
+dn
+dn
+dn
+dn
+nV
 Fr
 Tk
 cd
