@@ -742,7 +742,7 @@
 					fs.particles.position = generator(GEN_BOX, list(-32, -32), list(32, 32), NORMAL_RAND)
 					particleslist |= fs
 
-			//START_PROCESSING(SSprocessing, src)
+			START_PROCESSING(SSprocessing, src)
 			sound_token = sound_player.PlayLoopingSound(src, sound_id, 'sound/ambience/space_loop.ogg', volume = 75, range = 4, falloff = 0.5, prefer_mute = TRUE, ignore_vis = TRUE)
 			overlays += "redbanner"
 			currentfaction = RED_TEAM
@@ -759,7 +759,7 @@
 					fs.particles.gradient = list(0, "cyan", 1, "blue")
 					fs.particles.color = "blue"
 					particleslist |= fs
-			//START_PROCESSING(SSprocessing, src)
+			START_PROCESSING(SSprocessing, src)
 			sound_token = sound_player.PlayLoopingSound(src, sound_id, 'sound/ambience/space_loop.ogg', volume = 75, range = 4, falloff = 0.5, prefer_mute = TRUE, ignore_vis = TRUE)
 			overlays += "bluebanner"
 			currentfaction = BLUE_TEAM
@@ -819,8 +819,8 @@
 						T.color = initial(T.color)
 				for(var/obj/particle_emitter/fire_sparks/fs in particleslist)
 					qdel(fs)
-				//if(is_processing)
-				//	STOP_PROCESSING(SSprocessing, src)
+				if(is_processing)
+					STOP_PROCESSING(SSprocessing, src)
 				return
 			else
 				user.doing_something = FALSE
@@ -831,7 +831,7 @@
 	if(user.warfare_faction == currentfaction)
 		to_chat(user, "<h2>This is your flag! Go [user.warfare_faction]!</h2>")
 
-/*
+
 /obj/structure/factionbanner/Process()
 	if(locate(/obj/effect/effect/smoke, get_turf(src))) // if it got smokebombed, no worky 100%
 		return // whatever shitty way to do it
@@ -842,7 +842,7 @@
 				// if you cant fix it, stuff, make it give some other kind of boost maybe? idk.. like pain tolerance or smth?
 		else
 			H.add_event("banner deboost", /datum/happiness_event/banner_deboost)
-*/
+
 
 /obj/structure/factionbanner/red //sigh
 	name = "Red faction banner"
