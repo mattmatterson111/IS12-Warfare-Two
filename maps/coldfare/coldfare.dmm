@@ -3584,6 +3584,30 @@
 	},
 /area/warfare/battlefield/trench_section/underground)
 "oG" = (
+/obj/item/device/flashlight/lamp/captain{
+	pixel_x = -6;
+	pixel_y = 11
+	},
+/obj/structure/announcementmicrophone/red{
+	pixel_x = -1;
+	pixel_y = 7
+	},
+/obj/item/clothing/accessory/medal/red/brass{
+	pixel_x = 8;
+	pixel_y = 2
+	},
+/obj/item/clothing/accessory/medal/red/brass{
+	pixel_x = 12;
+	pixel_y = 2
+	},
+/obj/item/clothing/accessory/medal/red/pig_iron{
+	pixel_x = 16;
+	pixel_y = 2
+	},
+/obj/item/clothing/accessory/medal/red/gold{
+	pixel_x = 20;
+	pixel_y = 2
+	},
 /obj/structure/table/nosmooth/capnew{
 	pixel_y = -4;
 	dir = 8
@@ -8659,9 +8683,25 @@
 	pixel_y = -4;
 	dir = 8
 	},
-/obj/structure/table/nosmooth/capnew{
-	pixel_y = 28;
-	dir = 9
+/obj/item/clothing/accessory/medal/blue/stainless_steel{
+	pixel_x = 8;
+	pixel_y = 2
+	},
+/obj/item/clothing/accessory/medal/blue/stainless_steel{
+	pixel_x = 12;
+	pixel_y = 2
+	},
+/obj/item/clothing/accessory/medal/blue/silver{
+	pixel_x = 16;
+	pixel_y = 2
+	},
+/obj/item/clothing/accessory/medal/blue/platinum{
+	pixel_x = 20;
+	pixel_y = 2
+	},
+/obj/item/storage/fancy/cigar{
+	pixel_x = 20;
+	pixel_y = 8
 	},
 /obj/item/device/megaphone/blue{
 	pixel_x = -1;

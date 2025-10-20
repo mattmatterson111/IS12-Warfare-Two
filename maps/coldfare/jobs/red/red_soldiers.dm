@@ -191,6 +191,11 @@
 	equip(var/mob/living/carbon/human/H)
 		var/current_name = H.real_name
 		..()
+		//add a medal
+		var/obj/item/clothing/suit/armor/redcoat/RC = H.get_equipped_item(slot_wear_suit)
+		var/obj/item/clothing/accessory/medal/red/captain/cross1/M = new(H)
+		RC.attach_accessory(H, M, TRUE)
+
 		H.fully_replace_character_name("Cpt. [current_name]")
 		H.get_idcard()?.access = get_all_accesses()
 		var/obj/O = H.get_equipped_item(slot_s_store)
