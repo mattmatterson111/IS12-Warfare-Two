@@ -269,28 +269,22 @@ GLOBAL_LIST_EMPTY(payloads)
 		if(src.warfare_faction != m.warfare_faction || !m.warfare_faction)
 			continue
 		friendlies++
-	to_world("friendlies is [friendlies]")
 	return friendlies
 
 /obj/structure/payload/proc/check_contested(var/list/mobs)
 	if(state == MOVING_BACKWARD || state == IDLE_STATE) return FALSE
 	var/friendly = FALSE
 	var/enemy = FALSE
-	to_world("trypush")
 	for(var/mob/living/m in mobs)
 		if(src.warfare_faction != m.warfare_faction || !m.warfare_faction)
 			enemy = TRUE
-			to_world("enemy is [m]")
 		else
 			friendly = TRUE
-			to_world("friendly is [m]")
 		if(friendly && enemy) break
 	if(friendly && enemy)
-		to_world("contested")
 		return CONTESTED
 	if(enemy && !friendly)
 		return 66 // magic number fuCK YOU
-	to_world("contested NOT")
 	return
 
 /obj/structure/payload/proc/can_we_move(var/list/mobs, movedir)
