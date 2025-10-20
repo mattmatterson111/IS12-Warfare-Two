@@ -3584,10 +3584,6 @@
 	},
 /area/warfare/battlefield/trench_section/underground)
 "oG" = (
-/obj/item/device/flashlight/lamp/captain{
-	pixel_x = -6;
-	pixel_y = 11
-	},
 /obj/structure/announcementmicrophone/red{
 	pixel_x = -1;
 	pixel_y = 7
@@ -4764,11 +4760,11 @@
 	pixel_y = 9
 	},
 /obj/item/storage/toggle/envelope{
-	pixel_x = -14;
+	pixel_x = 0;
 	pixel_y = 3
 	},
 /obj/item/storage/toggle/envelope{
-	pixel_x = -14;
+	pixel_x = 0;
 	pixel_y = 0
 	},
 /turf/simulated/floor/wood,
@@ -6020,12 +6016,12 @@
 	pixel_y = 9
 	},
 /obj/item/storage/toggle/envelope{
-	pixel_x = -12;
-	pixel_y = 3
+	pixel_x = -2;
+	pixel_y = 2
 	},
 /obj/item/storage/toggle/envelope{
-	pixel_x = -12;
-	pixel_y = 0
+	pixel_x = -1;
+	pixel_y = 1
 	},
 /turf/simulated/floor/wood,
 /area/warfare/homebase/red/caproom)
@@ -7286,14 +7282,6 @@
 	health = 999999
 	},
 /area/warfare/homebase/red)
-"KG" = (
-/obj/machinery/body_scanconsole{
-	dir = 4;
-	icon_state = "body_scannerconsole"
-	},
-/obj/sound_emitter/periodic/env_leak,
-/turf/simulated/floor/urban/tiles,
-/area/warfare/homebase/red/room)
 "KH" = (
 /obj/structure/trench_wall/innercorners{
 	dir = 8;
@@ -8698,10 +8686,6 @@
 /obj/item/clothing/accessory/medal/blue/platinum{
 	pixel_x = 20;
 	pixel_y = 2
-	},
-/obj/item/storage/fancy/cigar{
-	pixel_x = 20;
-	pixel_y = 8
 	},
 /obj/item/device/megaphone/blue{
 	pixel_x = -1;
@@ -31300,7 +31284,7 @@ Ls
 hP
 Fr
 It
-KG
+iu
 iu
 CA
 Fr
@@ -31597,7 +31581,7 @@ hW
 Ww
 ic
 Ls
-pb
+Ls
 FP
 It
 iv

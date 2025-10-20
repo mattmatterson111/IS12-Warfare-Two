@@ -41,7 +41,6 @@
 /obj/sound_emitter/periodic/New()
 	. = ..()
 	if(prob(chance_to_play))
-		sleep(rand(10, 1000))
 		setup_sound()
 		START_PROCESSING(SSslowprocess, src)
 	else
@@ -55,6 +54,7 @@
 	return
 
 /obj/sound_emitter/periodic/Process()
+	sleep(rand(10, 1000))
 	if(!chance_to_play || !prob(chance_to_play)) return
 	on_success()
 	playsound(loc, pick(sounds), volume, vary)
