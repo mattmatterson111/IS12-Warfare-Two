@@ -38,6 +38,8 @@
 	var/list/carriage_cache = list()
 	static_pixel_y = 15
 
+	anchored = TRUE // u know u r :(
+
 /obj/structure/vehicle/train/proc/generate_carriages()
 	overlays.Cut()
 	if(dir != SOUTH)
