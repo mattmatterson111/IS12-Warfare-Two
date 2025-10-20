@@ -189,10 +189,10 @@ GLOBAL_LIST_EMPTY(payloads)
 	for (var/mob/living/m in GLOB.player_list)
 		if(m.stat == DEAD || m.stat == UNCONSCIOUS || m.resting) continue // this is checked like 5 times over i need to make it only here later idgaf rn
 		if(get_dist(src, m) > 1) continue
-		if(can_push(m)) continue
+		if(!isturf(m.loc)) continue
 		nearby_pushers |= m
 
-	speed = clamp(friendly_amount(nearby_pushers), 0, 4)
+	speed = clamp(friendly_amount(nearby_pushers), 0, 5)
 	speed *= speed_mod
 
 	for (var/mob/living/m in pushers.Copy())
@@ -209,6 +209,20 @@ GLOBAL_LIST_EMPTY(payloads)
 			sound_emitter.play("bomb_tick_loop")
 			state = IDLE_STATE
 
+	if(world.time - time_since_last_push > 10 SECONDS && time_since_last_push)
+		if(!current_track.prev_track || current_track == checkpoint)
+			if(state == IDLE_STATE) return
+			playsound(loc, "sound/effects/payload/cart_contested_[rand(1,3)].ogg", 75, FALSE)
+			sound_emitter.stop()
+			sound_emitter.play("bomb_tick_loop")
+			state = IDLE_STATE
+			return
+		if(state != MOVING_BACKWARD && state != 66) // i hate htis fix it later
+			sound_emitter.stop()
+			sound_emitter.play("cart_regress_loop")
+			state = MOVING_BACKWARD
+		increment_to_track((1 * speed_mod) * current_track.speed, current_track.prev_track, BCKWRD)
+
 	var/should_we_stop = check_contested(nearby_pushers)
 
 	if(should_we_stop == CONTESTED && state != CONTESTED)
@@ -218,11 +232,13 @@ GLOBAL_LIST_EMPTY(payloads)
 		state = CONTESTED
 		return
 
-	if(state == CONTESTED)
+	if(state == CONTESTED || should_we_stop == 66)
 		state = should_we_stop
 		return
 
-	if(length(pushers))
+	if(should_we_stop == 66) return
+
+	if(length(pushers)) // GOD FUCKING DAMN IT
 		if(!current_track.next_track)
 			if(state == IDLE_STATE) return
 			playsound(loc, "sound/effects/payload/cart_contested_[rand(1,3)].ogg", 75, FALSE)
@@ -230,62 +246,44 @@ GLOBAL_LIST_EMPTY(payloads)
 			sound_emitter.play("bomb_tick_loop")
 			state = IDLE_STATE
 			return
-		increment_to_track(speed * current_track.speed, current_track.next_track)
-		src.time_since_last_push = world.time
-		if(state != MOVING_FORWARD)
-			sound_emitter.stop()
-			sound_emitter.play("cart_move_loop")
-			state = MOVING_FORWARD
+		if(state != CONTESTED)
+			increment_to_track(speed * current_track.speed, current_track.next_track)
+			src.time_since_last_push = world.time
+			if(state != MOVING_FORWARD)
+				sound_emitter.stop()
+				sound_emitter.play("cart_move_loop")
+				state = MOVING_FORWARD
 	if(isnull(time_since_last_push)) return
-
-	if(world.time - time_since_last_push > 10 SECONDS)
-		if(!current_track.prev_track || current_track == checkpoint)
-			if(state == IDLE_STATE) return
-			playsound(loc, "sound/effects/payload/cart_contested_[rand(1,3)].ogg", 75, FALSE)
-			sound_emitter.stop()
-			sound_emitter.play("bomb_tick_loop")
-			state = IDLE_STATE
-			return
-		if(state != MOVING_BACKWARD)
-			sound_emitter.stop()
-			sound_emitter.play("cart_regress_loop")
-			state = MOVING_BACKWARD
-		increment_to_track((1 * speed_mod) * current_track.speed, current_track.prev_track, BCKWRD)
-
-/obj/structure/payload/proc/can_push(var/mob/m)
-	if(isobserver(m)) return FALSE
-	if(m.stat == DEAD || m.stat == UNCONSCIOUS) return FALSE
-	if(m.resting) return FALSE
-	if(ishuman(m))
-		var/mob/living/carbon/human/H = m
-		if(H.resting) return FALSE
 
 /obj/structure/payload/proc/friendly_amount(var/list/mobs)
 	var/friendlies = 0
 	for(var/mob/living/m in mobs)
-		if(!src.warfare_faction == m.warfare_faction || !m.warfare_faction)
-			continue
-		if(m.stat == UNCONSCIOUS || m.stat == DEAD)
-			continue
-		if(m.resting)
+		if(src.warfare_faction != m.warfare_faction || !m.warfare_faction)
 			continue
 		friendlies++
+	to_world("friendlies is [friendlies]")
 	return friendlies
 
-
 /obj/structure/payload/proc/check_contested(var/list/mobs)
+	if(state == MOVING_BACKWARD || state == IDLE_STATE) return FALSE
 	var/friendly = FALSE
 	var/enemy = FALSE
+	to_world("trypush")
 	for(var/mob/living/m in mobs)
-		if(m.resting || m.stat == DEAD) continue // gotta make sure
 		if(src.warfare_faction != m.warfare_faction || !m.warfare_faction)
 			enemy = TRUE
+			to_world("enemy is [m]")
 		else
 			friendly = TRUE
+			to_world("friendly is [m]")
 		if(friendly && enemy) break
-	if(friendly && enemy || enemy && !friendly)
+	if(friendly && enemy)
+		to_world("contested")
 		return CONTESTED
-	else return FALSE
+	if(enemy && !friendly)
+		return 66 // magic number fuCK YOU
+	to_world("contested NOT")
+	return
 
 /obj/structure/payload/proc/can_we_move(var/list/mobs, movedir)
 	var/canmove = FALSE
@@ -299,12 +297,6 @@ GLOBAL_LIST_EMPTY(payloads)
 	if(movedir == BOTH)
 		canmove = TRUE
 		return canmove
-
-	for(var/mob/m in mobs)
-		if(can_push(m)) continue
-		else
-			canmove = TRUE
-			break
 
 	return canmove
 
