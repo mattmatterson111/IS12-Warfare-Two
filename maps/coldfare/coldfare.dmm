@@ -863,10 +863,6 @@
 	pixel_y = -4;
 	dir = 4
 	},
-/obj/structure/table/nosmooth/capnew{
-	pixel_y = 28;
-	dir = 5
-	},
 /obj/item/storage/fancy/cigarettes/cigarillo{
 	pixel_x = 6;
 	pixel_y = 3
@@ -3345,10 +3341,6 @@
 	pixel_y = -4;
 	dir = 4
 	},
-/obj/structure/table/nosmooth/capnew{
-	pixel_y = 28;
-	dir = 5
-	},
 /obj/item/pen/blue{
 	pixel_x = 2;
 	pixel_y = 10
@@ -3356,6 +3348,10 @@
 /obj/item/storage/fancy/cigar{
 	pixel_x = 1;
 	pixel_y = 5
+	},
+/obj/structure/table/nosmooth/capnew{
+	pixel_y = 28;
+	dir = 5
 	},
 /turf/simulated/floor/wood,
 /area/warfare/homebase/blue/caproom)
@@ -3608,13 +3604,13 @@
 	pixel_y = -4;
 	dir = 8
 	},
-/obj/structure/table/nosmooth/capnew{
-	pixel_y = 28;
-	dir = 9
-	},
 /obj/item/device/megaphone/red{
 	pixel_x = -1;
 	pixel_y = 7
+	},
+/obj/structure/table/nosmooth/capnew{
+	pixel_y = 28;
+	dir = 9
 	},
 /turf/simulated/floor/wood,
 /area/warfare/homebase/red/caproom)
@@ -8690,6 +8686,10 @@
 /obj/item/device/megaphone/blue{
 	pixel_x = -1;
 	pixel_y = 6
+	},
+/obj/structure/table/nosmooth/capnew{
+	pixel_y = 28;
+	dir = 9
 	},
 /turf/simulated/floor/wood,
 /area/warfare/homebase/blue/caproom)
