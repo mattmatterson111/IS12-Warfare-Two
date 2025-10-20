@@ -1,3 +1,11 @@
+/* -------------------------------------------------------------------------- */
+/*                           THIS FILE BARELY WORKS                           */
+/* -------------------------------------------------------------------------- */
+/* ---------- THE CODE IS THROWN TOGETHER FOR AN IN-THE-MOMENT FIX ---------- */
+/* ------------------ POKE ME TO FIX THE CART'S SHITTY CODE ----------------- */
+
+
+
 #define NONE 1
 #define FORWRD 2
 #define BCKWRD 3
