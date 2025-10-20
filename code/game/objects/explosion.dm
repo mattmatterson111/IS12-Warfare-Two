@@ -60,7 +60,7 @@ proc/explosion(turf/epicenter, devastation_range, heavy_impact_range, light_impa
 						far_volume += (dist <= far_dist * 0.5 ? 50 : 0) // add 50 volume if the mob is pretty close to the explosion
 						if(devastation_range > 0)
 							if(!farexplosionsound)
-								M.playsound_local(epicenter, 'sound/effects/explosionfarnew.ogg', far_volume * 2, 1, frequency, falloff = 5)
+								M.playsound_local(epicenter, pick('sound/effects/explosionfarnew.ogg','sound/effects/explosionfar2.ogg','sound/effects/explosionfar3.ogg','sound/effects/explosionfar4.ogg'), far_volume * 2, 1, frequency, falloff = 5)
 							else
 								M.playsound_local(epicenter, get_sfx(farexplosionsound), far_volume * 2, 1, frequency, falloff = 5)
 							shake_camera(M, 5, 1)
@@ -127,8 +127,6 @@ proc/explosion(turf/epicenter, devastation_range, heavy_impact_range, light_impa
 		//You need to press the DebugGame verb to see these now....they were getting annoying and we've collected a fair bit of data. Just -test- changes  to explosion code using this please so we can compare
 		if(Debug2) world.log << "## DEBUG: Explosion([x0],[y0],[z0])(d[devastation_range],h[heavy_impact_range],l[light_impact_range]): Took [took] seconds."
 
-		sleep(8)
-
 	return 1
 
 
@@ -156,7 +154,7 @@ proc/drop_mortar(turf/dropped, mortar)
 		if(mortar == "bflare")
 			new /obj/mortar/flare/blue(dropped_turf)
 			return
-		explosion(dropped_turf, 1,1,1,1, particles = TRUE, autosize = FALSE, sizeofboom = 1, large = TRUE, explosionsound = pick('sound/effects/mortarexplo1.ogg','sound/effects/mortarexplo2.ogg','sound/effects/mortarexplo3.ogg'), farexplosionsound = pick('sound/effects/farexplonewnew1.ogg','sound/effects/farexplonewnew2.ogg','sound/effects/farexplonewnew3.ogg'))
+		explosion(dropped_turf, 1,1,1,1, particles = TRUE, autosize = FALSE, sizeofboom = 1, large = TRUE, explosionsound = pick('sound/effects/farexplonewnew1.ogg','sound/effects/farexplonewnew2.ogg','sound/effects/farexplonewnew3.ogg','sound/effects/explosionfarnew.ogg','sound/effects/explosionfar2.ogg','sound/effects/explosionfar3.ogg','sound/effects/explosionfar4.ogg'))
 		spawn(5)
 			dropped_turf.overlays += image(icon='icons/turf/crater64.dmi',icon_state="dirt_shell_alt", dir=pick(GLOB.cardinal), layer = BASE_ABOVE_OBJ_LAYER, pixel_x = rand(-14,-16), pixel_y = rand(-14,-16))
 		if(mortar == "shrapnel")

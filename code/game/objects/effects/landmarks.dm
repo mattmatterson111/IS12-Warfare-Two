@@ -1,7 +1,7 @@
 /obj/effect/landmark
 	name = "landmark"
-	icon = 'icons/mob/screen1.dmi'
-	icon_state = "x2"
+	icon = 'icons/hammer/source.dmi'//'icons/mob/screen1.dmi'
+	icon_state = "landmark2"//"x2" // HAMMERIZATION // INTERWAR // I found it funny LOL
 	anchored = 1.0
 	unacidable = 1
 	simulated = 0
@@ -80,8 +80,8 @@
 
 /obj/effect/landmark/start
 	name = "start"
-	icon = 'icons/mob/screen1.dmi'
-	icon_state = "x"
+	//icon = 'icons/mob/screen1.dmi'
+	icon_state = "landmark" //icon_state = "x" // HAMMERIZATION // INTERWAR // i found it funny
 	anchored = 1.0
 	invisibility = 101
 

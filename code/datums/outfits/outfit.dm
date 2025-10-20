@@ -42,6 +42,7 @@ var/list/outfits_decls_by_type_
 	var/neck = null
 	var/chest_holster = null
 	var/list/backpack_contents = list() // In the list(path=count,otherpath=count) format
+	var/list/chestholster_contents = list()
 
 	var/id_type
 	var/id_desc
@@ -118,6 +119,11 @@ var/list/outfits_decls_by_type_
 		var/number = backpack_contents[path]
 		for(var/i=0,i<number,i++)
 			H.equip_to_slot_or_store_or_drop(new path(H), slot_in_backpack)
+
+	for(var/path in chestholster_contents)
+		var/number = chestholster_contents[path]
+		for(var/i=0,i<number,i++)
+			H.equip_to_slot_or_store_or_drop(new path(H), slot_in_chestholster)
 
 	if(!(OUTFIT_ADJUSTMENT_SKIP_POST_EQUIP & equip_adjustments))
 		post_equip(H)

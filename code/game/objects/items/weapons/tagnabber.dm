@@ -4,7 +4,7 @@
 	icon_state = "nullrod"
 	item_state = "nullrod"
 	slot_flags = SLOT_BELT
-	w_class = ITEM_SIZE_NORMAL
+	w_class = ITEM_SIZE_SMALL
 
 /obj/item/tagnabber/attack(mob/living/M, mob/living/user, target_zone, special)
 	. = ..()

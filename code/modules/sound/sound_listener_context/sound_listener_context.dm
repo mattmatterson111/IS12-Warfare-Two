@@ -114,16 +114,16 @@
 	S.volume *= p_effect
 
 /datum/sound_listener_context/proc/subscribe_to(datum/sound_emitter/E)
-	GLOB.sound_updated_event.register(E, src, nameof(src::on_sound_update()))
-	GLOB.sound_started_event.register(E, src, nameof(src::start_hearing()))
-	GLOB.sound_stopped_event.register(E, src, nameof(src::stop_hearing()))
-	GLOB.sound_pushed_event.register(E, src, nameof(src::hear_once()))
+	GLOB.sound_updated_event.register(E, src, PROC_REF(on_sound_update))
+	GLOB.sound_started_event.register(E, src, PROC_REF(start_hearing))
+	GLOB.sound_stopped_event.register(E, src, PROC_REF(stop_hearing))
+	GLOB.sound_pushed_event.register(E, src, PROC_REF(hear_once))
 
 /datum/sound_listener_context/proc/unsubscribe_from(datum/sound_emitter/E)
-	GLOB.sound_updated_event.unregister(E, src, nameof(src::on_sound_update()))
-	GLOB.sound_started_event.unregister(E, src, nameof(src::start_hearing()))
-	GLOB.sound_stopped_event.unregister(E, src, nameof(src::stop_hearing()))
-	GLOB.sound_pushed_event.unregister(E, src, nameof(src::hear_once()))
+	GLOB.sound_updated_event.unregister(E, src, PROC_REF(on_sound_update))
+	GLOB.sound_started_event.unregister(E, src, PROC_REF(start_hearing))
+	GLOB.sound_stopped_event.unregister(E, src, PROC_REF(stop_hearing))
+	GLOB.sound_pushed_event.unregister(E, src, PROC_REF(hear_once))
 
 /datum/sound_listener_context/proc/start_hearing(datum/sound_emitter/emitter)
 	if (!emitter.is_currently_playing())
@@ -144,6 +144,7 @@
 	sound_to(client, S)
 
 /datum/sound_listener_context/proc/hear_once(sound/S, datum/sound_emitter/emitter)
+	to_world("We got [S] with [S.volume] volume")
 	apply_proxymob_effects(S)
 	sound_to(client, S)
 

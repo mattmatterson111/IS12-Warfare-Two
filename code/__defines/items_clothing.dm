@@ -74,12 +74,13 @@
 #define slot_r_store     16
 #define slot_s_store     17
 #define slot_in_backpack 18
-#define slot_legcuffed   19
-#define slot_r_ear       20
-#define slot_legs        21
-#define slot_tie         22
-#define slot_chest	 	 23
-#define slot_last        24
+#define slot_in_chestholster 19
+#define slot_legcuffed   20
+#define slot_r_ear       21
+#define slot_legs        22
+#define slot_tie         23
+#define slot_chest	 	 24
+#define slot_last        25
 
 // Inventory slot strings.
 // since numbers cannot be used as associative list keys.

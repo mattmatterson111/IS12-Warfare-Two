@@ -102,7 +102,7 @@
 /obj/item/projectile/flamer/on_hit(var/atom/target, var/blocked = 0)
 	if(ishuman(target))
 		var/mob/living/carbon/human/H = target
-		if(!istype(H.wear_suit, /obj/item/clothing/suit/fire))
+		if(!(istype(H.wear_suit, /obj/item/clothing/suit/fire) && (istype(H.wear_mask, /obj/item/clothing/mask/gas/red/flamer) || (istype(H.wear_mask, /obj/item/clothing/mask/gas/blue/flamer)))))
 			H.adjust_fire_stacks(50)
 			H.IgniteMob()
 		new /obj/flamer_fire(H.loc, 12, 10, "red", 1)
@@ -175,7 +175,7 @@
 	if(istype(M))
 		if(ishuman(M))
 			var/mob/living/carbon/human/H = M
-			if(istype(H.wear_suit, /obj/item/clothing/suit/fire))
+			if((istype(H.wear_suit, /obj/item/clothing/suit/fire) && (istype(H.wear_mask, /obj/item/clothing/mask/gas/red/flamer) || (istype(H.wear_mask, /obj/item/clothing/mask/gas/blue/flamer)))))
 				return
 		M.adjust_fire_stacks(burnlevel) //Make it possible to light them on fire later.
 		if (prob(firelevel + 2*M.fire_stacks)) //the more soaked in fire you are, the likelier to be ignited
@@ -217,7 +217,7 @@
 			var/mob/living/I = i
 			if(istype(I,/mob/living/carbon/human))
 				var/mob/living/carbon/human/M = I
-				if(istype(M.wear_suit, /obj/item/clothing/suit/fire))
+				if((istype(M.wear_suit, /obj/item/clothing/suit/fire) && (istype(M.wear_mask, /obj/item/clothing/mask/gas/red/flamer) || (istype(M.wear_mask, /obj/item/clothing/mask/gas/blue/flamer)))))
 					continue
 			I.adjust_fire_stacks(burnlevel) //If i stand in the fire i deserve all of this. Also Napalm stacks quickly.
 			I.IgniteMob()

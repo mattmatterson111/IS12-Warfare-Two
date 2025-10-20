@@ -82,11 +82,11 @@
 	title = "Blue Engineer"
 	outfit_type = /decl/hierarchy/outfit/job/bluesoldier/engineer
 	engineering_skill = 10
-	auto_rifle_skill = 5
-	semi_rifle_skill = 5
+	//auto_rifle_skill = 5
+	//semi_rifle_skill = 5
 	smg_skill = 10
 	shotgun_skill = 10
-	boltie_skill = 5
+	//boltie_skill = 5
 
 	squad_overlay = "sapper"
 
@@ -370,11 +370,26 @@
 		r_pocket = /obj/item/shovel
 		belt = /obj/item/storage/belt/autoshotty
 		backpack_contents = list(/obj/item/stack/barbwire = 1, /obj/item/defensive_barrier = 3, /obj/item/storage/box/ifak = 1, /obj/item/grenade/smokebomb = 1)
-	else //if(prob(50))
+	else if (prob(7)) //if(prob(50))
 		suit_store = /obj/item/gun/projectile/shotgun/pump/shitty
 		r_pocket = /obj/item/ammo_box/shotgun
 		belt = /obj/item/shovel
-		backpack_contents = list(/obj/item/stack/barbwire = 1, /obj/item/defensive_barrier = 3, /obj/item/storage/box/ifak = 1, /obj/item/grenade/smokebomb = 1)
+
+	else if (prob(15))
+		suit_store = /obj/item/gun/projectile/shotgun/pump/boltaction/good
+		r_pocket =  /obj/item/ammo_box/rifle/modern
+
+	else if(prob(25))
+		suit_store = /obj/item/gun/projectile/shotgun/pump/boltaction/shitty/leverchester
+		r_pocket = /obj/item/ammo_box/rifle
+
+	else if(prob(50))
+		suit_store = /obj/item/gun/projectile/shotgun/pump/boltaction/shitty/bayonet
+		r_pocket = /obj/item/ammo_box/rifle
+
+	else
+		suit_store = /obj/item/gun/projectile/shotgun/pump/boltaction/shitty
+		r_pocket = /obj/item/ammo_box/rifle
 	/*
 	else
 		suit_store = /obj/item/gun/projectile/automatic/machinepistol
@@ -436,18 +451,20 @@
 	..()
 
 /decl/hierarchy/outfit/job/bluesoldier/flamer
+	name = OUTFIT_JOB_NAME("Blue Flamer")
 	l_ear = /obj/item/device/radio/headset/blue_team/all
 	suit = /obj/item/clothing/suit/fire/blue
 	mask = /obj/item/clothing/mask/gas/blue/flamer
 	gloves = /obj/item/clothing/gloves/thick/swat/combat/warfare/blue/flamer
 	head = null
 	shoes = /obj/item/clothing/shoes/jackboots/warfare/blue/flamer
-	belt = /obj/item/gun/projectile/automatic/flamer
-	suit_store = /obj/item/melee/trench_axe
 	r_pocket = /obj/item/grenade/fire
-	backpack_contents = list(/obj/item/ammo_magazine/flamer = 4, /obj/item/grenade/smokebomb = 1)
+	backpack_contents = list(/obj/item/grenade/smokebomb = 1)
+	chest_holster = /obj/item/storage/backpack/satchel/warfare/chestrig/blue
+	chestholster_contents = list(/obj/item/ammo_magazine/flamer = 4)
 
 /decl/hierarchy/outfit/job/bluesoldier/sentry
+	name = OUTFIT_JOB_NAME("Blue Sentry")
 	l_ear = /obj/item/device/radio/headset/blue_team/all
 	suit = /obj/item/clothing/suit/armor/sentry/blue
 	head = /obj/item/clothing/head/helmet/sentryhelm/blue

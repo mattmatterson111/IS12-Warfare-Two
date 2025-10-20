@@ -259,7 +259,7 @@ GLOBAL_LIST_EMPTY(lights)
 		var/sound/hum = sound()
 		hum.file = src.ambient_noise
 		hum.repeat = 1
-		hum.volume = 22
+		hum.volume = 35
 		sound_emitter.add(hum, "ambient_hum")
 
 /obj/machinery/light/update_icon(var/trigger = 1)

@@ -139,7 +139,7 @@ var/global/datum/sound_zone_manager/sound_zone_manager = new
 	listener_buckets[h] |= SLC.proxy
 
 	SLC.proxy.sound_endpoint = SLC.client.mob
-	GLOB.moved_event.register(SLC.proxy, src, nameof(src::on_player_move()))
+	GLOB.moved_event.register(SLC.proxy, src, PROC_REF(on_player_move))
 	on_player_move(SLC.proxy)
 
 /datum/sound_zone_manager/proc/unregister_listener(datum/sound_listener_context/SLC)
@@ -154,7 +154,7 @@ var/global/datum/sound_zone_manager/sound_zone_manager = new
 		if (bucket)
 			bucket -= M
 	// stop them from picking up new emitters
-	GLOB.moved_event.unregister(M, src, nameof(src::on_player_move()))
+	GLOB.moved_event.unregister(M, src, PROC_REF(on_player_move))
 	M.sound_endpoint = null
 
 /datum/sound_zone_manager/proc/update_listener(mob/player)

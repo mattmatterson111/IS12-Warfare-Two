@@ -1,5 +1,7 @@
 #define KOTH_VICTORY_POINTS 500
 
+#define PAYLOAD_SPEED_MODIFIER 1
+
 /datum/team
 	var/list/team = list()  // members of the team
 	var/list/team_clients = list()
@@ -57,10 +59,19 @@ SUBSYSTEM_DEF(warfare)
 	var/battle_time = 0
 	var/complete = ""
 
+	var/compass_inaccuracy_x = 0
+	var/compass_inaccuracy_y = 0
+	var/global_coordinate_shift_x = 0
+	var/global_coordinate_shift_y = 0
+
 /datum/controller/subsystem/warfare/Initialize()
 	blue = new /datum/team
 	red = new /datum/team
 	SSwarfare = src
+	compass_inaccuracy_x = rand(-32, 32)
+	compass_inaccuracy_y = rand(-32, 32)
+	global_coordinate_shift_x = rand(0, 512)
+	global_coordinate_shift_y = rand(0, 512)
 	..()
 
 /datum/controller/subsystem/warfare/proc/end_warfare(var/loser)
@@ -77,7 +88,10 @@ SUBSYSTEM_DEF(warfare)
 	if(battle_time)  // so if it starts early, it doesnt @everyone again
 		return
 	battle_time = TRUE
-	to_world("<big>I AM READY TO DIE NOW!</big>")
+	if(!length(GLOB.payloads))
+		to_world("<big>I AM READY TO DIE NOW!</big>")
+	else
+		to_world("<big>I AM READY TO PUSH THE CART NOW!</big>")
 	sound_to(world, 'sound/effects/ready_to_die.ogg')//Sound notifying them.
 	for(var/turf/simulated/floor/dirty/fake/F in world)//Make all the fake dirt into real dirt.
 		F.ChangeTurf(/turf/simulated/floor/dirty)
@@ -166,3 +180,17 @@ SUBSYSTEM_DEF(warfare)
 
 		else if(red && C.warfare_faction == RED_TEAM)
 			C.unlock_achievement(new/datum/achievement/warfare_victory())
+
+/client/proc/cargo_password()
+	set category = "Debug"
+	set name = "Check Cargo password"
+	set desc = "Prints the cargo password."
+
+	to_chat(src, GLOB.cargo_password)
+
+/client/proc/debug_coordinate()
+	set category = "Debug"
+	set name = "Debug coordinate shift"
+	set desc = "Checks the global shift stuff whatever."
+
+	to_chat(src, "<hr>GLOBAL_SHIFT_X: [SSwarfare.global_coordinate_shift_x]\nGLOBAL_SHIFT_Y: [SSwarfare.global_coordinate_shift_y]\n\n[mob.x], [mob.y]\n\nUNSCRAMBLE_ATTEMPT: [mob.x + SSwarfare.global_coordinate_shift_x], [mob.y + SSwarfare.global_coordinate_shift_y] // [(mob.x + SSwarfare.global_coordinate_shift_x) - SSwarfare.global_coordinate_shift_x] [(mob.y + SSwarfare.global_coordinate_shift_y) - SSwarfare.global_coordinate_shift_y]\n<hr>")

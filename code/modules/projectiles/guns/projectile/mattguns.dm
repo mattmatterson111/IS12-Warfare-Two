@@ -555,6 +555,7 @@
 /obj/item/gun/projectile/automatic/mg08/special_check(var/mob/user)
 	if(misfire)
 		return 1
+	if(length(GLOB.payloads)) return ..()
 	if(!deployed)//Can't fire.
 		to_chat(user, "<span class='danger'>I can't fire it if it's not deployed.</span>")
 		return 0
@@ -563,6 +564,7 @@
 
 /obj/item/gun/projectile/automatic/mg08/attack_self(mob/user)
 	. = ..()
+	if(length(GLOB.payloads)) return
 	if(deployed)//If there's an mg deployed, then pack it up again.
 		pack_up_mg(user)
 	else
@@ -955,7 +957,7 @@
 	O = get_turf(src)
 	if(!O) return
 	if(explosion_size)
-		explosion(O, -1, -1, explosion_size, round(explosion_size/2), 0, particles = TRUE, large = FALSE, color = COLOR_BLACK, autosize = FALSE, sizeofboom = 1, explosionsound = pick('sound/effects/mortarexplo1.ogg','sound/effects/mortarexplo2.ogg','sound/effects/mortarexplo3.ogg'), farexplosionsound = pick('sound/effects/farexplonewnew1.ogg','sound/effects/farexplonewnew2.ogg','sound/effects/farexplonewnew3.ogg'))
+		explosion(O, -1, -1, explosion_size, round(explosion_size/2), 0, particles = TRUE, large = FALSE, color = COLOR_BLACK, autosize = FALSE, sizeofboom = 1, explosionsound = pick('sound/effects/mortarexplo1.ogg','sound/effects/mortarexplo2.ogg','sound/effects/mortarexplo3.ogg'), farexplosionsound = pick('sound/effects/explosionfarnew.ogg','sound/effects/explosionfar2.ogg','sound/effects/explosionfar3.ogg','sound/effects/explosionfar4.ogg'))
 
 /obj/item/projectile/bullet/grenade/on_impact(var/atom/target, var/blocked = 0)
 	return FALSE
