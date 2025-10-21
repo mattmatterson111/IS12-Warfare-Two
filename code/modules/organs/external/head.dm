@@ -59,16 +59,19 @@
 	has_lips = null
 
 /obj/item/organ/external/head/removed()
-	if(owner)
-		SetName("[owner.real_name]'s head")
-		owner.drop_from_inventory(owner.glasses)
-		owner.drop_from_inventory(owner.head)
-		owner.drop_from_inventory(owner.l_ear)
-		owner.drop_from_inventory(owner.r_ear)
-		owner.drop_from_inventory(owner.wear_mask)
-		spawn(1)
-			owner.update_hair()
+	var/mob/living/carbon/human/H = owner
+	if(H)
+		SetName("[H.real_name]'s head")
+		H.drop_from_inventory(H.glasses)
+		H.drop_from_inventory(H.head)
+		H.drop_from_inventory(H.l_ear)
+		H.drop_from_inventory(H.r_ear)
+		H.drop_from_inventory(H.wear_mask)
 	..()
+	if(H)
+		H.update_body()
+		H.update_hair()
+		H.update_inv_head()
 
 /obj/item/organ/external/head/take_damage(brute, burn, damage_flags, used_weapon = null)
 	. = ..()
