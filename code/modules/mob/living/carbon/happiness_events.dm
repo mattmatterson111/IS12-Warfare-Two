@@ -259,3 +259,9 @@
 	description = "<span class='danger'>I must've done something wrong... My medal has been taken away from me.\n"
 	happiness = -10
 	timeout = 3000
+
+//no step back
+/datum/happiness_event/witnessed_execution
+	description = "<span class='binfo'>THIS IS IT! NO STEP BACK!\n"
+	happiness = 15
+	timeout = 3000

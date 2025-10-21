@@ -258,3 +258,76 @@
 	if(!primed || open)
 		return FALSE
 	. = ..()
+
+//EXECUTION
+/obj/item/gun/projectile/revolver/cpt/attack(atom/A, mob/living/user, def_zone)
+	if(ishuman(A) && ishuman(user) && A != user)
+		var/mob/living/carbon/human/target = A
+		var/mob/living/carbon/human/captain = user
+		//cap n faction checks
+		if(captain.mind?.assigned_role == "Blue Captain" || captain.mind?.assigned_role == "Red Captain")
+			if(user.zone_sel.selecting == BP_HEAD && captain.warfare_faction == target.warfare_faction)
+				handle_execution(captain, target)
+				return
+
+	return ..()
+
+/obj/item/gun/projectile/revolver/cpt/proc/handle_execution(mob/living/carbon/human/user, mob/living/carbon/human/target)
+	if(!ishuman(user) || !ishuman(target))
+		return
+
+	var/obj/item/organ/external/head = target.get_organ(BP_HEAD)
+	if(!head || head.is_stump())
+		to_chat(user, "<span class='warning'>You can't execute someone who doesn't have a head! Where would you even aim?!</span>")
+		return
+
+	if(target.stat == DEAD)
+		to_chat(user, "<span class='warning'>[target] is already dead! There's no point in shooting a corpse!</span>")
+		return
+
+	mouthshoot = 1
+	user.visible_message("<span class='danger'>[user] aims their gun at [target]'s head, ready to pull the trigger...</span>")
+	playsound(user, 'sound/weapons/guns/fire/execute1.ogg', 75, 0, frequency = 44100)
+
+	if(!do_after(user, 15, target))
+		user.visible_message("<span class='notice'>[user] lowers their weapon</span>")
+		mouthshoot = 0
+		return
+
+	if(safety)
+		handle_click_empty(user)
+		to_chat(user, "<span class='warning'>You feel rather silly, realizing just now that the safety was on...</span>")
+		mouthshoot = 0
+		return
+
+	var/obj/item/projectile/in_chamber = consume_next_projectile()
+	if(istype(in_chamber))
+		user.visible_message("<span class='warning'>[user] pulls the trigger.</span>")
+		var/shot_sound = in_chamber.fire_sound ? in_chamber.fire_sound : fire_sound
+			playsound(user, shot_sound, 50, 1)
+			playsound(user, 'sound/weapons/guns/fire/execute2.ogg', 75, 0, frequency = 44100)
+
+		in_chamber.on_hit(target)
+		if(in_chamber.damage_type != PAIN)
+			log_and_message_admins("[key_name(user)] executed [key_name(target)] using \a [src]")
+			target.apply_damage(in_chamber.damage*2.5, in_chamber.damage_type, BP_HEAD, 0, in_chamber.damage_flags(), used_weapon = "Execution shot to the head with \a [in_chamber]")
+			target.death()
+
+			//Apply to nearby soldiers
+			var/turf/T = get_turf(user)
+			for(var/mob/living/carbon/human/H in range(7, T))
+				if(H == user || H == target)
+					continue
+				if(H.warfare_faction == user.warfare_faction)
+					H.add_event("witnessed execution", /datum/happiness_event/witnessed_execution)
+		else
+			to_chat(target, "<span class='notice'>Ow...</span>")
+			target.apply_effect(110, PAIN, 0)
+
+		qdel(in_chamber)
+		mouthshoot = 0
+		return
+	else
+		handle_click_empty(user)
+		mouthshoot = 0
+		return
