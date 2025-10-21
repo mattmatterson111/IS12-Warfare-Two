@@ -353,11 +353,12 @@
 
 
 /decl/hierarchy/outfit/job/redsoldier/engineer
-	r_pocket = /obj/item/ammo_magazine/mc9mmt/machinepistol
+	//r_pocket = /obj/item/ammo_magazine/mc9mmt/machinepistol
 	l_pocket = /obj/item/wirecutters
 	//suit_store = /obj/item/gun/projectile/automatic/machinepistol/wooden
 	back = /obj/item/storage/backpack/warfare
-	backpack_contents = list(/obj/item/stack/barbwire = 1, /obj/item/shovel = 1, /obj/item/defensive_barrier = 4, /obj/item/storage/box/ifak = 1)
+	belt = /obj/item/gun/projectile/warfare
+	backpack_contents = list(/obj/item/stack/barbwire = 1, /obj/item/shovel = 1, /obj/item/defensive_barrier = 3, /obj/item/storage/box/ifak = 1, /obj/item/ammo_magazine/c45m/warfare = 2)
 
 /decl/hierarchy/outfit/job/redsoldier/engineer/equip()
 	if(prob(1))//Rare engineer spawn
@@ -369,7 +370,6 @@
 	else if(prob(7))
 		suit_store = /obj/item/gun/projectile/shotgun/pump/shitty
 		r_pocket = /obj/item/ammo_box/shotgun
-		belt = /obj/item/shovel
 
 	else if(prob(25))
 		suit_store = /obj/item/gun/projectile/shotgun/pump/boltaction/shitty/leverchester
