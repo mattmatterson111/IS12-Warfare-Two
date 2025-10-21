@@ -81,6 +81,7 @@ var/list/admin_verbs_admin = list(
 	/client/proc/place_squad_waypoint,
 	/client/proc/debug_screentext,
 	/client/proc/send_screentext,
+	/client/proc/toggle_executions,
 	/client/proc/debug_env,
 	/client/proc/clear_squad_waypoint,
 	/client/proc/play_ert_voiceline,

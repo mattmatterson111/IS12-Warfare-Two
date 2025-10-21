@@ -260,13 +260,15 @@
 	if(!primed || open)
 		return FALSE
 	. = ..()
-
+GLOBAL_VAR_INIT(ENABLE_EXECUTION,FALSE)
 //EXECUTION
 /obj/item/gun/projectile/revolver/cpt/attack(atom/A, mob/living/user, def_zone)
 	if(ishuman(A) && ishuman(user) && A != user)
 		var/mob/living/carbon/human/target = A
 		var/mob/living/carbon/human/captain = user
 		//cap n faction checks
+		if(!GLOB.ENABLE_EXECUTION)
+			return ..()
 		if(captain.mind?.assigned_role == "Blue Captain" || captain.mind?.assigned_role == "Red Captain")
 			if(user.zone_sel.selecting == BP_HEAD && captain.warfare_faction == target.warfare_faction)
 				handle_execution(captain, target)
