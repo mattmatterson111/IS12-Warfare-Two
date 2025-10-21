@@ -20,6 +20,8 @@
 	desc = "The sort of weapon usually found on nobility, such as captains or commandants."
 	icon_state = "cptrevolver"
 	item_state = "crevolver"
+	var/turf/executioner_turf
+	var/turf/executionee_turf
 
 /obj/item/gun/projectile/revolver/cpt/magistrate
 	name = "Commandant's Special"
@@ -276,6 +278,25 @@
 	if(!ishuman(user) || !ishuman(target))
 		return
 
+
+	if(!executioner_turf && !executionee_turf || executioner_turf != user.loc || executionee_turf != target.loc)
+		if(!do_after(user, 15, target))
+			user.visible_message("<span class='notice'>[user] lowers their weapon</span>")
+			mouthshoot = 0
+			return
+		user.visible_message("<span class='danger'>[user] aims their gun at [target]'s head, ready to pull the trigger...</span>")
+		playsound(user, 'sound/weapons/guns/fire/execute1.ogg', 75, 0, frequency = 44100)
+		mouthshoot = 0
+		executionee_turf = target.loc
+		executioner_turf = user.loc
+		return
+
+	if(!do_after(user, 15, target))
+		user.visible_message("<span class='notice'>[user] readies themselves to fire.</span>")
+		mouthshoot = 0
+		return
+
+
 	var/obj/item/organ/external/head = target.get_organ(BP_HEAD)
 	if(!head || head.is_stump())
 		to_chat(user, "<span class='warning'>You can't execute someone who doesn't have a head! Where would you even aim?!</span>")
@@ -286,14 +307,6 @@
 		return
 
 	mouthshoot = 1
-	user.visible_message("<span class='danger'>[user] aims their gun at [target]'s head, ready to pull the trigger...</span>")
-	playsound(user, 'sound/weapons/guns/fire/execute1.ogg', 75, 0, frequency = 44100)
-
-	if(!do_after(user, 15, target))
-		user.visible_message("<span class='notice'>[user] lowers their weapon</span>")
-		mouthshoot = 0
-		return
-
 	if(safety)
 		handle_click_empty(user)
 		to_chat(user, "<span class='warning'>You feel rather silly, realizing just now that the safety was on...</span>")
@@ -304,8 +317,8 @@
 	if(istype(in_chamber))
 		user.visible_message("<span class='warning'>[user] pulls the trigger.</span>")
 		var/shot_sound = in_chamber.fire_sound ? in_chamber.fire_sound : fire_sound
-			playsound(user, shot_sound, 50, 1)
-			playsound(user, 'sound/weapons/guns/fire/execute2.ogg', 75, 0, frequency = 44100)
+		playsound(user, shot_sound, 50, 1)
+		playsound(user, 'sound/weapons/guns/fire/execute2.ogg', 100, 0, frequency = 44100)
 
 		in_chamber.on_hit(target)
 		if(in_chamber.damage_type != PAIN)
