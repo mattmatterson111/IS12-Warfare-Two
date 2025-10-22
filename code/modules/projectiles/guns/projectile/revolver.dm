@@ -20,8 +20,11 @@
 	desc = "The sort of weapon usually found on nobility, such as captains or commandants."
 	icon_state = "cptrevolver"
 	item_state = "crevolver"
-	var/turf/executioner_turf
-	var/turf/executionee_turf
+
+	//EXECUTION VARS
+	var/turf/executionee_turf = null
+	var/turf/executioner_turf = null
+	var/execution_state = 0  // 0 = not aiming, 1 = aimed and ready
 
 /obj/item/gun/projectile/revolver/cpt/magistrate
 	name = "Commandant's Special"
@@ -261,6 +264,7 @@
 		return FALSE
 	. = ..()
 GLOBAL_VAR_INIT(ENABLE_EXECUTION,FALSE)
+
 //EXECUTION
 /obj/item/gun/projectile/revolver/cpt/attack(atom/A, mob/living/user, def_zone)
 	if(ishuman(A) && ishuman(user) && A != user)
@@ -280,25 +284,36 @@ GLOBAL_VAR_INIT(ENABLE_EXECUTION,FALSE)
 	if(!ishuman(user) || !ishuman(target))
 		return
 
-
-	if(!executioner_turf && !executionee_turf || executioner_turf != user.loc || executionee_turf != target.loc)
+	//State 0: Initial aiming
+	if(execution_state == 0)
 		if(!do_after(user, 15, target))
 			user.visible_message("<span class='notice'>[user] lowers their weapon</span>")
 			mouthshoot = 0
 			return
+
 		user.visible_message("<span class='danger'>[user] aims their gun at [target]'s head, ready to pull the trigger...</span>")
 		playsound(user, 'sound/weapons/guns/fire/execute1.ogg', 75, 0, frequency = 44100)
 		mouthshoot = 0
 		executionee_turf = target.loc
 		executioner_turf = user.loc
+		execution_state = 1
+
+		//Start monitoring positions
+		addtimer(CALLBACK(src, .proc/check_execution_positions, user, target), 1, TIMER_STOPPABLE)
 		return
 
+	//State 1: Ready to fire - just wait for second attack
 	if(!do_after(user, 15, target))
 		user.visible_message("<span class='notice'>[user] readies themselves to fire.</span>")
 		mouthshoot = 0
+		execution_state = 0
 		return
 
+	//Normal execution
+	execution_state = 0
+	execute_shot(user, target)
 
+/obj/item/gun/projectile/revolver/cpt/proc/execute_shot(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	var/obj/item/organ/external/head = target.get_organ(BP_HEAD)
 	if(!head || head.is_stump())
 		to_chat(user, "<span class='warning'>You can't execute someone who doesn't have a head! Where would you even aim?!</span>")
@@ -328,7 +343,6 @@ GLOBAL_VAR_INIT(ENABLE_EXECUTION,FALSE)
 			target.apply_damage(in_chamber.damage*2.5, in_chamber.damage_type, BP_HEAD, 0, in_chamber.damage_flags(), used_weapon = "Execution shot to the head with \a [in_chamber]")
 			target.death()
 
-			//Apply to nearby soldiers
 			var/turf/T = get_turf(user)
 			for(var/mob/living/carbon/human/H in range(7, T))
 				if(H == user || H == target)
@@ -341,8 +355,35 @@ GLOBAL_VAR_INIT(ENABLE_EXECUTION,FALSE)
 
 		qdel(in_chamber)
 		mouthshoot = 0
-		return
 	else
 		handle_click_empty(user)
 		mouthshoot = 0
+
+//This is needed for the turf checks to work and it is a pain in the ass
+/obj/item/gun/projectile/revolver/cpt/proc/check_execution_positions(mob/living/carbon/human/user, mob/living/carbon/human/target)
+	if(execution_state != 1)
 		return
+
+	if(!user || !target)
+		execution_state = 0
+		executionee_turf = null
+		executioner_turf = null
+		return
+
+	if(target.loc != executionee_turf)
+		//Target moved - fire immediately
+		user.visible_message("<span class='danger'>[target] moves! [user] pulls the trigger!</span>")
+		execution_state = 0
+		execute_shot(user, target)
+		return
+
+	if(user.loc != executioner_turf)
+		//Executioner moved - reset
+		user.visible_message("<span class='notice'>[user] lowers their weapon</span>")
+		execution_state = 0
+		executionee_turf = null
+		executioner_turf = null
+		return
+
+	//Continue
+	addtimer(CALLBACK(src, .proc/check_execution_positions, user, target), 1, TIMER_STOPPABLE)
