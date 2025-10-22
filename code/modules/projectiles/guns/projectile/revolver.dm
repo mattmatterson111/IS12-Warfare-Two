@@ -24,7 +24,7 @@
 	//EXECUTION VARS
 	var/turf/executionee_turf = null
 	var/turf/executioner_turf = null
-	var/execution_state = 0  // 0 = not aiming, 1 = aimed and ready
+	var/execution_ready = FALSE
 
 /obj/item/gun/projectile/revolver/cpt/magistrate
 	name = "Commandant's Special"
@@ -284,34 +284,59 @@ GLOBAL_VAR_INIT(ENABLE_EXECUTION,FALSE)
 	if(!ishuman(user) || !ishuman(target))
 		return
 
-	//State 0: Initial aiming
-	if(execution_state == 0)
+	//Initial aiming
+	if(!execution_ready)
 		if(!do_after(user, 15, target))
 			user.visible_message("<span class='notice'>[user] lowers their weapon</span>")
-			mouthshoot = 0
 			return
 
 		user.visible_message("<span class='danger'>[user] aims their gun at [target]'s head, ready to pull the trigger...</span>")
 		playsound(user, 'sound/weapons/guns/fire/execute1.ogg', 75, 0, frequency = 44100)
-		mouthshoot = 0
 		executionee_turf = target.loc
 		executioner_turf = user.loc
-		execution_state = 1
+		execution_ready = TRUE
 
 		//Start monitoring positions
 		addtimer(CALLBACK(src, .proc/check_execution_positions, user, target), 1, TIMER_STOPPABLE)
 		return
 
-	//State 1: Ready to fire - just wait for second attack
+	//Final firing phase
 	if(!do_after(user, 15, target))
 		user.visible_message("<span class='notice'>[user] readies themselves to fire.</span>")
-		mouthshoot = 0
-		execution_state = 0
+		execution_ready = FALSE
 		return
 
-	//Normal execution
-	execution_state = 0
+	execution_ready = FALSE
 	execute_shot(user, target)
+
+/obj/item/gun/projectile/revolver/cpt/proc/check_execution_positions(mob/living/carbon/human/user, mob/living/carbon/human/target)
+	if(!execution_ready)
+		return FALSE
+
+	if(!user || !target)
+		execution_ready = FALSE
+		executionee_turf = null
+		executioner_turf = null
+		return FALSE
+
+	if(target.loc != executionee_turf)
+		//Target moved - fire immediately
+		user.visible_message("<span class='danger'>[target] moves! [user] pulls the trigger!</span>")
+		execution_ready = FALSE
+		execute_shot(user, target)
+		return FALSE
+
+	if(user.loc != executioner_turf)
+		//Executioner moved - reset
+		user.visible_message("<span class='notice'>[user] lowers their weapon</span>")
+		execution_ready = FALSE
+		executionee_turf = null
+		executioner_turf = null
+		return FALSE
+
+	//Continue monitoring
+	addtimer(CALLBACK(src, .proc/check_execution_positions, user, target), 1, TIMER_STOPPABLE)
+	return TRUE
 
 /obj/item/gun/projectile/revolver/cpt/proc/execute_shot(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	var/obj/item/organ/external/head = target.get_organ(BP_HEAD)
@@ -358,32 +383,3 @@ GLOBAL_VAR_INIT(ENABLE_EXECUTION,FALSE)
 	else
 		handle_click_empty(user)
 		mouthshoot = 0
-
-//This is needed for the turf checks to work and it is a pain in the ass
-/obj/item/gun/projectile/revolver/cpt/proc/check_execution_positions(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	if(execution_state != 1)
-		return
-
-	if(!user || !target)
-		execution_state = 0
-		executionee_turf = null
-		executioner_turf = null
-		return
-
-	if(target.loc != executionee_turf)
-		//Target moved - fire immediately
-		user.visible_message("<span class='danger'>[target] moves! [user] pulls the trigger!</span>")
-		execution_state = 0
-		execute_shot(user, target)
-		return
-
-	if(user.loc != executioner_turf)
-		//Executioner moved - reset
-		user.visible_message("<span class='notice'>[user] lowers their weapon</span>")
-		execution_state = 0
-		executionee_turf = null
-		executioner_turf = null
-		return
-
-	//Continue
-	addtimer(CALLBACK(src, .proc/check_execution_positions, user, target), 1, TIMER_STOPPABLE)
