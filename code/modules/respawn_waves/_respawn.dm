@@ -88,6 +88,10 @@
 /obj/structure/vehicle/train/proc/clear_carriage_cache()
 	carriage_cache.Cut()
 
+/obj/structure/vehicle/train/proc/force_regen()
+	carriage_cache.Cut()
+	carriage_amount = rand(2, 6)
+	generate_carriages()
 
 /obj/structure/vehicle/train/proc/get_special_carriage_state()
 	return special_carriage
@@ -152,6 +156,8 @@
 
 /obj/structure/vehicle/train/random/cargo/attack_hand(mob/user)
 	. = ..()
+	if(!do_after(user, rand(10, 50), src, TRUE, same_direction = TRUE, stay_still = TRUE))
+		return
 	var/free = 0
 	if(!user.get_inactive_hand() && !user.get_active_hand())
 		free = TRUE

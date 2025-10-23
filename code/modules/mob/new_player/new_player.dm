@@ -489,9 +489,9 @@
 
 				if(job.is_restricted(client.prefs))
 					if(show_invalid_jobs)
-						dat += "<tr><td><a style='text-decoration: line-through' href='byond://?src=\ref[src];SelectedJob=[job.title]'>[job.title]</a></td><td>[job.current_positions]</td><td>(Active: [active])</td></tr>"
+						dat += "<tr><td><a style=\"border-color: [job.selection_color];\" style='text-decoration: line-through' href='byond://?src=\ref[src];SelectedJob=[job.title]'>[job.title]</a></td><td>[job.current_positions]</td><td>(Active: [active])</td></tr>"
 				else
-					dat += "<tr><td><a href='byond://?src=\ref[src];SelectedJob=[job.title]'>[job.title]</a></td><td>[job.current_positions]</td><td>(Active: [active])</td></tr>"
+					dat += "<tr><td><a style=\"border-color: [job.selection_color];\" href='byond://?src=\ref[src];SelectedJob=[job.title]'>[job.title]</a></td><td>[job.current_positions]</td><td>(Active: [active])</td></tr>"
 		dat += "</table>"
 		dat += "</fieldset><br>"
 

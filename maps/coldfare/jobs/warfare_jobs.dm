@@ -14,6 +14,7 @@
 	/datum/job/soldier/red_soldier/scout,
 	/datum/job/soldier/red_soldier/sentry,
 	/datum/job/fortress/red/practitioner,
+	/datum/job/fortress/red/logi,
 
     /datum/job/soldier/blue_soldier/captain,
     /datum/job/soldier/blue_soldier/sgt,
@@ -24,7 +25,8 @@
     /datum/job/soldier/blue_soldier,
  	/datum/job/soldier/blue_soldier/scout,
 	/datum/job/soldier/blue_soldier/sentry,
-	/datum/job/fortress/blue/practitioner
+	/datum/job/fortress/blue/practitioner,
+	/datum/job/fortress/blue/logi
 	)
 
 /mob/living/carbon/human/proc/warfare_language_shit(var/language_name)
