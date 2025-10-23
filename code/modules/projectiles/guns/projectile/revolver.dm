@@ -287,10 +287,10 @@ GLOBAL_VAR_INIT(ENABLE_EXECUTION,FALSE)
 	//Initial aiming
 	if(!execution_ready)
 		if(!do_after(user, 15, target))
-			user.visible_message("<span class='notice'>[user] lowers their weapon</span>")
+			user.visible_message("<span class='notice'>[user] lowers \his weapon</span>")
 			return
 
-		user.visible_message("<span class='danger'>[user] aims their gun at [target]'s head, ready to pull the trigger...</span>")
+		user.visible_message("<span class='danger'>[user] aims \his gun at [target]'s head, ready to pull the trigger...</span>")
 		playsound(user, 'sound/weapons/guns/fire/execute1.ogg', 75, 0, frequency = 44100)
 		executionee_turf = target.loc
 		executioner_turf = user.loc
@@ -302,7 +302,7 @@ GLOBAL_VAR_INIT(ENABLE_EXECUTION,FALSE)
 
 	//Final firing phase
 	if(!do_after(user, 15, target))
-		user.visible_message("<span class='notice'>[user] readies themselves to fire.</span>")
+		user.visible_message("<span class='notice'>[user] readies \himself to fire.</span>")
 		execution_ready = FALSE
 		return
 
@@ -328,7 +328,7 @@ GLOBAL_VAR_INIT(ENABLE_EXECUTION,FALSE)
 
 	if(user.loc != executioner_turf)
 		//Executioner moved - reset
-		user.visible_message("<span class='notice'>[user] lowers their weapon</span>")
+		user.visible_message("<span class='notice'>[user] lowers \his weapon</span>")
 		execution_ready = FALSE
 		executionee_turf = null
 		executioner_turf = null
