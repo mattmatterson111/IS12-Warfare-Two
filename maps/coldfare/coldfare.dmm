@@ -3783,6 +3783,10 @@
 	plane = -150
 	},
 /area/warfare/battlefield/trench_section/underground)
+"oN" = (
+/obj/structure/warfare_itemeater/blue,
+/turf/simulated/wall/perspecticrete,
+/area/warfare/homebase/blue/largeroom)
 "oQ" = (
 /obj/effect/landmark/start{
 	name = "Blue Squad Leader"
@@ -7250,6 +7254,10 @@
 	health = 999999
 	},
 /area/space)
+"Iz" = (
+/obj/structure/warfare_itemeater/red,
+/turf/simulated/wall/perspecticrete,
+/area/warfare/homebase/red/largeroom)
 "IF" = (
 /obj/structure/poster/red,
 /obj/hammereditor/nodraw,
@@ -19078,7 +19086,7 @@ Cj
 Cj
 Cj
 Cj
-Cj
+oN
 Cj
 Rd
 Wi
@@ -19306,7 +19314,7 @@ Br
 Br
 Br
 Br
-Br
+Iz
 Br
 PI
 dn
