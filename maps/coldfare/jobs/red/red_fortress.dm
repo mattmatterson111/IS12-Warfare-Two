@@ -4,30 +4,36 @@
 	selection_color = "#ca6060"
 
 	equip(var/mob/living/carbon/human/H)
+		H.warfare_faction = RED_TEAM
 		..()
 		H.add_stats(rand(6,10), rand(6,10), rand(6,10))
-		H.warfare_faction = RED_TEAM
 		SSwarfare.red.team += H
 		H.warfare_language_shit(LANGUAGE_RED)
 		H.assign_random_quirk()
 
-/datum/job/fortress/red/chef
-	title = "Red Chef"
-	outfit_type = /decl/hierarchy/outfit/job/service/chef/red
-	access = list(access_hydroponics, access_bar, access_kitchen)
-	total_positions = 2
+/datum/job/fortress/red/logi
+	title = "Red Logistics Lieutenant"
+	outfit_type = /decl/hierarchy/outfit/job/redsoldier/logi
+	total_positions = 1
 	social_class = SOCIAL_CLASS_MED
+	spawn_in_cryopod = TRUE
+	cryopod_id = "red_logi"
 
 	equip(var/mob/living/carbon/human/H)
 		..()
 		H.add_stats(rand(7,11), rand(7,12), rand(7,11), rand(10,15))
 		H.add_skills(rand(4,6), rand(0,2), 0, rand(0,3))
+		to_chat(H, SPAN_YELLOW_LARGE("OBEY YOUR CAPTAIN. YOU ARE HERE TO ASSIST HIM."))
 
-/decl/hierarchy/outfit/job/service/chef/red
-	back = /obj/item/storage/backpack/satchel
-	l_ear = /obj/item/device/radio/headset/syndicate
-	neck = /obj/item/reagent_containers/food/drinks/canteen
 
+/decl/hierarchy/outfit/job/redsoldier/logi
+	suit = /obj/item/clothing/suit/armor/redcoat/logi
+	head = /obj/item/clothing/head/warfare_officer/redlogi
+	glasses = /obj/item/clothing/glasses/sunglasses
+	l_ear = /obj/item/device/radio/headset/red_team/all
+	belt = /obj/item/gun/projectile/revolver/manual
+	r_pocket = /obj/item/device/binoculars
+	backpack_contents = list(/obj/item/ammo_magazine/handful/revolver = 2, /obj/item/grenade/smokebomb = 1)
 
 /datum/job/fortress/red/practitioner
 	title = "Red Practitioner"

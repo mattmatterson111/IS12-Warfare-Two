@@ -19,25 +19,45 @@
 	},
 /area/warfare/battlefield/capture_point/red/two)
 "ad" = (
-/obj/machinery/kaos/cargo_machine/red,
-/turf/simulated/floor/urban/cinder,
+/turf/simulated/floor/stones,
 /area/warfare/homebase/red/largeroom)
 "ae" = (
-/obj/structure/window/reinforced{
-	dir = 8;
-	icon_state = "rwindow"
+/obj/structure/bed/chair/throne{
+	pixel_y = -3;
+	buckle_pixel_shift = "x=0;y=-3"
 	},
-/obj/structure/cargo_pad/red,
-/obj/machinery/light/small/bunker{
-	pixel_x = 0;
-	pixel_y = 32
+/obj/effect/landmark/start{
+	name = "Red Logistics Lieutenant"
 	},
-/obj/sound_emitter/periodic/env_leak,
-/turf/simulated/floor/urban/tiles,
-/area/warfare/homebase/red/room)
+/turf/simulated/floor/stones,
+/area/warfare/homebase/red/largeroom)
 "af" = (
-/obj/structure/cargo_pad/red,
-/turf/simulated/floor/urban/tiles,
+/obj/effect/phone_line,
+/obj/item/paper_bin{
+	pixel_x = 4;
+	pixel_y = 10
+	},
+/obj/item/pen/red{
+	pixel_x = 1;
+	pixel_y = 10
+	},
+/obj/structure/table/nosmooth/capnew{
+	pixel_y = -4;
+	dir = 4
+	},
+/obj/item/storage/fancy/cigarettes/cigarillo{
+	pixel_x = 6;
+	pixel_y = 3
+	},
+/obj/structure/table/nosmooth/capnew{
+	pixel_y = 28;
+	dir = 5
+	},
+/obj/structure/window/reinforced{
+	pixel_x = 0;
+	pixel_y = 7
+	},
+/turf/simulated/floor/stones,
 /area/warfare/homebase/red/largeroom)
 "ag" = (
 /turf/simulated/wall/perspecticrete,
@@ -51,24 +71,46 @@
 /turf/simulated/wall/perspecticrete,
 /area/warfare/homebase/blue/largeroom)
 "aj" = (
-/obj/machinery/kaos/cargo_machine/blue,
+/obj/structure/cargo_pad/blue,
 /turf/simulated/floor/urban/cinder,
-/area/warfare/homebase/blue/largeroom)
-"ak" = (
-/obj/structure/window/reinforced{
-	dir = 8;
-	icon_state = "rwindow"
-	},
-/obj/structure/cargo_pad/blue,
-/obj/machinery/light/small/bunker{
-	pixel_x = 0;
-	pixel_y = 32
-	},
-/turf/simulated/floor/urban/tiles/blue,
 /area/warfare/homebase/blue/room)
+"ak" = (
+/obj/structure/bed/chair/throne{
+	pixel_y = -3;
+	buckle_pixel_shift = "x=0;y=-3"
+	},
+/obj/effect/landmark/start{
+	name = "Blue Logistics Lieutenant"
+	},
+/turf/simulated/floor/stones,
+/area/warfare/homebase/blue/largeroom)
 "al" = (
-/obj/structure/cargo_pad/blue,
-/turf/simulated/floor/urban/tiles/blue,
+/obj/effect/phone_line,
+/obj/item/paper_bin{
+	pixel_x = 4;
+	pixel_y = 10
+	},
+/obj/structure/table/nosmooth/capnew{
+	pixel_y = -4;
+	dir = 4
+	},
+/obj/item/pen/blue{
+	pixel_x = 2;
+	pixel_y = 10
+	},
+/obj/item/storage/fancy/cigar{
+	pixel_x = 1;
+	pixel_y = 5
+	},
+/obj/structure/table/nosmooth/capnew{
+	pixel_y = 28;
+	dir = 5
+	},
+/obj/structure/window/reinforced{
+	pixel_x = 0;
+	pixel_y = 7
+	},
+/turf/simulated/floor/stones,
 /area/warfare/homebase/blue/largeroom)
 "am" = (
 /obj/structure/trench_wall{
@@ -79,14 +121,19 @@
 	},
 /area/warfare/battlefield/trench_section/underground/bunker)
 "an" = (
-/obj/structure/window/reinforced{
-	dir = 8;
-	icon_state = "rwindow"
+/obj/structure/table/nosmooth/capnew{
+	pixel_y = -4
 	},
-/obj/structure/window/reinforced,
-/obj/structure/cargo_pad/blue,
-/turf/simulated/floor/urban/tiles/blue,
-/area/warfare/homebase/blue/room)
+/obj/item/device/flashlight/lamp/captain/blue{
+	pixel_x = 15;
+	pixel_y = 9
+	},
+/obj/item/clipboard{
+	pixel_x = -8;
+	pixel_y = 1
+	},
+/turf/simulated/floor/stones,
+/area/warfare/homebase/blue/largeroom)
 "ao" = (
 /obj/structure/closet/secure_closet/warfare/newver,
 /mob/living/simple_animal/hostile/retaliate/rat,
@@ -96,14 +143,18 @@
 	},
 /area/warfare/battlefield/trench_section/underground)
 "ap" = (
-/obj/structure/window/reinforced,
-/obj/structure/cargo_pad/blue,
 /obj/structure/window/reinforced{
-	dir = 4;
+	dir = 8;
 	icon_state = "rwindow"
 	},
-/turf/simulated/floor/urban/tiles/blue,
-/area/warfare/homebase/blue/room)
+/obj/structure/cargo_pad/red,
+/obj/sound_emitter/periodic/env_leak,
+/obj/machinery/light/small/bunker{
+	pixel_x = 0;
+	pixel_y = 32
+	},
+/turf/simulated/floor/urban/cinder,
+/area/warfare/homebase/red/room)
 "aq" = (
 /turf/simulated/mineral{
 	health = 999999
@@ -404,21 +455,28 @@
 	},
 /area/warfare/battlefield/capture_point/blue/two)
 "bl" = (
-/obj/structure/closet/secure_closet/warfare/newver,
-/obj/item/crowbar,
-/obj/item/crowbar,
-/obj/item/crowbar,
+/obj/structure/bed/chair/blue{
+	dir = 1;
+	pixel_x = 0;
+	pixel_y = 11;
+	buckle_pixel_shift = "x=0;y=11"
+	},
 /turf/simulated/floor/urban/cinder,
 /area/warfare/homebase/blue/largeroom)
 "bm" = (
-/obj/structure/window/reinforced{
-	dir = 8;
-	icon_state = "rwindow"
+/obj/structure/table/nosmooth/capnew{
+	pixel_y = -4
 	},
-/obj/structure/window/reinforced,
-/obj/structure/cargo_pad/red,
-/turf/simulated/floor/urban/tiles,
-/area/warfare/homebase/red/room)
+/obj/item/device/flashlight/lamp/captain{
+	pixel_x = 15;
+	pixel_y = 9
+	},
+/obj/item/clipboard{
+	pixel_x = -8;
+	pixel_y = 2
+	},
+/turf/simulated/floor/stones,
+/area/warfare/homebase/red/largeroom)
 "bn" = (
 /obj/machinery/light/small/bunker{
 	dir = 4
@@ -735,26 +793,22 @@
 /turf/simulated/floor/ert/metal01,
 /area/train/red)
 "cp" = (
-/obj/structure/cargo_pad/blue,
-/obj/machinery/light/small/bunker{
+/obj/structure/announcementspeaker/blue{
 	pixel_x = 0;
+	dir = 1
+	},
+/turf/simulated/floor/stones,
+/area/warfare/homebase/blue/largeroom)
+"cq" = (
+/obj/structure/closet/secure_closet/warfare/newver,
+/obj/item/crowbar,
+/obj/item/crowbar,
+/obj/item/crowbar,
+/obj/structure/banner/blue/small{
 	pixel_y = 32
 	},
-/obj/structure/window/reinforced{
-	dir = 4;
-	icon_state = "rwindow"
-	},
-/turf/simulated/floor/urban/tiles/blue,
-/area/warfare/homebase/blue/room)
-"cq" = (
-/obj/structure/window/reinforced,
-/obj/structure/cargo_pad/red,
-/obj/structure/window/reinforced{
-	dir = 4;
-	icon_state = "rwindow"
-	},
-/turf/simulated/floor/urban/tiles,
-/area/warfare/homebase/red/room)
+/turf/simulated/floor/stones,
+/area/warfare/homebase/blue/largeroom)
 "cr" = (
 /obj/structure/closet/secure_closet/warfare,
 /turf/simulated/floor/urban/cinder,
@@ -2123,6 +2177,18 @@
 "gG" = (
 /turf/simulated/open,
 /area/warfare/battlefield/capture_point/red/two)
+"gH" = (
+/obj/structure/cargo_pad/blue,
+/obj/structure/window/reinforced{
+	dir = 4;
+	icon_state = "rwindow"
+	},
+/obj/machinery/light/small/bunker{
+	pixel_x = 0;
+	pixel_y = 32
+	},
+/turf/simulated/floor/urban/cinder,
+/area/warfare/homebase/blue/room)
 "gI" = (
 /obj/structure/trench_wall{
 	dir = 5;
@@ -2683,6 +2749,81 @@
 	health = 999999
 	},
 /area/warfare/homebase/red)
+"iK" = (
+/obj/item/storage/toggle/envelope{
+	pixel_x = 0;
+	pixel_y = 5
+	},
+/obj/item/storage/toggle/envelope{
+	pixel_x = -8;
+	pixel_y = 5
+	},
+/obj/item/storage/toggle/envelope{
+	pixel_x = 8;
+	pixel_y = 5
+	},
+/obj/item/storage/toggle/envelope{
+	pixel_x = -8;
+	pixel_y = 3
+	},
+/obj/item/storage/toggle/envelope{
+	pixel_x = 0;
+	pixel_y = 3
+	},
+/obj/item/storage/toggle/envelope{
+	pixel_x = 8;
+	pixel_y = 3
+	},
+/obj/item/storage/toggle/envelope{
+	pixel_x = -8;
+	pixel_y = 1
+	},
+/obj/item/storage/toggle/envelope{
+	pixel_x = 0;
+	pixel_y = 1
+	},
+/obj/item/storage/toggle/envelope{
+	pixel_x = 8;
+	pixel_y = 1
+	},
+/obj/structure/table/nosmooth/capnew{
+	pixel_y = -4;
+	dir = 8
+	},
+/obj/structure/table/nosmooth/capnew{
+	pixel_y = 28;
+	dir = 9;
+	pixel_x = 0
+	},
+/obj/item/storage/box/matches{
+	pixel_x = 0;
+	pixel_y = 17
+	},
+/obj/structure/window/reinforced{
+	pixel_x = 0;
+	pixel_y = 7
+	},
+/obj/item/flame/candle/blue{
+	pixel_x = -11;
+	pixel_y = 20
+	},
+/obj/item/flame/candle/blue{
+	pixel_x = -9;
+	pixel_y = 20
+	},
+/obj/item/flame/candle/blue{
+	pixel_x = -7;
+	pixel_y = 20
+	},
+/obj/item/waxstamp/blue{
+	pixel_x = -10;
+	pixel_y = 16
+	},
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/simulated/floor/stones,
+/area/warfare/homebase/blue/largeroom)
 "iQ" = (
 /obj/structure/closet/crate,
 /obj/machinery/light/small/bunker{
@@ -2758,6 +2899,12 @@
 /obj/effect/lighting_dummy/daylight,
 /turf/simulated/floor/urban/concrete,
 /area/warfare/homebase/blue/trainyard)
+"jr" = (
+/obj/machinery/light/small/bunker{
+	dir = 4
+	},
+/turf/simulated/floor/stones,
+/area/warfare/homebase/red/largeroom)
 "js" = (
 /obj/hammereditor/nodraw/deco/shadowpaint{
 	opacity = 1;
@@ -3094,6 +3241,12 @@
 	},
 /area/warfare/battlefield/capture_point/blue/one)
 "lK" = (
+/obj/structure/bed/chair/blue{
+	dir = 1;
+	pixel_x = 0;
+	pixel_y = 11;
+	buckle_pixel_shift = "x=0;y=11"
+	},
 /obj/effect/landmark/start{
 	name = "Red Soldier"
 	},
@@ -3795,10 +3948,12 @@
 	},
 /area/warfare/battlefield/capture_point/red/one)
 "pS" = (
-/obj/structure/closet/secure_closet/warfare/newver,
-/obj/item/crowbar/red,
-/obj/item/crowbar/red,
-/obj/item/crowbar/red,
+/obj/structure/bed/chair/blue{
+	dir = 1;
+	pixel_x = 0;
+	pixel_y = 11;
+	buckle_pixel_shift = "x=0;y=11"
+	},
 /turf/simulated/floor/urban/cinder,
 /area/warfare/homebase/red/largeroom)
 "pV" = (
@@ -4008,17 +4163,12 @@
 /turf/simulated/floor/wood,
 /area/warfare/battlefield/trench_section/room)
 "qL" = (
-/obj/structure/cargo_pad/red,
-/obj/machinery/light/small/bunker{
+/obj/structure/announcementspeaker/red{
 	pixel_x = 0;
-	pixel_y = 32
+	dir = 1
 	},
-/obj/structure/window/reinforced{
-	dir = 4;
-	icon_state = "rwindow"
-	},
-/turf/simulated/floor/urban/tiles,
-/area/warfare/homebase/red/room)
+/turf/simulated/floor/stones,
+/area/warfare/homebase/red/largeroom)
 "qO" = (
 /obj/machinery/light/small/bunker{
 	dir = 1
@@ -4241,11 +4391,11 @@
 /turf/simulated/floor/wood,
 /area/warfare/homebase/blue/caproom)
 "rB" = (
-/obj/structure/banner/red/small{
-	pixel_y = 32
+/obj/machinery/light/small/bunker{
+	dir = 4
 	},
-/turf/simulated/floor/urban/cinder,
-/area/warfare/homebase/red/largeroom)
+/turf/simulated/floor/stones,
+/area/warfare/homebase/blue/largeroom)
 "rC" = (
 /obj/machinery/button/remote/blast_door/lever,
 /obj/hammereditor/nodraw,
@@ -4600,6 +4750,18 @@
 	},
 /turf/simulated/floor/urban/cinder,
 /area/warfare/homebase/blue/room)
+"uc" = (
+/obj/structure/cargo_pad/red,
+/obj/structure/window/reinforced{
+	dir = 4;
+	icon_state = "rwindow"
+	},
+/obj/machinery/light/small/bunker{
+	pixel_x = 0;
+	pixel_y = 32
+	},
+/turf/simulated/floor/urban/cinder,
+/area/warfare/homebase/red/room)
 "uf" = (
 /obj/structure/table/rack/nosmooth/wood/alt{
 	dir = 10
@@ -5178,6 +5340,15 @@
 	dir = 1
 	},
 /area/warfare/homebase/blue/room)
+"wZ" = (
+/obj/structure/window/reinforced,
+/obj/structure/cargo_pad/blue,
+/obj/structure/window/reinforced{
+	dir = 4;
+	icon_state = "rwindow"
+	},
+/turf/simulated/floor/urban/cinder,
+/area/warfare/homebase/blue/room)
 "xc" = (
 /obj/sound_emitter/periodic/env_leak,
 /turf/simulated/floor/urban/tiles,
@@ -5266,6 +5437,18 @@
 	health = 999999
 	},
 /area/warfare/battlefield/trench_section/underground)
+"xI" = (
+/obj/structure/bed/chair/blue{
+	dir = 1;
+	pixel_x = 0;
+	pixel_y = 11;
+	buckle_pixel_shift = "x=0;y=11"
+	},
+/obj/effect/landmark/start{
+	name = "Blue Soldier"
+	},
+/turf/simulated/floor/urban/cinder,
+/area/warfare/homebase/blue/largeroom)
 "xK" = (
 /obj/item/flame/candle,
 /obj/item/ammo_box/shotgun,
@@ -5637,6 +5820,10 @@
 	health = 999999
 	},
 /area/warfare/battlefield/trench_section/room)
+"zQ" = (
+/obj/machinery/door/airlock/bunker/blue,
+/turf/simulated/floor/stones,
+/area/warfare/homebase/blue/largeroom)
 "zR" = (
 /obj/structure/trench_wall/innercorners{
 	dir = 4
@@ -6194,6 +6381,12 @@
 	color = "#ffffff"
 	},
 /area/warfare/battlefield/capture_point/red/one)
+"CO" = (
+/obj/machinery/light/small/bunker{
+	dir = 8
+	},
+/turf/simulated/floor/stones,
+/area/warfare/homebase/blue/largeroom)
 "CQ" = (
 /obj/structure/bed/chair/red{
 	dir = 1;
@@ -6204,12 +6397,17 @@
 /turf/simulated/floor/wood,
 /area/warfare/homebase/red/caproom)
 "CR" = (
-/obj/machinery/light/caged{
-	pixel_y = 30;
-	pixel_x = 0
+/obj/structure/window/reinforced{
+	dir = 8;
+	icon_state = "rwindow"
+	},
+/obj/structure/cargo_pad/blue,
+/obj/machinery/light/small/bunker{
+	pixel_x = 0;
+	pixel_y = 32
 	},
 /turf/simulated/floor/urban/cinder,
-/area/warfare/homebase/blue/largeroom)
+/area/warfare/homebase/blue/room)
 "CT" = (
 /obj/effect/floor_decal/trench,
 /obj/machinery/light/caged{
@@ -6273,6 +6471,10 @@
 /obj/machinery/door/airlock/bunker/blue,
 /turf/simulated/floor/urban/cinder,
 /area/warfare/homebase/blue/room)
+"Dq" = (
+/obj/machinery/kaos/cargo_machine/red,
+/turf/simulated/floor/stones,
+/area/warfare/homebase/red/largeroom)
 "Ds" = (
 /obj/structure/closet/crate/medical,
 /obj/item/wirecutters,
@@ -6453,6 +6655,10 @@
 /obj/effect/lighting_dummy/daylight,
 /turf/simulated/floor/urban/concrete,
 /area/warfare/homebase/blue/trainyard)
+"Eo" = (
+/obj/structure/cargo_pad/blue,
+/turf/simulated/floor/urban/cinder,
+/area/warfare/homebase/blue/largeroom)
 "Eu" = (
 /obj/effect/landmark/start{
 	name = "Blue Soldier"
@@ -6482,6 +6688,15 @@
 	},
 /turf/simulated/floor/dirty/indestructable,
 /area/warfare/battlefield/trench_section)
+"EM" = (
+/obj/structure/window/reinforced,
+/obj/structure/cargo_pad/red,
+/obj/structure/window/reinforced{
+	dir = 4;
+	icon_state = "rwindow"
+	},
+/turf/simulated/floor/urban/cinder,
+/area/warfare/homebase/red/room)
 "EU" = (
 /obj/machinery/light{
 	dir = 1;
@@ -6629,6 +6844,16 @@
 	color = "#ffffff"
 	},
 /area/warfare/battlefield/capture_point/blue/two)
+"FL" = (
+/obj/structure/closet/secure_closet/warfare/newver,
+/obj/item/crowbar/red,
+/obj/item/crowbar/red,
+/obj/item/crowbar/red,
+/obj/structure/banner/red/small{
+	pixel_y = 32
+	},
+/turf/simulated/floor/stones,
+/area/warfare/homebase/red/largeroom)
 "FP" = (
 /obj/machinery/door/airlock/bunker/red,
 /turf/simulated/floor/urban/tiles,
@@ -6736,6 +6961,15 @@
 /obj/item/flame/candle/blue,
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/blue/largeroom)
+"GD" = (
+/obj/structure/window/reinforced{
+	dir = 8;
+	icon_state = "rwindow"
+	},
+/obj/structure/window/reinforced,
+/obj/structure/cargo_pad/blue,
+/turf/simulated/floor/urban/cinder,
+/area/warfare/homebase/blue/room)
 "GH" = (
 /obj/structure/table/rack/nosmooth/wood/alt{
 	dir = 10
@@ -6966,13 +7200,9 @@
 	},
 /area/warfare/battlefield/capture_point/blue/two)
 "Ih" = (
-/obj/structure/cargo_pad/red,
-/obj/machinery/light/caged{
-	pixel_y = 30;
-	pixel_x = 0
-	},
-/turf/simulated/floor/urban/tiles,
-/area/warfare/homebase/red/room)
+/obj/machinery/kaos/cargo_machine/blue,
+/turf/simulated/floor/stones,
+/area/warfare/homebase/blue/largeroom)
 "Ik" = (
 /obj/structure/trench_wall{
 	dir = 6
@@ -7259,11 +7489,13 @@
 /turf/simulated/floor/wood,
 /area/warfare/battlefield/trench_section/underground/indoors)
 "Kx" = (
-/obj/structure/banner/blue/small{
-	pixel_y = 32
+/obj/machinery/light/small/bunker{
+	dir = 8;
+	pixel_x = 0;
+	pixel_y = 15
 	},
-/turf/simulated/floor/urban/cinder,
-/area/warfare/homebase/blue/largeroom)
+/turf/simulated/floor/stones,
+/area/warfare/homebase/red/largeroom)
 "Ky" = (
 /obj/effect/landmark/start,
 /turf/simulated/mineral{
@@ -8022,6 +8254,84 @@
 	},
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/blue/room)
+"PC" = (
+/obj/machinery/light/small/bunker{
+	dir = 1
+	},
+/obj/item/storage/toggle/envelope{
+	pixel_x = 0;
+	pixel_y = 5
+	},
+/obj/item/storage/toggle/envelope{
+	pixel_x = -8;
+	pixel_y = 5
+	},
+/obj/item/storage/toggle/envelope{
+	pixel_x = 8;
+	pixel_y = 5
+	},
+/obj/item/storage/toggle/envelope{
+	pixel_x = -8;
+	pixel_y = 3
+	},
+/obj/item/storage/toggle/envelope{
+	pixel_x = 0;
+	pixel_y = 3
+	},
+/obj/item/storage/toggle/envelope{
+	pixel_x = 8;
+	pixel_y = 3
+	},
+/obj/item/storage/toggle/envelope{
+	pixel_x = -8;
+	pixel_y = 1
+	},
+/obj/item/storage/toggle/envelope{
+	pixel_x = 0;
+	pixel_y = 1
+	},
+/obj/item/storage/toggle/envelope{
+	pixel_x = 8;
+	pixel_y = 1
+	},
+/obj/structure/table/nosmooth/capnew{
+	pixel_y = -4;
+	dir = 8
+	},
+/obj/structure/table/nosmooth/capnew{
+	pixel_y = 28;
+	dir = 9;
+	pixel_x = 0
+	},
+/obj/item/waxstamp{
+	pixel_x = -9;
+	pixel_y = 12
+	},
+/obj/item/flame/candle{
+	pixel_x = -10;
+	pixel_y = 19
+	},
+/obj/item/flame/candle{
+	pixel_x = -6;
+	pixel_y = 19
+	},
+/obj/item/flame/candle{
+	pixel_x = -8;
+	pixel_y = 19
+	},
+/obj/item/storage/box/matches{
+	pixel_x = 0;
+	pixel_y = 17
+	},
+/obj/structure/window/reinforced{
+	pixel_x = 0;
+	pixel_y = 7
+	},
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/simulated/floor/stones,
+/area/warfare/homebase/red/largeroom)
 "PH" = (
 /obj/hammereditor/nodraw/deco/bars,
 /obj/hammereditor/nodraw/deco/bars{
@@ -8033,6 +8343,19 @@
 	color = "#ffffff"
 	},
 /area/space)
+"PI" = (
+/obj/structure/banner/red/small{
+	pixel_y = 32
+	},
+/turf/simulated/floor/concrete/random,
+/area/warfare/homebase/red/largeroom)
+"PJ" = (
+/obj/sound_emitter/periodic/env_leak,
+/obj/effect/landmark/start{
+	name = "Red Soldier"
+	},
+/turf/simulated/floor/urban/cinder,
+/area/warfare/homebase/red/largeroom)
 "PS" = (
 /obj/structure/closet/secure_closet/medical1/warfare,
 /obj/item/clothing/suit/surgeon_apron,
@@ -8318,6 +8641,15 @@
 /obj/hammereditor/nodraw,
 /turf/simulated/floor/urban/cinder,
 /area/warfare/homebase/blue/stoneroom)
+"Rn" = (
+/obj/structure/window/reinforced{
+	dir = 8;
+	icon_state = "rwindow"
+	},
+/obj/structure/window/reinforced,
+/obj/structure/cargo_pad/red,
+/turf/simulated/floor/urban/cinder,
+/area/warfare/homebase/red/room)
 "Rr" = (
 /obj/effect/lighting_dummy/daylight,
 /obj/structure/train_deco/platform{
@@ -8650,6 +8982,10 @@
 "Tk" = (
 /turf/simulated/floor/stones,
 /area/warfare/homebase/red/room)
+"Tm" = (
+/obj/structure/cargo_pad/red,
+/turf/simulated/floor/urban/cinder,
+/area/warfare/homebase/red/room)
 "Tq" = (
 /obj/machinery/optable{
 	dir = 1;
@@ -8710,13 +9046,8 @@
 /turf/simulated/floor/wood,
 /area/warfare/battlefield/trench_section/underground/indoors)
 "Tw" = (
-/obj/structure/cargo_pad/blue,
-/obj/machinery/light/caged{
-	pixel_y = 30;
-	pixel_x = 0
-	},
-/turf/simulated/floor/urban/tiles/blue,
-/area/warfare/homebase/blue/room)
+/turf/simulated/floor/stones,
+/area/warfare/homebase/blue/largeroom)
 "Tx" = (
 /turf/simulated/floor/urban/concrete,
 /area/warfare/homebase/blue/hallway)
@@ -9026,6 +9357,10 @@
 /obj/sound_emitter/periodic/env_leak,
 /turf/simulated/floor/urban/tiles,
 /area/warfare/homebase/red/room)
+"Vx" = (
+/obj/structure/cargo_pad/red,
+/turf/simulated/floor/urban/cinder,
+/area/warfare/homebase/red/largeroom)
 "VC" = (
 /obj/structure/trench_wall{
 	dir = 5;
@@ -9349,6 +9684,10 @@
 	},
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/red/hallway)
+"Xu" = (
+/obj/machinery/door/airlock/bunker/red,
+/turf/simulated/floor/stones,
+/area/warfare/homebase/red/largeroom)
 "Xx" = (
 /obj/effect/floor_decal/newcorner/grey/diagonal,
 /turf/simulated/floor/urban/cinder,
@@ -17833,10 +18172,10 @@ Jj
 Jj
 Jj
 Jj
-Jj
-Jj
-Jj
-Jj
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -18133,10 +18472,10 @@ Jj
 Jj
 Jj
 Jj
-Jj
-Jj
-Jj
-Jj
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -18433,10 +18772,10 @@ Jj
 Jj
 Jj
 Jj
-Jj
-Jj
-Jj
-Jj
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -18733,11 +19072,11 @@ Jj
 Jj
 Jj
 Jj
-Jj
-Jj
-Jj
-Jj
 aa
+aa
+Cj
+Cj
+Cj
 Cj
 Cj
 Cj
@@ -18963,13 +19302,13 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
 Br
 Br
 Br
-mZ
+Br
+Br
+Br
+PI
 dn
 mf
 bC
@@ -19033,15 +19372,15 @@ Jj
 Jj
 Jj
 Jj
-Jj
-Jj
-Jj
-Jj
 aa
-ah
-aj
-KV
-fa
+aa
+Cj
+Ih
+CO
+Tw
+Tw
+iK
+xI
 Wi
 Wi
 Wi
@@ -19263,12 +19602,12 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-Px
+Br
+Dq
+Kx
 ad
-bq
+ad
+PC
 lK
 dn
 dn
@@ -19333,12 +19672,12 @@ Jj
 Jj
 Jj
 Jj
-Jj
-Jj
-Jj
-Jj
+aa
 aa
 Cj
+CR
+GD
+Tw
 ak
 an
 bl
@@ -19563,10 +19902,10 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
 Br
+ap
+Rn
+ad
 ae
 bm
 pS
@@ -19633,15 +19972,15 @@ Jj
 Jj
 Jj
 Jj
-Jj
-Jj
-Jj
-Jj
+aa
 aa
 ai
+aj
+Eo
+Tw
 Tw
 al
-KV
+bl
 KV
 Xe
 Cj
@@ -19863,13 +20202,13 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
 bg
-Ih
+Tm
+Vx
+ad
+ad
 af
-bq
+pS
 bq
 zB
 Br
@@ -19933,14 +20272,14 @@ Jj
 Jj
 Jj
 Jj
-Jj
-Jj
-Jj
-Jj
+aa
 aa
 Cj
+gH
+wZ
+Tw
 cp
-ap
+ah
 vt
 KV
 Wi
@@ -20163,13 +20502,13 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
 Br
+uc
+EM
+ad
 qL
-cq
-lK
+Px
+PJ
 bq
 Nz
 dn
@@ -20233,15 +20572,15 @@ Jj
 Jj
 Jj
 Jj
-Jj
-Jj
-Jj
-Jj
+aa
 aa
 Cj
-Kx
+cq
+rB
+Tw
+Tw
+zQ
 KV
-CR
 Wi
 hi
 bs
@@ -20463,12 +20802,12 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
 Br
-rB
-bq
+FL
+jr
+ad
+ad
+Xu
 bq
 dn
 mf
@@ -20533,11 +20872,11 @@ Jj
 Jj
 Jj
 Jj
-Jj
-Jj
-Jj
-Jj
 aa
+aa
+Cj
+Cj
+Cj
 Cj
 Cj
 Cj
@@ -20763,9 +21102,9 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
+Br
+Br
+Br
 Br
 Br
 Br
@@ -20833,10 +21172,10 @@ Jj
 Jj
 Jj
 Jj
-Jj
-Jj
-Jj
-Jj
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -21134,9 +21473,9 @@ Jj
 Jj
 Jj
 Jj
-Jj
-Jj
-Jj
+aa
+aa
+aa
 aa
 aa
 aa
