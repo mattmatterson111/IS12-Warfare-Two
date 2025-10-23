@@ -362,18 +362,18 @@
 	l_pocket = /obj/item/wirecutters
 	//suit_store = /obj/item/gun/projectile/automatic/machinepistol
 	back = /obj/item/storage/backpack/warfare
-	backpack_contents = list(/obj/item/stack/barbwire = 1, /obj/item/shovel = 1, /obj/item/defensive_barrier = 4, /obj/item/storage/box/ifak = 1)
+	belt = /obj/item/gun/projectile/warfare
+	backpack_contents = list(/obj/item/stack/barbwire = 1, /obj/item/shovel = 1, /obj/item/defensive_barrier = 3, /obj/item/storage/box/ifak = 1, /obj/item/ammo_magazine/c45m/warfare = 2)
 
 /decl/hierarchy/outfit/job/bluesoldier/engineer/equip()
 	if(prob(1))//Rare engineer spawn
 		suit_store = /obj/item/gun/projectile/automatic/autoshotty
 		r_pocket = /obj/item/shovel
 		belt = /obj/item/storage/belt/autoshotty
-		backpack_contents = list(/obj/item/stack/barbwire = 1, /obj/item/defensive_barrier = 3, /obj/item/storage/box/ifak = 1, /obj/item/grenade/smokebomb = 1)
+		backpack_contents = list(/obj/item/stack/barbwire = 1, /obj/item/shovel = 1, /obj/item/defensive_barrier = 3, /obj/item/storage/box/ifak = 1, /obj/item/grenade/smokebomb = 1)
 	else if (prob(7)) //if(prob(50))
 		suit_store = /obj/item/gun/projectile/shotgun/pump/shitty
 		r_pocket = /obj/item/ammo_box/shotgun
-		belt = /obj/item/shovel
 
 	else if (prob(15))
 		suit_store = /obj/item/gun/projectile/shotgun/pump/boltaction/good
