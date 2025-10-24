@@ -279,6 +279,9 @@
 	icon_state = "shelf"
 	color = COLOR_WHITE
 
+/obj/structure/table/woodentable/shelf/CanPass(atom/movable/mover, turf/target, height, air_group)
+	return TRUE
+
 /obj/structure/table/woodentable/can_climb(mob/living/user, post_climb_check)
 	return FALSE
 

@@ -1170,6 +1170,12 @@
 	},
 /turf/simulated/floor/concrete/random,
 /area/warfare/battlefield/trench_section/room)
+"dw" = (
+/obj/structure/table/woodentable/shelf{
+	pixel_y = 13
+	},
+/turf/simulated/floor/stones,
+/area/warfare/homebase/red/largeroom)
 "dx" = (
 /obj/structure/trench_wall/sequel{
 	dir = 4
@@ -2907,6 +2913,7 @@
 /obj/machinery/light/small/bunker{
 	dir = 4
 	},
+/obj/structure/table/rack/shelf/red,
 /turf/simulated/floor/stones,
 /area/warfare/homebase/red/largeroom)
 "js" = (
@@ -3081,6 +3088,15 @@
 "kK" = (
 /turf/simulated/floor/wood,
 /area/warfare/homebase/red/caproom)
+"kR" = (
+/obj/effect/floor_decal/industrial/direction{
+	dir = 4
+	},
+/obj/structure/sign/neon/armory{
+	pixel_y = 32
+	},
+/turf/simulated/floor/concrete/random,
+/area/warfare/homebase/blue/hallway)
 "kS" = (
 /obj/structure/toilet{
 	dir = 8;
@@ -4300,6 +4316,15 @@
 	},
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/blue/largeroom)
+"rk" = (
+/obj/structure/sign/neon/cargo{
+	pixel_y = -32
+	},
+/obj/effect/floor_decal/industrial/direction{
+	dir = 4
+	},
+/turf/simulated/floor/concrete/random,
+/area/warfare/homebase/red/hallway)
 "rm" = (
 /obj/effect/landmark/start{
 	name = "Red Bartender"
@@ -4403,11 +4428,9 @@
 /turf/simulated/floor/wood,
 /area/warfare/homebase/blue/caproom)
 "rB" = (
-/obj/machinery/light/small/bunker{
-	dir = 4
-	},
-/turf/simulated/floor/stones,
-/area/warfare/homebase/blue/largeroom)
+/obj/structure/table/rack/shelf/red,
+/turf/simulated/wall/perspecticrete,
+/area/warfare/homebase/red/largeroom)
 "rC" = (
 /obj/machinery/button/remote/blast_door/lever,
 /obj/hammereditor/nodraw,
@@ -4659,6 +4682,12 @@
 	icon_state = "ramptop"
 	},
 /area/warfare/homebase/blue/stoneroom)
+"tb" = (
+/obj/structure/table/woodentable/shelf{
+	pixel_y = 13
+	},
+/turf/simulated/floor/stones,
+/area/warfare/homebase/blue/largeroom)
 "tc" = (
 /obj/effect/floor_decal/trench{
 	dir = 8
@@ -4668,6 +4697,16 @@
 	color = "#ffffff"
 	},
 /area/warfare/battlefield/capture_point/red/two)
+"tg" = (
+/obj/structure/table/woodentable/shelf{
+	pixel_y = 13
+	},
+/obj/item/device/boombox{
+	pixel_x = 0;
+	pixel_y = 14
+	},
+/turf/simulated/floor/stones,
+/area/warfare/homebase/red/largeroom)
 "tj" = (
 /obj/machinery/light/caged{
 	pixel_y = -1;
@@ -5663,6 +5702,10 @@
 /obj/machinery/door/blast/shutters,
 /turf/simulated/floor/urban/cinder,
 /area/warfare/homebase/blue/room)
+"yK" = (
+/obj/structure/table/rack/holorack,
+/turf/simulated/floor/stones,
+/area/warfare/homebase/blue/largeroom)
 "yP" = (
 /obj/structure/curtain,
 /turf/simulated/floor/urban/cinder,
@@ -5726,6 +5769,15 @@
 	health = 999999
 	},
 /area/space)
+"zl" = (
+/obj/effect/floor_decal/industrial/direction{
+	dir = 4
+	},
+/obj/structure/sign/neon/cargo{
+	pixel_y = -32
+	},
+/turf/simulated/floor/concrete/random,
+/area/warfare/homebase/blue/hallway)
 "zq" = (
 /obj/structure/trench_wall{
 	dir = 1
@@ -5879,6 +5931,13 @@
 "Ac" = (
 /turf/simulated/floor/dirty/indestructable,
 /area/warfare/battlefield/capture_point/red/one)
+"Ad" = (
+/obj/machinery/light/small/bunker{
+	dir = 4
+	},
+/obj/structure/table/rack/holorack,
+/turf/simulated/floor/stones,
+/area/warfare/homebase/blue/largeroom)
 "Ag" = (
 /obj/effect/landmark/start{
 	name = "Red Practitioner"
@@ -6895,6 +6954,10 @@
 /obj/machinery/door/airlock/multi_tile/metal/maintenance/blue,
 /turf/simulated/floor/concrete/random,
 /area/warfare/battlefield/trench_section/hallway)
+"FX" = (
+/obj/structure/table/rack/holorack,
+/turf/simulated/wall/perspecticrete,
+/area/warfare/homebase/blue/largeroom)
 "FY" = (
 /obj/effect/decal/cleanable/blood,
 /turf/simulated/floor/urban/cinder,
@@ -7415,6 +7478,16 @@
 	color = "#ffffff"
 	},
 /area/warfare/battlefield/capture_point/red/one)
+"JK" = (
+/obj/structure/sign/neon/armory{
+	pixel_y = 32;
+	color = "FFFF00"
+	},
+/obj/effect/floor_decal/industrial/direction{
+	dir = 4
+	},
+/turf/simulated/floor/concrete/random,
+/area/warfare/homebase/red/hallway)
 "JL" = (
 /obj/effect/landmark/start{
 	name = "Red Soldier"
@@ -7917,6 +7990,10 @@
 	},
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/blue/largeroom)
+"ND" = (
+/obj/structure/table/rack/shelf/red,
+/turf/simulated/floor/stones,
+/area/warfare/homebase/red/largeroom)
 "NG" = (
 /obj/structure/banner/red/small{
 	pixel_y = 32
@@ -8098,6 +8175,16 @@
 /obj/random/canned_food/red,
 /turf/simulated/floor/concrete/random,
 /area/warfare/battlefield/trench_section/room)
+"OB" = (
+/obj/structure/table/woodentable/shelf{
+	pixel_y = 13
+	},
+/obj/item/device/boombox{
+	pixel_x = 0;
+	pixel_y = 16
+	},
+/turf/simulated/floor/stones,
+/area/warfare/homebase/blue/largeroom)
 "OC" = (
 /obj/effect/lighting_dummy/daylight,
 /obj/structure/train_deco/tracks01,
@@ -19092,8 +19179,8 @@ aa
 aa
 Cj
 Cj
-Cj
-Cj
+FX
+FX
 oN
 Cj
 Rd
@@ -19320,8 +19407,8 @@ aa
 aa
 Br
 Br
-Br
-Br
+rB
+rB
 Iz
 Br
 PI
@@ -19693,7 +19780,7 @@ aa
 Cj
 CR
 GD
-Tw
+OB
 ak
 an
 bl
@@ -19921,7 +20008,7 @@ aa
 Br
 ap
 Rn
-ad
+tg
 ae
 bm
 pS
@@ -20293,7 +20380,7 @@ aa
 Cj
 gH
 wZ
-Tw
+tb
 cp
 ah
 vt
@@ -20521,7 +20608,7 @@ aa
 Br
 uc
 EM
-ad
+dw
 qL
 Px
 PJ
@@ -20591,8 +20678,8 @@ Jj
 aa
 aa
 Cj
-cq
-rB
+Tw
+Tw
 Tw
 Tw
 zQ
@@ -20819,8 +20906,8 @@ aa
 aa
 aa
 Br
-FL
-jr
+ad
+ad
 ad
 ad
 Xu
@@ -20891,10 +20978,10 @@ Jj
 aa
 aa
 Cj
-Cj
-Cj
-Cj
-Cj
+cq
+Ad
+yK
+yK
 Cj
 uD
 Wi
@@ -21119,10 +21206,10 @@ aa
 aa
 aa
 Br
-Br
-Br
-Br
-Br
+FL
+jr
+ND
+ND
 Br
 vh
 dn
@@ -21190,11 +21277,11 @@ Jj
 Jj
 aa
 aa
-aa
-aa
-aa
-aa
-aa
+pF
+pF
+pF
+pF
+pF
 Cj
 Cj
 Cj
@@ -21418,11 +21505,11 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-uA
-uA
+pF
+pF
+pF
+Br
+Br
 Br
 Br
 Br
@@ -32906,8 +32993,8 @@ vH
 NO
 gg
 gg
-aP
-aP
+kR
+zl
 rM
 rM
 rM
@@ -33134,8 +33221,8 @@ Fr
 Fr
 Fr
 Fr
-tk
-tk
+JK
+rk
 jP
 ab
 ab
