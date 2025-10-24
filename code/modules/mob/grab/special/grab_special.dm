@@ -2,7 +2,7 @@
 	icon = 'icons/mob/screen1.dmi'
 	stop_move = 1
 	can_absorb = 1
-	shield_assailant = 0
+	shield_assailant = 1 //NYEHEHEHEHE
 	point_blank_mult = 1
 	force_danger = 1
 
@@ -29,7 +29,6 @@
 /datum/grab/special/strangle
 	type_name = GRAB_STRANGLE
 	icon_state = "strangle"
-	activate_effect = FALSE
 	state_name = GRAB_STRANGLE
 
 /datum/grab/special/strangle/attack_self_act(var/obj/item/grab/G)
@@ -37,6 +36,11 @@
 
 /datum/grab/special/strangle/process_effect(var/obj/item/grab/G)
 	var/mob/living/carbon/human/affecting = G.affecting
+	
+	if(!G.wielded) //Strangle with both hands.
+		activate_effect = FALSE
+		G.assailant.visible_message("<span class='warning'>[G.assailant] stops strangling [G.affecting].</span>")
+		return
 
 	affecting.drop_l_hand()
 	affecting.drop_r_hand()
@@ -51,8 +55,11 @@
 	affecting.losebreath = max(affecting.losebreath + 2, 3)
 
 /datum/grab/special/strangle/proc/do_strangle(var/obj/item/grab/G)
+	if(!G.wielded)
+		G.assailant.visible_message("<span class='warning'>Strangle with both hands!")
+		return
 	activate_effect = !activate_effect
-	G.assailant.visible_message("<span class='warning'>[G.assailant] [activate_effect ? "starts" : "stops"] strangling [G.affecting]</span>")
+	G.assailant.visible_message("<span class='warning'>[G.assailant] [activate_effect ? "starts" : "stops"] strangling [G.affecting].</span>")
 
 
 /obj/item/grab/special/wrench
@@ -73,10 +80,12 @@
 	var/obj/item/organ/external/O = G.get_targeted_organ()
 	var/mob/living/carbon/human/assailant = G.assailant
 	var/mob/living/carbon/human/affecting = G.affecting
-	assailant.doing_something = TRUE // can't spam use the bone breakage anymore.
 	if(assailant.doing_something)
-		assailant.doing_something = FALSE //so it doesn't break everything with a doafter
+		to_chat(assailant, "<span class='warning'>Already doing something!</span>")
 		return
+		
+	assailant.doing_something = TRUE // can't spam use the bone breakage anymore.
+	
 	if(!O)
 		to_chat(assailant, "<span class='warning'>[affecting] is missing that body part!</span>")
 		assailant.doing_something = FALSE
@@ -99,7 +108,12 @@
 			break_chance = 10
 		if(prob(break_chance))
 			O.fracture()
-
+		else
+			to_chat(assailant, "<span class='danger'>Failed to break [affecting]'s [O.name]!</span>")
+	else
+		to_chat(assailant, "<span class='warning'>[affecting]'s [O.name] is already broken!</span>")
+		assailant.doing_something = FALSE
+		return
 
 /obj/item/grab/special/takedown
 	type_name = GRAB_TAKEDOWN
@@ -118,16 +132,31 @@
 	// Keeps those who are on the ground down
 	if(G.affecting.lying)
 		G.affecting.Weaken(4)
+		
+	if(!G.wielded) //Pin with both hands
+		activate_effect = FALSE
+		G.assailant.visible_message("<span class='warning'>[G.assailant] stops keeping [G.affecting] on the ground!</span>")
+		return
 
 
 /datum/grab/special/takedown/proc/do_takedown(var/obj/item/grab/G)
+	activate_effect = !activate_effect
 	var/mob/living/carbon/human/affecting = G.affecting
 	var/mob/living/carbon/human/assailant = G.assailant
+	
+	if(assailant.doing_something)
+		to_chat(assailant, "<span class='warning'>Already doing something!</span>")
+		return
+		
+	assailant.doing_something = TRUE 
 
 	if(!do_after(assailant, 30, affecting))
+		assailant.doing_something = FALSE
 		return
 
 	if(!G.attacking && !affecting.lying)
+	
+		assailant.doing_something = FALSE
 
 		affecting.visible_message("<span class='notice'>[assailant] is trying to pin [affecting] to the ground!</span>")
 		G.attacking = 1
@@ -143,7 +172,9 @@
 			affecting.visible_message("<span class='notice'>[assailant] fails to pin [affecting] to the ground.</span>")
 			G.attacking = 0
 			return 0
-	else
+	else //they're lying down
+		G.assailant.visible_message("<span class='warning'>[G.assailant] [activate_effect ? "starts" : "stops"] keeping [G.affecting] on the ground!</span>")
+		assailant.doing_something = FALSE
 		return 0
 
 /datum/grab/special/self
