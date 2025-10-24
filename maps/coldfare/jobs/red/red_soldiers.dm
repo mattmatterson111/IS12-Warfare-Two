@@ -417,9 +417,9 @@
 	suit = /obj/item/clothing/suit/fire/red
 	mask = /obj/item/clothing/mask/gas/red/flamer
 	gloves = /obj/item/clothing/gloves/thick/swat/combat/warfare/red/flamer
-	head = null
-	shoes = /obj/item/clothing/shoes/jackboots/warfare/red/flamer
 	belt = /obj/item/gun/projectile/automatic/flamer
+	head = /obj/item/clothing/head/helmet/redhelmet/fire
+	shoes = /obj/item/clothing/shoes/jackboots/warfare/red/flamer
 	suit_store = /obj/item/melee/trench_axe
 	r_pocket = /obj/item/grenade/fire
 	backpack_contents = list(/obj/item/grenade/smokebomb = 1)
