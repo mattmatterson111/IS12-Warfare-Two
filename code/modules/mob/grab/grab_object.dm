@@ -4,6 +4,8 @@
 
 	var/mob/living/carbon/human/affecting = null
 	var/mob/living/carbon/human/assailant = null
+	
+	var/activate_effect = FALSE;
 
 	var/datum/grab/current_grab
 	var/type_name
@@ -71,6 +73,8 @@
 		affecting = null
 	if(assailant)
 		assailant = null
+	if(activate_effect)
+		activate_effect = FALSE
 	return ..()
 
 /*
