@@ -115,3 +115,10 @@
 		playsound(src, 'sound/effects/thehatchin.ogg', 75, 0.25)
 		flick("[icon_state]_o", src)
 		return
+		
+	else if(istype(O, /obj/item/clothing/head/warfare_officer/redlogi) && id == BLUE_TEAM || istype(O, /obj/item/clothing/head/warfare_officer/bluelogi) && id == RED_TEAM ) // If your cashing this in your team's probably won already(or the enemy logi officer is somewhere they shouldn't be)
+		GLOB.faction_dosh[id] += 200
+		qdel(O)
+		playsound(src, 'sound/effects/thehatchin.ogg', 75, 0.25)
+		flick("[icon_state]_o", src)
+		return
