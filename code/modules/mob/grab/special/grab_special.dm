@@ -135,7 +135,7 @@
 		
 	if(!G.wielded) //Pin with both hands
 		activate_effect = FALSE
-		G.assailant.visible_message("<span class='warning'>[G.assailant] stops keeping [G.affecting] on the ground!.</span>")
+		G.assailant.visible_message("<span class='warning'>[G.assailant] stops keeping [G.affecting] on the ground!</span>")
 		return
 
 
