@@ -921,6 +921,10 @@
 	pixel_x = 6;
 	pixel_y = 3
 	},
+/obj/item/flame/lighter/zippo{
+	pixel_x = -2;
+	pixel_y = 2
+	},
 /turf/simulated/floor/wood,
 /area/warfare/homebase/red/caproom)
 "cE" = (
@@ -3505,6 +3509,10 @@
 /obj/structure/table/nosmooth/capnew{
 	pixel_y = 28;
 	dir = 5
+	},
+/obj/item/flame/lighter/zippo{
+	pixel_x = 7;
+	pixel_y = -1
 	},
 /turf/simulated/floor/wood,
 /area/warfare/homebase/blue/caproom)
