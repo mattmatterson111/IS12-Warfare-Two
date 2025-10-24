@@ -328,7 +328,7 @@ GLOBAL_VAR_INIT(ENABLE_EXECUTION,FALSE)
 
 	if(user.loc != executioner_turf)
 		//Executioner moved - reset
-		user.visible_message("<span class='notice'>[user] lowers \his weapon</span>")
+		user.visible_message("<span class='notice'>[user] lowers \his weapon.</span>")
 		execution_ready = FALSE
 		executionee_turf = null
 		executioner_turf = null
