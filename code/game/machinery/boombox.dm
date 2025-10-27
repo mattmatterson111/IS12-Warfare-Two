@@ -157,7 +157,38 @@
 	b_side = pick('sound/music/boombox9.ogg', 'sound/music/boombox10.ogg')
 	sound_inside = a_side
 
+/obj/item/device/cassette/greed1/New()
+	..()
+	name = "\"Greed\" Vol. 1"
+	a_side = ('sound/music/ltmusic/russel.ogg')
+	b_side = ('sound/music/ltmusic/another.ogg')
+	sound_inside = a_side
+
+/obj/item/device/cassette/greed2/New()
+	..()
+	name = "\"Greed\" Vol. 2"
+	a_side = ('sound/music/ltmusic/suffer.ogg')
+	b_side = ('sound/music/ltmusic/thisplace.ogg')
+	sound_inside = a_side
+
+/obj/item/device/cassette/greed3/New()
+	..()
+	name = "\"Greed\" Vol. 3"
+	a_side = ('sound/music/ltmusic/waltz.ogg')
+	b_side = ('sound/music/ltmusic/what_good_does_it_do_us.ogg')
+	sound_inside = a_side
+
 /obj/item/device/cassette/tape/rare
 	name = "rare trenchmas tape"
 	a_side = 'sound/music/drip.ogg'
 	b_side = 'sound/music/drip.ogg'
+
+
+/obj/item/device/boombox/stationary
+	anchored = TRUE
+
+/obj/item/device/boombox/attack_hand(mob/user)
+	attack_self(user)
+
+/obj/item/device/boombox/stationary/MouseDrop(obj/over_object)
+	eject()

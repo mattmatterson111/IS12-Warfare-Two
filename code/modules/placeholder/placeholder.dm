@@ -249,7 +249,7 @@ GLOBAL_LIST_EMPTY(faction_dosh)
 								var/turf/turf_to_drop = locate(x_input,y_input,2)
 								if(istype(turf_to_drop.loc, /area/warfare/battlefield/no_mans_land) || istype(turf_to_drop.loc, /area/warfare/battlefield/capture_point/mid))
 									playsound(src.loc, "sound/machines/rpf/press1.ogg", 100, 0.7)
-									to_chat(user, "\icon[src]<span class='danger'>ENGAGING ARTILLERY FIRE AT LOCATION: \n\icon[src]X coordinate[unscrambled_x], Y coordinate [unscrambled_y].\n")
+									to_chat(user, "\icon[src]<span class='danger'>ENGAGING ARTILLERY FIRE AT LOCATION: \n\icon[src]X coordinate[x_input], Y coordinate [y_input].\n")
 									to_chat(world, uppertext("<font size=5><b>INCOMING!! NO MAN'S LAND!!</b></font>"))
 									for(var/obj/machinery/light/l in GLOB.lights)
 										if(!prob(7)) continue
