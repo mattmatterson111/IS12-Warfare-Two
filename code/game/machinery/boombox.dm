@@ -187,7 +187,7 @@
 /obj/item/device/boombox/stationary
 	anchored = TRUE
 
-/obj/item/device/boombox/attack_hand(mob/user)
+/obj/item/device/boombox/stationary/attack_hand(mob/user)
 	attack_self(user)
 
 /obj/item/device/boombox/stationary/MouseDrop(obj/over_object)
