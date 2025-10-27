@@ -1,6 +1,3 @@
-#define COMPASS_INACCURACY_MIN -6
-#define COMPASS_INACCURACY_MAX 6
-
 /obj/item/device/compass
 
 	name = "Compass"
@@ -21,7 +18,7 @@
 	var/turf/T = get_turf(src)
 	to_chat(user, "You start finding your location...")
 	if(do_after(user, 10))
-		to_chat(user, "It looks like I'm at [T.x + SSwarfare.global_coordinate_shift_x + rand(COMPASS_INACCURACY_MIN, COMPASS_INACCURACY_MAX)] [T.y + SSwarfare.global_coordinate_shift_y + rand(COMPASS_INACCURACY_MIN, COMPASS_INACCURACY_MAX)]")
+		to_chat(user, "It looks like I'm at [T.x] [T.y]")
 	else
 		to_chat(user, "You lower the compass and stop.")
 
