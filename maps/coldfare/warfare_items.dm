@@ -1330,6 +1330,8 @@ obj/item/storage/backpack/satchel/warfare/chestrig/blue/oldlmg
 /obj/item/clothing/mask/gas/red/flamer
 	icon_state = "flamer_red"
 	item_state = "flamer_red"
+	name = "Red Flamer Gas Mask"
+	desc = "A special gas mask used to protect your face from your flames."
 	flags_inv = HIDEEARS|HIDEEYES|HIDEFACE|BLOCKHAIR
 	body_parts_covered = FACE|EYES
 	cold_protection = HEAD
@@ -1341,6 +1343,8 @@ obj/item/storage/backpack/satchel/warfare/chestrig/blue/oldlmg
 /obj/item/clothing/mask/gas/blue/flamer
 	icon_state = "flamer_red"
 	item_state = "flamer_blue"
+	name = "Blue Flamer Gas Mask"
+	desc = "A special gas mask used to protect your face from your flames."
 	flags_inv = HIDEEARS|HIDEEYES|HIDEFACE|BLOCKHAIR
 	body_parts_covered = FACE|EYES
 	cold_protection = HEAD
