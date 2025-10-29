@@ -67,7 +67,7 @@
 		flick("[icon_state]_o", src)
 		return
 
-	else if(istype(O, /obj/item/clothing/head/helmet/redhelmet/fire) && id == BLUE_TEAM || istype(O, /obj/item/clothing/head/helmet/bluehelmet/fire) && id == RED_TEAM ) // meh
+	else if(istype(O, /obj/item/clothing/mask/gas/red/flamer) && id == BLUE_TEAM || istype(O, /obj/item/clothing/mask/gas/blue/flamer) && id == RED_TEAM ) // meh
 		GLOB.faction_dosh[id] += 250
 		qdel(O)
 		playsound(src, 'sound/effects/thehatchin.ogg', 75, 0.25)

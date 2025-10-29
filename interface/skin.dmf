@@ -471,6 +471,9 @@ macro "hotkeymode"
 	elem 
 		name = "F"
 		command = "set-fixeye"
+	elem
+		name = "M"
+		command = ".me"
 	elem 
 		name = "CTRL+F"
 		command = "a-intent left"

@@ -20,7 +20,9 @@
 	cryopod_id = "red_logi"
 
 	equip(var/mob/living/carbon/human/H)
+		var/current_name = H.real_name
 		..()
+		H.fully_replace_character_name("Lt. [current_name]")
 		H.add_stats(rand(7,11), rand(7,12), rand(7,11), rand(10,15))
 		H.add_skills(rand(4,6), rand(0,2), 0, rand(0,3))
 		to_chat(H, SPAN_YELLOW_LARGE("OBEY YOUR CAPTAIN. YOU ARE HERE TO ASSIST HIM."))
@@ -56,7 +58,9 @@
 	//backstories = list(/datum/backstory/beakless)
 
 	equip(var/mob/living/carbon/human/H)
+		var/current_name = H.real_name
 		..()
+		H.fully_replace_character_name("Prac. [current_name]")
 		H.set_trait(new/datum/trait/death_tolerant())
 		H.add_stats(rand(8,11), rand(5,8), rand(5,7), rand(10,14))
 		H.say(";Practitioner reporting for duty!")
