@@ -606,10 +606,10 @@
 
 //Activate this to win!
 /obj/structure/destruction_computer
-	name = "Point Of No Return"
-	desc = "DON'T LET THE ENEMY TOUCH THIS!"
+	name = "Cake Of No Return"
+	desc = "DON'T LET THE ENEMY EAT THIS!"
 	icon = 'icons/obj/warfare.dmi'
-	icon_state = "destruct"
+	icon_state = "cake"
 	anchored = TRUE
 	density = TRUE
 	var/faction = null
@@ -626,45 +626,40 @@
 
 /obj/structure/destruction_computer/attack_hand(mob/user)
 	. = ..()
+	if(!SSwarfare.battle_time) return
+	var/is_red_captain = user.HasRoleSimpleCheck("Red Captain")
+	var/is_blue_captain = user.HasRoleSimpleCheck("Blue Captain")
+	var/captaineat = FALSE
+	if(faction == user.warfare_faction)
+		if(!is_red_captain || !is_blue_captain)
+			to_chat(src, SPAN_YELLOW("I shouldn't.. It's.. It's not my place to..\nIt's reserved for someone else."))
+			return
+		captaineat = TRUE
 	if(REALTIMEOFDAY - last_use < 2 SECONDS)
-		to_chat(user, "The device is scorching hot! I must wait a few seconds!") // Fuck the people that were spamming it
+		to_chat(user, "I should wait a second before trying again!") // Fuck the people that were spamming it
 		return
 	if(used_by_person)
 		return
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
-		if(H.warfare_faction == faction)
-			if(!activated)
-				return
-			used_by_person = TRUE
-			if(do_after(H,100))
-				used_by_person = FALSE
-				user.unlock_achievement(new/datum/achievement/deactivate())
-				activated = FALSE
-				deltimer(doomsday_timer)
-				to_world(uppertext("<big>[H.warfare_faction] have disarmed the [src]!</big>"))
-				playsound(src, 'sound/effects/mine_arm.ogg', 100, FALSE)
-				sound_to(world, 'sound/effects/ponr_activate.ogg')
-				last_use = REALTIMEOFDAY
-			else
-				used_by_person = FALSE
-
+		if(activated)
+			return
+		used_by_person = TRUE
+		if(do_after(H, 30))
+			activated = TRUE
+			in_use = FALSE
+			user.unlock_achievement(new/datum/achievement/point_of_no_return())
+			playsound(loc, "eat", 100, FALSE)
+			to_world(uppertext("<big>THE [H.warfare_faction] HAVE TAKEN A BITE OF THE [src]! <b>IT'S SO OVER!!</b></big>"))
+			if(captaineat)
+				to_world(uppertext("The captain chose to eat their own team's cake. Shame."))
+			kaboom()
+			to_chat(user, SPAN_YELLOW("Woah.. The cake was pretty good."))
+			last_use = REALTIMEOFDAY
+			qdel(src)
 		else
-			if(activated)
-				return
-			used_by_person = TRUE
-			if(do_after(H, 30))
-				in_use = FALSE
-				user.unlock_achievement(new/datum/achievement/point_of_no_return())
-				playsound(src, 'sound/effects/mine_arm.ogg', 100, FALSE)
-				sound_to(world, 'sound/effects/ponr_activate.ogg')
-				to_world(uppertext("<big>[H.warfare_faction] have activated the [src]! They will achieve victory in [countdown_time/10] seconds!</big>"))
-				activated = TRUE
-				doomsday_timer = addtimer(CALLBACK(src,/obj/structure/destruction_computer/proc/kaboom), countdown_time, TIMER_STOPPABLE|TIMER_UNIQUE|TIMER_NO_HASH_WAIT|TIMER_OVERRIDE)
-				last_use = REALTIMEOFDAY
-			else
-				used_by_person = FALSE
 			used_by_person = FALSE
+		used_by_person = FALSE
 
 /obj/structure/destruction_computer/proc/kaboom()
 	SSwarfare.end_warfare(faction)//really simple I know.
