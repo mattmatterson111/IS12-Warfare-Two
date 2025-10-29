@@ -71,6 +71,7 @@ b = resist
 r = throw
 t = say
 g = toggle rest
+m = emote
 o = OOC
 x = swap-hand
 z/y = activate held object (or y)
