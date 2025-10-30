@@ -178,6 +178,8 @@
 		force = force_unwielded
 	else
 		force = (force / 1.5)
+	if(block_chance)
+		block_chance -= 10
 	var/sf = findtext(name," (Wielded)")
 	if(sf)
 		name = copytext(name,1,sf)
@@ -210,6 +212,8 @@
 		force = force_wielded
 	else
 		force = (force * 1.5)
+	if(block_chance)
+		block_chance += 10 //holding with both hands makes you block better
 	name = "wielded [name]"
 	update_wield_icon()
 	update_icon()//Legacy

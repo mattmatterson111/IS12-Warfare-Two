@@ -76,7 +76,7 @@ avoid code duplication. This includes items that may sometimes act as a standard
 		to_chat(user, "<span class='warning'>It's trenchmas! There is no reason to fight!</span>")
 		return 0
 
-	if(M == user && user.a_intent != I_HURT)
+	if(M == user)
 		return 0
 
 	if(user.staminaloss >= user.staminaexhaust)//Can't attack people if you're out of stamina.
@@ -87,7 +87,7 @@ avoid code duplication. This includes items that may sometimes act as a standard
 			to_chat(user, "<span class='warning'>The [src] is not ready to attack again!</span>")
 		return 0
 
-	if(!user.combat_mode && !user.TALLYHOLADS)
+	if(user.a_intent == I_HELP) //help intent = no special attacks
 		special = FALSE
 
 	if(M == user)//Hitting yourself.
@@ -100,18 +100,23 @@ avoid code duplication. This includes items that may sometimes act as a standard
 			user.adjustStaminaLoss(w_class + 6)
 			user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
 			apply_speed_delay(0)
-		else if(user.atk_intent == I_QUICK)//Faster attack but takes much more stamina.
+		if(user.a_intent == I_DISARM)//Faster attack but takes much more stamina.
 			user.visible_message("<span class='combat_success'>[user] performs a quick attack!</span>")
-			user.adjustStaminaLoss(w_class + 6)
+			user.adjustStaminaLoss(w_class * 6) //increased stamina loss the bigger the item is
 			user.setClickCooldown(DEFAULT_QUICK_COOLDOWN)
 			apply_speed_delay(-5)
 
-		else if(user.atk_intent == I_AIMED)//More accurate attack
+		else if(user.a_intent == I_GRAB)//More accurate attack
 			user.visible_message("<span class='combat_success'>[user] performs an aimed attack!</span>")
-			user.adjustStaminaLoss(w_class + 5)
+			user.adjustStaminaLoss(w_class * 5)
 			user.setClickCooldown(DEFAULT_SLOW_COOLDOWN)
 			apply_speed_delay(5)
-
+		else if(user.a_intent == I_HURT)//Attack with stronger damage at the cost slightly longer cooldown
+			user.visible_message("<span class='combat_success'>[user] performs a heavy attack!</span>")
+			user.adjustStaminaLoss(w_class * 5)
+			user.setClickCooldown(DEFAULT_SLOW_COOLDOWN)
+			apply_speed_delay(6)
+		/*
 		else if(user.atk_intent == I_FEINT)//Feint attack that leaves them unable to attack for a few seconds
 			if(!prob(user.SKILL_LEVEL(melee) * 10))//Add skill check here.
 				user.visible_message("<span class='combat_success'>[user] botches a feint attack!</span>")
@@ -125,13 +130,7 @@ avoid code duplication. This includes items that may sometimes act as a standard
 				if(M.combat_mode)
 					M.item_disarm()
 			return 0 //We fiented them don't actaully hit them now, we can follow up with another attack.
-
-		else if(user.atk_intent == I_STRONG)//Attack with stronger damage at the cost slightly longer cooldown
-			user.visible_message("<span class='combat_success'>[user] performs a heavy attack!</span>")
-			user.adjustStaminaLoss(w_class + 5)
-			user.setClickCooldown(DEFAULT_SLOW_COOLDOWN)
-			apply_speed_delay(6)
-
+		
 		else if(user.atk_intent == I_WEAK)
 			user.visible_message("<span class='combat_success'>[user] performs a weak attack.</span>")
 			user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
@@ -144,7 +143,7 @@ avoid code duplication. This includes items that may sometimes act as a standard
 		else
 			user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
 			apply_speed_delay(0)
-
+		*/
 
 
 	/////////////////////////

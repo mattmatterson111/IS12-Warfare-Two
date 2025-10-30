@@ -8,7 +8,7 @@
 			return u_attack
 	return null
 
-/mob/living/carbon/human/attack_hand(mob/living/carbon/M as mob)
+/mob/living/carbon/human/attack_hand(mob/living/carbon/M as mob, var/strongpunch = 0)
 
 	var/mob/living/carbon/human/H = M
 	if(istype(H))
@@ -52,7 +52,7 @@
 	if(istype(M,/mob/living/carbon))
 		M.spread_disease_to(src, "Contact")
 
-	if(istype(H))
+	if(istype(H) && strongpunch == 0) //you either headbutt or punch em really hard, not both
 		for (var/obj/item/grab/G in H)
 			if (G.assailant == H && G.affecting == src)
 				if(G.resolve_openhand_attack())
@@ -150,9 +150,15 @@
 			*/
 			//Back to your normal insane
 			visible_message("<span class='danger'>[M] attempted to grab \the [src]!</span>")
+			
+			var/bad_arc = reverse_direction(src.dir) //arc of directions from which we cannot block or dodge
+			if(check_shield_arc(src, bad_arc, null, M) && H != src) //cant dodge from behind
+				if(attempt_dodge())
+					return
+			/*
 			if(attempt_dodge())
 				return
-
+			*/
 			if(istype(H))
 
 				var/obj/item/organ/external/affecting = get_organ(H.zone_sel.selecting)
@@ -211,14 +217,19 @@
 
 			aggro_npc()
 
+			var/bad_arc = reverse_direction(src.dir) //arc of directions from which we cannot block or dodge
+			if(check_shield_arc(src, bad_arc, null, H) && H != src) //cant dodge from behind or dodge yourself
+				if(attempt_dodge())
+					return
+			/*
 			if(attempt_dodge())
 				return
-
+			*/
 			if(!istype(H))
 				attack_generic(H,rand(1,3),"punched")
 				return
 
-			var/rand_damage = rand(1, 5)
+			var/rand_damage = rand(1, 5) + strongpunch
 			var/block = 0
 			var/accurate = 0
 			var/hit_zone = H.zone_sel.selecting
@@ -243,18 +254,19 @@
 					// We didn't see this coming, so we get the full blow
 					rand_damage = 5
 					accurate = 1
-				if(I_HURT, I_GRAB)
-					// We're in a fighting stance, there's a chance we block
+				if(I_DISARM, I_GRAB)
+					// We're in a defensive stance, there's a chance we block
 					if(src.canmove && src!=H && prob(20))
 						block = 1
-
+			/*
 			if (M.grabbed_by.len)
 				// Someone got a good grip on them, they won't be able to do much damage
 				rand_damage = max(1, rand_damage - 2)
-
+			*/
 			if(src.grabbed_by.len || src.buckled || !src.canmove || src==H || H.species.species_flags & SPECIES_FLAG_NO_BLOCK)
 				accurate = 1 // certain circumstances make it impossible for us to evade punches
-				rand_damage = 3
+				if(a_intent == I_HURT) //you only get this bonus if your trying to hurt em
+					rand_damage += 3
 
 			// Process evasion and blocking
 			var/miss_type = 0
@@ -358,8 +370,17 @@
 						M.doing_something = FALSE
 */
 			M.adjustStaminaLoss(rand(2,5))//No more spamming disarm without consequence!
+			
+			var/bad_arc = reverse_direction(src.dir) //arc of directions from which we cannot block or dodge
+			if(check_shield_arc(src, bad_arc, null, M) && H != src) //cant dodge from behind
+				if(attempt_dodge())
+					return
+			
+			/*
 			if(attempt_dodge())
 				return
+			*/
+			
 			if(H.species)
 				admin_attack_log(M, src, "Disarmed their victim.", "Was disarmed.", "disarmed")
 				H.species.disarm_attackhand(H, src)
@@ -380,8 +401,16 @@
 		return
 	if(!affecting)
 		return
+	var/bad_arc = reverse_direction(src.dir) //arc of directions from which we cannot block or dodge
+	if(check_shield_arc(target, bad_arc, target_zone, user) && H != src) //cant dodge from behind
+		if(attempt_dodge())
+			return
+	
+	/*
 	if(attempt_dodge())
 		return
+	*/
+	
 	if(check_shields(damage, user, user, target_zone, "the attack"))
 		return
 
