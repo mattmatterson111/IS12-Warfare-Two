@@ -9,6 +9,7 @@
 	desc = "Used for taking blows to the noggin without getting hurt."
 	armor = list(melee = 75, bullet = 75, laser = 55, energy = 40, bomb = 50, bio = 10, rad = 0)//proteck ya neck
 	str_requirement = 18
+	force = 10
 
 
 /obj/item/clothing/suit/armor/sentry
@@ -443,6 +444,7 @@
 	icon_state = "redhelmet"
 	warfare_team = RED_TEAM
 	worldicons = "redhelmet_world"
+	force = 5
 	can_be_damaged = TRUE
 	damaged_worldicons = "redhelmet_world_dam"
 	item_icons = list(
@@ -456,6 +458,7 @@
 	icon_state = "bluehelmet"
 	warfare_team = BLUE_TEAM
 	worldicons = "bluehelmet_world"
+	force = 5
 	can_be_damaged = TRUE
 	damaged_worldicons = "bluehelmet_world_dam"
 	item_icons = list(
