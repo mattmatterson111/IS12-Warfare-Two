@@ -627,8 +627,14 @@
 /obj/structure/destruction_computer/attack_hand(mob/user)
 	. = ..()
 	if(!SSwarfare.battle_time) return
+	var/is_red_captain = user.HasRoleSimpleCheck("Red Captain")
+	var/is_blue_captain = user.HasRoleSimpleCheck("Blue Captain")
+	var/captaineat = FALSE
 	if(faction == user.warfare_faction)
-		return
+		if(!is_red_captain || !is_blue_captain)
+			to_chat(src, SPAN_YELLOW("I shouldn't.. It's.. It's not my place to..\nIt's reserved for someone else."))
+			return
+		captaineat = TRUE
 	if(REALTIMEOFDAY - last_use < 2 SECONDS)
 		to_chat(user, "I should wait a second before trying again!") // Fuck the people that were spamming it
 		return
@@ -645,6 +651,8 @@
 			user.unlock_achievement(new/datum/achievement/point_of_no_return())
 			playsound(loc, "eat", 100, FALSE)
 			to_world(uppertext("<big>THE [H.warfare_faction] HAVE TAKEN A BITE OF THE [src]! <b>IT'S SO OVER!!</b></big>"))
+			if(captaineat)
+				to_world(uppertext("The captain chose to eat their own team's cake. Shame."))
 			kaboom()
 			to_chat(user, SPAN_YELLOW("Woah.. The cake was pretty good."))
 			last_use = REALTIMEOFDAY
