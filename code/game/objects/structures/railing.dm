@@ -298,6 +298,10 @@
 /obj/structure/railing/do_climb(var/mob/living/user)
 	if(!can_climb(user))
 		return
+	
+	var/area/warfare/climbto = get_area(get_turf(src)) //prevents climbing into areas you shouldnt
+	if(climbto.Enter(user) == FALSE)
+		return
 
 	usr.visible_message("<span class='warning'>[user] starts climbing onto \the [src]!</span>")
 	climbers |= user

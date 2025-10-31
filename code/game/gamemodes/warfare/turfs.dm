@@ -115,7 +115,10 @@
 			if(istype(usr.l_hand, /obj/item/mortar_launcher) || istype(usr.r_hand, /obj/item/mortar_launcher))
 				to_chat(user, "I can't climb with this in my hands!")//No you fucking don't.
 				return
-
+	
+	var/area/warfare/climbto = get_area(get_turf(src)) //prevents climbing into areas you shouldnt
+	if(climbto.Enter(user) == FALSE)
+		return
 	user.visible_message("<span class='warning'>[user] starts climbing onto \the [src]!</span>")
 	climbers |= user
 
