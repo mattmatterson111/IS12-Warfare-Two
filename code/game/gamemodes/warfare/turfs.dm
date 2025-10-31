@@ -103,35 +103,6 @@
 	if(!can_climb(user))
 		return
 
-	if(istype(get_area(src), /area/warfare/battlefield/no_mans_land))//We're trying to go into no man's land?
-		if(locate(/obj/item/device/boombox) in user)//Locate the boombox.
-			to_chat(user, "I can't bring this with me onto the battlefield. Wouldn't want to lose it.")//No you fucking don't.
-			return //Keep that boombox at base asshole.
-		if(locate(/obj/item/storage) in user)//Gotta check storage as well.
-			var/obj/item/storage/S = locate() in user
-			if(locate(/obj/item/device/boombox) in S)
-				to_chat(user, "I can't bring this with me onto the battlefield. Wouldn't want to lose it.")
-				return
-
-	user.visible_message("<span class='warning'>[user] starts climbing onto \the [src]!</span>")
-	climbers |= user
-
-	if(!can_climb(user))
-		climbers -= user
-		return
-
-	if(!do_after(user,15))
-		climbers -= user
-		return
-
-	user.forceMove(get_turf(src))
-	user.visible_message("<span class='warning'>[user] climbed onto \the [src]!</span>")
-	climbers -= user
-
-/turf/simulated/floor/do_climb(var/mob/living/user)
-	if(!can_climb(user))
-		return
-
 	if(locate(/obj/structure/barbwire, get_turf(user))) // fuck you asshole, stop abusing climb to get out of barbed wire
 		return
 
@@ -144,7 +115,10 @@
 			if(istype(usr.l_hand, /obj/item/mortar_launcher) || istype(usr.r_hand, /obj/item/mortar_launcher))
 				to_chat(user, "I can't climb with this in my hands!")//No you fucking don't.
 				return
-
+	
+	var/area/warfare/climbto = get_area(get_turf(src)) //prevents climbing into areas you shouldnt
+	if(climbto.Enter(user) == FALSE)
+		return
 	user.visible_message("<span class='warning'>[user] starts climbing onto \the [src]!</span>")
 	climbers |= user
 
