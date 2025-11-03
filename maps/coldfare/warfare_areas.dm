@@ -199,7 +199,7 @@ GLOBAL_LIST_EMPTY(mortar_areas) // = list()
 			if(locationtogoto == currentlocation) //we're stuck behind enemy lines
 				to_chat(H, "<big>I AM BEHIND ENEMY LINES, I SHOULD RETREAT BACK TO FRIENDLY LINES!</big>") //you should gtfo
 				return TRUE
-			else if(locationtogoto.y > currentlocation.y) //allow retreating north
+			else if(locationtogoto.y >= currentlocation.y) //allow retreating north
 				to_chat(H, "<big>I AM BEHIND ENEMY LINES, I SHOULD RETREAT BACK TO FRIENDLY LINES!</big>") 
 				return TRUE
 			else
@@ -232,7 +232,7 @@ GLOBAL_LIST_EMPTY(mortar_areas) // = list()
 			if(locationtogoto == currentlocation) //we're stuck behind enemy lines
 				to_chat(H, "<big>I AM BEHIND ENEMY LINES, I SHOULD RETREAT BACK TO FRIENDLY LINES!</big>") //you should gtfo
 				return TRUE
-			else if(locationtogoto.y < currentlocation.y) //allow retreating south
+			else if(locationtogoto.y <= currentlocation.y) //allow retreating south
 				to_chat(H, "<big>I AM BEHIND ENEMY LINES, I SHOULD RETREAT BACK TO FRIENDLY LINES!</big>") 
 				return TRUE
 			else
@@ -315,7 +315,7 @@ GLOBAL_LIST_EMPTY(mortar_areas) // = list()
 			if(locationtogoto == currentlocation) //we're stuck behind enemy lines
 				to_chat(H, "<big>I AM BEHIND ENEMY LINES, I SHOULD RETREAT BACK TO FRIENDLY LINES!</big>") //you should gtfo
 				return TRUE
-			else if(locationtogoto.y > currentlocation.y) //allow retreating north
+			else if(locationtogoto.y >= currentlocation.y) //allow retreating north
 				to_chat(H, "<big>I AM BEHIND ENEMY LINES, I SHOULD RETREAT BACK TO FRIENDLY LINES!</big>") 
 				return TRUE
 			else
@@ -355,7 +355,7 @@ GLOBAL_LIST_EMPTY(mortar_areas) // = list()
 			if(locationtogoto == currentlocation) //we're stuck behind enemy lines
 				to_chat(H, "<big>I AM BEHIND ENEMY LINES, I SHOULD RETREAT BACK TO FRIENDLY LINES!</big>") //you should gtfo
 				return TRUE
-			else if(locationtogoto.y < currentlocation.y) //allow retreating south
+			else if(locationtogoto.y <= currentlocation.y) //allow retreating south
 				to_chat(H, "<big>I AM BEHIND ENEMY LINES, I SHOULD RETREAT BACK TO FRIENDLY LINES!</big>") 
 				return TRUE
 			else
