@@ -194,9 +194,9 @@ GLOBAL_LIST_EMPTY(mortar_areas) // = list()
 		if(!H.stat == CONSCIOUS)
 			return TRUE
 		if(H.warfare_faction == BLUE_TEAM && (GLOB.blue_captured_zones.len < REQUIRED_TRENCH_ZONES))
-			var/area/warfare/locationtogoto = src
-			var/area/warfare/currentlocation = get_area(H)
-			if(locationtogoto == currentlocation) //we're stuck behind enemy lines
+			var/turf/locationtogoto = src
+			var/turf/currentlocation = get_area(H)
+			if(get_area(locationtogoto) == get_area(currentlocation)) //we're stuck behind enemy lines
 				to_chat(H, "<big>I AM BEHIND ENEMY LINES, I SHOULD RETREAT BACK TO FRIENDLY LINES!</big>") //you should gtfo
 				return TRUE
 			else if(locationtogoto.y >= currentlocation.y) //allow retreating north
@@ -227,9 +227,9 @@ GLOBAL_LIST_EMPTY(mortar_areas) // = list()
 		if(!H.stat == CONSCIOUS)
 			return TRUE
 		if(H.warfare_faction == RED_TEAM && (GLOB.red_captured_zones.len < REQUIRED_TRENCH_ZONES))
-			var/area/warfare/locationtogoto = src
-			var/area/warfare/currentlocation = get_area(H)
-			if(locationtogoto == currentlocation) //we're stuck behind enemy lines
+			var/turf/locationtogoto = src
+			var/turf/currentlocation = get_area(H)
+			if(get_area(locationtogoto) == get_area(currentlocation)) //we're stuck behind enemy lines
 				to_chat(H, "<big>I AM BEHIND ENEMY LINES, I SHOULD RETREAT BACK TO FRIENDLY LINES!</big>") //you should gtfo
 				return TRUE
 			else if(locationtogoto.y <= currentlocation.y) //allow retreating south
@@ -310,9 +310,9 @@ GLOBAL_LIST_EMPTY(mortar_areas) // = list()
 	if(ishuman(AM))
 		var/mob/living/carbon/human/H = AM
 		if(H.warfare_faction == BLUE_TEAM && (GLOB.blue_captured_zones.len < REQUIRED_CAPTURED_ZONES))//No spawn camping till you take the required zones bitch.
-			var/area/warfare/locationtogoto = src
-			var/area/warfare/currentlocation = get_area(H)
-			if(locationtogoto == currentlocation) //we're stuck behind enemy lines
+			var/turf/locationtogoto = src
+			var/turf/currentlocation = get_area(H)
+			if(get_area(locationtogoto) == get_area(currentlocation)) //we're stuck behind enemy lines
 				to_chat(H, "<big>I AM BEHIND ENEMY LINES, I SHOULD RETREAT BACK TO FRIENDLY LINES!</big>") //you should gtfo
 				return TRUE
 			else if(locationtogoto.y >= currentlocation.y) //allow retreating north
@@ -350,9 +350,9 @@ GLOBAL_LIST_EMPTY(mortar_areas) // = list()
 		if(!H.stat == CONSCIOUS)
 			return TRUE
 		if(H.warfare_faction == RED_TEAM && (GLOB.red_captured_zones.len < REQUIRED_CAPTURED_ZONES))
-			var/area/warfare/locationtogoto = src
-			var/area/warfare/currentlocation = get_area(H)
-			if(locationtogoto == currentlocation) //we're stuck behind enemy lines
+			var/turf/locationtogoto = src
+			var/turf/currentlocation = get_area(H)
+			if(get_area(locationtogoto) == get_area(currentlocation)) //we're stuck behind enemy lines
 				to_chat(H, "<big>I AM BEHIND ENEMY LINES, I SHOULD RETREAT BACK TO FRIENDLY LINES!</big>") //you should gtfo
 				return TRUE
 			else if(locationtogoto.y <= currentlocation.y) //allow retreating south
