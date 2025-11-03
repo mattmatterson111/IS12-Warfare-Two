@@ -226,7 +226,7 @@ GLOBAL_LIST_EMPTY(mortar_areas) // = list()
 		var/mob/living/carbon/human/H = AM
 		if(!H.stat == CONSCIOUS)
 			return TRUE
-		if(H.warfare_faction == RED_TEAM && (GLOB.blue_captured_zones.len < REQUIRED_TRENCH_ZONES))
+		if(H.warfare_faction == RED_TEAM && (GLOB.red_captured_zones.len < REQUIRED_TRENCH_ZONES))
 			var/area/warfare/locationtogoto = src
 			var/area/warfare/currentlocation = get_area(H)
 			if(locationtogoto == currentlocation) //we're stuck behind enemy lines
@@ -349,7 +349,7 @@ GLOBAL_LIST_EMPTY(mortar_areas) // = list()
 		var/mob/living/carbon/human/H = AM
 		if(!H.stat == CONSCIOUS)
 			return TRUE
-		if(H.warfare_faction == RED_TEAM && (GLOB.blue_captured_zones.len < REQUIRED_CAPTURED_ZONES))
+		if(H.warfare_faction == RED_TEAM && (GLOB.red_captured_zones.len < REQUIRED_CAPTURED_ZONES))
 			var/area/warfare/locationtogoto = src
 			var/area/warfare/currentlocation = get_area(H)
 			if(locationtogoto == currentlocation) //we're stuck behind enemy lines
