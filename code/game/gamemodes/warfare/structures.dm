@@ -606,9 +606,16 @@
 				stepper = M
 
 /obj/structure/landmine/Uncrossed(var/mob/living/M as mob)
+	var/mob/living/carbon/human/H = M
+	var/obj/item/organ/external/L = H.get_organ(BP_L_LEG)  //leg dismemberments
+	var/obj/item/organ/external/R = H.get_organ(BP_R_LEG)  
 	if(istype(M))
 		if(armed)
 			if(M == stepper) // HAH
+				if(prob(50))
+					L.droplimb(0, pick(DROPLIMB_BLUNT, DROPLIMB_EDGE, DROPLIMB_BURN)) //random chance for different dismemberments
+				if(prob(50))
+					R.droplimb(0, pick(DROPLIMB_BLUNT, DROPLIMB_EDGE, DROPLIMB_BURN))
 				blow()
 
 
