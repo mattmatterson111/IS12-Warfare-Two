@@ -194,7 +194,7 @@ GLOBAL_LIST_EMPTY(mortar_areas) // = list()
 		if(!H.stat == CONSCIOUS)
 			return TRUE
 		if(H.warfare_faction == BLUE_TEAM && (GLOB.blue_captured_zones.len < REQUIRED_TRENCH_ZONES))
-			var/turf/locationtogoto = src
+			var/turf/locationtogoto = get_step(H, H.dir)
 			var/turf/currentlocation = get_turf(H)
 			if(get_area(locationtogoto) == get_area(currentlocation)) //we're stuck behind enemy lines
 				to_chat(H, "<big>I AM BEHIND ENEMY LINES, I SHOULD RETREAT BACK TO FRIENDLY LINES!</big>") //you should gtfo
@@ -227,7 +227,7 @@ GLOBAL_LIST_EMPTY(mortar_areas) // = list()
 		if(!H.stat == CONSCIOUS)
 			return TRUE
 		if(H.warfare_faction == RED_TEAM && (GLOB.red_captured_zones.len < REQUIRED_TRENCH_ZONES))
-			var/turf/locationtogoto = src
+			var/turf/locationtogoto = get_step(H, H.dir)
 			var/turf/currentlocation = get_turf(H)
 			if(get_area(locationtogoto) == get_area(currentlocation)) //we're stuck behind enemy lines
 				to_chat(H, "<big>I AM BEHIND ENEMY LINES, I SHOULD RETREAT BACK TO FRIENDLY LINES!</big>") //you should gtfo
@@ -310,7 +310,7 @@ GLOBAL_LIST_EMPTY(mortar_areas) // = list()
 	if(ishuman(AM))
 		var/mob/living/carbon/human/H = AM
 		if(H.warfare_faction == BLUE_TEAM && (GLOB.blue_captured_zones.len < REQUIRED_CAPTURED_ZONES))//No spawn camping till you take the required zones bitch.
-			var/turf/locationtogoto = src
+			var/turf/locationtogoto = get_step(H, H.dir)
 			var/turf/currentlocation = get_turf(H)
 			//to_chat(H, "<big>DEBUG: [src.y] , [get_area(src)], [currentlocation.y]. [get_area(currentlocation)]</big>")
 			if(get_area(locationtogoto) == get_area(currentlocation)) //we're stuck behind enemy lines
@@ -351,7 +351,7 @@ GLOBAL_LIST_EMPTY(mortar_areas) // = list()
 		if(!H.stat == CONSCIOUS)
 			return TRUE
 		if(H.warfare_faction == RED_TEAM && (GLOB.red_captured_zones.len < REQUIRED_CAPTURED_ZONES))
-			var/turf/locationtogoto = src
+			var/turf/locationtogoto = get_step(H, H.dir)
 			var/turf/currentlocation = get_turf(H)
 			if(get_area(locationtogoto) == get_area(currentlocation)) //we're stuck behind enemy lines
 				to_chat(H, "<big>I AM BEHIND ENEMY LINES, I SHOULD RETREAT BACK TO FRIENDLY LINES!</big>") //you should gtfo
