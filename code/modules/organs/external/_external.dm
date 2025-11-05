@@ -784,7 +784,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 			var/gore = "[(robotic >= ORGAN_ROBOT) ? "": " of burning flesh"]"
 			owner.visible_message(
 				"<span class='danger'><big>\The [owner]'s [src.name] flashes away into ashes!</big></span>",\
-				"<span class='moderate'><big><b>Your [src.name] flashes away into ashes!</b><</big></span>",\
+				"<span class='moderate'><big><b>Your [src.name] flashes away into ashes!</b></big></span>",\
 				"<span class='danger'>You hear a crackling sound[gore].</span>")
 			if(owner.can_feel_pain() && prob(50))
 				owner.agony_scream()
