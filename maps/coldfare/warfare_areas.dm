@@ -194,8 +194,8 @@ GLOBAL_LIST_EMPTY(mortar_areas) // = list()
 		if(!H.stat == CONSCIOUS)
 			return TRUE
 		if(H.warfare_faction == BLUE_TEAM && (GLOB.blue_captured_zones.len < REQUIRED_TRENCH_ZONES))
-			var/turf/locationtogoto = get_step(H, H.dir)
-			var/turf/currentlocation = get_turf(H)
+			var/turf/locationtogoto = get_step(H, H.dir) //get the tile in front of the player
+			var/turf/currentlocation = get_turf(H) //get the tile the player is on
 			if(get_area(locationtogoto) == get_area(currentlocation)) //we're stuck behind enemy lines
 				to_chat(H, "<big>I AM BEHIND ENEMY LINES, I SHOULD RETREAT BACK TO FRIENDLY LINES!</big>") //you should gtfo
 				return TRUE
