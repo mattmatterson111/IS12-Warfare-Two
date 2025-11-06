@@ -79,12 +79,14 @@ GLOBAL_LIST_EMPTY(mortar_areas) // = list()
 		L.overlay_fullscreen("fog", /obj/screen/fullscreen/fog)
 		L.overlay_fullscreen("ash", /obj/screen/fullscreen/storm)
 		L.overlay_fullscreen("ashparticle", /obj/screen/fullscreen/ashparticles)
+
 /area/warfare/battlefield/Exited(mob/living/L, area/A)
 	. = ..()
 	if(istype(L) && !istype(A, /area/warfare/battlefield))
 		L.clear_fullscreen("fog")
 		L.clear_fullscreen("ash")
 		L.clear_fullscreen("ashparticle")
+
 /area/warfare/battlefield/capture_point
 	name = "\improper Capture Point"
 	icon_state = "storage"
