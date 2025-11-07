@@ -29,6 +29,10 @@
 	..()
 	if(istype(I, /obj/item/material/sword/combat_knife))
 		if(engraved)
+			to_chat(user, "Already engraved!")
+			return
+		if(!istype(user.get_inactive_hand(), /obj/item/clothing/head/helmet))
+			to_chat(user, "Hold the helmet in your hand to engrave it!")
 			return
 		to_chat(user, "You begin to engrave something on your helmet.")
 		var/to_engrave = sanitize(input(user, "What would you like to engrave?", "Engraving") as null|text)
