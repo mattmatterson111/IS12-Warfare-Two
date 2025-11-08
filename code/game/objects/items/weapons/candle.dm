@@ -14,7 +14,7 @@
 /obj/item/flame/candle/blue
 	icon_state = "candleb1"
 	base_state = "candleb"
-
+	name = "blue candle"
 	waxtype = "blue"
 
 /obj/item/flame/candle/New()
