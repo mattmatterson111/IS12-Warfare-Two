@@ -127,6 +127,12 @@
 		return
 		
 	var/area/warfare/climbto = get_area(get_turf(src)) //prevents climbing into areas you shouldnt
+	var/turf/locationtogoto = get_turf(src) 
+	var/turf/currentlocation = get_turf(user) 
+	if(locationtogoto.y > currentlocation.y) //if climbing north, set direction to north
+		user.set_dir(NORTH)
+	else if(locationtogoto.y < currentlocation.y) //if climbing south, set direction to south
+		user.set_dir(SOUTH) //goddamit theres gotta be a better way to do this
 	if(climbto.Enter(user) == FALSE)
 		return
 
@@ -233,6 +239,12 @@
 		return
 	
 	var/area/warfare/climbto = get_area(get_turf(src)) //prevents climbing into areas you shouldnt
+	var/turf/locationtogoto = get_turf(src) 
+	var/turf/currentlocation = get_turf(user) 
+	if(locationtogoto.y > currentlocation.y) //if climbing north, set direction to north
+		user.set_dir(NORTH)
+	else if(locationtogoto.y < currentlocation.y) //if climbing south, set direction to south
+		user.set_dir(SOUTH) //goddamit theres gotta be a better way to do this
 	if(climbto.Enter(user) == FALSE)
 		return
 	
