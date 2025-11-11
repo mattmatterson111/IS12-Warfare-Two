@@ -283,6 +283,9 @@
 	set name = "Activate Held Object"
 	set category = "Object"
 	set src = usr
+	
+	if(usr.incapacitated(INCAPACITATION_STUNNED) || usr.incapacitated(INCAPACITATION_KNOCKOUT) || usr.stat || usr.restrained())//!usr.canmove
+		return //If they're stunned, or knocked out, then they can't pick shit up. But if they're just lying down they can.
 
 	if(istype(loc,/obj/mecha)) return
 
