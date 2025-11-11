@@ -134,6 +134,9 @@
 		atom_flags &= ~ATOM_FLAG_OPEN_CONTAINER
 	update_icon()
 	return
+	
+/obj/item/reagent_containers/hypospray/autoinjector/attack_self(mob/user as mob)
+	src.attack(user, user)
 
 /obj/item/reagent_containers/hypospray/autoinjector/update_icon()
 	if(reagents.total_volume > 0)
