@@ -281,7 +281,8 @@
 
 /datum/grab/special/proc/attack_throat(var/obj/item/grab/G, var/obj/item/W, var/mob/living/carbon/human/user)
 	var/mob/living/carbon/human/affecting = G.affecting
-
+	var/obj/item/organ/external/O = G.get_targeted_organ()
+	
 	if(user.a_intent != I_HURT)
 		return 0 // Not trying to hurt them.
 
@@ -309,9 +310,11 @@
 		affecting.apply_damage(damage, W.damtype, BP_HEAD, 0, damage_flags, used_weapon=W)
 		total_damage += damage
 
-
 	if(total_damage)
 		user.visible_message("<span class='danger'>\The [user] slit [affecting]'s throat open with \the [W]!</span>")
+		
+		if(O.sever_artery()) //FUKKEN KILLEM YEAAAAHHHH
+			user.visible_message("<span class='danger'>\The [affecting]'s [O.artery_name] was severed!</span>")
 
 		if(W.hitsound)
 			playsound(affecting.loc, W.hitsound, 50, 1, -1)
