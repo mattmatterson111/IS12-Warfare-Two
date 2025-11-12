@@ -41,7 +41,7 @@
 
 	var/actual_block_chance = prob(block_chance + ((user.SKILL_LEVEL(melee) * 10) / 2))//Skills aren't base 100 anymore they're based 10 so I'm multiplying 100
 
-	if(user.atk_intent == I_DEFENSE)
+	if(user.a_intent == I_GRAB) //better chance to block if on grab intent
 		actual_block_chance += 50
 
 	if(default_parry_check(user, attacker, damage_source) && actual_block_chance && (user.get_active_hand() == src))//You gotta be holding onto that sheesh bro.
