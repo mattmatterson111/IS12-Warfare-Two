@@ -174,6 +174,8 @@
 
 
 /obj/item/material/sword/combat_knife/attack(mob/living/carbon/C as mob, mob/living/user as mob)
+	var/mob/living/carbon/human/H = user
+	
 	if(user.a_intent == I_HELP && (C.handcuffed) && (istype(C.handcuffed, /obj/item/handcuffs/cable)))
 		usr.visible_message("\The [usr] cuts \the [C]'s restraints with \the [src]!",\
 		"You cut \the [C]'s restraints with \the [src]!",\
@@ -186,6 +188,17 @@
 
 	if(user.a_intent == I_HELP)
 		remove_shrapnel(C, user)
+	
+	var/obj/item/organ/external/lhand = H.organs_by_name["l_hand"] //if one hand isn't useable we can assume we ain't disarming or grabbing with the offhand
+	var/obj/item/organ/external/rhand = H.organs_by_name["r_hand"]
+	var/usableoffhand = TRUE
+	if(!lhand || !lhand.is_usable() || !rhand || !rhand.is_usable())
+		usableoffhand = FALSE
+	if(user.a_intent == I_DISARM && usableoffhand == TRUE && H.get_inactive_hand() == null) //some solid snake shit
+		H.swap_hand()
+		H.species.disarm_attackhand(H, C, 30) //penalty to parrying with a knife compared to normal hand
+		H.swap_hand()
+		
 	else
 		..()
 
