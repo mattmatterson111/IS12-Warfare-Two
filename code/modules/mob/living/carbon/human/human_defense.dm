@@ -158,8 +158,9 @@ meteor_act
 
 /mob/living/carbon/human/resolve_item_attack(obj/item/I, mob/living/carbon/human/user, var/target_zone, var/special = FALSE)
 	for (var/obj/item/grab/G in grabbed_by)
-		if(G.resolve_item_attack(user, I, target_zone))
-			return null
+		if(special == FALSE) //no heavy attack throat slit please
+			if(G.resolve_item_attack(user, I, target_zone)) 
+				return null
 
 	if(user == src) // Attacking yourself can't miss
 		return target_zone
