@@ -699,6 +699,8 @@ BLIND     // can't see anything
 	restricted_accessory_slots = list(ACCESSORY_SLOT_UTILITY,ACCESSORY_SLOT_HOLSTER,ACCESSORY_SLOT_ARMBAND,ACCESSORY_SLOT_RANK,ACCESSORY_SLOT_DEPT)
 	grab_sound = 'sound/items/handle/clothing_up.ogg'
 	equipsound = "rustle_new"//'sound/items/equip/jumpsuit_equip.ogg'
+	var/pants_down = FALSE
+	var/can_down_pants = FALSE
 
 /obj/item/clothing/under/New()
 	..()
@@ -761,6 +763,27 @@ BLIND     // can't see anything
 	else
 		rolled_down = -1
 	if(H) update_clothing_icon()
+
+/obj/item/clothing/under/RightClick(mob/user)
+	. = ..()
+	if(CanPhysicallyInteract(user))
+		toggle_pants(user)
+
+/obj/item/clothing/under/proc/toggle_pants(mob/user)
+	if(isworld(loc))
+		return
+	if(!can_down_pants)
+		return
+	if(pants_down)
+		pants_down = FALSE
+		item_state_slots[slot_w_uniform_str] = "[worn_state]"
+		to_chat(user, "<span class='notice'>You put your pants up.</span>")
+	else
+		pants_down = TRUE
+		item_state_slots[slot_w_uniform_str] = "[worn_state]_pants"
+		to_chat(user, "<span class='notice'>You pull your pants down.</span>")
+	update_clothing_icon(user)
+	playsound(get_turf(src), "cloth_step", 100, 1)
 
 /obj/item/clothing/under/proc/update_rollsleeves_status()
 	var/mob/living/carbon/human/H

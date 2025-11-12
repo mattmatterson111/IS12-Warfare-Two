@@ -234,11 +234,19 @@
 		if(T && T.open)
 			message = "<B>[src]</B> defecates into \the [T]."
 
-		else if(w_uniform)
-			message = "<B>[src]</B> shits \his pants."
-			reagents.add_reagent(/datum/reagent/poo, 10)
-			add_event("shitself", /datum/happiness_event/hygiene/shit)
-			unlock_achievement(new/datum/achievement/shit_pants())
+		else if(w_uniform && (istype(w_uniform, /obj/item/clothing/under)))
+			var/obj/item/clothing/under/govno = w_uniform
+			if(govno.pants_down)
+				message = "<B>[src]</B> [pick("shits", "craps", "poops")]."
+				var/obj/item/reagent_containers/food/snacks/poo/V = new/obj/item/reagent_containers/food/snacks/poo(src.loc)
+				if(reagents)
+					reagents.trans_to(V, rand(1,5))
+				GLOB.shit_left++//Add it to the shit on the floor counter.
+			else
+				message = "<B>[src]</B> shits \his pants."
+				reagents.add_reagent(/datum/reagent/poo, 10)
+				add_event("shitself", /datum/happiness_event/hygiene/shit)
+				unlock_achievement(new/datum/achievement/shit_pants())
 
 		//Poo on the face.
 		else if(M != src && M.lying)//Can only shit on them if they're lying down.
@@ -291,14 +299,24 @@
 			if(reagents)
 				reagents.trans_to(RC, amount)
 
-	else if(w_uniform)//In your pants.
-		message = "<B>[src]</B> pisses \his pants."
-		add_event("pissedself", /datum/happiness_event/hygiene/pee)
-		unlock_achievement(new/datum/achievement/pissed())
-		var/obj/effect/decal/cleanable/urine/D = new/obj/effect/decal/cleanable/urine(src.loc)
-		if(reagents)
-			reagents.trans_to(D, rand(1,8))
-		GLOB.piss_left++
+	else if(w_uniform && (istype(w_uniform, /obj/item/clothing/under)))//In your pants.
+		var/obj/item/clothing/under/piss = w_uniform
+		if(piss.pants_down == TRUE) // PANTS CHEC
+			var/turf/TT = src.loc
+			var/obj/effect/decal/cleanable/urine/D = new/obj/effect/decal/cleanable/urine(src.loc)
+			if(reagents)
+				reagents.trans_to(D, rand(1,8))
+			if(TT)//In case it's somehow not there.
+				message = "<B>[src]</B> pisses on the [TT.name]."
+			GLOB.piss_left++//Add it to the piss on the floor counter.
+		else
+			message = "<B>[src]</B> pisses \his pants."
+			add_event("pissedself", /datum/happiness_event/hygiene/pee)
+			unlock_achievement(new/datum/achievement/pissed())
+			var/obj/effect/decal/cleanable/urine/D = new/obj/effect/decal/cleanable/urine(src.loc)
+			if(reagents)
+				reagents.trans_to(D, rand(1,8))
+			GLOB.piss_left++
 
 
 	else//On the floor.

@@ -202,19 +202,31 @@
 	worldicons = list("reduniworld1","reduniworld2","reduniworld3")
 	//sprite_sheets = list(SPECIES_CHILD = 'icons/mob/species/child/mask.dmi')
 	canremove = FALSE
+	can_down_pants = TRUE
 
 /obj/item/clothing/under/red_uniform/equipped(mob/user)
-	var/mob/living/carbon/human/weirdo = user
-	if(weirdo.gender == MALE)
-		worn_state = "[initial(icon_state)]_m"
-	else
-		worn_state = "[initial(icon_state)]_f"
-	if(weirdo.isChild())
-		worn_state = "[initial(icon_state)]_child"
-	item_state_slots[slot_w_uniform_str] = worn_state
+	shtani(user)
 	update_clothing_icon()
 	update_icon()
 	. = ..()
+
+/obj/item/clothing/under/red_uniform/proc/shtani(mob/user)
+	var/mob/living/carbon/human/weirdo = user
+	if(pants_down)
+		if(weirdo.gender == MALE)
+			worn_state = "[initial(icon_state)]_m_pants"
+		else
+			worn_state = "[initial(icon_state)]_f_pants"
+		if(weirdo.isChild())
+			worn_state = "[initial(icon_state)]_child" //idk kids clothes too big for them
+	else
+		if(weirdo.gender == MALE)
+			worn_state = "[initial(icon_state)]_m"
+		else
+			worn_state = "[initial(icon_state)]_f"
+		if(weirdo.isChild())
+			worn_state = "[initial(icon_state)]_child"
+	item_state_slots[slot_w_uniform_str] = worn_state
 
 /obj/item/clothing/suit/armor/redcoat/leader
 	icon_state = "captaincoat"
@@ -409,22 +421,31 @@
 	worldicons = list("blueuniworld1","blueuniworld2","blueuniworld3")
 	//sprite_sheets = list(SPECIES_CHILD = 'icons/mob/species/child/mask.dmi')
 	canremove = FALSE
+	can_down_pants = TRUE
 
-/obj/item/clothing/under/blue_uniform/equipped(mob/user) // This is stupid. But it works.
-	. = ..()
-	var/mob/living/carbon/human/weirdo = user
-	if(weirdo.isChild())
-		worn_state = "[initial(worn_state)]_child"
-		update_clothing_icon()
-		update_icon()
-		return
-	if(weirdo.gender == MALE)
-		worn_state = "[initial(worn_state)]_m"
-	else
-		worn_state = "[initial(worn_state)]_f"
+/obj/item/clothing/under/blue_uniform/equipped(mob/user)
+	shtani(user)
 	update_clothing_icon()
 	update_icon()
+	. = ..()
 
+/obj/item/clothing/under/blue_uniform/proc/shtani(mob/user)
+	var/mob/living/carbon/human/weirdo = user
+	if(pants_down)
+		if(weirdo.gender == MALE)
+			worn_state = "[initial(icon_state)]_m_pants"
+		else
+			worn_state = "[initial(icon_state)]_f_pants"
+		if(weirdo.isChild())
+			worn_state = "[initial(icon_state)]_child" //idk kids clothes too big for them
+	else
+		if(weirdo.gender == MALE)
+			worn_state = "[initial(icon_state)]_m"
+		else
+			worn_state = "[initial(icon_state)]_f"
+		if(weirdo.isChild())
+			worn_state = "[initial(icon_state)]_child"
+	item_state_slots[slot_w_uniform_str] = worn_state
 
 
 //Hats
