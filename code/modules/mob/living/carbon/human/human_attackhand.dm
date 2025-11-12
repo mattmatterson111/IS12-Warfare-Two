@@ -150,9 +150,15 @@
 			*/
 			//Back to your normal insane
 			visible_message("<span class='danger'>[M] attempted to grab \the [src]!</span>")
+			
+			var/bad_arc = reverse_direction(src.dir) //arc of directions from which we cannot block or dodge
+			if(!check_shield_arc(src, bad_arc) && !H == src) //cant dodge from behind
+				if(attempt_dodge())
+					return
+			/*
 			if(attempt_dodge())
 				return
-
+			*/
 			if(istype(H))
 
 				var/obj/item/organ/external/affecting = get_organ(H.zone_sel.selecting)
@@ -211,9 +217,14 @@
 
 			aggro_npc()
 
+			var/bad_arc = reverse_direction(src.dir) //arc of directions from which we cannot block or dodge
+			if(!check_shield_arc(src, bad_arc) && !H == src) //cant dodge from behind
+				if(attempt_dodge())
+					return
+			/*
 			if(attempt_dodge())
 				return
-
+			*/
 			if(!istype(H))
 				attack_generic(H,rand(1,3),"punched")
 				return
