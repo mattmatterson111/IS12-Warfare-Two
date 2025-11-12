@@ -9,6 +9,8 @@
 	if(!a_intent == I_HELP && (defense_intent == I_DODGE) && !lying)//check_shield_arc proc used where attempt_dodge procs are called
 		if(a_intent == I_DISARM)//Better chance to dodge on disarm intent
 			dodge_modifier += 30
+		if(src.grabbed_by.len) //getting grabbed makes it harder to dodge ya know?
+			dodge_modifier -= 30
 		if(statscheck(STAT_LEVEL(dex) / 2 + 3) >= SUCCESS)
 			do_dodge()
 			return	1
