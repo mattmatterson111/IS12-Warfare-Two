@@ -258,16 +258,16 @@ meteor_act
 		effective_force *= strToDamageModifier(user.STAT_LEVEL(str))
 
 	if(special)
-		switch(user.atk_intent)
-			if(I_STRONG)//Offensive attacks do even more damage.
+		switch(user.a_intent)
+			if(I_HURT)//Offensive attacks do even more damage.
 				effective_force += I.force
 			if(I_WEAK)
 				effective_force = (effective_force/2) //Half the amount of force.
 
-	if(user.atk_intent == I_GUARD && user.combat_mode)//If we're guarding then hit for less damage.
+	if(user.a_intent == I_DISARM)//If we're trying to disarm then hit for less damage.
 		effective_force = (effective_force * 0.25)
 
-	if(user.atk_intent == I_DEFENSE && user.combat_mode)
+	if(user.a_intent == I_GRAB) //If we're trying to grab then hit for less damage
 		effective_force = (effective_force * 0.40)
 
 	if(effective_force > 10 || effective_force >= 5 && prob(33))
