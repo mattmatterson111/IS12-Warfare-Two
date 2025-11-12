@@ -177,9 +177,16 @@ meteor_act
 			if(I_AIMED)//More accurate attack
 				hit_zone = target_zone
 
+	var/bad_arc = reverse_direction(src.dir) //arc of directions from which we cannot block or dodge
+
+	if(!check_shield_arc(src, bad_arc)) //cant dodge from behind
+		if(attempt_dodge())
+			return null
+	/*
 	if(attempt_dodge())
 		return null
-
+	*/
+	
 	if(!hit_zone)
 		visible_message("<span class='danger'>\The [user] misses [src] with \the [I]!</span>")
 		return null
