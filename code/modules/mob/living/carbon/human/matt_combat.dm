@@ -6,7 +6,7 @@
 
 /mob/living/carbon/human/proc/attempt_dodge()//Handle parry is an object proc and it's, its own thing.
 	var/dodge_modifier = 0
-	if(!a_intent == I_HELP && (defense_intent == I_DODGE) && !lying)//check_shield_arc proc used where attempt_dodge procs are called
+	if(a_intent != I_HELP && defense_intent == I_DODGE && !lying)//check_shield_arc proc used where attempt_dodge procs are called
 		if(a_intent == I_DISARM)//Better chance to dodge on disarm intent
 			dodge_modifier += 30
 		if(src.grabbed_by.len) //getting grabbed makes it harder to dodge ya know?
