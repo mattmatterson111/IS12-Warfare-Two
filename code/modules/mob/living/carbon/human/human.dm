@@ -1717,6 +1717,14 @@
 		give(src)
 		return
 
+	else if(user.Adjacent(src)) //melee special attacks
+		var/obj/item/I = user.get_active_hand()
+		if(!I)
+			return
+		if(intent == I_HELP)
+			return
+		I.attack(src, user, user.zone_sel.selecting, TRUE)
+
 	else
 		..()
 
