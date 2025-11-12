@@ -682,7 +682,7 @@
 	wielded_icon = "trenchaxe-w"
 	slot_flags = SLOT_BELT|SLOT_BACK|SLOT_S_STORE
 	force = 20
-	block_chance = 20
+	block_chance = 25 //buffed from 15, on par with trench club
 	sharp = TRUE
 	edge = TRUE
 	hitsound = "slash_sound"
@@ -690,6 +690,13 @@
 	equipsound = 'sound/items/equip/axe_equip.ogg'
 	grab_sound = 'sound/items/handle/axe_grab.ogg'
 	grab_sound_is_loud = TRUE
+	parry_sounds = list('sound/weapons/bladeparry1.ogg', 'sound/weapons/bladeparry2.ogg', 'sound/weapons/bladeparry3.ogg', 'sound/weapons/bladeparry4.ogg')
+	
+/obj/item/melee/trench_axe/handle_shield(mob/living/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
+	if(default_sword_parry(user, damage, damage_source, attacker, def_zone, attack_text))
+		return 1
+
+	return 0
 
 
 /obj/item/clothing/under/prac_under
