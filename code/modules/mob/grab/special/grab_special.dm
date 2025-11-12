@@ -37,7 +37,7 @@
 /datum/grab/special/strangle/process_effect(var/obj/item/grab/G)
 	var/mob/living/carbon/human/affecting = G.affecting
 	
-	if(!G.wielded) //Strangle with both hands.
+	if(!G.wielded)
 		activate_effect = FALSE
 		G.assailant.visible_message("<span class='warning'>[G.assailant] stops strangling [G.affecting].</span>")
 		return
@@ -95,7 +95,9 @@
 		assailant.doing_something = FALSE
 		return
 
-	if(!do_after(assailant, 30, affecting))
+	var/meleeskill = assailant.SKILL_LEVEL(melee)
+	
+	if(!do_after(assailant, (30 - meleeskill), affecting))
 		assailant.doing_something = FALSE
 		return
 
@@ -150,7 +152,9 @@
 		
 	assailant.doing_something = TRUE 
 
-	if(!do_after(assailant, 30, affecting))
+	var/meleeskill = assailant.SKILL_LEVEL(melee)
+	
+	if(!do_after(assailant, (30 - meleeskill), affecting))
 		assailant.doing_something = FALSE
 		return
 
@@ -268,9 +272,12 @@
 		return FALSE
 
 	user.visible_message("<span class='danger'>\The [user] begins to cut \the [affecting]'s [O.tendon_name] with \the [W]!</span>")
-	user.next_move = world.time + 20
-
-	if(!do_after(user, 20, progress=0))
+	
+	var/meleeskill = user.SKILL_LEVEL(melee)
+	
+	user.next_move = world.time + 20 - meleeskill
+	
+	if(!do_after(user, (20 - meleeskill), progress=0))
 		return 0
 	if(!(G && G.affecting == affecting)) //check that we still have a grab
 		return 0
@@ -294,8 +301,11 @@
 		return 0 //unsuitable weapon
 	user.visible_message("<span class='danger'>\The [user] begins to slit [affecting]'s throat with \the [W]!</span>")
 
-	user.next_move = world.time + 20 //also should prevent user from triggering this repeatedly
-	if(!do_after(user, 20, progress = 0))
+	var/meleeskill = user.SKILL_LEVEL(melee)
+	
+	user.next_move = world.time + 20 - meleeskill //also should prevent user from triggering this repeatedly
+
+	if(!do_after(user, (20 - meleeskill), progress = 0))
 		return 0
 	if(!(G && G.affecting == affecting)) //check that we still have a grab
 		return 0
