@@ -52,7 +52,7 @@
 		health -= 0.5
 		if(!prob((user.SKILL_LEVEL(melee) * 10) + 15) || user.staminaloss >= user.staminaexhaust)//If you're out of stamina you will immediately be disarmed.
 			disarm(user)//Moved the disarm affect to it's own proc in case we want to call it elsewhere.
-		else if(user.atk_intent == I_GUARD)//If they're on gaurd intent then attack back immediately.
+		else if(user.a_intent == I_GRAB && prob(user.SKILL_LEVEL(melee) * 10))//If they're on grab intent and get good rng then attack back immediately.
 			if(istype(src, /obj/item/gun))//If they're using a gun I don't want them shooting like it's fucking gun kaka.
 				if(user.a_intent != I_HURT)
 					visible_message("<span class='combat_success'>[user] ripostes!</span>")
