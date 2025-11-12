@@ -175,6 +175,7 @@
 
 /obj/item/material/sword/combat_knife/attack(mob/living/carbon/C as mob, mob/living/user as mob)
 	var/mob/living/carbon/human/H = user
+	//var/mob/living/carbon/human/T = C
 	
 	if(user.a_intent == I_HELP && (C.handcuffed) && (istype(C.handcuffed, /obj/item/handcuffs/cable)))
 		usr.visible_message("\The [usr] cuts \the [C]'s restraints with \the [src]!",\
@@ -196,8 +197,22 @@
 		usableoffhand = FALSE
 	if(user.a_intent == I_DISARM && usableoffhand == TRUE && H.get_inactive_hand() == null) //some solid snake shit
 		H.swap_hand()
-		H.species.disarm_attackhand(H, C, 30) //penalty to parrying with a knife compared to normal hand
+		H.species.disarm_attackhand(H, C, (user.SKILL_LEVEL(melee) * 10 - 60)) //at least adept to disarm with a knife effectively, more than that and you get a bonus 
 		H.swap_hand()
+		usr.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
+		return
+	
+	if(user.a_intent == I_GRAB && usableoffhand == TRUE && H.get_inactive_hand() == null) //some solid snake shit
+		if(prob(user.SKILL_LEVEL(melee) * 10))
+			C.visible_message("<span class='combat_success'>[H] grabbed [C] with their offhand!</span>")
+			H.swap_hand()
+			C.attack_hand(H)
+			H.swap_hand()
+			usr.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
+			return
+		else
+			C.visible_message("<span class='danger'>[H] attempted to grab [C] with their offhand!</span>")
+			
 		
 	else
 		..()
