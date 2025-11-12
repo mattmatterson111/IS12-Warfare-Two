@@ -173,8 +173,8 @@ meteor_act
 	var/hit_zone = get_zone_with_miss_chance(target_zone, src, accuracy_penalty)
 
 	if(special)
-		switch(user.atk_intent)
-			if(I_AIMED)//More accurate attack
+		switch(user.a_intent)
+			if(I_GRAB)//More accurate attack
 				hit_zone = target_zone
 
 	var/bad_arc = reverse_direction(src.dir) //arc of directions from which we cannot block or dodge
