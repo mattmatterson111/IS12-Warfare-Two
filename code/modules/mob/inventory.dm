@@ -1,5 +1,7 @@
 //This proc is called whenever someone clicks an inventory ui slot.
 /mob/proc/attack_ui(slot)
+	if(usr.incapacitated(INCAPACITATION_STUNNED) || usr.incapacitated(INCAPACITATION_KNOCKOUT) || usr.stat || usr.restrained())//!usr.canmove
+		return //If they're stunned, or knocked out, then they can't pick shit up. But if they're just lying down they can.
 	var/obj/item/W = get_active_hand()
 	var/obj/item/E = get_equipped_item(slot)
 	if (istype(E))
