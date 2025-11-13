@@ -1739,7 +1739,7 @@
 					to_chat(user, "<span class='warning'>I can't shove while lying down!</span>")
 					return 0
 				
-				user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
+				user.setClickCooldown(DEFAULT_QUICK_COOLDOWN)
 				
 				if(check_shield_arc(src, bad_arc, null, user) && user != src)
 					if(attempt_dodge()) 
@@ -1760,6 +1760,7 @@
 				user.adjustStaminaLoss(30) //a whole lotta effort
 				user.visible_message("<span class='combat_success'>[user] throws a HARD punch at [src]! </span>")
 				src.attack_hand(user, 3)
+				user.setClickCooldown(DEFAULT_SLOW_COOLDOWN)
 				return
 			return
 		if(intent == I_HELP)
