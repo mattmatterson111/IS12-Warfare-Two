@@ -350,6 +350,17 @@
 			if(happiness <= MOOD_LEVEL_SAD2)
 				msg += "<span class='warning'>[T.He] looks stressed.</span>\n"
 
+
+	switch(src.a_intent)
+		if(I_HURT)
+			msg += "<span class='danger'>They look ready to kill!</span>\n"
+		if(I_HELP)
+			msg += "<span class='warning'>They look ready to die.</span>\n"
+		if(I_DISARM)
+			msg += "<span class='warning'>They look limber.</span>\n"
+		if(I_GRAB)
+			msg += "<span class='warning'>They look tense.</span>\n"
+	
 	if(decaylevel == 1)
 		msg += "[T.He] [T.is] starting to smell.\n"
 	if(decaylevel == 2)
