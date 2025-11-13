@@ -33,6 +33,8 @@
 	visible_message("<b><big>[src.name] dodges out of the way!!</big></b>")//send a message
 	/*
 	var/mob/living/carbon/human/H = src
+	if(prob(H.STAT_LEVEL(end) + 10))
+		H.make_adrenaline(2) //GET THAT BLOOD PUMPING!
 	H.break_all_grabs(src)
 	*/ //test this later
 	//be on our way
