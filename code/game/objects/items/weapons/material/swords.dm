@@ -205,7 +205,7 @@
 	
 	if(user.a_intent == I_GRAB && usableoffhand == TRUE && H.get_inactive_hand() == null) //some solid snake shit
 		if(prob(user.SKILL_LEVEL(melee) * 10))
-			C.visible_message("<span class='combat_success'>[H] grabbed [C] with their offhand!</span>")
+			C.visible_message("<span class='combat_success'>[H] attempts to grab [C] with their offhand!</span>")
 			H.swap_hand()
 			C.attack_hand(H)
 			H.swap_hand()
