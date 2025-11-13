@@ -152,7 +152,7 @@
 			visible_message("<span class='danger'>[M] attempted to grab \the [src]!</span>")
 			
 			var/bad_arc = reverse_direction(src.dir) //arc of directions from which we cannot block or dodge
-			if(check_shield_arc(src, bad_arc, null, M) && !H == src) //cant dodge from behind
+			if(check_shield_arc(src, bad_arc, null, M) && H != src) //cant dodge from behind
 				if(attempt_dodge())
 					return
 			/*
@@ -218,7 +218,7 @@
 			aggro_npc()
 
 			var/bad_arc = reverse_direction(src.dir) //arc of directions from which we cannot block or dodge
-			if(check_shield_arc(src, bad_arc, null, H) && !H == src) //cant dodge from behind
+			if(check_shield_arc(src, bad_arc, null, H) && H != src) //cant dodge from behind or dodge yourself
 				if(attempt_dodge())
 					return
 			/*
@@ -369,8 +369,17 @@
 						M.doing_something = FALSE
 */
 			M.adjustStaminaLoss(rand(2,5))//No more spamming disarm without consequence!
+			
+			var/bad_arc = reverse_direction(src.dir) //arc of directions from which we cannot block or dodge
+			if(check_shield_arc(src, bad_arc, null, M) && H != src) //cant dodge from behind
+				if(attempt_dodge())
+					return
+			
+			/*
 			if(attempt_dodge())
 				return
+			*/
+			
 			if(H.species)
 				admin_attack_log(M, src, "Disarmed their victim.", "Was disarmed.", "disarmed")
 				H.species.disarm_attackhand(H, src)
@@ -391,8 +400,16 @@
 		return
 	if(!affecting)
 		return
+	var/bad_arc = reverse_direction(src.dir) //arc of directions from which we cannot block or dodge
+	if(check_shield_arc(target, bad_arc, target_zone, user) && H != src) //cant dodge from behind
+		if(attempt_dodge())
+			return
+	
+	/*
 	if(attempt_dodge())
 		return
+	*/
+	
 	if(check_shields(damage, user, user, target_zone, "the attack"))
 		return
 

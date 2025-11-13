@@ -1719,7 +1719,38 @@
 
 	else if(user.Adjacent(src)) //melee special attacks
 		var/obj/item/I = user.get_active_hand()
-		if(!I)
+		if(!I) //unarmed special attacks
+			if(intent == I_DISARM)
+				if(!prob(user.SKILL_LEVEL(melee) * 10))//Add skill check here.
+					user.visible_message("<span class='danger'>[user] botches a feint attack!</span>")
+					return 0
+				user.adjustStaminaLoss(10)
+				user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
+				src.setClickCooldown(DEFAULT_SLOW_COOLDOWN)
+				user.visible_message("<span class='combat_success'>[user] performs a successful feint attack!</span>")
+				if(src.a_intent == I_HURT)
+					if(prob(src.SKILL_LEVEL(melee) * 10))
+						src.item_disarm()
+				return
+			if(intent == I_GRAB)
+				var/bad_arc = reverse_direction(src.dir)
+				
+				if(user.lying)
+					to_chat(user, "<span class='warning'>I can't shove while lying down!</span>")
+					return 0
+				
+				user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
+				
+				if(check_shield_arc(src, bad_arc, null, user) && user != src)
+					if(attempt_dodge()) 
+						user.visible_message("<span class='danger'>[user] attempted to shove [src], but missed!</span>")
+						return
+				
+				if(prob((user.STAT_LEVEL(str) - src.STAT_LEVEL(str)) * 10)) //str based shoves
+					user.visible_message("<span class='combat_success'>[user] shoves [src] back!</span>")
+					src.Move(get_step(src, user.dir), user.dir)
+				else
+					user.visible_message("<span class='danger'>[user] fails to shove [src] back!</span>")
 			return
 		if(intent == I_HELP)
 			return
