@@ -52,7 +52,7 @@
 	if(istype(M,/mob/living/carbon))
 		M.spread_disease_to(src, "Contact")
 
-	if(istype(H))
+	if(istype(H) && strongpunch == 0) //you either headbutt or punch em really hard, not both
 		for (var/obj/item/grab/G in H)
 			if (G.assailant == H && G.affecting == src)
 				if(G.resolve_openhand_attack())
