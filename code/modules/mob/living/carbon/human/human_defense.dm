@@ -200,7 +200,7 @@ meteor_act
 		to_chat(user, "<span class='danger'>They are missing that limb!</span>")
 		return null
 
-	if(user.statscheck(skills = user.SKILL_LEVEL(melee)) == CRIT_FAILURE || (prob(50) && is_hellbanned()))
+	if(user.statscheck(skills = user.SKILL_LEVEL(melee)) == CRIT_FAILURE && user.a_intent == I_HURT || (prob(50) && is_hellbanned())) //critical misses only happen on harm intent now
 		user.resolve_critical_miss(I)
 		return null
 
@@ -316,12 +316,13 @@ meteor_act
 		attack_bloody(I, user, effective_force, hit_zone)
 
 	//This was commented out because critical successes are OP as shit. Now they're back.
-	/*
+	
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
-		if(H.statscheck(skills = H.SKILL_LEVEL(melee)) == CRIT_SUCCESS)
+		if(H.statscheck(skills = H.SKILL_LEVEL(melee)) == CRIT_SUCCESS && user.a_intent == I_HURT)
 			resolve_critical_hit()
-	*/ //And now it's commented out again.
+	 //And now it's commented out again.
+	 //WERE SO BACK (*only on harm intent. all in baby)
 
 	if(hit_zone == BP_R_HAND || hit_zone == BP_L_HAND)
 		var/list/holding= list(src.get_active_hand(), src.get_inactive_hand())
