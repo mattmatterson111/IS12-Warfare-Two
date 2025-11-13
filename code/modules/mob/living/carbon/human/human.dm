@@ -1706,6 +1706,12 @@
 				if(I_HELP)
 					user.visible_message("<font color='green'><b>[user] waves friendly to [src].</b></font>")
 					return
+				if(I_GRAB)
+					user.visible_message("<font color='yellow'><b>[user] beckons [src] to come closer.</b></font>")
+					return
+				if(I_DISARM)
+					user.visible_message("<font color='blue'><b>[user] FLIPS OFF [src]!</b></font>")
+					return
 
 	else if(!lying && !user.weapon_readied && intent == I_HELP )
 		give(src)

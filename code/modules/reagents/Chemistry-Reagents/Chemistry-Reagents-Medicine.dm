@@ -761,6 +761,8 @@
 	if(volume >= 5 && M.is_asystole())
 		remove_self(5)
 		M.resuscitate()
+	if(volume > 0)
+		M.adjustStaminaLoss(-volume) //FIGHT OR FLIGHT
 
 /datum/reagent/nanoblood
 	name = "Nanoblood"
