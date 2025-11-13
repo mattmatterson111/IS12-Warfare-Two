@@ -195,6 +195,7 @@
 	var/usableoffhand = TRUE
 	if(!lhand || !lhand.is_usable() || !rhand || !rhand.is_usable())
 		usableoffhand = FALSE
+	
 	if(user.a_intent == I_DISARM && usableoffhand == TRUE && H.get_inactive_hand() == null) //some solid snake shit
 		H.swap_hand()
 		H.species.disarm_attackhand(H, C, (user.SKILL_LEVEL(melee) * 10 - 60)) //at least adept to disarm with a knife effectively, more than that and you get a bonus 
