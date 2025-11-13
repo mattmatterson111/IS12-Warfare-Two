@@ -1720,7 +1720,7 @@
 	else if(user.Adjacent(src)) //melee special attacks
 		var/obj/item/I = user.get_active_hand()
 		if(!I) //unarmed special attacks
-			if(intent == I_DISARM)
+			if(intent == I_DISARM) //Feinting
 				if(!prob(user.SKILL_LEVEL(melee) * 10))//Add skill check here.
 					user.visible_message("<span class='danger'>[user] botches a feint attack!</span>")
 					return 0
@@ -1732,7 +1732,7 @@
 					if(prob(src.SKILL_LEVEL(melee) * 10))
 						src.item_disarm()
 				return
-			if(intent == I_GRAB)
+			if(intent == I_GRAB) //GET AWAY
 				var/bad_arc = reverse_direction(src.dir)
 				
 				if(user.lying)
@@ -1751,6 +1751,16 @@
 					src.Move(get_step(src, user.dir), user.dir)
 				else
 					user.visible_message("<span class='danger'>[user] fails to shove [src] back!</span>")
+			
+			if(intent == I_HURT) //punch em and put some *effort* into it
+				if(user.lying)
+					to_chat(user, "<span class='warning'>I can't punch harder while lying down!</span>") //well you can, but some messages look weird and its probably better this way balance wise
+					return 0
+				
+				user.adjustStaminaLoss(30) //a whole lotta effort
+				user.visible_message("<span class='combat_success'>[user] throws a HARD punch at [src]! </span>")
+				src.attack_hand(user, 3)
+				return
 			return
 		if(intent == I_HELP)
 			return

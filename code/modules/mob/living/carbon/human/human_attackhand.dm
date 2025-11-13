@@ -8,7 +8,7 @@
 			return u_attack
 	return null
 
-/mob/living/carbon/human/attack_hand(mob/living/carbon/M as mob)
+/mob/living/carbon/human/attack_hand(mob/living/carbon/M as mob, var/strongpunch = 0)
 
 	var/mob/living/carbon/human/H = M
 	if(istype(H))
@@ -229,7 +229,7 @@
 				attack_generic(H,rand(1,3),"punched")
 				return
 
-			var/rand_damage = rand(1, 5)
+			var/rand_damage = rand(1, 5) + strongpunch
 			var/block = 0
 			var/accurate = 0
 			var/hit_zone = H.zone_sel.selecting
@@ -254,18 +254,19 @@
 					// We didn't see this coming, so we get the full blow
 					rand_damage = 5
 					accurate = 1
-				if(I_HURT, I_GRAB)
-					// We're in a fighting stance, there's a chance we block
+				if(I_DISARM, I_GRAB)
+					// We're in a defensive stance, there's a chance we block
 					if(src.canmove && src!=H && prob(20))
 						block = 1
-
+			/*
 			if (M.grabbed_by.len)
 				// Someone got a good grip on them, they won't be able to do much damage
 				rand_damage = max(1, rand_damage - 2)
-
+			*/
 			if(src.grabbed_by.len || src.buckled || !src.canmove || src==H || H.species.species_flags & SPECIES_FLAG_NO_BLOCK)
 				accurate = 1 // certain circumstances make it impossible for us to evade punches
-				rand_damage = 3
+				if(a_intent == I_HURT) //you only get this bonus if your trying to hurt em
+					rand_damage += 3
 
 			// Process evasion and blocking
 			var/miss_type = 0
