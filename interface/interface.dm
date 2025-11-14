@@ -46,7 +46,7 @@
 	var/dat
 
 	var/admin = {"Admin:
-F5 = Aghost (admin-ghost)
+F5 = Asay
 F6 = player-panel-new
 F7 = admin-pm
 F8 = Invisimin
@@ -110,7 +110,7 @@ Ctrl+f = cycle-intents-left
 Ctrl+g = cycle-intents-right
 Ctrl+4 = harm-intent
 F1 = adminhelp
-F2 = ooc
+F2 = screenshot
 F3 = say
 F4 = emote
 DEL = pull
@@ -141,7 +141,9 @@ _____________
 
 	var/gun_controls = {"Weapon controls:
 toggle safety = RMB on gun OR shift+z
-do special attack = RMB + harm intent + combat mode
+melee attack = click + harm intent (need empty gun)
+aim = RMB
+switch mode = z/click on it
 unload gun = click drag into empty hand
 clean gun = ALT + Click on gun
 unjam gun = RMB on gun when it's jammed

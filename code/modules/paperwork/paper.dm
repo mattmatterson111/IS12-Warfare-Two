@@ -82,7 +82,7 @@
 	var/text_z = info
 	if(!can_read)
 		text_z = stars(info)
-	user << browse("<HTML><HEAD><TITLE>[name]</TITLE></HEAD><BODY bgcolor='[color]' style='background-image:url([paperbg])';><a onfocus ='this.blur()' href='byond://?src=\ref[src];toggletitle=1'>X</a></p>[writing ? info_links : text_z][stamps]</BODY></HTML>", "window=[name];can_close=1;can_resize=1;border=[is_bordered];titlebar=[is_bordered]")
+	user << browse("<HTML><meta charset='UTF-8'><HEAD><TITLE>[name]</TITLE></HEAD><BODY bgcolor='[color]' style='background-image:url([paperbg])';><a onfocus ='this.blur()' href='byond://?src=\ref[src];toggletitle=1'>X</a></p>[writing ? info_links : text_z][stamps]</BODY></HTML>", "window=[name];can_close=1;can_resize=1;border=[is_bordered];titlebar=[is_bordered]")
 	onclose(user, "[name]")
 /obj/item/paper/verb/rename()
 	set name = "Rename paper"

@@ -221,12 +221,26 @@ proc/slur(phrase)
 	var/newphrase=""
 	var/newletter=""
 	while(counter>=1)
-		newletter=copytext(phrase,(leng-counter)+1,(leng-counter)+2)
+		newletter=copytext_char(phrase,(leng-counter)+1,(leng-counter)+2)
 		if(rand(1,3)==3)
+			// English slur
 			if(lowertext(newletter)=="o")	newletter="u"
 			if(lowertext(newletter)=="s")	newletter="ch"
 			if(lowertext(newletter)=="a")	newletter="ah"
 			if(lowertext(newletter)=="c")	newletter="k"
+			// Russian slur
+			if(lowertext(newletter) == "о")	newletter = "у"
+			if(lowertext(newletter) == "а")	newletter = "аа"
+			if(lowertext(newletter) == "е")	newletter = "э"
+			if(lowertext(newletter) == "и")	newletter = "ы"
+			if(lowertext(newletter) == "с")	newletter = "ш"
+			if(lowertext(newletter) == "з")	newletter = "ж"
+			if(lowertext(newletter) == "ч")	newletter = "шч"
+			if(lowertext(newletter) == "ц")	newletter = "тс"
+			if(lowertext(newletter) == "р")	newletter = "рр"
+			if(lowertext(newletter) == "л")	newletter = "ль"
+			if(lowertext(newletter) == "ф")	newletter = "фь"
+			if(lowertext(newletter) == "в")	newletter = "фф"
 		switch(rand(1,15))
 			if(1,3,5,8)	newletter="[lowertext(newletter)]"
 			if(2,4,6,15)	newletter="[uppertext(newletter)]"
@@ -244,8 +258,9 @@ proc/slur(phrase)
 	var/p = null
 	p = 1//1 is the start of any word
 	while(p <= n)//while P, which starts at 1 is less or equal to N which is the length.
-		var/n_letter = copytext(te, p, p + 1)//copies text from a certain distance. In this case, only one letter at a time.
-		if (prob(80) && (ckey(n_letter) in list("b","c","d","f","g","h","j","k","l","m","n","p","q","r","s","t","v","w","x","y","z")))
+		var/n_letter = copytext_char(te, p, p + 1)//copies text from a certain distance. In this case, only one letter at a time.
+		if (prob(80) && (ckey(n_letter) in list("b","c","d","f","g","h","j","k","l","m","n","p","q","r","s","t","v","w","x","y","z",	// English stutters
+												"б","в","г","д","ж","з","й","к","л","м","н","п","р","с","т","ф","х","ц","ч","ш","щ")))	// Russian stutters
 			if (prob(10))
 				n_letter = text("[n_letter]-[n_letter]-[n_letter]-[n_letter]")//replaces the current letter with this instead.
 			else
@@ -266,7 +281,7 @@ proc/Gibberish(t, p)//t is the inputted message, and any value higher than 70 fo
 	var/returntext = ""
 	for(var/i = 1, i <= length(t), i++)
 
-		var/letter = copytext(t, i, i+1)
+		var/letter = copytext_char(t, i, i+1)
 		if(prob(50))
 			if(p >= 70)
 				letter = ""
@@ -280,32 +295,60 @@ proc/Gibberish(t, p)//t is the inputted message, and any value higher than 70 fo
 
 /proc/lisp(message, intensity=100) //Intensity = how hard will the dude be lisped
 	message = html_decode(message)
-	message = prob(intensity) ? replacetext(message, "f", "ph") : message
-	message = prob(intensity) ? replacetext(message, "t", "ph") : message
-	message = prob(intensity) ? replacetext(message, "s", "sh") : message
-	message = prob(intensity) ? replacetext(message, "th", "hh") : message
-	message = prob(intensity) ? replacetext(message, "ck", "gh") : message
-	message = prob(intensity) ? replacetext(message, "c", "gh") : message
-	message = prob(intensity) ? replacetext(message, "k", "gh") : message
+	// English lisp
+	message = prob(intensity) ? replacetext_char(message, "f", "ph") : message
+	message = prob(intensity) ? replacetext_char(message, "t", "ph") : message
+	message = prob(intensity) ? replacetext_char(message, "s", "sh") : message
+	message = prob(intensity) ? replacetext_char(message, "th", "hh") : message
+	message = prob(intensity) ? replacetext_char(message, "ck", "gh") : message
+	message = prob(intensity) ? replacetext_char(message, "c", "gh") : message
+	message = prob(intensity) ? replacetext_char(message, "k", "gh") : message
+	// Russian lisp
+	message = prob(intensity) ? replacetext_char(message, "с", "ш") : message
+	message = prob(intensity) ? replacetext_char(message, "з", "ж") : message
+	message = prob(intensity) ? replacetext_char(message, "ч", "шч") : message
+	message = prob(intensity) ? replacetext_char(message, "т", "ф") : message
+	message = prob(intensity) ? replacetext_char(message, "д", "з") : message
+	message = prob(intensity) ? replacetext_char(message, "р", "л") : message
+	message = prob(intensity) ? replacetext_char(message, "л", "в") : message
 	return message
 
 /proc/tongueless(message)
 	message = html_decode(message)
-	message = replacetext(message, "c", "h")
-	message = replacetext(message, "d", "a")
-	message = replacetext(message, "i", "a")
-	message = replacetext(message, "k", "a")
-	message = replacetext(message, "j", "a")
-	message = replacetext(message, "l", "a")
-	message = replacetext(message, "n", "a")
-	message = replacetext(message, "q", "h")
-	message = replacetext(message, "r", "a")
-	message = replacetext(message, "s", "h")
-	message = replacetext(message, "t", "a")
-	message = replacetext(message, "v", "h")
-	message = replacetext(message, "x", "a")
-	message = replacetext(message, "y", "a")
-	message = replacetext(message, "z", "h")
+	// English tongueless
+	message = replacetext_char(message, "c", "h")
+	message = replacetext_char(message, "d", "a")
+	message = replacetext_char(message, "i", "a")
+	message = replacetext_char(message, "k", "a")
+	message = replacetext_char(message, "j", "a")
+	message = replacetext_char(message, "l", "a")
+	message = replacetext_char(message, "n", "a")
+	message = replacetext_char(message, "q", "h")
+	message = replacetext_char(message, "r", "a")
+	message = replacetext_char(message, "s", "h")
+	message = replacetext_char(message, "t", "a")
+	message = replacetext_char(message, "v", "h")
+	message = replacetext_char(message, "x", "a")
+	message = replacetext_char(message, "y", "a")
+	message = replacetext_char(message, "z", "h")
+	// Russian tongueless
+	message = replacetext_char(message, "б", "м")
+	message = replacetext_char(message, "п", "м")
+	message = replacetext_char(message, "в", "ф")
+	message = replacetext_char(message, "г", "х")
+	message = replacetext_char(message, "д", "а")
+	message = replacetext_char(message, "ж", "ш")
+	message = replacetext_char(message, "з", "ш")
+	message = replacetext_char(message, "к", "а")
+	message = replacetext_char(message, "л", "а")
+	message = replacetext_char(message, "н", "м")
+	message = replacetext_char(message, "р", "а")
+	message = replacetext_char(message, "с", "х")
+	message = replacetext_char(message, "т", "а")
+	message = replacetext_char(message, "ц", "х")
+	message = replacetext_char(message, "ч", "ш")
+	message = replacetext_char(message, "щ", "ш")
+	message = replacetext_char(message, "й", "и")
 	return message
 
 /client

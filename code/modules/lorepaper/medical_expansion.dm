@@ -146,7 +146,7 @@
 		if(special_label_image)
 			var/datum/asset/stuff = get_asset_datum(/datum/asset/simple/labels)
 			stuff.send(usr)
-			usr << browse("<HTML><HEAD><TITLE>[name]</TITLE></HEAD><BODY bgcolor='black' style='background-image:url([special_label_image])';></body></html>", "window=[name];can_close=1;can_resize=1;border=1;titlebar=1;size=[label_width]x[label_height]")
+			usr << browse("<HTML><meta charset='UTF-8'><HEAD><TITLE>[name]</TITLE></HEAD><BODY bgcolor='black' style='background-image:url([special_label_image])';></body></html>", "window=[name];can_close=1;can_resize=1;border=1;titlebar=1;size=[label_width]x[label_height]")
 
 /datum/asset/simple/labels
 	assets = list(

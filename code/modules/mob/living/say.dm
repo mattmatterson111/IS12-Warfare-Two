@@ -55,18 +55,18 @@ var/list/department_radio_keys = list(
 
 	  //kinda localization -- rastaf0
 	  //same keys as above, but on russian keyboard layout. This file uses cp1251 as encoding.
-	  ":ê" = "right ear",	".ê" = "right ear",
-	  ":ä" = "left ear",	".ä" = "left ear",
-	  ":ø" = "intercom",	".ø" = "intercom",
-	  ":ð" = "department",	".ð" = "department",
-	  ":ñ" = "Command",		".ñ" = "Command",
-	  ":ò" = "Science",		".ò" = "Science",
-	  ":ü" = "Medical",		".ü" = "Medical",
-	  ":ó" = "Engineering",	".ó" = "Engineering",
-	  ":û" = "Security",	".û" = "Security",
-	  ":ö" = "whisper",		".ö" = "whisper",
-	  ":å" = "Mercenary",	".å" = "Mercenary",
-	  ":é" = "Supply",		".é" = "Supply",
+	  ":И" = "right ear",	".И" = "right ear",
+	  ":Д" = "left ear",	".Д" = "left ear",
+	  ":Ы" = "intercom",	".Ы" = "intercom",
+	  ":р" = "department",	".Р" = "department",
+	  ":д" = "Command",		".д" = "Command",
+	  ":Х" = "Science",		".Х" = "Science",
+	  ":Б" = "Medical",		".Б" = "Medical",
+	  ":в" = "Engineering",	".в" = "Engineering",
+	  ":Ц" = "Security",	".Ц" = "Security",
+	  ":Ф" = "whisper",		".Ф" = "whisper",
+	  ":Ж" = "Mercenary",	".Ж" = "Mercenary",
+	  ":В" = "Supply",		".В" = "Supply",
 )
 
 
@@ -189,19 +189,19 @@ proc/get_radio_key_from_channel(var/channel)
 			return
 
 
-	var/prefix = copytext(message,1,2)
+	var/prefix = copytext_char(message,1,2) //Sanecman was here.
 	if(prefix == get_prefix_key(/decl/prefix/custom_emote))
-		return emote(copytext(message,2))
+		return emote(copytext_char(message,2))
 	if(prefix == get_prefix_key(/decl/prefix/visible_emote))
-		return custom_emote(1, copytext(message,2))
+		return custom_emote(1, copytext_char(message,2))
 
 	//parse the radio code and consume it
 	var/message_mode = parse_message_mode(message, "headset")
 	if (message_mode)
 		if (message_mode == "headset")
-			message = copytext(message,2)	//it would be really nice if the parse procs could do this for us.
+			message = copytext_char(message,2)	//it would be really nice if the parse procs could do this for us.
 		else
-			message = copytext(message,3)
+			message = copytext_char(message,3)
 
 	message = trim_left(message)
 
@@ -209,7 +209,7 @@ proc/get_radio_key_from_channel(var/channel)
 	if(!speaking)
 		speaking = parse_language(message)
 		if(speaking)
-			message = copytext(message,2+length(speaking.key))
+			message = copytext_char(message,2+length(speaking.key))
 		else
 			speaking = get_default_language()
 
@@ -358,7 +358,7 @@ proc/get_radio_key_from_channel(var/channel)
 		*/
 
 		if(!whispering)
-			var/ending = copytext(message, length(message))
+			var/ending = copytext_char(message, length(message))
 			var/sound_key = "m"
 			var/sound_end = ""//Blank string by default
 			if(gender == FEMALE)
@@ -374,7 +374,7 @@ proc/get_radio_key_from_channel(var/channel)
 	var/new_message = message//Need a copy of the original message here.
 
 	//Adds punctuation automatically.
-	var/ending = copytext(new_message, -1)
+	var/ending = copytext_char(new_message, -1)
 	if(!(ending in PUNCTUATION))
 		new_message = "[new_message]."
 
