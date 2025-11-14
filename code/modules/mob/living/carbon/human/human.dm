@@ -1758,7 +1758,7 @@
 					return 0
 				
 				user.adjustStaminaLoss(30) //a whole lotta effort
-				user.visible_message("<span class='combat_success'>[user] throws a HARD punch at [src]! </span>")
+				user.visible_message("<span class='combat_success'>[user] puts some effort into their attack! </span>")
 				src.attack_hand(user, 3)
 				user.setClickCooldown(DEFAULT_SLOW_COOLDOWN)
 				return
