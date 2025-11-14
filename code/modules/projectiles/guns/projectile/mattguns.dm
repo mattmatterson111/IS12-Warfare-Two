@@ -22,6 +22,7 @@
 /obj/item/gun/projectile/shotgun/pump/boltaction/shitty/bayonet
 	name = "\improper Mark I Stormrider"
 	force = 20
+	block_chance = 10
 	sharp = 1
 	attack_verb = list ("stabbed", "sliced")
 	hitsound = "bayonet_stab"
@@ -168,6 +169,7 @@
 
 /obj/item/gun/projectile/shotgun/pump/shitty/bayonet
 	force = 20
+	block_chance = 10
 	sharp = 1
 	attack_verb = list ("stabbed", "sliced")
 	hitsound = "bayonet_stab"
