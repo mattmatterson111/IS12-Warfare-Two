@@ -39,12 +39,16 @@
 	//Ok this if looks like a bit of a mess, and it is. Basically you need to have the sword in your active hand, and pass the default parry check
 	//and also pass the prob which is your melee skill divided by two + the swords block chance. Complicated, I know, but hopefully it'll balance out.
 
-	var/actual_block_chance = prob(block_chance + ((user.SKILL_LEVEL(melee) * 10) / 2))//Skills aren't base 100 anymore they're based 10 so I'm multiplying 100
+	var/actual_block_chance = (block_chance + ((user.SKILL_LEVEL(melee) * 10) / 2))//Skills aren't base 100 anymore they're based 10 so I'm multiplying 100
 
 	if(user.a_intent == I_GRAB) //better chance to block if on grab intent
 		actual_block_chance += 50
 
-	if(default_parry_check(user, attacker, damage_source) && actual_block_chance && (user.get_active_hand() == src))//You gotta be holding onto that sheesh bro.
+	if(default_parry_check(user, attacker, damage_source) && prob(actual_block_chance) && (user.get_active_hand() == src))//You gotta be holding onto that sheesh bro.
+		if(prob(user.STAT_LEVEL(end) + 10))
+			var/mob/living/carbon/human/H = user
+			to_chat(user, "<span class='combat_success'>As you parry, you feel a rush of adrenaline!</span>")
+			H.make_adrenaline(2) //GET THAT BLOOD PUMPING!
 		user.visible_message("<span class='combat_success'>\The [user] parries [attack_text] with \the [src]!</span>")
 		if(parry_sounds.len)
 			playsound(user.loc, pick(parry_sounds), 50, 1)
