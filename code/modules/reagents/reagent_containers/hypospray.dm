@@ -201,6 +201,18 @@
 		icon_state = "syrette_closed"
 	else
 		icon_state = "syrette_open"
+		
+/obj/item/reagent_containers/hypospray/autoinjector/adrenaline //for testing with adrenaline
+	name = "adrenaline syrette"
+	icon_state = "syrette_closed"
+	starts_with = list(/datum/reagent/adrenaline = 19)
+	inject_sound = 'sound/items/syrette_inject.ogg'
+	
+/obj/item/reagent_containers/hypospray/autoinjector/adrenaline/update_icon()
+	if(reagents.total_volume > 0)
+		icon_state = "syrette_closed"
+	else
+		icon_state = "syrette_open"
 
 /obj/item/reagent_containers/glass/ampule
 	name = "ampule"

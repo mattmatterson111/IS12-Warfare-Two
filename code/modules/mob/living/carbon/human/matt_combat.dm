@@ -57,7 +57,7 @@
 
 		//The incapacitated proc includes resting for whatever fucking stupid reason I hate SS13 code so fucking much.
 		visible_message("<span class='notice'>[src] is trying to get up.</span>")
-		if(do_after(src, 20, incapacitation_flags = INCAPACITATION_STUNNED|INCAPACITATION_KNOCKOUT))//So that we can get up when we're handcuffed.
+		if(do_after(src, 20 - src.reagents.get_reagent_amount(/datum/reagent/adrenaline), incapacitation_flags = INCAPACITATION_STUNNED|INCAPACITATION_KNOCKOUT))//So that we can get up when we're handcuffed.
 			resting = 0
 			rest?.icon_state = "rest0"
 			update_canmove()
