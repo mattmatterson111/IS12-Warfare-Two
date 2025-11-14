@@ -700,6 +700,8 @@ default behaviour is:
 		"I just want to rest my eyes a little...",
 		"I'm so tired...",
 		"I need a nap...")
+	if(!src.lying)
+		src.visible_message("<span class='danger'>[src] collapses to the ground!</span>")
 	to_chat(src, "<span class='phobia'<big>[msg]</big></span>")
 	Weaken(5)
 
