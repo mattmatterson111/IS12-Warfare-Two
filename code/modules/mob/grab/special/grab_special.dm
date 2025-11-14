@@ -227,8 +227,10 @@
 
 	if(target.lying)
 		return
+		
+	attacker.adjustStaminaLoss(10)
 
-	var/damage = 20
+	var/damage = attacker.STAT_LEVEL(str)
 	var/obj/item/clothing/hat = attacker.head
 	var/damage_flags = 0
 	if(istype(hat))
