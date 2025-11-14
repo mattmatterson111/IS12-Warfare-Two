@@ -690,13 +690,20 @@ default behaviour is:
 
 		adjustStaminaLoss(speed)
 
-	if(staminaloss >= staminaexhaust && !stat)//Oh shit we've lost too much stamina and now we're tired!
+	if(staminaloss >= staminaexhaust && !stat && src.reagents.get_reagent_amount(/datum/reagent/adrenaline) <= 0)//Oh shit we've lost too much stamina and now we're tired!
 		Exhaust()
 		return
 
 /mob/living/proc/Exhaust()//Called when you run out of stamina.
+	var/msg = pick("I CANT GO ON...",
+		"NOT LIKE THIS...",
+		"I just want to rest my eyes a little...",
+		"I'm so tired...",
+		"I need a nap...")
+	if(!src.lying)
+		src.visible_message("<span class='danger'>[src] collapses to the ground!</span>")
+	to_chat(src, "<span class='phobia'<big>[msg]</big></span>")
 	Weaken(5)
-
 
 /mob/living/verb/resist()
 	set name = "Resist"

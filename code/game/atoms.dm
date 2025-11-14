@@ -492,7 +492,7 @@ its easier to just keep the beam vertical.
 	climbers |= user
 
 	if(!ignore_doafter)
-		if(!do_after(user,(issmall(user) ? 30 : 50), src))
+		if(!do_after(user,(issmall(user) ? 30 : 50) - user.reagents.get_reagent_amount(/datum/reagent/adrenaline), src))
 			climbers -= user
 			return
 

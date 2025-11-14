@@ -133,7 +133,7 @@
 		climbers -= user
 		return
 
-	if(!do_after(user,15))
+	if(!do_after(user,15 - (user.reagents.get_reagent_amount(/datum/reagent/adrenaline) / 2)))
 		climbers -= user
 		return
 
