@@ -1,6 +1,6 @@
 //Going here till I find a better place for it.
 /mob/living/carbon/human/proc/handle_combat_mode()//Makes it so that you can't regain stamina in combat mode.
-	if(weapon_readied || !a_intent == I_HELP) //revert this part if needed
+	if(weapon_readied || a_intent == I_HURT) //no stamina regen if your going all in
 		if(staminaloss < (staminaexhaust/2))
 			adjustStaminaLoss(2)
 
