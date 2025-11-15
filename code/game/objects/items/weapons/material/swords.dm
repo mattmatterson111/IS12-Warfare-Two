@@ -39,12 +39,16 @@
 	//Ok this if looks like a bit of a mess, and it is. Basically you need to have the sword in your active hand, and pass the default parry check
 	//and also pass the prob which is your melee skill divided by two + the swords block chance. Complicated, I know, but hopefully it'll balance out.
 
-	var/actual_block_chance = prob(block_chance + ((user.SKILL_LEVEL(melee) * 10) / 2))//Skills aren't base 100 anymore they're based 10 so I'm multiplying 100
+	var/actual_block_chance = (block_chance + ((user.SKILL_LEVEL(melee) * 10) / 2))//Skills aren't base 100 anymore they're based 10 so I'm multiplying 100
 
-	if(user.atk_intent == I_DEFENSE)
+	if(user.a_intent == I_GRAB) //better chance to block if on grab intent
 		actual_block_chance += 50
 
-	if(default_parry_check(user, attacker, damage_source) && actual_block_chance && (user.get_active_hand() == src))//You gotta be holding onto that sheesh bro.
+	if(default_parry_check(user, attacker, damage_source) && prob(actual_block_chance) && (user.get_active_hand() == src))//You gotta be holding onto that sheesh bro.
+		if(prob(user.STAT_LEVEL(end) + 10))
+			var/mob/living/carbon/human/H = user
+			to_chat(user, "<span class='combat_success'>As you parry, you feel a rush of adrenaline!</span>")
+			H.make_adrenaline(2) //GET THAT BLOOD PUMPING!
 		user.visible_message("<span class='combat_success'>\The [user] parries [attack_text] with \the [src]!</span>")
 		if(parry_sounds.len)
 			playsound(user.loc, pick(parry_sounds), 50, 1)
@@ -52,7 +56,7 @@
 		health -= 0.5
 		if(!prob((user.SKILL_LEVEL(melee) * 10) + 15) || user.staminaloss >= user.staminaexhaust)//If you're out of stamina you will immediately be disarmed.
 			disarm(user)//Moved the disarm affect to it's own proc in case we want to call it elsewhere.
-		else if(user.atk_intent == I_GUARD)//If they're on gaurd intent then attack back immediately.
+		else if(user.a_intent == I_GRAB && prob(user.SKILL_LEVEL(melee) * 10))//If they're on grab intent and get good rng then attack back immediately.
 			if(istype(src, /obj/item/gun))//If they're using a gun I don't want them shooting like it's fucking gun kaka.
 				if(user.a_intent != I_HURT)
 					visible_message("<span class='combat_success'>[user] ripostes!</span>")
@@ -62,7 +66,8 @@
 				visible_message("<span class='combat_success'>[user] ripostes!</span>")
 				src.attack(attacker, user, def_zone)
 				user.adjustStaminaLoss(5)
-		return 1
+		return 1 //successful parry
+	return 0 //failed parry
 
 /obj/item/proc/disarm(mob/living/user)
 	user.visible_message("<span class='danger'>\The [src] flies out of \the [user]'s hand!</span>")
@@ -174,6 +179,9 @@
 
 
 /obj/item/material/sword/combat_knife/attack(mob/living/carbon/C as mob, mob/living/user as mob)
+	var/mob/living/carbon/human/H = user
+	//var/mob/living/carbon/human/T = C
+	
 	if(user.a_intent == I_HELP && (C.handcuffed) && (istype(C.handcuffed, /obj/item/handcuffs/cable)))
 		usr.visible_message("\The [usr] cuts \the [C]'s restraints with \the [src]!",\
 		"You cut \the [C]'s restraints with \the [src]!",\
@@ -186,6 +194,32 @@
 
 	if(user.a_intent == I_HELP)
 		remove_shrapnel(C, user)
+	
+	var/obj/item/organ/external/lhand = H.organs_by_name["l_hand"] //if one hand isn't useable we can assume we ain't disarming or grabbing with the offhand
+	var/obj/item/organ/external/rhand = H.organs_by_name["r_hand"]
+	var/usableoffhand = TRUE
+	if(!lhand || !lhand.is_usable() || !rhand || !rhand.is_usable())
+		usableoffhand = FALSE
+	
+	if(user.a_intent == I_DISARM && usableoffhand == TRUE && H.get_inactive_hand() == null) //some solid snake shit
+		H.swap_hand()
+		H.species.disarm_attackhand(H, C, (user.SKILL_LEVEL(melee) * 10 - 60)) //at least adept to disarm with a knife effectively, more than that and you get a bonus 
+		H.swap_hand()
+		usr.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
+		return
+	
+	if(user.a_intent == I_GRAB && usableoffhand == TRUE && H.get_inactive_hand() == null) //some solid snake shit
+		if(prob(user.SKILL_LEVEL(melee) * 10))
+			C.visible_message("<span class='combat_success'>[H] attempts to grab [C] with their offhand!</span>")
+			H.swap_hand()
+			C.attack_hand(H)
+			H.swap_hand()
+			usr.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
+			return
+		else
+			C.visible_message("<span class='danger'>[H] attempted to grab [C] with their offhand!</span>")
+			
+		
 	else
 		..()
 

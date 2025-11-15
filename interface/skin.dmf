@@ -256,6 +256,9 @@ macro "macro"
 	elem 
 		name = "Delete"
 		command = "delete-key-pressed"
+	elem
+		name = "SHIFT+B"
+		command = "defensive_combat_intent"
 	elem 
 		name = "CTRL+1"
 		command = "quick-equip-left-pocket"
@@ -468,6 +471,9 @@ macro "hotkeymode"
 	elem
 		name = "SHIFT+E"
 		command = "quick-equip-belt"
+	elem
+		name = "SHIFT+B"
+		command = "defensive_combat_intent"
 	elem 
 		name = "F"
 		command = "set-fixeye"

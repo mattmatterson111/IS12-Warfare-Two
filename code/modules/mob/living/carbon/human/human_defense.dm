@@ -158,8 +158,9 @@ meteor_act
 
 /mob/living/carbon/human/resolve_item_attack(obj/item/I, mob/living/carbon/human/user, var/target_zone, var/special = FALSE)
 	for (var/obj/item/grab/G in grabbed_by)
-		if(G.resolve_item_attack(user, I, target_zone))
-			return null
+		if(special == FALSE) //no heavy attack throat slit please
+			if(G.resolve_item_attack(user, I, target_zone)) 
+				return null
 
 	if(user == src) // Attacking yourself can't miss
 		return target_zone
@@ -173,13 +174,20 @@ meteor_act
 	var/hit_zone = get_zone_with_miss_chance(target_zone, src, accuracy_penalty)
 
 	if(special)
-		switch(user.atk_intent)
-			if(I_AIMED)//More accurate attack
+		switch(user.a_intent)
+			if(I_GRAB)//More accurate attack
 				hit_zone = target_zone
 
+	var/bad_arc = reverse_direction(src.dir) //arc of directions from which we cannot block or dodge
+
+	if(check_shield_arc(src, bad_arc, hit_zone, user)) //cant dodge from behind
+		if(attempt_dodge())
+			return null
+	/*
 	if(attempt_dodge())
 		return null
-
+	*/
+	
 	if(!hit_zone)
 		visible_message("<span class='danger'>\The [user] misses [src] with \the [I]!</span>")
 		return null
@@ -192,7 +200,7 @@ meteor_act
 		to_chat(user, "<span class='danger'>They are missing that limb!</span>")
 		return null
 
-	if(user.statscheck(skills = user.SKILL_LEVEL(melee)) == CRIT_FAILURE || (prob(50) && is_hellbanned()))
+	if(user.statscheck(skills = user.SKILL_LEVEL(melee)) == CRIT_FAILURE && user.a_intent == I_HURT || (prob(50) && is_hellbanned())) //critical misses only happen on harm intent now
 		user.resolve_critical_miss(I)
 		return null
 
@@ -251,16 +259,16 @@ meteor_act
 		effective_force *= strToDamageModifier(user.STAT_LEVEL(str))
 
 	if(special)
-		switch(user.atk_intent)
-			if(I_STRONG)//Offensive attacks do even more damage.
+		switch(user.a_intent)
+			if(I_HURT)//Offensive attacks do even more damage.
 				effective_force += I.force
 			if(I_WEAK)
 				effective_force = (effective_force/2) //Half the amount of force.
 
-	if(user.atk_intent == I_GUARD && user.combat_mode)//If we're guarding then hit for less damage.
+	if(user.a_intent == I_DISARM)//If we're trying to disarm then hit for less damage.
 		effective_force = (effective_force * 0.25)
 
-	if(user.atk_intent == I_DEFENSE && user.combat_mode)
+	if(user.a_intent == I_GRAB) //If we're trying to grab then hit for less damage
 		effective_force = (effective_force * 0.40)
 
 	if(effective_force > 10 || effective_force >= 5 && prob(33))
@@ -308,12 +316,13 @@ meteor_act
 		attack_bloody(I, user, effective_force, hit_zone)
 
 	//This was commented out because critical successes are OP as shit. Now they're back.
-	/*
+	
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
-		if(H.statscheck(skills = H.SKILL_LEVEL(melee)) == CRIT_SUCCESS)
+		if(H.statscheck(skills = H.SKILL_LEVEL(melee)) == CRIT_SUCCESS && user.a_intent == I_HURT)
 			resolve_critical_hit()
-	*/ //And now it's commented out again.
+	 //And now it's commented out again.
+	 //WERE SO BACK (*only on harm intent. all in baby)
 
 	if(hit_zone == BP_R_HAND || hit_zone == BP_L_HAND)
 		var/list/holding= list(src.get_active_hand(), src.get_inactive_hand())
