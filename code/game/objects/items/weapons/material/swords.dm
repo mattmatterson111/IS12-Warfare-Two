@@ -68,6 +68,7 @@
 				user.adjustStaminaLoss(5)
 		return 1 //successful parry
 	return 0 //failed parry
+
 /obj/item/proc/disarm(mob/living/user)
 	user.visible_message("<span class='danger'>\The [src] flies out of \the [user]'s hand!</span>")
 	user.drop_from_inventory(src)
