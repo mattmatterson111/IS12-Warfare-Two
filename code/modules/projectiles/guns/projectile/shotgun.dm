@@ -251,5 +251,5 @@
 	forwardsound = 'sound/weapons/guns/interact/rifle_boltforward.ogg'
 	ammo_type = /obj/item/ammo_casing/a762
 	wielded_item_state = "rifle-wielded"
-	block_chance = 45
+	block_chance = 0 //heavy nerf
 	gun_type = GUN_PISTOL
