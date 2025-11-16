@@ -196,6 +196,7 @@
 		var/obj/item/clothing/accessory/medal/red/captain/cross1/M = new(H)
 		RC.attach_accessory(H, M, TRUE)
 
+		H.add_stats(rand(12,17), rand(10,16), rand(8,12), rand(10, 16)) //on par with normal soldiers
 		H.fully_replace_character_name("Cpt. [current_name]")
 		H.get_idcard()?.access = get_all_accesses()
 		var/obj/O = H.get_equipped_item(slot_s_store)
