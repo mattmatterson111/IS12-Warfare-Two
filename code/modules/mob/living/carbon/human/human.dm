@@ -1792,8 +1792,8 @@
 					facing_dir = NORTH
 				else
 					facing_dir = SOUTH
-
-			set_face_dir(facing_dir)
+			if(!src.facing_dir)
+				set_face_dir(facing_dir)
 
 		zoomed = TRUE
 
@@ -1868,7 +1868,7 @@
 
 /mob/living/carbon/human/proc/has_low_circulation()
 	return (get_blood_circulation() <= 60)
-	
+
 // trench kiss
 /mob/living/carbon/human/proc/tkiss_try(var/mob/living/carbon/human/H)
 	var/turf/T = get_turf(H)
