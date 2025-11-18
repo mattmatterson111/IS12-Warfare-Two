@@ -299,20 +299,30 @@
 /datum/grab/special/proc/attack_throat(var/obj/item/grab/G, var/obj/item/W, var/mob/living/carbon/human/user)
 	var/mob/living/carbon/human/affecting = G.affecting
 	var/obj/item/organ/external/O = G.get_targeted_organ()
+	var/decapitation = FALSE
 	
 	if(user.a_intent != I_HURT)
 		return 0 // Not trying to hurt them.
 
 	if(!W.edge || !W.force || W.damtype != BRUTE)
 		return 0 //unsuitable weapon
-	user.visible_message("<span class='danger'>\The [user] begins to slit [affecting]'s throat with \the [W]!</span>")
+		
+	if(O.status & ORGAN_ARTERY_CUT) //Balancing so you can't instantly cut off someones head for free, you work for that shit.
+		decapitation = TRUE
+		user.visible_message("<span class='danger'>\The [user] begins to cut [affecting]'s head off with \the [W]!</span>")
+	else
+		user.visible_message("<span class='danger'>\The [user] begins to slit [affecting]'s throat with \the [W]!</span>")
 
 	var/meleeskill = user.SKILL_LEVEL(melee)
 	
 	user.next_move = world.time + 20 - meleeskill //also should prevent user from triggering this repeatedly
 
-	if(!do_after(user, (20 - meleeskill), progress = 0))
+	if(decapitation == TRUE)
+		if(!do_after(user, (40 - meleeskill), progress = 0)) //it should take longer to cut off someones head no?
+			return 0
+	else if(!do_after(user, (20 - meleeskill), progress = 0))
 		return 0
+	
 	if(!(G && G.affecting == affecting)) //check that we still have a grab
 		return 0
 
@@ -331,10 +341,18 @@
 		total_damage += damage
 
 	if(total_damage)
-		user.visible_message("<span class='danger'>\The [user] slit [affecting]'s throat open with \the [W]!</span>")
+		if(decapitation == TRUE && prob(O.damage/5 + user.STAT_LEVEL(str))) //around 30-40% average at max damage?
+			var/obj/item/organ/external/head = affecting.get_organ(BP_HEAD)
+			user.visible_message("<span class='danger'>\The [user] cut [affecting]'s head off with \the [W]!</span>")
+			head.droplimb(0, DROPLIMB_EDGE)
+		else
+			if(decapitation == TRUE) //we failed to cut off the head
+				user.visible_message("<span class='danger'>\The [user] failed to cut [affecting]'s head off with \the [W]!</span>")
+			else
+				user.visible_message("<span class='danger'>\The [user] slit [affecting]'s throat open with \the [W]!</span>")
 		
-		if(O.sever_artery()) //FUKKEN KILLEM YEAAAAHHHH
-			user.visible_message("<span class='danger'>\The [affecting]'s [O.artery_name] was severed!</span>")
+			if(O.sever_artery()) //FUKKEN KILLEM YEAAAAHHHH
+				user.visible_message("<span class='danger'>\The [affecting]'s [O.artery_name] was severed!</span>")	
 
 		if(W.hitsound)
 			playsound(affecting.loc, W.hitsound, 50, 1, -1)
