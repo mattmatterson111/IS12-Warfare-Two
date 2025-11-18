@@ -120,6 +120,7 @@
 		var/current_name = H.real_name
 		..()
 		H.fully_replace_character_name("Sniper [current_name]")
+		H.add_stats(rand(10,15), rand(10,16), rand(14,18), rand(10, 12)) //lower str, and end, higher int and dex
 		H.say(";Sniper reporting for duty!")
 
 /datum/job/soldier/red_soldier/sentry
