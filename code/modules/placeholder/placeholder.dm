@@ -261,7 +261,7 @@ GLOBAL_LIST_EMPTY(faction_dosh)
 									GLOB.faction_dosh[id] -= costofartillery
 									playsound(src.loc, 'sound/machines/rpf/sendmsgcargo.ogg', 100, 0)
 									spawn(8 SECONDS)
-										artillery_barage(x,y,2)
+										artillery_barage(x_input,y_input,2) // artillery used console cords so unfortunate cap was blown to smithereens with his own artillery barrage
 								else
 									playsound(src.loc, 'sound/machines/rpf/denybeep.ogg', 100, 0.5)
 									to_chat(user, "\icon[src]The coordinates were invalid, <span class='warning'>Captain</span>.")
