@@ -97,13 +97,14 @@
 
 	var/meleeskill = assailant.SKILL_LEVEL(melee)
 	
+	assailant.visible_message("<span class='danger'>[assailant] tries to break [affecting]'s [O.name]!</span>") //shoulda moved this here earlier
+	
 	if(!do_after(assailant, (30 - meleeskill), affecting))
 		assailant.doing_something = FALSE
 		return
 
 
 	if(!O.is_broken()) // The limb is broken and we're grabbing it in both hands.
-		assailant.visible_message("<span class='danger'>[assailant] tries to break [affecting]'s [O.name]!</span>")
 		var/break_chance = (assailant.STAT_LEVEL(str)*10) - 105 // We have to have a strength over 12 to really have a chance of breaking a limb.
 		assailant.doing_something = FALSE
 		if(break_chance <= 0)
@@ -154,6 +155,8 @@
 
 	var/meleeskill = assailant.SKILL_LEVEL(melee)
 	
+	affecting.visible_message("<span class='notice'>[assailant] is trying to pin [affecting] to the ground!</span>")
+	
 	if(!do_after(assailant, (30 - meleeskill), affecting))
 		assailant.doing_something = FALSE
 		return
@@ -162,7 +165,6 @@
 	
 		assailant.doing_something = FALSE
 
-		affecting.visible_message("<span class='notice'>[assailant] is trying to pin [affecting] to the ground!</span>")
 		G.attacking = 1
 
 		if(!assailant.statscheck(assailant.STAT_LEVEL(str) / 2 + 3) >= SUCCESS && do_mob(assailant, affecting, 30))
