@@ -80,6 +80,8 @@
 	var/obj/item/organ/external/O = G.get_targeted_organ()
 	var/mob/living/carbon/human/assailant = G.assailant
 	var/mob/living/carbon/human/affecting = G.affecting
+	var/necksnap = FALSE
+	
 	if(assailant.doing_something)
 		to_chat(assailant, "<span class='warning'>Already doing something!</span>")
 		return
@@ -94,17 +96,41 @@
 		to_chat(assailant, "<span class='warning'>We must wield them in both hands to break their limb.</span>")
 		assailant.doing_something = FALSE
 		return
+		
+	if(G.target_zone == BP_HEAD)
+		var/bad_arc = reverse_direction(affecting.dir)
+		if(!assailant.lying && !affecting.lying && !check_shield_arc(affecting, bad_arc, null, assailant) || !assailant.lying && affecting.lying)
+			necksnap = TRUE //you have to be right behind them and they have to be looking away from you, or they have to be on the ground and you standing
 
 	var/meleeskill = assailant.SKILL_LEVEL(melee)
 	
-	assailant.visible_message("<span class='danger'>[assailant] tries to break [affecting]'s [O.name]!</span>") //shoulda moved this here earlier
+	if(necksnap == TRUE)
+		assailant.visible_message("<span class='danger'>[assailant] tries to break [affecting]'s neck!</span>")
+	else
+		assailant.visible_message("<span class='danger'>[assailant] tries to break [affecting]'s [O.name]!</span>")
 	
 	if(!do_after(assailant, (30 - meleeskill), affecting))
 		assailant.doing_something = FALSE
 		return
 
+	if(necksnap == TRUE) // The limb is broken and we're grabbing it in both hands.
+		assailant.doing_something = FALSE
+		var/break_chance = O.damage/5 + assailant.STAT_LEVEL(str) - affecting.STAT_LEVEL(end) //did you know neck snapping irl is heavily impractical?
+		assailant.doing_something = FALSE
+		if(break_chance <= 0)
+			break_chance = 10
+		if(prob(break_chance))
+			assailant.visible_message("<span class='danger'>[assailant] snaps [affecting]'s neck!</span>")
+			for(var/i in 1 to 20)
+				affecting.apply_damage(5, BRUTE, BP_HEAD, 0) //we dont want their head to explode
+			if(!O.is_broken()) //break if not already broken
+				O.fracture()
+			affecting.death() //kill em.
+		else
+			assailant.visible_message("<span class='danger'>[assailant] failed to snap [affecting]'s neck!</span>")
+			affecting.apply_damage(assailant.STAT_LEVEL(str), BRUTE, BP_HEAD, 0)
 
-	if(!O.is_broken()) // The limb is broken and we're grabbing it in both hands.
+	else if(!O.is_broken()) // The limb is broken and we're grabbing it in both hands.
 		var/break_chance = (assailant.STAT_LEVEL(str)*10) - 105 // We have to have a strength over 12 to really have a chance of breaking a limb.
 		assailant.doing_something = FALSE
 		if(break_chance <= 0)
