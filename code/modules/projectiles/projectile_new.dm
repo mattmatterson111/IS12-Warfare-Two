@@ -799,7 +799,7 @@
 				//if(Bump(G.affecting))
 					//return //If Collide() returns 0 (keep going) then we continue on to attack M.
 				Bump(G.affecting, TRUE) //we're forcing them in the way, it should be guaranteed
-				G.get_back_down()
+				G.get_back_down() //and set em back down afterwards.
 
 			passthrough = !attack_mob(M, distance)
 		else
