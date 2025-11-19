@@ -788,8 +788,9 @@
 		if(istype(A, /mob/living))
 			//if they have a grab on someone, that person gets hit instead
 			var/obj/item/grab/G = locate() in M
+			var/mob/living/carbon/human/stoplying = A //balancing
 			var/bad_arc = reverse_direction(A.dir) //getting shot from behind means no human shielding
-			if(G && G.shield_assailant() && check_shield_arc(A, bad_arc, src))
+			if(G && G.shield_assailant() && !stoplying.lying && check_shield_arc(A, bad_arc, src))
 				var/turf/moveto = get_step(M, get_dir(M, starting)) //get direction of projectile
 				G.affecting.forceMove(moveto) //move em in the way
 				G.force_them_up() 
