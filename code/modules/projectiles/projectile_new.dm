@@ -792,6 +792,7 @@
 			var/bad_arc = reverse_direction(A.dir) //getting shot from behind means no human shielding
 			if(G && G.shield_assailant() && !stoplying.lying && check_shield_arc(A, bad_arc, src))
 				var/turf/moveto = get_step(M, get_dir(M, starting)) //get direction of projectile
+				A.set_dir(get_dir(M, starting)) 
 				G.affecting.forceMove(moveto) //move em in the way
 				G.force_them_up() 
 				G.affecting.update_canmove() //stand em up
