@@ -184,3 +184,15 @@
 		return
 	. = ..()
 	wield(user)
+
+/obj/structure/closet/crate/club
+
+/obj/structure/closet/crate/club/WillContain()
+	return list(
+		/obj/item/melee/classic_baton/trench_club = 5)
+
+/obj/structure/closet/crate/grenade
+
+/obj/structure/closet/crate/grenade/WillContain()
+	return list(
+		/obj/item/grenade/frag/warfare = 5)
