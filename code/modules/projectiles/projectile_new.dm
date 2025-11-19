@@ -790,14 +790,14 @@
 			var/obj/item/grab/G = locate() in M
 			var/bad_arc = reverse_direction(A.dir) //getting shot from behind means no human shielding
 			if(G && G.shield_assailant() && check_shield_arc(A, bad_arc, src))
-				var/turf/moveto = get_step(M, get_dir(M, starting))
-				G.affecting.forceMove(moveto)
-				G.force_them_up()
-				G.affecting.update_canmove()
+				var/turf/moveto = get_step(M, get_dir(M, starting)) //get direction of projectile
+				G.affecting.forceMove(moveto) //move em in the way
+				G.force_them_up() 
+				G.affecting.update_canmove() //stand em up
 				visible_message("<span class='danger'>\The [M] uses [G.affecting] as a shield!</span>")
 				//if(Bump(G.affecting))
 					//return //If Collide() returns 0 (keep going) then we continue on to attack M.
-				Bump(G.affecting, TRUE)
+				Bump(G.affecting, TRUE) //we're forcing them in the way, it should be guaranteed
 
 			passthrough = !attack_mob(M, distance)
 		else
