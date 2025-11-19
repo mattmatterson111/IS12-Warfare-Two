@@ -6,7 +6,7 @@
 	equip(var/mob/living/carbon/human/H)
 		H.warfare_faction = RED_TEAM
 		..()
-		H.add_stats(rand(6,10), rand(6,10), rand(6,10))
+		H.add_stats(rand(6,10), rand(6,10), rand(6,10), rand(6,10))
 		SSwarfare.red.team += H
 		H.warfare_language_shit(LANGUAGE_RED)
 		H.assign_random_quirk()

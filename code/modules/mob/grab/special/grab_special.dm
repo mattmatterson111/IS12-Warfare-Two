@@ -80,6 +80,8 @@
 	var/obj/item/organ/external/O = G.get_targeted_organ()
 	var/mob/living/carbon/human/assailant = G.assailant
 	var/mob/living/carbon/human/affecting = G.affecting
+	var/necksnap = FALSE
+	
 	if(assailant.doing_something)
 		to_chat(assailant, "<span class='warning'>Already doing something!</span>")
 		return
@@ -94,16 +96,41 @@
 		to_chat(assailant, "<span class='warning'>We must wield them in both hands to break their limb.</span>")
 		assailant.doing_something = FALSE
 		return
+		
+	if(G.target_zone == BP_HEAD)
+		var/bad_arc = reverse_direction(affecting.dir)
+		if(!assailant.lying && !affecting.lying && !check_shield_arc(affecting, bad_arc, null, assailant) || !assailant.lying && affecting.lying)
+			necksnap = TRUE //you have to be right behind them and they have to be looking away from you, or they have to be on the ground and you standing
 
 	var/meleeskill = assailant.SKILL_LEVEL(melee)
+	
+	if(necksnap == TRUE)
+		assailant.visible_message("<span class='danger'>[assailant] tries to break [affecting]'s neck!</span>")
+	else
+		assailant.visible_message("<span class='danger'>[assailant] tries to break [affecting]'s [O.name]!</span>")
 	
 	if(!do_after(assailant, (30 - meleeskill), affecting))
 		assailant.doing_something = FALSE
 		return
 
+	if(necksnap == TRUE) // The limb is broken and we're grabbing it in both hands.
+		assailant.doing_something = FALSE
+		var/break_chance = O.damage/5 + assailant.STAT_LEVEL(str) - affecting.STAT_LEVEL(end) //did you know neck snapping irl is heavily impractical?
+		assailant.doing_something = FALSE
+		if(break_chance <= 0)
+			break_chance = 10
+		if(prob(break_chance))
+			assailant.visible_message("<span class='danger'>[assailant] snaps [affecting]'s neck!</span>")
+			for(var/i in 1 to 20)
+				affecting.apply_damage(5, BRUTE, BP_HEAD, 0) //we dont want their head to explode
+			if(!O.is_broken()) //break if not already broken
+				O.fracture()
+			affecting.death() //kill em.
+		else
+			assailant.visible_message("<span class='danger'>[assailant] failed to snap [affecting]'s neck!</span>")
+			affecting.apply_damage(assailant.STAT_LEVEL(str), BRUTE, BP_HEAD, 0)
 
-	if(!O.is_broken()) // The limb is broken and we're grabbing it in both hands.
-		assailant.visible_message("<span class='danger'>[assailant] tries to break [affecting]'s [O.name]!</span>")
+	else if(!O.is_broken()) // The limb is broken and we're grabbing it in both hands.
 		var/break_chance = (assailant.STAT_LEVEL(str)*10) - 105 // We have to have a strength over 12 to really have a chance of breaking a limb.
 		assailant.doing_something = FALSE
 		if(break_chance <= 0)
@@ -154,6 +181,8 @@
 
 	var/meleeskill = assailant.SKILL_LEVEL(melee)
 	
+	affecting.visible_message("<span class='notice'>[assailant] is trying to pin [affecting] to the ground!</span>")
+	
 	if(!do_after(assailant, (30 - meleeskill), affecting))
 		assailant.doing_something = FALSE
 		return
@@ -162,7 +191,6 @@
 	
 		assailant.doing_something = FALSE
 
-		affecting.visible_message("<span class='notice'>[assailant] is trying to pin [affecting] to the ground!</span>")
 		G.attacking = 1
 
 		if(!assailant.statscheck(assailant.STAT_LEVEL(str) / 2 + 3) >= SUCCESS && do_mob(assailant, affecting, 30))
@@ -299,20 +327,30 @@
 /datum/grab/special/proc/attack_throat(var/obj/item/grab/G, var/obj/item/W, var/mob/living/carbon/human/user)
 	var/mob/living/carbon/human/affecting = G.affecting
 	var/obj/item/organ/external/O = G.get_targeted_organ()
+	var/decapitation = FALSE
 	
 	if(user.a_intent != I_HURT)
 		return 0 // Not trying to hurt them.
 
 	if(!W.edge || !W.force || W.damtype != BRUTE)
 		return 0 //unsuitable weapon
-	user.visible_message("<span class='danger'>\The [user] begins to slit [affecting]'s throat with \the [W]!</span>")
+		
+	if(O.status & ORGAN_ARTERY_CUT) //Balancing so you can't instantly cut off someones head for free, you work for that shit.
+		decapitation = TRUE
+		user.visible_message("<span class='danger'>\The [user] begins to cut [affecting]'s head off with \the [W]!</span>")
+	else
+		user.visible_message("<span class='danger'>\The [user] begins to slit [affecting]'s throat with \the [W]!</span>")
 
 	var/meleeskill = user.SKILL_LEVEL(melee)
 	
 	user.next_move = world.time + 20 - meleeskill //also should prevent user from triggering this repeatedly
 
-	if(!do_after(user, (20 - meleeskill), progress = 0))
+	if(decapitation == TRUE)
+		if(!do_after(user, (40 - meleeskill), progress = 0)) //it should take longer to cut off someones head no?
+			return 0
+	else if(!do_after(user, (20 - meleeskill), progress = 0))
 		return 0
+	
 	if(!(G && G.affecting == affecting)) //check that we still have a grab
 		return 0
 
@@ -331,10 +369,18 @@
 		total_damage += damage
 
 	if(total_damage)
-		user.visible_message("<span class='danger'>\The [user] slit [affecting]'s throat open with \the [W]!</span>")
+		if(decapitation == TRUE && prob(O.damage/5 + user.STAT_LEVEL(str))) //around 30-40% average at max damage?
+			var/obj/item/organ/external/head = affecting.get_organ(BP_HEAD)
+			user.visible_message("<span class='danger'>\The [user] cut [affecting]'s head off with \the [W]!</span>")
+			head.droplimb(0, DROPLIMB_EDGE)
+		else
+			if(decapitation == TRUE) //we failed to cut off the head
+				user.visible_message("<span class='danger'>\The [user] failed to cut [affecting]'s head off with \the [W]!</span>")
+			else
+				user.visible_message("<span class='danger'>\The [user] slit [affecting]'s throat open with \the [W]!</span>")
 		
-		if(O.sever_artery()) //FUKKEN KILLEM YEAAAAHHHH
-			user.visible_message("<span class='danger'>\The [affecting]'s [O.artery_name] was severed!</span>")
+			if(O.sever_artery()) //FUKKEN KILLEM YEAAAAHHHH
+				user.visible_message("<span class='danger'>\The [affecting]'s [O.artery_name] was severed!</span>")	
 
 		if(W.hitsound)
 			playsound(affecting.loc, W.hitsound, 50, 1, -1)
