@@ -125,8 +125,7 @@ var/list/admin_verbs_admin = list(
 	/datum/admins/proc/toggle_panic_bunker,
 	/datum/admins/proc/force_aspect,
 	/client/proc/become_phone_operator,
-	/client/proc/become_morale_oficer,
-	/client/proc/become_man_with_knives
+	/client/proc/become_morale_oficer
 )
 var/list/admin_verbs_ban = list(
 	/client/proc/unban_panel,
@@ -1039,49 +1038,6 @@ var/list/admin_verbs_mentor = list(
 	equip_this.equip(src)
 	src.add_language(LANGUAGE_BLUE)
 	src.add_language(LANGUAGE_RED)
-
-/client/proc/become_man_with_knives()
-	set name = "Become MAN WITH KNIVES"
-	set category = "Special Verbs"
-	if(!holder)
-		to_chat(usr, "<span class='danger'>Only administrators may use this command.</span>")
-		return
-	if(!ticker)
-		to_chat(usr, "<span class='danger'>The game hasn't started yet!</span>")
-		return
-	if(ticker.current_state == 1)
-		to_chat(usr, "<span class='danger'>The round hasn't started yet!</span>")
-		return
-
-	var/confirm = alert("Are you sure you want to become a MAN WITH KNIVES?", "Only violence", "Yes", "No")
-	if(confirm == "Yes")
-		confirm = alert("Spawn on your current location?", "Else, be sent to the admin room", "Yes", "No")
-		var/turf/spawnpoint = null
-		if(confirm == "Yes")
-			spawnpoint = get_turf(mob)
-		else
-			for(var/obj/effect/landmark/start/man_with_knives/landmark in landmarks_list)
-				spawnpoint = get_turf(landmark)
-				break
-		if(!spawnpoint)
-			to_chat(usr, "Somehow, we could not find a spawnpoint. Damn.h")
-		log_and_message_admins("[src] became a MAN WITH KNIVES.", src)
-		var/mob/old_mob = mob
-		var/mob/living/carbon/human/deployed_killer = new/mob/living/carbon/human/man_with_knives(spawnpoint)
-		deployed_killer.ckey = src.ckey
-		if(ishuman(old_mob))
-			qdel(old_mob)
-		to_chat(deployed_killer,SPAN_WARNING("YOU ARE THE MAN WITH KNIVES.\n\nGOAL:\n\nBE MYSTERIOUS AND BE VIOLENT. KILL EVERYONE YOU SEE.\n\nYOU DON'T SPEAK ANY LANGUAGE. THE ONLY THING YOU TALK WITH ARE YOUR KNIVES.\n\nYOU ARE NOT IMMORTAL, BUT VERY FUCKING STRONG.\n\n HAVE FUN!"))
-		to_chat(deployed_killer,SPAN_WARNING("(EVERYONE IS DEAD. NO ONE BELIEVED YOU. SHOW THEM THE TRUTH.)"))
-
-/mob/living/carbon/human/man_with_knives
-	name = "MAN WITH KNIVES"
-
-/mob/living/carbon/human/man_with_knives/Initialize()
-	. = ..()
-	to_chat(src,"[src.name]")
-	var/decl/hierarchy/outfit/equip_this = outfit_by_type(/decl/hierarchy/outfit/man_with_knives)
-	equip_this.equip(src)
 
 //FORCE ROUNDEND
 /client/proc/force_warfare_end()
