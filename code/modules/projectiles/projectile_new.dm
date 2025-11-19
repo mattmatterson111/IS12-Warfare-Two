@@ -794,6 +794,7 @@
 				var/turf/moveto = get_step(M, get_dir(M, starting)) //get direction of projectile
 				A.set_dir(get_dir(M, starting)) 
 				G.affecting.forceMove(moveto) //move em in the way
+				stoplying.adjustStaminaLoss(damage) //balancing
 				G.force_them_up() 
 				G.affecting.update_canmove() //stand em up
 				visible_message("<span class='danger'>\The [M] uses [G.affecting] as a shield!</span>")
