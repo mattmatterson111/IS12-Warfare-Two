@@ -795,8 +795,9 @@
 				G.force_them_up()
 				G.affecting.update_canmove()
 				visible_message("<span class='danger'>\The [M] uses [G.affecting] as a shield!</span>")
-				if(Bump(G.affecting))
-					return //If Collide() returns 0 (keep going) then we continue on to attack M.
+				//if(Bump(G.affecting))
+					//return //If Collide() returns 0 (keep going) then we continue on to attack M.
+				Bump(G.affecting, TRUE)
 
 			passthrough = !attack_mob(M, distance)
 		else
