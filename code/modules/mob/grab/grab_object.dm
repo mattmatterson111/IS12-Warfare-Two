@@ -210,6 +210,9 @@
 
 /obj/item/grab/proc/reset_position()
 	current_grab.reset_position(src)
+	
+/obj/item/grab/proc/force_them_up() //for human shielding
+	current_grab.force_stand = 1
 
 /*
 	This section is for the simple procs used to return things from current_grab.

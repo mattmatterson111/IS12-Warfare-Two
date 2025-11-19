@@ -786,9 +786,14 @@
 	if(ismob(A))
 		var/mob/M = A
 		if(istype(A, /mob/living))
-			//if they have a neck grab on someone, that person gets hit instead
+			//if they have a grab on someone, that person gets hit instead
 			var/obj/item/grab/G = locate() in M
-			if(G)
+			var/bad_arc = reverse_direction(A.dir) //getting shot from behind means no human shielding
+			if(G && G.shield_assailant() && check_shield_arc(A, bad_arc, src))
+				var/turf/moveto = get_step(M, get_dir(M, starting))
+				G.affecting.forceMove(moveto)
+				G.force_them_up()
+				G.affecting.update_canmove()
 				visible_message("<span class='danger'>\The [M] uses [G.affecting] as a shield!</span>")
 				if(Bump(G.affecting))
 					return //If Collide() returns 0 (keep going) then we continue on to attack M.
