@@ -11,10 +11,10 @@ SUBSYSTEM_DEF(aspects)
 	..(timeofday)
 	get_or_set_aspect()
 
-/datum/controller/subsystem/aspects/proc/get_or_set_aspect(var/datum/aspect/B = null)
+/datum/controller/subsystem/aspects/proc/get_or_set_aspect(var/datum/aspect/B = null, var/forced = FALSE)
 	if(!config.use_aspect_system)
 		return
-	if(prob(75))//75% of not choosing an aspect at all. Not enough systems to keep this interesting at the moment.
+	if(prob(75) && forced == FALSE)//75% of not choosing an aspect at all. Not enough systems to keep this interesting at the moment.
 		return
 
 	for(var/thing in GLOB.possible_aspects)//Populate possible aspects list.
@@ -48,5 +48,5 @@ SUBSYSTEM_DEF(aspects)
 		to_chat(usr, "Error: you are not an admin!")
 		return
 	var/datum/aspect/A = input("Select Aspect.", "Force Aspect.") as anything in SSaspects.possible_aspects
-	SSaspects.get_or_set_aspect(A)
+	SSaspects.get_or_set_aspect(A, TRUE)
 	log_and_message_admins("has forced the aspect to [SSaspects.chosen_aspect.name]. Description: [SSaspects.chosen_aspect.desc]")
