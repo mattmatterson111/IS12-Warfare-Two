@@ -16,7 +16,7 @@ IT'S IMPORTANT TO REMEMBER THAT YES, ASPECTS HAVE THE HUGE POTENTIAL TO RUIN GAM
 
 //Global "chosen aspect" mainly used to affect stuff post game launch
 //The global list of aspects that can be chosen. Used in gameticker.dm
-GLOBAL_LIST_INIT(possible_aspects, list(/datum/aspect/clean_guns, /datum/aspect/extramoney, /datum/aspect/additional_troops, /datum/aspect/one_word, /datum/aspect/no_guns))
+GLOBAL_LIST_INIT(possible_aspects, list(/datum/aspect/clean_guns, /datum/aspect/extramoney, /datum/aspect/additional_troops, /datum/aspect/one_word))
 
 //Checks to see if the aspect chosen matches the argument. Useful for affecting stuff post round start.
 proc/aspect_chosen(var/datum/aspect/aspect)
@@ -70,7 +70,6 @@ proc/print_aspect()
 /datum/aspect/trenchmas
 	name = "Trenchmas"
 	desc = "It's Trenchmas! We Will Not Battle This Day!"
-	deactivated = "DEHUMANIZE YOURSELF AND FACE TO BLOODSHED!"
 
 /datum/aspect/clean_guns
 	name = "Well Oiled Machine"
@@ -80,19 +79,16 @@ proc/print_aspect()
 /datum/aspect/lone_rider
 	name = "Battlefield 1842"
 	desc = "All bolt action rifles have been replaced by their lever action variants this battle!"
-	deactivated = "High command has given us our bolt action rifles back!"
 
 
 /datum/aspect/one_word
 	name = "Civil War"
 	desc = "Nothing seperates one side from the other. We all speak the same language this battle!"
-	deactivated = "Blues and Reds are divided. Again."
 
 
 /datum/aspect/no_guns
 	name = "Slappers only!"
 	desc = "Due to poor gun maintenance, guns just don't work this battle."
-	deactivated = "High command has allocated more of the budget to gun maintenance, guns work again!" //warp corps shit
 
 
 /datum/aspect/nightfare

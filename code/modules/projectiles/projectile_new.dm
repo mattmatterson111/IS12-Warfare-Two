@@ -786,22 +786,12 @@
 	if(ismob(A))
 		var/mob/M = A
 		if(istype(A, /mob/living))
-			//if they have a grab on someone, that person gets hit instead
+			//if they have a neck grab on someone, that person gets hit instead
 			var/obj/item/grab/G = locate() in M
-			var/mob/living/carbon/human/stoplying = A //balancing
-			var/bad_arc = reverse_direction(A.dir) //getting shot from behind means no human shielding
-			if(G && G.shield_assailant() && !stoplying.lying && check_shield_arc(A, bad_arc, src))
-				var/turf/moveto = get_step(M, get_dir(M, starting)) //get direction of projectile
-				A.set_dir(get_dir(M, starting)) 
-				G.affecting.forceMove(moveto) //move em in the way
-				stoplying.adjustStaminaLoss(damage) //balancing
-				G.force_them_up() 
-				G.affecting.update_canmove() //stand em up
+			if(G)
 				visible_message("<span class='danger'>\The [M] uses [G.affecting] as a shield!</span>")
 				if(Bump(G.affecting))
-					G.get_back_down() //and set em back down afterwards.
 					return //If Collide() returns 0 (keep going) then we continue on to attack M.
-				G.get_back_down() //just to be sure
 
 			passthrough = !attack_mob(M, distance)
 		else

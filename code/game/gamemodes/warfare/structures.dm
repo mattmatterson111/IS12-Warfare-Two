@@ -125,10 +125,10 @@
 /obj/structure/dirt_wall/do_climb(var/mob/living/user)
 	if(!can_climb(user))
 		return
-
+		
 	var/area/warfare/climbto = get_area(get_turf(src)) //prevents climbing into areas you shouldnt
-	var/turf/locationtogoto = get_turf(src)
-	var/turf/currentlocation = get_turf(user)
+	var/turf/locationtogoto = get_turf(src) 
+	var/turf/currentlocation = get_turf(user) 
 	if(locationtogoto.y > currentlocation.y) //if climbing north, set direction to north
 		user.set_dir(NORTH)
 	else if(locationtogoto.y < currentlocation.y) //if climbing south, set direction to south
@@ -237,17 +237,17 @@
 		return
 	if(!SSwarfare.battle_time)
 		return
-
+	
 	var/area/warfare/climbto = get_area(get_turf(src)) //prevents climbing into areas you shouldnt
-	var/turf/locationtogoto = get_turf(src)
-	var/turf/currentlocation = get_turf(user)
+	var/turf/locationtogoto = get_turf(src) 
+	var/turf/currentlocation = get_turf(user) 
 	if(locationtogoto.y > currentlocation.y) //if climbing north, set direction to north
 		user.set_dir(NORTH)
 	else if(locationtogoto.y < currentlocation.y) //if climbing south, set direction to south
 		user.set_dir(SOUTH) //goddamit theres gotta be a better way to do this
 	if(climbto.Enter(user) == FALSE)
 		return
-
+	
 	user.visible_message("<span class='warning'>[user] starts climbing onto \the [src]!</span>")
 	climbers |= user
 
@@ -618,19 +618,17 @@
 				stepper = M
 
 /obj/structure/landmine/Uncrossed(var/mob/living/M as mob)
-	if(ishuman(M))//Type check your shit CEF. Woe, eternal damnation be upon you.
-		var/mob/living/carbon/human/H = M
-		var/obj/item/organ/external/L = H.get_organ(BP_L_LEG)  //leg dismemberments
-		var/obj/item/organ/external/R = H.get_organ(BP_R_LEG)
-		if(istype(M))
-			if(armed)
-				if(M == stepper) // HAH
-					if(prob(50))
-						L.droplimb(0, pick(DROPLIMB_BLUNT, DROPLIMB_EDGE, DROPLIMB_BURN)) //random chance for different dismemberments
-					if(prob(50))
-						R.droplimb(0, pick(DROPLIMB_BLUNT, DROPLIMB_EDGE, DROPLIMB_BURN))
-					blow()
-	..()
+	var/mob/living/carbon/human/H = M
+	var/obj/item/organ/external/L = H.get_organ(BP_L_LEG)  //leg dismemberments
+	var/obj/item/organ/external/R = H.get_organ(BP_R_LEG)  
+	if(istype(M))
+		if(armed)
+			if(M == stepper) // HAH
+				if(prob(50))
+					L.droplimb(0, pick(DROPLIMB_BLUNT, DROPLIMB_EDGE, DROPLIMB_BURN)) //random chance for different dismemberments
+				if(prob(50))
+					R.droplimb(0, pick(DROPLIMB_BLUNT, DROPLIMB_EDGE, DROPLIMB_BURN))
+				blow()
 
 
 
