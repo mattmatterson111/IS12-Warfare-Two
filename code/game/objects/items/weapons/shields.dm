@@ -22,7 +22,7 @@
 	if(istype(damage_source, /obj/item/projectile) || (attacker && get_dist(user, attacker) > 1) || user.incapacitated())
 		return 0
 
-	if(user.a_intent == I_HELP)//If you're in help intent you wont parry
+	if(!user.combat_mode)//If you're not in combat mode you won't parry.
 		return 0
 
 	if(user.defense_intent != I_PARRY)//If you're not on parry intent, you won't parry.

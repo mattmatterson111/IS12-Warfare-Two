@@ -1028,10 +1028,6 @@
 		var/recovery = 1
 		if(traumatic_shock < 0.5 * shock_stage) //lower shock faster if pain is gone completely
 			recovery++
-		if(has_quirk(/datum/quirk/tough)) //we're a tough bastard
-			recovery++
-		if(prob(STAT_LEVEL(end))) //making endurance more useful
-			recovery++
 		if(traumatic_shock < 0.25 * shock_stage)
 			recovery++
 		shock_stage = max(shock_stage - recovery, 0)

@@ -424,9 +424,6 @@ macro "hotkeymode"
 		name = "B"
 		command = "Resist"
 	elem
-		name = "SHIFT+B"
-		command = "defensive_combat_intent"
-	elem
 		name = "CTRL+3"
 		command = "quick-equip-suit-pocket"
 	elem
