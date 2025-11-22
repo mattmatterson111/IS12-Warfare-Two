@@ -19,7 +19,7 @@
 	equip(var/mob/living/carbon/human/H)
 		H.warfare_faction = BLUE_TEAM
 		..()
-		H.add_stats(rand(12,17), rand(10,16), rand(8,12))
+		H.add_stats(rand(12,17), rand(10,16), rand(8,12), rand(10, 16))
 		SSwarfare.blue.team += H
 		if(can_be_in_squad)
 			H.assign_random_squad(BLUE_TEAM)
@@ -95,7 +95,7 @@
 	equip(var/mob/living/carbon/human/H)
 		var/current_name = H.real_name
 		..()
-		H.add_stats(rand(15,17), rand(10,16), rand(12,16))
+		H.add_stats(rand(15,17), rand(10,16), rand(12,16), rand(10, 16))
 		H.fully_replace_character_name("Eng. [current_name]")
 		H.say(";Engineer reporting for duty!")
 
@@ -119,6 +119,7 @@
 		var/current_name = H.real_name
 		..()
 		H.fully_replace_character_name("Sniper [current_name]")
+		H.add_stats(rand(10,15), rand(10,16), rand(14,18), rand(10, 12)) //lower str, and end, higher int and dex
 		H.say(";Sniper reporting for duty!")
 
 /datum/job/soldier/blue_soldier/flame_trooper
@@ -143,7 +144,7 @@
 		var/current_name = H.real_name
 		..()
 		H.fully_replace_character_name("FT. [current_name]")
-		H.add_stats(18, rand(10,16), rand(15,18))
+		H.add_stats(18, rand(10,16), rand(15,18), rand(12, 18))
 		H.say(";Flame Trooper reporting for duty!")
 
 /datum/job/soldier/blue_soldier/sentry
@@ -170,7 +171,7 @@
 		var/current_name = H.real_name
 		..()
 		H.fully_replace_character_name("Sentry [current_name]")
-		H.add_stats(18, rand(10,16), rand(15,18))
+		H.add_stats(18, rand(10,16), rand(15,18), rand(12, 18))
 		H.say(";Sentry reporting for duty!")
 
 
@@ -197,6 +198,7 @@
 		var/obj/item/clothing/accessory/medal/blue/captain/order1/M = new(H)
 		RC.attach_accessory(H, M, TRUE)
 
+		H.add_stats(rand(12,17), rand(10,16), rand(8,12), rand(10, 16))
 		H.fully_replace_character_name("Cpt. [current_name]")
 		H.get_idcard()?.access = get_all_accesses()
 		var/obj/O = H.get_equipped_item(slot_s_store)
@@ -253,7 +255,7 @@
 		var/current_name = H.real_name
 		..()
 		H.fast_stripper = TRUE
-		H.add_stats(rand(3,6), rand(12,16), rand(6,9))
+		H.add_stats(rand(3,6), rand(12,16), rand(6,9), rand(4,8))
 		qdel(H.get_equipped_item(slot_s_store))  // they cant even handle guns
 		H.fully_replace_character_name("Scav. [current_name]")
 		H.set_trait(new/datum/trait/child())

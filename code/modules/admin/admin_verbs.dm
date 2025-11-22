@@ -1074,7 +1074,7 @@ var/list/admin_verbs_mentor = list(
 		to_chat(deployed_killer,SPAN_WARNING("YOU ARE THE MAN WITH KNIVES.\n\nGOAL:\n\nBE MYSTERIOUS AND BE VIOLENT. KILL EVERYONE YOU SEE.\n\nYOU DON'T SPEAK ANY LANGUAGE. THE ONLY THING YOU TALK WITH ARE YOUR KNIVES.\n\nYOU ARE NOT IMMORTAL, BUT VERY FUCKING STRONG.\n\n HAVE FUN!"))
 		to_chat(deployed_killer,SPAN_WARNING("(EVERYONE IS DEAD. NO ONE BELIEVED YOU. SHOW THEM THE TRUTH.)"))
 
-/mob/living/carbon/human/man_with_knives //MAN WITH KNIVES
+/mob/living/carbon/human/man_with_knives
 	name = "MAN WITH KNIVES"
 
 /mob/living/carbon/human/man_with_knives/Initialize()
