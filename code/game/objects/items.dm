@@ -920,9 +920,6 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 				user.client.pixel_x = -viewoffset
 				user.client.pixel_y = 0
 
-		if(!user.facing_dir)
-			user.set_face_dir(user.dir)
-
 		user.visible_message("\The [user] peers through the [zoomdevicename ? "[zoomdevicename] of [src]" : "[src]"].")
 		if(ishuman(user))
 			H.hide_cone()

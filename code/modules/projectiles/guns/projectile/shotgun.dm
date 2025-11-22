@@ -151,7 +151,7 @@
 	max_shells = 2
 	w_class = ITEM_SIZE_HUGE
 	force = 10
-	obj_flags = OBJ_FLAG_CONDUCTIBLE
+	obj_flags =  OBJ_FLAG_CONDUCTIBLE
 	caliber = "shotgun"
 	origin_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 1)
 	ammo_type = /obj/item/ammo_casing/shotgun/pellet
@@ -161,20 +161,13 @@
 	one_hand_penalty = 25
 	burst_delay = 0
 	var/broke_open = FALSE
-	var/shortened = FALSE
 
 /obj/item/gun/projectile/shotgun/doublebarrel/update_icon()
 	..()
 	if(broke_open)
-		if(shortened)
-			icon_state = "sawnshotgun-e"
-		else
-			icon_state = "dshotgun-e"
+		icon_state = "dshotgun-e"
 	else
-		if(shortened)
-			icon_state = "sawnshotgun"
-		else
-			icon_state = "dshotgun"
+		icon_state = "dshotgun"
 
 /obj/item/gun/projectile/shotgun/doublebarrel/attack_self(mob/user)
 	. = ..()
@@ -204,13 +197,10 @@
 /obj/item/gun/projectile/shotgun/doublebarrel/unload_ammo(user, allow_dump)
 	..(user, allow_dump=1)
 
-
+/*
 //this is largely hacky and bad :(	-Pete
 /obj/item/gun/projectile/shotgun/doublebarrel/attackby(var/obj/item/A as obj, mob/user as mob) //We're not doing this.
 	if(w_class > 3 && (istype(A, /obj/item/circular_saw) || istype(A, /obj/item/melee/energy) || istype(A, /obj/item/gun/energy/plasmacutter)))
-		if(broke_open)
-			to_chat(user, "Close the shotgun first.")
-			return FALSE
 		to_chat(user, "<span class='notice'>You begin to shorten the barrel of \the [src].</span>")
 		if(loaded.len)
 			for(var/i in 1 to max_shells)
@@ -228,14 +218,13 @@
 			slot_flags |= (SLOT_BELT|SLOT_HOLSTER) //but you can wear it on your belt (poorly concealed under a trenchcoat, ideally) - or in a holster, why not.
 			SetName("sawn-off shotgun")
 			desc = "Omar's coming!"
-			shortened = TRUE
-			
+			to_chat(user, "<span class='warning'>You shorten the barrel of \the [src]!</span>")
 	else
 		if(!broke_open)
 			return
 		..()
 		update_icon()
-
+*/
 
 /obj/item/gun/projectile/shotgun/doublebarrel/sawn
 	name = "sawn-off shotgun"
@@ -243,10 +232,10 @@
 	icon_state = "sawnshotgun"
 	item_state = "sawnshotgun"
 	slot_flags = SLOT_BELT|SLOT_HOLSTER
+	ammo_type = /obj/item/ammo_casing/shotgun/pellet
 	w_class = ITEM_SIZE_NORMAL
 	force = 5
 	one_hand_penalty = 0
-	shortened = TRUE
 
 
 /obj/item/gun/projectile/shotgun/pump/boltaction

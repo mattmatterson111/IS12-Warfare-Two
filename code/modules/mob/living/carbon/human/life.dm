@@ -594,10 +594,8 @@
 
 		handle_happiness()
 
-		
-
-		if(get_shock() >= species.total_health + (STAT_LEVEL(end) - 10) + reagents.get_reagent_amount(/datum/reagent/adrenaline))
-			if(!stat) //for above, adrenaline and having above 10 endurance will let you stay in the fight a *little* longer
+		if(get_shock() >= species.total_health)
+			if(!stat)
 				src.visible_message("<span class='warning'><B>[src]</B> gives into the pain!</span>")
 				agony_scream()
 			Paralyse(10)
@@ -816,19 +814,18 @@
 
 
 		if(stamina_icon)
-			var/moreaccuratestamina = staminaloss / staminaexhaust
-			switch((moreaccuratestamina))
-				if(0.9 to INFINITY)   stamina_icon.icon_state = "stamina10"
-				if(0.8 to 0.9)        stamina_icon.icon_state = "stamina9"
-				if(0.7 to 0.8)        stamina_icon.icon_state = "stamina8"
-				if(0.6 to 0.7)        stamina_icon.icon_state = "stamina7"
-				if(0.5 to 0.6)        stamina_icon.icon_state = "stamina6"
-				if(0.4 to 0.5)        stamina_icon.icon_state = "stamina5"
-				if(0.3 to 0.4)        stamina_icon.icon_state = "stamina4"
-				if(0.2 to 0.3)        stamina_icon.icon_state = "stamina3"
-				if(0.1 to 0.2)        stamina_icon.icon_state = "stamina2"
-				if(0.01 to 0.1)       stamina_icon.icon_state = "stamina1"
-				else                  stamina_icon.icon_state = "stamina0"
+			switch((staminaloss))
+				if(200 to INFINITY)		stamina_icon.icon_state = "stamina10"
+				if(180 to 200)			stamina_icon.icon_state = "stamina9"
+				if(160 to 180)			stamina_icon.icon_state = "stamina8"
+				if(140 to 160)			stamina_icon.icon_state = "stamina7"
+				if(120 to 140)			stamina_icon.icon_state = "stamina6"
+				if(100 to 120)			stamina_icon.icon_state = "stamina5"
+				if(80 to 100)			stamina_icon.icon_state = "stamina4"
+				if(60 to 80)			stamina_icon.icon_state = "stamina3"
+				if(40 to 60)			stamina_icon.icon_state = "stamina2"
+				if(20 to 40)			stamina_icon.icon_state = "stamina1"
+				else					stamina_icon.icon_state = "stamina0"
 
 		if(isSynthetic())
 			var/obj/item/organ/internal/cell/C = internal_organs_by_name[BP_CELL]
