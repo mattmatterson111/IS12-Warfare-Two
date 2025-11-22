@@ -126,11 +126,11 @@
 	if(assailant.get_active_hand())
 		to_chat(assailant, "<span class='notice'>You can't grab someone if your hand is full.</span>")
 		return 0
-	/*
+
 	if(assailant.grabbed_by.len)
 		to_chat(assailant, "<span class='notice'>You can't grab someone if you're being grabbed.</span>")
 		return 0
-	*/
+
 	return 1
 
 /obj/item/grab/proc/init()

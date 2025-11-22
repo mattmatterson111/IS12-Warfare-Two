@@ -1,42 +1,32 @@
 //Going here till I find a better place for it.
 /mob/living/carbon/human/proc/handle_combat_mode()//Makes it so that you can't regain stamina in combat mode.
-	if(weapon_readied || a_intent == I_HURT) //no stamina regen if your going all in
+	if(weapon_readied || combat_mode)
 		if(staminaloss < (staminaexhaust/2))
 			adjustStaminaLoss(2)
 
 /mob/living/carbon/human/proc/attempt_dodge()//Handle parry is an object proc and it's, its own thing.
 	var/dodge_modifier = 0
-	if(a_intent != I_HELP && defense_intent == I_DODGE && !lying)//check_shield_arc proc used where attempt_dodge procs are called
-		if(a_intent == I_DISARM)//Better chance to dodge on disarm intent
+	if(combat_mode && (defense_intent == I_DODGE) && !lying)//Todo, make use of the check_shield_arc proc to make sure you can't dodge from behind.
+		if(atk_intent == I_DEFENSE)//Better chance to dodge
 			dodge_modifier += 30
-		if(src.grabbed_by.len) //getting grabbed makes it harder to dodge ya know?
-			dodge_modifier -= 30
 		if(statscheck(STAT_LEVEL(dex) / 2 + 3) >= SUCCESS)
 			do_dodge()
 			return	1
-		if(prob(((SKILL_LEVEL(melee) * 10) / 2) + dodge_modifier))
+		else if(prob(((SKILL_LEVEL(melee) * 10) / 2) + dodge_modifier))
 			do_dodge()
 			return	1
 
-		else if(CRIT_FAILURE && a_intent == I_HURT) //careful now
-			visible_message("<b><big>[src.name] fails to dodge and falls on the floor!</big></b>")
-			Weaken(3)
-			return 0
+		//else if(CRIT_FAILURE)
+		//	visible_message("<b><big>[src.name] fails to dodge and falls on the floor!</big></b>")
+		//	Weaken(3)
 
-		return 0
-	return 0
+
 /mob/living/proc/do_dodge()
 	var/lol = pick(GLOB.cardinal)//get a direction.
 	adjustStaminaLoss(15)//add some stamina loss
 	playsound(loc, 'sound/weapons/punchmiss.ogg', 80, 1)//play a sound
 	step(src,lol)//move them
 	visible_message("<b><big>[src.name] dodges out of the way!!</big></b>")//send a message
-	
-	var/mob/living/carbon/human/H = src
-	if(prob(H.STAT_LEVEL(end) + 10))
-		to_chat(H, "<span class='combat_success'>As you dodge, you feel a rush of adrenaline!</span>")
-		H.make_adrenaline(2) //GET THAT BLOOD PUMPING!
-	H.break_all_grabs(src)
 	//be on our way
 
 

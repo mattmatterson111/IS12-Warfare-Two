@@ -16,7 +16,7 @@
 	desc = "Tall synthleather boots with an artificial shine."
 	icon_state = "redboots"
 	item_state = "redboots"
-	force = 5 //buffed from 3 to make stomping slightly more lethal
+	force = 3
 	armor = list(melee = 30, bullet = 10, laser = 10, energy = 15, bomb = 20, bio = 0, rad = 0)
 	siemens_coefficient = 0.7
 	can_hold_knife = 1

@@ -484,7 +484,7 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 /datum/species/proc/update_skin(var/mob/living/carbon/human/H)
 	return
 
-/datum/species/proc/disarm_attackhand(var/mob/living/carbon/human/attacker, var/mob/living/carbon/human/target, var/skill = null)
+/datum/species/proc/disarm_attackhand(var/mob/living/carbon/human/attacker, var/mob/living/carbon/human/target)
 	//attacker.do_attack_animation(target)
 	attacker.adjustStaminaLoss(rand(2,3))//No more spamming disarm without consequences.
 
@@ -519,7 +519,7 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 		return
 	*/
 
-	if(randn <= 60 + skill)
+	if(randn <= 60)
 		//See about breaking grips or pulls
 		if(target.break_all_grabs(attacker))
 			playsound(target.loc, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
@@ -529,18 +529,12 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 		for(var/obj/item/I in holding)
 			if(I)
 				target.drop_from_inventory(I)
-				if(skill != null)
-					target.visible_message("<span class='combat_success'>[attacker] has disarmed [target] with their combat knife!</span>")
-				else
-					target.visible_message("<span class='combat_success'>[attacker] has disarmed [target]!</span>")
+				target.visible_message("<span class='combat_success'>[attacker] has disarmed [target]!</span>")
 				playsound(target.loc, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
 				return
 
 	playsound(target.loc, 'sound/weapons/punchmiss.ogg', 25, 1, -1)
-	if(skill != null)
-		target.visible_message("<span class='danger'>[attacker] attempted to disarm \the [target] with the combat knife!</span>")
-	else
-		target.visible_message("<span class='danger'>[attacker] attempted to disarm \the [target]!</span>")
+	target.visible_message("<span class='danger'>[attacker] attempted to disarm \the [target]!</span>")
 
 /datum/species/proc/disfigure_msg(var/mob/living/carbon/human/H) //Used for determining the message a disfigured face has on examine. To add a unique message, just add this onto a specific species and change the "return" message.
 	var/datum/gender/T = gender_datums[H.get_gender()]

@@ -502,16 +502,4 @@ This saves us from having to call add_fingerprint() any time something is put in
 		if(handcuffed) . += handcuffed
 		if(s_store)    . += s_store
 
-/mob/living/carbon/human/verb/defensive_combat_intent() //probably a better place to put this but oh well
-	set name = "defensive_combat_intent"
-	set hidden = 1
-	
-	if(ishuman(src))
-		if(usr.defense_intent == I_PARRY)
-			usr.defense_intent = I_DODGE
-			usr.combat_intent_icon.icon_state = "dodge"
-		else
-			usr.defense_intent = I_PARRY
-			usr.combat_intent_icon.icon_state = "parry"
-	
 #undef REMOVE_INTERNALS

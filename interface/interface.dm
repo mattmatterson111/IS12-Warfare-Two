@@ -79,7 +79,6 @@ f = toggle fixeye
 shift+f = look up
 shift+x = wield weapon
 shift+z = toggle safety/unjam gun
-shift+b = toggle defensive intent
 1 = help-intent
 2 = disarm-intent
 3 = grab-intent
