@@ -1281,7 +1281,7 @@ obj/item/storage/backpack/satchel/warfare/chestrig/blue/oldlmg
 	name = "Morale Officer"
 
 
-/decl/hierarchy/outfit/man_with_knives
+/decl/hierarchy/outfit/man_with_knives //MAN WITH KNIVES stuff
 	name = "MAN WITH KNIVES's Outfit"
 	mask = /obj/item/clothing/mask/gas/colorless/flamer/
 	uniform = /obj/item/clothing/under/soldier
