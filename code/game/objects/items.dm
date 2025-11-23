@@ -175,6 +175,8 @@
 		force = force_unwielded
 	else
 		force = (force / 1.5)
+	if(block_chance)
+		block_chance -= 10
 	var/sf = findtext(name," (Wielded)")
 	if(sf)
 		name = copytext(name,1,sf)

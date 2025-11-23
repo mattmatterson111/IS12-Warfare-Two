@@ -37,7 +37,7 @@
 /datum/grab/special/strangle/process_effect(var/obj/item/grab/G)
 	var/mob/living/carbon/human/affecting = G.affecting
 	
-	if(!G.wielded)
+	if(!G.wielded) //strangle with both hands
 		activate_effect = FALSE
 		G.assailant.visible_message("<span class='warning'>[G.assailant] stops strangling [G.affecting].</span>")
 		return
@@ -259,6 +259,7 @@
 	attacker.adjustStaminaLoss(10)
 
 	var/damage = attacker.STAT_LEVEL(str)
+	var/defense = target.STAT_LEVEL(end)
 	var/obj/item/clothing/hat = attacker.head
 	var/damage_flags = 0
 	if(istype(hat))
@@ -272,9 +273,9 @@
 
 	var/armor = target.run_armor_check(BP_HEAD, "melee")
 	target.apply_damage(damage, BRUTE, BP_HEAD, armor, damage_flags)
-	attacker.apply_damage(10, BRUTE, BP_HEAD, attacker.run_armor_check(BP_HEAD, "melee"))
+	attacker.apply_damage((damage/2), BRUTE, BP_HEAD, attacker.run_armor_check(BP_HEAD, "melee"))
 
-	if(armor < 50 && target.headcheck(BP_HEAD) && prob(damage))
+	if(armor <= 50 && target.headcheck(BP_HEAD) && prob(damage - defense)) //so normal soldiers have a small chance to get knocked out
 		target.apply_effect(20, PARALYZE)
 		target.visible_message("<span class='danger'>[target] [target.species.get_knockout_message(target)]</span>")
 
