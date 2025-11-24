@@ -792,12 +792,8 @@
 			var/bad_arc = reverse_direction(A.dir) //getting shot from behind means no human shielding
 			if(G && G.shield_assailant() && !stoplying.lying && check_shield_arc(A, bad_arc, src))
 				var/turf/moveto = get_step(M, get_dir(M, starting)) //get direction of projectile
-				var/actuallymoveshield = TRUE
 				A.set_dir(get_dir(M, starting))
-				for(var/obj/structure/object in moveto.contents)  
-					if(istype(object, /obj/structure/anti_tank)) //dont move em into an impassible object because of a PTSD round please thanks
-						actuallymoveshield = FALSE
-						break //found one, stop looking
+				var/actuallymoveshield = !(locate(/obj/structure/anti_tank) in moveto) //dont move em into an impassible object because of a PTSD round please thanks
 				if(actuallymoveshield)
 					G.affecting.forceMove(moveto) //move em in the way
 				stoplying.adjustStaminaLoss(damage) //balancing
