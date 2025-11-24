@@ -550,7 +550,7 @@ var/const/CLICK_HANDLER_ALL                  = (~0)
 		if(locate(/obj/structure/bridge, get_step(src,direction) && !in_trench)) // WARTWO EDIT - TEMPORARY SOLUTION FOR PEOPLE JUST VANISHING UNDER THE BRIDGE WHEN CRAWLING, TO-DO: REWRITE BRIDGES SOMEDAY
 			return // NO YOU WONT CRAWL UNDER THE BRIDGE FROM UPTOP!!!
 		scrambling = 1
-		if(do_after(src, 10 - (src.reagents.get_reagent_amount(/datum/reagent/adrenaline) / 2))) //FASTER FASTER FASTER
+		if(do_after(src, 10 - (src.reagents.get_reagent_amount(/datum/reagent/adrenaline) / 4))) //okay not too fast, but noticable?
 			Move(get_step(src,direction))
 			scrambling = 0
 			dir = 2
