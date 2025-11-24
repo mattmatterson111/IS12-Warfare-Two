@@ -682,10 +682,19 @@
 
 			if(istype(target_mob.loc, /turf/simulated/floor/trench))//Shooting at someone in a trench.
 				if(non_trench_counter > 1)//Bullet was shot from open terrain.
+					var/mob/living/carbon/human/victim = target_mob
+					var/msg = pick("THEY'RE TRYING TO KILL ME!",
+							"THAT WAS CLOSE!",
+							"THEY'RE SHOOTING AT ME!",
+							"TOO CLOSE!",
+							"FUCK, FUCK!")
 					if(original != target_mob)//We weren't shooting at them, so whizz past.
 						do_normal_check = FALSE
 						result = PROJECTILE_FORCE_MISS
 						to_chat(target_mob, "<span class='danger'>BULLETS WHIZZ PAST MY HEAD!</span>")
+						if(prob(victim.STAT_LEVEL(end))) //getting shot at probably gives people adrenaline
+							to_chat(target_mob, "<span class='phobia'>[msg]</span>")
+							victim.make_adrenaline(damage/20)
 						shake_camera(target_mob, 3, 2)//More supression effects.
 						target_mob.recoil += 15 //Make them innacurate for a tick when being supressed.
 
@@ -694,6 +703,9 @@
 							do_normal_check = FALSE
 							result = PROJECTILE_FORCE_MISS
 							to_chat(target_mob, "<span class='danger'>BULLETS WHIZZ PAST MY HEAD!</span>")
+							if(prob(victim.STAT_LEVEL(end))) //getting shot at probably gives people adrenaline
+								to_chat(target_mob, "<span class='phobia'>[msg]</span>")
+								victim.make_adrenaline(damage/20)
 							shake_camera(target_mob, 3, 2)//More supression effects.
 							target_mob.recoil += 15 //Make them innacurate for a tick when being supressed.
 						else if(prob(rand(1,15)))//Chance to miss, minmum of 1, max of 15.
