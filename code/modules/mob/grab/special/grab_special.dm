@@ -55,6 +55,11 @@
 	affecting.losebreath = max(affecting.losebreath + 2, 3)
 
 /datum/grab/special/strangle/proc/do_strangle(var/obj/item/grab/G)
+	var/mob/living/carbon/human/assailant = G.assailant
+	var/mob/living/carbon/human/affecting = G.affecting
+	if(!assailant || !affecting || !assailant.Adjacent(affecting)) //no force choking please
+		G.force_drop()
+		return
 	if(!G.wielded)
 		G.assailant.visible_message("<span class='warning'>Strangle with both hands!")
 		return
@@ -96,6 +101,10 @@
 		to_chat(assailant, "<span class='warning'>We must wield them in both hands to break their limb.</span>")
 		assailant.doing_something = FALSE
 		return
+	if(!assailant || !affecting || !assailant.Adjacent(affecting))  //you don't have the force.
+		G.force_drop()
+		assailant.doing_something = FALSE
+		return
 		
 	if(G.target_zone == BP_HEAD)
 		var/bad_arc = reverse_direction(affecting.dir)
@@ -125,6 +134,9 @@
 				affecting.apply_damage(5, BRUTE, BP_HEAD, 0) //we dont want their head to explode
 			if(!O.is_broken()) //break if not already broken
 				O.fracture()
+			else
+				if(O.break_sound)
+					playsound(affecting, O.break_sound, 100, 0) //*crunch*
 			affecting.death() //kill em.
 		else
 			assailant.visible_message("<span class='danger'>[assailant] failed to snap [affecting]'s neck!</span>")
@@ -178,6 +190,11 @@
 		return
 		
 	assailant.doing_something = TRUE 
+	
+	if(!assailant || !affecting || !assailant.Adjacent(affecting))  //you aren't darth vader
+		G.force_drop()
+		assailant.doing_something = FALSE
+		return
 
 	var/meleeskill = assailant.SKILL_LEVEL(melee)
 	

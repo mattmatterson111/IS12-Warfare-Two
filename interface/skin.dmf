@@ -472,6 +472,12 @@ macro "hotkeymode"
 		name = "SHIFT+E"
 		command = "quick-equip-belt"
 	elem
+		name = "K"
+		command = "toggle-kick"
+	elem
+		name = "J"
+		command = "toggle-jump"
+	elem
 		name = "F"
 		command = "set-fixeye"
 	elem

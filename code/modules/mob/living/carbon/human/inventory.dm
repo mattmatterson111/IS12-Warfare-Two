@@ -65,6 +65,32 @@ This saves us from having to call add_fingerprint() any time something is put in
 
     if(ishuman(src))
         attack_ui(slot_chest)
+		
+/mob/living/carbon/human/verb/toggle_jump()
+	set name = "toggle-jump"
+	set hidden = 1
+
+	if(ishuman(src))
+		if(usr.middle_click_intent == "jump") //theres gotta be a better way to do this but click("jump") wasn't working
+			usr.middle_click_intent = null
+			usr.jump_icon.icon_state = "jump"
+		else
+			usr.middle_click_intent = "jump"
+			usr.jump_icon.icon_state = "jump_on"
+			usr.kick_icon.icon_state = "kick"
+
+/mob/living/carbon/human/verb/toggle_kick()
+	set name = "toggle-kick"
+	set hidden = 1
+
+	if(ishuman(src))
+		if(usr.middle_click_intent == "kick")
+			usr.middle_click_intent = null
+			usr.kick_icon.icon_state = "kick"
+		else
+			usr.middle_click_intent = "kick"
+			usr.kick_icon.icon_state = "kick_on"
+			usr.jump_icon.icon_state = "jump"
 
 /mob/living/carbon/human/proc/equip_in_one_of_slots(obj/item/W, list/slots, del_on_fail = 1)
 	for (var/slot in slots)

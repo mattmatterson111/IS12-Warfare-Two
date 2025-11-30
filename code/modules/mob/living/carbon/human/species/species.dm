@@ -506,7 +506,7 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 				return W.afterattack(shoot_to,target)
 
 
-	var/randn = rand(1, 100)
+	var/randn = attacker.SKILL_LEVEL(melee) * 5 + (attacker.my_stats[STAT(str)].level) + (attacker.my_stats[STAT(dex)].level) - (target.my_stats[STAT(str)].level) // melee skill * 5 + dex + str - target str. too lazy to rename var
 	/*
 	if(!(species_flags & SPECIES_FLAG_NO_SLIP) && randn <= 25)
 		var/armor_check = target.run_armor_check(affecting, "melee")
