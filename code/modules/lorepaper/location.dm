@@ -166,7 +166,7 @@
 
 /client/proc/send_screentext(mob/M as mob in SSmobs.mob_list)
 	set name = "Send Screentext"
-	set category = "fun"
+	set category = "Fun"
 
 	var/typepick = input("SELECT THE DESIRED TYPE") as anything in subtypesof(/atom/movable/screen/text/screen_text)
 	var/text = input("INPUT THE TEXT") as message
