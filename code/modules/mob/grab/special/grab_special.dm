@@ -61,7 +61,7 @@
 		
 	var/mob/living/carbon/human/assailant = G.assailant
 	var/mob/living/carbon/human/affecting = G.affecting
-	if(!assailant || !affecting || !assailant.Adjacent(affecting)) //no telekinetic throws please
+	if(!assailant || !affecting || !assailant.Adjacent(affecting)) //no force choking please
 		G.force_drop()
 		return
 	
@@ -101,7 +101,7 @@
 		to_chat(assailant, "<span class='warning'>We must wield them in both hands to break their limb.</span>")
 		assailant.doing_something = FALSE
 		return
-	if(!assailant || !affecting || !assailant.Adjacent(affecting))  
+	if(!assailant || !affecting || !assailant.Adjacent(affecting))  //you aren't darth vader
 		G.force_drop()
 		assailant.doing_something = FALSE
 		return
@@ -161,7 +161,7 @@
 		
 	assailant.doing_something = TRUE 
 	
-	if(!assailant || !affecting || !assailant.Adjacent(affecting))  
+	if(!assailant || !affecting || !assailant.Adjacent(affecting))  //you don't have the force.
 		G.force_drop()
 		assailant.doing_something = FALSE
 		return
