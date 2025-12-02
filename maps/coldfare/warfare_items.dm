@@ -786,6 +786,13 @@
 	icon_state = "charlie_patch"
 	high_visibility = FALSE
 
+/obj/item/clothing/accessory/armband/medarm
+	icon_state = "med_arm"
+	high_visibility = FALSE
+
+/obj/item/clothing/accessory/armband/medarm/blue
+	icon_state = "med_armb"
+
 /obj/item/clothing/accessory/medal/medical
 	name = "medical patch"
 	icon_state = "medic_patch"
@@ -943,9 +950,11 @@
 
 /obj/item/storage/backpack/satchel/warfare/prac
 	icon_state = "firstaidsatchel"
+	item_state = "red_med_satchel"
 
 /obj/item/storage/backpack/satchel/warfare/prac/blue
 	icon_state = "firstaidsatchel_blue"
+	item_state = "blue_med_satchel"
 
 /obj/item/storage/backpack/satchel/warfare/red
 	icon_state = "redsatchel"

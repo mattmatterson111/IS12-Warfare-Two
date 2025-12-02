@@ -85,6 +85,9 @@
 	anchored = 1.0
 	invisibility = 101
 
+// ok this fucking shit should changed. Like "/obj/effect/start/HISTORY/[insert awesome role here from bay]"
+// and change warfare roles like "/obj/effect/start/WARFARE/[insert awesome role here from interwar]" - Legasy.
+
 /obj/effect/landmark/start/New()
 	..()
 	tag = "start*[name]"

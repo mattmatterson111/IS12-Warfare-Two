@@ -42,7 +42,7 @@
 				var/obj/item/clothing/accessory/armband/alpha/A = new(src)
 				RC.attach_accessory(src,A)
 				if(rank == "medic")
-					var/obj/item/clothing/accessory/medal/medical/M = new(src)
+					var/obj/item/clothing/accessory/armband/medarm/M = new(src)
 					RC.attach_accessory(src,M)
 
 			else if(minimum == bravo_members)
@@ -54,7 +54,7 @@
 				var/obj/item/clothing/accessory/armband/bravo/B = new(src)
 				RC.attach_accessory(src,B)
 				if(rank == "medic")
-					var/obj/item/clothing/accessory/medal/medical/M = new(src)
+					var/obj/item/clothing/accessory/armband/medarm/M = new(src)
 					RC.attach_accessory(src,M)
 
 			else if(minimum == charlie_members)
@@ -66,7 +66,7 @@
 				var/obj/item/clothing/accessory/armband/charlie/C = new(src.loc)
 				RC.attach_accessory(src,C)
 				if(rank == "medic")
-					var/obj/item/clothing/accessory/medal/medical/M = new(src)
+					var/obj/item/clothing/accessory/armband/medarm/M = new(src)
 					RC.attach_accessory(src,M)
 			else
 				SSwarfare.red.squadB.members += src
@@ -77,7 +77,7 @@
 				var/obj/item/clothing/accessory/armband/bravo/B = new(src.loc)
 				RC.attach_accessory(src,B)
 				if(rank == "medic")
-					var/obj/item/clothing/accessory/medal/medical/M = new(src)
+					var/obj/item/clothing/accessory/armband/medarm/M = new(src)
 					RC.attach_accessory(src,M)
 			/*if(4)
 				SSwarfare.red.squadD.members += src
@@ -98,7 +98,7 @@
 				var/obj/item/clothing/accessory/armband/alpha/A = new(src)
 				BC.attach_accessory(src,A)
 				if(rank == "medic")
-					var/obj/item/clothing/accessory/medal/medical/M = new(src)
+					var/obj/item/clothing/accessory/armband/medarm/blue/M = new(src)
 					BC.attach_accessory(src,M)
 
 			else if(minimum == bravo_members)
@@ -110,7 +110,7 @@
 				var/obj/item/clothing/accessory/armband/bravo/B = new(src.loc)
 				BC.attach_accessory(src,B)
 				if(rank == "medic")
-					var/obj/item/clothing/accessory/medal/medical/M = new(src)
+					var/obj/item/clothing/accessory/armband/medarm/blue/M = new(src)
 					BC.attach_accessory(src,M)
 
 			else if(minimum == charlie_members)
@@ -122,7 +122,7 @@
 				var/obj/item/clothing/accessory/armband/charlie/C = new(src.loc)
 				BC.attach_accessory(src,C)
 				if(rank == "medic")
-					var/obj/item/clothing/accessory/medal/medical/M = new(src)
+					var/obj/item/clothing/accessory/armband/medarm/blue/M = new(src)
 					BC.attach_accessory(src,M)
 
 
@@ -135,7 +135,7 @@
 				var/obj/item/clothing/accessory/armband/bravo/B = new(src.loc)
 				BC.attach_accessory(src,B)
 				if(rank == "medic")
-					var/obj/item/clothing/accessory/medal/medical/M = new(src)
+					var/obj/item/clothing/accessory/armband/medarm/blue/M = new(src)
 					BC.attach_accessory(src,M)
 
 			/*if(4)

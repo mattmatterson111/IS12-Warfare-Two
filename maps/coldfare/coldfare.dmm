@@ -227,6 +227,7 @@
 "fq" = (/obj/machinery/door/airlock/multi_tile/metal/maintenance{dir = 1; icon_state = "door_closed"; name = "Emergency Medical"},/turf/simulated/floor/concrete/random,/area/warfare/homebase/blue/largeroom)
 "fr" = (/obj/effect/landmark/start{name = "Blue Soldier"},/obj/structure/bed/chair/blue{dir = 1; pixel_x = 0; pixel_y = 11; buckle_pixel_shift = "x=0;y=11"},/turf/simulated/floor/concrete/random,/area/warfare/homebase/blue/largeroom)
 "ft" = (/obj/effect/landmark/start{name = "Blue Engineer"},/turf/simulated/floor/concrete/random,/area/warfare/homebase/blue/largeroom)
+"fu" = (/obj/machinery/light/small/bunker{pixel_x = 0; pixel_y = 32},/obj/effect/landmark/start{name = "Blue Medic"},/turf/simulated/floor/concrete/random,/area/warfare/homebase/blue/largeroom)
 "fv" = (/obj/structure/curtain/medical{color = "#b8dddddd"},/obj/sound_emitter/periodic/env_leak,/turf/simulated/floor/urban/tiles/blue,/area/warfare/homebase/blue/stoneroom)
 "fw" = (/obj/effect/landmark/start{name = "Blue Squad Leader"},/turf/simulated/floor/concrete/random,/area/warfare/homebase/blue/largeroom)
 "fx" = (/obj/item/device/compass,/obj/item/device/compass,/obj/item/device/compass,/obj/item/device/compass,/obj/item/device/compass,/obj/structure/table/rack/nosmooth/wood/alt{dir = 4},/obj/item/flame/candle/blue,/turf/simulated/floor/concrete/random,/area/warfare/homebase/blue/largeroom)
@@ -525,6 +526,7 @@
 "qG" = (/obj/structure/closet/body_bag,/obj/structure/trench_wall/innercorners{dir = 1; pixel_x = 32; pixel_y = 31},/turf/simulated/floor/wood,/area/warfare/battlefield/trench_section/underground/indoors)
 "qH" = (/obj/structure/trench_wall/innercorners{dir = 8},/turf/simulated/mineral{health = 999999},/area/warfare/battlefield/capture_point/blue/one)
 "qI" = (/obj/structure/toilet{dir = 8; icon_state = "toilet00"},/obj/structure/trench_wall{dir = 8; pixel_x = 32; pixel_y = 0},/obj/structure/trench_wall/innercorners{dir = 8; pixel_x = 32; pixel_y = -32},/obj/structure/trench_wall/sequel{dir = 6; pixel_x = 0; pixel_y = -32},/turf/simulated/floor/wood,/area/warfare/battlefield/trench_section/room)
+"qJ" = (/obj/effect/landmark/start{name = "Blue Medic"},/turf/simulated/floor/concrete/random,/area/warfare/homebase/blue/largeroom)
 "qL" = (/obj/structure/announcementspeaker/red{pixel_x = 0; dir = 1},/turf/simulated/floor/stones,/area/warfare/homebase/red/largeroom)
 "qO" = (/obj/machinery/light/small/bunker{dir = 1},/obj/structure/reagent_dispensers/watertank,/turf/simulated/floor/concrete/random,/area/warfare/homebase/blue/largeroom)
 "qQ" = (/obj/structure/announcementspeaker/red{pixel_y = 32},/turf/simulated/floor/trenches/underground{icon_state = "trench"; color = "#ffffff"},/area/warfare/battlefield/trench_section/underground)
@@ -611,6 +613,7 @@
 "uC" = (/obj/item/flame/candle,/obj/item/device/compass,/obj/item/device/compass,/obj/item/device/compass,/obj/structure/table/rack/nosmooth/wood/alt{dir = 6},/turf/simulated/floor/concrete/random,/area/warfare/homebase/red/largeroom)
 "uD" = (/obj/machinery/light/small/bunker{pixel_x = 0; pixel_y = 32},/obj/structure/announcementspeaker/blue{pixel_y = 0; dir = 8},/turf/simulated/floor/concrete/random,/area/warfare/homebase/blue/largeroom)
 "uH" = (/obj/structure/announcementspeaker/red{id = "Bluecoats"; dir = 4},/turf/simulated/floor/urban/tiles/blue,/area/warfare/homebase/blue/hallway)
+"uI" = (/obj/sound_emitter/periodic/env_leak,/obj/effect/landmark/start{name = "Red Medic"},/turf/simulated/floor/urban/tiles,/area/warfare/homebase/red/stoneroom)
 "uK" = (/obj/machinery/light{dir = 8},/turf/simulated/floor/urban/tiles,/area/warfare/homebase/red/stoneroom)
 "uL" = (/obj/structure/table/nosmooth/capnew{pixel_y = -4},/obj/item/device/flashlight/lamp/captain/blue{pixel_x = 15; pixel_y = 9},/obj/structure/announcementmicrophone/blue{pixel_x = -14; pixel_y = 12; plane = -60},/obj/item/waxstamp/blue{pixel_x = 8; pixel_y = 9},/obj/item/storage/toggle/envelope{pixel_x = 0; pixel_y = 3},/obj/item/storage/toggle/envelope{pixel_x = 0; pixel_y = 0},/turf/simulated/floor/wood,/area/warfare/homebase/blue/caproom)
 "uN" = (/obj/structure/trench_wall{dir = 1},/turf/simulated/mineral{health = 999999},/area/warfare/battlefield/capture_point/red/two)
@@ -662,6 +665,7 @@
 "wG" = (/turf/simulated/floor/concrete/random,/area/warfare/battlefield/trench_section/underground/stormsystem/hall)
 "wJ" = (/obj/effect/floor_decal/trench{dir = 4},/turf/simulated/floor/trenches/underground{icon_state = "trench"; color = "#ffffff"},/area/warfare/battlefield/capture_point/red/two)
 "wK" = (/obj/structure/trench_wall{dir = 10},/turf/simulated/mineral{health = 999999},/area/space)
+"wL" = (/obj/effect/landmark/start{name = "Red Medic"},/turf/simulated/floor/urban/cinder,/area/warfare/homebase/red/largeroom)
 "wR" = (/turf/simulated/floor/urban/tiles,/area/warfare/homebase/red/hallway)
 "wU" = (/obj/structure/train_deco/sides{dir = 1},/obj/effect/lighting_dummy/daylight,/obj/hammereditor/playerclip,/turf/simulated/floor/stones,/area/warfare/homebase/blue/trainyard)
 "wV" = (/obj/structure/sign/medholo,/turf/simulated/wall/perspecticrete,/area/warfare/homebase/red/room)
@@ -867,6 +871,7 @@
 "FX" = (/obj/structure/table/rack/holorack,/turf/simulated/wall/perspecticrete,/area/warfare/homebase/blue/largeroom)
 "FY" = (/obj/effect/decal/cleanable/blood,/turf/simulated/floor/urban/cinder,/area/warfare/battlefield/trench_section/underground/stormsystem/hall)
 "FZ" = (/obj/structure/trench_wall/innercorners{dir = 4; pixel_x = -32},/obj/structure/trench_wall/innercorners{dir = 8},/turf/simulated/floor/trenches/underground{icon_state = "trench"; color = "#ffffff"},/area/space)
+"Gc" = (/obj/effect/landmark/start{name = "Blue Medic"},/turf/simulated/floor/urban/cinder,/area/warfare/homebase/blue/largeroom)
 "Gd" = (/obj/structure/closet/crate/wooden{pixel_x = 4; pixel_y = 12},/obj/effect/lighting_dummy/daylight,/turf/simulated/floor/urban/concrete,/area/warfare/homebase/red/trainyard)
 "Gf" = (/obj/effect/lighting_dummy/daylight,/turf/simulated/floor/urban/cinder,/area/warfare/battlefield/capture_point/red/two)
 "Gg" = (/obj/structure/curtain/medical{color = "#b8dddddd"},/obj/structure/table/rack/nosmooth/metal,/turf/simulated/floor/urban/tiles/blue,/area/warfare/homebase/blue/stoneroom)
@@ -963,6 +968,7 @@
 "Lq" = (/obj/structure/warfare/thehatch{dir = 4},/turf/simulated/wall/perspecticrete,/area/warfare/homebase/blue/room)
 "Ls" = (/turf/simulated/floor/urban/tiles,/area/warfare/homebase/red/stoneroom)
 "Lt" = (/obj/sound_emitter/periodic/env_leak,/turf/simulated/floor/urban/tiles/blue,/area/warfare/homebase/blue/stoneroom)
+"Lw" = (/obj/effect/landmark/start{name = "Red Medic"},/turf/simulated/floor/concrete/random,/area/warfare/homebase/red/largeroom)
 "Lz" = (/obj/structure/defensive_barrier{pixel_y = -4; secured = 1},/obj/hammereditor/nodraw,/turf/simulated/wall/perspecticrete,/area/warfare/battlefield/trench_section/underground)
 "LD" = (/obj/machinery/light/small/bunker{dir = 8},/turf/simulated/floor/stones,/area/warfare/homebase/blue/room)
 "LE" = (/obj/machinery/light/small/bunker{pixel_x = 0; pixel_y = 32},/obj/machinery/camera{dir = 4; pixel_x = 2; pixel_y = 0},/turf/simulated/floor/wood,/area/warfare/homebase/red/caproom)
@@ -1096,6 +1102,7 @@
 "Rz" = (/obj/structure/train_deco/tracks01,/obj/effect/landmark/train_marker/idle/red,/obj/effect/lighting_dummy/daylight,/turf/simulated/floor/stones,/area/warfare/homebase/red/trainyard)
 "RC" = (/obj/structure/sign/warning/secure_area{icon_state = "securearea2"},/obj/hammereditor/nodraw,/turf/simulated/wall/perspecticrete,/area/warfare/homebase/red/hallway)
 "RD" = (/obj/structure/table/rack/nosmooth/wood/alt{dir = 6},/obj/item/flame/candle{pixel_x = -9; pixel_y = 5},/obj/item/flame/candle{pixel_x = -5; pixel_y = 12},/obj/item/flame/candle{pixel_x = -5; pixel_y = 2},/obj/item/flame/candle{pixel_x = -1; pixel_y = 5},/obj/item/storage/firstaid/regular{pixel_x = 7; pixel_y = -1},/turf/simulated/floor/concrete/random,/area/warfare/homebase/red/largeroom)
+"RE" = (/obj/effect/landmark/start{name = "Blue Medic"},/turf/simulated/floor/urban/tiles/blue,/area/warfare/homebase/blue/stoneroom)
 "RI" = (/obj/effect/floor_decal/industrial/warning/dust{dir = 1},/obj/effect/darkout_teleporter/bluecoats,/obj/effect/floor_decal/train_deco/stripes{dir = 4},/obj/effect/lighting_dummy/daylight,/obj/effect/landmark/train_marker/teleport/blue,/turf/simulated/floor/urban/concrete,/area/warfare/homebase/blue/trainyard)
 "RK" = (/obj/structure/closet/crate/wooden/large{icon_closed = "meatball"; icon_state = "meatball"; pixel_x = 4; pixel_y = 0},/obj/structure/closet/crate/wooden/large{pixel_x = 29; pixel_y = 25},/obj/structure/closet/crate/wooden/large{pixel_x = 4; pixel_y = 25},/obj/effect/lighting_dummy/daylight,/turf/simulated/floor/urban/concrete,/area/warfare/homebase/red/trainyard)
 "RL" = (/obj/structure/trench_wall{dir = 6},/turf/simulated/mineral{health = 999999},/area/warfare/battlefield/trench_section/room)
@@ -1139,6 +1146,7 @@
 "TO" = (/obj/structure/table/rack/nosmooth/metal,/obj/item/reagent_containers/spray/cleaner/warfare/red{pixel_x = -12; pixel_y = 4},/obj/item/reagent_containers/spray/cleaner/warfare/red{pixel_x = 3; pixel_y = 0},/obj/item/reagent_containers/spray/cleaner/warfare/red{pixel_x = -5; pixel_y = 0},/obj/item/reagent_containers/spray/cleaner/warfare/red{pixel_x = 11; pixel_y = 4},/turf/simulated/floor/urban/tiles,/area/warfare/homebase/red/stoneroom)
 "TP" = (/obj/structure/bed/chair/throne{pixel_y = -3; buckle_pixel_shift = "x=0;y=-3"},/obj/effect/landmark/start{name = "Blue Captain"},/turf/simulated/floor/wood,/area/warfare/homebase/blue/caproom)
 "TW" = (/turf/simulated/floor/wood,/area/warfare/battlefield/trench_section/room)
+"TX" = (/obj/sound_emitter/periodic/env_leak,/obj/effect/landmark/start{name = "Red Medic"},/turf/simulated/floor/urban/tiles,/area/warfare/homebase/red/hallway)
 "Ua" = (/obj/machinery/light/small{dir = 1; pixel_y = 32},/turf/simulated/floor/urban/tiles/blue,/area/warfare/homebase/blue/room)
 "Uc" = (/obj/item/storage/firstaid/toxin,/obj/item/storage/firstaid/toxin,/obj/item/storage/firstaid/toxin,/obj/item/storage/firstaid/toxin,/obj/structure/table/rack/shelf/red,/turf/simulated/floor/urban/tiles/blue,/area/warfare/homebase/blue/room)
 "Ue" = (/obj/structure/railing/urban{dir = 4},/obj/effect/lighting_dummy/daylight,/turf/simulated/floor/urban/concrete,/area/warfare/homebase/red/trainyard)
@@ -1231,6 +1239,7 @@
 "Yh" = (/obj/structure/closet/crate,/obj/random/canned_food/blue,/obj/random/canned_food/blue,/obj/random/canned_food/blue,/obj/structure/table/rack/holorack,/turf/simulated/floor/wood,/area/warfare/battlefield/trench_section/room)
 "Yl" = (/obj/structure/table/rack/nosmooth/wood/alt{dir = 4},/turf/simulated/floor/concrete/random,/area/warfare/homebase/red/largeroom)
 "Yn" = (/obj/effect/floor_decal/trench{dir = 10},/turf/simulated/floor/trenches/underground{icon_state = "trench"; color = "#ffffff"},/area/warfare/battlefield/capture_point/red/one)
+"Ys" = (/obj/effect/landmark/start{name = "Blue Medic"},/turf/simulated/floor/urban/tiles/blue,/area/warfare/homebase/blue/hallway)
 "Yt" = (/obj/structure/cargo_pad/bue/captain,/obj/structure/warfare_itemeater/blue{pixel_y = 32},/turf/simulated/floor/wood,/area/warfare/homebase/blue/caproom)
 "Yu" = (/turf/unsimulated/wall/submarine/doors{dir = 4},/area/train/red)
 "Yy" = (/obj/machinery/door/airlock/multi_tile/metal/maintenance/red{locked = 1; maxhealth = 500000},/turf/simulated/floor/urban/tiles,/area/warfare/homebase/red/hallway)
@@ -1299,11 +1308,11 @@ aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaFXTwOBTwtbTwyKpFaaaa
 aaaaaaaaaaNZNZNZNZNZNZNZNZNZNZaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaoNTwakTwcpTwyKpFaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaNZrMrMJvrMrMNZNZNZNZaaaaaaaaaaaaaaaaaaaaaaaaaaCjCjCjiKanalahzQCjCjCjCjCjCjCjCjCjCjCjCjaqaa
 aaaaaaaaaaNZrMBzhvSIrMNZNZNZNZaaaaaaaaaaaaaaaaaaaaaaaaaaCjlcRdxIblblvtKVuDCjCjHNMGWiekekWiOaWiCjaqaa
-aaaaaaaaaaNZLqrbmsbwrMNZNZNZNZaaaaaaaaaaaaaaaaaaaaaaaaaaCjHNWiWifaKVKVWiWiCjCjHNMGbtWiWiWiWiWiCjaqaa
+aaaaaaaaaaNZLqrbmsbwrMNZNZNZNZaaaaaaaaaaaaaaaaaaaaaaaaaaCjHNWiWifaGcKVWiWiCjCjHNMGbtWiWiWiWiWiCjaqaa
 aaaaaaaaaaNZrMHebwRyrMNZNZNZNZaaaaaaaaaaaaaaaaaaaaaaaaaaCjbVhiWiXeXeWihiauCjCjEihiWiZpXeWihiuBCjaqaa
 NZNZNZrMrMrMrMrMrMvXrMAiAiAiNZNZNZNZNZaaaaaaaaaaaaaaaaaaCjaCaDWiCjCjWibsZYCjaibzaGWiCjCjWibzTaCjaqaa
 NZNZNZrMcHZoyhLmrMygyjWJeIAiNZNZNZNZNZaaaaaaaaaaaaaaaaaaCjVSaFWiCjCjWiaKXyCjCjaHGAWiCjCjWiaMaNCjaqaa
-NZNZNZrMcHbwmsbwrMwuwuwueIAiNZNZNZNZNZaaaaaaaaaaaaaaaaaaCjvPfrbtOaOaWifrawCjCjHmfrWiOaOaWifrawCjaqaa
+NZNZNZrMcHbwmsbwrMYswuwueIAiNZNZNZNZNZaaaaaaaaaaaaaaaaaaCjvPfrbtOaOaWifrawCjCjHmfrWiOaOaWifrawCjaqaa
 NZNZNZrMcHbwbwcZrMXfwuwurMrMrMrMAXNZNZaaaaaaaaaaaaaaaaaaCjWiWiWiWiWiWiWiWiCjCjWiWiWiWiWiWiWiaSCjaqaa
 NZNZNZrMrMrMDfrMrMwuwuwurMmUPSrMrMNZNZaaaaaaaaaaaaaaaaaaCjexmoWiWiWiWiWiWiususWiWiWiWiWiWibtaSCjaqaa
 NZNZNZwXZoIchHJcbwwuwuwuDfvkbwUXrMNZNZaaaaaaaaaaaaaaaaaaCjCjCjCjHcWiWiWibtaUVgWiWiWiWiWiWiWiWiCjaqaa
@@ -1527,14 +1536,14 @@ aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaauAuAuArBadtgaddwadNDBruAuA
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaauAuAuAIzadaeadqLadNDBruAuAaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaauABrBrBrPCbmafPxXuBrBrBrBrBrBrBrBrBrBrBrBraaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaauABriQPIlKpSpSPJbqvhBrBrBibuGOJLJXGONzdnBraaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaauABrBidndnbqbqbqdndnBrBrBibudndndndndndnBraaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaauABrBidndnwLbqbqdndnBrBrBibudndndndndndnBraaaa
 aaaaVPVPVPVPVPVPVPVPVPVPVPVPVPVPVPVPVPVPVPaaaaaaaaaaaauABrohmfdnzBzBNzmfIXBrBrohmfdnzBzBdnmfIXBraaaa
 aaaaVPVPVPVPVPVPFrFrqDFrFrFrFrFrFrFrVPVPVPaaaaaaaaaaaauABrHTbCdnBrBrdnyBQlBrBrpdbFNzBrBrdnpdbGBraaaa
 aaaaVPVPVPVPVPVPFrEUMSNgFrijVuItzeFrVPVPVPaaaaaaaaaaaauABrbHvgdnBrBrdnHfxKBrBrhguCdnBrBrdnbLbMBraaaa
 aaaaVPVPVPVPVPVPMvZrAgItFrptAgItzeFrVPVPVPaaaaaaaaaaaauABrlxbOdnGOGOdnbODJBrBrlxbOdnGOGOdnbODJBraaaa
 aaaaVPVPVPVPVPVPFritHjegFrFbTqItzeFrVPVPVPaaaaaaaaaaaauABrdndndndndndndndnBrBrdndndndndndndnBcBraaaa
-aaaaVPVPVPVPVPVPFrFrFrnbFrFrFrFPFrFrabVPVPaaaaaaaaaaaaBrBrmJPddndndndndndnxRxRdndndndndnNzdnBcBraaaa
-aaaaVPVPVPFrFrFrjPxccRvlItAotsqlEUItebVPVPaaaaaaaaaaaajPjPjPjPCeNzdndndndnbSqFdndndndndndndndnBraaaa
+aaaaVPVPVPVPVPVPFrFrFrnbFrFrFrFPFrFrabVPVPaaaaaaaaaaaaBrBrmJPddndnLwdndndnxRxRdndndndndnNzdnBcBraaaa
+aaaaVPVPVPFrFrFrjPTXcRvlItAotsqlEUItebVPVPaaaaaaaaaaaajPjPjPjPCeNzdndndndnbSqFdndndndndndndndnBraaaa
 aaaaVPVPFrFruwuwjPwRwRwRFrFrFrFPFrFrabVPVPaaaaaaaaaaaajPdZrTtkdndndndndndndndndndndndndndndndnBraaaa
 aaaaVPVPFrOxItItewwRwRwRFrijiDItzeFrVPVPVPaaaaaaaaaaaajPdZsEtkzBdndnnVzBdnNzdnzBdndnnVzBdndndnBraaaa
 aaaaVPVPFrfpAgItjPejwRwRFrptAgItzeFrVPVPVPaaaaaaaaaaaajPjPjPjPFrFryPFrFrFryPFrFrFryPFrFrFryPFrFraaaa
@@ -1602,7 +1611,7 @@ JjRjRjRjRjRjRjRjRjRjBIYUzVEnynpepepepepepepepeEnEnEnEnpepepepepepepepeenEnYezVBI
 JjRjRjRjRjRjRjRjRjRjBIRrdREnynEnEnEnEnEnEnEnEnEnEnEnEnEnEnEnEnEnEnEnEnenEnRrdRBIRjRjRjRjRjRjRjRjRjJj
 JjaqaqaqaqaqaqaqaqNZbbiSiSbbbbbbbbbbbbbbbbbbbbbbluTxggggggggggggggagagagagezezagaqaqaqaqaqaqaqaqaqJj
 JjaqaqaqaqaqaqaqaqNZUYUYUYUYehwAmudLipipiprgelIVaPaPggbwJcbwJcbwrMaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqJj
-JjaqaqaqaqaqaqaqaqNZUYpVpVsYLtdtdtdtdtDXLtdtdtrZaPaPvHbwbwQBbwbwrMaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqJj
+JjaqaqaqaqaqaqaqaqNZUYpVpVsYLtdtdtREdtDXLtdtdtrZaPaPvHbwbwQBbwbwrMaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqJj
 JjaqaqaqaqaqaqaqaqNZUYpVpVaXiBdtdtdtdtiBdtdtdteuaPswvHbwbwbwbwbwDfaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqJj
 JjaqaqaqaqaqaqaqUYUYUYUYUYrMrMDfrMrMDfrMdtoDGgIVzGaPNObwbwbwbwbwrMaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqJj
 JjaqaqaqaqaqaqaqUYRljhcCRlrMmavkrMZobwrMdtoDGnUYaPaPggbwIcbwIcbwrMaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqJj
@@ -1614,14 +1623,14 @@ aaaqrMPgPgPzPgCXggrMlaWiWiOaePOaugKOKOIfrAYtKOKOaPXzrMpwaYrMrMaJZJotrMaJGootrMaJ
 aaaqrMAazIRizICcggrMWiWiWiWiWiWiWiKOEVXXTPXXEVKOaPaPrMerotcJrMNoEufbrMNoEufbrMLDvKfcrMLDvKfcrMaqaqJj
 aaaqrMOQUVPggwZbggrMOYWihihiWiWiNAKOXXTtuLnqXXKOaPaPrMpwotrMrMEuotpXrMEuotpXrMVZotEurMVZotEurMaqaqaa
 aaaqgggguaEdbcrCggrMHcfibBaIrjWiWiKOXXXXXHXXXXKOUPXzrMrMAArMrMrMAAferMrMAArMrMrMAArMrMrMAArMggAXAXAX
-aaaqhOGRfzaPswrvaPaPWifimQufrjWiWiKOskTrXXZMjoKOaPaPWiWiWiWiOaTuWiWiOaTuWiTuOaTuWiWiOaWiWiggggggrMrM
+aaaqhOGRfzaPswrvaPaPWifimQufrjWiWiKOskTrXXZMjoKOaPaPWiWiWiWiOaTuWiWifuTuWiTuOaTuWiWiOaWiWiggggggrMrM
 aaaqddbxaPaPaPAVJRoSWifibKfjrjWiugKOKOKOZmKOKOKOaPaPfqWibtWiWiWiWiWiWibtWiWiWiWibtWiWiWiugggQkmiyErM
 aaaqggggyJlwlwrCggrMlaWiekBqWibtWiOaVROaWiOaWiCjaPXzCjHNMGWiftftWiWiWiCjCjHNMGWiftftWiWiWibNCqKhyErM
 aaaqrMxMPgXCPgPgggrMWiWiCjCjWiWiWiWiWiWiWiWiWiWiaPaPCjHNMGWiftBeWiWiWiCjCjHNMGWiBeftWiWiWibNyEyEkYrM
 aaaqrMbrPgHEPgCcggrMlaWiekJyWiWiWihihiWiWiWiWifqaPaPCjbVhiugCjCjlihiauCjCjbVhiugCjCjlihiauggcrcNZBrM
 aaaqrMBTPgDyPgPgggrMHcfibBaIfkCjtyeWaIrjWiWiugCjaPXzCjaCaDWioQfwWibsZYCjCjbzfxWioQfwWibzRkggggggDfrM
 aaaqrMrMrMrMrMrMggrMWiwvmQufekCjekmQufrjNACjCjCjaPaPCjVSaFWifwfwWiaKXyCjCjaHQuWifwfwWiaMaNggyEyEyErM
-aaaqaqaqaqaqaqaqaqCjWifibKfjfkCjtybKfjrjWiWifyCjcuaPCjvPfrWiWiWiWifrawCjCjvPfrWiWibtWifrawggyEyEyErM
+aaaqaqaqaqaqaqaqaqCjWifibKfjfkCjtybKfjrjWiqJfyCjcuaPCjvPfrWiWiWiWifrawCjCjvPfrWiWibtWifrawggyEyEyErM
 aaaqaqaqaqaqaqaqaqCjlaWifrfrWiWiWifrfrWiWiWifACjaPXzCjfBfBWifCkGWiWiWiCjCjfEWiWifCfCWiWifEggyEyEyErM
 aaaqaqaqaqaqaqaqaqCjaxqOWiWiXefGXeWiWiWiXeWifHCjfIaPCjWiWifJfKfKekWiWiCjCjWiWiekWiWiQjWiWiggyEyEyErM
 aaaqaqaqaqaqaqaqaqCjCjCjfNfNaiCjaifNfNCjCjCjCjCjfOfPCjCjCjCjfNfNCjCjCjCjCjCjCjCjfNfNCjCjCjggrMrMrMrM
@@ -1825,18 +1834,18 @@ aaVPVPVPVPjPwRwRyFBrTjdndndnhphpdnOtQRkKrakKLEOtXntkjPBibudnhthtdndnBcBrbgBibuho
 aaVPVPVPVPjPwRwRyFBreYdnmfmfdndndnOtkKoGBMcDkKOttkrFjPohmfdnhxhxdnmfIXBrBrChmfdndndndnJLjjyFLizMzMyF
 aaVPVPVPVPjPQbWqyFBrCehysnYlhAdntNOtkKkKCQAMkKOttkZIjPHTbCdnnVdnNzyBQlbgBrpdhCdnnVdndndndntktktktkjP
 aaVPVPVPVPjPwRwRyFbgdnhyhzGHhAdndnOtqtkKkKZQXAOtcLtkjPbHvgtNBrBrCeHfxKBrBrhgEltNBrBrdnNzdnlVtkOptkjP
-aaVPjPjPjPjPFTwRyFKmCehyAUaEhAdntNOtOtOtxSOtOtOttktkjPlxbOdndndndnbODJBrbglxbOdndndndndntNjPtkOptkjP
+aaVPjPjPjPjPFTwRyFKmCehyAUaEhAdntNOtOtOtxSOtOtOttktkjPlxbOdndndndnbODJBrbglxbOdndnLwdndntNjPtkOptkjP
 aaVPjPYdklqmpCwRhZbqdndnbONIdnNzdndndnGOdnGOdnBrtkrFjPdndndndndndndndnbgBrdndndndndndndndntktktkJmjP
 aaVPjPgfXxcOwRpChZnDdndnBrBrdndndndndndndndndndntktkjPdndndndndndndndnBrBrdndnNzdndndndndnyFRCwjwjGT
 aaVPjPeLaBSVwRpChZnDdndnmffLdndndnmfmfdndndndnjAtktktkdndnNzdndndndndnGOGOdndndndndndndndnyFtktkOXjP
-aaVPjPxdXxjPjDwRyFKmCehysnYlrdBrINsnYlhANzdntNBrXntkCsdndndndnzBdnnVDshLdndnDshMdnnVzBdndnyFtktktkjP
+aaVPjPxdXxjPjDwRyFKmCehysnYlrdBrINsnYlhANzdntNBrXntkCsdndndndnzBdnnVDshLdnLwDshMdnnVzBdndnyFtktktkjP
 aaVPjPcYTejPwRwRyFbgeYhyhzGHhABrhyhzGHhAtNBrBrBrVEtkjPPydnPyFrFryPFrFrFryPFrFrFryPFrFrFryPjPyFYywRjP
-aaVPjPdMkljPQbWqyFBrCehyAUaErdBrINAUhQhAdndnhRBrtktkFrFryPFrFrwzbYTkFrwzbYTkFrwzbYTkFrwzPtTkdGKUKUpF
+aaVPjPdMkljPQbWqyFBrCehyAUaErdBrINAUhQhAdnLwhRBrtktkFrFryPFrFrwzbYTkFrwzbYTkFrwzbYTkFrwzPtTkdGKUKUpF
 aaVPabQtQtjPwRwRyFBrdndnbObOdndndnbObOdndndnhSBrtktkFrurTkhUFrhVprcdFrhVcbJdFrhVcbcdFrhVcbcddGKUKUpF
 aaVPVPVPVPjPjPjPyFBrTjdnzBdndnnVzBdndndnzBdnhWBrXntkFrurbWbZFrcjOJclFrcjOJclFrcjOJclFrcjOJcldGKUKUpF
 aaVPVPVPVPVPVPVPFrFrhNJeFrFrWwWwWwWwWwWwWwWwWwWwJmrFFrFrFrFrFrFrFrFrFrFrFrFrFrFrFrFrFrFrFrFrdGKUKUpF
 aaVPVPVPVPVPVPVPFrBblLlLBbFrTOuSkqYDioioioazicMqtktkJKidieiejPVPVPVPVPVPVPVPVPVPVPVPVPVPVPVPabKUKUpF
-aaVPVPVPVPVPVPVPFrZFYOlLGsFrLsLspbLsLsifLsLsLsUftktkrkidieiejPVPVPVPVPVPVPVPVPVPVPVPVPVPVPVPabababpF
+aaVPVPVPVPVPVPVPFrZFYOlLGsFrLsLsuILsLsifLsLsLsUftktkrkidieiejPVPVPVPVPVPVPVPVPVPVPVPVPVPVPVPabababpF
 aaVPVPVPVPVPVPVPFrBblLlLBbFrLsLsLsLshPLsLshPLshJtktkjPjPjPjPjPabVPVPVPVPVPVPVPVPVPVPVPVPVPVPVPVPVPaa
 aaVPVPVPVPVPVPVPFrZVBbBbZVFrLsvAihFrFrFPFrFrFPwVtkrFabVPVPVPVPVPVPVPVPVPVPVPVPVPVPVPVPVPVPVPVPVPVPaa
 aaVPVPVPVPVPVPVPFrFrFrFrFrFruKvAsmFrViItFrItItFrXntkabVPVPVPVPVPVPVPVPVPVPVPVPVPVPVPVPVPVPVPvEeiVPaa
