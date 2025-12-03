@@ -112,6 +112,10 @@
 
 /datum/grab/proc/throw_held(var/obj/item/grab/G)
 	var/mob/living/carbon/human/affecting = G.affecting
+	
+	if(!G.assailant || !G.affecting || !G.assailant.Adjacent(G.affecting))  //no telekinetic throws please
+		G.force_drop()
+		return null  
 
 	if(can_throw)
 		animate(affecting, pixel_x = 0, pixel_y = 0, 4, 1)
