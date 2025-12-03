@@ -674,7 +674,14 @@ meteor_act
 						src.visible_message("<span class='danger'>[src] looks momentarily disoriented.</span>", "<span class='danger'>You see stars.</span>")
 						src.apply_effect(kickdam*3, EYE_BLUR, armour)
 						return
-			if(specialkick == TRUE) //you got lucky
+			if(specialkick == TRUE && !user.lying && lying) //victim is lying, attacker is standing
+				var/mob/living/carbon/human/Attacker = user
+				var/obj/item/clothing/shoes = Attacker.shoes
+				var/actualdamage = (kickdam + shoes.force) * 3
+				do_kick(user, src, hit_zone, actualdamage, affecting) //ouch.
+				user.visible_message("<span class=combat_success>[user] stomps down on [src]'s [affecting.name]!<span>")
+				return
+			else if(specialkick == TRUE) //you got lucky
 				do_kick(user, src, hit_zone, kickdam * 2, affecting) //that hurt a little more
 				user.visible_message("<span class=combat_success>[user] lands a solid kick on [src]'s [affecting.name]!<span>")
 				src.visible_message("<span class='danger'>[src] looks momentarily disoriented.</span>", "<span class='danger'>You see stars.</span>")
@@ -766,7 +773,7 @@ meteor_act
 			if(user.lying && !lying && specialkick == FALSE) //you missed dummy
 				missed_kick(user, src, affecting)
 				return
-			if(specialkick == TRUE && !user.lying) //you got lucky
+			if(specialkick == TRUE && !user.lying && !lying) //you got lucky
 				do_kick(user, src, hit_zone, kickdam * 2, affecting) //that hurt a little more
 				user.visible_message("<span class=combat_success>[user] lands a solid kick on [src]'s [affecting.name]!<span>")
 				if(hit_zone == BP_L_ARM)
@@ -783,6 +790,13 @@ meteor_act
 						src.drop_l_hand()
 				
 				return
+			else if(specialkick == TRUE && !user.lying && lying) //victim is lying, attacker is standing
+				var/mob/living/carbon/human/Attacker = user
+				var/obj/item/clothing/shoes = Attacker.shoes
+				var/actualdamage = (kickdam + shoes.force) * 3
+				do_kick(user, src, hit_zone, actualdamage, affecting) //ouch.
+				user.visible_message("<span class=combat_success>[user] stomps down on [src]'s [affecting.name]!<span>")
+				return
 			else
 				do_kick(user, src, hit_zone, kickdam, affecting)
 				user.visible_message("<span class=danger>[user] kicks [src] in the [affecting.name]!<span>")
@@ -792,7 +806,7 @@ meteor_act
 			if(user.lying && !lying && specialkick == FALSE) //you missed dummy
 				missed_kick(user, src, affecting)
 				return
-			if(specialkick == TRUE && !user.lying) //you got lucky
+			if(specialkick == TRUE && !user.lying && !lying) //you got lucky
 				do_kick(user, src, hit_zone, kickdam * 2, affecting) //that hurt a little more
 				user.visible_message("<span class=combat_success>[user] lands a solid kick on [src]'s [affecting.name]!<span>")
 				if(hit_zone == BP_L_HAND)
@@ -809,6 +823,13 @@ meteor_act
 						src.visible_message("<span class='danger'>\The [src.r_hand] flies out of [src]'s grasp!</span>")
 						src.drop_r_hand()
 						tothrow.throw_at(get_edge_target_turf(src, pick(GLOB.alldirs)), rand(1,3), throw_speed)//Throw that sheesh away
+				return
+			else if(specialkick == TRUE && !user.lying && lying) //victim is lying, attacker is standing
+				var/mob/living/carbon/human/Attacker = user
+				var/obj/item/clothing/shoes = Attacker.shoes
+				var/actualdamage = (kickdam + shoes.force) * 3
+				do_kick(user, src, hit_zone, actualdamage, affecting) //ouch.
+				user.visible_message("<span class=combat_success>[user] stomps down on [src]'s [affecting.name]!<span>")
 				return
 			else
 				do_kick(user, src, hit_zone, kickdam, affecting)
@@ -843,7 +864,7 @@ meteor_act
 				return
 		
 		if(BP_R_LEG, BP_L_LEG)
-			if(specialkick == TRUE && !user.lying) //you got lucky
+			if(specialkick == TRUE && !user.lying && !lying) //you got lucky
 				do_kick(user, src, hit_zone, kickdam * 2, affecting) //that hurt a little more
 				user.visible_message("<span class=combat_success>[user] lands a solid kick on [src]'s [affecting.name]!<span>")
 				if(!lying && !crouching)
@@ -853,6 +874,13 @@ meteor_act
 				else if(!lying && crouching)
 					src.visible_message("<span class='danger'>[src]'s stance crumbles, collapsing to the ground!</span>")
 					src.Weaken(1)
+				return
+			else if(specialkick == TRUE && !user.lying && lying) //victim is lying, attacker is standing
+				var/mob/living/carbon/human/Attacker = user
+				var/obj/item/clothing/shoes = Attacker.shoes
+				var/actualdamage = (kickdam + shoes.force) * 3
+				do_kick(user, src, hit_zone, actualdamage, affecting) //ouch.
+				user.visible_message("<span class=combat_success>[user] stomps down on [src]'s [affecting.name]!<span>")
 				return
 			else
 				do_kick(user, src, hit_zone, kickdam, affecting)
