@@ -134,6 +134,9 @@
 				affecting.apply_damage(5, BRUTE, BP_HEAD, 0) //we dont want their head to explode
 			if(!O.is_broken()) //break if not already broken
 				O.fracture()
+			else
+				if(O.break_sound)
+					playsound(affecting, O.break_sound, 100, 0) //*crunch*
 			affecting.death() //kill em.
 		else
 			assailant.visible_message("<span class='danger'>[assailant] failed to snap [affecting]'s neck!</span>")
