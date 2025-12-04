@@ -469,7 +469,6 @@ meteor_act
 						attacker.throwing = 0
 						return
 					else
-						attacker.visible_message("<span class='combat_success'>[attacker] performs a jumping attack!</span>")
 						I.attack(src, attacker, attacker.zone_sel.selecting, TRUE)
 						attacker.throwing = 0
 						return
