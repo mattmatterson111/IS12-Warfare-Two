@@ -21,6 +21,7 @@
 		..()
 		H.add_stats(rand(12,17), rand(10,16), rand(8,12), rand(10, 16))
 		SSwarfare.blue.team += H
+		H.assign_random_squad(BLUE_TEAM)
 		H.fully_replace_character_name("Pvt. [H.real_name]")
 		H.warfare_language_shit(LANGUAGE_BLUE)
 		H.assign_random_quirk()
