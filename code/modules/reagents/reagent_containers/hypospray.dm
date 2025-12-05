@@ -48,6 +48,18 @@
 
 	user.setClickCooldown(DEFAULT_QUICK_COOLDOWN)
 	//user.do_attack_animation(M)
+	
+	if(istype(M, /mob/living/carbon/human) && istype(user, /mob/living/carbon/human))
+		var/mob/living/carbon/human/humanuser = user
+		
+		if(H.warfare_faction != humanuser.warfare_faction) // why would I just let the enemy inject me with something?
+			var/bad_arc = reverse_direction(H.dir) //arc of directions from which we cannot block or dodge
+			if(check_shield_arc(src, bad_arc, null, user) && H != user) //cant dodge from behind
+				if(H.attempt_dodge())
+					return
+				else if(H.check_shields(null, src, user, null, src))
+					return
+	
 	to_chat(user, "<span class='notice'>You inject [M] with [src].</span>")
 	to_chat(M, "<span class='notice'>You feel a tiny prick!</span>")
 	user.visible_message("<span class='warning'>[user] injects [M] with [src].</span>")
