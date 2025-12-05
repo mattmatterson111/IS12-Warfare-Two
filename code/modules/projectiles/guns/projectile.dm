@@ -85,7 +85,7 @@
 		return FALSE
 	if(aspect_chosen(/datum/aspect/clean_guns) || aspect_chosen(/datum/aspect/madness))
 		return FALSE
-	if((!is_jammed && prob(GetConditionProb())) || aspect_chosen(/datum/aspect/no_guns) || aspect_chosen(/datum/aspect/trenchmas))
+	if((!is_jammed && prob(GetConditionProb())) || aspect_chosen(/datum/aspect/trenchmas))
 		playsound(src.loc, 'sound/effects/jam.ogg', 50, 1)
 		src.visible_message("<span class='danger'>\The [src] jams!</span>")
 		is_jammed = 1

@@ -158,6 +158,9 @@
 		return 0
 	if(!user.IsAdvancedToolUser())
 		return 0
+	if(aspect_chosen(/datum/aspect/no_guns)) //Slappers only aspect check
+		to_chat(user, "<span class='warning'>Fists, Blades, Clubs. Those are the tools of war today, not guns.</span>")
+		return 0
 
 	var/mob/living/M = user
 	if(HULK in M.mutations)
