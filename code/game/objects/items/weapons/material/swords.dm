@@ -48,7 +48,7 @@
 		if(prob(user.STAT_LEVEL(end) + 10))
 			var/mob/living/carbon/human/H = user
 			to_chat(user, "<span class='combat_success'>As you parry, you feel a rush of adrenaline!</span>")
-			H.make_adrenaline(2) //GET THAT BLOOD PUMPING!
+			H.make_adrenaline((user.STAT_LEVEL(end)) / 21) //Get a little blood pumping
 		user.visible_message("<span class='combat_success'>\The [user] parries [attack_text] with \the [src]!</span>")
 		if(parry_sounds.len)
 			playsound(user.loc, pick(parry_sounds), 50, 1)
