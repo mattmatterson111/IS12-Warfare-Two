@@ -85,74 +85,126 @@
 	anchored = 1.0
 	invisibility = 101
 
-// ok this fucking shit should changed. Like "/obj/effect/start/HISTORY/[insert awesome role here from bay]"
-// and change warfare roles like "/obj/effect/start/WARFARE/[insert awesome role here from interwar]" - Legasy.
-
 /obj/effect/landmark/start/New()
 	..()
 	tag = "start*[name]"
 	return 1
 
-/obj/effect/landmark/start/assistant
+//
+// U N U S E D
+//
+/obj/effect/landmark/start/HISTORY/assistant
 	name = "Assistant"
-/obj/effect/landmark/start/botanic
+/obj/effect/landmark/start/HISTORY/botanic
 	name = "Botanic"
-/obj/effect/landmark/start/bartender
+/obj/effect/landmark/start/HISTORY/bartender
 	name = "Bartender"
-/obj/effect/landmark/start/magistrate
+/obj/effect/landmark/start/HISTORY/magistrate
 	name = "Commandant"
-/obj/effect/landmark/start/cargo
+/obj/effect/landmark/start/HISTORY/cargo
 	name = "Crate Pusher"
-/obj/effect/landmark/start/chemist
+/obj/effect/landmark/start/HISTORY/chemist
 	name = "Chemist"
-/obj/effect/landmark/start/chef
+/obj/effect/landmark/start/HISTORY/chef
 	name = "Chef"
-/obj/effect/landmark/start/chaplain
+/obj/effect/landmark/start/HISTORY/chaplain
 	name = "Chaplain"
-/obj/effect/landmark/start/chief_engineer
+/obj/effect/landmark/start/HISTORY/chief_engineer
 	name = "Head Upkeeper"
-/obj/effect/landmark/start/cmo
+/obj/effect/landmark/start/HISTORY/cmo
 	name = "Head Practitioner"
-/obj/effect/landmark/start/detective
+/obj/effect/landmark/start/HISTORY/detective
 	name = "Inspector"
-/obj/effect/landmark/start/engineer
+/obj/effect/landmark/start/HISTORY/engineer
 	name = "Upkeeper"
-/obj/effect/landmark/start/overseer
+/obj/effect/landmark/start/HISTORY/overseer
 	name = "Overseer"
-/obj/effect/landmark/start/head_peacekeeper
+/obj/effect/landmark/start/HISTORY/head_peacekeeper
 	name = "Head Peacekeeper"
-/obj/effect/landmark/start/janitor
+/obj/effect/landmark/start/HISTORY/janitor
 	name = "Janitor"
-/obj/effect/landmark/start/librarian
+/obj/effect/landmark/start/HISTORY/librarian
 	name = "Librarian"
-/obj/effect/landmark/start/medical_doctor
+/obj/effect/landmark/start/HISTORY/medical_doctor
 	name = "Practitioner"
-/obj/effect/landmark/start/paramedic
+/obj/effect/landmark/start/HISTORY/paramedic
 	name = "Paramedic"
-/obj/effect/landmark/start/meister
+/obj/effect/landmark/start/HISTORY/meister
 	name = "Quartermaster"
-/obj/effect/landmark/start/robotic_augmentor
+/obj/effect/landmark/start/HISTORY/robotic_augmentor
 	name = "Robotic Augmentor"
-/obj/effect/landmark/start/peacekeeper
+/obj/effect/landmark/start/HISTORY/peacekeeper
 	name = "Peacekeeper"
-/obj/effect/landmark/start/shaft_miner
+/obj/effect/landmark/start/HISTORY/shaft_miner
 	name = "Shaft Miner"
-/obj/effect/landmark/start/scientist
+/obj/effect/landmark/start/HISTORY/scientist
 	name = "Tenchotrainee"
-/obj/effect/landmark/start/warden
+/obj/effect/landmark/start/HISTORY/warden
 	name = "Warden"
-/obj/effect/landmark/start/xenobiologist
+/obj/effect/landmark/start/HISTORY/xenobiologist
 	name = "Xenobiologist"
-/obj/effect/landmark/start/supreme_arbiter
+/obj/effect/landmark/start/HISTORY/supreme_arbiter
 	name = "Supreme Arbiter"
-/obj/effect/landmark/start/arbiter
+/obj/effect/landmark/start/HISTORY/arbiter
 	name = "Arbiter"
-/obj/effect/landmark/start/cargo_kid
+/obj/effect/landmark/start/HISTORY/cargo_kid
 	name ="Cargo Kid"
-/obj/effect/landmark/start/cadet
+/obj/effect/landmark/start/HISTORY/cadet
 	name = "Cadet"
-/obj/effect/landmark/start/heir
+/obj/effect/landmark/start/HISTORY/heir
 	name = "Heir"
+//
+// W A R F A R E
+//
+//RED
+//
+/obj/effect/landmark/start/WARFARE/red
+	name = "Red Soldier"
+/obj/effect/landmark/start/WARFARE/red/medic
+	name = "Red Medic"
+/obj/effect/landmark/start/WARFARE/red/engi
+	name = "Red Engineer"
+/obj/effect/landmark/start/WARFARE/red/sl
+	name = "Red Squad Leader"
+/obj/effect/landmark/start/WARFARE/red/lt
+	name = "Red Logistics Lieutenant"
+/obj/effect/landmark/start/WARFARE/red/prac
+	name = "Red Practitioner"
+/obj/effect/landmark/start/WARFARE/red/scav
+	name = "Red Scavenger"
+/obj/effect/landmark/start/WARFARE/red/sentry
+	name = "Red Sentry"
+/obj/effect/landmark/start/WARFARE/red/flamer
+	name = "Red Flame Trooper"
+/obj/effect/landmark/start/WARFARE/red/sniper
+	name = "Red Sniper"
+/obj/effect/landmark/start/WARFARE/red/cap
+	name = "Red Captain"
+//
+// BLUE
+//
+/obj/effect/landmark/start/WARFARE/blue
+	name = "Blue Soldier"
+/obj/effect/landmark/start/WARFARE/blue/medic
+	name = "Blue Medic"
+/obj/effect/landmark/start/WARFARE/blue/engi
+	name = "Blue Engineer"
+/obj/effect/landmark/start/WARFARE/blue/sl
+	name = "Blue Squad Leader"
+/obj/effect/landmark/start/WARFARE/blue/lt
+	name = "Blue Logistics Lieutenant"
+/obj/effect/landmark/start/WARFARE/blue/prac
+	name = "Blue Practitioner"
+/obj/effect/landmark/start/WARFARE/blue/scav
+	name = "Blue Scavenger"
+/obj/effect/landmark/start/WARFARE/blue/sentry
+	name = "Blue Sentry"
+/obj/effect/landmark/start/WARFARE/blue/flamer
+	name = "Blue Flame Trooper"
+/obj/effect/landmark/start/WARFARE/blue/sniper
+	name = "Blue Sniper"
+/obj/effect/landmark/start/WARFARE/blue/cap
+	name = "Blue Captain"
 
 //Costume spawner landmarks
 /obj/effect/landmark/costume/New() //costume spawner, selects a random subclass and disappears
