@@ -583,14 +583,17 @@ its easier to just keep the beam vertical.
 		|| istype(user.wear_suit, /obj/item/clothing/suit/straight_jacket) || istype(user.loc, /obj/structure/closet))
 		return
 
-	if(user.staminaloss >= 100)
+	if(user.staminaloss >= user.staminaexhaust/2)
+		to_chat(user, "<span class='warning'>You're too tired to jump!</span>")
 		return
 
 	for(var/limbcheck in list(BP_L_LEG,BP_R_LEG, BP_R_FOOT, BP_L_FOOT))//But we need to see if we have legs.
 		var/obj/item/organ/affecting = user.get_organ(limbcheck)
 		if(!affecting)//Oh shit, we don't have have any legs, we can't jump.
+			to_chat(user, "<span class='warning'>Can't jump wihout 2 functioning legs!</span>")
 			return
 		if(affecting.is_broken())//Our legs are broken can't jump here either.
+			to_chat(user, "<span class='warning'>Can't jump on a broken leg!</span>")
 			return
 
 	if(user.zoomed)//No more jump sniping.
@@ -600,6 +603,8 @@ its easier to just keep the beam vertical.
 	playsound(user, user.gender == MALE ? 'sound/effects/jump_male.ogg' : 'sound/effects/jump_female.ogg', 25, 0, 1)
 	user.visible_message("[user] jumps.")
 	user.adjustStaminaLoss(rand(40,60))//Jumping is exhausting.
+	user.jumping = TRUE
 	user.throw_at(target, rand(2,3), 0.3, user)
+	user.jumping = FALSE
 	user.setClickCooldown(DEFAULT_SLOW_COOLDOWN)
 
