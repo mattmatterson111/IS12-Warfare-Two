@@ -558,6 +558,13 @@ its easier to just keep the beam vertical.
 	if(!Adjacent(user) || user.incapacitated(INCAPACITATION_STUNNED|INCAPACITATION_KNOCKOUT|INCAPACITATION_BUCKLED_PARTIALLY|INCAPACITATION_BUCKLED_FULLY) \
 		|| istype(user.wear_suit, /obj/item/clothing/suit/straight_jacket) || istype(user.loc, /obj/structure/closet))
 		return
+		
+	for(var/obj/item/grab/G in user.grabbed_by)
+		if(G.target_zone in list(BP_L_LEG, BP_R_LEG, BP_L_FOOT, BP_R_FOOT)) //bit hard to kick someone if they've grabbed your leg
+			var/obj/item/organ/external/O = G.get_targeted_organ()
+			to_chat(user, "<span class='phobia'>You try to kick, but feel someone hold your [O.name] in place!</span>")
+			user.visible_message("<span class='danger'>[user.name] attempts to kick, but is held in place!</span>")
+			return
 
 	if(user.handcuffed && prob(50) && !user.incapacitated(INCAPACITATION_FORCELYING))//User can fail to kick smbd if cuffed
 		user.visible_message("<span class='danger'>[user.name] loses \his balance while trying to kick \the [src].</span>", \
@@ -594,6 +601,13 @@ its easier to just keep the beam vertical.
 			return
 		if(affecting.is_broken())//Our legs are broken can't jump here either.
 			to_chat(user, "<span class='warning'>Can't jump on a broken leg!</span>")
+			return
+			
+	for(var/obj/item/grab/G in user.grabbed_by)
+		if(G.target_zone in list(BP_L_LEG, BP_R_LEG, BP_L_FOOT, BP_R_FOOT)) //oh shit someones grabbing our leg
+			to_chat(user, "<span class='phobia'>You try to jump, but feel someone pull you back down!</span>")
+			user.Weaken(1)
+			visible_message("<b><big>[user.name] attempts to jump but gets pulled back down!!</big></b>")//send a message
 			return
 
 	if(user.zoomed)//No more jump sniping.

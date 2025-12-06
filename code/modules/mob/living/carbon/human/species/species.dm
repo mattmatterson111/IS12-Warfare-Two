@@ -484,7 +484,7 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 /datum/species/proc/update_skin(var/mob/living/carbon/human/H)
 	return
 
-/datum/species/proc/disarm_attackhand(var/mob/living/carbon/human/attacker, var/mob/living/carbon/human/target, var/skill = null)
+/datum/species/proc/disarm_attackhand(var/mob/living/carbon/human/attacker, var/mob/living/carbon/human/target, var/bonus = null)
 	//attacker.do_attack_animation(target)
 	attacker.adjustStaminaLoss(rand(2,3))//No more spamming disarm without consequences.
 
@@ -505,10 +505,38 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 				target.visible_message("<span class='danger'>[target]'s [W] goes off during the struggle!</span>")
 				return W.afterattack(shoot_to,target)
 
+	var/defensemodifier = 0
+	
+	switch(target.a_intent)
+		if(I_HURT)
+			defensemodifier -= 10 //too agressive
+		if(I_DISARM)
+			defensemodifier += target.my_stats[STAT(dex)].level //move it outta the way
+		if(I_GRAB)
+			defensemodifier += target.my_stats[STAT(end)].level //hold onto that shit
+		if(I_HELP)
+			defensemodifier -= 300 //guaranteed disarm, you're completely unprepared
+			
+	if(target.lying && !attacker.lying) //remove or nerf if too strong
+		defensemodifier -= 25 //better chance to disarm, you're on your ass and they ain't
+		//target.visible_message("<span class='danger'>DEBUG: LYING GUARANTEED</span>")
+		
+	if(target.grabbed_by.len) //REAL SOLID SNAKE SHIT
+		for(var/obj/item/grab/G in target.grabbed_by)
+			if(G.target_zone in list(BP_L_ARM, BP_R_ARM, BP_L_HAND, BP_R_HAND)) //oh shit someones grabbing our arm or hand
+				if(target.hand == 0 || target.hand == null) //righthand is active hand
+					if(G.target_zone == BP_R_ARM || G.target_zone == BP_R_HAND)
+						defensemodifier -= 300 //we're holding something in our right hand and something is holding our right arm or hand in place.
+						//target.visible_message("<span class='danger'>DEBUG: RHAND GUARANTEED</span>")
+				else if(target.hand == 1)//left hand is active hand	
+					if(G.target_zone == BP_L_ARM || G.target_zone == BP_L_HAND)
+						defensemodifier -= 300
+						//target.visible_message("<span class='danger'>DEBUG: LHAND GUARANTEED</span>")
 
-	var/randn = attacker.SKILL_LEVEL(melee) * 5 + (attacker.my_stats[STAT(str)].level) + (attacker.my_stats[STAT(dex)].level) - (target.my_stats[STAT(str)].level) // melee skill * 5 + dex + str - target str. too lazy to rename var
+	var/disarmchance = attacker.SKILL_LEVEL(melee) * 5 + (attacker.my_stats[STAT(str)].level) + (attacker.my_stats[STAT(dex)].level) + bonus - target.SKILL_LEVEL(melee) * 2.5 - (target.my_stats[STAT(str)].level) - defensemodifier
+	// your melee skill * 5 - target melee skill * 2.5 + bonus + dex + str - target str - defensemodifier 
 	/*
-	if(!(species_flags & SPECIES_FLAG_NO_SLIP) && randn <= 25)
+	if(!(species_flags & SPECIES_FLAG_NO_SLIP) && disarmchance <= 25)
 		var/armor_check = target.run_armor_check(affecting, "melee")
 		target.apply_effect(3, WEAKEN, armor_check)
 		playsound(target.loc, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
@@ -519,7 +547,7 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 		return
 	*/
 
-	if(randn <= 60 + skill)
+	if(prob(disarmchance)) //WHOOPS
 		//See about breaking grips or pulls
 		if(target.break_all_grabs(attacker))
 			playsound(target.loc, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
@@ -529,7 +557,7 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 		for(var/obj/item/I in holding)
 			if(I)
 				target.drop_from_inventory(I)
-				if(skill != null)
+				if(bonus != null)
 					target.visible_message("<span class='combat_success'>[attacker] has disarmed [target] with their combat knife!</span>")
 				else
 					target.visible_message("<span class='combat_success'>[attacker] has disarmed [target]!</span>")
@@ -537,7 +565,7 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 				return
 
 	playsound(target.loc, 'sound/weapons/punchmiss.ogg', 25, 1, -1)
-	if(skill != null)
+	if(bonus != null)
 		target.visible_message("<span class='danger'>[attacker] attempted to disarm \the [target] with the combat knife!</span>")
 	else
 		target.visible_message("<span class='danger'>[attacker] attempted to disarm \the [target]!</span>")
