@@ -558,6 +558,11 @@ its easier to just keep the beam vertical.
 	if(!Adjacent(user) || user.incapacitated(INCAPACITATION_STUNNED|INCAPACITATION_KNOCKOUT|INCAPACITATION_BUCKLED_PARTIALLY|INCAPACITATION_BUCKLED_FULLY) \
 		|| istype(user.wear_suit, /obj/item/clothing/suit/straight_jacket) || istype(user.loc, /obj/structure/closet))
 		return
+		
+	for(var/obj/item/grab/G in user.grabbed_by)
+		if(G.target_zone in list(BP_L_LEG, BP_R_LEG, BP_L_FOOT, BP_R_FOOT)) //bit hard to kick someone if they've grabbed your leg
+			to_chat(user, "<span class='phobia'>You try to kick, but feel someone hold your leg in place!</span>")
+			return
 
 	if(user.handcuffed && prob(50) && !user.incapacitated(INCAPACITATION_FORCELYING))//User can fail to kick smbd if cuffed
 		user.visible_message("<span class='danger'>[user.name] loses \his balance while trying to kick \the [src].</span>", \
