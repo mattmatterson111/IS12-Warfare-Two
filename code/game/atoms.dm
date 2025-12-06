@@ -595,6 +595,12 @@ its easier to just keep the beam vertical.
 		if(affecting.is_broken())//Our legs are broken can't jump here either.
 			to_chat(user, "<span class='warning'>Can't jump on a broken leg!</span>")
 			return
+			
+	for(var/obj/item/grab/G in user.grabbed_by)
+		if(G.target_zone in list(BP_L_LEG, BP_R_LEG, BP_L_FOOT, BP_R_FOOT)) //oh shit someones grabbing our leg
+			to_chat(user, "<span class='phobia'>You try to jump, but feel someone pull you back down!</span>")
+			user.Weaken(1)
+			return
 
 	if(user.zoomed)//No more jump sniping.
 		user.do_zoom()
