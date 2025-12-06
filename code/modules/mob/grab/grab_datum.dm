@@ -271,18 +271,24 @@
 	if(affecting.incapacitated(INCAPACITATION_KNOCKOUT | INCAPACITATION_STUNNED))
 		to_chat(G.assailant, "<span class='warning'>You can't resist in your current state!</span>")
 
-	var/break_strength = breakability + size_difference(affecting, assailant)
-
-	if(affecting.incapacitated(INCAPACITATION_ALL))
-		break_strength--
+	var/break_chance = 50 - affecting.STAT_LEVEL(str) * 2 + affecting.STAT_LEVEL(str) //odds are in grabber's favor
+	
+	if(G.wielded) //grabbing with 2 hands gives you a better grip
+		break_chance -= affecting.STAT_LEVEL(str)
+	if(G.assailant.a_intent == I_GRAB) //Focusing on grabbing gives you a better grip
+		break_chance -= affecting.STAT_LEVEL(end)
+	if(affecting.incapacitated(INCAPACITATION_ALL)) //includes lying down, you better spam disarm on em bud
+		break_chance -= 200 //never getting out
 	if(affecting.confused)
-		break_strength--
+		break_chance -= 25
 
-	if(break_strength < 1)
+	if(assailant.mob_size > affecting.mob_size) //adult grabbing a child
 		to_chat(G.assailant, "<span class='warning'>You try to break free but feel that unless something changes, you'll never escape!</span>")
 		return
+		
+	//affecting.visible_message("<span class='warning'>DEBUG: BREAK CHANCE: [break_chance]%!</span>")
 
-	var/break_chance = break_chance_table[Clamp(break_strength, 1, break_chance_table.len)]
+	//var/break_chance = break_chance_table[Clamp(break_strength, 1, break_chance_table.len)]
 	if(prob(break_chance))
 		if(can_downgrade_on_resist && !prob((break_chance+100)/2))
 			affecting.visible_message("<span class='warning'>[affecting] has loosened [assailant]'s grip!</span>")
