@@ -10,7 +10,13 @@
 		if(a_intent == I_DISARM)//Better chance to dodge on disarm intent
 			dodge_modifier += 30
 		if(src.grabbed_by.len) //getting grabbed makes it harder to dodge ya know?
-			dodge_modifier -= 30
+			for(var/obj/item/grab/G in src.grabbed_by)
+				if(G.target_zone in list(BP_L_LEG, BP_R_LEG, BP_L_FOOT, BP_R_FOOT)) //oh shit someones grabbing our leg
+					var/obj/item/organ/external/O = G.get_targeted_organ()
+					to_chat(src, "<span class='phobia'>You try to dodge, but you feel a grip holding your [O.name] in place!</span>")
+					return 0
+				else
+					dodge_modifier -= 30 //okay its not a grab by the legs or feet, thats still bad
 		if(statscheck(STAT_LEVEL(dex) / 2 + 3) >= SUCCESS)
 			do_dodge()
 			return	1
