@@ -21,8 +21,7 @@
 		..()
 		H.add_stats(rand(12,17), rand(10,16), rand(8,12), rand(10, 16))
 		SSwarfare.red.team += H
-		if(can_be_in_squad)
-			H.assign_random_squad(RED_TEAM)
+		H.assign_random_squad(RED_TEAM)
 		H.fully_replace_character_name("Pvt. [H.real_name]")
 		H.warfare_language_shit(LANGUAGE_RED)
 		H.assign_random_quirk()
@@ -58,13 +57,19 @@
 /datum/job/soldier/red_soldier/medic
 	title = "Red Medic"
 	outfit_type = /decl/hierarchy/outfit/job/redsoldier/medic
+	total_positions = 10
 
 	//Skill defines
-	medical_skill = 10
-	surgery_skill = 10
+	medical_skill = 8
+	surgery_skill = 6
 	engineering_skill = 4
 	auto_rifle_skill = 3
-	semi_rifle_skill = 10
+	semi_rifle_skill = 7
+	boltie_skill = 9
+	sniper_skill = 1
+	shotgun_skill = 6
+	lmg_skill = 1
+	smg_skill = 4
 
 	announced = FALSE
 
@@ -73,6 +78,8 @@
 	equip(var/mob/living/carbon/human/H)
 		var/current_name = H.real_name
 		..()
+		if(can_be_in_squad)
+			H.assign_random_squad(RED_TEAM, "medic")
 		H.set_trait(new/datum/trait/death_tolerant())
 		H.fully_replace_character_name("Medic [current_name]")
 
@@ -451,21 +458,39 @@
 	..()
 
 /decl/hierarchy/outfit/job/redsoldier/medic
-	suit = /obj/item/clothing/suit/armor/redcoat/medic
+	suit = /obj/item/clothing/suit/armor/redcoat
 	belt = /obj/item/storage/belt/medical/full
 	r_pocket = /obj/item/ammo_magazine/c45rifle/akarabiner
-	l_pocket = /obj/item/stack/medical/bruise_pack
+	l_pocket = /obj/item/storage/box/ifak
 	suit_store = /obj/item/gun/projectile/automatic/m22/warmonger
 	gloves = /obj/item/clothing/gloves/latex
-	head = /obj/item/clothing/head/helmet/redhelmet/medic
+	mask = /obj/item/clothing/mask/surgical
+	head = /obj/item/clothing/head/helmet/redhelmet
 
 /decl/hierarchy/outfit/job/redsoldier/medic/equip()
-	if(prob(50))
+	if(prob(5))
+		back = /obj/item/storage/backpack/satchel/warfare/prac
 		suit_store = /obj/item/gun/projectile/automatic/m22/warmonger
 		r_pocket = /obj/item/ammo_magazine/c45rifle/akarabiner
 		backpack_contents = list( /obj/item/ammo_magazine/c45rifle/akarabiner = 3, /obj/item/grenade/smokebomb = 1)
-
+	else if(prob(10))
+		back = /obj/item/storage/backpack/satchel/warfare/prac
+		suit_store = /obj/item/gun/projectile/shotgun/doublebarrel
+		r_pocket = /obj/item/ammo_box/shotgun
+		backpack_contents = list(/obj/item/grenade/smokebomb = 1)
+	else if(prob(15))
+		l_hand = /obj/item/gun/projectile/warfare //what about akimbo?
+		r_hand = /obj/item/gun/projectile/warfare
+		r_pocket = /obj/item/ammo_magazine/c45m/warfare
+		suit_store = /obj/item/storage/backpack/satchel/warfare/prac
+		backpack_contents = list(/obj/item/grenade/smokebomb = 1, /obj/item/ammo_magazine/c45m/warfare = 4)
+	else if(prob(40))
+		back = /obj/item/storage/backpack/satchel/warfare/prac
+		suit_store = /obj/item/gun/projectile/shotgun/pump/boltaction/shitty/bayonet
+		r_pocket = /obj/item/ammo_box/rifle
+		backpack_contents = list(/obj/item/grenade/smokebomb = 1)
 	else
+		back = /obj/item/storage/backpack/satchel/warfare/prac
 		suit_store = /obj/item/gun/projectile/shotgun/pump/boltaction/shitty
 		r_pocket = /obj/item/ammo_box/rifle
 		backpack_contents = list(/obj/item/grenade/smokebomb = 1)

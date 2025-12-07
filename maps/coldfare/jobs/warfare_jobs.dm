@@ -6,7 +6,7 @@
 	/datum/job/assistant,
     /datum/job/soldier/red_soldier/captain,
     /datum/job/soldier/red_soldier/sgt,
-  //  /datum/job/soldier/red_soldier/medic,
+    /datum/job/soldier/red_soldier/medic,
 	/datum/job/soldier/red_soldier/engineer,
 	/datum/job/soldier/red_soldier/sniper,
 	/datum/job/soldier/red_soldier/flame_trooper,
@@ -18,7 +18,7 @@
 
     /datum/job/soldier/blue_soldier/captain,
     /datum/job/soldier/blue_soldier/sgt,
-   // /datum/job/soldier/blue_soldier/medic,
+    /datum/job/soldier/blue_soldier/medic,
 	/datum/job/soldier/blue_soldier/engineer,
 	/datum/job/soldier/blue_soldier/sniper,
 	/datum/job/soldier/blue_soldier/flame_trooper,

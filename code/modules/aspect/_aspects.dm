@@ -16,7 +16,7 @@ IT'S IMPORTANT TO REMEMBER THAT YES, ASPECTS HAVE THE HUGE POTENTIAL TO RUIN GAM
 
 //Global "chosen aspect" mainly used to affect stuff post game launch
 //The global list of aspects that can be chosen. Used in gameticker.dm
-GLOBAL_LIST_INIT(possible_aspects, list(/datum/aspect/clean_guns, /datum/aspect/extramoney, /datum/aspect/additional_troops, /datum/aspect/one_word, /datum/aspect/no_guns))
+GLOBAL_LIST_INIT(possible_aspects, list(/datum/aspect/clean_guns, /datum/aspect/madness, /datum/aspect/extramoney, /datum/aspect/additional_troops, /datum/aspect/one_word, /datum/aspect/no_guns))
 
 //Checks to see if the aspect chosen matches the argument. Useful for affecting stuff post round start.
 proc/aspect_chosen(var/datum/aspect/aspect)
@@ -99,6 +99,11 @@ proc/print_aspect()
 	name = "Nightfare"
 	desc = "Our worst fears have come true! The sun has gone out! There is no natural light on the battlefield!"
 	deactivated = "The sun has returned! Rejoice!"
+	
+/datum/aspect/madness
+	name = "Somewhere in Blusnia..."
+	desc = "They say, somewhere in Blusnia, guns can never jam or be reloaded. That must make for some mad combat."
+	deactivated = "MADNESS ASPECT DISENGAGED, NORMALITY RESTORATION IN PROGRESS..."
 
 /datum/aspect/extramoney
 	name = "Extra Money"
