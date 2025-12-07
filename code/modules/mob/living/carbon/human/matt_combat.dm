@@ -38,7 +38,6 @@
 	playsound(loc, 'sound/weapons/punchmiss.ogg', 80, 1)//play a sound
 	step(src,lol)//move them
 	visible_message("<b><big>[src.name] dodges out of the way!!</big></b>")//send a message
-	
 	var/mob/living/carbon/human/H = src
 	if(prob(H.STAT_LEVEL(end) + 10))
 		to_chat(H, "<span class='combat_success'>As you dodge, you feel a rush of adrenaline!</span>")
