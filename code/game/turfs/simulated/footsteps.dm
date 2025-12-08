@@ -264,8 +264,8 @@
 			H.consistent_step_count = 0
 		
 		var/obj/item/gun/G = H.get_active_hand()
-		if(istype(G) && G.hitsound == "bayonet_stab" && G.wielded) 
-			if(H.consistent_step_count >= 4 && H.lastdir == H.dir && H.a_intent == I_HURT && (world.time - H.last_move_time) < 5 && !H.crouching && !H.weapon_readied) //we've moved at least 4 tiles, haven't changed directions, are trying to kill them, and we haven't stopped midway through.
+		if(istype(G) && G.hitsound == "bayonet_stab" && G.wielded)
+			if(H.consistent_step_count >= 4 && !H.facing_dir && H.lastdir == H.dir && H.a_intent == I_HURT && (world.time - H.last_move_time) < 5 && !H.crouching && !H.weapon_readied) //we've moved at least 4 tiles, haven't changed directions, are trying to kill them, and we haven't stopped midway through.
 				if(!H.TALLYHOLADS)
 					to_chat(H, "<span class='combat_success'>You ready your bayonet. Charge into someone directly in front of you to automatically stab them.</span>")
 				H.TALLYHOLADS = TRUE //just so theres a visible message to the player they can bayonet charge
