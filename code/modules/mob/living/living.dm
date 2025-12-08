@@ -107,7 +107,7 @@ default behaviour is:
 				now_pushing = 0
 				return
 				
-			if(TALLYHOLADS == TRUE && (world.time - last_move_time) < 22.5)
+			if(TALLYHOLADS == TRUE && consistent_step_count >= 4 && lastdir == dir && a_intent == I_HURT && (world.time - last_move_time) < 5 && !crouching)
 				var/obj/item/gun/G = get_active_hand()
 				G.attack(tmob, src, zone_sel.selecting, TRUE) //special bayonet attack handled in item/proc/attack
 				TALLYHOLADS = FALSE
