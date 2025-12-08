@@ -262,6 +262,17 @@
 			H.consistent_step_count++ //were moving in the same direction
 		else //we arent moving in the same direction
 			H.consistent_step_count = 0
+		
+		var/obj/item/gun/G = H.get_active_hand()
+		if(istype(G) && G.hitsound == "bayonet_stab" && G.wielded) 
+			if(H.consistent_step_count >= 4 && H.lastdir == H.dir && H.a_intent == I_HURT && (world.time - H.last_move_time) < 22.5) //we've moved at least 4 tiles, haven't changed directions, are trying to kill them, and we haven't stopped midway through.
+				if(!H.TALLYHOLADS)
+					to_chat(H, "<span class='combat_success'>You ready your bayonet. Charge into someone directly in front of you to automatically stab them.</span>")
+				H.TALLYHOLADS = TRUE //just so theres a visible message to the player they can bayonet charge
+			else
+				if(H.TALLYHOLADS) //we *were* ready to bayonet charge some poor fool
+					H.TALLYHOLADS = FALSE
+					to_chat(H, "<span class='warning'>You lower your bayonet.</span>")
 		H.last_move_time = world.time //update last dir and last_move_time
 		H.lastdir = H.dir
 

@@ -87,7 +87,7 @@ avoid code duplication. This includes items that may sometimes act as a standard
 			to_chat(user, "<span class='warning'>The [src] is not ready to attack again!</span>")
 		return 0
 
-	if(!user.combat_mode)
+	if(user.a_intent == I_HELP)
 		special = FALSE
 
 	if(M == user)//Hitting yourself.
@@ -96,7 +96,7 @@ avoid code duplication. This includes items that may sometimes act as a standard
 	if(special)//We did a special attack, let's apply it's special properties.
 		if(user.TALLYHOLADS) //bayonet charge shit
 			var/obj/item/gun/G = user.get_active_hand() //already checked if we have a gun when this is true
-			user.visible_message("<span class='combat_success'>[user] attempts to bayonet [M] with the [G]!</span>")
+			user.visible_message("<span class='combat_success'>[user] attempts to bayonet [M] with [G]!</span>")
 			user.adjustStaminaLoss(w_class + 6)
 			user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
 			apply_speed_delay(0)
