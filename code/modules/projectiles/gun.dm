@@ -787,6 +787,9 @@
 	update_icon()
 	..()
 /obj/item/gun/dropped(mob/user)
+	if(user.TALLYHOLADS) //just in case
+		user.TALLYHOLADS = FALSE
+		to_chat(H, "<span class='warning'>You lower your bayonet.</span>")
 	..()
 	if(user.client)
 		user.client.mouse_pointer_icon = 'icons/misc/pointer_cursor.dmi'
