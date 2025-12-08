@@ -129,3 +129,11 @@
 	var/is_anonymous = FALSE //Used when examined and speaking for whether or not they're anonymous
 	var/coldbreath = FALSE //dumb snowflake bullshit for coldbreath don't worry about it g
 	var/last_words = null
+	var/jumping = FALSE //for jumping special attacks
+	
+	///////
+	var/currentdir = null
+	var/lastdir = null
+	var/consistent_step_count = 0 //increment when moving in same direction
+	var/delaychecker = 0 //did we pause while moving?
+	/////bayonet charge related stuff
