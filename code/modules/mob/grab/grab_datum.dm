@@ -271,12 +271,12 @@
 	if(affecting.incapacitated(INCAPACITATION_KNOCKOUT | INCAPACITATION_STUNNED))
 		to_chat(G.assailant, "<span class='warning'>You can't resist in your current state!</span>")
 
-	var/break_chance = 50 - affecting.STAT_LEVEL(str) * 2 + affecting.STAT_LEVEL(str) //odds are in grabber's favor
+	var/break_chance = 50 - assailant.STAT_LEVEL(str) * 2 + affecting.STAT_LEVEL(str) //odds are in grabber's favor
 	
 	if(G.wielded) //grabbing with 2 hands gives you a better grip
-		break_chance -= affecting.STAT_LEVEL(str)
+		break_chance -= assailant.STAT_LEVEL(str)
 	if(G.assailant.a_intent == I_GRAB) //Focusing on grabbing gives you a better grip
-		break_chance -= affecting.STAT_LEVEL(end)
+		break_chance -= assailant.STAT_LEVEL(end)
 	if(affecting.incapacitated(INCAPACITATION_ALL)) //includes lying down, you better spam disarm on em bud
 		break_chance -= 200 //never getting out
 	if(affecting.confused)
