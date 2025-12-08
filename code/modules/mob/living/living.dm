@@ -106,6 +106,13 @@ default behaviour is:
 				status_flags &= ~LEAPING
 				now_pushing = 0
 				return
+				
+			if(TALLYHOLADS == TRUE && !facing_dir && consistent_step_count >= 4 && lastdir == dir && a_intent == I_HURT && (world.time - last_move_time) < 5 && !crouching && !weapon_readied)
+				var/obj/item/gun/G = get_active_hand()
+				G.attack(tmob, src, zone_sel.selecting, TRUE) //special bayonet attack handled in item/proc/attack
+				TALLYHOLADS = FALSE
+				last_move_time = world.time
+				consistent_step_count = 0 //no repeat bayonet charges
 
 			if(tmob.in_trench && plane == HUMAN_PLANE) // If we bump into mob in trench - we moving in. This means that we don't swap our location with trench-mob loc.
 				forceMove(tmob.loc)

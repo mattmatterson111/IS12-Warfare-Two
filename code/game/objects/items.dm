@@ -170,6 +170,9 @@
 /obj/item/proc/unwield(mob/user, hidden = FALSE)
 	if(!wielded || !user)
 		return
+	if(user.TALLYHOLADS) //just in case
+		user.TALLYHOLADS = FALSE
+		to_chat(H, "<span class='warning'>You lower your bayonet.</span>")
 	wielded = 0
 	if(force_unwielded)
 		force = force_unwielded

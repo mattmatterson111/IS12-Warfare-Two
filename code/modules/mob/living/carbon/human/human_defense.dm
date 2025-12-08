@@ -259,11 +259,14 @@ meteor_act
 		effective_force *= strToDamageModifier(user.STAT_LEVEL(str))
 
 	if(special)
-		switch(user.a_intent)
-			if(I_HURT)//Offensive attacks do even more damage.
-				effective_force += I.force
-			if(I_WEAK)
-				effective_force = (effective_force/2) //Half the amount of force.
+		if(user.TALLYHOLADS) //bayonet stab addition
+			effective_force += user.STAT_LEVEL(str) //putting your *all* into this
+		else
+			switch(user.a_intent)
+				if(I_HURT)//Offensive attacks do even more damage.
+					effective_force += I.force
+				if(I_WEAK)
+					effective_force = (effective_force/2) //Half the amount of force.
 
 	if(user.a_intent == I_DISARM)//If we're trying to disarm then hit for less damage.
 		effective_force = (effective_force * 0.25)

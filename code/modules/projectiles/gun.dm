@@ -214,6 +214,8 @@
 /obj/item/gun/attack(atom/A, mob/living/user, def_zone)
 	if (A == user && user.zone_sel.selecting == BP_MOUTH && !mouthshoot)
 		handle_suicide(user)
+	else if(user.TALLYHOLADS) //bayonet charging
+		return ..(A, user, def_zone, TRUE)
 	else if(user.a_intent == I_HURT && can_shoot()) //point blank shooting
 		Fire(A, user, pointblank=1)
 	else
@@ -785,6 +787,9 @@
 	update_icon()
 	..()
 /obj/item/gun/dropped(mob/user)
+	if(user.TALLYHOLADS) //just in case
+		user.TALLYHOLADS = FALSE
+		to_chat(H, "<span class='warning'>You lower your bayonet.</span>")
 	..()
 	if(user.client)
 		user.client.mouse_pointer_icon = 'icons/misc/pointer_cursor.dmi'
