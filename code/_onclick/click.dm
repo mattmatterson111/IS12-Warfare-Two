@@ -109,13 +109,6 @@
 		RestrainedClickOn(A)
 		return 1
 
-	if(in_throw_mode)
-		if(isturf(A) || isturf(A.loc))
-			throw_item(A)
-			trigger_aiming(TARGET_CAN_CLICK)
-			return 1
-		throw_mode_off()
-
 	var/obj/item/W = get_active_hand()
 
 	if(W == A) // Handle attack_self
@@ -126,6 +119,32 @@
 		else
 			update_inv_r_hand(0)
 		return 1
+	
+	if(istype(src, /mob/living/carbon/human)) //YOUR SOOOUUUUUL SUPREEEEEME
+		var/mob/living/carbon/human/H = src
+		for(var/obj/item/grab/G in H.grabbed_by)
+			if(G.target_zone in list(BP_L_HAND, BP_R_HAND))
+				if(G.target_zone == BP_L_HAND && H.hand) //left hand is grabbed and the active hand
+					if(W)
+						to_chat(H, "<span class='phobia'>You try to move your [W.name], but you feel a grip holding your left hand in place!</span>")
+						return 0
+					else
+						to_chat(H, "<span class='phobia'>You try to move your left hand, but you feel a grip holding your left hand in place!</span>")
+						return 0
+				else if(G.target_zone == BP_R_HAND && !H.hand) //vice versa
+					if(W)
+						to_chat(H, "<span class='phobia'>You try to move your [W.name], but you feel a grip holding your right hand in place!</span>")
+						return 0
+					else
+						to_chat(H, "<span class='phobia'>You try to move your right hand, but you feel a grip holding your right hand in place!</span>")
+						return 0
+						
+	if(in_throw_mode)
+		if(isturf(A) || isturf(A.loc))
+			throw_item(A)
+			trigger_aiming(TARGET_CAN_CLICK)
+			return 1
+		throw_mode_off()
 
 	//Atoms on your person
 	// A is your location but is not a turf; or is on you (backpack); or is on something on you (box in backpack); sdepth is needed here because contents depth does not equate inventory storage depth.

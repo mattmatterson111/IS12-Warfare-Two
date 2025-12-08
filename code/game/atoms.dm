@@ -609,6 +609,10 @@ its easier to just keep the beam vertical.
 			user.Weaken(1)
 			visible_message("<b><big>[user.name] attempts to jump but gets pulled back down!!</big></b>")//send a message
 			return
+		else //still grabbed, so dont jump
+			var/obj/item/organ/external/O = G.get_targeted_organ()
+			to_chat(user, "<span class='phobia'>You try to jump, but feel a grip on your [O.name] holding you in place!</span>")
+			return
 
 	if(user.zoomed)//No more jump sniping.
 		user.do_zoom()

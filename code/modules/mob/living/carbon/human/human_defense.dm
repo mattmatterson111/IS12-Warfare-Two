@@ -154,6 +154,54 @@ meteor_act
 		if(!shield) continue
 		. = shield.handle_shield(src, damage, damage_source, attacker, def_zone, attack_text)
 		if(.) return
+	
+	if(defense_intent == I_PARRY && !get_active_hand())
+		. = handle_barehand_parry(damage, damage_source, attacker, def_zone, attack_text)
+		if(.) return  
+	return 0
+	
+/mob/living/carbon/human/proc/handle_barehand_parry(var/damage, var/atom/damage_source, var/mob/attacker, var/def_zone, var/attack_text)
+	if(!default_parry_check(src, attacker, damage_source))
+		return 0
+		
+	var/zone_guessed_correctly = (def_zone == zone_sel.selecting) // Check if defender guessed the correct zone  
+	  
+	// Calculate parry chance based on melee skill and zone guess  
+	var/parry_chance = (SKILL_LEVEL(melee) * 5) + (my_stats[STAT(end)].level) // melee skill + end
+	
+	if(zone_guessed_correctly)  
+		parry_chance += 30 // Significant bonus for correct zone guess  
+	else  
+		parry_chance -= 20 // Penalty for wrong zone guess  
+	  
+	if(a_intent == I_GRAB) // Better chance on grab intent  
+		parry_chance += 25  
+	  
+	if(prob(parry_chance)) //we parried with our bare hands
+		visible_message("<span class='combat_success'>\The [src] parries [attack_text] with their bare hands!</span>")  
+		playsound(loc, 'sound/weapons/punchmiss.ogg', 50, 1)
+		adjustStaminaLoss(damage)
+		  
+		// Riposte only if zone was guessed correctly  
+		if(zone_guessed_correctly && a_intent == I_GRAB && prob(SKILL_LEVEL(melee) * 7))
+			var/prevzone = zone_sel.selecting
+			if(istype(damage_source, /mob/living/carbon/human) && attack_text == "the kick") //if someones trying to kick us
+				var/target_leg = pick(BP_L_LEG, BP_R_LEG)  
+				zone_sel.selecting = target_leg  
+			else //everything else
+				var/obj/item/attacker_hand = attacker.get_active_hand()
+				if(attacker_hand == attacker.l_hand) // Set target zone to the active hand  
+					zone_sel.selecting = BP_L_HAND
+				else  
+					zone_sel.selecting = BP_R_HAND
+			var/obj/item/organ/external/O = get_organ(zone_sel.selecting)
+			visible_message("<span class='combat_success'>[src] attempts to grabs [attacker]'s [O.name]!</span>")  
+			attacker.attack_hand(src)
+			attacker.setClickCooldown(DEFAULT_SLOW_COOLDOWN)
+			zone_sel.selecting = prevzone
+		  
+		return 1  
+	  
 	return 0
 
 /mob/living/carbon/human/resolve_item_attack(obj/item/I, mob/living/carbon/human/user, var/target_zone, var/special = FALSE)
@@ -265,7 +313,7 @@ meteor_act
 			switch(user.a_intent)
 				if(I_HURT)//Offensive attacks do even more damage.
 					effective_force += I.force
-				if(I_WEAK)
+				if(I_HELP)
 					effective_force = (effective_force/2) //Half the amount of force.
 
 	if(user.a_intent == I_DISARM)//If we're trying to disarm then hit for less damage.
