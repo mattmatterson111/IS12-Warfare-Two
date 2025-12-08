@@ -107,14 +107,13 @@ default behaviour is:
 				now_pushing = 0
 				return
 				
-			if(istype(src, /mob/living/carbon/human)) //bayonet charge shit
-				var/mob/living/carbon/human/attacker = src
-				var/obj/item/gun/G = attacker.get_active_hand()
-				if(istype(G) && G.hitsound == "bayonet_stab" && G.force == 20 && G.sharp == 1 && G.wielded) //we have a gun with a bayonet in our active hand
-					if(attacker.consistent_step_count >= 4 && attacker.lastdir == attacker.dir && world.time - attacker.last_move_time < 10) //we've charged at least 4 tiles and haven't changed directions.
-						attacker.visible_message("<span class='phobia'>[src] attempts to bayonet \the [AM] with the [G]!</span>")
-						//add attacking AM with the bayonet here
-						attacker.consistent_step_count = 0 //no repeat bayonet charges
+			var/obj/item/gun/G = get_active_hand()
+			if(istype(G) && G.hitsound == "bayonet_stab" && G.force == 20 && G.sharp == 1 && G.wielded) //we have a gun with a bayonet in our active hand, and are wielding it (who the fuck bayonet charges with one hand on the gun?)
+				if(consistent_step_count >= 4 && lastdir == dir && a_intent == I_HURT && world.time - last_move_time < 10) //we've moved at least 4 tiles, haven't changed directions, are trying to kill them, and we haven't stopped midway through.
+					TALLYHOLADS = TRUE
+					G.attack(AM, src, zone_sel.selecting, TRUE) //special bayonet attack handled in item/proc/attack
+					TALLYHOLADS = FALSE
+					consistent_step_count = 0 //no repeat bayonet charges
 
 			if(tmob.in_trench && plane == HUMAN_PLANE) // If we bump into mob in trench - we moving in. This means that we don't swap our location with trench-mob loc.
 				forceMove(tmob.loc)

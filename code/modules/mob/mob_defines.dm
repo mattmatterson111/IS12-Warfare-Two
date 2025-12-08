@@ -212,3 +212,10 @@
 	var/breathe_tick = 0 // Used for gas mask delays.
 
 	var/datum/backstory/backstory = null // The backstory of the mob, if any. Lets us check if they have a specific backstory, or some other bs if i need it.
+	
+	///////
+	var/lastdir = null
+	var/consistent_step_count = 0 //increment when moving in same direction
+	var/last_move_time = 0 //did we pause while moving?
+	var/TALLYHOLADS = FALSE //are we currently charging a terrified rapscallion with a bayonet?
+	/////bayonet charge related stuff

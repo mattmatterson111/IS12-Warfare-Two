@@ -94,7 +94,13 @@ avoid code duplication. This includes items that may sometimes act as a standard
 		user.unlock_achievement(new/datum/achievement/miss())
 
 	if(special)//We did a special attack, let's apply it's special properties.
-		if(user.atk_intent == I_QUICK)//Faster attack but takes much more stamina.
+		if(user.TALLYHOLADS) //bayonet charge shit
+			var/obj/item/gun/G = user.get_active_hand() //already checked if we have a gun when this is true
+			user.visible_message("<span class='combat_success'>[user] attempts to bayonet [M] with the [G]!</span>")
+			user.adjustStaminaLoss(w_class + 6)
+			user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
+			apply_speed_delay(0)
+		else if(user.atk_intent == I_QUICK)//Faster attack but takes much more stamina.
 			user.visible_message("<span class='combat_success'>[user] performs a quick attack!</span>")
 			user.adjustStaminaLoss(w_class + 6)
 			user.setClickCooldown(DEFAULT_QUICK_COOLDOWN)

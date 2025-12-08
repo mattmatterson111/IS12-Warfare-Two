@@ -251,6 +251,8 @@ meteor_act
 		effective_force *= strToDamageModifier(user.STAT_LEVEL(str))
 
 	if(special)
+		if(user.TALLYHOLADS) //bayonet stab addition
+			effective_force += user.STAT_LEVEL(str)
 		switch(user.atk_intent)
 			if(I_STRONG)//Offensive attacks do even more damage.
 				effective_force += I.force
