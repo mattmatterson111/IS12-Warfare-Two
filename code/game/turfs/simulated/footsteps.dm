@@ -258,6 +258,13 @@
 	if(istype(H))
 		H.handle_footsteps()
 		H.step_count++
+		H.lastdir = H.currentdir //update last dir
+		if(H.lastdir == H.currentdir) //were moving in the same direction
+			H.consistent_step_count++
+		else //we arent moving in the same direction
+			H.consistent_step_count = 0
+		H.last_move_time = world.time //update current dir and last_move_time
+		H.currentdir = H.dir
 
 /datum/species/var/silent_steps
 /datum/species/nabber/silent_steps = 1

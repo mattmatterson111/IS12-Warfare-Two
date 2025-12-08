@@ -135,5 +135,5 @@
 	var/currentdir = null
 	var/lastdir = null
 	var/consistent_step_count = 0 //increment when moving in same direction
-	var/delaychecker = 0 //did we pause while moving?
+	var/last_move_time = 0 //did we pause while moving?
 	/////bayonet charge related stuff
