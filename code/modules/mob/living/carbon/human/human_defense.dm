@@ -177,10 +177,14 @@ meteor_act
 	if(a_intent == I_GRAB) // Better chance on grab intent  
 		parry_chance += 25  
 	  
-	if(prob(parry_chance)) //we parried with our bare hands
-		visible_message("<span class='combat_success'>\The [src] parries [attack_text] with their bare hands!</span>")  
+	if(prob(parry_chance)) //we parried with our bare hand
+		visible_message("<span class='combat_success'>\The [src] parries [attack_text] with their bare hand!</span>")  
 		playsound(loc, 'sound/weapons/punchmiss.ogg', 50, 1)
 		adjustStaminaLoss(damage)
+		
+		if(prob(STAT_LEVEL(end) + 10))
+			to_chat(src, "<span class='combat_success'>As you parry, you feel a rush of adrenaline!</span>")
+			make_adrenaline((STAT_LEVEL(end)) / 21) //Get a little blood pumping
 		  
 		// Riposte only if zone was guessed correctly  
 		if(zone_guessed_correctly && a_intent == I_GRAB && prob(SKILL_LEVEL(melee) * 7))
