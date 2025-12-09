@@ -77,7 +77,7 @@
 	if(!target.reagents)
 		return
 
-	if(user.a_intent == I_HURT && ismob(target))
+	if(user.a_intent != I_HELP && ismob(target)) //VIOLENCE!!!
 		syringestab(target, user)
 		return
 
@@ -264,8 +264,13 @@
 
 		var/hit_area = affecting.name
 
-		if((user != target) && H.check_shields(7, src, user, "\the [src]"))
-			return
+		var/bad_arc = reverse_direction(H.dir) //arc of directions from which we cannot block or dodge
+		if(check_shield_arc(src, bad_arc, null, user) && target != user) //cant dodge from behind
+			if(H.check_shields(7, src, user, "\the syringe"))
+				user.visible_message("<span class='danger'>[user] tries to stab [target] in \the [hit_area] with [src.name], but the attack is parried!</span>")
+				return
+			else if(H.attempt_dodge())
+				return	
 
 		if (target != user && H.getarmor(target_zone, "melee") > 5 && prob(50))
 			for(var/mob/O in viewers(world.view, user))
