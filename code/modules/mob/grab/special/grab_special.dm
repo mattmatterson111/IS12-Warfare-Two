@@ -135,10 +135,12 @@
 				if(O.break_sound)
 					playsound(affecting, O.break_sound, 100, 0) //*crunch*
 			affecting.death() //kill em.
+			return
 		else
 			assailant.visible_message("<span class='danger'>[assailant] failed to snap [affecting]'s neck!</span>")
 			playsound(affecting, O.break_sound, 25, 0) //small crunch
 			affecting.apply_damage(assailant.STAT_LEVEL(str), BRUTE, BP_HEAD, 0)
+			return
 
 	else if(!O.is_broken()) // The limb isn't broken and we're grabbing it in both hands.
 		var/break_chance = O.damage/2 + assailant.STAT_LEVEL(str) * 2 - affecting.STAT_LEVEL(end) // Changed.
@@ -148,10 +150,12 @@
 		if(prob(break_chance))
 			to_chat(assailant, "<span class='combat_success'>Broke [affecting]'s [O.name]!</span>")
 			O.fracture()
+			return
 		else
 			O.jostle_bone(assailant.STAT_LEVEL(str), TRUE)
 			playsound(affecting, O.break_sound, 50, 0)
 			to_chat(assailant, "<span class='warning'>Failed to break [affecting]'s [O.name]!</span>")
+			return
 	else
 		O.jostle_bone(assailant.STAT_LEVEL(str) * 2, TRUE)
 		to_chat(assailant, "<span class='combat_success'>[assailant] breaks [affecting]'s [O.name] even more!</span>")
