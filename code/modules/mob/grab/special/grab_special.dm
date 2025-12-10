@@ -64,7 +64,7 @@
 		G.assailant.visible_message("<span class='warning'>Strangle with both hands!")
 		return
 	activate_effect = !activate_effect
-	G.assailant.visible_message("<span class='warning'>[G.assailant] [activate_effect ? "starts" : "stops"] strangling [G.affecting].</span>")
+	G.assailant.visible_message("<span class='combat_success'>[G.assailant] [activate_effect ? "starts" : "stops"] strangling [G.affecting].</span>")
 
 
 /obj/item/grab/special/wrench
@@ -125,11 +125,8 @@
 	if(necksnap == TRUE) // The limb is broken and we're grabbing it in both hands.
 		assailant.doing_something = FALSE
 		var/break_chance = O.damage/5 + assailant.STAT_LEVEL(str) - affecting.STAT_LEVEL(end) //did you know neck snapping irl is heavily impractical?
-		assailant.doing_something = FALSE
-		if(break_chance <= 0)
-			break_chance = 10
 		if(prob(break_chance))
-			assailant.visible_message("<span class='danger'>[assailant] snaps [affecting]'s neck!</span>")
+			assailant.visible_message("<span class='combat_success'>[assailant] snaps [affecting]'s neck!</span>")
 			for(var/i in 1 to 20)
 				affecting.apply_damage(5, BRUTE, BP_HEAD, 0) //we dont want their head to explode
 			if(!O.is_broken()) //break if not already broken
@@ -140,19 +137,25 @@
 			affecting.death() //kill em.
 		else
 			assailant.visible_message("<span class='danger'>[assailant] failed to snap [affecting]'s neck!</span>")
+			playsound(affecting, O.break_sound, 25, 0) //small crunch
 			affecting.apply_damage(assailant.STAT_LEVEL(str), BRUTE, BP_HEAD, 0)
 
-	else if(!O.is_broken()) // The limb is broken and we're grabbing it in both hands.
-		var/break_chance = (assailant.STAT_LEVEL(str)*10) - 105 // We have to have a strength over 12 to really have a chance of breaking a limb.
+	else if(!O.is_broken()) // The limb isn't broken and we're grabbing it in both hands.
+		var/break_chance = O.damage/2 + assailant.STAT_LEVEL(str) * 2 - affecting.STAT_LEVEL(end) // Changed.
 		assailant.doing_something = FALSE
 		if(break_chance <= 0)
 			break_chance = 10
 		if(prob(break_chance))
+			to_chat(assailant, "<span class='combat_success'>Broke [affecting]'s [O.name]!</span>")
 			O.fracture()
 		else
-			to_chat(assailant, "<span class='danger'>Failed to break [affecting]'s [O.name]!</span>")
+			O.jostle_bone(assailant.STAT_LEVEL(str), TRUE)
+			playsound(affecting, O.break_sound, 50, 0)
+			to_chat(assailant, "<span class='warning'>Failed to break [affecting]'s [O.name]!</span>")
 	else
-		to_chat(assailant, "<span class='warning'>[affecting]'s [O.name] is already broken!</span>")
+		O.jostle_bone(assailant.STAT_LEVEL(str) * 2, TRUE)
+		to_chat(assailant, "<span class='combat_success'>[assailant] breaks [affecting]'s [O.name] even more!</span>")
+		playsound(affecting, O.break_sound, 100, 0)
 		assailant.doing_something = FALSE
 		return
 
@@ -215,14 +218,14 @@
 			G.attacking = 0
 			G.action_used()
 			affecting.Weaken(2)
-			affecting.visible_message("<span class='notice'>[assailant] pins [affecting] to the ground!</span>")
+			affecting.visible_message("<span class='combat_success'>[assailant] pins [affecting] to the ground!</span>")
 			return 1
 		else
-			affecting.visible_message("<span class='notice'>[assailant] fails to pin [affecting] to the ground.</span>")
+			affecting.visible_message("<span class='warning'>[assailant] fails to pin [affecting] to the ground.</span>")
 			G.attacking = 0
 			return 0
 	else //they're lying down
-		G.assailant.visible_message("<span class='warning'>[G.assailant] [activate_effect ? "starts" : "stops"] keeping [G.affecting] on the ground!</span>")
+		G.assailant.visible_message("<span class='combat_success'>[G.assailant] [activate_effect ? "starts" : "stops"] keeping [G.affecting] on the ground!</span>")
 		assailant.doing_something = FALSE
 		return 0
 
@@ -284,9 +287,9 @@
 		damage_flags = hat.damage_flags()
 
 	if(damage_flags & DAM_SHARP)
-		attacker.visible_message("<span class='danger'>[attacker] gores [target][istype(hat)? " with \the [hat]" : ""]!</span>")
+		attacker.visible_message("<span class='combat_success'>[attacker] gores [target][istype(hat)? " with \the [hat]" : ""]!</span>")
 	else
-		attacker.visible_message("<span class='danger'>[attacker] thrusts \his head into [target]'s skull!</span>")
+		attacker.visible_message("<span class='combat_success'>[attacker] thrusts \his head into [target]'s skull!</span>")
 
 	var/armor = target.run_armor_check(BP_HEAD, "melee")
 	target.apply_damage(damage, BRUTE, BP_HEAD, armor, damage_flags)
@@ -294,7 +297,7 @@
 
 	if(armor <= 50 && target.headcheck(BP_HEAD) && prob(damage - defense)) //so normal soldiers have a small chance to get knocked out
 		target.apply_effect(20, PARALYZE)
-		target.visible_message("<span class='danger'>[target] [target.species.get_knockout_message(target)]</span>")
+		target.visible_message("<span class='combat_success'>[target] [target.species.get_knockout_message(target)]</span>")
 
 	playsound(attacker.loc, "swing_hit", 25, 1, -1)
 
@@ -334,7 +337,7 @@
 	if(!(G && G.affecting == affecting)) //check that we still have a grab
 		return 0
 	if(O.sever_tendon())
-		user.visible_message("<span class='danger'>\The [user] cut \the [affecting]'s [O.tendon_name] with \the [W]!</span>")
+		user.visible_message("<span class='combat_success'>\The [user] cut \the [affecting]'s [O.tendon_name] with \the [W]!</span>")
 		if(W.hitsound) playsound(affecting.loc, W.hitsound, 50, 1, -1)
 		G.last_action = world.time
 		admin_attack_log(user, affecting, "hamstrung their victim", "was hamstrung", "hamstrung")
@@ -389,16 +392,16 @@
 	if(total_damage)
 		if(decapitation == TRUE && prob(O.damage/5 + user.STAT_LEVEL(str))) //around 30-40% average at max damage?
 			var/obj/item/organ/external/head = affecting.get_organ(BP_HEAD)
-			user.visible_message("<span class='danger'>\The [user] cut [affecting]'s head off with \the [W]!</span>")
+			user.visible_message("<span class='combat_success'>\The [user] cut [affecting]'s head off with \the [W]!</span>")
 			head.droplimb(0, DROPLIMB_EDGE)
 		else
 			if(decapitation == TRUE) //we failed to cut off the head
 				user.visible_message("<span class='danger'>\The [user] failed to cut [affecting]'s head off with \the [W]!</span>")
 			else
-				user.visible_message("<span class='danger'>\The [user] slit [affecting]'s throat open with \the [W]!</span>")
+				user.visible_message("<span class='combat_success'>\The [user] slit [affecting]'s throat open with \the [W]!</span>")
 		
 			if(O.sever_artery()) //FUKKEN KILLEM YEAAAAHHHH
-				user.visible_message("<span class='danger'>\The [affecting]'s [O.artery_name] was severed!</span>")	
+				user.visible_message("<span class='combat_success'>\The [affecting]'s [O.artery_name] was severed!</span>")	
 
 		if(W.hitsound)
 			playsound(affecting.loc, W.hitsound, 50, 1, -1)
