@@ -289,7 +289,7 @@
 	name = "barbed wire"
 	singular_name = "piece of barbed wire"
 	plural_name = "pieces of barbed wire"
-	desc = "Use this to place down barbwire in front of your position."
+	desc = "To limit movement of your enemies, your allies, and yourself. Use this to place down barbwire in front of your position."
 	icon = 'icons/obj/warfare.dmi'
 	icon_state = "barbwire_item"
 	amount = 5
@@ -303,11 +303,9 @@
 /obj/item/stack/barbwire/proc/update_strings()
 	if(amount > 1)  
 		SetName("Stack of [amount] barbed wire")
-		desc = "To limit movement of your enemies, your allies, and yourself. Use this to place down barbwire in front of your position."
 		gender = PLURAL //yes, this is necessary.
 	else
 		SetName("barbed wire")
-		desc = "To limit movement of your enemies, your allies, and yourself. Use this to place down barbwire in front of your position."
 		gender = NEUTER
 
 /obj/item/stack/barbwire/attack_self(var/mob/user)
