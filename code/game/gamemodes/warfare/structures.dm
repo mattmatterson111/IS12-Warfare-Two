@@ -338,7 +338,7 @@
 		if(do_after(user, 20)) //leave it in this statement, dont want people getting cut for getting bumped/moving during assembly
 			H.doing_something = FALSE
 			if(H.statscheck(skills = H.SKILL_LEVEL(engineering)) > CRIT_FAILURE) //Considering how useless barbwire seems to be, everyone can now spam it.
-				to_chat(H, "You assemble the [src]!")
+				to_chat(H, "You assemble the barbed wire!")
 				amount--
 				if(amount<=0)
 					qdel(src)
@@ -352,7 +352,7 @@
 				if (affecting.take_damage(3, FALSE)) //stop trying to put down barb wire without the skill dumbass
 					H.UpdateDamageIcon()
 				H.updatehealth()
-				to_chat(H, "You fail to assemble the [src], cutting your [affecting.name]!")
+				to_chat(H, "You fail to assemble the barbed wire, cutting your [affecting.name]!")
 		else
 			H.doing_something = FALSE
 
