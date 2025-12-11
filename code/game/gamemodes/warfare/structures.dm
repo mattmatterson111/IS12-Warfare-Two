@@ -287,12 +287,28 @@
 
 /obj/item/stack/barbwire
 	name = "barbed wire"
+	singular_name = "piece of barbed wire"
+	plural_name = "pieces of barbed wire"
 	desc = "Use this to place down barbwire in front of your position."
 	icon = 'icons/obj/warfare.dmi'
 	icon_state = "barbwire_item"
 	amount = 5
 	max_amount = 5
 	w_class = ITEM_SIZE_LARGE //fuck off you're not putting 30 stacks in your satchel
+	
+/obj/item/stack/barbwire/Initialize()
+	. = ..()
+	update_strings()
+  
+/obj/item/stack/barbwire/proc/update_strings()
+	if(amount > 1)  
+		SetName("Stack of [amount] barbed wire")
+		desc = "To limit movement of your enemies, your allies, and yourself. Use this to place down barbwire in front of your position."
+		gender = PLURAL //yes, this is necessary.
+	else
+		SetName("barbed wire")
+		desc = "To limit movement of your enemies, your allies, and yourself. Use this to place down barbwire in front of your position."
+		gender = NEUTER
 
 /obj/item/stack/barbwire/attack_self(var/mob/user)
 	if(!ishuman(user))
@@ -311,9 +327,13 @@
 			to_chat(H, "There's already something there!")
 			return
 		for(var/obj/structure/object in T)
-			to_chat(H, "There's already something there!")
-			return
-		visible_message("[user] begins to place the [src]!")
+			if(istype(object, /obj/structure/barbwire)) //one barbwire per tile
+				to_chat(H, "There's already barbed wire there!")
+				return		
+			if(object.density) //if we can walk over it we should be able to place barbed wire on it
+				to_chat(H, "There's already something there!")
+				return
+		visible_message("[user] begins to place the barbed wire!")
 		H.doing_something = TRUE
 		if(do_after(user, 20)) //leave it in this statement, dont want people getting cut for getting bumped/moving during assembly
 			H.doing_something = FALSE
@@ -323,6 +343,7 @@
 				if(amount<=0)
 					qdel(src)
 				new /obj/structure/barbwire(T)
+				update_strings()
 				return
 			else
 				playsound(loc, 'sound/effects/glass_step.ogg', 50, TRUE)
