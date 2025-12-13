@@ -268,6 +268,7 @@ This saves us from having to call add_fingerprint() any time something is put in
 		return 0
 
 	update_action_buttons()
+	update_equipment_blur()
 	spawn(1)
 		updateweight()
 	return 1
@@ -439,6 +440,7 @@ This saves us from having to call add_fingerprint() any time something is put in
 		updateweight()
 	if(hud_used)
 		hud_used.add_inventory_overlay()
+	update_equipment_blur()
 	return 1
 
 //Checks if a given slot can be accessed at this time, either to equip or unequip I
@@ -503,3 +505,27 @@ This saves us from having to call add_fingerprint() any time something is put in
 		if(s_store)    . += s_store
 
 #undef REMOVE_INTERNALS
+
+/mob/living/carbon/human/proc/update_equipment_blur()
+	if(!client || !hud_used)
+		return
+
+	var/obj/item/holding = get_active_hand()
+
+	for(var/obj/screen/inventory/inv in client.screen)
+		if(!inv.slot_id)
+			continue
+
+		// If the slot is occupied, do not blur (user rule)
+		// We use get_equipped_item to check if something is physically in that slot on the mob
+		if(get_equipped_item(inv.slot_id))
+			inv.update_blur(FALSE)
+			continue
+
+		// If we are holding nothing, or the item allows equipping, no blur
+		if(!holding || holding.mob_can_equip(src, inv.slot_id, disable_warning = TRUE, force = 0))
+			inv.update_blur(FALSE)
+		else
+			// Cannot equip here -> Blur
+			inv.update_blur(TRUE)
+

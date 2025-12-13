@@ -32,6 +32,13 @@
 /obj/screen/inventory
 	var/slot_id	//The indentifier for the slot. It has nothing to do with ID cards.
 
+/obj/screen/inventory/proc/update_blur(should_blur = FALSE)
+	if(should_blur)
+		filters = filter(type="blur", size=0.7)
+	else
+		filters = null
+
+
 
 /obj/screen/close
 	name = "close"

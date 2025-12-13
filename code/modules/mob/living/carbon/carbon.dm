@@ -154,6 +154,10 @@
 		else
 			hud_used.swaphands_hud_object.dir = 1
 
+	if(ishuman(src))
+		var/mob/living/carbon/human/H = src
+		H.update_equipment_blur()
+
 	return
 
 
@@ -166,6 +170,9 @@
 			selhand = 0
 		if(selhand == "left" || selhand == "l")
 			selhand = 1
+
+	if(selhand != hand)
+		swap_hand()
 
 /mob/living/carbon/proc/help_shake_act(mob/living/carbon/M)
 	//if(M.lying && !(src.warfare_faction == M.warfare_faction)) // TWOFARE EDIT - Snap off dogtags! Reconsider moving this to disarm? + a do_after?
