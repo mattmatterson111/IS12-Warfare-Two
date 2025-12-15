@@ -153,6 +153,8 @@
 			hud_used.swaphands_hud_object.dir = 2
 		else
 			hud_used.swaphands_hud_object.dir = 1
+	// Update slot highlighting based on active hand
+	hud_used.update_slot_highlighting()
 
 	return
 
