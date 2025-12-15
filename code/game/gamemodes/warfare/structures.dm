@@ -127,13 +127,17 @@
 		return
 
 	var/area/warfare/climbto = get_area(get_turf(src)) //prevents climbing into areas you shouldnt
-	var/turf/locationtogoto = get_turf(src)
-	var/turf/currentlocation = get_turf(user)
-	if(locationtogoto.y > currentlocation.y) //if climbing north, set direction to north
-		user.set_dir(NORTH)
-	else if(locationtogoto.y < currentlocation.y) //if climbing south, set direction to south
-		user.set_dir(SOUTH) //goddamit theres gotta be a better way to do this
-	if(climbto.Enter(user) == FALSE)
+
+	// Direct assignment to bypass fixeye lock for the check
+	var/old_dir = user.dir
+	user.dir = get_dir(user, src)
+
+	var/can_enter = climbto.Enter(user)
+
+	// Restore direction immediately
+	user.dir = old_dir
+
+	if(can_enter == FALSE)
 		return
 
 	usr.visible_message("<span class='warning'>[user] starts climbing onto \the [src]!</span>")
@@ -239,13 +243,17 @@
 		return
 
 	var/area/warfare/climbto = get_area(get_turf(src)) //prevents climbing into areas you shouldnt
-	var/turf/locationtogoto = get_turf(src)
-	var/turf/currentlocation = get_turf(user)
-	if(locationtogoto.y > currentlocation.y) //if climbing north, set direction to north
-		user.set_dir(NORTH)
-	else if(locationtogoto.y < currentlocation.y) //if climbing south, set direction to south
-		user.set_dir(SOUTH) //goddamit theres gotta be a better way to do this
-	if(climbto.Enter(user) == FALSE)
+
+	// Direct assignment to bypass fixeye lock for the check
+	var/old_dir = user.dir
+	user.dir = get_dir(user, src)
+
+	var/can_enter = climbto.Enter(user)
+
+	// Restore direction immediately
+	user.dir = old_dir
+
+	if(can_enter == FALSE)
 		return
 
 	user.visible_message("<span class='warning'>[user] starts climbing onto \the [src]!</span>")
