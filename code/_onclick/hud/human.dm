@@ -161,6 +161,8 @@
 		inv_box.screen_loc =  slot_data["loc"]
 		inv_box.slot_id =     slot_data["slot"]
 		inv_box.icon_state =  slot_data["state"]
+		inv_box.initial_icon = inv_box.icon
+		inv_box.initial_icon_state = inv_box.icon_state
 
 		if(slot_data["dir"])
 			inv_box.set_dir(slot_data["dir"])
