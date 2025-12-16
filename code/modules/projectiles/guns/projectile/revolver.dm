@@ -234,8 +234,8 @@
 			user.show_message(SPAN_NOTICE("You uncock the hammer."))
 			primed = FALSE
 		user.doing_something = FALSE
-	else
-		user.doing_something = TRUE
+	else //for some reason we failed to cock the revolver (we probably dropped it as we were cocking it)
+		user.doing_something = FALSE
 
 /obj/item/gun/projectile/revolver/manual/attack_self(mob/user)
 	// for fanning action down the line B)
