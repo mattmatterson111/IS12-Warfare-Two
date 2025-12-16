@@ -41,7 +41,7 @@
 		activate_effect = FALSE
 		G.assailant.visible_message("<span class='warning'>[G.assailant] stops strangling [G.affecting].</span>")
 		return
-
+	
 	affecting.drop_l_hand()
 	affecting.drop_r_hand()
 
@@ -63,6 +63,7 @@
 	if(!G.wielded)
 		G.assailant.visible_message("<span class='warning'>Strangle with both hands!")
 		return
+
 	activate_effect = !activate_effect
 	G.assailant.visible_message("<span class='combat_success'>[G.assailant] [activate_effect ? "starts" : "stops"] strangling [G.affecting].</span>")
 
@@ -329,6 +330,12 @@
 	var/obj/item/organ/external/O = G.get_targeted_organ()
 	if(!O || O.is_stump() || !O.has_tendon || (O.status & ORGAN_TENDON_CUT))
 		return FALSE
+		
+	if(user.doing_something)
+		to_chat(user, "<span class='warning'>Already doing something!</span>")
+		return
+		
+	user.doing_something = TRUE
 
 	user.visible_message("<span class='danger'>\The [user] begins to cut \the [affecting]'s [O.tendon_name] with \the [W]!</span>")
 	
@@ -337,16 +344,20 @@
 	user.next_move = world.time + 20 - meleeskill
 	
 	if(!do_after(user, (20 - meleeskill), progress=0))
+		user.doing_something = FALSE
 		return 0
 	if(!(G && G.affecting == affecting)) //check that we still have a grab
+		user.doing_something = FALSE
 		return 0
 	if(O.sever_tendon())
 		user.visible_message("<span class='combat_success'>\The [user] cut \the [affecting]'s [O.tendon_name] with \the [W]!</span>")
 		if(W.hitsound) playsound(affecting.loc, W.hitsound, 50, 1, -1)
 		G.last_action = world.time
 		admin_attack_log(user, affecting, "hamstrung their victim", "was hamstrung", "hamstrung")
+		user.doing_something = FALSE
 		return 1 //we severed it!
 	
+	user.doing_something = FALSE
 	return 0 //we didn't sever the tendon
 
 /datum/grab/special/proc/attack_throat(var/obj/item/grab/G, var/obj/item/W, var/mob/living/carbon/human/user)
@@ -360,6 +371,12 @@
 	if(!W.edge || !W.force || W.damtype != BRUTE)
 		return 0 //unsuitable weapon
 		
+	if(user.doing_something)
+		to_chat(user, "<span class='warning'>Already doing something!</span>")
+		return
+		
+	user.doing_something = TRUE
+		
 	if(O.status & ORGAN_ARTERY_CUT) //Balancing so you can't instantly cut off someones head for free, you work for that shit.
 		decapitation = TRUE
 		user.visible_message("<span class='danger'>\The [user] begins to cut [affecting]'s head off with \the [W]!</span>")
@@ -372,11 +389,14 @@
 
 	if(decapitation == TRUE)
 		if(!do_after(user, (40 - meleeskill), progress = 0)) //it should take longer to cut off someones head no?
+			user.doing_something = FALSE
 			return 0
 	else if(!do_after(user, (20 - meleeskill), progress = 0))
+		user.doing_something = FALSE
 		return 0
 	
 	if(!(G && G.affecting == affecting)) //check that we still have a grab
+		user.doing_something = FALSE
 		return 0
 
 	var/damage_mod = 1
@@ -413,4 +433,5 @@
 	G.last_action = world.time
 
 	admin_attack_log(user, src, "Knifed their victim", "Was knifed", "knifed")
+	user.doing_something = FALSE
 	return 1
