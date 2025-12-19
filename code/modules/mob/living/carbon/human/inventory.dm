@@ -439,6 +439,7 @@ This saves us from having to call add_fingerprint() any time something is put in
 		updateweight()
 	if(hud_used)
 		hud_used.add_inventory_overlay()
+		hud_used.update_slot_highlighting()
 	return 1
 
 //Checks if a given slot can be accessed at this time, either to equip or unequip I
@@ -481,7 +482,9 @@ This saves us from having to call add_fingerprint() any time something is put in
 		if(slot_s_store)    return s_store
 		if(slot_l_ear)      return l_ear
 		if(slot_r_ear)      return r_ear
+		if(slot_tie)        return tie_slot
 	return ..()
+
 
 /mob/living/carbon/human/get_equipped_items(var/include_carried = 0)
 	. = ..()

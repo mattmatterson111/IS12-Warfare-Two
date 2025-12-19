@@ -31,6 +31,8 @@
 
 /obj/screen/inventory
 	var/slot_id	//The indentifier for the slot. It has nothing to do with ID cards.
+	var/initial_icon
+	var/initial_icon_state
 
 
 /obj/screen/close

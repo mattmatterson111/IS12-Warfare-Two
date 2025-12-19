@@ -193,6 +193,86 @@
 
 
 
+// Updates the visual appearance of inventory slots based on whether the held item can be equipped there
+/datum/hud/proc/update_slot_highlighting()
+	if(!mymob)
+		return
+	if(!ishuman(mymob))
+		return
+
+	var/mob/living/carbon/human/H = mymob
+	var/obj/item/held_item = H.get_active_hand()
+
+	for(var/obj/screen/inventory/inv_slot in all_inv)
+		if(!inv_slot.slot_id)
+			continue
+		// Skip hand slots
+		if(inv_slot.slot_id == slot_l_hand || inv_slot.slot_id == slot_r_hand)
+			continue
+
+		// Check if slot already has an item
+		var/obj/item/existing_item = H.get_equipped_item(inv_slot.slot_id)
+		if(existing_item)
+			continue
+
+		if(held_item)
+			// Check if the held item can be equipped
+			var/can_equip = FALSE
+
+			// Simple logic
+			if("[inv_slot.slot_id]" in slot_flags_enumeration)
+				var/req_flags = slot_flags_enumeration["[inv_slot.slot_id]"]
+				if(req_flags & held_item.slot_flags)
+					can_equip = TRUE
+			else
+				can_equip = held_item.mob_can_equip(H, inv_slot.slot_id, disable_warning = TRUE)
+
+			if(can_equip)
+				if(inv_slot.initial_icon)
+					inv_slot.icon = inv_slot.initial_icon
+				if(inv_slot.initial_icon_state)
+					inv_slot.icon_state = inv_slot.initial_icon_state
+			else
+				switch(inv_slot.slot_id)
+					if(slot_l_store, slot_r_store)
+						inv_slot.icon_state = "pocket_inactive"
+					if(slot_wear_mask)
+						inv_slot.icon_state = "mask_inactive"
+					if(slot_wear_id)
+						inv_slot.icon_state = "id_inactive"
+					if(slot_w_uniform)
+						inv_slot.icon_state = "center_inactive"
+					if(slot_back)
+						inv_slot.icon_state = "back_inactive"
+					if(slot_s_store)
+						inv_slot.icon_state = "suitstore_inactive"
+					if(slot_wear_suit)
+						inv_slot.icon_state = "suit_inactive"
+					if(slot_shoes)
+						inv_slot.icon_state = "shoes_inactive"
+					if(slot_head)
+						inv_slot.icon_state = "hair_inactive"
+					if(slot_gloves)
+						inv_slot.icon_state = "gloves_inactive"
+					if(slot_glasses)
+						inv_slot.icon_state = "glasses_inactive"
+					if(slot_tie)
+						inv_slot.icon_state = "neck_inactive"
+					if(slot_l_ear)
+						inv_slot.icon_state = "ears_l_inactive"
+					if(slot_r_ear)
+						inv_slot.icon_state = "ears_inactive"
+					if(slot_belt)
+						inv_slot.icon_state = "belt_inactive"
+					if(slot_chest)
+						inv_slot.icon_state = "chest_hostler_inactive"
+					else
+						inv_slot.icon_state = inv_slot.initial_icon_state
+		else
+			if(inv_slot.initial_icon)
+				inv_slot.icon = inv_slot.initial_icon
+			if(inv_slot.initial_icon_state)
+				inv_slot.icon_state = inv_slot.initial_icon_state
 
 /datum/hud/proc/hidden_inventory_update()
 	if(!mymob) return
