@@ -24,6 +24,21 @@ GLOBAL_LIST_EMPTY(mortar_areas) // = list()
 	dynamic_lighting = TRUE
 	requires_power = FALSE
 
+/area/warfare/proc/get_all_contents(atom/A)
+	var/list/processing_list = list(A)
+	var/list/found_mobs = list()
+
+	while(processing_list.len)
+		var/atom/current = processing_list[1]
+		processing_list.Cut(1, 2)
+
+		for(var/atom/content in current)
+			if(isliving(content))
+				found_mobs += content
+			if(content.contents.len)
+				processing_list += content
+	return found_mobs
+
 /area/warfare/battlefield
 	//forced_ambience = list('sound/ambience/cold_outside2.ogg' )
 	name = "\improper Battlefield"
@@ -207,6 +222,22 @@ GLOBAL_LIST_EMPTY(mortar_areas) // = list()
 			else
 				to_chat(H, "<big>WE DO NOT CONTROL THE MIDDLE BUNKER!</big>")
 				return FALSE
+
+	if(isobj(AM))
+		var/list/contents = get_all_contents(AM)
+		for(var/mob/living/carbon/human/H in contents)
+			if(!H.stat == CONSCIOUS)
+				continue
+			if(H.warfare_faction == BLUE_TEAM && (GLOB.blue_captured_zones.len < REQUIRED_TRENCH_ZONES))
+				var/turf/locationtogoto = get_step(AM, AM.dir) // Using AM direction for object movement
+				var/turf/currentlocation = get_turf(AM)
+				if(get_area(locationtogoto) == get_area(currentlocation))
+					return TRUE
+				else if(locationtogoto.y >= currentlocation.y)
+					return TRUE
+				else
+					to_chat(H, "<big>WE DO NOT CONTROL THE MIDDLE BUNKER!</big>") 
+					return FALSE
 	return TRUE
 
 /area/warfare/battlefield/capture_point/red/one
@@ -240,6 +271,22 @@ GLOBAL_LIST_EMPTY(mortar_areas) // = list()
 			else
 				to_chat(H, "<big>WE DO NOT CONTROL THE MIDDLE BUNKER!</big>")
 				return FALSE
+
+	if(isobj(AM))
+		var/list/contents = get_all_contents(AM)
+		for(var/mob/living/carbon/human/H in contents)
+			if(!H.stat == CONSCIOUS)
+				continue
+			if(H.warfare_faction == RED_TEAM && (GLOB.red_captured_zones.len < REQUIRED_TRENCH_ZONES))
+				var/turf/locationtogoto = get_step(AM, AM.dir)
+				var/turf/currentlocation = get_turf(AM)
+				if(get_area(locationtogoto) == get_area(currentlocation))
+					return TRUE
+				else if(locationtogoto.y <= currentlocation.y)
+					return TRUE
+				else
+					to_chat(H, "<big>WE DO NOT CONTROL THE MIDDLE BUNKER!</big>")
+					return FALSE
 	return TRUE
 
 /area/warfare/battlefield/capture_point/blue/one
@@ -265,6 +312,7 @@ GLOBAL_LIST_EMPTY(mortar_areas) // = list()
 			to_chat(H, "I can't bring this with me onto the battlefield. Wouldn't want to lose it.")//No you fucking don't.
 			return //Keep that boombox at base asshole.
 
+
 		if(locate(/obj/item/storage) in H)//Gotta check storage as well.
 			var/obj/item/storage/S = locate() in H
 			if(locate(/obj/item/device/boombox) in S)
@@ -278,6 +326,13 @@ GLOBAL_LIST_EMPTY(mortar_areas) // = list()
 		if(!SSwarfare.battle_time && captured != H.warfare_faction)//So people can enter their own trenches.
 			to_chat(H, "<big>I am not ready to die yet!</big>")
 			return FALSE
+
+	if(isobj(mover))
+		var/list/contents = get_all_contents(mover)
+		for(var/mob/living/carbon/human/H in contents)
+			if(!SSwarfare.battle_time && captured != H.warfare_faction)
+				to_chat(H, "<big>I am not ready to die yet!</big>")
+				return FALSE
 
 	if(istype(mover, /obj/item/device/boombox))//No boomboxes in no man's land please.
 		return
@@ -324,6 +379,20 @@ GLOBAL_LIST_EMPTY(mortar_areas) // = list()
 			else
 				to_chat(H, "<big>WE DO NOT CONTROL THE TRENCHES!</big>")
 				return FALSE
+
+	if(isobj(AM))
+		var/list/contents = get_all_contents(AM)
+		for(var/mob/living/carbon/human/H in contents)
+			if(H.warfare_faction == BLUE_TEAM && (GLOB.blue_captured_zones.len < REQUIRED_CAPTURED_ZONES))
+				var/turf/locationtogoto = get_step(AM, AM.dir)
+				var/turf/currentlocation = get_turf(AM)
+				if(get_area(locationtogoto) == get_area(currentlocation))
+					return TRUE
+				else if(locationtogoto.y >= currentlocation.y)
+					return TRUE
+				else
+					to_chat(H, "<big>WE DO NOT CONTROL THE TRENCHES!</big>")
+					return FALSE
 	return TRUE
 
 
@@ -364,6 +433,22 @@ GLOBAL_LIST_EMPTY(mortar_areas) // = list()
 			else
 				to_chat(H, "<big>WE DO NOT CONTROL THE TRENCHES!</big>")
 				return FALSE
+
+	if(isobj(AM))
+		var/list/contents = get_all_contents(AM)
+		for(var/mob/living/carbon/human/H in contents)
+			if(!H.stat == CONSCIOUS)
+				continue
+			if(H.warfare_faction == RED_TEAM && (GLOB.red_captured_zones.len < REQUIRED_CAPTURED_ZONES))
+				var/turf/locationtogoto = get_step(AM, AM.dir)
+				var/turf/currentlocation = get_turf(AM)
+				if(get_area(locationtogoto) == get_area(currentlocation))
+					return TRUE
+				else if(locationtogoto.y <= currentlocation.y)
+					return TRUE
+				else
+					to_chat(H, "<big>WE DO NOT CONTROL THE TRENCHES!</big>")
+					return FALSE
 	return TRUE
 
 /area/warfare/farawayhome
@@ -379,3 +464,7 @@ GLOBAL_LIST_EMPTY(mortar_areas) // = list()
 			return TRUE
 		to_chat(H, "<big>I CANNOT DISOBEY ORDERS!</big>")
 	return FALSE
+
+
+	if(istype(mover, /obj/item/device/boombox))//No boomboxes in no man's land please.
+		return
