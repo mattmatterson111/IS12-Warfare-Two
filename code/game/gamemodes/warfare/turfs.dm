@@ -220,6 +220,10 @@
 					to_chat(user, "There are structures or landmines in the way.")
 					user.doing_something = FALSE
 					return
+				if(istype(object, /obj/structure/dirt_wall))
+					to_chat(user, "There's already a dirt barricade here!")
+					user.doing_something = FALSE
+					return
 			playsound(src, 'sound/effects/dig_shovel.ogg', 50, 0)
 			visible_message("[user] begins to dig some dirt cover!")
 			if(do_after(user, (backwards_skill_scale(user.SKILL_LEVEL(engineering)) * 5)))
