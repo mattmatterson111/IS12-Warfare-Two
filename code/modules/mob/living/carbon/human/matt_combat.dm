@@ -1,32 +1,48 @@
 //Going here till I find a better place for it.
 /mob/living/carbon/human/proc/handle_combat_mode()//Makes it so that you can't regain stamina in combat mode.
-	if(weapon_readied || combat_mode)
+	if(weapon_readied || a_intent == I_HURT) //no stamina regen if your going all in
 		if(staminaloss < (staminaexhaust/2))
 			adjustStaminaLoss(2)
 
 /mob/living/carbon/human/proc/attempt_dodge()//Handle parry is an object proc and it's, its own thing.
 	var/dodge_modifier = 0
-	if(combat_mode && (defense_intent == I_DODGE) && !lying)//Todo, make use of the check_shield_arc proc to make sure you can't dodge from behind.
-		if(atk_intent == I_DEFENSE)//Better chance to dodge
+	if(a_intent != I_HELP && defense_intent == I_DODGE && !lying)//check_shield_arc proc used where attempt_dodge procs are called
+		if(a_intent == I_DISARM)//Better chance to dodge on disarm intent
 			dodge_modifier += 30
+		if(src.grabbed_by.len) //getting grabbed makes it harder to dodge ya know?
+			for(var/obj/item/grab/G in src.grabbed_by)
+				if(G.target_zone in list(BP_L_LEG, BP_R_LEG, BP_L_FOOT, BP_R_FOOT)) //oh shit someones grabbing our leg
+					var/obj/item/organ/external/O = G.get_targeted_organ()
+					to_chat(src, "<span class='phobia'>You try to dodge, but you feel a grip holding your [O.name] in place!</span>")
+					src.visible_message("<span class='danger'>[src] attempts to dodge, but is held in place!</span>")
+					return 0
+				else
+					dodge_modifier -= 30 //okay its not a grab by the legs or feet, thats still bad
 		if(statscheck(STAT_LEVEL(dex) / 2 + 3) >= SUCCESS)
 			do_dodge()
 			return	1
-		else if(prob(((SKILL_LEVEL(melee) * 10) / 2) + dodge_modifier))
+		if(prob(((SKILL_LEVEL(melee) * 10) / 2) + dodge_modifier))
 			do_dodge()
 			return	1
 
-		//else if(CRIT_FAILURE)
-		//	visible_message("<b><big>[src.name] fails to dodge and falls on the floor!</big></b>")
-		//	Weaken(3)
+		else if(CRIT_FAILURE && a_intent == I_HURT) //careful now
+			visible_message("<b><big>[src.name] fails to dodge and falls on the floor!</big></b>")
+			Weaken(3)
+			return 0
 
-
+		return 0
+	return 0
 /mob/living/proc/do_dodge()
 	var/lol = pick(GLOB.cardinal)//get a direction.
 	adjustStaminaLoss(15)//add some stamina loss
 	playsound(loc, 'sound/weapons/punchmiss.ogg', 80, 1)//play a sound
 	step(src,lol)//move them
 	visible_message("<b><big>[src.name] dodges out of the way!!</big></b>")//send a message
+	var/mob/living/carbon/human/H = src
+	if(prob(H.STAT_LEVEL(end) + 10))
+		to_chat(H, "<span class='combat_success'>As you dodge, you feel a rush of adrenaline!</span>")
+		H.make_adrenaline((H.STAT_LEVEL(end)) / 21) //Get a little blood pumping
+	H.break_all_grabs(src)
 	//be on our way
 
 
