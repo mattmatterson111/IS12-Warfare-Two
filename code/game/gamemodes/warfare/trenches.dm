@@ -170,7 +170,7 @@
 		update_trench_shit()
 		for(var/obj/structure/O in contents)
 			qdel(O)
-		visible_message("[user] finishes filling in trench.")
+		visible_message("[user] finishes filling in the trench.")
 		playsound(src, 'sound/effects/empty_shovel.ogg', 50, 0)
 
 	else
