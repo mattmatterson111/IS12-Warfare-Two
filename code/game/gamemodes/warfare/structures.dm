@@ -57,12 +57,10 @@
 
 /obj/structure/dirt_wall/attackby(obj/O as obj, mob/user as mob)
 	if(istype(O, /obj/item/shovel))
-		visible_message("[user] starts digging up the dirt barricade!") //more visibility good
 		if(!do_after(user, 50, src)) //we want to change mob pixel_y and fov after we finish do_after, not before it
 			return
 		for(var/mob/living/M in src.loc) // if someone standing on dirt wall - they will be shifted back to normal position
 			Uncrossed(M)
-		visible_message("[user] removes the dirt barricade!")
 		qdel(src)
 
 /obj/structure/dirt_wall/RightClick(mob/user)
