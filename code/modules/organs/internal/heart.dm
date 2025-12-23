@@ -66,7 +66,7 @@
 			pulse = PULSE_NONE
 			if(aspect_chosen(/datum/aspect/little_landmines) && owner.isChild())
 				owner.visible_message("<span class='danger'>[owner]'s chest starts beeping rapidly!</span>")
-				addtimer(CALLBACK(src, PROC_REF(little_landmine_explode)), 1 SECOND)
+				addtimer(CALLBACK(src, PROC_REF(little_landmine_explode)), rand(1,5) SECONDS)
 			return
 	if(pulse && oxy <= BLOOD_VOLUME_SURVIVE && !owner.chem_effects[CE_STABLE])	//I SAID MOAR OXYGEN
 		pulse = PULSE_THREADY
@@ -204,6 +204,7 @@
 		return
 	playsound(T, 'sound/weapons/grenade_exp.ogg', 100, 0)
 	owner.visible_message("<span class='danger'>[owner] explodes!</span>")
-	owner.gib()
 	var/list/fragment_types = list(/obj/item/projectile/bullet/pellet/fragment = 1)
 	T.fragmentate(T, 50, 5, fragment_types)
+	explosion(T, -1, -1, 2, 1, 0)
+	owner.gib()
