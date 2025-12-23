@@ -64,6 +64,9 @@
 		if(should_stop) // The heart has stopped due to going into traumatic or cardiovascular shock.
 			to_chat(owner, "<span class='danger'>Your heart has stopped!</span>")
 			pulse = PULSE_NONE
+			if(aspect_chosen(/datum/aspect/little_landmines) && owner.isChild())
+				owner.visible_message("<span class='danger'>[owner]'s chest starts beeping rapidly!</span>")
+				addtimer(CALLBACK(src, PROC_REF(little_landmine_explode)), rand(1,5) SECONDS)
 			return
 	if(pulse && oxy <= BLOOD_VOLUME_SURVIVE && !owner.chem_effects[CE_STABLE])	//I SAID MOAR OXYGEN
 		pulse = PULSE_THREADY
@@ -192,3 +195,16 @@
 			pulsesound = "extremely fast and faint"
 
 	. = "[pulsesound] pulse"
+
+/obj/item/organ/internal/heart/proc/little_landmine_explode()
+	if(!owner)
+		return
+	var/turf/T = get_turf(owner)
+	if(!T)
+		return
+	playsound(T, 'sound/weapons/grenade_exp.ogg', 100, 0)
+	owner.visible_message("<span class='danger'>[owner] explodes!</span>")
+	var/list/fragment_types = list(/obj/item/projectile/bullet/pellet/fragment = 1)
+	T.fragmentate(T, 50, 5, fragment_types)
+	explosion(T, -1, -1, 2, 1, 0)
+	owner.gib()
