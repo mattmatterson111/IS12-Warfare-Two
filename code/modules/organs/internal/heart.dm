@@ -202,8 +202,8 @@
 	var/turf/T = get_turf(owner)
 	if(!T)
 		return
-	playsound(T, 'sound/weapons/grenade_arm.ogg', 100, 0)
+	playsound(T, 'sound/weapons/grenade_exp.ogg', 100, 0)
 	owner.visible_message("<span class='danger'>[owner] explodes!</span>")
 	owner.gib()
 	var/list/fragment_types = list(/obj/item/projectile/bullet/pellet/fragment = 1)
-	T.fragmentate(0, 30, 5, fragment_types)
+	T.fragmentate(T, 50, 5, fragment_types)
