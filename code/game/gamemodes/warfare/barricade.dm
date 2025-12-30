@@ -198,6 +198,9 @@
 	if(T.density)
 		to_chat(user, "I cannot place cover here.")
 		return FALSE
+	if(locate(/obj/structure/dirt_wall) in T) //already cover here
+		to_chat(user, "I cannot place this on top of dirt cover.")
+		return FALSE
 	for(var/obj/structure/defensive_barrier/D in T)
 		if((D.dir == user.dir))
 			to_chat(user, SPAN_WARNING("There is already a barrier set up facing that direction."))

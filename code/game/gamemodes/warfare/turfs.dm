@@ -220,7 +220,7 @@
 				user.doing_something = FALSE
 				return
 			for(var/obj/structure/object in contents)
-				if(istype(object, /obj/structure/landmine) || istype(object, /obj/structure/barbwire) || istype(object, /obj/structure/anti_tank))
+				if(istype(object, /obj/structure/landmine) || istype(object, /obj/structure/defensive_barrier) || istype(object, /obj/structure/barbwire) || istype(object, /obj/structure/anti_tank))
 					to_chat(user, "There are structures or landmines in the way.")
 					user.doing_something = FALSE
 					return
@@ -260,7 +260,7 @@
 			user.doing_something = FALSE
 			return
 		for(var/obj/structure/object in contents)
-			if(istype(object, /obj/structure/landmine) || istype(object, /obj/structure/barbwire) || istype(object, /obj/structure/anti_tank))
+			if(istype(object, /obj/structure/landmine) || istype(object, /obj/structure/defensive_barrier) || istype(object, /obj/structure/barbwire) || istype(object, /obj/structure/anti_tank))
 				to_chat(user, "There are structures or landmines in the way.")
 				user.doing_something = FALSE
 				return
