@@ -23,6 +23,7 @@
 	anchored = TRUE
 
 /obj/structure/flora/wasteland/misc
+	name = "plant?" //well idk what it is
 	icon = 'icons/obj/32x64.dmi'
 	icon_state = "floraspawn"
 	anchored = TRUE
