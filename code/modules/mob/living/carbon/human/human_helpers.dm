@@ -337,3 +337,17 @@
 
 	UNSETEMPTY(cloaking_sources)
 	return !cloaking_sources // If cloaking_sources wasn't initially null but is now, we've uncloaked
+
+/mob/living/carbon/human/verb/refresh_squad_indicators() //sometimes you just lose the hud icons above characters. This fixes it.
+    set name = "Refresh Squad Indicators"
+    set desc = "GIVE ME MY FUCKING SQUAD INDICATORS BACK DAMN YOU"
+    set category = "IC"  
+      
+    if(stat)  
+        return  
+          
+    // Refresh squad and team HUDs for current user only  
+    src.set_squad_huds()  
+    src.set_team_huds()  
+          
+    to_chat(src, "<span class='notice'>Squad indicators refreshed!</span>")
