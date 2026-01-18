@@ -497,11 +497,14 @@
 	density = TRUE
 	plane = ABOVE_OBJ_PLANE
 	layer = BASE_MOB_LAYER
-	atom_flags = ATOM_FLAG_CLIMBABLE
+	//atom_flags = ATOM_FLAG_CLIMBABLE //nein.
 
 /obj/structure/anti_tank/can_climb(var/mob/living/user, post_climb_check=0)
+	/*
 	if(!iswarfare())
 		return TRUE
+	*/
+	return FALSE //nope
 /* // howd this get here?
 
 	if(istype(get_area(src), /area/warfare/battlefield/no_mans_land))//We're trying to go into no man's land?
