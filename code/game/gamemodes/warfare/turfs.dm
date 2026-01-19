@@ -81,6 +81,11 @@
 	return TRUE
 
 /turf/simulated/floor/can_climb(var/mob/living/user, post_climb_check=0)
+	for(var/atom/A in get_turf(src))  //stop climbing through flora and metal barricades thanks
+		if(A.density && !(A.atom_flags & ATOM_FLAG_CHECKS_BORDER))  
+			to_chat(user, "<span class='danger'>There's \a [A] in the way.</span>")  
+			return FALSE  
+
 	if(locate(/obj/structure/bridge, get_turf(user)))
 		return FALSE
 
