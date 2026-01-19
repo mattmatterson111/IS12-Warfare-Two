@@ -558,6 +558,13 @@ its easier to just keep the beam vertical.
 	if(!Adjacent(user) || user.incapacitated(INCAPACITATION_STUNNED|INCAPACITATION_KNOCKOUT|INCAPACITATION_BUCKLED_PARTIALLY|INCAPACITATION_BUCKLED_FULLY) \
 		|| istype(user.wear_suit, /obj/item/clothing/suit/straight_jacket) || istype(user.loc, /obj/structure/closet))
 		return
+		
+	for(var/obj/item/grab/G in user.grabbed_by)
+		if(G.target_zone in list(BP_L_LEG, BP_R_LEG, BP_L_FOOT, BP_R_FOOT)) //bit hard to kick someone if they've grabbed your leg
+			var/obj/item/organ/external/O = G.get_targeted_organ()
+			to_chat(user, "<span class='phobia'>You try to kick, but feel someone hold your [O.name] in place!</span>")
+			user.visible_message("<span class='danger'>[user.name] attempts to kick, but is held in place!</span>")
+			return
 
 	if(user.handcuffed && prob(50) && !user.incapacitated(INCAPACITATION_FORCELYING))//User can fail to kick smbd if cuffed
 		user.visible_message("<span class='danger'>[user.name] loses \his balance while trying to kick \the [src].</span>", \
@@ -583,14 +590,28 @@ its easier to just keep the beam vertical.
 		|| istype(user.wear_suit, /obj/item/clothing/suit/straight_jacket) || istype(user.loc, /obj/structure/closet))
 		return
 
-	if(user.staminaloss >= 100)
+	if(user.staminaloss >= user.staminaexhaust/2)
+		to_chat(user, "<span class='warning'>You're too tired to jump!</span>")
 		return
 
 	for(var/limbcheck in list(BP_L_LEG,BP_R_LEG, BP_R_FOOT, BP_L_FOOT))//But we need to see if we have legs.
 		var/obj/item/organ/affecting = user.get_organ(limbcheck)
 		if(!affecting)//Oh shit, we don't have have any legs, we can't jump.
+			to_chat(user, "<span class='warning'>Can't jump wihout 2 functioning legs!</span>")
 			return
 		if(affecting.is_broken())//Our legs are broken can't jump here either.
+			to_chat(user, "<span class='warning'>Can't jump on a broken leg!</span>")
+			return
+			
+	for(var/obj/item/grab/G in user.grabbed_by)
+		if(G.target_zone in list(BP_L_LEG, BP_R_LEG, BP_L_FOOT, BP_R_FOOT)) //oh shit someones grabbing our leg
+			to_chat(user, "<span class='phobia'>You try to jump, but feel someone pull you back down!</span>")
+			user.Weaken(1)
+			visible_message("<b><big>[user.name] attempts to jump but gets pulled back down!!</big></b>")//send a message
+			return
+		else //still grabbed, so dont jump
+			var/obj/item/organ/external/O = G.get_targeted_organ()
+			to_chat(user, "<span class='phobia'>You try to jump, but feel a grip on your [O.name] holding you in place!</span>")
 			return
 
 	if(user.zoomed)//No more jump sniping.
@@ -600,6 +621,8 @@ its easier to just keep the beam vertical.
 	playsound(user, user.gender == MALE ? 'sound/effects/jump_male.ogg' : 'sound/effects/jump_female.ogg', 25, 0, 1)
 	user.visible_message("[user] jumps.")
 	user.adjustStaminaLoss(rand(40,60))//Jumping is exhausting.
+	user.jumping = TRUE
 	user.throw_at(target, rand(2,3), 0.3, user)
+	user.jumping = FALSE
 	user.setClickCooldown(DEFAULT_SLOW_COOLDOWN)
 
