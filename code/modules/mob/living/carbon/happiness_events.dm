@@ -9,18 +9,22 @@
 /datum/happiness_event/thirst/filled
 	description = "<span class='binfo'>I've had enough to drink for a while!</span>\n"
 	happiness = 4
+	timeout = FALSE
 
 /datum/happiness_event/thirst/watered
 	description = "<span class='info'>I have recently had something to drink.</span>\n"
 	happiness = 2
+	timeout = FALSE
 
 /datum/happiness_event/thirst/thirsty
 	description = "<span class='warning'>I'm getting a bit thirsty.</span>\n"
 	happiness = -7
+	timeout = FALSE
 
 /datum/happiness_event/thirst/dehydrated
 	description = "<span class='danger'>I need water!</span>\n"
 	happiness = -14
+	timeout = FALSE
 
 
 
@@ -28,22 +32,27 @@
 /datum/happiness_event/nutrition/fat
 	description = "<span class='warning'><B>I'm so fat..</B></span>\n" //muh fatshaming
 	happiness = -4
+	timeout = FALSE
 
 /datum/happiness_event/nutrition/wellfed
 	description = "<span class='binfo'>My belly feels round and full.</span>\n"
 	happiness = 4
+	timeout = FALSE
 
 /datum/happiness_event/nutrition/fed
 	description = "<span class='info'>I have recently had some food.</span>\n"
 	happiness = 2
+	timeout = FALSE
 
 /datum/happiness_event/nutrition/hungry
 	description = "<span class='warning'>I'm getting a bit hungry.</span>\n"
 	happiness = -6
+	timeout = FALSE
 
 /datum/happiness_event/nutrition/starving
 	description = "<span class='danger'>I'm starving!</span>\n"
 	happiness = -12
+	timeout = FALSE
 
 
 //Hygiene

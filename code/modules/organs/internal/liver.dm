@@ -9,6 +9,7 @@
 	min_broken_damage = 45
 	max_damage = 70
 	relative_size = 60
+	var/thirst_stage = 0 //so screentexts wont spam as much
 
 /obj/item/organ/internal/liver/robotize()
 	. = ..()
@@ -72,20 +73,43 @@
 
 /obj/item/organ/internal/liver/proc/handle_thirst()
 	owner.adjust_thirst(-THIRST_FACTOR)
-	switch(owner.thirst)
-		if(THIRST_LEVEL_THIRSTY to INFINITY)
-			owner.clear_event("thirst")
-		if(THIRST_LEVEL_DEHYDRATED to THIRST_LEVEL_THIRSTY)
-			owner.add_event("thirst", /datum/happiness_event/thirst/thirsty)
-		if(0 to THIRST_LEVEL_DEHYDRATED)
-			owner.add_event("thirst", /datum/happiness_event/thirst/dehydrated)
-			if(prob(5))
-				to_chat(owner, "<span class='warning'>You faint from dehydration.</span>")
-				owner.Paralyse(5)
-			else if(prob(6))
-				to_chat(owner, "<span class='warning'>You fall down because of your thirst.</span>")
-				owner.Weaken(1)
-				owner.Stun(1)
-			if(prob(10))
-				to_chat(owner, "<span class='warning'>You lick around your mouth as a craving for water sets in.</span>")
-				take_damage(1)
+	switch(owner.thirst) //stay hydrated out there
+		if(THIRST_LEVEL_MAX to INFINITY) //thirst stage 1
+			if(thirst_stage != 1)
+				thirst_stage = 1
+				owner.clear_event("thirst")
+				owner.add_event("thirst", /datum/happiness_event/thirst/filled)
+		if(THIRST_LEVEL_FILLED to THIRST_LEVEL_MAX) //thirst stage 2
+			if(thirst_stage != 2)
+				thirst_stage = 2
+				owner.clear_event("thirst")
+				owner.add_event("thirst", /datum/happiness_event/thirst/filled)
+		if(THIRST_LEVEL_MEDIUM to THIRST_LEVEL_FILLED) //thirst stage 3
+			if(thirst_stage != 3)
+				thirst_stage = 3
+				owner.clear_event("thirst")
+				owner.add_event("thirst", /datum/happiness_event/thirst/watered)  
+		if(THIRST_LEVEL_THIRSTY to THIRST_LEVEL_MEDIUM) //thirst stage 4
+			if(thirst_stage != 4)
+				thirst_stage = 4
+				owner.clear_event("thirst")
+		if(THIRST_LEVEL_DEHYDRATED to THIRST_LEVEL_THIRSTY) //thirst stage 5
+			if(thirst_stage != 5)
+				thirst_stage = 5
+				owner.clear_event("thirst")
+				owner.add_event("thirst", /datum/happiness_event/thirst/thirsty)
+		if(0 to THIRST_LEVEL_DEHYDRATED) //thirst stage 6
+			if(thirst_stage != 6)
+				thirst_stage = 6
+				owner.clear_event("thirst")
+				owner.add_event("thirst", /datum/happiness_event/thirst/dehydrated)
+				if(prob(5))
+					to_chat(owner, "<span class='warning'>You faint from dehydration.</span>")
+					owner.Paralyse(5)
+				else if(prob(6))
+					to_chat(owner, "<span class='warning'>You fall down because of your thirst.</span>")
+					owner.Weaken(1)
+					owner.Stun(1)
+				if(prob(10))
+					to_chat(owner, "<span class='warning'>You lick around your mouth as a craving for water sets in.</span>")
+					take_damage(1)

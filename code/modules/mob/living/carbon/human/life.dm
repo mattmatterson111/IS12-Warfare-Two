@@ -38,6 +38,7 @@
 	var/pressure_alert = 0
 	var/temperature_alert = 0
 	var/heartbeat = 0
+	var/hunger_stage = 0 //so screentexts wont spam
 
 /mob/living/carbon/human/Life()
 	set invisibility = 0
@@ -946,7 +947,7 @@
 					nutrition += 10
 	handle_excrement()
 
-	if(nutrition < 100) //Nutrition is below 100 = starvation
+	if(nutrition) //Nutrition is below 100 = starvation
 
 		var/list/hunger_phrases = list(
 			"You feel weak and malnourished. You must find something to eat now!",\
@@ -958,54 +959,87 @@
 
 		//When you're starving, the rate at which oxygen damage is healed is reduced by 80% (you only restore 1 oxygen damage per life tick, instead of 5)
 
-		switch(nutrition)
-			if(STARVATION_NOTICE to STARVATION_MIN) //60-80
-				if(sleeping) return
+		switch(nutrition) //"An army marches on its stomach"
+			if(NUTRITION_LEVEL_FAT to INFINITY) //550+, Hunger level 1
+				if(hunger_stage != 1)
+					hunger_stage = 1
+					src.clear_event("nutrition")
+					src.add_event("nutrition", /datum/happiness_event/nutrition/fat) //fatass
+			if(NUTRITION_LEVEL_FED to NUTRITION_LEVEL_FAT) //350 - 550, hunger level 2
+				if(hunger_stage != 2)
+					hunger_stage = 2
+					src.clear_event("nutrition")
+					src.add_event("nutrition", /datum/happiness_event/nutrition/wellfed)
+			if(NUTRITION_LEVEL_HUNGRY to NUTRITION_LEVEL_FED) //250 - 350, hunger level 3
+				if(hunger_stage != 3)
+					hunger_stage = 3
+					src.clear_event("nutrition")
+					src.add_event("nutrition", /datum/happiness_event/nutrition/fed)
+			if(NUTRITION_LEVEL_STARVING to NUTRITION_LEVEL_HUNGRY) // 150 - 250, hunger level 4
+				if(hunger_stage != 4)
+					hunger_stage = 4
+					src.clear_event("nutrition")
+					src.add_event("nutrition", /datum/happiness_event/nutrition/hungry) 			
+			if(STARVATION_MIN to NUTRITION_LEVEL_STARVING) //80 - 150, hunger level 5
+				if(hunger_stage != 5)
+					hunger_stage = 5
+					src.clear_event("nutrition")
+					src.add_event("nutrition", /datum/happiness_event/nutrition/starving) 
+			if(STARVATION_NOTICE to STARVATION_MIN) //60-80, hunger level 6
+				if(hunger_stage != 6)
+					hunger_stage = 6
+					if(sleeping) return
 
-				//if(prob(2))
-				//	to_chat(src, "<span class='notice'>[pick("You're very hungry.","You really could use a meal right now.")]</span>")
+					//if(prob(2))
+					//	to_chat(src, "<span class='notice'>[pick("You're very hungry.","You really could use a meal right now.")]</span>")
 
-			if(STARVATION_WEAKNESS to STARVATION_NOTICE) //30-60
-				if(sleeping) return
+			if(STARVATION_WEAKNESS to STARVATION_NOTICE) //30-60, hunger level 7
+				if(hunger_stage != 7)
+					hunger_stage = 7
+					if(sleeping) return
 
-				if(prob(3)) //3% chance of a tiny amount of oxygen damage (1-10)
+					if(prob(3)) //3% chance of a tiny amount of oxygen damage (1-10)
 
-					adjustOxyLoss(rand(1,10))
-					to_chat(src, "<span class='danger'>[pick(hunger_phrases)]</span>")
+						adjustOxyLoss(rand(1,10))
+						to_chat(src, "<span class='danger'>[pick(hunger_phrases)]</span>")
 
-				else if(prob(5)) //5% chance of being weakened
+					else if(prob(5)) //5% chance of being weakened
 
-					eye_blurry += 10
-					Weaken(10)
-					adjustOxyLoss(rand(1,15))
-					to_chat(src, "<span class='danger'>You're starving! The lack of strength makes you black out for a few moments...</span>")
+						eye_blurry += 10
+						Weaken(10)
+						adjustOxyLoss(rand(1,15))
+						to_chat(src, "<span class='danger'>You're starving! The lack of strength makes you black out for a few moments...</span>")
 
-			if(STARVATION_NEARDEATH to STARVATION_WEAKNESS) //5-30, 5% chance of weakening and 1-230 oxygen damage. 5% chance of a seizure. 10% chance of dropping item
-				if(sleeping) return
+			if(STARVATION_NEARDEATH to STARVATION_WEAKNESS) //5-30, 5% chance of weakening and 1-230 oxygen damage. 5% chance of a seizure. 10% chance of dropping item, hunger level 8
+				if(hunger_stage != 8)
+					hunger_stage = 8
+					if(sleeping) return
 
-				if(prob(5))
+					if(prob(5))
 
-					adjustOxyLoss(rand(1,20))
-					to_chat(src, "<span class='danger'>You're starving. You feel your life force slowly leaving your body...</span>")
-					eye_blurry += 20
-					if(weakened < 1) Weaken(20)
+						adjustOxyLoss(rand(1,20))
+						to_chat(src, "<span class='danger'>You're starving. You feel your life force slowly leaving your body...</span>")
+						eye_blurry += 20
+						if(weakened < 1) Weaken(20)
 
-				else if(paralysis<1 && prob(5)) //Mini seizure (25% duration and strength of a normal seizure)
+					else if(paralysis<1 && prob(5)) //Mini seizure (25% duration and strength of a normal seizure)
 
-					visible_message("<span class='danger'>\The [src] starts having a seizure!</span>", \
-							"<span class='warning'>You have a seizure!</span>")
-					Paralyse(5)
-					adjustOxyLoss(rand(1,25))
-					eye_blurry += 20
+						visible_message("<span class='danger'>\The [src] starts having a seizure!</span>", \
+								"<span class='warning'>You have a seizure!</span>")
+						Paralyse(5)
+						adjustOxyLoss(rand(1,25))
+						eye_blurry += 20
 
-			if(-INFINITY to STARVATION_NEARDEATH) //Fuck the whole body up at this point
-				to_chat(src, "<span class='danger'>You are dying from starvation!</span>")
-				adjustToxLoss(STARVATION_TOX_DAMAGE)
-				adjustOxyLoss(STARVATION_OXY_DAMAGE)
-				adjustBrainLoss(STARVATION_BRAIN_DAMAGE)
+			if(-INFINITY to STARVATION_NEARDEATH) //Fuck the whole body up at this point, hunger level 9
+				if(hunger_stage != 9)
+					hunger_stage = 9
+					to_chat(src, "<span class='danger'>You are dying from starvation!</span>")
+					adjustToxLoss(STARVATION_TOX_DAMAGE)
+					adjustOxyLoss(STARVATION_OXY_DAMAGE)
+					adjustBrainLoss(STARVATION_BRAIN_DAMAGE)
 
-				if(prob(10))
-					Weaken(15)
+					if(prob(10))
+						Weaken(15)
 
 /mob/living/carbon/human/proc/handle_changeling()
 	if(mind && mind.changeling)
