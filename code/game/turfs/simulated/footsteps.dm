@@ -276,6 +276,8 @@
 						to_chat(H, "<span class='warning'>You lower your bayonet.</span>")
 		H.last_move_time = world.time //update last dir and last_move_time
 		H.lastdir = H.dir
+		if(H.TALLYHOLADS)
+			H.adjustStaminaLoss(5) //cant keep it up forever
 
 /datum/species/var/silent_steps
 /datum/species/nabber/silent_steps = 1
