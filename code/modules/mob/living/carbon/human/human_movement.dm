@@ -97,6 +97,9 @@
 		tally += 3
 	if(staminaloss >= 180)
 		tally += 10
+		
+	if(happiness) //so mood has more of a gameplay impact
+		tally -= (happiness / 100) //10 = .1 speed boost
 
 	tally += overweight()
 

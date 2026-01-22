@@ -596,7 +596,7 @@
 
 		
 
-		if(get_shock() >= species.total_health + (STAT_LEVEL(end) - 10) + reagents.get_reagent_amount(/datum/reagent/adrenaline))
+		if(get_shock() >= species.total_health + happiness + (STAT_LEVEL(end) - 10) + reagents.get_reagent_amount(/datum/reagent/adrenaline))
 			if(!stat) //for above, adrenaline and having above 10 endurance will let you stay in the fight a *little* longer
 				src.visible_message("<span class='warning'><B>[src]</B> gives into the pain!</span>")
 				agony_scream()
