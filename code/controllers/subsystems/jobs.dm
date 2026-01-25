@@ -509,6 +509,14 @@ SUBSYSTEM_DEF(jobs)
 	BITSET(H.hud_updateflag, ID_HUD)
 	BITSET(H.hud_updateflag, IMPLOYAL_HUD)
 	BITSET(H.hud_updateflag, SPECIALROLE_HUD)
+	
+	if(iswarfare() && SSwarfare.battle_time && H.warfare_faction)
+	// Reset HUDs for all living players on their team so the hud updates automatically on their spawn
+		for(var/mob/living/carbon/human/team_member in GLOB.living_mob_list_)
+			if(team_member.warfare_faction == H.warfare_faction)
+				team_member.set_squad_huds()
+				team_member.set_team_huds()
+
 	return H
 
 /datum/controller/subsystem/jobs/proc/LoadJobs(jobsfile) //ran during round setup, reads info from jobs.txt -- Urist
