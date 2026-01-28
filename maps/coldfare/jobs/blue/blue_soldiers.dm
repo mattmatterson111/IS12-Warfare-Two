@@ -112,7 +112,7 @@
 	smg_skill = 3
 	close_when_dead = TRUE
 	// open_when_dead = TRUE
-
+	payload_block = TRUE
 	announced = FALSE
 
 	equip(var/mob/living/carbon/human/H)

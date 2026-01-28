@@ -7,8 +7,8 @@
 	dir = 1
 	},
 /obj/effect/lighting_dummy/daylight,
-/obj/hammereditor/playerclip,
-/obj/hammereditor/bulletclip,
+/obj/effect/map_entity/clip/player,
+/obj/effect/map_entity/clip/bullet,
 /turf/simulated/floor/urban/concrete,
 /area/warfare/battlefield/capture_point/mid)
 "c" = (
@@ -32,7 +32,7 @@
 	pixel_y = 12;
 	secured = 1
 	},
-/obj/hammereditor/nodraw,
+/obj/effect/map_entity/nodraw,
 /turf/simulated/wall/perspecticrete{
 	layer = 29;
 	plane = -150
@@ -79,8 +79,8 @@
 	dir = 8
 	},
 /obj/effect/lighting_dummy/daylight,
-/obj/hammereditor/playerclip,
-/obj/hammereditor/bulletclip,
+/obj/effect/map_entity/clip/player,
+/obj/effect/map_entity/clip/bullet,
 /turf/simulated/floor/urban/concrete,
 /area/warfare/battlefield/capture_point/mid)
 "q" = (
@@ -213,8 +213,8 @@
 	pixel_y = 16;
 	anchored = 1
 	},
-/obj/hammereditor/playerclip,
-/obj/hammereditor/bulletclip,
+/obj/effect/map_entity/clip/player,
+/obj/effect/map_entity/clip/bullet,
 /turf/simulated/floor/urban/concrete,
 /area/warfare/battlefield/capture_point/mid)
 "L" = (
@@ -275,8 +275,8 @@
 	dir = 4
 	},
 /obj/effect/lighting_dummy/daylight,
-/obj/hammereditor/playerclip,
-/obj/hammereditor/bulletclip,
+/obj/effect/map_entity/clip/player,
+/obj/effect/map_entity/clip/bullet,
 /turf/simulated/floor/urban/concrete,
 /area/warfare/battlefield/capture_point/mid)
 "U" = (
@@ -309,7 +309,7 @@
 	pixel_y = -4;
 	secured = 1
 	},
-/obj/hammereditor/nodraw,
+/obj/effect/map_entity/nodraw,
 /turf/simulated/wall/perspecticrete,
 /area/template_noop)
 "Y" = (

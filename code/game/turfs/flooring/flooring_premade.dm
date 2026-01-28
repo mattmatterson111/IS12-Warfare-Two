@@ -179,10 +179,10 @@
 	if(locate(/obj/structure/bridge, get_turf(user)))
 		return FALSE
 
-	if(locate(/obj/hammereditor/nodraw, src))
+	if(locate(/obj/effect/map_entity/nodraw, src))
 		return FALSE
 
-	if(locate(/obj/hammereditor/playerclip, src))
+	if(locate(/obj/effect/map_entity/clip/player, src))
 		return FALSE
 
 	if (!(atom_flags & ATOM_FLAG_CLIMBABLE) || !can_touch(user))

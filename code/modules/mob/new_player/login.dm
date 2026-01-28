@@ -75,16 +75,20 @@
 					if(SSwarfare.blue.team_clients.len*1.5 < SSwarfare.red.team_clients.len)
 						client.warfare_faction = BLUE_TEAM
 						SSwarfare.blue.team_clients += src.client
+						IO_output("game_events:OnBlueJoin", src, null)
 					else
 						client.warfare_faction = RED_TEAM
 						SSwarfare.red.team_clients += src.client
+						IO_output("game_events:OnRedJoin", src, null)
 				else
 					if(SSwarfare.blue.team_clients.len < SSwarfare.red.team_clients.len)
 						client.warfare_faction = BLUE_TEAM
 						SSwarfare.blue.team_clients += src.client
+						IO_output("game_events:OnBlueJoin", src, null)
 					else
 						client.warfare_faction = RED_TEAM
 						SSwarfare.red.team_clients += src.client
+						IO_output("game_events:OnRedJoin", src, null)
 
 	if(!has_connected(ckey(client.key)))//If they've never played before show them the beginners guide.
 		show_new_information()

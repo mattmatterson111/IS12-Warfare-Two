@@ -44,7 +44,7 @@
 /turf/simulated/wall/perspecticrete,
 /area/template_noop)
 "hy" = (
-/obj/hammereditor/nodraw/deco/bars,
+/obj/effect/map_entity/nodraw/deco/bars,
 /turf/simulated/floor/ert/metal01{
 	icon = 'icons/turf/flooring/decals.dmi';
 	icon_state = "shaftplating";
@@ -87,8 +87,8 @@
 	pixel_y = 3;
 	layer = 222
 	},
-/obj/hammereditor/playerclip,
-/obj/hammereditor/bulletclip,
+/obj/effect/map_entity/clip/player,
+/obj/effect/map_entity/clip/bullet,
 /turf/simulated/floor/ert/metal01{
 	icon = 'icons/turf/flooring/decals.dmi';
 	icon_state = "shaftplating";
@@ -137,7 +137,7 @@
 	},
 /area/warfare/battlefield/capture_point/mid/underground)
 "nD" = (
-/obj/hammereditor/nodraw/deco/bars,
+/obj/effect/map_entity/nodraw/deco/bars,
 /turf/simulated/floor/concrete/random,
 /area/warfare/battlefield/trench_section/underground/stormsystem/hall)
 "on" = (
@@ -152,7 +152,7 @@
 /turf/simulated/floor/trenches/underground,
 /area/warfare/battlefield/trench_section/underground/stormsystem/hall)
 "qz" = (
-/obj/hammereditor/nodraw/deco/shadowpaint{
+/obj/effect/map_entity/nodraw/deco/shadowpaint{
 	dir = 8
 	},
 /turf/simulated/wall/perspectisub,
@@ -208,7 +208,7 @@
 	pixel_y = -4;
 	secured = 1
 	},
-/obj/hammereditor/nodraw,
+/obj/effect/map_entity/nodraw,
 /turf/simulated/wall/perspecticrete,
 /area/template_noop)
 "uv" = (
@@ -233,8 +233,8 @@
 	color = "#ccccFF";
 	dir = 8
 	},
-/obj/hammereditor/playerclip,
-/obj/hammereditor/bulletclip,
+/obj/effect/map_entity/clip/player,
+/obj/effect/map_entity/clip/bullet,
 /turf/simulated/floor/ert/metal01{
 	icon = 'icons/turf/flooring/decals.dmi';
 	icon_state = "shaftplating";
@@ -431,7 +431,7 @@
 	},
 /area/warfare/battlefield/trench_section/underground/stormsystem/hall)
 "Pr" = (
-/obj/hammereditor/nodraw/deco/shadowpaint{
+/obj/effect/map_entity/nodraw/deco/shadowpaint{
 	dir = 8
 	},
 /turf/simulated/floor/ert/metal01{
@@ -464,7 +464,7 @@
 	pixel_y = 12;
 	secured = 1
 	},
-/obj/hammereditor/nodraw,
+/obj/effect/map_entity/nodraw,
 /turf/simulated/wall/perspecticrete{
 	layer = 29;
 	plane = -150

@@ -112,6 +112,7 @@
 	lmg_skill = 3
 	smg_skill = 3
 	close_when_dead = TRUE
+	payload_block = TRUE
 	// open_when_dead = TRUE
 
 	announced = FALSE

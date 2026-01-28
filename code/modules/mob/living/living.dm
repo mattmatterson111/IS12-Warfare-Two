@@ -2,6 +2,8 @@
 	var/current_ambience = null
 	var/ambience_is_playing = 0
 	var/ambience_override = 0
+	/// Stored original color for payload aura restoration
+	var/payload_original_color = null
 
 /mob/living/New()
 	..()

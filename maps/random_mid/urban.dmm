@@ -121,7 +121,7 @@
 /obj/effect/floor_decal/urban/pv_inner_c{
 	dir = 8
 	},
-/obj/hammereditor/playerclip,
+/obj/effect/map_entity/clip/player,
 /turf/simulated/floor/urban/urban_pavement_brick,
 /area/warfare/battlefield/capture_point/mid)
 "cG" = (
@@ -823,7 +823,7 @@
 	pixel_x = 12;
 	pixel_y = -16
 	},
-/obj/hammereditor/playerclip,
+/obj/effect/map_entity/clip/player,
 /turf/simulated/floor/urban/urban_pavement_brick,
 /area/warfare/battlefield/capture_point/mid)
 "rr" = (
@@ -1007,7 +1007,7 @@
 /obj/effect/floor_decal/urban/pv_inner_c{
 	dir = 4
 	},
-/obj/hammereditor/playerclip,
+/obj/effect/map_entity/clip/player,
 /turf/simulated/floor/urban/urban_pavement_brick,
 /area/warfare/battlefield/capture_point/mid)
 "wc" = (

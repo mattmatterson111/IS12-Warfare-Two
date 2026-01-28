@@ -311,7 +311,8 @@
 	if(job.is_blue_team)
 		if(client?.warfare_faction != BLUE_TEAM)
 			return 0
-
+	if(length(GLOB.payloads) && job.payload_block)
+		return 0
 	return 1
 
 /mob/new_player/proc/get_branch_pref()

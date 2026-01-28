@@ -7,6 +7,7 @@
 
 	var/list/hud_list[10]
 	var/embedded_flag	  //To check if we've need to roll for damage on movement while an item is imbedded in us.
+	var/pushing_cart = FALSE
 
 /mob/living/carbon/human/New(var/new_loc, var/new_species = null)
 
@@ -1507,6 +1508,8 @@
 	return (species && species.has_organ[organ_check])
 
 /mob/living/carbon/human/can_feel_pain(var/obj/item/organ/check_organ)
+	if(pushing_cart && prob(25))
+		return FALSE
 	if(isSynthetic())
 		return FALSE
 	if(check_organ)

@@ -1,7 +1,5 @@
 #define KOTH_VICTORY_POINTS 500
 
-#define PAYLOAD_SPEED_MODIFIER 1
-
 /datum/team
 	var/list/team = list()  // members of the team
 	var/list/team_clients = list()
@@ -79,10 +77,16 @@ SUBSYSTEM_DEF(warfare)
 	if(battle_time)  // so if it starts early, it doesnt @everyone again
 		return
 	battle_time = TRUE
+
+	// Fire round start event for map entities
+	IO_output("round_events:RoundStart", null, null)
+
 	if(!length(GLOB.payloads))
 		to_world("<big>I AM READY TO DIE NOW!</big>")
 	else
 		to_world("<big>I AM READY TO PUSH THE CART NOW!</big>")
+		for(var/obj/effect/landmark/payload_marker/war_gate/war_gate in landmarks_list)
+			qdel(war_gate)
 	sound_to(world, 'sound/effects/ready_to_die.ogg')//Sound notifying them.
 	for(var/turf/simulated/floor/dirty/fake/F in world)//Make all the fake dirt into real dirt.
 		F.ChangeTurf(/turf/simulated/floor/dirty)
@@ -118,6 +122,8 @@ SUBSYSTEM_DEF(warfare)
 		to_world("<FONT size = 3><B>[BLUE_TEAM] Minor Victory!</B></FONT>")
 		to_world("<B>\The [BLUE_TEAM] managed to deplete all of \the [RED_TEAM]'s reinforcements! They retreat in shame!</B>")
 		assign_victory(TRUE)
+		IO_output("game_events:BlueTeamWin", null, null)
+		IO_output("game_events:RedTeamLose", null, null)
 
 	else if(blue.left <= 0)
 		feedback_set_details("round_end_result","win-red team no reinforcements")
@@ -125,6 +131,8 @@ SUBSYSTEM_DEF(warfare)
 		to_world("<FONT size = 3><B>[RED_TEAM] Minor Victory!</B></FONT>")
 		to_world("<B>\The [RED_TEAM] managed to deplete all of \the [BLUE_TEAM]'s reinforcements! They retreat in shame!</B>")
 		assign_victory(FALSE, TRUE)
+		IO_output("game_events:RedTeamWin", null, null)
+		IO_output("game_events:BlueTeamLose", null, null)
 
 	//Point of no return
 	else if(red.nuked)
@@ -133,6 +141,8 @@ SUBSYSTEM_DEF(warfare)
 		to_world("<FONT size = 3><B>[BLUE_TEAM] Major Victory!</B></FONT>")
 		to_world("<B>\The [BLUE_TEAM] managed to successfully activate \the [RED_TEAM]'s Point Of No Return! Their trenches are overrun! They retreat in shame!</B>")
 		assign_victory(TRUE)
+		IO_output("game_events:BlueTeamWin", null, null)
+		IO_output("game_events:RedTeamLose", null, null)
 
 	else if(blue.nuked)
 		feedback_set_details("round_end_result","win-red team point of no return")
@@ -140,6 +150,8 @@ SUBSYSTEM_DEF(warfare)
 		to_world("<FONT size = 3><B>[RED_TEAM] Major Victory!</B></FONT>")
 		to_world("<B>\The [RED_TEAM] managed to successfully activate \the [BLUE_TEAM]'s Point Of No Return! Their trenches are overrun! They retreat in shame!</B>")
 		assign_victory(FALSE, TRUE)
+		IO_output("game_events:RedTeamWin", null, null)
+		IO_output("game_events:BlueTeamLose", null, null)
 
 	//KOTH shit
 	else if(red.points >= KOTH_VICTORY_POINTS)
@@ -148,6 +160,8 @@ SUBSYSTEM_DEF(warfare)
 		to_world("<FONT size = 3><B>[RED_TEAM] Major Victory!</B></FONT>")
 		to_world("<B>\The [RED_TEAM] managed to capture the command point!</B>")
 		assign_victory(FALSE, TRUE)
+		IO_output("game_events:RedTeamWin", null, null)
+		IO_output("game_events:BlueTeamLose", null, null)
 
 	else if(blue.points >= KOTH_VICTORY_POINTS)
 		feedback_set_details("round_end_result","win-blue team koth")
@@ -155,8 +169,13 @@ SUBSYSTEM_DEF(warfare)
 		to_world("<FONT size = 3><B>[BLUE_TEAM] Major Victory!</B></FONT>")
 		to_world("<B>\The [BLUE_TEAM] managed to capture the command point!</B>")
 		assign_victory(TRUE)
+		IO_output("game_events:BlueTeamWin", null, null)
+		IO_output("game_events:RedTeamLose", null, null)
 
 	sound_to(world,'sound/ambience/round_over.ogg')
+
+	// Fire round end event for map entities
+	IO_output("round_events:RoundEnd", null, null)
 
 	for(var/mob/M in GLOB.player_list)
 		if(!M.client)

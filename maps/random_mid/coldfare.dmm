@@ -3323,7 +3323,7 @@
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/blue)
 "vT" = (
-/obj/hammereditor/playerclip,
+/obj/effect/map_entity/clip/player,
 /turf/simulated/wall/perspecticrete,
 /area/warfare/battlefield/trench_section/underground/stormsystem)
 "vW" = (
@@ -4362,8 +4362,8 @@
 /area/warfare/homebase/blue)
 "CC" = (
 /obj/structure/grille/sewer,
-/obj/hammereditor/bulletclip,
-/obj/hammereditor/playerclip,
+/obj/effect/map_entity/clip/bullet,
+/obj/effect/map_entity/clip/player,
 /turf/simulated/floor/urban/concrete,
 /area/warfare/battlefield/trench_section/underground/stormsystem)
 "CE" = (
@@ -5759,7 +5759,7 @@
 	pixel_x = -8;
 	pixel_y = -1
 	},
-/obj/hammereditor/playerclip,
+/obj/effect/map_entity/clip/player,
 /turf/simulated/floor/urban/urban_pavement_brick,
 /area/warfare/battlefield/no_mans_land)
 "KW" = (
@@ -5903,7 +5903,7 @@
 	pixel_x = 12;
 	pixel_y = -16
 	},
-/obj/hammereditor/playerclip,
+/obj/effect/map_entity/clip/player,
 /turf/simulated/floor/urban/urban_pavement_brick,
 /area/warfare/battlefield/capture_point/mid)
 "LF" = (
@@ -6442,7 +6442,7 @@
 /obj/effect/floor_decal/urban/pv_inner_c{
 	dir = 4
 	},
-/obj/hammereditor/playerclip,
+/obj/effect/map_entity/clip/player,
 /turf/simulated/floor/urban/urban_pavement_brick,
 /area/warfare/battlefield/capture_point/mid)
 "OS" = (
@@ -7084,8 +7084,8 @@
 /turf/simulated/floor/carpet/orange,
 /area/warfare/battlefield/trench_section/underground)
 "SN" = (
-/obj/hammereditor/playerclip,
-/obj/hammereditor/bulletclip,
+/obj/effect/map_entity/clip/player,
+/obj/effect/map_entity/clip/bullet,
 /obj/structure/grille/sewer,
 /turf/simulated/floor/exoplanet/water/shallow/lightless/urban,
 /area/warfare/battlefield/trench_section/underground/stormsystem)
@@ -8028,7 +8028,7 @@
 /obj/effect/floor_decal/urban/pv_inner_c{
 	dir = 8
 	},
-/obj/hammereditor/playerclip,
+/obj/effect/map_entity/clip/player,
 /turf/simulated/floor/urban/urban_pavement_brick,
 /area/warfare/battlefield/capture_point/mid)
 "Yb" = (
@@ -8201,8 +8201,8 @@
 /area/warfare/battlefield/trench_section/underground)
 "YV" = (
 /obj/structure/grille/sewer,
-/obj/hammereditor/bulletclip,
-/obj/hammereditor/playerclip,
+/obj/effect/map_entity/clip/bullet,
+/obj/effect/map_entity/clip/player,
 /turf/simulated/floor/exoplanet/water/shallow/lightless/urban,
 /area/warfare/battlefield/trench_section/underground/stormsystem)
 "YY" = (

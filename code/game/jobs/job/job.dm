@@ -72,6 +72,8 @@ GLOBAL_LIST_EMPTY(family_blacklist)
 	var/boltie_skill = 5
 	var/close_when_dead = FALSE
 
+	var/payload_block = FALSE // FUCK
+
 
 /datum/job/New()
 	..()

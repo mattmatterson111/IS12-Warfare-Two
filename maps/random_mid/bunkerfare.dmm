@@ -136,7 +136,7 @@
 	pixel_y = -4;
 	secured = 1
 	},
-/obj/hammereditor/nodraw,
+/obj/effect/map_entity/nodraw,
 /turf/simulated/wall/perspecticrete,
 /area/template_noop)
 "uv" = (
@@ -333,7 +333,7 @@
 	pixel_y = 12;
 	secured = 1
 	},
-/obj/hammereditor/nodraw,
+/obj/effect/map_entity/nodraw,
 /turf/simulated/wall/perspecticrete{
 	layer = 29;
 	plane = -150

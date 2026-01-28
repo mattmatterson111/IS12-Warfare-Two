@@ -18,12 +18,16 @@
 
 	// Things you might plausibly want to follow
 	if(istype(A,/atom/movable))
-		if ((A.atom_flags & ATOM_FLAG_GHOSTCLIP))
-			if(!client.holder)
-				return
+		// LOS check for ghost clips
+		if(!ghost_can_reach(src, A))
+			to_chat(src, "<span class='warning'>You cannot observe that - something is blocking your path!</span>")
+			return
 		ManualFollow(A)
 	// Otherwise jump
 	else
+		if(!ghost_can_reach(src, A))
+			to_chat(src, "<span class='warning'>You cannot reach that location!</span>")
+			return
 		stop_following()
 		forceMove(get_turf(A))
 

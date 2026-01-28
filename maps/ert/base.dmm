@@ -109,15 +109,15 @@
 /turf/simulated/floor/ert/metal02,
 /area/vehicle/submarine/start_zone)
 "iy" = (
-/obj/hammereditor/nodraw/deco/shadowpaint{
+/obj/effect/map_entity/nodraw/deco/shadowpaint{
 	dir = 8;
 	density = 0
 	},
-/obj/hammereditor/nodraw/deco/shadowpaint{
+/obj/effect/map_entity/nodraw/deco/shadowpaint{
 	dir = 8;
 	density = 0
 	},
-/obj/hammereditor/nodraw/deco/shadowpaint{
+/obj/effect/map_entity/nodraw/deco/shadowpaint{
 	dir = 8;
 	density = 0
 	},
@@ -425,15 +425,15 @@
 /turf/template_noop,
 /area/warfare/battlefield/trench_section/underground)
 "NZ" = (
-/obj/hammereditor/nodraw/deco/shadowpaint{
+/obj/effect/map_entity/nodraw/deco/shadowpaint{
 	dir = 8;
 	density = 0
 	},
-/obj/hammereditor/nodraw/deco/shadowpaint{
+/obj/effect/map_entity/nodraw/deco/shadowpaint{
 	dir = 8;
 	density = 0
 	},
-/obj/hammereditor/nodraw/deco/shadowpaint{
+/obj/effect/map_entity/nodraw/deco/shadowpaint{
 	dir = 8;
 	density = 0
 	},
@@ -485,19 +485,19 @@
 	},
 /area/vehicle/submarine/start_zone)
 "Tu" = (
-/obj/hammereditor/nodraw/deco/shadowpaint{
+/obj/effect/map_entity/nodraw/deco/shadowpaint{
 	dir = 8;
 	density = 0
 	},
-/obj/hammereditor/nodraw/deco/shadowpaint{
+/obj/effect/map_entity/nodraw/deco/shadowpaint{
 	dir = 8;
 	density = 0
 	},
-/obj/hammereditor/nodraw/deco/shadowpaint{
+/obj/effect/map_entity/nodraw/deco/shadowpaint{
 	dir = 8;
 	density = 0
 	},
-/obj/hammereditor/nodraw/deco/shadowpaint{
+/obj/effect/map_entity/nodraw/deco/shadowpaint{
 	dir = 8;
 	density = 0
 	},
@@ -540,7 +540,7 @@
 	entrance = 2;
 	twoway = 1
 	},
-/obj/hammereditor/nodraw/deco/shadowpaint{
+/obj/effect/map_entity/nodraw/deco/shadowpaint{
 	dir = 8;
 	density = 0
 	},

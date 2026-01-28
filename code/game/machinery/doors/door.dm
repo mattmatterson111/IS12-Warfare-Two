@@ -374,6 +374,7 @@
 
 
 /obj/machinery/door/proc/open(var/forced = 0)
+	set waitfor = 0
 	if(!can_open(forced))
 		return
 	operating = 1
@@ -402,6 +403,7 @@
 	return world.time + (normalspeed ? 150 : 5)
 
 /obj/machinery/door/proc/close(var/forced = 0)
+	set waitfor = 0
 	if(!can_close(forced))
 		return
 	operating = 1

@@ -1,0 +1,220 @@
+/* -------------------------------------------------------------------------- */
+/*                       SOUNDSCAPE DEFINITIONS                                */
+/* -------------------------------------------------------------------------- */
+/*
+ * Define soundscapes here using Valve-style syntax.
+ *
+ * FORMAT:
+ *   /decl/soundscape/my_soundscape
+ *       name = "area.subarea.type"
+ *       dsp = 1                    // Room reverb preset
+ *       fadetime = 1.0             // Fade in time in seconds
+ *
+ *       playlooping = list(
+ *           list("wave" = 'sound/file.ogg', "volume" = 0.5, "pitch" = 100, "position" = 0),
+ *           ...
+ *       )
+ *
+ *       playrandom = list(
+ *           list("time" = list(5, 15), "volume" = list(0.2, 0.5),
+ *                "waves" = list('sound/file1.ogg', 'sound/file2.ogg')),
+ *           ...
+ *       )
+ */
+
+/* -------------------------------------------------------------------------- */
+/*                          GENERIC SOUNDSCAPES                                */
+/* -------------------------------------------------------------------------- */
+
+/decl/soundscape/nothing
+	name = "nothing"
+	dsp = 0
+	playlooping = list()
+	playrandom = list()
+
+/* ------------------------------ INDOOR GENERIC ----------------------------- */
+
+/decl/soundscape/indoor/generic
+	name = "indoor.generic"
+	dsp = 1
+	fadetime = 1.0
+
+	playlooping = list(
+		list("wave" = 'sound/ambience/COLD_OUTSIDE.ogg', "volume" = 0.5, "pitch" = 100)
+	)
+
+/* ----------------------------- OUTDOOR GENERIC ----------------------------- */
+
+/decl/soundscape/outdoor/generic
+	name = "outdoor.generic"
+	dsp = 1
+	fadetime = 1.5
+
+/* -------------------------------------------------------------------------- */
+/*                           WARFARE SOUNDSCAPES                               */
+/* -------------------------------------------------------------------------- */
+
+/decl/soundscape/warfare/trench
+	name = "warfare.trench"
+	dsp = 1
+	fadetime = 2.0
+
+	playrandom = list(
+		list(
+			"time" = list(5, 15),
+			"volume" = list(0.2, 0.5),
+			"waves" = list(
+				'sound/ambience/ambigen1.ogg',
+				'sound/ambience/ambigen2.ogg',
+				'sound/ambience/ambigen3.ogg'
+			)
+		)
+	)
+
+/decl/soundscape/warfare/battlefield
+	name = "warfare.battlefield"
+	dsp = 1
+	fadetime = 1.0
+
+	playrandom = list(
+		list(
+			"time" = list(3, 10),
+			"volume" = list(0.3, 0.6),
+			"waves" = list(
+				'sound/ambience/ambigen1.ogg',
+				'sound/ambience/ambigen2.ogg',
+				'sound/ambience/ambigen3.ogg'
+			)
+		)
+	)
+
+	playlooping = list(
+		list("wave" = 'sound/ambience/shipambience.ogg', "volume" = 0.5, "pitch" = 100)
+	)
+
+/decl/soundscape/warfare/bunker
+	name = "warfare.bunker"
+	dsp = 14  // Concrete room
+	fadetime = 1.0
+
+	playlooping = list(
+		list("wave" = 'sound/ambience/ambigen1.ogg', "volume" = 0.2, "pitch" = 100)
+	)
+
+/* -------------------------------------------------------------------------- */
+/*                          INDUSTRIAL SOUNDSCAPES                             */
+/* -------------------------------------------------------------------------- */
+
+/decl/soundscape/industrial/machinery
+	name = "industrial.machinery"
+	dsp = 6  // Metal room
+	fadetime = 1.0
+
+/decl/soundscape/industrial/generator
+	name = "industrial.generator"
+	dsp = 6
+	fadetime = 1.0
+
+/* -------------------------------------------------------------------------- */
+/*                           NATURE SOUNDSCAPES                                */
+/* -------------------------------------------------------------------------- */
+
+/decl/soundscape/nature/forest
+	name = "nature.forest"
+	dsp = 1
+	fadetime = 2.0
+
+	playrandom = list(
+		list(
+			"time" = list(8, 20),
+			"volume" = list(0.2, 0.4),
+			"waves" = list(
+				'sound/ambience/ambigen1.ogg',
+				'sound/ambience/ambigen2.ogg',
+				'sound/ambience/ambigen3.ogg'
+			)
+		)
+	)
+
+/decl/soundscape/nature/rain
+	name = "nature.rain"
+	dsp = 1
+	fadetime = 1.5
+
+/* -------------------------------------------------------------------------- */
+/*                          UNDERGROUND SOUNDSCAPES                            */
+/* -------------------------------------------------------------------------- */
+
+/decl/soundscape/underground/cave
+	name = "underground.cave"
+	dsp = 14  // Cavern echo
+	fadetime = 2.0
+
+/decl/soundscape/underground/tunnel
+	name = "underground.tunnel"
+	dsp = 14
+	fadetime = 1.5
+
+/* -------------------------------------------------------------------------- */
+/*                           EXAMPLE USAGE IN MAPS                             */
+/* -------------------------------------------------------------------------- */
+/*
+ * In your map, place these entities:
+ *
+ * 1. env_soundscape for radius-based activation:
+ *
+ *    /obj/effect/map_entity/env_soundscape/trench_ambience
+ *        soundscape = "warfare.trench"
+ *        radius = 10
+ *        position_0 = "trench_speaker_1"  // Optional: position targets
+ *        position_1 = "trench_speaker_2"
+ *
+ * 2. env_soundscape_trigger for brush/touch activation:
+ *
+ *    /obj/effect/map_entity/env_soundscape_trigger/bunker_entrance
+ *        name = "bunker_trigger"  // Same name = brush wall
+ *        soundscape = "warfare.bunker"
+ *
+ * 3. Position targets (for positional audio):
+ *
+ *    /obj/effect/map_entity/example/speaker
+ *        targetname = "trench_speaker_1"
+ */
+
+/* ----------------------------- PRESET ENTITIES ----------------------------- */
+
+/// Trench soundscape entity (place in trench areas)
+/obj/effect/map_entity/env_soundscape/preset/trench
+	name = "trench_soundscape"
+	soundscape = "warfare.trench"
+	radius = 12
+
+/// Bunker soundscape entity
+/obj/effect/map_entity/env_soundscape/preset/bunker
+	name = "bunker_soundscape"
+	soundscape = "warfare.bunker"
+	radius = 8
+
+/// Battlefield soundscape entity
+/obj/effect/map_entity/env_soundscape/preset/battlefield
+	name = "battlefield_soundscape"
+	soundscape = "warfare.battlefield"
+	radius = 20
+
+/// Indoor generic soundscape
+/obj/effect/map_entity/env_soundscape/preset/indoor
+	name = "indoor_soundscape"
+	soundscape = "indoor.generic"
+	radius = 10
+
+/// Forest soundscape
+/obj/effect/map_entity/env_soundscape/preset/forest
+	name = "forest_soundscape"
+	soundscape = "nature.forest"
+	radius = 15
+
+/// Cave soundscape
+/obj/effect/map_entity/env_soundscape/preset/cave
+	name = "cave_soundscape"
+	soundscape = "underground.cave"
+	radius = 10

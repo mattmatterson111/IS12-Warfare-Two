@@ -581,7 +581,7 @@
 	pixel_y = -4;
 	secured = 1
 	},
-/obj/hammereditor/nodraw,
+/obj/effect/map_entity/nodraw,
 /turf/simulated/wall/perspecticrete,
 /area/space)
 "dy" = (
@@ -745,7 +745,7 @@
 	pixel_y = 12;
 	secured = 1
 	},
-/obj/hammereditor/nodraw,
+/obj/effect/map_entity/nodraw,
 /turf/simulated/wall/perspecticrete{
 	layer = 29;
 	plane = -150
@@ -1124,7 +1124,7 @@
 /turf/simulated/floor/trenches,
 /area/warfare/homebase/red)
 "ha" = (
-/obj/hammereditor/nodraw,
+/obj/effect/map_entity/nodraw,
 /turf/simulated/wall/perspecticrete,
 /area/warfare/homebase/blue)
 "hk" = (
@@ -1246,11 +1246,11 @@
 /turf/simulated/floor/tiled/dark,
 /area/warfare/homebase/red/div)
 "hQ" = (
-/obj/hammereditor/nodraw/deco/bars,
-/obj/hammereditor/nodraw/deco/bars{
+/obj/effect/map_entity/nodraw/deco/bars,
+/obj/effect/map_entity/nodraw/deco/bars{
 	pixel_y = 10
 	},
-/obj/hammereditor/nodraw,
+/obj/effect/map_entity/nodraw,
 /turf/simulated/floor/wood,
 /area/warfare/battlefield/trench_section/underground)
 "hT" = (
@@ -1338,7 +1338,7 @@
 /turf/simulated/floor/fixed,
 /area/warfare/homebase/blue)
 "iv" = (
-/obj/hammereditor/nodraw/deco/bars,
+/obj/effect/map_entity/nodraw/deco/bars,
 /turf/simulated/floor/dirty/indestructable,
 /area/space)
 "iz" = (
@@ -1996,7 +1996,7 @@
 /turf/simulated/floor/concrete/random,
 /area/warfare/battlefield/capture_point/blue/two)
 "mX" = (
-/obj/hammereditor/nodraw/deco/shutter_quarter,
+/obj/effect/map_entity/nodraw/deco/shutter_quarter,
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/blue)
 "mZ" = (
@@ -2203,7 +2203,7 @@
 /obj/structure/trench_wall/sequel{
 	dir = 8
 	},
-/obj/hammereditor/nodraw,
+/obj/effect/map_entity/nodraw,
 /turf/simulated/mineral{
 	health = 999999
 	},
@@ -2762,7 +2762,7 @@
 /turf/simulated/floor/concrete/random,
 /area/warfare/battlefield/trench_section/underground)
 "sf" = (
-/obj/hammereditor/nodraw/deco/shutter_quarter{
+/obj/effect/map_entity/nodraw/deco/shutter_quarter{
 	dir = 4;
 	icon = 'icons/effects/blood.dmi';
 	icon_state = "tracks";
@@ -2772,7 +2772,7 @@
 	plane = -20;
 	layer = 38
 	},
-/obj/hammereditor/nodraw/deco/shutter_quarter{
+/obj/effect/map_entity/nodraw/deco/shutter_quarter{
 	dir = 4;
 	icon = 'icons/effects/blood.dmi';
 	icon_state = "gibbl5";
@@ -3678,7 +3678,7 @@
 	},
 /area/warfare/homebase/red)
 "yb" = (
-/obj/hammereditor/nodraw/deco/shutter_half,
+/obj/effect/map_entity/nodraw/deco/shutter_half,
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/blue)
 "yc" = (
@@ -3974,7 +3974,7 @@
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/blue)
 "zA" = (
-/obj/hammereditor/nodraw/deco/shutter_quarter{
+/obj/effect/map_entity/nodraw/deco/shutter_quarter{
 	dir = 1
 	},
 /turf/simulated/floor/concrete/random,
@@ -3987,7 +3987,7 @@
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/red)
 "zD" = (
-/obj/hammereditor/nodraw/deco/shutter_half{
+/obj/effect/map_entity/nodraw/deco/shutter_half{
 	dir = 8
 	},
 /obj/structure/defensive_barrier{
@@ -4356,11 +4356,11 @@
 /turf/simulated/floor/wood,
 /area/warfare/battlefield/trench_section/underground)
 "BJ" = (
-/obj/hammereditor/nodraw/deco/bars,
-/obj/hammereditor/nodraw/deco/bars{
+/obj/effect/map_entity/nodraw/deco/bars,
+/obj/effect/map_entity/nodraw/deco/bars{
 	pixel_y = 10
 	},
-/obj/hammereditor/nodraw,
+/obj/effect/map_entity/nodraw,
 /turf/simulated/floor/trenches/underground{
 	icon_state = "trench";
 	color = "#ffffff"
@@ -4711,7 +4711,7 @@
 /area/warfare/battlefield/capture_point/blue/one)
 "DG" = (
 /obj/structure/poster/red,
-/obj/hammereditor/nodraw,
+/obj/effect/map_entity/nodraw,
 /turf/simulated/wall/perspecticrete,
 /area/warfare/homebase/red)
 "DN" = (
@@ -4826,7 +4826,7 @@
 	},
 /area/warfare/homebase/red)
 "Ej" = (
-/obj/hammereditor/nodraw/deco/bars,
+/obj/effect/map_entity/nodraw/deco/bars,
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/red)
 "Ek" = (
@@ -5122,7 +5122,7 @@
 /turf/simulated/floor/concrete/random,
 /area/warfare/battlefield/trench_section/underground)
 "Gf" = (
-/obj/hammereditor/nodraw,
+/obj/effect/map_entity/nodraw,
 /turf/simulated/mineral{
 	health = 999999
 	},
@@ -5248,7 +5248,7 @@
 /obj/structure/trench_wall{
 	dir = 10
 	},
-/obj/hammereditor/nodraw,
+/obj/effect/map_entity/nodraw,
 /turf/simulated/mineral{
 	health = 999999
 	},
@@ -6324,7 +6324,7 @@
 /turf/simulated/floor/concrete/random,
 /area/warfare/battlefield/trench_section/underground)
 "Ok" = (
-/obj/hammereditor/nodraw,
+/obj/effect/map_entity/nodraw,
 /turf/simulated/wall/perspecticrete,
 /area/warfare/homebase/red)
 "On" = (
@@ -7274,7 +7274,7 @@
 /turf/simulated/floor/dirty/indestructable,
 /area/warfare/battlefield/capture_point/red/one)
 "UI" = (
-/obj/hammereditor/nodraw/deco/shutter_quarter{
+/obj/effect/map_entity/nodraw/deco/shutter_quarter{
 	dir = 8
 	},
 /turf/simulated/floor/concrete/random,
@@ -7392,7 +7392,7 @@
 	},
 /area/warfare/battlefield/capture_point/red/one)
 "Vf" = (
-/obj/hammereditor/nodraw/deco/shutter_half{
+/obj/effect/map_entity/nodraw/deco/shutter_half{
 	dir = 4
 	},
 /obj/structure/defensive_barrier{
@@ -7514,7 +7514,7 @@
 	initial_lock_value = "red";
 	locked = 1
 	},
-/obj/hammereditor/nodraw,
+/obj/effect/map_entity/nodraw,
 /turf/simulated/floor/wood,
 /area/warfare/battlefield/trench_section/underground)
 "VS" = (
@@ -7874,7 +7874,7 @@
 /turf/simulated/floor/concrete/random,
 /area/warfare/homebase/red)
 "Yd" = (
-/obj/hammereditor/nodraw/deco/shutter_quarter{
+/obj/effect/map_entity/nodraw/deco/shutter_quarter{
 	dir = 4
 	},
 /turf/simulated/floor/concrete/random,

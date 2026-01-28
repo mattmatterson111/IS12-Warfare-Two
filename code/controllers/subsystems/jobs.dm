@@ -378,19 +378,41 @@ SUBSYSTEM_DEF(jobs)
 
 	H.job = rank
 
-	if(!joined_late || job.latejoin_at_spawnpoints || job.spawn_in_cryopod)
+	// When payload mode is active, force cryopod spawning for all soldier jobs
+	var/force_cryopod = length(GLOB.payloads) && (job.is_red_team || job.is_blue_team)
+
+	if(!joined_late || job.latejoin_at_spawnpoints || job.spawn_in_cryopod || force_cryopod)
 		var/obj/structure/soldiercryo/special/cryo_spawnpoint = null
 
-		if(job.spawn_in_cryopod)
-			for (var/obj/structure/soldiercryo/special/C in GLOB.special_cryospawns[job.cryopod_id])
-				if (C.occupant)
-					continue
-				if(C.id != job.cryopod_id) // safety
-					continue
-				cryo_spawnpoint = C
-				break // Found an open one
+		// Determine spawn team
+		var/spawn_team = null
+		if(job.is_red_team)
+			spawn_team = RED_TEAM
+		else if(job.is_blue_team)
+			spawn_team = BLUE_TEAM
 
-		if (cryo_spawnpoint)
+		if(job.spawn_in_cryopod || force_cryopod)
+			// First try job's specific cryopod_id if set
+			if(job.cryopod_id && length(GLOB.special_cryospawns[job.cryopod_id]))
+				for(var/obj/structure/soldiercryo/special/C in GLOB.special_cryospawns[job.cryopod_id])
+					if(C.occupant)
+						continue
+					if(!C.enabled)
+						continue
+					cryo_spawnpoint = C
+					break
+
+			// Otherwise, use team-based spawning (finds any enabled CS unit for that team)
+			if(!cryo_spawnpoint && spawn_team && length(GLOB.team_cryospawns[spawn_team]))
+				for(var/obj/structure/soldiercryo/special/C in GLOB.team_cryospawns[spawn_team])
+					if(C.occupant)
+						continue
+					if(!C.enabled)
+						continue
+					cryo_spawnpoint = C
+					break
+
+		if(cryo_spawnpoint)
 			var/turf/T = get_turf(cryo_spawnpoint)
 			H.forceMove(T)
 			cryo_spawnpoint.move_inside(H, TRUE)
@@ -398,23 +420,25 @@ SUBSYSTEM_DEF(jobs)
 				cryo_spawnpoint.eject(forced = TRUE)
 				cryo_spawnpoint.icon_state = initial(cryo_spawnpoint.icon_state) // nice illusion of it being refilled
 
-		else if(iswarfare() && SSwarfare.battle_time)
-			var/list/loc_list = list()
-			for(var/obj/effect/landmark/start/sloc in landmarks_list)
-				if(sloc.name != H.client.warfare_faction)	continue
-				loc_list += sloc
-			var/obj/spawnpoint = pick(loc_list)
-			if(spawnpoint)
-				H.forceMove(spawnpoint.loc)
+		// Only use train/latejoin spawns if NOT in payload mode or if no cryopod was found for non-payload jobs
+		else if(!force_cryopod)
+			if(iswarfare() && SSwarfare.battle_time)
+				var/list/loc_list = list()
+				for(var/obj/effect/landmark/start/sloc in landmarks_list)
+					if(sloc.name != H.client.warfare_faction)	continue
+					loc_list += sloc
+				var/obj/spawnpoint = pick(loc_list)
+				if(spawnpoint)
+					H.forceMove(spawnpoint.loc)
 
-		else
-			var/obj/S = get_roundstart_spawnpoint(rank)
-
-			if (istype(S, /obj/effect/landmark/start) && istype(S.loc, /turf))
-				H.forceMove(S.loc)
 			else
-				var/datum/spawnpoint/spawnpoint = get_spawnpoint_for(H.client, rank)
-				H.forceMove(pick(spawnpoint.turfs))
+				var/obj/S = get_roundstart_spawnpoint(rank)
+
+				if(istype(S, /obj/effect/landmark/start) && istype(S.loc, /turf))
+					H.forceMove(S.loc)
+				else
+					var/datum/spawnpoint/spawnpoint = get_spawnpoint_for(H.client, rank)
+					H.forceMove(pick(spawnpoint.turfs))
 
 		if (H.buckled && istype(H.buckled, /obj/structure/bed/chair/wheelchair))
 			H.buckled.forceMove(H.loc)

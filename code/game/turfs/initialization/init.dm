@@ -76,7 +76,11 @@
 		new /obj/structure/barbwire(T)
 
 	else if(prob(5))
-		new /obj/structure/anti_tank(T)
+		var/blocked = FALSE
+		for(var/obj/structure/track/S in T)
+			blocked = TRUE
+		if(!blocked)
+			new /obj/structure/anti_tank(T)
 
 	else if(prob(5))//Please no landmines under dirt mounds thank you.
 		// please no landmines on fucking water thank you

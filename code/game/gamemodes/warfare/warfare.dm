@@ -36,6 +36,11 @@
 	if(src in SSwarfare.red.team)//Same here.
 		SSwarfare.red.left--
 		SSwarfare.red.team -= src
+	
+	if(warfare_faction == RED_TEAM) // Also fires for ghosts if they somehow die but mostly for humans
+		IO_output("game_events:OnRedDeath", null, null)
+	else if(warfare_faction == BLUE_TEAM)
+		IO_output("game_events:OnBlueDeath", null, null)
 
 	if(client)
 		client.warfare_deaths++

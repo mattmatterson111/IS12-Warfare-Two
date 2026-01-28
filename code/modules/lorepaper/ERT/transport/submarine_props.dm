@@ -89,3 +89,12 @@
 	mouse_opacity = 0
 	anchored = TRUE
 	density = FALSE
+
+/turf/simulated/wall/wood2
+	name = "wooden wall"
+	desc = "Good luck getting through one of these."
+	icon_state = "woodt0"
+	walltype = "woodt"
+	mineral = "wood"
+	plane = WALL_PLANE
+	integrity = 15000 //Tough bois

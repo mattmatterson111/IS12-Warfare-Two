@@ -309,6 +309,8 @@ SUBSYSTEM_DEF(respawn)
 /datum/controller/subsystem/respawn/fire(resumed)
 	if (!SSwarfare.battle_time)
 		return
+	if(length(GLOB.payloads))
+		return
 
 	// Rarely try to spawn a passing train when we're on cooldown
 	if (round_duration_in_ticks <= next_respawn && !respawning)

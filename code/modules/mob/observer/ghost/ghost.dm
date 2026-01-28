@@ -6,7 +6,6 @@ var/list/NOIRLIST = list(0.3,0.3,0.3,0,\
 						 0.3,0.3,0.3,0,\
 						 0.0,0.0,0.0,1,)
 
-
 /mob/observer/ghost
 	name = "ghost"
 	desc = "It's a g-g-g-g-ghooooost!" //jinkies!
@@ -308,10 +307,10 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	if(check_is_holy_turf(target_turf))
 		to_chat(src, "<span class='warning'>The target location is holy grounds!</span>")
 		return
-	for (var/obj/I in get_turf(target_turf))
-		if ((I.atom_flags & ATOM_FLAG_GHOSTCLIP))
-			if(!client.holder)
-				return
+	// LOS check for ghost clips
+	if(!ghost_can_reach(src, target_turf))
+		to_chat(src, "<span class='warning'>You cannot reach that location - something is blocking your path!</span>")
+		return
 	stop_following()
 	forceMove(target_turf)
 
@@ -342,10 +341,11 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	if(check_is_holy_turf(T))
 		to_chat(src, "<span class='warning'>You cannot follow something standing on holy grounds!</span>")
 		return
-	for (var/obj/I in get_turf(T))
-		if ((I.atom_flags & ATOM_FLAG_GHOSTCLIP))
-			if(!client.holder)
-				return
+	// LOS check for ghost clips when following
+	if(!ghost_can_reach(src, T))
+		to_chat(src, "<span class='warning'>You cannot follow through there!</span>")
+		stop_following()
+		return
 	..()
 
 /mob/observer/ghost/memory()
@@ -593,13 +593,12 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		ST.PrivRemoveListener(M)
 
 
-// Stop using pagedown/pageup to circumvent the ghost clickey..
+// Stop using pagedown/pageup to circumvent the ghost clipey..
 /mob/observer/zMove(direction)
 	var/turf/destination = (direction == UP) ? GetAbove(src) : GetBelow(src)
-	for (var/obj/I in destination)
-		if ((I.atom_flags & ATOM_FLAG_GHOSTCLIP))
-			if(!client.holder)
-				return
+	// LOS check for ghost clips when z-moving
+	if(!ghost_can_reach(src, destination))
+		return
 	if(destination)
 		forceMove(destination)
 	else
