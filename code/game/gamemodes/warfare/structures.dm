@@ -582,7 +582,7 @@
 /obj/structure/landmine/proc/blow()
 	GLOB.mines_tripped++
 	fragmentate(get_turf(src), 20, 2, list(/obj/item/projectile/bullet/pellet/fragment/landmine))
-	explosion(loc, 2, 2, 1, 1)
+	explosion(loc, -1, 1, 2, 1)
 	qdel(src)
 
 /obj/structure/landmine/update_icon()
