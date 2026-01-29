@@ -461,7 +461,8 @@ GLOBAL_LIST_EMPTY(faction_dosh)
 
 		// general weapon stuff
 		list("name" = "Shotgun Pack", "price" = 100, "category" = "Brass.Co Top-Brass", "path" = /obj/structure/closet/crate/secure/weapon, "willcontain" = list(/obj/item/gun/projectile/shotgun/pump/shitty = 5)),
-		list("name" = "Pistol Pack", "price" = 100, "category" = "Brass.Co Top-Brass", "path" = /obj/structure/closet/crate/secure/weapon, "willcontain" = list(/obj/item/gun/projectile/golt = 2, /obj/item/gun/projectile/warfare = 3)),
+		list("name" = "Golt Pack", "price" = 100, "category" = "Brass.Co Top-Brass", "path" = /obj/structure/closet/crate/secure/weapon, "willcontain" = list(/obj/item/gun/projectile/golt = 2)),
+		list("name" = "Pistol Pack", "price" = 100, "category" = "Brass.Co Top-Brass", "path" = /obj/structure/closet/crate/secure/weapon, "willcontain" = list(/obj/item/gun/projectile/warfare = 3)),
 		list("name" = "Harbinger Pack", "price" = 100, "category" = "Brass.Co Top-Brass", "path" = /obj/structure/closet/crate/secure/weapon, "willcontain" = list(/obj/item/gun/projectile/automatic/mg08 = 2)),
 		list("name" = "Warmonger Pack", "price" = 100, "category" = "Brass.Co Top-Brass", "path" = /obj/structure/closet/crate/secure/weapon, "willcontain" = list(/obj/item/gun/projectile/automatic/m22/warmonger = 10)),
 		list("name" = "Shovel Pack", "price" = 50, "category" = "Brass.Co Top-Brass", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/shovel = 5)),
@@ -529,7 +530,8 @@ GLOBAL_LIST_EMPTY(faction_dosh)
 
 		// general weapon stuff
 		list("name" = "Shotgun Pack", "price" = 100, "category" = "Brass.Co Top-Brass", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/gun/projectile/shotgun/pump/shitty = 5)),
-		list("name" = "Pistol Pack", "price" = 100, "category" = "Brass.Co Top-Brass", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/gun/projectile/golt = 2, /obj/item/gun/projectile/warfare = 3)),
+		list("name" = "Golt Pack", "price" = 100, "category" = "Brass.Co Top-Brass", "path" = /obj/structure/closet/crate/secure/weapon, "willcontain" = list(/obj/item/gun/projectile/golt = 2)),
+		list("name" = "Pistol Pack", "price" = 100, "category" = "Brass.Co Top-Brass", "path" = /obj/structure/closet/crate/secure/weapon, "willcontain" = list(/obj/item/gun/projectile/warfare = 3)),
 		list("name" = "Harbinger Pack", "price" = 100, "category" = "Brass.Co Top-Brass", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/gun/projectile/automatic/mg08 = 2)),
 		list("name" = "Warmonger Pack", "price" = 100, "category" = "Brass.Co Top-Brass", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/gun/projectile/automatic/m22/warmonger = 10)),
 		list("name" = "Shovel Pack", "price" = 50, "category" = "Brass.Co Top-Brass", "path" = /obj/structure/closet/crate/wooden, "willcontain" = list(/obj/item/shovel = 5)),
