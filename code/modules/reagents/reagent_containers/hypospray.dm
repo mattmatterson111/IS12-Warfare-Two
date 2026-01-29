@@ -128,7 +128,6 @@
 	desc = "A rapid and safe way to administer small amounts of drugs by untrained or trained personnel."
 	icon_state = "blue"
 	item_state = "autoinjector"
-	worldicons = "blue_world"
 	amount_per_transfer_from_this = 5
 	volume = 5
 	origin_tech = list(TECH_MATERIAL = 2, TECH_BIO = 2)
@@ -154,10 +153,8 @@
 /obj/item/reagent_containers/hypospray/autoinjector/update_icon()
 	if(reagents.total_volume > 0)
 		icon_state = "[initial(icon_state)]1"
-		worldicons = "[initial(worldicons)]1"
 	else
 		icon_state = "[initial(icon_state)]0"
-		worldicons = "[initial(worldicons)]0"
 
 /obj/item/reagent_containers/hypospray/autoinjector/examine(mob/user)
 	. = ..(user)
@@ -169,31 +166,26 @@
 /obj/item/reagent_containers/hypospray/autoinjector/detox
 	name = "autoinjector (antitox)"
 	icon_state = "green"
-	worldicons = "green_world"
 	starts_with = list(/datum/reagent/dylovene = 5)
 
 /obj/item/reagent_containers/hypospray/autoinjector/pain
 	name = "autoinjector (painkiller)"
 	icon_state = "purple"
-	worldicons = "purple_world"
 	starts_with = list(/datum/reagent/tramadol = 10)
 
 /obj/item/reagent_containers/hypospray/autoinjector/combatpain
 	name = "autoinjector (oxycodone)"
 	icon_state = "black"
-	worldicons = "black_world"
 	starts_with = list(/datum/reagent/tramadol/oxycodone = 5)
 
 /obj/item/reagent_containers/hypospray/autoinjector/revive
 	name = "autoinjector (atepoine)"
 	icon_state = "black"
-	worldicons = "black_world"
 	starts_with = list(/datum/reagent/atepoine = 10)
 
 /obj/item/reagent_containers/hypospray/autoinjector/mindbreaker
 	name = "autoinjector"
 	icon_state = "black"
-	worldicons = "black_world"
 	starts_with = list(/datum/reagent/mindbreaker = 5)
 
 /obj/item/reagent_containers/hypospray/autoinjector/blood
