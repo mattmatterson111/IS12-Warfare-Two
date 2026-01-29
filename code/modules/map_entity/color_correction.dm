@@ -91,7 +91,7 @@
 	. = ..()
 	if(!enabled || mode != 2)
 		return
-	if(!ismob(AM))
+	if(!ishuman(AM))
 		return
 	
 	LAZYADD(entities_inside, AM)

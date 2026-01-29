@@ -10,6 +10,8 @@
 	New()
 		..()
 		vis_contents += new/obj/backdrop
+		filters += filter(type="layer", render_source="*daylight_overlay", blend_mode=BLEND_ADD)
+
 
 	// Now for the darkness, we set atom.color to a pure black with about 10% alpha
 	// And mouse_opacity has 0 so your lights and darkness don't capture mouse events.

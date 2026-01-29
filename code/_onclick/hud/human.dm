@@ -639,3 +639,4 @@
 	client.screen += new /obj/screen/plane_master/radial_filter
 	client.screen += new /obj/screen/plane_master/blur/effects_blur
 	client.screen += new /obj/screen/plane_master/exposure_filter
+	client.screen += GLOB.global_daylight_plane

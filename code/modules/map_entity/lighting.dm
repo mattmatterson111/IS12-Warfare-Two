@@ -1,0 +1,10 @@
+	name = "daylight brush"
+	desc = "Areas covered by this brush will be affected by the day/night cycle."
+	icon = 'icons/effects/lighting_overlay.dmi'
+	icon_state = "white"
+	plane = DAYLIGHT_PLANE
+	is_brush = TRUE
+	alpha = 255
+	color = "#FFFFFF"
+	invisibility = 0
+	mouse_opacity = 0 // Don't block clicks

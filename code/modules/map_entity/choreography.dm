@@ -124,46 +124,28 @@
 
 	active_viewers += M
 	
-	// Create a temporary camera object (using info_target as requested)
-	var/obj/effect/map_entity/info_target/cam = new(M.loc)
-	cam.name = "Cinematic Camera ([M])"
-	
-	// Lock perspective
-	var/old_eye = M.client.eye
-	var/old_perspective = M.client.perspective
-	
-	M.client.perspective = EYE_PERSPECTIVE
-	M.client.eye = cam
-	
 	var/turf/start_T = get_turf(M)
 	var/turf/end_T = get_turf(target)
 	
-	// Calculate pixel offset
-	var/dx = (start_T.x - end_T.x) * 32
-	var/dy = (start_T.y - end_T.y) * 32
+	// Calculate pixel offset (Target - Start)
+	var/dx = (end_T.x - start_T.x) * 32
+	var/dy = (end_T.y - start_T.y) * 32
 	
-	// Start at target, but offset visually to look like we are at start
-	cam.loc = end_T
-	cam.pixel_x = dx
-	cam.pixel_y = dy
-	
-	// Animate to 0,0 (which is the target location physically)
-	// Using generic easing 0 or standard valid one since EASE_IN_OUT wasn't found
-	animate(cam, pixel_x = 0, pixel_y = 0, time = pan_time)
+	// Animate TO target
+	animate(M.client, pixel_x = dx, pixel_y = dy, time = pan_time, easing = SINE_EASING)
 	
 	// Schedule return
 	spawn(pan_time + hold_time)
-		if(smooth_return)
-			// Pan back
-			animate(cam, pixel_x = dx, pixel_y = dy, time = pan_time)
-			sleep(pan_time)
-		
-		// Reset
 		if(M && M.client)
-			M.client.eye = old_eye
-			M.client.perspective = old_perspective
+			if(smooth_return)
+				// Pan back
+				animate(M.client, pixel_x = 0, pixel_y = 0, time = pan_time, easing = SINE_EASING)
+				sleep(pan_time)
+			else
+				// Snap back
+				// We can just animate with 0 time to clear current animation state and set value
+				animate(M.client, pixel_x = 0, pixel_y = 0, time = 0)
 		
-		qdel(cam)
 		active_viewers -= M
 
 /obj/effect/map_entity/camera_trigger/proc/find_target()

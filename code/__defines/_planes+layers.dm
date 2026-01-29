@@ -165,12 +165,17 @@ What is the naming convention for planes or layers?
 
 #define OBSERVER_PLANE               -30  // For observers and ghosts
 
+
+
 #define DARKNESS_PLANE				 -19
 #define LIGHTING_PLANE               -20
     #define LIGHTBULB_LAYER         0
     #define ABOVE_LIGHTING_LAYER    2
     #define SUPER_PORTAL_LAYER      3
     #define NARSIE_GLOW             4
+
+#define DAYLIGHT_MASK_PLANE          -121 // Hidden mask for daylight
+#define DAYLIGHT_PLANE               -11 // Visible daylight layer
 
 #define EFFECTS_ABOVE_LIGHTING_PLANE -10
     #define EYE_GLOW_LAYER          1

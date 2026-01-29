@@ -34,6 +34,7 @@
 	var/ambience_playing= null
 	var/played			= 0
 	var/warfare_deaths = 0
+	var/sound_environment = 0
 
 		////////////
 		//SECURITY//

@@ -230,6 +230,8 @@ var/const/FALLOFF_SOUNDS = 0.5
 				S.environment = UNDERWATER
 			else if (pressure_factor < 0.5)
 				S.environment = SPACE
+			else if (M.client && M.client.sound_environment)
+				S.environment = M.client.sound_environment
 			else
 				var/area/A = get_area(src)
 				S.environment = A.sound_env

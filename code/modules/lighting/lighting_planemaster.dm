@@ -16,6 +16,7 @@
 
 	mouse_opacity = 0    // nothing on this plane is mouse-visible
 
+
 /obj/lighting_general
 	plane = LIGHTING_PLANE
 	screen_loc = "8,8"

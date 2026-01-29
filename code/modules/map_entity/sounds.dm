@@ -469,13 +469,13 @@
 	if(M.client)
 		// We could store the previous one if we wanted a stack, 
 		// but simple zone logic usually assumes last entered wins or resets to 0.
-		// M.client.sound_environment = environment
+		M.client.sound_environment = environment
 
 /obj/effect/map_entity/audio_zone/proc/remove_reverb(mob/M)
 	if(M.client)
 		// Reset to default (0 is usually "Generic" or a safe default)
 		// Ideally we check if they are in another zone, but simplistic approach:
-		// M.client.sound_environment = 0
+		M.client.sound_environment = 0
 
 // Subtypes
 /obj/effect/map_entity/audio_zone/generic
