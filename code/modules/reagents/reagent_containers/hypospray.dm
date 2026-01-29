@@ -48,10 +48,10 @@
 
 	user.setClickCooldown(DEFAULT_QUICK_COOLDOWN)
 	//user.do_attack_animation(M)
-	
+
 	if(istype(M, /mob/living/carbon/human) && istype(user, /mob/living/carbon/human))
 		var/mob/living/carbon/human/humanuser = user
-		
+
 		if(H.warfare_faction != humanuser.warfare_faction) // why would I just let the enemy inject me with something?
 			var/bad_arc = reverse_direction(H.dir) //arc of directions from which we cannot block or dodge
 			if(check_shield_arc(src, bad_arc, null, user) && H != user) //cant dodge from behind
@@ -59,7 +59,7 @@
 					return
 				else if(H.check_shields(null, src, user, null, src))
 					return
-	
+
 	to_chat(user, "<span class='notice'>You inject [M] with [src].</span>")
 	to_chat(M, "<span class='notice'>You feel a tiny prick!</span>")
 	user.visible_message("<span class='warning'>[user] injects [M] with [src].</span>")
@@ -128,6 +128,7 @@
 	desc = "A rapid and safe way to administer small amounts of drugs by untrained or trained personnel."
 	icon_state = "blue"
 	item_state = "autoinjector"
+	worldicons = "blue_world"
 	amount_per_transfer_from_this = 5
 	volume = 5
 	origin_tech = list(TECH_MATERIAL = 2, TECH_BIO = 2)
@@ -142,19 +143,21 @@
 
 /obj/item/reagent_containers/hypospray/autoinjector/attack(mob/M as mob, mob/user as mob)
 	..()
-	if(reagents.total_volume <= 0) //Prevents autoinjectors to be refilled.
+	if(reagents.total_volume <= 0) //Prevents autoinjectors from being refilled.
 		atom_flags &= ~ATOM_FLAG_OPEN_CONTAINER
 	update_icon()
 	return
-	
+
 /obj/item/reagent_containers/hypospray/autoinjector/attack_self(mob/user as mob)
 	src.attack(user, user)
 
 /obj/item/reagent_containers/hypospray/autoinjector/update_icon()
 	if(reagents.total_volume > 0)
 		icon_state = "[initial(icon_state)]1"
+		worldicons = "[initial(worldicons)]1"
 	else
 		icon_state = "[initial(icon_state)]0"
+		worldicons = "[initial(worldicons)]0"
 
 /obj/item/reagent_containers/hypospray/autoinjector/examine(mob/user)
 	. = ..(user)
@@ -166,26 +169,31 @@
 /obj/item/reagent_containers/hypospray/autoinjector/detox
 	name = "autoinjector (antitox)"
 	icon_state = "green"
+	worldicons = "green_world"
 	starts_with = list(/datum/reagent/dylovene = 5)
 
 /obj/item/reagent_containers/hypospray/autoinjector/pain
 	name = "autoinjector (painkiller)"
 	icon_state = "purple"
+	worldicons = "purple_world"
 	starts_with = list(/datum/reagent/tramadol = 10)
 
 /obj/item/reagent_containers/hypospray/autoinjector/combatpain
 	name = "autoinjector (oxycodone)"
 	icon_state = "black"
+	worldicons = "black_world"
 	starts_with = list(/datum/reagent/tramadol/oxycodone = 5)
 
 /obj/item/reagent_containers/hypospray/autoinjector/revive
 	name = "autoinjector (atepoine)"
 	icon_state = "black"
+	worldicons = "black_world"
 	starts_with = list(/datum/reagent/atepoine = 10)
 
 /obj/item/reagent_containers/hypospray/autoinjector/mindbreaker
 	name = "autoinjector"
 	icon_state = "black"
+	worldicons = "black_world"
 	starts_with = list(/datum/reagent/mindbreaker = 5)
 
 /obj/item/reagent_containers/hypospray/autoinjector/blood
@@ -213,13 +221,13 @@
 		icon_state = "syrette_closed"
 	else
 		icon_state = "syrette_open"
-		
+
 /obj/item/reagent_containers/hypospray/autoinjector/adrenaline //for testing with adrenaline
 	name = "adrenaline syrette"
 	icon_state = "syrette_closed"
 	starts_with = list(/datum/reagent/adrenaline = 19)
 	inject_sound = 'sound/items/syrette_inject.ogg'
-	
+
 /obj/item/reagent_containers/hypospray/autoinjector/adrenaline/update_icon()
 	if(reagents.total_volume > 0)
 		icon_state = "syrette_closed"
