@@ -43,46 +43,106 @@
 	return FALSE
 
 // Env Fade - screen fade effect
+// Env Fade - screen fade effect
 /obj/effect/map_entity/env_fade
 	name = "env_fade"
 	icon_state = "fade"
-	is_brush = TRUE
+	is_brush = FALSE
+	
+	/// Mode: "global", "brush", "manual_brush", "input"
+	var/mode = "brush"
 	var/fade_color = "#000000"
 	var/fade_time = 1 SECOND
 	var/hold_time = 0  // How long to hold before auto-unfade (0 = manual)
-	var/global_fade = FALSE
+	// var/global_fade = FALSE // Deprecated, mapped to mode
 
-/obj/effect/map_entity/env_fade/proc/get_affected_clients()
+	var/list/entities_inside = null
+
+/obj/effect/map_entity/env_fade/Initialize()
+	. = ..()
+	
+	// Legacy mapping
+	if(vars.Find("global_fade") && vars["global_fade"])
+		mode = "global"
+
+	if(mode == "brush" || mode == "manual_brush")
+		is_brush = TRUE
+		if(mode == "brush") // manual_brush usually doesn't need instant neighbor connection unless we want tracking across them
+			spawn(1)
+				connect_brush_neighbors()
+
+/obj/effect/map_entity/env_fade/Crossed(atom/movable/AM)
+	. = ..()
+	if(!enabled)
+		return
+	if(mode != "brush" && mode != "manual_brush")
+		return
+	if(!ishuman(AM))
+		return
+	
+	LAZYADD(entities_inside, AM)
+	
+	if(mode == "brush")
+		var/mob/M = AM
+		if(M.client)
+			animate(M.client, color = fade_color, time = fade_time)
+
+/obj/effect/map_entity/env_fade/Uncrossed(atom/movable/AM)
+	. = ..()
+	if(mode != "brush" && mode != "manual_brush")
+		return
+	if(!ishuman(AM))
+		return
+	
+	if(AM in entities_inside)
+		LAZYREMOVE(entities_inside, AM)
+		var/mob/M = AM
+		if(mode == "brush" && M.client)
+			animate(M.client, color = null, time = fade_time)
+
+/obj/effect/map_entity/env_fade/proc/do_fade_in(atom/activator)
 	var/list/clients = list()
-	if(global_fade)
-		for(var/mob/M in GLOB.player_list)
-			if(M.client)
-				clients += M.client
-	else
-		var/list/turfs_to_check = list(get_turf(src))
-		if(brush_neighbors)
-			for(var/obj/effect/map_entity/E in brush_neighbors)
-				turfs_to_check |= get_turf(E)
-		for(var/turf/T in turfs_to_check)
-			for(var/mob/M in T)
-				if(M.client)
-					clients += M.client
-	return clients
 
-/obj/effect/map_entity/env_fade/proc/do_fade_in()
-	var/list/clients = get_affected_clients()
+	if(mode == "global")
+		for(var/mob/M in GLOB.player_list)
+			if(M.client) clients += M.client
+	else if(mode == "input")
+		if(ishuman(activator))
+			var/mob/M = activator
+			if(M.client) clients += M.client
+	else if(mode == "manual_brush")
+		if(entities_inside)
+			for(var/mob/M in entities_inside)
+				if(M.client) clients += M.client
+
 	for(var/client/C in clients)
 		animate(C, color = fade_color, time = fade_time)
-	fire_output("OnFadeIn", null, src)
+	
+	fire_output("OnFadeIn", activator, src)
+	
 	if(hold_time > 0)
 		spawn(fade_time + hold_time)
-			do_fade_out()
+			do_fade_out(activator)
 
-/obj/effect/map_entity/env_fade/proc/do_fade_out()
-	var/list/clients = get_affected_clients()
+/obj/effect/map_entity/env_fade/proc/do_fade_out(atom/activator)
+	var/list/clients = list()
+
+	if(mode == "global")
+		for(var/mob/M in GLOB.player_list)
+			if(M.client) clients += M.client
+	else if(mode == "input")
+		if(ishuman(activator))
+			var/mob/M = activator
+			if(M.client) clients += M.client
+	else if(mode == "manual_brush")
+		if(entities_inside)
+			for(var/mob/M in entities_inside)
+				if(M.client) clients += M.client
+
 	for(var/client/C in clients)
 		animate(C, color = null, time = fade_time)
-	fire_output("OnFadeOut", null, src)
+	
+	fire_output("OnFadeOut", activator, src)
 
 /obj/effect/map_entity/env_fade/receive_input(input_name, atom/activator, atom/caller, list/params)
 	. = ..()
@@ -90,10 +150,10 @@
 		return TRUE
 	switch(lowertext(input_name))
 		if("fadein", "fade")
-			do_fade_in()
+			do_fade_in(activator)
 			return TRUE
 		if("fadeout", "unfade")
-			do_fade_out()
+			do_fade_out(activator)
 			return TRUE
 		if("setcolor")
 			fade_color = params?["value"] || fade_color
@@ -102,6 +162,7 @@
 			fade_time = text2num(params?["value"]) || fade_time
 			return TRUE
 	return FALSE
+
 
 // Env Explosion - explosion effect
 /obj/effect/map_entity/env_explosion

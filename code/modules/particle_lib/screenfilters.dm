@@ -60,8 +60,6 @@
 /obj/screenfilter/proc/Fade() //cool fading effect
 	qdel(src)
 
-// NOTE: DELETE THIS AND PROPERLY MAKE IT ALL EMITTERS!!
-
 /obj/emitter/smoke
 	layer = FIRE_LAYER
 	particles = new/particles/smoke

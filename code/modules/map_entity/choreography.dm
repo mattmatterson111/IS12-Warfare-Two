@@ -1,17 +1,7 @@
-// Choreography System POC
-// Defines the timeline controller. Create subtypes for specific scenes.
-
-// ============================================================================
-// LOGIC CHOREOGRAPHED SCENE
-// ============================================================================
-// Controls the timeline. Triggers IO outputs at specific times.
-
 /obj/effect/map_entity/logic_choreographed_scene
 	name = "logic_choreographed_scene"
 	icon_state = "choreo"
 	
-	// Define events in subtypes or override get_script()
-	// Format: list(time_ds, target_name, input_name, param)
 	var/list/events = list()
 	
 	var/list/timers = list()
@@ -29,7 +19,10 @@
 		return
 
 	running = TRUE
+	debug_flash(MAP_ENTITY_COLOR_SEQUENCE)
+	debug_log("starting choreographed scene")
 	fire_output("OnStart", null, src)
+
 
 	for(var/list/event in script)
 		var/time = event[1]
@@ -52,7 +45,18 @@
 		return
 	
 	IO_output("[target_name]:[input_name]:[param]", null, src)
+	debug_flash(MAP_ENTITY_COLOR_SEQUENCE)
 
+/*
+Inputs:
+Start - Starts the scene
+Stop - Stops the scene
+Cancel - Stops the scene
+
+Outputs:
+OnStart - Fired when the scene starts
+OnCancel - Fired when the scene is active and cancelled
+*/
 /obj/effect/map_entity/logic_choreographed_scene/receive_input(input_name, atom/activator, atom/caller, list/params)
 	. = ..()
 	if(.)
@@ -66,91 +70,138 @@
 			return TRUE
 	return FALSE
 
-// ============================================================================
-// EXAMPLES
-// ============================================================================
-
-// Example: Bunker Intro Sequence
 /obj/effect/map_entity/logic_choreographed_scene/example_intro
 	name = "choreo_intro"
 	events = list(
-		// Time (ds), Target Name, Input Name, Param
 		list(10, "light_entry", "TurnOn", null),
 		list(30, "door_bunker", "Open", null),
 		list(50, "logic_relay_security", "Trigger", null),
 		list(60, "light_hallway", "TurnOn", null)
 	)
 
-// ============================================================================
-// CAMERA CINEMATIC TRIGGER
-// ============================================================================
-// Pans the camera to a target location and back
-
 /obj/effect/map_entity/camera_trigger
 	name = "camera_trigger"
 	icon_state = "camera"
-	is_brush = TRUE
+	is_brush = FALSE
 	
-	var/target_name = "" // Target to pan to
-	var/pan_time = 2 SECONDS // Time to pan to the target
-	var/hold_time = 3 SECONDS // Time to stay at the target
-	var/smooth_return = FALSE // If TRUE, pans back. If FALSE, snaps back.
+	/// Mode: "brush", "manual_brush", "input"
+	var/mode = "brush"
+	var/target_name = ""
+	var/target_sequence = ""
+	var/pan_time = 2 SECONDS
+	var/hold_time = 3 SECONDS
+	var/smooth_return = FALSE
+	// var/trigger_on_enter = TRUE // Deprecated, mapped to mode="brush"
 	
-	var/list/active_viewers = list() // Mobs currently viewing the cinematic
+	var/list/active_viewers = list()
+	var/list/entities_inside = null
+
+/obj/effect/map_entity/camera_trigger/Initialize()
+	. = ..()
+	
+	// Legacy mapping (if trigger_on_enter was FALSE, it implied manual trigger, so manual_brush)
+	if(vars.Find("trigger_on_enter") && !vars["trigger_on_enter"])
+		mode = "manual_brush"
+	
+	if(mode == "brush" || mode == "manual_brush")
+		is_brush = TRUE
+		if(mode == "brush")
+			spawn(1)
+				connect_brush_neighbors()
 
 /obj/effect/map_entity/camera_trigger/Crossed(atom/movable/AM)
 	. = ..()
-	if(!enabled || !ismob(AM))
+	if(!enabled)
 		return
-	trigger_cinematic(AM)
+	if(mode != "brush" && mode != "manual_brush")
+		return
+	if(!ismob(AM))
+		return
+	
+	LAZYADD(entities_inside, AM)
+	
+	if(mode == "brush")
+		trigger_cinematic(AM)
 
+/obj/effect/map_entity/camera_trigger/Uncrossed(atom/movable/AM)
+	. = ..()
+	if(mode != "brush" && mode != "manual_brush")
+		return
+	if(!ismob(AM))
+		return
+
+	if(AM in entities_inside)
+		LAZYREMOVE(entities_inside, AM)
+
+/*
+Inputs:
+Trigger - Triggers behavior based on mode.
+          Input mode: triggers activator.
+          Manual_brush mode: triggers all in brush.
+*/
 /obj/effect/map_entity/camera_trigger/receive_input(input_name, atom/activator, atom/caller, list/params)
 	. = ..()
 	if(.)
 		return TRUE
 	if(lowertext(input_name) == "trigger")
-		if(ismob(activator))
-			trigger_cinematic(activator)
+		if(mode == "input")
+			if(ismob(activator))
+				trigger_cinematic(activator)
+		else if(mode == "manual_brush")
+			if(entities_inside)
+				for(var/mob/M in entities_inside)
+					trigger_cinematic(M)
 		return TRUE
 	return FALSE
+
+
 
 /obj/effect/map_entity/camera_trigger/proc/trigger_cinematic(mob/M)
 	if(!M.client || (M in active_viewers))
 		return
 	
-	var/atom/target = find_target()
-	if(!target)
-		return
-
 	active_viewers += M
 	
-	var/turf/start_T = get_turf(M)
-	var/turf/end_T = get_turf(target)
+	var/list/sequence = list()
 	
-	// Calculate pixel offset (Target - Start)
-	var/dx = (end_T.x - start_T.x) * 32
-	var/dy = (end_T.y - start_T.y) * 32
+	if(target_name)
+		var/list/found = find_io_targets(target_name)
+		if(length(found)) sequence += found[1]
 	
-	// Animate TO target
-	animate(M.client, pixel_x = dx, pixel_y = dy, time = pan_time, easing = SINE_EASING)
-	
-	// Schedule return
-	spawn(pan_time + hold_time)
-		if(M && M.client)
-			if(smooth_return)
-				// Pan back
-				animate(M.client, pixel_x = 0, pixel_y = 0, time = pan_time, easing = SINE_EASING)
-				sleep(pan_time)
-			else
-				// Snap back
-				// We can just animate with 0 time to clear current animation state and set value
-				animate(M.client, pixel_x = 0, pixel_y = 0, time = 0)
-		
+	if(target_sequence)
+		var/list/names = splittext(target_sequence, ";")
+		for(var/name in names)
+			var/list/found = find_io_targets(name)
+			if(length(found)) sequence += found[1]
+			
+	if(!length(sequence))
 		active_viewers -= M
+		return
 
-/obj/effect/map_entity/camera_trigger/proc/find_target()
-	if(!target_name) return null
-	var/list/targets = find_io_targets(target_name)
-	if(length(targets))
-		return targets[1]
-	return null
+	spawn(0)
+		play_sequence(M, sequence)
+
+/obj/effect/map_entity/camera_trigger/proc/play_sequence(mob/M, list/targets)
+	var/turf/start_T = get_turf(M)
+	if(!M.client) return
+
+
+
+	for(var/atom/target in targets)
+		if(!M || !M.client) break
+		
+		var/turf/target_T = get_turf(target)
+		var/dx = (target_T.x - start_T.x) * 32
+		var/dy = (target_T.y - start_T.y) * 32
+		
+		animate(M.client, pixel_x = dx, pixel_y = dy, time = pan_time, easing = SINE_EASING)
+		sleep(pan_time + hold_time)
+	
+	if(M && M.client)
+		if(smooth_return)
+			animate(M.client, pixel_x = 0, pixel_y = 0, time = pan_time, easing = SINE_EASING)
+			sleep(pan_time)
+		else
+			animate(M.client, pixel_x = 0, pixel_y = 0, time = 0)
+	
+	active_viewers -= M

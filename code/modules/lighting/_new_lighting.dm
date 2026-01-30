@@ -4,13 +4,12 @@
 	plane = LIGHTING_PLANE
 	blend_mode = BLEND_MULTIPLY
 	appearance_flags = PLANE_MASTER | NO_CLIENT_COLOR
-	color = list(1,0,0,0, 0,1,0,0, 0,0,1,0, 0,0,0,0, 0.05,0.05,0.05,1)
+	color = list(1,0,0,0, 0,1,0,0, 0,0,1,0, 0,0,0,0, 0.03,0.03,0.03,1) // was 0.05, changed to 0.03 for darker nights
 	mouse_opacity = 0
 	screen_loc = "CENTER"
 	New()
 		..()
 		vis_contents += new/obj/backdrop
-		filters += filter(type="layer", render_source="*daylight_overlay", blend_mode=BLEND_ADD)
 
 
 	// Now for the darkness, we set atom.color to a pure black with about 10% alpha

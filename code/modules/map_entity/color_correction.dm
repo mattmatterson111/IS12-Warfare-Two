@@ -7,9 +7,10 @@
 /obj/effect/map_entity/color_correction
 	name = "color_correction"
 	icon_state = "colorcorrect" // Requires icon
-	is_brush = FALSE // Set to TRUE for Mode 2 in map editor usually, but we handle logic below
+	is_brush = FALSE // Set to TRUE for brush modes
 	
-	var/mode = 0
+	/// Mode: "global", "input", "brush", "manual_brush"
+	var/mode = "global"
 	var/color_val = "#FFFFFF" // Hex color or "r,g,b,a" matrix string
 	var/list/entities_inside = null
 
@@ -20,6 +21,20 @@
 
 /obj/effect/map_entity/color_correction/Initialize()
 	. = ..()
+	
+	// Legacy integer mode mapping
+	if(isnum(mode))
+		switch(mode)
+			if(0) mode = "global"
+			if(1) mode = "input"
+			if(2) mode = "brush"
+	
+	if(mode == "brush" || mode == "manual_brush")
+		is_brush = TRUE
+		if(mode == "brush")
+			spawn(1)
+				connect_brush_neighbors() // Ensure base handles this, but calling ensures linkage if we just set is_brush
+
 	// Parse color_val if it's a matrix string
 	if(istext(color_val))
 		if(findtext(color_val, "#"))
@@ -47,17 +62,25 @@
 			if(matrix_list.len == 20 || matrix_list.len == 16)
 				color_val = matrix_list
 
-	if(mode == 0 && enabled) // Global
+	if(mode == "global" && enabled) // Global
 		apply_global()
 
 /obj/effect/map_entity/color_correction/Destroy()
-	if(mode == 0 && enabled) // if(global_instance)
+	if(mode == "global" && enabled) // if(global_instance)
 		remove_global()
 	if(entities_inside)
 		for(var/mob/M in entities_inside)
 			remove_from(M)
 	return ..()
 
+/*
+Inputs:
+Enable - Enables and applies (if global)
+Disable - Disables and removes (if global)
+Apply - Applies color. (Input mode: to activator. Manual_brush mode: into brush)
+Remove - Removes color. (Input mode: from activator. Manual_brush mode: from brush)
+SetTime - Sets transition time (param: value)
+*/
 /obj/effect/map_entity/color_correction/receive_input(input_name, atom/activator, atom/caller, list/params)
 	. = ..()
 	if(.)
@@ -66,21 +89,25 @@
 	switch(lowertext(input_name))
 		if("enable")
 			enabled = TRUE
-			if(mode == 0) apply_global()
+			if(mode == "global") apply_global()
 			fire_output("OnEnable", activator, caller)
 			return TRUE
 		if("disable")
 			enabled = FALSE
-			if(mode == 0) remove_global()
+			if(mode == "global") remove_global()
 			fire_output("OnDisable", activator, caller)
 			return TRUE
 		if("apply")
-			if(mode == 1 && ishuman(activator))
+			if(mode == "input" && ishuman(activator))
 				apply_to(activator)
+			else if(mode == "manual_brush")
+				apply_brush_manual()
 			return TRUE
 		if("remove")
-			if(mode == 1 && ishuman(activator))
+			if(mode == "input" && ishuman(activator))
 				remove_from(activator)
+			else if(mode == "manual_brush")
+				remove_brush_manual()
 			return TRUE
 		if("settime")
 			transition_time = text2num(params["value"])
@@ -89,17 +116,21 @@
 
 /obj/effect/map_entity/color_correction/Crossed(atom/movable/AM)
 	. = ..()
-	if(!enabled || mode != 2)
+	if(!enabled)
+		return
+	if(mode != "brush" && mode != "manual_brush")
 		return
 	if(!ishuman(AM))
 		return
 	
 	LAZYADD(entities_inside, AM)
-	apply_to(AM)
+	
+	if(mode == "brush")
+		apply_to(AM)
 
 /obj/effect/map_entity/color_correction/Uncrossed(atom/movable/AM)
 	. = ..()
-	if(mode != 2)
+	if(mode != "brush" && mode != "manual_brush")
 		return
 	if(!ishuman(AM))
 		return
@@ -107,6 +138,17 @@
 	if(AM in entities_inside)
 		LAZYREMOVE(entities_inside, AM)
 		remove_from(AM)
+
+/obj/effect/map_entity/color_correction/proc/apply_brush_manual()
+	if(entities_inside)
+		for(var/mob/M in entities_inside)
+			apply_to(M)
+
+/obj/effect/map_entity/color_correction/proc/remove_brush_manual()
+	if(entities_inside)
+		for(var/mob/M in entities_inside)
+			remove_from(M)
+
 
 /obj/effect/map_entity/color_correction/proc/apply_global()
 	// In a real implementation this would likely push a priority-based color datum to the global HUD/client list

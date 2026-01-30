@@ -65,7 +65,12 @@
 	for(var/atom/movable/A in src)
 		A.fall()
 	SSopen_space.add_turf(src, 1)
+
+	if(below && !(locate(/obj/effect/lighting_dummy/daylight) in below) && (locate(/obj/effect/lighting_dummy/daylight) in src))
+		new /obj/effect/lighting_dummy/daylight(below)
+
 	update_icon()
+
 
 
 /turf/simulated/open/update_dirt()

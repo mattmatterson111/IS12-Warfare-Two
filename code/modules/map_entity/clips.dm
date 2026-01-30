@@ -1,6 +1,3 @@
-// Clip entities - block specific types of movement
-// Adjacent clips with same name form "walls" via brush connectivity
-
 /obj/effect/map_entity/clip
 	name = "clip"
 	icon_state = "playerclip"
@@ -8,6 +5,12 @@
 	density = FALSE
 	alpha = 0
 
+/*
+Inputs:
+Toggle - Toggles the enabled state
+Allow - Enables the entity (allows passage if logic inversed, but usually enables the clip)
+Disallow - Disables the entity
+*/
 /obj/effect/map_entity/clip/receive_input(input_name, atom/activator, atom/caller, list/params)
 	. = ..()
 	if(.)
@@ -24,13 +27,11 @@
 			return TRUE
 	return FALSE
 
-// Ghost Clip - blocks ghost movement, teleportation, and observation
 /obj/effect/map_entity/clip/ghost
 	name = "ghost_clip"
 	icon_state = "ghostclip"
 	atom_flags = ATOM_FLAG_GHOSTCLIP
 
-// Bullet Clip - blocks projectiles, allows everything else
 /obj/effect/map_entity/clip/bullet
 	name = "bullet_clip"
 	icon_state = "block_bullets"
@@ -49,7 +50,6 @@
 	P.on_impact(src)
 	return 0
 
-// Player Clip - blocks mobs, allows projectiles
 /obj/effect/map_entity/clip/player
 	name = "player_clip"
 	icon_state = "playerclip"
@@ -64,7 +64,6 @@
 		return FALSE
 	return TRUE
 
-// NPC Clip - blocks NPCs, allows players
 /obj/effect/map_entity/clip/npc
 	name = "npc_clip"
 	icon_state = "playerclip"
@@ -83,7 +82,6 @@
 		return FALSE
 	return TRUE
 
-// Faction Clip - blocks specific faction
 /obj/effect/map_entity/clip/faction
 	name = "faction_clip"
 	icon_state = "noteam"
@@ -115,6 +113,10 @@
 	name = "red"
 	blocked_faction = RED_TEAM
 
+/*
+Inputs:
+Toggle - Toggles blocked faction between RED and BLUE
+*/
 /obj/effect/map_entity/clip/faction/toggle/receive_input(input_name, atom/activator, atom/caller, list/params)
 	. = ..()
 	if(.)
@@ -133,7 +135,6 @@
 	name = "blue"
 	blocked_faction = BLUE_TEAM
 
-// One-Way Clip - only allows passage in one direction
 /obj/effect/map_entity/clip/oneway
 	name = "noteam"
 	icon_state = "oneway"
@@ -148,11 +149,9 @@
 		return TRUE
 	var/move_dir = get_dir(mover, src)
 	if(inverse)
-		// Only blocked if entering from the face of 'dir' (Moving against 'dir')
 		if(move_dir & turn(dir, 180))
 			return FALSE
 	else
-		// Blocked unless moving roughly in direction of 'dir'
 		if(!(move_dir & dir))
 			return FALSE
 	
@@ -164,8 +163,6 @@
 	
 	if(target)
 		var/move_dir = get_dir(src, target)
-		// Assuming cull_backside is primarily for use with inverse (blocking the "solid" face)
-		// If arrow points SOUTH, face is SOUTH. Block exit to SOUTH.
 		if(move_dir & dir)
 			if(ismob(mover) && !istype(mover, /mob/living/simple_animal))
 				return FALSE

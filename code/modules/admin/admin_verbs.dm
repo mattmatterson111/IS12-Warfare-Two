@@ -83,6 +83,8 @@ var/list/admin_verbs_admin = list(
 	/client/proc/send_screentext,
 	/client/proc/toggle_executions,
 	/client/proc/debug_env,
+	/client/proc/debug_daylight_speed,
+	/client/proc/debug_daylight_phase,
 	/client/proc/clear_squad_waypoint,
 	/client/proc/play_ert_voiceline,
 	/client/proc/control_ert_ship,

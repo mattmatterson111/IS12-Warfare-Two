@@ -351,6 +351,27 @@
 	trigger_once = TRUE
 
 // -----------------------------------------------------------------------------
+// EXAMPLE: Cart Teleporter
+// -----------------------------------------------------------------------------
+// Teleports payload carts to a destination track.
+// Best used with a trigger to fire the "Teleport" input on the cart_teleport entity.
+
+/obj/effect/map_entity/cart_teleport/example/cart_sender
+	targetname = "cart_sender"
+	teleport_target = "cart_receiver" // Targetname of the destination
+	auto_movement_distance = 1        // Move cart 1 tile after teleport (to prevent getting stuck)
+
+/obj/effect/map_entity/cart_detector/example/cart_teleport_trigger
+	name = "cart_teleport_trigger"
+	connections = list("OnTrigger:cart_sender:Teleport:0") // Trigger tells the sender to teleport the cart
+
+
+/obj/effect/map_entity/example/cart_receiver
+	name = "cart_receiver_point"
+	targetname = "cart_receiver"
+
+
+// -----------------------------------------------------------------------------
 // EXAMPLE: Round Start Loudspeaker Announcement
 // -----------------------------------------------------------------------------
 // Automatically broadcasts a message when the round starts.

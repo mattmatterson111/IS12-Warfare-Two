@@ -1,8 +1,12 @@
-// Map Entity I/O System - Hammer Editor style entity scripting
-// Entities connect outputs to inputs via 'connections' list
-// Connection format: "Output:TargetName:Input:Delay"
-
 GLOBAL_LIST_EMPTY(map_entities_by_name)
+
+// Debug mode - set to 1 to enable visual feedback and logging
+#define MAP_ENTITY_DEBUG 1
+
+// Debug flash colors
+#define MAP_ENTITY_COLOR_OUTPUT "#00ff73"  // Green - sending output
+#define MAP_ENTITY_COLOR_INPUT "#ffae00"   // Yellow - receiving input
+#define MAP_ENTITY_COLOR_SEQUENCE "#FF00FF" // Purple - executing sequence
 
 /obj/effect/map_entity
 	name = "map_entity"
@@ -13,12 +17,29 @@ GLOBAL_LIST_EMPTY(map_entities_by_name)
 	density = FALSE
 	var/targetname = ""
 	var/list/connections = list()
-	var/connections_string = "" // Fallback for editor list issues: "Output:Target:Input:Delay;Output2:Target:Input:Delay"
+	var/connections_string = ""
 	var/enabled = TRUE
 	var/start_disabled = FALSE
 	var/is_brush = FALSE
 	var/list/brush_neighbors
 	var/list/parsed_connections
+	var/debug_old_color = null  // For restoring color after flash
+
+// Flash the entity with a debug color briefly
+/obj/effect/map_entity/proc/debug_flash(flash_color)
+#if MAP_ENTITY_DEBUG
+	debug_old_color = color
+	animate(src, color = flash_color, time = 0.5)
+	animate(color = debug_old_color, time = 5)
+#endif
+
+// Log debug message to admins
+/obj/effect/map_entity/proc/debug_log(message)
+#if MAP_ENTITY_DEBUG
+	message_admins("MapEntity [src] ([targetname]) [message]")
+#endif
+
+
 
 /obj/effect/map_entity/ex_act()
     return FALSE
@@ -72,14 +93,13 @@ GLOBAL_LIST_EMPTY(map_entities_by_name)
 /obj/effect/map_entity/proc/parse_connections()
 	parsed_connections = list()
 
-	// Fallback for editor issues
 	if(connections_string)
 		var/list/string_conns = splittext(connections_string, ";")
 		for(var/s in string_conns)
 			if(s) connections += s
 	
 	for(var/conn in connections)
-		if(isnull(conn)) continue // specific fix for editor null list issue
+		if(isnull(conn)) continue
 
 		if(istext(conn))
 			var/list/parts = splittext(conn, ":")
@@ -120,7 +140,9 @@ GLOBAL_LIST_EMPTY(map_entities_by_name)
 		var/list/params = param ? list("value" = param) : null
 		
 		var/list/targets = find_io_targets(target_name)
-		message_admins("MapEntity [src] ([targetname]) firing [output_name] -> [target_name]:[input_name] (Targets found: [length(targets)])")
+		debug_flash(MAP_ENTITY_COLOR_OUTPUT)
+		debug_log("firing [output_name] -> [target_name]:[input_name] (Targets: [length(targets)])")
+
 		
 		for(var/atom/target in targets)
 			if(delay > 0)
@@ -151,9 +173,21 @@ GLOBAL_LIST_EMPTY(map_entities_by_name)
 			else
 				send_io_input(target, input_name, activator, caller)
 
+/*
+Inputs:
+Enable - Enables the entity
+Disable - Disables the entity
+Toggle - Toggles the enabled state
+Kill - Deletes the entity
+
+Outputs:
+OnSpawn - Fired when the entity initializes
+*/
 /obj/effect/map_entity/proc/receive_input(input_name, atom/activator, atom/caller, list/params)
-	if(input_name != "OnSpawn") // Reduce spam
-		message_admins("MapEntity [src] ([targetname]) received input: [input_name] from [caller]")
+	if(input_name != "OnSpawn")
+		debug_flash(MAP_ENTITY_COLOR_INPUT)
+		debug_log("received input: [input_name] from [caller]")
+
 
 	if(!enabled && input_name != "Enable")
 		return FALSE

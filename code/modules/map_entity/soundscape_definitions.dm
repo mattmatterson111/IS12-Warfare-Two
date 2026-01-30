@@ -34,13 +34,15 @@
 
 /* ------------------------------ INDOOR GENERIC ----------------------------- */
 
+/* ------------------------------ INDOOR GENERIC ----------------------------- */
+
 /decl/soundscape/indoor/generic
 	name = "indoor.generic"
 	dsp = 1
 	fadetime = 1.0
 
 	playlooping = list(
-		list("wave" = 'sound/ambience/COLD_OUTSIDE.ogg', "volume" = 0.5, "pitch" = 100)
+		list("wave" = 'sound/ambience/stationambience.ogg', "volume" = 0.4, "pitch" = 100)
 	)
 
 /* ----------------------------- OUTDOOR GENERIC ----------------------------- */
@@ -66,7 +68,8 @@
 			"waves" = list(
 				'sound/ambience/ambigen1.ogg',
 				'sound/ambience/ambigen2.ogg',
-				'sound/ambience/ambigen3.ogg'
+				'sound/ambience/ambigen3.ogg',
+				'sound/ambience/cold_outside.ogg'
 			)
 		)
 	)
@@ -89,7 +92,7 @@
 	)
 
 	playlooping = list(
-		list("wave" = 'sound/ambience/shipambience.ogg', "volume" = 0.5, "pitch" = 100)
+		list("wave" = 'sound/ambience/distant_warfare.ogg', "volume" = 0.6, "pitch" = 100)
 	)
 
 /decl/soundscape/warfare/bunker
@@ -98,7 +101,7 @@
 	fadetime = 1.0
 
 	playlooping = list(
-		list("wave" = 'sound/ambience/ambigen1.ogg', "volume" = 0.2, "pitch" = 100)
+		list("wave" = 'sound/ambience/ambigulag.ogg', "volume" = 0.3, "pitch" = 100)
 	)
 
 /* -------------------------------------------------------------------------- */
@@ -109,11 +112,31 @@
 	name = "industrial.machinery"
 	dsp = 6  // Metal room
 	fadetime = 1.0
+	
+	playlooping = list(
+		list("wave" = 'sound/ambience/ambieng1.ogg', "volume" = 0.4, "pitch" = 100)
+	)
+	
+	playrandom = list(
+		list(
+			"time" = list(4, 12),
+			"volume" = list(0.2, 0.5),
+			"waves" = list(
+				'sound/ambience/ambimo1.ogg',
+				'sound/ambience/ambimo2.ogg'
+			)
+		)
+	)
+
 
 /decl/soundscape/industrial/generator
 	name = "industrial.generator"
 	dsp = 6
 	fadetime = 1.0
+
+	playlooping = list(
+		list("wave" = 'sound/ambience/ai_port_hum.ogg', "volume" = 0.4, "pitch" = 100)
+	)
 
 /* -------------------------------------------------------------------------- */
 /*                           NATURE SOUNDSCAPES                                */
@@ -124,14 +147,17 @@
 	dsp = 1
 	fadetime = 2.0
 
+	playlooping = list(
+		list("wave" = 'sound/ambience/jungle.ogg', "volume" = 0.3, "pitch" = 100)
+	)
+
 	playrandom = list(
 		list(
 			"time" = list(8, 20),
 			"volume" = list(0.2, 0.4),
 			"waves" = list(
-				'sound/ambience/ambigen1.ogg',
-				'sound/ambience/ambigen2.ogg',
-				'sound/ambience/ambigen3.ogg'
+				'sound/ambience/eeriejungle1.ogg',
+				'sound/ambience/eeriejungle2.ogg'
 			)
 		)
 	)
@@ -149,11 +175,19 @@
 	name = "underground.cave"
 	dsp = 14  // Cavern echo
 	fadetime = 2.0
+	
+	playlooping = list(
+		list("wave" = 'sound/ambience/new/underground.ogg', "volume" = 0.5, "pitch" = 100)
+	)
 
 /decl/soundscape/underground/tunnel
 	name = "underground.tunnel"
 	dsp = 14
 	fadetime = 1.5
+	
+	playlooping = list(
+		list("wave" = 'sound/ambience/new/crematorium.ogg', "volume" = 0.3, "pitch" = 100)
+	)
 
 /* -------------------------------------------------------------------------- */
 /*                           EXAMPLE USAGE IN MAPS                             */

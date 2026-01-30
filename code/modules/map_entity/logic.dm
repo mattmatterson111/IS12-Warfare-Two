@@ -1,6 +1,3 @@
-// Logic entities for map scripting
-
-// Logic Relay - receives Trigger, fires OnTrigger
 /obj/effect/map_entity/logic_relay
 	name = "logic_relay"
 	icon_state = "logic_relay"
@@ -8,6 +5,13 @@
 	var/cooldown = 0
 	var/last_trigger_time = 0
 
+/*
+Inputs:
+Trigger - Triggers the relay
+
+Outputs:
+OnTrigger - Fired when triggered
+*/
 /obj/effect/map_entity/logic_relay/receive_input(input_name, atom/activator, atom/caller, list/params)
 	. = ..()
 	if(.)
@@ -24,7 +28,6 @@
 			return TRUE
 	return FALSE
 
-// Logic Counter - counts triggers, fires on threshold
 /obj/effect/map_entity/logic_counter
 	name = "logic_counter"
 	icon_state = "math_counter"
@@ -32,6 +35,18 @@
 	var/threshold = 3
 	var/reset_on_threshold = TRUE
 
+/*
+Inputs:
+Add - Increments counter
+Subtract - Decrements counter
+Reset - Resets counter to 0
+SetValue - Sets counter value (param: value)
+
+Outputs:
+OnCount - Fired on any change
+OnReset - Fired on reset
+OnThreshold - Fired when threshold reached
+*/
 /obj/effect/map_entity/logic_counter/receive_input(input_name, atom/activator, atom/caller, list/params)
 	. = ..()
 	if(.)
@@ -64,7 +79,6 @@
 		if(reset_on_threshold)
 			count = 0
 
-// Logic Timer - fires outputs on interval
 /obj/effect/map_entity/logic_timer
 	name = "logic_timer"
 	icon_state = "logic_timer"
@@ -105,6 +119,16 @@
 	fire_output("OnTimer", null, src)
 	schedule_next()
 
+/*
+Inputs:
+Start - Starts the timer
+Stop - Stops the timer
+Toggle - Toggles the timer
+FireNow - Manually fires the timer output
+
+Outputs:
+OnTimer - Fired on timer interval
+*/
 /obj/effect/map_entity/logic_timer/receive_input(input_name, atom/activator, atom/caller, list/params)
 	. = ..()
 	if(.)
@@ -128,13 +152,20 @@
 			return TRUE
 	return FALSE
 
-// Logic Case - fires different outputs based on value
 /obj/effect/map_entity/logic_case
 	name = "logic_case"
 	icon_state = "logic_case"
-	var/list/cases = list()  // "value" -> "OutputName"
+	var/list/cases = list()
 	var/default_output = "OnDefault"
 
+/*
+Inputs:
+InValue - Checks value against cases (param: value)
+
+Outputs:
+(Dynamic) - Output name defined in cases
+OnDefault - Fired if no case matches
+*/
 /obj/effect/map_entity/logic_case/receive_input(input_name, atom/activator, atom/caller, list/params)
 	. = ..()
 	if(.)
@@ -150,12 +181,21 @@
 			return TRUE
 	return FALSE
 
-// Logic Compare - compares values
 /obj/effect/map_entity/logic_compare
 	name = "logic_compare"
 	icon_state = "logic_compare"
 	var/compare_value = 0
 
+/*
+Inputs:
+Compare - Compares value against stored value (param: value)
+SetCompare - Sets the stored value (param: value)
+
+Outputs:
+OnGreater - input > stored
+OnLess - input < stored
+OnEqual - input == stored
+*/
 /obj/effect/map_entity/logic_compare/receive_input(input_name, atom/activator, atom/caller, list/params)
 	. = ..()
 	if(.)
@@ -176,12 +216,34 @@
 			return TRUE
 	return FALSE
 
-// Logic Auto - fires on round events (replaces round_events)
 /obj/effect/map_entity/logic_auto
 	name = "logic_auto"
 	icon_state = "world_events"
 	targetname = "game_events"
 
+/*
+Inputs:
+RedTeamWin - Fires Red Win outputs
+BlueTeamWin - Fires Blue Win outputs
+RedTeamLose - Fires Red Lose outputs
+BlueTeamLose - Fires Blue Lose outputs
+RedDeath - Fires Red Death output
+BlueDeath - Fires Blue Death output
+RedJoin - Fires Red Join output
+BlueJoin - Fires Blue Join output
+
+Outputs:
+OnRedTeamWin
+OnBlueTeamWin
+OnRedTeamLose
+OnBlueTeamLose
+OnTeamWin
+OnTeamLose
+OnRedDeath
+OnBlueDeath
+OnRedJoin
+OnBlueJoin
+*/
 /obj/effect/map_entity/logic_auto/receive_input(input_name, atom/activator, atom/caller, list/params)
 	. = ..()
 	if(.)
@@ -217,12 +279,20 @@
 			return TRUE
 	return FALSE
 
-// Backwards compat alias
 /obj/effect/map_entity/round_events
 	name = "round_events"
 	icon_state = "round_events"
 	targetname = "round_events"
 
+/*
+Inputs:
+RoundStart - Fires OnRoundStart
+RoundEnd - Fires OnRoundEnd
+
+Outputs:
+OnRoundStart
+OnRoundEnd
+*/
 /obj/effect/map_entity/round_events/receive_input(input_name, atom/activator, atom/caller, list/params)
 	. = ..()
 	if(.)
@@ -236,12 +306,23 @@
 			return TRUE
 	return FALSE
 
-// Logic Branch - if/else logic
 /obj/effect/map_entity/logic_branch
 	name = "logic_branch"
 	icon_state = "logic_branch"
 	var/value = FALSE
 
+/*
+Inputs:
+Test - Checks value and fires True/False output
+SetTrue - Sets value to TRUE
+SetFalse - Sets value to FALSE
+Toggle - Toggles value
+SetValue - Sets value (param: value)
+
+Outputs:
+OnTrue - Fired if value is TRUE
+OnFalse - Fired if value is FALSE
+*/
 /obj/effect/map_entity/logic_branch/receive_input(input_name, atom/activator, atom/caller, list/params)
 	. = ..()
 	if(.)
@@ -269,7 +350,6 @@
 			return TRUE
 	return FALSE
 
-// Teleporter (updated with teleport_all)
 /obj/effect/map_entity/teleporter
 	name = "teleporter"
 	icon_state = "trigger"
@@ -281,7 +361,7 @@
 	var/last_teleport_time = 0
 	var/list/allowed_types = null
 	var/teleport_sound = 'sound/effects/teleport.ogg'
-	var/teleport_all = FALSE  // If TRUE, teleports everyone on map
+	var/teleport_all = FALSE
 
 /obj/effect/map_entity/teleporter/Crossed(atom/movable/AM)
 	. = ..()
@@ -355,6 +435,14 @@
 		playsound(dest_turf, teleport_sound, 50, TRUE)
 	fire_output("OnTeleport", null, src)
 
+/*
+Inputs:
+Teleport - Teleports the activator
+TeleportAll - Teleports everyone (if configured) or contents
+
+Outputs:
+OnTeleport - Fired on successful teleport
+*/
 /obj/effect/map_entity/teleporter/receive_input(input_name, atom/activator, atom/caller, list/params)
 	. = ..()
 	if(.)
@@ -384,9 +472,6 @@
 	name = "teleporter_triggered"
 	auto_trigger = FALSE
 
-// Info Target - just a position marker for other entities to reference
 /obj/effect/map_entity/info_target
 	name = "info_target"
 	icon_state = "target_info"
-	// No special behavior - exists for targetname lookup
-

@@ -35,9 +35,12 @@ GLOBAL_VAR_INIT(soundscape_channel_counter, 200)
 	name = "env_soundscape"
 	icon_state = "sound"
 
+	/// Soundscape mode: "radius" for distance-based, "brush" for touch-based
+	var/mode = "radius"
 	var/soundscape = ""
 	var/radius = 7
 	var/check_lds = FALSE  // Default FALSE - most soundscapes don't need LOS
+	var/volume_multiplier = 1.0  // Global volume adjustment
 
 	var/position_0 = ""
 	var/position_1 = ""
@@ -52,11 +55,20 @@ GLOBAL_VAR_INIT(soundscape_channel_counter, 200)
 	var/channel_base = 0
 	var/list/player_data  // mob -> list(channels, timers)
 
+
+
 /obj/effect/map_entity/env_soundscape/Initialize()
 	. = ..()
 	channel_base = GLOB.soundscape_channel_counter
 	GLOB.soundscape_channel_counter += 10
-	START_PROCESSING(SSobj, src)
+	// Set is_brush based on mode
+	if(mode == "brush")
+		is_brush = TRUE
+	else
+		// Only process in radius mode
+		START_PROCESSING(SSobj, src)
+
+
 
 /obj/effect/map_entity/env_soundscape/Destroy()
 	STOP_PROCESSING(SSobj, src)
@@ -257,7 +269,88 @@ GLOBAL_VAR_INIT(soundscape_channel_counter, 200)
 
 	schedule_random_sound(M, random_def)
 
+// Brush mode handlers
+/obj/effect/map_entity/env_soundscape/Crossed(atom/movable/AM)
+	. = ..()
+	if(mode != "brush" || !enabled || !isliving(AM))
+		return
+	var/mob/living/M = AM
+	if(!M.client)
+		return
+	if(player_data?[M])
+		return
+
+	// Check if a neighbor is holding the session (seamless transition)
+	if(brush_neighbors)
+		for(var/obj/effect/map_entity/env_soundscape/E in brush_neighbors)
+			if(E.player_data?[M])
+				// Steal the session
+				LAZYINITLIST(player_data)
+				player_data[M] = E.player_data[M]
+				E.player_data -= M
+				return
+
+	// Stop other soundscapes for this player
+	var/obj/effect/map_entity/env_soundscape/current = GLOB.player_active_soundscape[M.client]
+	if(current && current != src)
+		current.stop_for_player(M, stop_random = FALSE)
+
+	activate_for_player(M)
+	fire_output("OnActivate", M, src)
+
+/obj/effect/map_entity/env_soundscape/Uncrossed(atom/movable/AM)
+	. = ..()
+	if(mode != "brush" || !isliving(AM))
+		return
+	var/mob/M = AM
+	if(!player_data || !player_data[M])
+		return
+
+	// Check if we moved to a neighbor
+	var/turf/T = AM.loc
+	if(T && brush_neighbors)
+		for(var/obj/effect/map_entity/env_soundscape/E in brush_neighbors)
+			if(E.loc == T)
+				// Moving to a neighbor, they'll steal the session
+				return
+
+	stop_for_player(M, stop_random = TRUE)
+	fire_output("OnDeactivate", M, src)
+
+/*
+Inputs:
+SetVolume - Sets volume multiplier (param: value 0.0-2.0)
+SetSoundscape - Changes the soundscape definition (param: value)
+FadeOut - Stops all sounds for all players
+
+Outputs:
+OnActivate - When a player enters range/brush
+OnDeactivate - When a player leaves
+OnSound - When a random sound plays
+*/
+/obj/effect/map_entity/env_soundscape/receive_input(input_name, atom/activator, atom/caller, list/params)
+	. = ..()
+	if(.)
+		return TRUE
+	switch(lowertext(input_name))
+		if("setvolume")
+			if(params?["value"])
+				volume_multiplier = Clamp(text2num(params["value"]), 0, 2)
+			return TRUE
+		if("setsoundscape")
+			if(params?["value"])
+				soundscape = params["value"]
+			return TRUE
+		if("fadeout")
+			if(player_data)
+				for(var/mob/M in player_data)
+					stop_for_player(M, stop_random = TRUE)
+			return TRUE
+	return FALSE
+
+// DEPRECATED: Use env_soundscape with mode = "brush" instead
 // Trigger-based soundscape (brush)
+
 /obj/effect/map_entity/env_soundscape_trigger
 	name = "env_soundscape_trigger"
 	icon_state = "trigger"

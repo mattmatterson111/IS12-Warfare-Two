@@ -1,13 +1,10 @@
-// Func entities for physical effects
-
-// Func Conveyor - pushes entities in a direction
 /obj/effect/map_entity/func_conveyor
 	name = "func_conveyor"
 	icon_state = "trigger_push"
 	is_brush = TRUE
 	var/push_dir = NORTH
-	var/push_speed = 1  // Tiles per push
-	var/push_interval = 3  // Ticks between pushes
+	var/push_speed = 1
+	var/push_interval = 3
 	var/running = TRUE
 
 /obj/effect/map_entity/func_conveyor/Initialize()
@@ -35,6 +32,16 @@
 			for(var/i = 1 to push_speed)
 				step(AM, push_dir)
 
+/*
+Inputs:
+Start - Starts the conveyor
+Enable - Starts the conveyor
+Stop - Stops the conveyor
+Disable - Stops the conveyor
+Toggle - Toggles the running state
+Reverse - Reverses the direction
+SetSpeed - Sets the push speed (param: value)
+*/
 /obj/effect/map_entity/func_conveyor/receive_input(input_name, atom/activator, atom/caller, list/params)
 	. = ..()
 	if(.)
@@ -60,117 +67,5 @@
 			return TRUE
 		if("setspeed")
 			push_speed = text2num(params?["value"]) || push_speed
-			return TRUE
-	return FALSE
-
-// Func Breakable - object with health that fires OnBreak when destroyed
-/obj/effect/map_entity/func_breakable
-	name = "func_breakable"
-	icon_state = "landmark2"
-	var/health = 100
-	var/max_health = 100
-	var/broken = FALSE
-
-/obj/effect/map_entity/func_breakable/proc/take_damage(amount)
-	if(broken)
-		return
-	health -= amount
-	fire_output("OnDamaged", null, src)
-	if(health <= 0)
-		do_break()
-
-/obj/effect/map_entity/func_breakable/proc/do_break()
-	if(broken)
-		return
-	broken = TRUE
-	fire_output("OnBreak", null, src)
-
-/obj/effect/map_entity/func_breakable/proc/repair()
-	broken = FALSE
-	health = max_health
-	fire_output("OnRepair", null, src)
-
-/obj/effect/map_entity/func_breakable/attackby(obj/item/W, mob/user)
-	. = ..()
-	var/damage = W.force
-	if(damage > 0)
-		take_damage(damage)
-		to_chat(user, "You hit \the [src].")
-
-/obj/effect/map_entity/func_breakable/receive_input(input_name, atom/activator, atom/caller, list/params)
-	. = ..()
-	if(.)
-		return TRUE
-	switch(lowertext(input_name))
-		if("damage")
-			var/amount = text2num(params?["value"]) || 10
-			take_damage(amount)
-			return TRUE
-		if("break")
-			do_break()
-			return TRUE
-		if("repair")
-			repair()
-			return TRUE
-		if("sethealth")
-			health = text2num(params?["value"]) || health
-			return TRUE
-	return FALSE
-
-// Func Rotating - continuously rotates using animate()
-/obj/effect/map_entity/func_rotating
-	name = "func_rotating"
-	icon_state = "landmark2"
-	var/rotation_speed = 45  // Degrees per second
-	var/rotating = FALSE
-	var/clockwise = TRUE
-
-/obj/effect/map_entity/func_rotating/Initialize()
-	. = ..()
-	if(rotating)
-		start_rotation()
-
-/obj/effect/map_entity/func_rotating/proc/start_rotation()
-	rotating = TRUE
-	var/direction = clockwise ? 1 : -1
-	var/degrees_per_tick = rotation_speed / 10  // 10 ticks per second
-	var/matrix/M = matrix()
-	M.Turn(degrees_per_tick * direction)
-	// Continuous rotation using animate loop
-	animate(src, transform = transform * M, time = 1, loop = -1, flags = ANIMATION_PARALLEL)
-
-/obj/effect/map_entity/func_rotating/proc/stop_rotation()
-	rotating = FALSE
-	animate(src)  // Stop animation
-	transform = matrix()  // Reset to default
-
-/obj/effect/map_entity/func_rotating/receive_input(input_name, atom/activator, atom/caller, list/params)
-	. = ..()
-	if(.)
-		return TRUE
-	switch(lowertext(input_name))
-		if("start")
-			start_rotation()
-			return TRUE
-		if("stop")
-			stop_rotation()
-			return TRUE
-		if("toggle")
-			if(rotating)
-				stop_rotation()
-			else
-				start_rotation()
-			return TRUE
-		if("reverse")
-			clockwise = !clockwise
-			if(rotating)
-				stop_rotation()
-				start_rotation()
-			return TRUE
-		if("setspeed")
-			rotation_speed = text2num(params?["value"]) || rotation_speed
-			if(rotating)
-				stop_rotation()
-				start_rotation()
 			return TRUE
 	return FALSE
