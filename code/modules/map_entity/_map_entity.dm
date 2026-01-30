@@ -23,12 +23,11 @@ GLOBAL_LIST_EMPTY(map_entities_by_name)
 	var/is_brush = FALSE
 	var/list/brush_neighbors
 	var/list/parsed_connections
-	var/debug_old_color = null  // For restoring color after flash
 
 // Flash the entity with a debug color briefly
-/obj/effect/map_entity/proc/debug_flash(flash_color)
+/atom/proc/debug_flash(flash_color)
 #if MAP_ENTITY_DEBUG
-	debug_old_color = color
+	var/debug_old_color = color
 	animate(src, color = flash_color, time = 0.5)
 	animate(color = debug_old_color, time = 5)
 #endif

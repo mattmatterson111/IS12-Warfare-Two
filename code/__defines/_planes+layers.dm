@@ -176,6 +176,9 @@ What is the naming convention for planes or layers?
 
 #define DAYLIGHT_PLANE               -11 // Visible daylight layer
 
+#define WEATHER_MASK_PLANE           -17 // Weather visibility mask (render target)
+#define WEATHER_PLANE                -18 // Weather effects (alpha masked by WEATHER_MASK_PLANE)
+
 #define EFFECTS_ABOVE_LIGHTING_PLANE -10
     #define EYE_GLOW_LAYER          1
     #define BEAM_PROJECTILE_LAYER   2
@@ -393,3 +396,18 @@ GLOBAL_LIST_INIT(ghost_master, list(
 /obj/screen/plane_master/vision_cone/inverted/Initialize()
 	. = ..()
 	filters += filter(type="alpha", render_source="vision_cone_target")
+
+/obj/screen/plane_master/weather_mask
+	name = "weather mask"
+	plane = WEATHER_MASK_PLANE
+	render_target = "*WEATHER_MASK_RT"
+	mouse_opacity = 0
+
+/obj/screen/plane_master/weather
+	name = "weather"
+	plane = WEATHER_PLANE
+	mouse_opacity = 0
+
+/obj/screen/plane_master/weather/Initialize()
+	. = ..()
+	filters += filter(type="alpha", render_source="*WEATHER_MASK_RT")

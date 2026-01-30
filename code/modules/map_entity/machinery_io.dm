@@ -16,6 +16,7 @@
 	IO_fire_output("OnClose", null)
 
 /obj/machinery/door/IO_receive_input(input_name, atom/activator, atom/caller, list/params)
+	debug_flash(MAP_ENTITY_COLOR_INPUT)
 	switch(lowertext(input_name))
 		if("open")
 			spawn(0)
@@ -41,6 +42,7 @@
 
 /obj/machinery/door/airlock/IO_receive_input(input_name, atom/activator, atom/caller, list/params)
 	. = ..()
+	debug_flash(MAP_ENTITY_COLOR_INPUT)
 	switch(lowertext(input_name))
 		if("lock", "bolt")
 			lock()
@@ -76,6 +78,7 @@
 		IO_fire_output("OnClose", null)
 
 /obj/machinery/door/blast/IO_receive_input(input_name, atom/activator, atom/caller, list/params)
+	debug_flash(MAP_ENTITY_COLOR_INPUT)
 	switch(lowertext(input_name))
 		if("open")
 			open()
@@ -96,6 +99,7 @@
 // ============================================================================
 
 /obj/machinery/light/IO_receive_input(input_name, atom/activator, atom/caller, list/params)
+	debug_flash(MAP_ENTITY_COLOR_INPUT)
 	switch(lowertext(input_name))
 		if("turnon")
 			seton(TRUE)

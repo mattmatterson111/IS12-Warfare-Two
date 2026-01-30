@@ -14,7 +14,7 @@ GLOBAL_LIST_EMPTY(lighting_dummies)
 	GLOB.lighting_dummies += src
 	if(aspect_chosen(/datum/aspect/nightfare)) //For init. Note this will probably force this mode on until behavior has been made for deactivating aspects.
 		return
-	if(GLOB.daylight_controller)
+	if(GLOB.day_cycle_controller)
 		set_light(2, 1, "#FFFFFF")
 	else
 		set_light(2, 1, "#545484")
