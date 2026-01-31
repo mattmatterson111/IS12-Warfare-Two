@@ -1,11 +1,11 @@
-// NOTES FOR STUFF:
 
 
-	// PENDING COMPLETE REWORK SOMETIME AFTER 9/26/2024 TO USE CARGO CODE DATUMS FOR STUFF :SOB:
 
-// this code is fucking retarded I will rewrite it someday but not today 11/2/2024
+	
 
-/obj/structure/closet/crate/scuffedcargo/ // unused
+
+
+/obj/structure/closet/crate/scuffedcargo/ 
 	name = "TEST CRATE #1"
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "securecrate"
@@ -21,7 +21,7 @@ GLOBAL_LIST_EMPTY(faction_dosh)
 	icon_state = "cargo_machine"
 	anchored = TRUE
 	density = TRUE
-	var/credits // no longer used
+	var/credits 
 	var/loggedin = FALSE
 	var/list/INPUTS = list("BROWSE CATALOG", "CHECK BALANCE", "CANCEL")
 	var/list/pads
@@ -44,7 +44,7 @@ GLOBAL_LIST_EMPTY(faction_dosh)
 		var/decl/cargo_product/P = all_decls[type]
 		if(!istype(P) || istype(P, /decl/cargo_product/train))
 			continue
-		// Filter out base types and uninitialized products
+		
 		if(P.type == /decl/cargo_product || P.type == /decl/cargo_product/job || P.type == /decl/cargo_product/crate)
 			continue
 		if(P.name == "Unknown Product")
@@ -61,7 +61,7 @@ GLOBAL_LIST_EMPTY(faction_dosh)
 	categories |= "Artillery"
 
 /obj/machinery/kaos/cargo_machine/RightClick(mob/user)
-	return // NO
+	return 
 
 /obj/machinery/kaos/cargo_machine/proc/pingpads()
 	for(var/obj/structure/cargo_pad/pad in pads)
@@ -74,7 +74,7 @@ GLOBAL_LIST_EMPTY(faction_dosh)
 /obj/machinery/kaos/cargo_machine/proc/playpadsequence(mob/user)
 	useable = FALSE
 	reconnectpads()
-	playsound(src.loc, "sound/machines/rpf/barotraumastuff/UI_labelselect.ogg", 75, 0.2) // IDEA: MAKE IT A PROC!! PLEASE?? MAYBE???!! // I did it, past me.
+	playsound(src.loc, "sound/machines/rpf/barotraumastuff/UI_labelselect.ogg", 75, 0.2) 
 	to_chat(user, "\icon[src]RE-ESTABLISHING CONNECTION... PLEASE WAIT..")
 	spawn(2 SECONDS)
 		playsound(src.loc, 'sound/machines/rpf/beepsound1.ogg', 60, 0)
@@ -82,7 +82,7 @@ GLOBAL_LIST_EMPTY(faction_dosh)
 		spawn(2 SECONDS)
 			useable = TRUE
 			set_light(3, 3,"#ebc683")
-			if (pads.len < 0 | pads.len == null | pads.len == 0) // I WANT TO MAKE SURE IM SANE. SO I DID IT THREE TIMES.
+			if (pads.len < 0 | pads.len == null | pads.len == 0) 
 				set_light(3, 3,"#ebc683")
 				to_chat(src, "\icon[src]ERROR. NO CARGO PADS LOCATED. CONTACT YOUR SUPERIOR OFFICER.")
 				playsound(src.loc, 'sound/machines/rpf/harshdeny.ogg', 250, 0.5)
@@ -93,15 +93,15 @@ GLOBAL_LIST_EMPTY(faction_dosh)
 				to_chat(user, "\icon[src]AMOUNT OF LINKED PADS: [pads.len]")
 
 /obj/machinery/kaos/cargo_machine/proc/get_objects_on_turf(turf/T)
-	// Initialize an empty list to hold the objects
+	
 	var/list/objects_on_turf = list()
 
-	// Loop through the contents of the turf
+	
 	for (var/obj/A in T)
-		// Add each object to the list
+		
 		objects_on_turf += A
 
-	// Return the list of objects
+	
 	return objects_on_turf
 
 /obj/machinery/kaos/cargo_machine/proc/pinglight()
@@ -118,15 +118,15 @@ GLOBAL_LIST_EMPTY(faction_dosh)
 			set_light(3, 3,"#ebc683")
 
 /obj/machinery/kaos/cargo_machine/proc/get_people_on_turf(turf/T)
-	// Initialize an empty list to hold the objects
+	
 	var/list/people_on_turf = list()
 
-	// Loop through the contents of the turf
+	
 	for (var/mob/living/carbon/A in T)
-		// Add each object to the list
+		
 		people_on_turf += A
 
-	// Return the list of objects
+	
 	return people_on_turf
 
 /obj/machinery/kaos/cargo_machine/proc/reconnectpads()
@@ -135,7 +135,7 @@ GLOBAL_LIST_EMPTY(faction_dosh)
 		if (pad.id == src.id && !pad.broken)
 			pads += pad
 
-/obj/machinery/kaos/cargo_machine/New() // temporary(?)
+/obj/machinery/kaos/cargo_machine/New() 
 	reconnectpads()
 	update_categories()
 	setup_sound()
@@ -148,7 +148,7 @@ GLOBAL_LIST_EMPTY(faction_dosh)
 	audio.volume = 3
 	sound_emitter.add(audio, "idle")
 
-	sound_emitter.play("idle") // <3
+	sound_emitter.play("idle") 
 
 /*
 /obj/machinery/kaos/cargo_machine/attackby(obj/item/O as obj, mob/user as mob)
@@ -165,7 +165,7 @@ GLOBAL_LIST_EMPTY(faction_dosh)
 	else if(istype(O, /obj/item/stack/teeth))
 		var/obj/item/stack/teeth/toof = O
 		if(toof.amount <= 0)
-			qdel(toof) // no you dont get to insert 0 teeth for cash.
+			qdel(toof) 
 			return
 		var/to_grant = 0
 		for(var/i = 1, i <= toof.amount, i++)
@@ -174,37 +174,37 @@ GLOBAL_LIST_EMPTY(faction_dosh)
 		GLOB.faction_dosh[id] += to_grant
 		playsound(user.loc, 'sound/machines/rpf/audiotapein.ogg', 50, 0.4)
 		return
-	else if(istype(O, /obj/item/clothing/head/helmet/redhelmet) && id == BLUE_TEAM || istype(O, /obj/item/clothing/head/helmet/bluehelmet) && id == RED_TEAM ) // meh
+	else if(istype(O, /obj/item/clothing/head/helmet/redhelmet) && id == BLUE_TEAM || istype(O, /obj/item/clothing/head/helmet/bluehelmet) && id == RED_TEAM ) 
 		GLOB.faction_dosh[id] += 35
 		qdel(O)
 		playsound(user.loc, 'sound/machines/rpf/audiotapein.ogg', 50, 0.4)
 		return
 
-	else if(istype(O, /obj/item/card/id/dog_tag/red) && id == BLUE_TEAM || istype(O, /obj/item/card/id/dog_tag/blue) && id == RED_TEAM ) // meh
+	else if(istype(O, /obj/item/card/id/dog_tag/red) && id == BLUE_TEAM || istype(O, /obj/item/card/id/dog_tag/blue) && id == RED_TEAM ) 
 		GLOB.faction_dosh[id] += 40
 		qdel(O)
 		playsound(user.loc, 'sound/machines/rpf/audiotapein.ogg', 50, 0.4)
 		return
 
-	else if(istype(O, /obj/item/clothing/head/helmet/sentryhelm/red) && id == BLUE_TEAM || istype(O, /obj/item/clothing/head/helmet/sentryhelm/blue) && id == RED_TEAM ) // meh
+	else if(istype(O, /obj/item/clothing/head/helmet/sentryhelm/red) && id == BLUE_TEAM || istype(O, /obj/item/clothing/head/helmet/sentryhelm/blue) && id == RED_TEAM ) 
 		GLOB.faction_dosh[id] += 150
 		qdel(O)
 		playsound(user.loc, 'sound/machines/rpf/audiotapein.ogg', 50, 0.4)
 		return
 
-	else if(istype(O, /obj/item/clothing/head/helmet/redhelmet/fire) && id == BLUE_TEAM || istype(O, /obj/item/clothing/head/helmet/bluehelmet/fire) && id == RED_TEAM ) // meh
+	else if(istype(O, /obj/item/clothing/head/helmet/redhelmet/fire) && id == BLUE_TEAM || istype(O, /obj/item/clothing/head/helmet/bluehelmet/fire) && id == RED_TEAM ) 
 		GLOB.faction_dosh[id] += 250
 		qdel(O)
 		playsound(user.loc, 'sound/machines/rpf/audiotapein.ogg', 50, 0.4)
 		return
 
-	else if(istype(O, /obj/item/clothing/head/warfare_officer/redofficer) && id == BLUE_TEAM || istype(O, /obj/item/clothing/head/warfare_officer/blueofficer) && id == RED_TEAM ) // meh
+	else if(istype(O, /obj/item/clothing/head/warfare_officer/redofficer) && id == BLUE_TEAM || istype(O, /obj/item/clothing/head/warfare_officer/blueofficer) && id == RED_TEAM ) 
 		GLOB.faction_dosh[id] += 500
 		qdel(O)
 		playsound(user.loc, 'sound/machines/rpf/audiotapein.ogg', 50, 0.4)
 		return
 
-	else if(istype(O, /obj/item/melee/classic_baton/factionbanner/red) && id == BLUE_TEAM || istype(O, /obj/item/melee/classic_baton/factionbanner/blue) && id == RED_TEAM ) // JACKPOT!!!
+	else if(istype(O, /obj/item/melee/classic_baton/factionbanner/red) && id == BLUE_TEAM || istype(O, /obj/item/melee/classic_baton/factionbanner/blue) && id == RED_TEAM ) 
 		GLOB.faction_dosh[id] += 750
 		qdel(O)
 		playsound(user.loc, 'sound/machines/rpf/audiotapein.ogg', 50, 0.4)
@@ -455,12 +455,12 @@ GLOBAL_LIST_EMPTY(faction_dosh)
 	icon = 'icons/obj/old_computers.dmi'
 	icon_state = "portal"
 	density = 0
-//	plane = ABOVE_OBJ_PLANE
+
 	plane = WALL_PLANE
-//	layer = ABOVE_OBJ_LAYER
+
 	anchored = 1
 
-//Just for looks, it shows off nicely where the cargo will be dropped off.
+
 /obj/structure/cargo_pad
 	name = "Cargo Pad"
 	desc = "Papa said that I shouldn't stand on this when it lights up.."
@@ -495,7 +495,7 @@ GLOBAL_LIST_EMPTY(cargo_pads)
 	audio.volume = 1
 	sound_emitter.add(audio, "idle")
 
-	sound_emitter.play("idle") // <3
+	sound_emitter.play("idle") 
 
 proc/get_dense_objects_on_turf(turf/T)
 	var/list/dense_objects_on_turf = list()
@@ -524,7 +524,7 @@ proc/get_dense_objects_on_turf(turf/T)
 /obj/structure/cargo_pad/proc/handle_spawn(var/datum/snowflake_supply/selected)
 	playsound(src.loc, 'sound/machines/rpf/cargo_starttp.ogg', 100, 0)
 	sleep(2.2 SECONDS)
-	//	pad.lightup()
+	
 	isselected()
 	var/obj/glowobj = new /obj/effect/overlay/cargopadglow(loc)
 	playsound(loc, 'sound/machines/rpf/cargo_endtp.ogg', 200, 0)
