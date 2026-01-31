@@ -111,14 +111,7 @@
 	var/tmp/lock_time = -100
 	var/can_jam = TRUE
 
-	//attachment shit
 	var/damage_modifier = 0
-
-	var/list/attachments = list()				//List of all current attachments on the gun.
-	var/list/attachable_allowed = list()		//Must be the exact path to the attachment present in the list. Empty list for a default.
-	var/attachable_overlays[] = null			//List of overlays so we can switch them in an out, instead of using Cut() on overlays.
-	var/attachable_offset[] = null				//Is a list, see examples of from the other files. Initiated on New() because lists don't initial() properly.
-
 
 /obj/item/gun/Initialize()
 	. = ..()
@@ -128,12 +121,6 @@
 	if(isnull(scoped_accuracy))
 		scoped_accuracy = accuracy
 
-	attachable_overlays = list("muzzle" = null, "rail" = null, "under" = null, "stock" = null, "mag" = null, "special" = null)
-	set_gun_attachment_offsets()
-
-
-/obj/item/gun/proc/set_gun_attachment_offsets()
-	attachable_offset = null
 
 /obj/item/gun/update_icon()
 	if(wielded_item_state)

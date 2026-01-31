@@ -51,6 +51,7 @@
 #define INIT_ORDER_AIR       -1
 #define INIT_ORDER_OVERLAY   -6
 #define INIT_ORDER_LIGHTING -20
+#define INIT_ORDER_DAY_CYCLE -19
 #define INIT_OPEN_SPACE    -150
 #define INIT_ORDER_TICKER  -205
 #define INIT_ORDER_CHAT    -210 //Should be last to ensure chat remains smooth during init.

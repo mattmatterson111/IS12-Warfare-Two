@@ -47,6 +47,11 @@
 	user.update_action_buttons()
 	return 1
 
+/obj/item/device/flashlight/proc/set_on(status = TRUE)
+	if(on == status)
+		return
+	on = status
+	update_icon()
 
 /obj/item/device/flashlight/attack(mob/living/M as mob, mob/living/user as mob)
 	add_fingerprint(user)
@@ -198,6 +203,13 @@
 	var/on_damage = 7
 	var/produce_heat = 1500
 	activation_sound = 'sound/effects/flare.ogg'
+
+/obj/item/device/flashlight/flare/blue
+	name = "blue flare"
+	desc = "A blue standard-issue flare. There are instructions on the side reading 'pull cord, make light'."
+	light_color = "#7587e5"
+	icon_state = "flare_blue"
+	item_state = "flare_blue"
 
 /obj/item/device/flashlight/flare/New()
 	fuel = rand(800, 1000) // Sorry for changing this so much but I keep under-estimating how long X number of ticks last in seconds.

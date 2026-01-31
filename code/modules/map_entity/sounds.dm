@@ -1,7 +1,7 @@
-// Sound entities for ambient audio and triggered sounds
 
-// Ambient Sound - plays when triggered
-// Set sound_source to a targetname to make sound originate from that entity
+
+
+
 /obj/effect/map_entity/ambient_sound
 	name = "ambient_sound"
 	icon_state = "sound"
@@ -10,7 +10,7 @@
 	var/range = 10
 	var/ignore_walls = FALSE
 	var/looping = FALSE
-	var/sound_source = ""  // Targetname of atom sound originates from (uses sound.atom)
+	var/sound_source = ""  
 	var/datum/sound_token/current_sound
 	var/atom/cached_source
 
@@ -33,7 +33,6 @@
 
 	var/atom/source = get_source()
 	if(source)
-		// Use BYOND's sound.atom for positional audio from source entity
 		var/sound/S = sound(sound_file, volume = volume)
 		S.atom = source
 		for(var/mob/M in range(range, source))
@@ -67,7 +66,7 @@
 			return TRUE
 	return FALSE
 
-// One-Shot Sound - plays once when triggered
+
 /obj/effect/map_entity/sound_play
 	name = "sound_play"
 	icon_state = "sound"
@@ -113,7 +112,7 @@
 			return TRUE
 	return FALSE
 
-// Auto Sound - plays on spawn
+
 /obj/effect/map_entity/ambient_sound/auto
 	name = "ambient_sound_auto"
 
@@ -122,7 +121,7 @@
 	spawn(5)
 		play_sound(null)
 
-// Triggered Sound - plays when crossed
+
 /obj/effect/map_entity/ambient_sound/trigger
 	name = "sound_trigger"
 	is_brush = TRUE
@@ -142,17 +141,17 @@
 	if(trigger_once)
 		qdel(src)
 
-// Music Loop Brush - plays music while inside
+
 /obj/effect/map_entity/music_loop
 	name = "env_music_loop"
 	icon_state = "sound"
 	is_brush = TRUE
-	var/sound_file = null // The music file to play
-	var/volume = 100 // Volume (0-100)
-	var/fade_in_time = 10 // Fade in time (deciseconds)
-	var/fade_out_time = 20 // Fade out time (deciseconds)
-	var/music_channel = 1024 // Dedicated music channel
-	var/list/listeners = list() // Mobs currently listening
+	var/sound_file = null 
+	var/volume = 100 
+	var/fade_in_time = 10 
+	var/fade_out_time = 20 
+	var/music_channel = 1024 
+	var/list/listeners = list() 
 
 /obj/effect/map_entity/music_loop/Destroy()
 	for(var/mob/M in listeners)
@@ -205,7 +204,7 @@
 			return TRUE
 	return FALSE
 
-// Global Sound - plays to all players
+
 /obj/effect/map_entity/global_sound
 	name = "global_sound"
 	icon_state = "sound"
@@ -228,12 +227,12 @@
 			return TRUE
 	return FALSE
 
-// Announcement - sends messages to players
+
 /obj/effect/map_entity/announcement
 	name = "announcement"
 	icon_state = "logic_relay"
 	var/message = ""
-	var/range = 0  // 0 = global
+	var/range = 0  
 	var/message_class = "notice"
 	var/filter_faction = null
 
@@ -268,7 +267,7 @@
 			return TRUE
 	return FALSE
 
-// Soundscape - plays ambient sounds at random intervals
+
 /obj/effect/map_entity/soundscape
 	name = "soundscape"
 	icon_state = "env_soundscape"
@@ -339,10 +338,10 @@
 			return TRUE
 	return FALSE
 
-// ============================================================================
-// LOUDSPEAKER ANNOUNCEMENT
-// ============================================================================
-// Controls loudspeakers directly via map logic
+
+
+
+
 
 /obj/effect/map_entity/loudspeaker_announcement
 	name = "loudspeaker_announcement"
@@ -437,14 +436,14 @@
 			return TRUE
 	return FALSE
 
-// ============================================================================
-// AUDIO ZONES
-// ============================================================================
-// Sets the client.sound_environment when entered
+
+
+
+
 
 /obj/effect/map_entity/audio_zone
 	name = "audio_zone"
-	icon_state = "sound" // Placeholder
+	icon_state = "sound" 
 	is_brush = TRUE
 	var/environment = 0
 	var/list/listeners = list()
@@ -467,17 +466,17 @@
 
 /obj/effect/map_entity/audio_zone/proc/apply_reverb(mob/M)
 	if(M.client)
-		// We could store the previous one if we wanted a stack, 
-		// but simple zone logic usually assumes last entered wins or resets to 0.
+		
+		
 		M.client.sound_environment = environment
 
 /obj/effect/map_entity/audio_zone/proc/remove_reverb(mob/M)
 	if(M.client)
-		// Reset to default (0 is usually "Generic" or a safe default)
-		// Ideally we check if they are in another zone, but simplistic approach:
+		
+		
 		M.client.sound_environment = 0
 
-// Subtypes
+
 /obj/effect/map_entity/audio_zone/generic
 	name = "audio_zone_generic"
 	environment = 0
@@ -547,4 +546,4 @@
 /obj/effect/map_entity/audio_zone/underwater
 	name = "audio_zone_underwater"
 	environment = 22
-// ... (Can add more if needed, these are the main ones)
+

@@ -94,6 +94,7 @@ What is the naming convention for planes or layers?
     #define TURF_DETAIL_LAYER       11
 
 #define WALL_PLANE                   -150
+#define WET_PLANE                    -155
 
 #define ABOVE_TURF_PLANE             -140
     #define DECAL_LAYER             12
@@ -165,7 +166,8 @@ What is the naming convention for planes or layers?
 
 #define OBSERVER_PLANE               -30  // For observers and ghosts
 
-
+#define WEATHER_MASK_PLANE           -21 // Weather visibility mask (render target)
+#define WEATHER_PLANE                -22 // Weather effects (alpha masked by WEATHER_MASK_PLANE)
 
 #define DARKNESS_PLANE				 -19
 #define LIGHTING_PLANE               -20
@@ -175,9 +177,8 @@ What is the naming convention for planes or layers?
     #define NARSIE_GLOW             4
 
 #define DAYLIGHT_PLANE               -11 // Visible daylight layer
+#define REFLECTION_PLANE             -115
 
-#define WEATHER_MASK_PLANE           -17 // Weather visibility mask (render target)
-#define WEATHER_PLANE                -18 // Weather effects (alpha masked by WEATHER_MASK_PLANE)
 
 #define EFFECTS_ABOVE_LIGHTING_PLANE -10
     #define EYE_GLOW_LAYER          1
@@ -215,6 +216,8 @@ What is the naming convention for planes or layers?
 	#define UNDER_HUD_LAYER      0
 	#define HUD_BASE_LAYER       1
 	#define HUD_ITEM_LAYER       2
+
+#define REFLECTIVE_DISPLACEMENT_PLANE 120
 	#define HUD_ABOVE_ITEM_LAYER 3
 
 //This is difference between highest and lowest visible

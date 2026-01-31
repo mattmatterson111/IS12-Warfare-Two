@@ -365,8 +365,8 @@ SUBSYSTEM_DEF(respawn)
 
 		sleep(1 SECOND)
 
-		handle_team_respawn(red_train, /obj/effect/landmark/train_marker/teleport/red, "red")
-		handle_team_respawn(blue_train, /obj/effect/landmark/train_marker/teleport/blue, "blue")
+		handle_team_respawn(red_train, /obj/effect/landmark/train_marker/teleport/red, RED_TEAM)
+		handle_team_respawn(blue_train, /obj/effect/landmark/train_marker/teleport/blue, BLUE_TEAM)
 
 		sleep(5 SECONDS)
 

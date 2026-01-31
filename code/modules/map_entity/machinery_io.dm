@@ -1,11 +1,11 @@
-// Machinery I/O Integration
-// Extends existing machinery types to integrate with the map entity IO system
 
-// ============================================================================
-// DOOR IO INTEGRATION
-// ============================================================================
-// Extends /obj/machinery/door to fire IO outputs on open/close
-// Give doors an io_targetname to have them send signals to map entities
+
+
+
+
+
+
+
 
 /obj/machinery/door/open(var/forced = 0)
 	. = ..()
@@ -35,10 +35,10 @@
 			return TRUE
 	return FALSE
 
-// ============================================================================
-// AIRLOCK IO INTEGRATION
-// ============================================================================
-// Extends airlocks for lock/unlock functionality
+
+
+
+
 
 /obj/machinery/door/airlock/IO_receive_input(input_name, atom/activator, atom/caller, list/params)
 	. = ..()
@@ -62,10 +62,10 @@
 			return TRUE
 	return FALSE
 
-// ============================================================================
-// BLAST DOOR / SHUTTER IO INTEGRATION
-// ============================================================================
-// Extends blast doors and shutters with IO support
+
+
+
+
 
 /obj/machinery/door/blast/open()
 	. = ..()
@@ -94,9 +94,9 @@
 			return TRUE
 	return FALSE
 
-// ============================================================================
-// LIGHT IO INTEGRATION
-// ============================================================================
+
+
+
 
 /obj/machinery/light/IO_receive_input(input_name, atom/activator, atom/caller, list/params)
 	debug_flash(MAP_ENTITY_COLOR_INPUT)
@@ -112,11 +112,11 @@
 			return TRUE
 	return FALSE
 
-// ============================================================================
-// INSTANT SHUTTER
-// ============================================================================
-// A shutter that opens/closes instantly without animation delay
-// Perfect for spawn room doors that need immediate response
+
+
+
+
+
 
 /obj/machinery/door/blast/shutters/instant
 	name = "instant shutter"

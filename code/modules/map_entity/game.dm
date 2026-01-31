@@ -1,6 +1,5 @@
-// Game entities for score and round mechanics
 
-// Game Score - tracks arbitrary score
+// Game Score
 /obj/effect/map_entity/game_score
 	name = "game_score"
 	icon_state = "logic_counter"
@@ -41,7 +40,7 @@
 			return TRUE
 	return FALSE
 
-// Game Round Timer - fires outputs at time milestones
+// Game Round Timer
 /obj/effect/map_entity/game_round_timer
 	name = "game_round_timer"
 	icon_state = "logic_timer"

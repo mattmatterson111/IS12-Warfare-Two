@@ -1,5 +1,7 @@
 /obj/sound_emitter/periodic/env_leak
 	icon_state = "env_leak"
+	io_targetname = "env_leak"
+	enabled = FALSE
 
 	sounds = list(
 		'sound/effects/water_drip_1.ogg',
@@ -13,9 +15,9 @@
 		'sound/effects/water_drip_9.ogg',
 		'sound/effects/water_drip_10.ogg'
 	)
-	volume = 3
+	volume = 45
 	vary = TRUE
-	chance_to_play = 10
+	chance_to_play = 45
 
 /obj/sound_emitter/periodic/env_leak/on_success()
 	var/mob/living/m = locate(/mob/living) in loc

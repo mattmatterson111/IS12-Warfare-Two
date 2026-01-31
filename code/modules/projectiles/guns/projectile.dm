@@ -411,10 +411,7 @@
 	update_icon()
 
 /obj/item/gun/projectile/attackby(var/obj/item/A as obj, mob/user as mob)
-	if(istype(A, /obj/item/attachable))
-		attach_to_gun(user, A)
-	else
-		load_ammo(A, user)
+	load_ammo(A, user)
 
 /obj/item/gun/projectile/attack_self(mob/user as mob)
 	if(firemodes.len > 1)

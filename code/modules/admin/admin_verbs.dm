@@ -88,6 +88,8 @@ var/list/admin_verbs_admin = list(
 	/client/proc/debug_weather_info,
 	/client/proc/debug_set_climate,
 	/client/proc/debug_set_weather,
+	/client/proc/debug_set_wetness,
+	/client/proc/debug_set_weather_blend_mode,
 	/client/proc/clear_squad_waypoint,
 	/client/proc/play_ert_voiceline,
 	/client/proc/control_ert_ship,
@@ -170,7 +172,8 @@ var/list/admin_verbs_spawn = list(
 	/datum/admins/proc/spawn_atom,		// allows us to spawn instances,
 	/client/proc/respawn_character,
 	/client/proc/virus2_editor,
-	/client/proc/spawn_chemdisp_cartridge
+	/client/proc/spawn_chemdisp_cartridge,
+	/client/proc/cmd_admin_spawn_cargo_crate
 	)
 var/list/admin_verbs_server = list(
 	/datum/admins/proc/capture_map_part,
@@ -1096,3 +1099,28 @@ var/list/admin_verbs_mentor = list(
 
 	log_and_message_admins("force-started the warfare battle phase.")
 	feedback_add_details("admin_verb", "FWSTART")
+
+/client/proc/cmd_admin_spawn_cargo_crate()
+	set category = "Debug"
+	set name = "Spawn Cargo Crate"
+	if(!check_rights(R_SPAWN)) return
+
+	var/list/choices = list()
+	for(var/cp_type in (typesof(/decl/cargo_product/crate) - /decl/cargo_product/crate))
+		var/decl/cargo_product/crate/CP = cp_type
+		choices[initial(CP.name)] = CP
+
+	var/choice = input("Select a cargo crate to spawn.", "Spawn Cargo Crate") as null|anything in choices
+	if(!choice)
+		return
+
+	var/cp_type = choices[choice]
+	var/decl/cargo_product/crate/P = decls_repository.get_decl(cp_type)
+	if(P)
+		var/obj/structure/closet/crate/A = new P.crate_type(get_turf(mob))
+		A.name = "[P.name] crate"
+		if(P.contents)
+			create_objects_in_loc(A, P.contents)
+
+		log_and_message_admins("spawned a [P.name] crate.")
+		feedback_add_details("admin_verb", "SCC")

@@ -117,6 +117,7 @@
 	var/obj/screen/arrow_to/tracking
 
 	var/obj/screen/arrow_to/waypoint/waypoint
+	var/list/active_waypoint_huds = list()
 
 	var/obj/item/grab/current_grab_type 	// What type of grab they use when they grab someone.
 	var/skin_state = SKIN_NORMAL

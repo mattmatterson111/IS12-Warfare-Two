@@ -55,6 +55,8 @@
 	var/obj/screen/noise3 = null//unused
 
 	var/obj/screen/movable/ability_master/ability_master = null
+	var/obj/screen/wet_overlay/ground/wet_overlay = null
+	var/obj/screen/wet_overlay/reflection/reflection_wet_overlay = null
 
 	/*A bunch of this stuff really needs to go under their own defines instead of being globally attached to mob.
 	A variable should only be globally attached to turfs/objects/whatever, when it is in fact needed as such.

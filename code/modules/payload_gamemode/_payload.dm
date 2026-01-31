@@ -1,12 +1,12 @@
-// Payload Gamemode
 
-// Track movement permission flags
+
+
 #define TRACK_NONE    0
 #define TRACK_FORWARD 1
 #define TRACK_BACKWARD 2
 #define TRACK_BOTH    3
 
-// Payload states
+
 #define STATE_IDLE       1
 #define STATE_FORWARD    2
 #define STATE_BACKWARD   3
@@ -23,7 +23,7 @@
 /obj/structure/fluff_track/ex_act(severity)
 	return
 
-// Track
+
 
 /obj/structure/track
 	icon = 'code/modules/payload_gamemode/icons/tracks.dmi'
@@ -43,26 +43,26 @@
 /obj/structure/track/Initialize()
 	. = ..()
 	angle = dir2angle(dir)
-	// Defer track linking to allow all tracks to spawn first
+	
 	addtimer(CALLBACK(src, PROC_REF(link_tracks)), 1)
 
 /obj/structure/track/proc/link_tracks()
-	// Find next track based on our direction
+	
 	next_track = find_track_in_direction(dir)
 
-	// Set up bidirectional link
+	
 	if(next_track)
 		next_track.prev_track = src
 
 /obj/structure/track/proc/find_track_in_direction(search_dir)
-	// For cardinal directions, simple lookup
+	
 	var/obj/structure/track/found = null
 	if(search_dir in GLOB.cardinal)
 		found = locate(/obj/structure/track) in get_step(src, search_dir)
 		if(found)
 			return found
 
-	// For diagonal directions, check cardinal neighbors first
+	
 	switch(search_dir)
 		if(NORTHWEST)
 			found = locate(/obj/structure/track) in get_step(src, NORTH)
@@ -83,7 +83,7 @@
 
 	return found
 
-/// Dynamic check - always uses current track links, not cached flags
+
 /obj/structure/track/proc/can_move_direction(movedir)
 	switch(movedir)
 		if(TRACK_FORWARD)
@@ -100,7 +100,7 @@
 		var/obj/structure/payload/pl = O
 		pl.current_track = src
 
-// Payload
+
 
 GLOBAL_LIST_EMPTY(payloads)
 
@@ -113,14 +113,14 @@ GLOBAL_LIST_EMPTY(payloads)
 	animate_movement = NO_STEPS
 
 	var/obj/structure/track/current_track
-	var/obj/structure/track/checkpoint  // Cart won't regress past this
+	var/obj/structure/track/checkpoint  
 
 	var/body_icon = "base"
 	var/payload_icon = ""
 
-	/// Base speed modifier (affected by landmarks)
+	
 	var/base_speed_mod = 1
-	/// Combined speed modifier (base * momentum)
+	
 	var/speed_mod = 1
 	var/warfare_faction = RED_TEAM
 
@@ -130,37 +130,37 @@ GLOBAL_LIST_EMPTY(payloads)
 	var/state = STATE_IDLE
 	var/current_angle = 0
 
-	/// If true, payload movement is overridden (stopped or controlled by landmarks)
+	
 	var/move_override = FALSE
 	var/blocked_by_obstacle = FALSE
 
-	// ---- Momentum System ----
-	/// When continuous pushing started
+	
+	
 	var/push_start_time = null
-	/// Current momentum multiplier (1.0 to max_momentum_mult)
+	
 	var/momentum_mult = 1
-	/// Maximum momentum multiplier cap
+	
 	var/max_momentum_mult = 3
-	/// Seconds of continuous pushing before momentum starts building
+	
 	var/momentum_buildup_delay = 10 SECONDS
-	/// How long stopped before momentum resets
+	
 	var/momentum_decay_delay = 5 SECONDS
-	/// Time when we last stopped pushing (for decay tracking)
+	
 	var/last_stop_time = null
 
-	// ---- Turning ----
-	/// How fast the cart rotates (higher = faster turning)
+	
+	
 	var/turn_speed = 0.15
 
-	// ---- Passive Healing Aura ----
-	/// Mobs currently affected by the aura (for color cleanup)
+	
+	
 	var/list/aura_affected = list()
-	/// Chance (1-100) to remove a random wound per tick
+	
 	var/wound_heal_chance = 5
-	/// Pain reduction applied while in aura
+	
 	var/pain_reduction = 10
 
-	// Sound
+	
 	var/datum/sound_token/active_sound
 	var/last_sound_change = 0
 	#define SOUND_CHANGE_COOLDOWN 5
@@ -204,7 +204,7 @@ GLOBAL_LIST_EMPTY(payloads)
 	stop_sound()
 	active_sound = sound_player.PlayLoopingSound(src, "[type]_[sound_file]", sound_file, volume, range, 2, TRUE, TRUE)
 
-// Process Loop
+
 
 /obj/structure/payload/Process()
 	/*
@@ -214,33 +214,33 @@ GLOBAL_LIST_EMPTY(payloads)
 	if(!current_track)
 		return
 
-	// Get nearby valid pushers
+	
 	var/list/nearby_pushers = get_nearby_pushers()
 	update_pusher_list(nearby_pushers)
 
-	// Count friendlies for speed calculation
+	
 	var/friendly_count = count_friendlies(nearby_pushers)
 
-	// Update momentum and calculate effective speed
+	
 	update_momentum(nearby_pushers)
 	speed_mod = base_speed_mod * momentum_mult
 
 	var/speed = clamp(friendly_count, 0, 5) * speed_mod * current_track.speed
 
-	// Apply passive healing aura to nearby friendlies
+	
 	apply_healing_aura()
 
 	if(move_override)
 		return
 
-	// Determine what to do based on pushers present
+	
 	var/has_friendly = count_friendlies(nearby_pushers) > 0
 
 	if(!length(nearby_pushers) || !has_friendly)
 		handle_no_pushers()
 	else
 		handle_pushers(nearby_pushers, speed)
-		// After handle_pushers, if we're contested, also check for regression
+		
 		if(state == STATE_CONTESTED)
 			check_regression()
 
@@ -257,11 +257,11 @@ GLOBAL_LIST_EMPTY(payloads)
 	return nearby
 
 /obj/structure/payload/proc/update_pusher_list(var/list/nearby_pushers)
-	// Remove mobs that left
+	
 	for(var/mob/living/M in pushers.Copy())
 		if(!(M in nearby_pushers))
 			pushers -= M
-	// Add new mobs
+	
 	for(var/mob/living/M in nearby_pushers)
 		if(!(M in pushers))
 			pushers |= M
@@ -279,40 +279,40 @@ GLOBAL_LIST_EMPTY(payloads)
 			return TRUE
 	return FALSE
 
-// Momentum
+
 
 /obj/structure/payload/proc/update_momentum(var/list/nearby_pushers)
 	var/has_friendly = count_friendlies(nearby_pushers) > 0
 	var/has_enemy = has_enemies(nearby_pushers)
 
-	// Reset momentum if contested or only enemies
+	
 	if(has_enemy)
 		reset_momentum()
 		return
 
-	// Friendlies pushing - build momentum
+	
 	if(has_friendly && state == STATE_FORWARD)
-		last_stop_time = null  // Clear decay timer
+		last_stop_time = null  
 
-		// Start tracking push time
+		
 		if(!push_start_time)
 			push_start_time = world.time
 
-		// Build momentum after delay
+		
 		var/push_duration = world.time - push_start_time
 		if(push_duration >= momentum_buildup_delay)
-			// Increment momentum gradually (0.1 per second after delay)
+			
 			var/time_over_threshold = push_duration - momentum_buildup_delay
 			momentum_mult = clamp(1 + (time_over_threshold / (10 SECONDS)) * 0.5, 1, max_momentum_mult)
 		return
 
-	// Not actively pushing forward
+	
 	if(!has_friendly || state != STATE_FORWARD)
-		// Start decay timer
+		
 		if(!last_stop_time)
 			last_stop_time = world.time
 
-		// Check if stopped long enough to reset
+		
 		if(world.time - last_stop_time >= momentum_decay_delay)
 			reset_momentum()
 
@@ -321,7 +321,7 @@ GLOBAL_LIST_EMPTY(payloads)
 	last_stop_time = null
 	momentum_mult = 1
 
-/// Called by landmarks to modify base speed (momentum is separate)
+
 /obj/structure/payload/proc/modify_base_speed(modifier, operation = "multiply")
 	switch(operation)
 		if("multiply")
@@ -333,7 +333,7 @@ GLOBAL_LIST_EMPTY(payloads)
 		if("reset")
 			base_speed_mod = initial(base_speed_mod)
 
-// Healing Aura
+
 
 /obj/structure/payload/proc/get_aura_color()
 	switch(warfare_faction)
@@ -347,7 +347,7 @@ GLOBAL_LIST_EMPTY(payloads)
 /obj/structure/payload/proc/apply_healing_aura()
 	var/aura_color = get_aura_color()
 
-	// Get all living friendlies within 1 tile
+	
 	var/list/current_in_range = list()
 	for(var/mob/living/carbon/human/H in range(1, src))
 		if(H.stat == DEAD)
@@ -358,25 +358,25 @@ GLOBAL_LIST_EMPTY(payloads)
 			continue
 		current_in_range |= H
 
-	// Remove aura effect from mobs who left
+	
 	for(var/mob/living/carbon/human/H in aura_affected.Copy())
 		if(!(H in current_in_range))
 			remove_aura_effect(H)
 			aura_affected -= H
 			H.pushing_cart = FALSE
 
-	// Apply aura effect to mobs in range
+	
 	for(var/mob/living/carbon/human/H in current_in_range)
 		if(!(H in aura_affected))
 			apply_aura_effect(H, aura_color)
 			aura_affected |= H
 			H.pushing_cart = TRUE
 		else
-			// Continue applying healing effects
+			
 			apply_aura_healing(H)
 
 /obj/structure/payload/proc/apply_aura_effect(mob/living/carbon/human/H, aura_color)
-	// Store original color for restoration
+	
 	if(!H.payload_original_color)
 		H.payload_original_color = H.color
 	H.color = aura_color
@@ -386,11 +386,11 @@ GLOBAL_LIST_EMPTY(payloads)
 	if(H.stat == DEAD)
 		return
 
-	// Light healing
+	
 	H.adjustBruteLoss(-0.5)
 	H.adjustFireLoss(-0.5)
 
-	// 5% chance to remove a random wound from an organ
+	
 	if(prob(wound_heal_chance))
 		for(var/obj/item/organ/external/E in H.organs)
 			if(length(E.wounds))
@@ -401,52 +401,52 @@ GLOBAL_LIST_EMPTY(payloads)
 				break
 
 /obj/structure/payload/proc/remove_aura_effect(mob/living/carbon/human/H)
-	// Restore original color
+	
 	if(H.payload_original_color)
 		H.color = H.payload_original_color
 		H.payload_original_color = null
 	else
 		H.color = null
 
-// State Handlers
+
 
 /obj/structure/payload/proc/handle_no_pushers()
-	// Check if we should regress (10 seconds since last push)
+	
 	if(time_since_last_push && (world.time - time_since_last_push > 10 SECONDS))
-		// Can't regress past checkpoint or start of track
+		
 		if(!current_track.prev_track || current_track == checkpoint)
 			set_state(STATE_IDLE)
 			return
 
-		// Regress backward
+		
 		set_state(STATE_BACKWARD)
 		move_toward_track(current_track.prev_track, base_speed_mod * current_track.speed, TRACK_BACKWARD)
 	else
-		// Just idle
-		if(state != STATE_BACKWARD)  // Don't interrupt regression
+		
+		if(state != STATE_BACKWARD)  
 			set_state(STATE_IDLE)
 
-/// Called when contested to check if we should be regressing
-/// Does the regression movement but keeps contested state for visual feedback
+
+
 /obj/structure/payload/proc/check_regression()
-	// Check if we should regress (10 seconds since last push)
+	
 	if(!time_since_last_push || (world.time - time_since_last_push <= 10 SECONDS))
 		return
 
-	// Can't regress past checkpoint or start of track
+	
 	if(!current_track.prev_track || current_track == checkpoint)
 		return
 
-	// Do the regression movement while staying in contested state
+	
 	move_toward_track(current_track.prev_track, base_speed_mod * current_track.speed, TRACK_BACKWARD)
 
 /obj/structure/payload/proc/handle_pushers(var/list/nearby_pushers, speed)
 	var/has_friendly = count_friendlies(nearby_pushers) > 0
 	var/has_enemy = has_enemies(nearby_pushers)
 
-	// Only friendlies - push forward!
+	
 	if(has_friendly && !has_enemy)
-		// Check if we can move forward
+		
 		if(!current_track.next_track)
 			set_state(STATE_IDLE)
 			return
@@ -456,11 +456,11 @@ GLOBAL_LIST_EMPTY(payloads)
 		time_since_last_push = world.time
 		return
 
-	// Contested (friendlies + enemies) or only enemies nearby
-	// Enemies block forward movement but NOT regression
-	// Set contested state but allow regression to happen via handle_no_pushers logic
+	
+	
+	
 	set_state(STATE_CONTESTED)
-	// Don't update time_since_last_push - this allows regression timer to tick
+	
 
 /obj/structure/payload/proc/set_state(new_state)
 	if(state == new_state)
@@ -469,11 +469,11 @@ GLOBAL_LIST_EMPTY(payloads)
 	var/old_state = state
 	state = new_state
 
-	// Play contested sound when entering contested state
+	
 	if(new_state == STATE_CONTESTED && old_state != STATE_CONTESTED)
 		playsound(loc, "sound/effects/payload/cart_contested_[rand(1,3)].ogg", 75, FALSE)
 
-	// Play contested sound when stopping at end of track or hitting checkpoint
+	
 	if(new_state == STATE_IDLE && (old_state == STATE_FORWARD || old_state == STATE_BACKWARD))
 		if(!current_track.next_track || !current_track.prev_track || current_track == checkpoint)
 			playsound(loc, "sound/effects/payload/cart_contested_[rand(1,3)].ogg", 75, FALSE)
@@ -485,7 +485,7 @@ GLOBAL_LIST_EMPTY(payloads)
 		return
 	last_sound_change = world.time
 
-	// If blocked, force idle sound even if state is forward
+	
 	if(blocked_by_obstacle && target_state == STATE_FORWARD)
 		target_state = STATE_IDLE
 
@@ -497,29 +497,29 @@ GLOBAL_LIST_EMPTY(payloads)
 		if(STATE_BACKWARD)
 			start_sound('sound/effects/payload/cart_regress.ogg', 45)
 
-// Movement
+
 
 /obj/structure/payload/proc/move_toward_track(var/obj/structure/track/target, amount, movedir)
 	if(!current_track || !target)
 		return
 
-	// Check if movement is allowed in this direction
+	
 	if(!current_track.can_move_direction(movedir))
 		return
 
-	// Check for obstacles on the target track (dense/anchored objs)
-	// Only check if we are moving forward (to avoid getting stuck backing up)
-	// actually we should probably check both ways, but mainly forward
+	
+	
+	
 	if(movedir == TRACK_FORWARD)
 		for(var/obj/O in target.loc)
-			// Destroy destructibles
+			
 			if(istype(O, /obj/structure/barbwire) || istype(O, /obj/structure/defensive_barrier))
 				qdel(O)
 				continue
 
 			if(O.density && O.anchored && !ismob(O))
-				// Exception for tracks/not-dense-for-cart things if needed?
-				// For now assuming tracks are not dense or filtered earlier
+				
+				
 				if(istype(O, /obj/structure/track)) continue
 				
 				if(!blocked_by_obstacle)
@@ -532,11 +532,11 @@ GLOBAL_LIST_EMPTY(payloads)
 		blocked_by_obstacle = FALSE
 		play_sound_for_state(state)
 
-	// Calculate world position difference in pixels
+	
 	var/world_diff_x = ((target.x - x) * 32) + (target.pixel_x - pixel_x)
 	var/world_diff_y = ((target.y - y) * 32) + (target.pixel_y - pixel_y)
 
-	// Normalize direction vector for consistent speed
+	
 	var/distance = sqrt(world_diff_x ** 2 + world_diff_y ** 2)
 	if(distance == 0)
 		return
@@ -544,14 +544,14 @@ GLOBAL_LIST_EMPTY(payloads)
 	var/dir_x = world_diff_x / distance
 	var/dir_y = world_diff_y / distance
 
-	// Move by normalized amount
+	
 	pixel_x += dir_x * amount
 	pixel_y += dir_y * amount
 
-	// Interpolate rotation toward target track angle
+	
 	interpolate_rotation(target)
 
-	// Check if we've reached the next tile
+	
 	if(abs(pixel_x) >= 32 || abs(pixel_y) >= 32)
 		snap_to_track(target)
 
@@ -561,13 +561,13 @@ GLOBAL_LIST_EMPTY(payloads)
 
 	var/angle_diff = target.angle - current_angle
 
-	// Normalize to -180 to 180 range for shortest rotation
+	
 	while(angle_diff > 180)
 		angle_diff -= 360
 	while(angle_diff < -180)
 		angle_diff += 360
 
-	// Smooth interpolation using configurable turn_speed
+	
 	current_angle += angle_diff * turn_speed
 	apply_rotation(current_angle)
 
@@ -579,17 +579,17 @@ GLOBAL_LIST_EMPTY(payloads)
 /obj/structure/payload/proc/snap_to_track(var/obj/structure/track/target)
 	forceMove(target.loc)
 
-	// Trigger any payload effects on this track
+	
 	for(var/obj/effect/landmark/payload_marker/effect in target.loc)
 		effect.on_run(src)
 
-	// Reset pixel offsets and update current track
+	
 	pixel_x = 0
 	pixel_y = 0
 	current_track = target
 	current_angle = target.angle
 
-// Variants
+
 
 /obj/structure/payload/blue
 	body_icon = "blue"
@@ -600,7 +600,7 @@ GLOBAL_LIST_EMPTY(payloads)
 	body_icon = "red"
 	payload_icon = "red_payload"
 
-// Cleanup
+
 
 #undef TRACK_NONE
 #undef TRACK_FORWARD

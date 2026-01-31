@@ -170,6 +170,7 @@ Toggle - Toggles blocked faction between RED and BLUE
 	return TRUE
 
 /obj/effect/map_entity/clip/oneway/inverse
+	icon_state = "oneway_thin"
 	inverse = TRUE
 	cull_backside = TRUE
 

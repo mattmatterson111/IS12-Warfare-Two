@@ -182,11 +182,7 @@
 
 
 /obj/item/gun/projectile/automatic
-	attachable_allowed = list(/obj/item/attachable/holosight, /obj/item/attachable/verticalgrip, /obj/item/attachable/reddot, /obj/item/attachable/lasersight, /obj/item/attachable/angledgrip)
 	screen_shake = 2
-
-/obj/item/gun/projectile/automatic/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 18,"rail_x" = 13, "rail_y" = 22, "under_x" = 22, "under_y" = 14, "stock_x" = 24, "stock_y" = 13, "special_x" = 28, "special_y" = 16)
 
 /obj/item/gun/projectile/automatic/handle_shield(mob/living/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
 	if(default_sword_parry(user, damage, damage_source, attacker, def_zone, attack_text))
@@ -766,8 +762,6 @@
 		qdel(W)
 		add_bayonet()
 
-/obj/item/gun/projectile/automatic/machinepistol/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 18,"rail_x" = 12, "rail_y" = 24, "under_x" = 24, "under_y" = 14, "stock_x" = 24, "stock_y" = 13, "special_x" = 28, "special_y" = 16)
 
 /obj/item/gun/projectile/automatic/machinepistol/wooden
 	name = "Mk.1 Soulburn SMG"

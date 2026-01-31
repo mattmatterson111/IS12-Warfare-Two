@@ -1,7 +1,7 @@
 GLOBAL_LIST_EMPTY(map_entities_by_name)
 
 // Debug mode - set to 1 to enable visual feedback and logging
-#define MAP_ENTITY_DEBUG 1
+#define MAP_ENTITY_DEBUG 0
 
 // Debug flash colors
 #define MAP_ENTITY_COLOR_OUTPUT "#00ff73"  // Green - sending output
@@ -49,6 +49,8 @@ GLOBAL_LIST_EMPTY(map_entities_by_name)
 
 /obj/effect/map_entity/Initialize()
 	. = ..()
+	if(!MAP_ENTITY_DEBUG && !is_type_in_list(src, list(/obj/effect/map_entity/weather_mask, /obj/effect/map_entity/fire_pit)))
+		invisibility = 101
 	if(targetname)
 		register_entity()
 	parse_connections()

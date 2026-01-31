@@ -217,24 +217,9 @@ SUBSYSTEM_DEF(squads)
 
 
 /proc/create_squad_waypoint(atom/location, list/mob/receivers, text = "", mob/creator, full_text_override = null, callout = "bait")
-	for (var/mob/living/carbon/human/H in receivers)
-		if (!H.client)
-			continue
-		sound_to(H.client, sound('sound/effects/ert/assign_leader_click.ogg'))
-		var/who = isobserver(creator) ? "benefactor" : "squad leader"
-
-		to_chat(H, full_text_override ? full_text_override : SPAN_WHITE("Your [who] has created a waypoint, titled: \"<i>[SPAN_YELLOW_LARGE(callout)]</i>\""))
-		if (H.waypoint.target)
-			H.waypoint.end_tracking(H.waypoint.target)
-		H.waypoint.track(location, full_text_override ? full_text_override : text, template = callout)
-
+	return
 /proc/clear_squad_waypoints(list/mob/receivers)
-	for (var/mob/living/carbon/human/H in receivers)
-		if(!H.client)
-			continue
-		if (!H.waypoint.target)
-			continue
-		H.waypoint.end_tracking(H.waypoint.target)
+	return
 
 /client/proc/promote_to_squadleader()
 	set name = "Promote SQUADMEMBER to SL"

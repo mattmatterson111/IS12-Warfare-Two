@@ -185,7 +185,6 @@
 	can_be_in_squad = FALSE
 	sniper_skill = 10
 	open_when_dead = TRUE
-
 	backstories = list(/datum/backstory/nepotismcaptain, /datum/backstory/childcaptain)
 
 	announced = FALSE

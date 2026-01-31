@@ -57,10 +57,19 @@ SUBSYSTEM_DEF(warfare)
 	var/battle_time = 0
 	var/complete = ""
 
+	var/list/active_waypoints = list()
+
+	var/coord_offset_x = 0
+	var/coord_offset_y = 0
+
 /datum/controller/subsystem/warfare/Initialize()
 	blue = new /datum/team
 	red = new /datum/team
 	SSwarfare = src
+
+	coord_offset_x = rand(-100, 100)
+	coord_offset_y = rand(-100, 100)
+
 	..()
 
 /datum/controller/subsystem/warfare/proc/end_warfare(var/loser)

@@ -105,6 +105,16 @@
 	smoke_visuals.layer = ABOVE_OBJ_LAYER + 0.01
 	addtimer(CALLBACK(src, PROC_REF(remove_ping), smoke_visuals, debris_visuals), 0.7 SECONDS)
 
+/mob/living/visual_effect(var/obj/item/projectile/P)
+	return
+
+/mob/living/carbon/human/visual_effect(var/obj/item/projectile/P)
+	var/obj/effect/abstract/particle_holder/bloodpuffs = new(src, /particles/bloodpuff)
+	var/x_component = sin(P.Angle) * 15
+	var/y_component = cos(P.Angle) * 15
+	bloodpuffs.particles.velocity = list(x_component, y_component)
+	QDEL_IN(bloodpuffs, 0.75 SECONDS)
+
 /atom/proc/remove_ping(obj/effect/abstract/particle_holder/smoke_visuals, obj/effect/abstract/particle_holder/debris_visuals)
 	QDEL_NULL(smoke_visuals)
 	if(debris_visuals)
@@ -263,11 +273,7 @@
 //called when the projectile stops flying because it collided with something
 /obj/item/projectile/proc/on_impact(var/atom/A)
 	set waitfor = 0
-	if(ismob(A))
-		return
-	var/turf/T = get_turf(A)
-	if(T)
-		T.visual_effect(src)
+	A.visual_effect(src)
 
 //Checks if the projectile is eligible for embedding. Not that it necessarily will.
 /obj/item/projectile/proc/can_embed()
@@ -301,9 +307,6 @@
 
 	shot_from = launcher.name
 	silenced = launcher.silenced
-
-	if(launcher.damage_modifier)
-		damage *= launcher.damage_modifier
 
 	return launch_projectile(target, target_zone, user, params, angle_override, forced_spread)
 
@@ -899,6 +902,12 @@
 				var/matrix/M = new
 				M.Turn(Angle)
 				thing.transform = M
+				
+				thing.update_light()
+				if(thing.light_new)
+					animate(thing.light_new, color = "#000000", time = 1)
+				animate(thing, color = "#000000", time = 1)
+
 				QDEL_IN(thing, 2)
 
 				var/x_component = sin(Angle) * 40

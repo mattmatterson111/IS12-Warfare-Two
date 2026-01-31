@@ -1,18 +1,23 @@
-/obj/item/device/flashlight/lamp/captain/urban_streetlamp/floodlamp
+/obj/machinery/light/streetlamp/floodlamp
 	name = "\improper floodlight"
 	desc = "Ough- fuck! That's bright!"
 	icon = 'icons/obj/32x64.dmi'
 	icon_state = "floodlight1"
+	base_state = "floodlight"
 	plane = ABOVE_HUMAN_PLANE
 	anchored = TRUE
 	on = TRUE
-	brightness_on = 8
-	light_power = 4
 	light_range = 16
+	light_power = 8
 	light_color = "#d8cdb6"
+	light_type = /obj/item/light/bulb/floodlamp
 
-/obj/item/device/flashlight/lamp/captain/urban_streetlamp/floodlamp/short
-	icon_state = "floodlight0"
+/obj/machinery/light/streetlamp/floodlamp/attack_hand(mob/user)
+	return
+
+/obj/machinery/light/streetlamp/floodlamp/short
+	icon_state = "flooda1"
+	base_state = "flooda"
 
 /turf/simulated/wall/perspectisub
 	name = "metal wall"

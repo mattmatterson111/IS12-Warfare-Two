@@ -37,6 +37,7 @@
 /obj/effect/landmark/train_marker/idle
 /obj/effect/landmark/train_marker/exit
 
+
 /obj/effect/landmark/train_marker/entry/red
 	id = RED_TEAM
 /obj/effect/landmark/train_marker/idle/red
@@ -57,3 +58,6 @@
 	id = BLUE_TEAM
 /obj/effect/landmark/train_marker/teleport/red
 	id = RED_TEAM
+
+TRAIN_MARKER_SET(blue_cargo)
+TRAIN_MARKER_SET(red_cargo)

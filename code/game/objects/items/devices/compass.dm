@@ -18,7 +18,9 @@
 	var/turf/T = get_turf(src)
 	to_chat(user, "You start finding your location...")
 	if(do_after(user, 10))
-		to_chat(user, "It looks like I'm at [T.x] [T.y]")
+		var/report_x = T.x + SSwarfare.coord_offset_x
+		var/report_y = T.y + SSwarfare.coord_offset_y
+		to_chat(user, "It looks like I'm at [report_x] [report_y]")
 	else
 		to_chat(user, "You lower the compass and stop.")
 

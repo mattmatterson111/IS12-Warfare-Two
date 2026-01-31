@@ -2,6 +2,7 @@
 	real_name = "Test Dummy"
 	status_flags = GODMODE|CANPUSH
 	virtual_mob = null
+	has_reflection = FALSE
 
 /mob/living/carbon/human/dummy/mannequin/Initialize()
 	. = ..()

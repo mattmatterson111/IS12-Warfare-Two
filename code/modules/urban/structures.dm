@@ -15,29 +15,34 @@
 // LIGHTS
 
 
-/obj/item/device/flashlight/lamp/captain/urban_streetlamp
+/obj/machinery/light/streetlamp
+	name = "street lamp"
 	desc = "A lamp with a.. very.. bright bulb.."
 	icon = 'icons/obj/urban/32x64.dmi'
-	icon_state = "lamp0"
+	icon_state = "lamp1"
+	base_state = "lamp"
 	plane = ABOVE_HUMAN_PLANE
 	anchored = TRUE
 	on = TRUE
-	brightness_on = 8
-	light_power = 4
 	light_range = 16
+	light_power = 4
 	light_color = "#e6d8ba"
+	use_power = 0
+	idle_power_usage = 0
+	active_power_usage = 0
 
-/obj/item/device/flashlight/lamp/captain/urban_streetlamp/attack_hand(mob/user)
+/obj/machinery/light/streetlamp/attack_hand(mob/user)
 	return FALSE
 
-/*
-	if(CanPhysicallyInteract(user))
-		on = !on
-		if(activation_sound)
-			playsound(src.loc, activation_sound, 75, 1)
-		update_icon()
-		return
-*/
+/obj/machinery/light/streetlamp/IO_receive_input(input_name, activator, caller)
+	switch(lowertext(input_name))
+		if("open", "on") 
+			seton(TRUE)
+		if("close", "off") 
+			seton(FALSE)
+		if("toggle") 
+			seton(!on)
+	return ..()
 
 //[[-- Windows --]]
 

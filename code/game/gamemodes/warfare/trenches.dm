@@ -104,7 +104,7 @@
 
 /turf/simulated/floor/trench/New()
 	..()
-	if(!locate(/obj/effect/lighting_dummy/daylight) in src)
+	if(!(locate(/obj/effect/lighting_dummy/daylight) in src) && !(locate(/obj/effect/map_entity/environment_blocker) in src))
 		new /obj/effect/lighting_dummy/daylight(src)
 	dir = pick(GLOB.alldirs)
 	update_icon()

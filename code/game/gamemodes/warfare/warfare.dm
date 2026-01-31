@@ -69,9 +69,6 @@
 	if(tracking)
 		tracking.update()
 
-	if(waypoint)
-		waypoint.update()
-
 /proc/iswarfare()
     return (istype(ticker.mode, /datum/game_mode/warfare) || master_mode=="warfare")
 

@@ -213,6 +213,12 @@
 	icon_state = "firelight1"
 	light_type = /obj/item/light/bulb/red
 
+/obj/machinery/light/small/blue
+	base_state = "blight"
+	icon_state = "blight1"
+	light_type = /obj/item/light/bulb/blue
+
+
 /obj/machinery/light/spot
 	name = "spotlight"
 	desc = "A more robust socket for light tubes that demand more power."
@@ -704,9 +710,26 @@ GLOBAL_LIST_EMPTY(lights)
 		LIGHTMODE_READY = list(l_range = 5, l_power = 1, l_color = "#00ff00"),
 		)
 
+/obj/item/light/bulb/blue
+	icon_state = "flight"
+	//color = "#da0205"
+	brightness_color = "#0279da"
+
+/obj/item/light/bulb/blue/readylight
+	brightness_range = 5
+	brightness_power = 2
+	lighting_modes = list(
+		LIGHTMODE_READY = list(l_range = 5, l_power = 1, l_color = "#00ff00"),
+		)
+
 /obj/item/light/throw_impact(atom/hit_atom)
 	..()
 	shatter()
+
+/obj/item/light/bulb/floodlamp
+	name = "floodlamp bulb"
+	brightness_range = 16
+	brightness_power = 8
 
 /obj/item/light/bulb/fire
 	name = "fire bulb"

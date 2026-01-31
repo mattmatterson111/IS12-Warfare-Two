@@ -127,6 +127,9 @@
 #define WALL_CAN_OPEN 1
 #define WALL_OPENING 2
 
+#define SHINE_MATTE 0
+#define SHINE_REFLECTIVE 1
+
 #define DEFAULT_TABLE_MATERIAL "plastic"
 #define DEFAULT_WALL_MATERIAL "steel"
 #define REINFORCED_STEEL_MATERIAL "reinforced_steel"

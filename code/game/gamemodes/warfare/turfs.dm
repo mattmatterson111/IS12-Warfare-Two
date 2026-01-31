@@ -172,7 +172,7 @@
 	//temperature = T0C - 60
 	//icon_state = pick("snow[rand(1,12)]","snow0")
 	dir = pick(GLOB.alldirs)
-	if(!(locate(/obj/effect/lighting_dummy/daylight) in src) && has_light)
+	if(has_light && !(locate(/obj/effect/lighting_dummy/daylight) in src) && !(locate(/obj/effect/map_entity/environment_blocker) in src))
 		new /obj/effect/lighting_dummy/daylight(src)
 	spawn(1)
 		overlays.Cut()
@@ -420,7 +420,7 @@
 				qdel(fuck)
 			else if(istype(fuck, /obj/structure/barbwire))
 				qdel(fuck)
-	if((!locate(/obj/effect/lighting_dummy/daylight) in src) && has_light)
+	if(has_light && !(locate(/obj/effect/lighting_dummy/daylight) in src) && !(locate(/obj/effect/map_entity/environment_blocker) in src))
 		new /obj/effect/lighting_dummy/daylight(src)
 	//temperature = T0C - 80
 

@@ -1,8 +1,8 @@
-// Valve-style Soundscape System with exclusive playback
-// Only one soundscape plays at a time, random sounds don't cut off during transitions
 
-// Track active soundscape per player
-GLOBAL_LIST_EMPTY(player_active_soundscape)  // client -> env_soundscape ref
+
+
+
+GLOBAL_LIST_EMPTY(player_active_soundscape)  
 
 /decl/soundscape
 	var/name = "unnamed"
@@ -28,19 +28,19 @@ GLOBAL_LIST_EMPTY(player_active_soundscape)  // client -> env_soundscape ref
 		return null
 	return decls_repository.get_decl(soundscape_type)
 
-// Global channel counter - each entity reserves channels
+
 GLOBAL_VAR_INIT(soundscape_channel_counter, 200)
 
 /obj/effect/map_entity/env_soundscape
 	name = "env_soundscape"
 	icon_state = "sound"
 
-	/// Soundscape mode: "radius" for distance-based, "brush" for touch-based
+	
 	var/mode = "radius"
 	var/soundscape = ""
 	var/radius = 7
-	var/check_lds = FALSE  // Default FALSE - most soundscapes don't need LOS
-	var/volume_multiplier = 1.0  // Global volume adjustment
+	var/check_lds = FALSE  
+	var/volume_multiplier = 1.0  
 
 	var/position_0 = ""
 	var/position_1 = ""
@@ -53,7 +53,7 @@ GLOBAL_VAR_INIT(soundscape_channel_counter, 200)
 
 	var/list/position_atoms
 	var/channel_base = 0
-	var/list/player_data  // mob -> list(channels, timers)
+	var/list/player_data  
 
 
 
@@ -61,11 +61,11 @@ GLOBAL_VAR_INIT(soundscape_channel_counter, 200)
 	. = ..()
 	channel_base = GLOB.soundscape_channel_counter
 	GLOB.soundscape_channel_counter += 10
-	// Set is_brush based on mode
+	
 	if(mode == "brush")
 		is_brush = TRUE
 	else
-		// Only process in radius mode
+		
 		START_PROCESSING(SSobj, src)
 
 
@@ -90,44 +90,44 @@ GLOBAL_VAR_INIT(soundscape_channel_counter, 200)
 		if(!M.client)
 			continue
 
-		// LOS check - can player see this soundscape?
+		
 		if(check_lds && !can_see_soundscape(M))
 			continue
 
 		players_in_range += M
 
-		// Already playing for this player?
+		
 		if(player_data?[M])
 			continue
 
-		// Check if another soundscape is active
+		
 		var/obj/effect/map_entity/env_soundscape/current = GLOB.player_active_soundscape[M.client]
 		if(current)
-			// Only take over if we're closer
+			
 			if(get_dist(M, src) >= get_dist(M, current))
 				continue
 			current.stop_for_player(M, stop_random = FALSE)
 
 		activate_for_player(M)
 
-	// Stop for players who left range
+	
 	if(player_data)
 		for(var/mob/M in player_data)
 			if(!(M in players_in_range))
 				stop_for_player(M, stop_random = TRUE)
 
-// Check if player can see this soundscape (LOS through walls)
+
 /obj/effect/map_entity/env_soundscape/proc/can_see_soundscape(mob/M)
 	var/turf/player_turf = get_turf(M)
 	var/turf/soundscape_turf = get_turf(src)
 	if(!player_turf || !soundscape_turf)
 		return FALSE
 
-	// Same tile is always visible
+	
 	if(player_turf == soundscape_turf)
 		return TRUE
 
-	// Check line of sight - any wall blocks
+	
 	var/list/line = getline(player_turf, soundscape_turf)
 	for(var/turf/T in line)
 		if(T == player_turf || T == soundscape_turf)
@@ -159,7 +159,7 @@ GLOBAL_VAR_INIT(soundscape_channel_counter, 200)
 	if(!scape)
 		return
 
-	// Register as active soundscape
+	
 	GLOB.player_active_soundscape[M.client] = src
 
 	LAZYINITLIST(player_data)
@@ -174,20 +174,20 @@ GLOBAL_VAR_INIT(soundscape_channel_counter, 200)
 
 	var/list/data = player_data[M]
 
-	// Stop looping sounds
+	
 	var/list/channels = data["channels"]
 	if(channels)
 		for(var/channel in channels)
 			sound_to(M, sound(null, channel = channel))
 
-	// Only stop random timers if requested (not during transition)
+	
 	if(stop_random)
 		var/list/timers = data["timers"]
 		if(timers)
 			for(var/timer_id in timers)
 				deltimer(timer_id)
 
-	// Unregister as active if we are
+	
 	if(M.client && GLOB.player_active_soundscape[M.client] == src)
 		GLOB.player_active_soundscape -= M.client
 
@@ -264,12 +264,12 @@ GLOBAL_VAR_INIT(soundscape_channel_counter, 200)
 	else if(vol_def)
 		volume = vol_def
 
-	// Play random sound (not on a reserved channel - won't be cut)
+	
 	sound_to(M, sound(wave, volume = volume * 100))
 
 	schedule_random_sound(M, random_def)
 
-// Brush mode handlers
+
 /obj/effect/map_entity/env_soundscape/Crossed(atom/movable/AM)
 	. = ..()
 	if(mode != "brush" || !enabled || !isliving(AM))
@@ -280,17 +280,17 @@ GLOBAL_VAR_INIT(soundscape_channel_counter, 200)
 	if(player_data?[M])
 		return
 
-	// Check if a neighbor is holding the session (seamless transition)
+	
 	if(brush_neighbors)
 		for(var/obj/effect/map_entity/env_soundscape/E in brush_neighbors)
 			if(E.player_data?[M])
-				// Steal the session
+				
 				LAZYINITLIST(player_data)
 				player_data[M] = E.player_data[M]
 				E.player_data -= M
 				return
 
-	// Stop other soundscapes for this player
+	
 	var/obj/effect/map_entity/env_soundscape/current = GLOB.player_active_soundscape[M.client]
 	if(current && current != src)
 		current.stop_for_player(M, stop_random = FALSE)
@@ -306,12 +306,12 @@ GLOBAL_VAR_INIT(soundscape_channel_counter, 200)
 	if(!player_data || !player_data[M])
 		return
 
-	// Check if we moved to a neighbor
+	
 	var/turf/T = AM.loc
 	if(T && brush_neighbors)
 		for(var/obj/effect/map_entity/env_soundscape/E in brush_neighbors)
 			if(E.loc == T)
-				// Moving to a neighbor, they'll steal the session
+				
 				return
 
 	stop_for_player(M, stop_random = TRUE)
@@ -348,8 +348,8 @@ OnSound - When a random sound plays
 			return TRUE
 	return FALSE
 
-// DEPRECATED: Use env_soundscape with mode = "brush" instead
-// Trigger-based soundscape (brush)
+
+
 
 /obj/effect/map_entity/env_soundscape_trigger
 	name = "env_soundscape_trigger"
@@ -377,23 +377,23 @@ OnSound - When a random sound plays
 	if(player_data?[M])
 		return
 	
-	// Check if a neighbor is currently holding the session (seamless transition)
+	
 	if(brush_neighbors)
 		for(var/obj/effect/map_entity/env_soundscape_trigger/E in brush_neighbors)
 			if(E.player_data?[M])
-				// Steal the session
+				
 				LAZYINITLIST(player_data)
 				player_data[M] = E.player_data[M]
 				E.player_data -= M
-				// Debug
-				// to_chat(M, "Session transfer from [E] to [src]")
+				
+				
 				return
 
 	var/decl/soundscape/scape = get_soundscape(soundscape)
 	if(!scape)
 		return
 
-	// Stop other soundscapes for this player
+	
 	var/obj/effect/map_entity/env_soundscape/current = GLOB.player_active_soundscape[M.client]
 	if(current)
 		current.stop_for_player(M, stop_random = FALSE)
@@ -431,13 +431,13 @@ OnSound - When a random sound plays
 	if(!player_data || !player_data[M])
 		return
 	
-	// Check if we moved to a neighbor
+	
 	var/turf/T = AM.loc
 	if(T && brush_neighbors)
 		for(var/obj/effect/map_entity/env_soundscape_trigger/E in brush_neighbors)
 			if(E.loc == T)
-				// Moving to a neighbor, don't stop sound
-				// The neighbor will steal the session in their Crossed()
+				
+				
 				return
 
 	var/list/data = player_data[M]

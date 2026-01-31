@@ -43,7 +43,6 @@
 	return FALSE
 
 // Env Fade - screen fade effect
-// Env Fade - screen fade effect
 /obj/effect/map_entity/env_fade
 	name = "env_fade"
 	icon_state = "fade"
@@ -54,7 +53,7 @@
 	var/fade_color = "#000000"
 	var/fade_time = 1 SECOND
 	var/hold_time = 0  // How long to hold before auto-unfade (0 = manual)
-	// var/global_fade = FALSE // Deprecated, mapped to mode
+	// var/global_fade = FALSE // Deprecated
 
 	var/list/entities_inside = null
 

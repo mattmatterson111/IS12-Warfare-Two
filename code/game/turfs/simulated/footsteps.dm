@@ -213,6 +213,9 @@
 	return safepick(footstep_sounds[FOOTSTEP_MUD])
 
 /turf/simulated/floor/dirty/get_footstep_sound(crouching, wearingarmor)
+	if(SSday_cycle.active_weather?.name == "storming" || SSday_cycle.active_weather?.name == "rainy")
+		if(locate(/obj/effect/map_entity/weather_mask) in contents)
+			return safepick(footstep_sounds[FOOTSTEP_MUD])
 	if(wearingarmor)
 		if(crouching)
 			return safepick(footstep_sounds[ARMOR_FOOTSTEP_DIRT_CROUCHING])
@@ -233,6 +236,9 @@
 
 
 /turf/simulated/floor/concrete/get_footstep_sound(crouching, wearingarmor)
+	if(SSday_cycle.active_weather?.name == "storming" || SSday_cycle.active_weather?.name == "rainy")
+		if(locate(/obj/effect/map_entity/weather_mask) in contents)
+			return safepick(footstep_sounds[FOOTSTEP_MUD])
 	if(wearingarmor)
 		if(crouching)
 			return safepick(footstep_sounds[ARMOR_FOOTSTEP_CONCRETE_CROUCHING])

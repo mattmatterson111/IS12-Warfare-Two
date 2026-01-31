@@ -628,47 +628,5 @@
 	target = null
 	invisibility = 100
 
-/obj/screen/arrow_to/waypoint
-	screen_loc = "CENTER-1,CENTER-1"
-	var/image/overlay_image  // the image shown only to the client
 
-/obj/screen/arrow_to/waypoint/track(atom/T, maptext_text, template)
-	. = ..()
-
-	// Clean up old overlay if it exists
-	if(overlay_image)
-		owner?.client?.images -= overlay_image
-		qdel(overlay_image)
-
-	// Create a new overlay image and apply it to the turf the target is on
-	var/turf/T_turf = get_turf(T)
-	overlay_image = image('icons/mob/evil96.dmi', template, T_turf, "waypoint")
-	overlay_image.maptext_width = 96
-	overlay_image.maptext_height = 64
-	overlay_image.pixel_x = -32
-	overlay_image.pixel_y = -32
-	overlay_image.maptext = "<font size=1><center>[maptext_text]</center></font>"
-	overlay_image.maptext_y = 64
-	overlay_image.plane = EFFECTS_ABOVE_LIGHTING_PLANE
-	overlay_image.icon_state = template
-	owner?.client?.images += overlay_image
-
-/obj/screen/arrow_to/waypoint/update()
-	..()
-	if(!target || !owner || !overlay_image)
-		return
-
-	var/turf/new_turf = get_turf(target)
-	if(!new_turf)
-		return
-
-	// Move the overlay to the new turf if it changed
-	if(overlay_image.loc != new_turf)
-		overlay_image.loc = new_turf
-
-/obj/screen/arrow_to/waypoint/end_tracking(atom/T)
-	. = ..()
-	if(overlay_image)
-		owner?.client?.images -= overlay_image
-		qdel(overlay_image)
-		overlay_image = null
+// Waypoint HUD objects are handled in code/modules/role_enhancements/waypoints.dm

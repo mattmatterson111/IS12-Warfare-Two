@@ -35,6 +35,9 @@
 	var/played			= 0
 	var/warfare_deaths = 0
 	var/sound_environment = 0
+	var/last_weather_sound = null
+	var/last_weather_volume = 0
+	var/last_weather_precooked_env = -1
 
 		////////////
 		//SECURITY//

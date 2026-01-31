@@ -1,5 +1,5 @@
 /obj/screenfilter
-	plane = EFFECTS_ABOVE_LIGHTING_PLANE
+	plane = EFFECTS_BELOW_LIGHTING_PLANE
 	layer = EFFECTS_LAYER
 
 /obj/screenfilter/snow

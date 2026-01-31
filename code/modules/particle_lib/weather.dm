@@ -73,8 +73,8 @@ particles
 
 		width 		= 5000
 		height 		= 5000
-		count 		= 30
-		spawning 	= 3
+		count 		= 500
+		spawning 	= 25
 		lifespan 	= 20
 		fade 		= 2
 		fadein		= 3
@@ -97,8 +97,8 @@ particles
 
 		width 		= 5000
 		height 		= 5000
-		count 		= 200
-		spawning 	= 6
+		count 		= 1000
+		spawning 	= 75
 		lifespan 	= 20
 		fade 		= 2
 		fadein		= 3

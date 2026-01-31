@@ -3,56 +3,58 @@
 "bH" = (/obj/effect/lighting_dummy/daylight,/obj/effect/map_entity/weather_mask,/turf/simulated/floor/dirty/indestructable,/area/template_noop)
 "cc" = (/obj/machinery/door/blast/shutters/instant/spawnroom/one{dir = 4; io_targetname = "none"},/turf/simulated/floor/stones,/area/warfare/battlefield/no_mans_land/no_mine)
 "cd" = (/obj/effect/map_entity/logic_choreographed_scene/example/start_scenario,/obj/effect/lighting_dummy/daylight,/obj/effect/map_entity/weather_mask,/turf/simulated/floor/urban/concrete,/area/warfare/battlefield/no_mans_land/no_mine)
-"cP" = (/obj/structure/fluff_track,/obj/structure/track{dir = 1},/turf/simulated/floor/urban/concrete,/area/template_noop)
+"cP" = (/obj/structure/fluff_track,/obj/structure/track{dir = 1},/obj/effect/map_entity/weather_mask,/turf/simulated/floor/urban/concrete,/area/template_noop)
 "dk" = (/obj/machinery/door/blast/shutters/instant/spawnroom{io_targetname = "none"; dir = 8},/turf/simulated/floor/stones,/area/template_noop)
 "dD" = (/obj/effect/lighting_dummy/daylight,/obj/effect/map_entity/weather_mask,/turf/simulated/floor/urban/concrete,/area/warfare/battlefield/no_mans_land/no_mine)
 "eq" = (/obj/effect/map_entity/dev_text{show_always = 1; fixtext = "This sucks.;Yeah.;There's no other words for it.;It's bad."},/obj/effect/lighting_dummy/daylight,/obj/effect/map_entity/weather_mask,/turf/simulated/floor/urban/concrete,/area/warfare/battlefield/no_mans_land/no_mine)
 "ex" = (/obj/structure/track{dir = 1},/obj/effect/landmark/payload_marker/checkpoint,/obj/effect/map_entity/cart_detector/red{connections_string = "OnTrigger:redshortcut1d:Toggle:0"},/obj/effect/lighting_dummy/daylight,/obj/effect/map_entity/weather_mask,/turf/simulated/wall/wood2,/area/template_noop)
 "eS" = (/obj/machinery/light/small/red{dir = 8; pixel_y = 6; pixel_x = -7},/turf/simulated/floor/concrete/random,/area/template_noop)
-"eW" = (/obj/structure/fluff_track{dir = 10},/obj/structure/fluff_track,/turf/simulated/floor/urban/concrete,/area/template_noop)
+"eW" = (/obj/structure/fluff_track{dir = 10},/obj/structure/fluff_track,/obj/effect/map_entity/weather_mask,/turf/simulated/floor/urban/concrete,/area/template_noop)
 "fw" = (/obj/effect/map_entity/nodraw/deco/shadowpaint{opacity = 1},/turf/simulated/floor/stones,/area/warfare/battlefield/no_mans_land/no_mine)
 "fC" = (/obj/effect/map_entity/round_events/example/round_start_announcer,/obj/effect/lighting_dummy/daylight,/obj/effect/map_entity/weather_mask,/turf/simulated/floor/urban/concrete,/area/warfare/battlefield/no_mans_land/no_mine)
+"fT" = (/obj/effect/map_entity/nodraw/deco/shadowpaint{opacity = 1},/obj/effect/map_entity/weather_mask,/turf/simulated/floor/stones,/area/template_noop)
 "fZ" = (/obj/machinery/door/blast/shutters/instant/spawnroom/two{io_targetname = "redshortcut1"; dir = 2},/obj/effect/map_entity/trigger{name = "door_redexit"; targetname = "redshortcut1d"; connections_string = "OnTrigger:redshortcut1:Open:0;OnTriggerEnd:redshortcut1:Close:0"; start_disabled = 1},/obj/effect/lighting_dummy/daylight,/obj/effect/map_entity/weather_mask,/turf/simulated/floor/dirty/indestructable,/area/warfare/battlefield/no_mans_land/no_mine)
 "gc" = (/obj/effect/map_entity/global_sound/example/siren,/obj/effect/lighting_dummy/daylight,/obj/effect/map_entity/weather_mask,/turf/simulated/floor/urban/concrete,/area/warfare/battlefield/no_mans_land/no_mine)
 "gE" = (/obj/effect/map_entity/round_events/example/game_events,/obj/effect/lighting_dummy/daylight,/obj/effect/map_entity/weather_mask,/turf/simulated/floor/urban/concrete,/area/warfare/battlefield/no_mans_land/no_mine)
-"gH" = (/obj/structure/fluff_track{dir = 8},/turf/simulated/floor/urban/concrete,/area/template_noop)
+"gH" = (/obj/structure/fluff_track{dir = 8},/obj/effect/map_entity/weather_mask,/turf/simulated/floor/urban/concrete,/area/template_noop)
 "gW" = (/obj/machinery/door/airlock/multi_tile/metal/maintenance/red,/turf/simulated/wall/perspecticrete,/area/template_noop)
 "hL" = (/turf/simulated/wall/wood2,/area/template_noop)
 "iz" = (/obj/effect/floor_decal/urban/trim3{dir = 4},/turf/simulated/wall/perspecticrete,/area/warfare/battlefield/no_mans_land/no_mine)
 "jz" = (/obj/effect/map_entity/clip/oneway/inverse,/obj/effect/map_entity/info_target{targetname = "cameratarget"},/obj/effect/lighting_dummy/daylight,/obj/effect/map_entity/weather_mask,/turf/simulated/floor/urban/concrete,/area/warfare/battlefield/no_mans_land/no_mine)
-"jJ" = (/obj/structure/train_deco/platform{pixel_y = 3; dir = 1},/turf/simulated/floor/stones,/area/warfare/battlefield/no_mans_land/no_mine)
+"jJ" = (/obj/structure/train_deco/platform{pixel_y = 3; dir = 1},/obj/effect/map_entity/weather_mask,/turf/simulated/floor/stones,/area/warfare/battlefield/no_mans_land/no_mine)
 "kA" = (/obj/effect/lighting_dummy/daylight,/obj/effect/map_entity/weather_mask,/turf/simulated/floor/dirty/indestructable,/area/warfare/battlefield/no_mans_land/no_mine)
 "kP" = (/obj/effect/map_entity/trigger{name = "door_redexit"; targetname = "redshortcut1d"; connections_string = "OnTrigger:redshortcut1:Open:0;OnTriggerEnd:redshortcut1:Close:0"; start_disabled = 1},/obj/effect/lighting_dummy/daylight,/obj/effect/map_entity/weather_mask,/turf/simulated/floor/dirty/indestructable,/area/warfare/battlefield/no_mans_land/no_mine)
 "le" = (/obj/structure/track{dir = 1},/turf/simulated/floor/urban/concrete,/area/warfare/battlefield/no_mans_land/no_mine)
 "lg" = (/obj/machinery/door/blast/shutters/instant/spawnroom/one{dir = 8; io_targetname = "none"},/turf/simulated/floor/stones,/area/template_noop)
-"lw" = (/obj/structure/fluff_track{dir = 9},/turf/simulated/floor/urban/concrete,/area/template_noop)
+"lw" = (/obj/structure/fluff_track{dir = 9},/obj/effect/map_entity/weather_mask,/turf/simulated/floor/urban/concrete,/area/template_noop)
 "lK" = (/obj/structure/trench_wall/sequel{dir = 8},/turf/simulated/mineral{health = 999999},/area/template_noop)
-"lW" = (/obj/structure/fluff_track{dir = 5},/turf/simulated/floor/urban/concrete,/area/template_noop)
-"lY" = (/obj/structure/train_deco/platform{pixel_y = 3},/turf/simulated/floor/stones,/area/warfare/battlefield/no_mans_land/no_mine)
+"lW" = (/obj/structure/fluff_track{dir = 5},/obj/effect/map_entity/weather_mask,/turf/simulated/floor/urban/concrete,/area/template_noop)
+"lY" = (/obj/structure/train_deco/platform{pixel_y = 3},/obj/effect/map_entity/weather_mask,/turf/simulated/floor/stones,/area/warfare/battlefield/no_mans_land/no_mine)
 "mg" = (/obj/structure/trench_wall{dir = 6},/turf/simulated/mineral{health = 999999},/area/template_noop)
 "my" = (/obj/item/device/flashlight/lamp/captain/urban_streetlamp/floodlamp/short,/turf/simulated/floor/urban/concrete,/area/template_noop)
-"nC" = (/obj/structure/train_deco/tracks01,/turf/simulated/floor/stones,/area/template_noop)
+"nC" = (/obj/structure/train_deco/tracks01,/obj/effect/map_entity/weather_mask,/turf/simulated/floor/stones,/area/template_noop)
 "ou" = (/turf/space,/area/warfare/battlefield/no_mans_land/no_mine)
 "oT" = (/obj/effect/floor_decal/industrial/outline/grey,/obj/machinery/light{dir = 1; pixel_y = 32},/turf/simulated/floor/urban/concrete,/area/template_noop)
-"oZ" = (/obj/structure/closet/crate/wooden/large{icon_closed = "meatball"; icon_state = "meatball"; pixel_x = -2; pixel_y = -2},/turf/simulated/floor/urban/concrete,/area/warfare/battlefield/no_mans_land/no_mine)
-"pL" = (/obj/structure/train_deco/tracks01,/turf/simulated/floor/stones,/area/warfare/battlefield/no_mans_land/no_mine)
-"pO" = (/obj/structure/anti_tank,/turf/simulated/floor/urban/concrete,/area/template_noop)
-"qP" = (/obj/structure/fluff_track{dir = 6},/obj/structure/track{dir = 9},/turf/simulated/floor/urban/concrete,/area/template_noop)
-"qQ" = (/obj/structure/fluff_track{dir = 10},/turf/simulated/floor/urban/concrete,/area/template_noop)
+"oZ" = (/obj/structure/closet/crate/wooden/large{icon_closed = "meatball"; icon_state = "meatball"; pixel_x = -2; pixel_y = -2},/obj/effect/map_entity/weather_mask,/turf/simulated/floor/urban/concrete,/area/warfare/battlefield/no_mans_land/no_mine)
+"pL" = (/obj/structure/train_deco/tracks01,/obj/effect/map_entity/weather_mask,/turf/simulated/floor/stones,/area/warfare/battlefield/no_mans_land/no_mine)
+"pO" = (/obj/structure/anti_tank,/obj/effect/map_entity/weather_mask,/turf/simulated/floor/urban/concrete,/area/template_noop)
+"qP" = (/obj/structure/fluff_track{dir = 6},/obj/structure/track{dir = 9},/obj/effect/map_entity/weather_mask,/turf/simulated/floor/urban/concrete,/area/template_noop)
+"qQ" = (/obj/structure/fluff_track{dir = 10},/obj/effect/map_entity/weather_mask,/turf/simulated/floor/urban/concrete,/area/template_noop)
 "rQ" = (/obj/structure/railing/urban{dir = 4},/turf/simulated/floor/urban/cinder,/area/template_noop)
 "rT" = (/turf/template_noop,/area/template_noop)
-"sg" = (/obj/structure/fluff_track,/turf/simulated/floor/urban/concrete,/area/template_noop)
-"tm" = (/obj/effect/map_entity/nodraw/deco/shadowpaint{dir = 8; opacity = 1},/turf/simulated/floor/urban/concrete,/area/warfare/battlefield/no_mans_land/no_mine)
+"sg" = (/obj/structure/fluff_track,/obj/effect/map_entity/weather_mask,/turf/simulated/floor/urban/concrete,/area/template_noop)
+"tm" = (/obj/effect/map_entity/nodraw/deco/shadowpaint{dir = 8; opacity = 1},/obj/effect/map_entity/weather_mask,/turf/simulated/floor/urban/concrete,/area/warfare/battlefield/no_mans_land/no_mine)
+"tL" = (/obj/effect/map_entity/weather_mask,/turf/simulated/floor/urban/concrete,/area/warfare/battlefield/no_mans_land/no_mine)
 "ua" = (/obj/structure/defensive_barrier{pixel_y = -4; secured = 1},/obj/effect/map_entity/nodraw,/turf/simulated/wall/perspecticrete,/area/template_noop)
 "uc" = (/obj/machinery/light,/turf/simulated/floor/urban/concrete,/area/warfare/battlefield/no_mans_land/no_mine)
-"uv" = (/obj/structure/fluff_track{dir = 8},/obj/structure/anti_tank,/turf/simulated/floor/urban/concrete,/area/template_noop)
+"uv" = (/obj/structure/fluff_track{dir = 8},/obj/structure/anti_tank,/obj/effect/map_entity/weather_mask,/turf/simulated/floor/urban/concrete,/area/template_noop)
 "uy" = (/obj/effect/map_entity/trigger{name = "door_redexit"; targetname = "door_redexit"; connections_string = "OnTrigger:redexit1:Open:0;OnTriggerEnd:redexit1:Close:0"},/turf/template_noop,/area/template_noop)
 "uR" = (/obj/effect/lighting_dummy/daylight,/obj/effect/map_entity/weather_mask,/turf/simulated/floor/urban/concrete,/area/template_noop)
-"vg" = (/obj/structure/train_deco/tracks01,/obj/structure/vehicle/train/long_passenger{pixel_x = 0; pixel_y = 16; carriage_amount = 5},/turf/simulated/floor/stones,/area/template_noop)
+"vg" = (/obj/structure/train_deco/tracks01,/obj/structure/vehicle/train/long_passenger{pixel_x = 0; pixel_y = 16; carriage_amount = 5},/obj/effect/map_entity/weather_mask,/turf/simulated/floor/stones,/area/template_noop)
 "vm" = (/turf/simulated/wall/concrete/strong,/area/template_noop)
 "vo" = (/obj/effect/floor_decal/industrial/outline/grey,/obj/structure/announcementspeaker/red{pixel_y = 32},/turf/simulated/floor/urban/concrete,/area/warfare/battlefield/no_mans_land/no_mine)
 "vE" = (/obj/effect/map_entity/clip/oneway,/obj/effect/lighting_dummy/daylight,/obj/effect/map_entity/weather_mask,/turf/simulated/floor/dirty/indestructable,/area/warfare/battlefield/no_mans_land/no_mine)
-"vK" = (/obj/structure/fluff_track{dir = 10},/obj/structure/fluff_track{dir = 8},/obj/structure/track{dir = 4},/turf/simulated/floor/urban/concrete,/area/template_noop)
+"vK" = (/obj/structure/fluff_track{dir = 10},/obj/structure/fluff_track{dir = 8},/obj/structure/track{dir = 4},/obj/effect/map_entity/weather_mask,/turf/simulated/floor/urban/concrete,/area/template_noop)
 "vN" = (/turf/simulated/floor/dirty/indestructable,/area/template_noop)
 "vQ" = (/obj/structure/fluff_track,/turf/simulated/floor/dirty/indestructable,/area/template_noop)
 "wM" = (/obj/structure/track{dir = 9},/obj/effect/lighting_dummy/daylight,/obj/effect/map_entity/weather_mask,/turf/simulated/floor/urban/concrete,/area/warfare/battlefield/no_mans_land/no_mine)
@@ -61,7 +63,7 @@
 "xQ" = (/obj/structure/announcementspeaker/red{dir = 1},/obj/effect/lighting_dummy/daylight,/obj/effect/map_entity/weather_mask,/turf/simulated/floor/urban/concrete,/area/warfare/battlefield/no_mans_land/no_mine)
 "xT" = (/obj/structure/track{dir = 9},/obj/effect/map_entity/info_target{targetname = "cameratarget3"},/obj/effect/lighting_dummy/daylight,/obj/effect/map_entity/weather_mask,/turf/simulated/floor/urban/concrete,/area/warfare/battlefield/no_mans_land/no_mine)
 "xW" = (/turf/simulated/wall/perspecticrete,/area/template_noop)
-"yg" = (/obj/structure/train_deco/platform{pixel_y = 3; dir = 4},/turf/simulated/floor/stones,/area/warfare/battlefield/no_mans_land/no_mine)
+"yg" = (/obj/structure/train_deco/platform{pixel_y = 3; dir = 4},/obj/effect/map_entity/weather_mask,/turf/simulated/floor/stones,/area/warfare/battlefield/no_mans_land/no_mine)
 "zz" = (/obj/machinery/door/blast/shutters/instant/spawnroom/one{dir = 4; io_targetname = "redexit1"},/obj/effect/map_entity/trigger{name = "door_redexit"; targetname = "door_redexit"; connections_string = "OnTrigger:redexit1:Open:0;OnTriggerEnd:redexit1:Close:0"},/turf/template_noop,/area/template_noop)
 "zA" = (/obj/machinery/door/blast/shutters/instant/spawnroom/one{io_targetname = "redshortcut1"; dir = 2},/obj/effect/lighting_dummy/daylight,/obj/effect/map_entity/weather_mask,/turf/simulated/floor/dirty/indestructable,/area/warfare/battlefield/no_mans_land/no_mine)
 "zG" = (/obj/structure/fluff_track,/obj/structure/track{dir = 1},/obj/effect/lighting_dummy/daylight,/obj/effect/map_entity/cart_teleport{icon_state = "oneway"; dir = 1; teleport_target = "cart1"; auto_movement_distance = 2; targetname = "carttp1"},/obj/effect/map_entity/cart_detector/red{connections_string = "OnTrigger:carttp1:teleport:0"},/obj/effect/map_entity/weather_mask,/turf/simulated/floor/urban/concrete,/area/template_noop)
@@ -80,14 +82,14 @@
 "DT" = (/obj/machinery/light{dir = 1; pixel_y = 32},/turf/simulated/floor/urban/concrete,/area/warfare/battlefield/no_mans_land/no_mine)
 "DW" = (/obj/effect/map_entity/nodraw/deco/shadowpaint{opacity = 1},/turf/simulated/floor/stones,/area/template_noop)
 "Ei" = (/obj/structure/railing/urban{dir = 4},/turf/simulated/floor/urban/cinder,/area/warfare/battlefield/no_mans_land/no_mine)
-"Ew" = (/obj/structure/closet/crate/wooden/large{icon_closed = "meatball"; icon_state = "meatball"; pixel_x = 4; pixel_y = 0},/obj/structure/closet/crate/wooden/large{pixel_x = 29; pixel_y = 25},/obj/structure/closet/crate/wooden/large{pixel_x = 4; pixel_y = 25},/turf/simulated/floor/urban/concrete,/area/warfare/battlefield/no_mans_land/no_mine)
+"Ew" = (/obj/structure/closet/crate/wooden/large{icon_closed = "meatball"; icon_state = "meatball"; pixel_x = 4; pixel_y = 0},/obj/structure/closet/crate/wooden/large{pixel_x = 29; pixel_y = 25},/obj/structure/closet/crate/wooden/large{pixel_x = 4; pixel_y = 25},/obj/effect/map_entity/weather_mask,/turf/simulated/floor/urban/concrete,/area/warfare/battlefield/no_mans_land/no_mine)
 "EW" = (/turf/template_noop,/area/warfare/battlefield/no_mans_land/no_mine)
-"Fs" = (/obj/structure/train_deco/platform{pixel_y = 3; dir = 1; pixel_x = -18},/turf/simulated/floor/stones,/area/template_noop)
+"Fs" = (/obj/structure/train_deco/platform{pixel_y = 3; dir = 1; pixel_x = -18},/obj/effect/map_entity/weather_mask,/turf/simulated/floor/stones,/area/template_noop)
 "Fz" = (/obj/effect/map_entity/trigger{name = "door_redexit"; targetname = "redshortcut1d"; connections_string = "OnTrigger:redshortcut1:Open:0;OnTriggerEnd:redshortcut1:Close:0"; start_disabled = 1},/obj/effect/lighting_dummy/daylight,/obj/effect/map_entity/weather_mask,/turf/simulated/floor/urban/concrete,/area/warfare/battlefield/no_mans_land/no_mine)
 "FB" = (/obj/structure/train_deco/sides{dir = 1},/turf/simulated/floor/stones,/area/template_noop)
 "FG" = (/turf/simulated/floor/urban/concrete,/area/template_noop)
 "FI" = (/obj/structure/train_deco/sides,/turf/simulated/floor/stones,/area/warfare/battlefield/no_mans_land/no_mine)
-"Gd" = (/obj/structure/fluff_track{dir = 5},/obj/structure/track{dir = 5},/turf/simulated/floor/urban/concrete,/area/template_noop)
+"Gd" = (/obj/structure/fluff_track{dir = 5},/obj/structure/track{dir = 5},/obj/effect/map_entity/weather_mask,/turf/simulated/floor/urban/concrete,/area/template_noop)
 "Ge" = (/obj/structure/fluff_track{dir = 9},/obj/structure/track{dir = 9},/obj/effect/lighting_dummy/daylight,/obj/effect/map_entity/weather_mask,/turf/simulated/floor/urban/concrete,/area/template_noop)
 "Gr" = (/obj/effect/floor_decal/industrial/outline/grey,/turf/simulated/floor/urban/concrete,/area/template_noop)
 "IB" = (/obj/effect/floor_decal/industrial/outline/grey,/obj/structure/announcementspeaker/red{pixel_y = 32},/turf/simulated/floor/urban/concrete,/area/template_noop)
@@ -95,28 +97,29 @@
 "IS" = (/obj/effect/map_entity/color_correction{mode = 2; transition_time = 5; is_brush = 1; color_val = "#aac1c9"},/turf/simulated/floor/urban/concrete,/area/template_noop)
 "Ji" = (/obj/effect/map_entity/loudspeaker_announcement/example/start_announcer,/obj/structure/track{dir = 9},/obj/effect/lighting_dummy/daylight,/obj/effect/map_entity/weather_mask,/turf/simulated/floor/urban/concrete,/area/warfare/battlefield/no_mans_land/no_mine)
 "KI" = (/obj/machinery/door/airlock/multi_tile/metal/maintenance/blue,/turf/space,/area/template_noop)
-"KU" = (/obj/effect/map_entity/color_correction{mode = 2; transition_time = 5; is_brush = 1; color_val = "#aac1c9"},/turf/simulated/floor/dirty/indestructable,/area/template_noop)
+"KU" = (/obj/effect/map_entity/weather_mask,/turf/simulated/floor/stones,/area/template_noop)
 "Lc" = (/obj/effect/floor_decal/urban/trim3{dir = 8},/turf/simulated/wall/perspecticrete,/area/warfare/battlefield/no_mans_land/no_mine)
-"Lt" = (/turf/simulated/floor/dirty/indestructable,/area/warfare/battlefield/no_mans_land/no_mine)
+"Lt" = (/obj/effect/map_entity/weather_mask,/obj/effect/lighting_dummy/daylight,/turf/simulated/floor/dirty/indestructable,/area/warfare/battlefield/trench_section)
 "Mf" = (/obj/machinery/door/blast/shutters/instant/spawnroom/two{dir = 4; io_targetname = "redexit1"},/obj/effect/map_entity/trigger{name = "door_redexit"; targetname = "door_redexit"; connections_string = "OnTrigger:redexit1:Open:0;OnTriggerEnd:redexit1:Close:0"},/turf/template_noop,/area/template_noop)
 "MR" = (/obj/structure/table/steel_reinforced,/obj/effect/map_entity/nodraw/deco/shutter_half,/turf/simulated/floor/urban/concrete,/area/template_noop)
-"MW" = (/obj/structure/fluff_track{dir = 10},/obj/structure/track{dir = 5},/turf/simulated/floor/urban/concrete,/area/template_noop)
+"MW" = (/obj/structure/fluff_track{dir = 10},/obj/structure/track{dir = 5},/obj/effect/map_entity/weather_mask,/turf/simulated/floor/urban/concrete,/area/template_noop)
 "Nj" = (/obj/structure/table/rack/shelf/red,/turf/simulated/floor/urban/concrete,/area/template_noop)
 "On" = (/obj/effect/floor_decal/industrial/outline/grey,/obj/machinery/light{dir = 1; pixel_y = 32},/turf/simulated/floor/urban/concrete,/area/warfare/battlefield/no_mans_land/no_mine)
 "OQ" = (/obj/structure/fluff_track{dir = 8},/obj/structure/track{dir = 8},/obj/effect/lighting_dummy/daylight,/obj/effect/map_entity/weather_mask,/turf/simulated/floor/urban/concrete,/area/template_noop)
-"OS" = (/obj/structure/dirt_wall,/turf/simulated/floor/dirty/indestructable,/area/template_noop)
-"Pr" = (/obj/structure/barbwire,/turf/simulated/floor/urban/concrete,/area/template_noop)
+"OS" = (/obj/structure/dirt_wall,/turf/simulated/floor/urban/concrete,/area/template_noop)
+"Pr" = (/obj/structure/barbwire,/obj/effect/map_entity/weather_mask,/turf/simulated/floor/urban/concrete,/area/template_noop)
+"PE" = (/obj/effect/map_entity/weather_mask,/turf/simulated/floor/stones,/area/warfare/battlefield/no_mans_land/no_mine)
 "PF" = (/obj/structure/train_deco/tracks01,/obj/machinery/door/blast/shutters/instant/spawnroom/two{dir = 8; io_targetname = "none"},/turf/simulated/floor/stones,/area/template_noop)
 "QW" = (/turf/simulated/mineral,/area/template_noop)
-"Rm" = (/obj/structure/fluff_track{dir = 5},/obj/structure/fluff_track{dir = 9},/turf/simulated/floor/urban/concrete,/area/template_noop)
+"Rm" = (/obj/structure/fluff_track{dir = 5},/obj/structure/fluff_track{dir = 9},/obj/effect/map_entity/weather_mask,/turf/simulated/floor/urban/concrete,/area/template_noop)
 "SN" = (/turf/simulated/floor/concrete/random,/area/template_noop)
-"SX" = (/turf/simulated/floor/urban/cinder,/area/warfare/battlefield/no_mans_land/no_mine)
+"SX" = (/obj/effect/map_entity/weather_mask,/obj/structure/train_deco/sides,/turf/simulated/floor/stones,/area/warfare/battlefield/no_mans_land/no_mine)
 "Ta" = (/obj/effect/map_entity/env_explosion/example/intro_explosion{heavy_impact_range = 3; devastation_range = 2},/obj/effect/lighting_dummy/daylight,/obj/effect/map_entity/weather_mask,/turf/simulated/wall/wood2,/area/template_noop)
 "Tu" = (/obj/structure/defensive_barrier{dir = 1; pixel_y = 12; secured = 1},/obj/effect/map_entity/nodraw,/turf/simulated/wall/perspecticrete{layer = 29; plane = -150},/area/template_noop)
-"Ty" = (/obj/structure/fluff_track{dir = 8},/obj/structure/track{dir = 4},/turf/simulated/floor/urban/concrete,/area/template_noop)
+"Ty" = (/obj/structure/fluff_track{dir = 8},/obj/structure/track{dir = 4},/obj/effect/map_entity/weather_mask,/turf/simulated/floor/urban/concrete,/area/template_noop)
 "TK" = (/obj/effect/lighting_dummy/daylight,/obj/effect/map_entity/weather_mask,/turf/simulated/wall/wood2,/area/template_noop)
-"TM" = (/obj/structure/fluff_track{dir = 1},/turf/simulated/floor/urban/concrete,/area/template_noop)
-"TT" = (/obj/structure/fluff_track,/obj/structure/anti_tank,/turf/simulated/floor/urban/concrete,/area/template_noop)
+"TM" = (/obj/structure/fluff_track{dir = 1},/obj/effect/map_entity/weather_mask,/turf/simulated/floor/urban/concrete,/area/template_noop)
+"TT" = (/obj/structure/fluff_track,/obj/structure/anti_tank,/obj/effect/map_entity/weather_mask,/turf/simulated/floor/urban/concrete,/area/template_noop)
 "TU" = (/obj/effect/map_entity/clip/oneway,/obj/effect/lighting_dummy/daylight,/obj/effect/map_entity/weather_mask,/turf/simulated/floor/urban/concrete,/area/warfare/battlefield/no_mans_land/no_mine)
 "Uq" = (/turf/simulated/floor/stones,/area/warfare/battlefield/no_mans_land/no_mine)
 "UO" = (/obj/structure/trench_wall{dir = 10},/turf/simulated/mineral{health = 999999},/area/template_noop)
@@ -124,11 +127,11 @@
 "Yo" = (/obj/structure/train_deco/tracks01,/obj/machinery/door/blast/shutters/instant/spawnroom/two{dir = 4; io_targetname = "none"},/turf/simulated/floor/stones,/area/warfare/battlefield/no_mans_land/no_mine)
 "Yp" = (/obj/effect/lighting_dummy/daylight,/obj/effect/map_entity/camera_trigger{icon_state = "error"; smooth_return = 1; target_sequence = "cameratarget;cameratarget2;cameratarget3"},/obj/effect/map_entity/weather_mask,/turf/simulated/floor/urban/concrete,/area/warfare/battlefield/no_mans_land/no_mine)
 "Yr" = (/obj/structure/track{dir = 1},/obj/structure/payload/red{dir = 1},/obj/effect/map_entity/example/cart_receiver,/turf/simulated/floor/urban/concrete,/area/warfare/battlefield/no_mans_land/no_mine)
-"Yz" = (/obj/effect/map_entity/color_correction{mode = 2; transition_time = 5; is_brush = 1; color_val = "#aac1c9"},/turf/simulated/floor/dirty/indestructable/mud,/area/template_noop)
-"YC" = (/obj/structure/fluff_track{dir = 8},/obj/structure/track{dir = 8},/turf/simulated/floor/urban/concrete,/area/template_noop)
+"Yz" = (/obj/effect/map_entity/weather_mask,/turf/simulated/floor/urban/concrete,/area/template_noop)
+"YC" = (/obj/structure/fluff_track{dir = 8},/obj/structure/track{dir = 8},/obj/effect/map_entity/weather_mask,/turf/simulated/floor/urban/concrete,/area/template_noop)
 "YE" = (/turf/simulated/floor/urban/concrete,/area/warfare/battlefield/no_mans_land/no_mine)
 "Zk" = (/obj/effect/map_entity/info_target{targetname = "cameratarget2"},/obj/effect/lighting_dummy/daylight,/obj/effect/map_entity/weather_mask,/turf/simulated/floor/urban/concrete,/area/warfare/battlefield/no_mans_land/no_mine)
-"Zs" = (/obj/structure/fluff_track{dir = 6},/turf/simulated/floor/urban/concrete,/area/template_noop)
+"Zs" = (/obj/structure/fluff_track{dir = 6},/obj/effect/map_entity/weather_mask,/turf/simulated/floor/urban/concrete,/area/template_noop)
 "Zu" = (/obj/structure/trench_wall/sequel{dir = 4},/turf/simulated/mineral{health = 999999},/area/template_noop)
 
 (1,1,1) = {"
@@ -509,47 +512,47 @@ rTrTrTrTrTrTrTrTrTrTrTvNvNvNvNvNvNvNvNvNvNvNvNvNvNvNvNvNvNvNvNvNvNvNvNvNvNrTrTrT
 rTrTrTrTrTrTrTrTrTrTrTvNvNvNvNvNvNvNvNvNvNvNvNvNvNvNvNvNvNvNvNvNvNvNvNvNvNrTrTrTrTrTrTrTrTrTrTrT
 rTrTrTrTrTrTrTrTrTrTrTvNvNvNvNvNvNvNvNvNvNvNvNvNvNvNvNvNvNvNvNvNvNvNvNvNvNrTrTrTrTrTrTrTrTrTrTrT
 rTrTrTrTrTrTrTrTrTrTrTvNvNvNvNvNvNvNvNvNvNvNvNvNvNvNvNvNvNvNvNvNvNvNvNvNvNrTrTrTrTrTrTrTrTrTrTrT
-rTrTrTrTrTrTrTrTrTrTrTvmzMzMzMzMzMzMvNvNvNvNvNvNvNvNvNvNvNvNvNvNvNvNvNvNvNrTrTrTrTrTrTrTrTrTrTrT
-rTrTrTrTrTrTrTrTrTrTrTvmzMzMzMzMzMzMvQvNvNvNvNvNvNvNvNvNvNvNvNvNvNvNvNvNvNrTrTrTrTrTrTrTrTrTrTrT
-rTrTrTrTrTrTrTrTrTrTrTvmzMzMzMzMzMzMvQvNvNvNvNvNvNvNvNvNvNvNvNvNvNvNvNvNvNrTrTrTrTrTrTrTrTrTrTrT
-rTrTrTrTrTrTrTrTrTrTrTvmzMzMzMzMzMzMvQvNvNvNvNvNvNvNvNvNvNvNvQvNvNvNvNvNvNrTrTrTrTrTrTrTrTrTrTrT
-rTrTrTrTrTrTrTrTrTrTrTvmzMzMzMzMzMzMsgFGFGFGFGFGFGFGFGFGFGFGsgFGvNvNvNvNvNrTrTrTrTrTrTrTrTrTrTrT
-rTrTrTrTrTrTrTrTrTrTrTvmzMzMzMzMzMzMsgFGFGFGFGFGFGFGFGFGFGFGsgFGvNvNvNvNvNrTrTrTrTrTrTrTrTrTrTrT
-rTrTrTrTrTrTrTrTrTrTrTvmzMzMzMzMzMzMZsgHgHgHgHgHgHRmgHgHgHgHqQFGvNvNvNvNvNrTrTrTrTrTrTrTrTrTrTrT
-rTrTrTrTrTrTrTrTrTrTrTvmzMzMzMzMzMzMFGFGFGFGFGFGFGsgFGFGFGFGFGFGvNvNvNvNvNrTrTrTrTrTrTrTrTrTrTrT
-rTrTrTrTrTrTrTrTrTrTrTvmzMzMzMzMzMzMvNvNvNvNvNvNFGsgFGvNvNvNvNvNvNvNvNvNvNrTrTrTrTrTrTrTrTrTrTrT
-rTrTrTrTrTrTrTrTrTrTrTvmzMzMzMzMzMzMvNvNvNvNvNvNFGsgFGvNvNvNvNvNvNvNvNvNvNrTrTrTrTrTrTrTrTrTrTrT
-rTrTrTrTrTrTrTrTrTrTrTvmzMzMzMzMzMzMFGFGFGFGFGFGFGsgFGvNvNvNvNvNvNvNvNvNvNrTrTrTrTrTrTrTrTrTrTrT
-rTrTrTrTrTrTrTrTrTrTrTvmzMzMzMzMzMzMFGlWgHgHgHgHgHeWFGvNvNvNvNvNvNvNvNvNvNrTrTrTrTrTrTrTrTrTrTrT
-rTrTrTrTrTrTrTrTrTrTrTvmzMzMzMzMzMzMFGsgFGFGFGFGFGsgFGFGFGFGFGFGFGFGFGFGvNrTrTrTrTrTrTrTrTrTrTrT
-rTrTrTrTrTrTrTrTrTrTrTvmzMzMzMzMzMzMFGsgFGFGFGFGFGZsgHgHgHgHgHgHgHgHlwFGvNrTrTrTrTrTrTrTrTrTrTrT
-rTrTrTrTrTrTrTrTrTrTrTvmzMzMzMFGFGFGFGsgFGvNvNvNFGFGFGFGFGFGFGFGFGFGsgFGvNrTrTrTrTrTrTrTrTrTrTrT
-rTrTrTrTrTrTrTrTrTrTrTvmzMzMzMpOPrPrFGsgFGvNvNvNvNvNvNvNvNvNvNvNvNFGsgFGvNrTrTrTrTrTrTrTrTrTrTrT
-rTrTrTrTrTrTrTrTrTrTrTvmzMzMzMFGlWuvgHqQFGvNvNvNvNvNvNvNvNvNvNvNvNFGsgFGvNrTrTrTrTrTrTrTrTrTrTrT
-rTrTrTrTrTrTrTrTrTrTrTvmzMzMzMFGsgPrpOFGFGvNFGFGFGFGFGFGFGFGFGvNvNFGsgFGvNrTrTrTrTrTrTrTrTrTrTrT
-rTrTrTrTrTrTrTrTrTrTrTvmzMzMzMFGsgpOvNvNvNvNFGlWgHgHgHgHgHlwFGvNvNFGsgFGvNrTrTrTrTrTrTrTrTrTrTrT
-rTrTrTrTrTrTrTrTrTrTrTvmzMzMzMPrsgPrvNvNFGFGFGsgFGFGFGFGFGTMFGvNvNFGsgFGvNrTrTrTrTrTrTrTrTrTrTrT
-rTrTrTrTrTrTrTrTrTrTrTvmzMzMzMFGsgpOvNvNFGlWgHqQFGxWxWxWFGTMFGvNvNFGsgFGvNrTrTrTrTrTrTrTrTrTrTrT
-rTrTrTrTrTrTrTrTrTrTrTvmzMzMzMFGTTFGvNvNFGsgFGFGFGxWvNxWFGTMFGFGFGFGsgFGvNrTrTrTrTrTrTrTrTrTrTrT
-rTrTrTrTrTrTrTrTrTrTxWvmFGFGFGFGsgFGFGFGFGsgFGxWxWxWvNxWFGZsgHgHgHgHqQFGvNrTrTrTrTrTrTrTrTrTrTrT
-rTrTrTrTrTrTrTrThLhLhLvmFGFGGdTyvKTyTyTyTyMWFGxWvNvNvNxWFGFGFGFGFGFGFGFGvNrTrTrTrTrTrTrTrTrTrTrT
-rTrTrTrTrTrTrTQWhLOSISFGFGFGcPxWxWMRBQxWFGhLhLhLhLhLhLhLvNvNvNvNxWxWxWxWxWrTrTrTrTrTrTrTrTrTrTrT
-rTrTrTrTrTrTrTQWKUYzKUFGFGFGcPxWNjFGFGFGFGAlAlAlAlAlAlhLvNvNvNvNxWvNvNvNxWrTrTrTrTrTrTrTrTrTrTrT
-rTrTrTrTrTrTrTQWQWKUISFGFGFGcPxWNjFGFGxWFGhLAlAlAlAlAlAlvNvNvNvNxWvNvNvNxWrTrTrTrTrTrTrTrTrTrTrT
-rTrTrTrTrTrTrTQWhLhLhLFGFGFGcPxWxWBQBQxWFGhLAlAlAlAlAlhLbHbHvNvNxWvNvNvNxWrTrTrTrTrTrTrTrTrTrTrT
-rTrTrTrTrTrTrTrTrTrTxWvmFGFGqPYCOQOQOQGeuRhLhLhLAlAlAlWSkPkPLtvNxWvNvNvNxWrTrTrTrTrTrTrTrTrTrTrT
-rTrTrTrTrTrTrTrTrTrTrTvmFGFGFGFGuRuRuRzGuRuRuRhLAlAlAlWSzAfZDfxWxWvNvNvNxWrTrTrTrTrTrTrTrTrTrTrT
+rTrTrTrTrTrTrTrTrTrTrTvmxWxWxWxWxWxWvNvNvNvNvNvNvNvNvNvNvNvNvNvNvNvNvNvNvNrTrTrTrTrTrTrTrTrTrTrT
+rTrTrTrTrTrTrTrTrTrTrTvmzMzMzMzMzMxWvQvNvNvNvNvNvNvNvNvNvNvNvNvNvNvNvNvNvNrTrTrTrTrTrTrTrTrTrTrT
+rTrTrTrTrTrTrTrTrTrTrTvmzMzMzMzMzMxWvQvNvNvNvNvNvNvNvNvNvNvNvNvNvNvNvNvNvNrTrTrTrTrTrTrTrTrTrTrT
+rTrTrTrTrTrTrTrTrTrTrTvmzMzMzMzMzMxWvQvNvNvNvNvNvNvNvNvNvNvNvQvNvNvNvNvNvNrTrTrTrTrTrTrTrTrTrTrT
+rTrTrTrTrTrTrTrTrTrTrTvmzMzMzMzMzMxWsgYzYzYzYzYzYzYzYzYzYzYzsgYzxWvNvNvNvNrTrTrTrTrTrTrTrTrTrTrT
+rTrTrTrTrTrTrTrTrTrTrTvmzMzMzMzMzMxWsgYzYzYzYzYzYzYzYzYzYzYzsgYzxWvNvNvNvNrTrTrTrTrTrTrTrTrTrTrT
+rTrTrTrTrTrTrTrTrTrTrTvmzMzMzMzMzMxWZsgHgHgHgHgHgHRmgHgHgHgHqQYzxWvNvNvNvNrTrTrTrTrTrTrTrTrTrTrT
+rTrTrTrTrTrTrTrTrTrTrTvmzMzMzMzMzMxWYzYzYzYzYzYzYzsgYzYzYzYzYzYzxWvNvNvNvNrTrTrTrTrTrTrTrTrTrTrT
+rTrTrTrTrTrTrTrTrTrTrTvmzMzMzMzMzMxWxWxWxWxWxWxWYzsgYzxWxWxWxWxWxWvNvNvNvNrTrTrTrTrTrTrTrTrTrTrT
+rTrTrTrTrTrTrTrTrTrTrTvmzMzMzMzMzMxWxWxWxWxWxWxWYzsgYzxWvNvNvNvNvNvNvNvNvNrTrTrTrTrTrTrTrTrTrTrT
+rTrTrTrTrTrTrTrTrTrTrTvmzMzMzMzMzMxWYzYzYzYzYzYzYzsgYzxWvNvNvNvNvNvNvNvNvNrTrTrTrTrTrTrTrTrTrTrT
+rTrTrTrTrTrTrTrTrTrTrTvmzMzMzMzMzMxWYzlWgHgHgHgHgHeWYzxWxWxWxWxWxWxWxWxWxWrTrTrTrTrTrTrTrTrTrTrT
+rTrTrTrTrTrTrTrTrTrTrTvmzMzMzMzMzMxWYzsgYzYzYzYzYzsgYzYzYzYzYzYzYzYzYzYzxWrTrTrTrTrTrTrTrTrTrTrT
+rTrTrTrTrTrTrTrTrTrTrTvmzMzMxWxWxWxWYzsgxWxWxWxWYzZsgHgHgHgHgHgHgHgHlwYzxWrTrTrTrTrTrTrTrTrTrTrT
+rTrTrTrTrTrTrTrTrTrTrTvmzMzMxWYzYzYzYzsgxWFGFGxWYzYzYzYzYzYzYzYzYzYzsgYzxWrTrTrTrTrTrTrTrTrTrTrT
+rTrTrTrTrTrTrTrTrTrTrTvmzMzMxWpOPrPrYzsgxWFGFGxWxWxWxWxWxWxWxWxWxWYzsgYzxWrTrTrTrTrTrTrTrTrTrTrT
+rTrTrTrTrTrTrTrTrTrTrTvmzMzMxWYzlWuvgHqQxWxWxWxWxWxWxWxWxWxWxWxWxWYzsgYzxWrTrTrTrTrTrTrTrTrTrTrT
+rTrTrTrTrTrTrTrTrTrTrTvmzMzMxWYzsgPrpOYzxWxWYzYzYzYzYzYzYzYzYzxWxWYzsgYzxWrTrTrTrTrTrTrTrTrTrTrT
+rTrTrTrTrTrTrTrTrTrTrTvmzMzMxWYzsgpOxWxWxWxWYzlWgHgHgHgHgHlwYzxWxWYzsgYzxWrTrTrTrTrTrTrTrTrTrTrT
+rTrTrTrTrTrTrTrTrTrTrTvmzMzMxWPrsgPrxWxWYzYzYzsgYzYzYzYzYzTMYzxWxWYzsgYzxWrTrTrTrTrTrTrTrTrTrTrT
+rTrTrTrTrTrTrTrTrTrTrTvmzMzMxWYzsgpOxWxWYzlWgHqQYzxWxWxWYzTMYzxWxWYzsgYzxWrTrTrTrTrTrTrTrTrTrTrT
+rTrTrTrTrTrTrTrTrTrTrTvmxWxWxWYzTTYzxWxWYzsgYzYzYzxWvNxWYzTMYzYzYzYzsgYzxWrTrTrTrTrTrTrTrTrTrTrT
+rTrTrTrTrTrTrTrTrTrTxWvmYzYzYzYzsgYzYzYzYzsgYzxWxWxWvNxWYzZsgHgHgHgHqQYzxWrTrTrTrTrTrTrTrTrTrTrT
+rTrTrTrTrTrTrTrThLhLhLvmYzYzGdTyvKTyTyTyTyMWYzxWvNvNvNxWYzYzYzYzYzYzYzYzxWrTrTrTrTrTrTrTrTrTrTrT
+rTrTrTrTrTrTrTQWhLOSISFGYzYzcPxWxWMRBQxWFGhLhLhLhLhLhLhLLtLtLtLtxWxWxWxWxWrTrTrTrTrTrTrTrTrTrTrT
+rTrTrTrTrTrTrTQWISISISFGYzYzcPxWNjFGFGFGFGAlAlAlAlAlAlhLLtLtLtLtxWvNvNvNxWrTrTrTrTrTrTrTrTrTrTrT
+rTrTrTrTrTrTrTQWQWISISFGYzYzcPxWNjFGFGxWFGhLAlAlAlAlAlAlLtLtLtLtxWvNvNvNxWrTrTrTrTrTrTrTrTrTrTrT
+rTrTrTrTrTrTrTQWhLhLhLFGYzYzcPxWxWBQBQxWFGhLAlAlAlAlAlhLbHbHLtLtxWvNvNvNxWrTrTrTrTrTrTrTrTrTrTrT
+rTrTrTrTrTrTrTrTrTrTxWvmYzYzqPYCOQOQOQGeuRhLhLhLAlAlAlWSkPkPLtLtxWvNvNvNxWrTrTrTrTrTrTrTrTrTrTrT
+rTrTrTrTrTrTrTrTrTrTrTvmYzYzYzYzuRuRuRzGuRuRuRhLAlAlAlWSzAfZDfxWxWvNvNvNxWrTrTrTrTrTrTrTrTrTrTrT
 rTrTrTrTrTrTrTrTrTrTrTvmhLhLhLhLhLhLTKexTaTKTKhLhLhLhLWSFzkPDfvNvNvNvNvNxWrTrTrTrTrTrTrTrTrTrTrT
 rTrTrTrTrTrTrTuyzzuyrTvmzMzMzMzMzMWSdDdDwMdDdDjzBIBIdDTUTUvEDfvNvNvNvNvNxWrTrTrTrTrTrTrTrTrTrTrT
 rTrTrTrTrTrTrTuyMfuyrTvmzMzMzMzMzMWSdDdDdDxTfCgcdDZkdDdDdDkADfvNvNvNvNvNxWrTrTrTrTrTrTrTrTrTrTrT
 rTrTrTrTrTrTrTrTrTrTrTvmzMzMzMzMzMWSdDgEdDdDJidDcddDeqdDdDkAxWvNvNvNvNvNxWrTrTrTrTrTrTrTrTrTrTrT
 rTrTrTrTrTrTrTrTrTrTrTvmzMzMzMzMzMWSdDdDdDdDxQwMYpxQdDdDdDkAxWvNvNvNvNvNxWrTrTrTrTrTrTrTrTrTrTrT
-rTrTrTrTrTrTrTrTrTrTxWxWxWxWxWxWxWxWxWxDxDDfLcaBxDizDfxDxDxWxWxWxWxWxWxWxWrTrTrTrTrTrTrTrTrTrTrT
-rTrTrTrTrTrTrTrTrTrTFGtmYEYEEiBlOnvoAzYEYEDTYEleYEYEDTYEYEmyIBoTGrrQCOCOINrTrTrTrTrTrTrTrTrTrTrT
-rTrTrTrTrTrTrTrTrTrTFGtmEwoZEiBlBlBlYEYEYEYEYEleYEYEYEYEYEFGGrGrGrrQCOCOINrTrTrTrTrTrTrTrTrTrTrT
-rTrTrTrTrTrTrTrTrTrTxWDfSXSXDfUqFIUqYEYEYEYEYEleYEYEYEYEYEFBCOCOCOxWCOCOINrTrTrTrTrTrTrTrTrTrTrT
-rTrTrTrTrTrTrTrTrTrTrTDfDfDfDfUqUqUqFIUqYEucYEYrYEucYEbGUqCOCOCOCOxWDWDWINrTrTrTrTrTrTrTrTrTrTrT
-rTrTrTrTrTrTrTrTrTrTrTDfEWEWccUqUqUqUqUqlYUqjJCOFsygUqUqUqCOCOCOCOlgrTrTxWrTrTrTrTrTrTrTrTrTrTrT
+rTrTrTrTrTrTrTrTrTxWxWxWxWxWxWxWxWxWxWxDxDDfLcaBxDizDfxDxDxWxWxWxWxWxWxWxWrTrTrTrTrTrTrTrTrTrTrT
+rTrTrTrTrTrTrTrTrTxWYztmtLtLEiBlOnvoAzYEYEDTYEleYEYEDTYEYEmyIBoTGrrQKUKUINrTrTrTrTrTrTrTrTrTrTrT
+rTrTrTrTrTrTrTrTrTxWYztmEwoZEiBlBlBlYEYEYEYEYEleYEYEYEYEYEFGGrGrGrrQKUKUINrTrTrTrTrTrTrTrTrTrTrT
+rTrTrTrTrTrTrTrTrTxWKUPESXPEDfUqFIUqYEYEYEYEYEleYEYEYEYEYEFBCOCOCOxWKUKUINrTrTrTrTrTrTrTrTrTrTrT
+rTrTrTrTrTrTrTrTrTxWKUPEPEPEDfUqUqUqFIUqYEucYEYrYEucYEbGUqCOCOCOCOxWfTfTINrTrTrTrTrTrTrTrTrTrTrT
+rTrTrTrTrTrTrTrTrTxWxWDfEWEWccPEPEPEPEPElYPEjJKUFsygPEPEPEKUKUKUKUlgrTrTxWrTrTrTrTrTrTrTrTrTrTrT
 rTrTrTrTrTrTrTrTrTrTrTDfEWEWAPUqUqUqUqUqUqUqUqCOCOUqUqUqUqCOCOCOCOdkrTrTxWrTrTrTrTrTrTrTrTrTrTrT
 rTrTrTrTrTrTrTrTrTrTrTDfEWEWYopLpLpLpLpLpLpLpLvgnCpLpLpLpLnCnCnCnCPFrTrTxWrTrTrTrTrTrTrTrTrTrTrT
 rTrTrTrTrTrTrTrTrTrTrTDfEWEWDfUqUqUqUqUqUqUqUqCOCOUqUqUqUqCOCOCOCOxWrTrTxWrTrTrTrTrTrTrTrTrTrTrT
