@@ -154,10 +154,12 @@
 /obj/item/reagent_containers/hypospray/autoinjector/update_icon()
 	if(reagents.total_volume > 0)
 		icon_state = "[initial(icon_state)]1"
-		worldicons = "[initial(worldicons)]1"
+		if(LAZYLEN(worldicons))
+			worldicons = "[initial(worldicons)]1"
 	else
 		icon_state = "[initial(icon_state)]0"
-		worldicons = "[initial(worldicons)]0"
+		if(LAZYLEN(worldicons))
+			worldicons = "[initial(worldicons)]0"
 
 /obj/item/reagent_containers/hypospray/autoinjector/examine(mob/user)
 	. = ..(user)
