@@ -27,6 +27,7 @@
 	var/combat_mode_aim = FALSE
 
 	var/warfare_faction = null
+	var/suicider = 0
 
 		///////////////
 		//SOUND STUFF//
