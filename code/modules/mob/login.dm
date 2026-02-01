@@ -97,3 +97,6 @@
 
 	if(warfare_faction)//If they are on a team already, then keep them on that team.
 		client.warfare_faction = warfare_faction
+
+	if(!istype(src, /mob/new_player))
+		SSday_cycle.on_client_login(client)

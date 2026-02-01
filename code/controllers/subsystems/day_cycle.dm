@@ -339,5 +339,9 @@ SUBSYSTEM_DEF(day_cycle)
 	for(var/obj/effect/map_entity/day_events/E in GLOB.map_entities_by_name["day_events"])
 		E.fire_output(output_name, param, src)
 
+/datum/controller/subsystem/day_cycle/proc/on_client_login(client/C)
+	for(var/F in active_weather_filters)
+		C.screen += active_weather_filters[F]
+
 /atom/proc/on_day_phase_change(phase_name)
 	return
