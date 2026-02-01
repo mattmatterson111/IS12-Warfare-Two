@@ -69,7 +69,7 @@ CARGO_CRATE_PRODUCT(gasmask_red, "Gas Mask Pack", 50, "Sil's Utility Corps", lis
 CARGO_CRATE_PRODUCT(cannedfood_red, "Canned Food Pack", 20, "ChowField Provisions", list(/obj/random/canned_food/red = 10), /obj/structure/closet/crate/wooden, RED_TEAM)
 CARGO_CRATE_PRODUCT(explosives_red, "Plastic Explosives Pack", 150, "Sil's Utility Corps", list(/obj/item/plastique/red = 5), /obj/structure/closet/crate/wooden, RED_TEAM)
 CARGO_CRATE_PRODUCT(flare_red, "Illumination Mortar Ammo", 50, "Wick's Trenchlights", list(/obj/item/mortar_shell/flare = 8), /obj/structure/closet/crate/wooden, RED_TEAM)
-CARGO_CRATE_PRODUCT(flare_hand_red, "Flare Pack", 50, "Wick's Trenchlights", list(/obj/item/device/flashlight/flare = 10), /obj/structure/closet/crate/wooden, RED_TEAM)
+CARGO_CRATE_PRODUCT(flare_hand_red, "Flare Pack", 50, "Wick's Trenchlights", list(/obj/item/ammo_box/flares = 10), /obj/structure/closet/crate/wooden, RED_TEAM)
 CARGO_CRATE_PRODUCT(candle_red, "Candle Pack", 10, "Wick's Trenchlights", list(/obj/item/flame/candle = 10), /obj/structure/closet/crate/wooden, RED_TEAM)
 
 CARGO_JOB_PRODUCT(sniper_red, "Red sniper", 500, "Units", /datum/job/soldier/red_soldier/sniper, RED_TEAM)
@@ -84,7 +84,7 @@ CARGO_CRATE_PRODUCT(gasmask_blue, "Gas Mask Pack", 50, "Sil's Utility Corps", li
 CARGO_CRATE_PRODUCT(cannedfood_blue, "Canned Food Pack", 20, "ChowField Provisions", list(/obj/random/canned_food/blue = 10), /obj/structure/closet/crate/wooden, BLUE_TEAM)
 CARGO_CRATE_PRODUCT(explosives_blue, "Plastic Explosives Pack", 150, "Sil's Utility Corps", list(/obj/item/plastique/blue = 5), /obj/structure/closet/crate/wooden, BLUE_TEAM)
 CARGO_CRATE_PRODUCT(flare_blue, "Illumination Mortar Ammo", 50, "Wick's Trenchlights", list(/obj/item/mortar_shell/flare/blue = 8), /obj/structure/closet/crate/wooden, BLUE_TEAM)
-CARGO_CRATE_PRODUCT(flare_hand_blue, "Flare Pack", 50, "Wick's Trenchlights", list(/obj/item/device/flashlight/flare/blue = 10), /obj/structure/closet/crate/wooden, BLUE_TEAM)
+CARGO_CRATE_PRODUCT(flare_hand_blue, "Flare Pack", 50, "Wick's Trenchlights", list(/obj/item/ammo_box/flares/blue = 10), /obj/structure/closet/crate/wooden, BLUE_TEAM)
 CARGO_CRATE_PRODUCT(candle_blue, "Candle Pack", 10, "Wick's Trenchlights", list(/obj/item/flame/candle/blue = 10), /obj/structure/closet/crate/wooden, BLUE_TEAM)
 
 CARGO_JOB_PRODUCT(sniper_blue, "Blue sniper", 500, "Units", /datum/job/soldier/blue_soldier/sniper, BLUE_TEAM)
