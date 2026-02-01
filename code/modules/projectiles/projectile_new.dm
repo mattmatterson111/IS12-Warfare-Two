@@ -905,8 +905,8 @@
 				
 				thing.update_light()
 				if(thing.light_new)
-					animate(thing.light_new, color = "#000000", time = 1)
-				animate(thing, color = "#000000", time = 1)
+					animate(thing.light_new, alpha = 0, time = 1)
+				animate(thing, alpha = 0, time = 1)
 
 				QDEL_IN(thing, 2)
 
