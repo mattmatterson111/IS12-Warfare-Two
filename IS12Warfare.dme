@@ -2020,6 +2020,7 @@
 #include "code\modules\particle_lib\weather.dm"
 #include "code\modules\payload_gamemode\_payload.dm"
 #include "code\modules\payload_gamemode\landmarks.dm"
+#include "code\modules\piston\masks.dm"
 #include "code\modules\placeholder\itemeater.dm"
 #include "code\modules\placeholder\placeholder.dm"
 #include "code\modules\placeholder\snowflake.dm"
