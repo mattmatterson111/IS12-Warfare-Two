@@ -289,6 +289,12 @@
 		backpack_contents = list(/obj/item/grenade/smokebomb = 1)
 		belt = /obj/item/storage/belt/armageddon
 
+	else if (prob(15))
+		suit_store = /obj/item/gun/projectile/shotgun/pump/boltaction/good
+		r_pocket =  /obj/item/ammo_box/rifle/modern
+		backpack_contents = initial(backpack_contents)
+		belt = null
+
 	else if(prob(25))
 		suit_store = /obj/item/gun/projectile/shotgun/pump/boltaction/shitty/leverchester
 		r_pocket = /obj/item/ammo_box/rifle

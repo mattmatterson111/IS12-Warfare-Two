@@ -81,6 +81,9 @@
 
 	if(crouching)//Crouching makes you slower.
 		tally += 2
+		
+	if(TALLYHOLADS) //Charge!
+		tally -= 0.5
 
 	if(FAT in src.mutations)
 		tally += 1.5

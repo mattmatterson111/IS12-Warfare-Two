@@ -827,13 +827,14 @@
 	icon_state = "colt"
 	unloaded_icon = "colt-e"
 	item_state = "handgun"
-	fire_sound = "sound/weapons/guns/fire/pistol1.ogg"
+	fire_sound = "sound/weapons/guns/fire/revolver.ogg"
 	desc = "Potent handgun that fires an unwieldy and unusual caliber, denotated 'Wristfucker'."
 	magazine_type = /obj/item/ammo_magazine/a50
 	allowed_magazines = /obj/item/ammo_magazine/a50
 	caliber = ".50"
 	load_method = MAGAZINE
-	fire_delay = 5
+	fire_delay = 4
+	screen_shake = 3
 	condition = 75
 
 /obj/item/gun/projectile/shotgun/pump/boltaction/grenadelauncher
