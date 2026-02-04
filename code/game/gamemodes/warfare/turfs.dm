@@ -272,6 +272,9 @@
 		playsound(src, 'sound/effects/dig_shovel.ogg', 50, 0)
 		visible_message("[user] begins to dig a trench!")
 		if(do_after(user, backwards_skill_scale(user.SKILL_LEVEL(engineering)) * 5))
+			// Remove crater covers before changing turf
+			for(var/obj/effect/crater_cover/CC in contents)
+				qdel(CC)
 			ChangeTurf(/turf/simulated/floor/trench)
 			visible_message("[user] finishes digging the trench.")
 			playsound(src, 'sound/effects/empty_shovel.ogg', 50, 0)

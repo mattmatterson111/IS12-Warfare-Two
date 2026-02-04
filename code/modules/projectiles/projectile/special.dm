@@ -223,5 +223,10 @@
 			I.IgniteMob()
 
 	//This has been made a simple loop, for the most part flamer_fire_act() just does return, but for specific items it'll cause other effects.
-	firelevel -= 2 //reduce the intensity by 2 per tick
+	var/drain = 2
+	var/turf/T = get_turf(src)
+	if(SSday_cycle.active_weather?.name == "storming")
+		if(T && (locate(/obj/effect/map_entity/weather_mask) in T) && !(locate(/obj/effect/map_entity/environment_blocker) in T))
+			drain = 4
+	firelevel -= drain
 	return

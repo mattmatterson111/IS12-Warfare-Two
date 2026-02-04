@@ -62,6 +62,18 @@
 	if(!loaded)//Nothing to fire.
 		to_chat(user, "<span class='danger'>It's not loaded.</span>")
 		return
+
+	var/turf/T = get_turf(A)
+	var/turf/U = get_turf(user)
+
+	if(U && (locate(/obj/effect/map_entity/environment_blocker) in U))
+		to_chat(user, "<span class='danger'>The mortar is blocked here!</span>")
+		return
+
+	if(T && (locate(/obj/effect/map_entity/environment_blocker) in T))
+		to_chat(user, "<span class='danger'>The target area is blocked!</span>")
+		return
+
 	if(istype(user.loc, /turf/simulated/floor/tiled))
 		to_chat(user, "<span class='danger'>I can't use this indoors.</span>")
 		return
@@ -78,8 +90,8 @@
 
 
 /obj/item/mortar_launcher/proc/launch_mortar(atom/A, mob/living/user, var/mortar_type)
-	if(user.HasRoleSimpleCheck("Red Scavenger") || user.HasRoleSimpleCheck("Blue Scavenger"))
-		if(prob(1))
+	if(user.isChild())
+		if(prob(35))
 			user.visible_message("<span class='danger'>[user] fires the [src]- OH- A <i>MISFIRE!</i> RUN RUN! <i>RUN!!</i></span>")
 			playsound(src, 'sound/weapons/mortar_fire.ogg', 100, FALSE)
 			spawn(65)

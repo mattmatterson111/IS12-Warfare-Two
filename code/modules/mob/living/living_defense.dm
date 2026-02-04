@@ -307,7 +307,12 @@
 		ExtinguishMob() //Fire's been put out.
 		return 1
 
-	fire_stacks = max(0, fire_stacks - 0.2) //I guess the fire runs out of fuel eventually
+	var/drain = 0.2
+	var/turf/T = get_turf(src)
+	if(SSday_cycle.active_weather?.name == "storming")
+		if(T && (locate(/obj/effect/map_entity/weather_mask) in T) && !(locate(/obj/effect/map_entity/environment_blocker) in T))
+			drain = 0.4
+	fire_stacks = max(0, fire_stacks - drain)
 
 	var/datum/gas_mixture/G = loc.return_air() // Check if we're standing in an oxygenless environment
 	if(G.get_by_flag(XGM_GAS_OXIDIZER) < 1)

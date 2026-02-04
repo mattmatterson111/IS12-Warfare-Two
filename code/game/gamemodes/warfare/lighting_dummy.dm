@@ -34,8 +34,8 @@ GLOBAL_LIST_EMPTY(lighting_dummies)
 	icon = 'icons/obj/items/mortars.dmi'
 	icon_state = "redFlare"
 	plane = EFFECTS_ABOVE_LIGHTING_PLANE
-	light_power = 6
-	light_range = 10
+	light_power = 12
+	light_range = 32
 	light_color = COLOR_RED
 
 	Initialize()
@@ -45,3 +45,4 @@ GLOBAL_LIST_EMPTY(lighting_dummies)
 /obj/effect/lighting_dummy/flare/blue
 	icon_state = "blueFlare"
 	light_color = COLOR_BLUE
+	

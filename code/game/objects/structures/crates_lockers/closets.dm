@@ -398,7 +398,16 @@
 		..()
 		return
 	if(CanPhysicallyInteract(user))
-		verb_toggleopen()
+		if(anchored)
+			return
+		var/push_dir = turn(get_dir(src, user), 180)
+		if(push_dir)
+			visible_message("<span class='notice'>[user] pushes \the [src].</span>")
+			step(src, push_dir)
+			step(user, push_dir)
+			return
+		else
+			to_chat(user, "<span class='warning'>You can't push \the [src].</span>")
 
 /obj/structure/closet/update_icon()//Putting the welded stuff in update_icon() so it's easy to overwrite for special cases (Fridges, cabinets, and whatnot)
 	overlays.Cut()

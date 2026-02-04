@@ -278,3 +278,12 @@ MAPPING_DAY_LISTENER(base_path/##name) \
 	crate_type = crate_override; \
 }
 
+/// Usage: MAPPING_ARTILLERY(nml_barrage, "nml_arty", "smoke", 8, NORTH)
+#define MAPPING_ARTILLERY(name, targetname_val, shell_type_val, count_val, dir_val) \
+/obj/effect/map_entity/artillery_controller/##name { \
+	targetname = targetname_val; \
+	shell_type = shell_type_val; \
+	shell_count = count_val; \
+	pattern_direction = dir_val; \
+}
+

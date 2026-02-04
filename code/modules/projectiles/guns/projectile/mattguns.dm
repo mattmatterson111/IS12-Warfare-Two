@@ -26,22 +26,7 @@
 	sharp = 1
 	attack_verb = list ("stabbed", "sliced")
 	hitsound = "bayonet_stab"
-
-/obj/item/gun/
-	var/can_have_bayonet = FALSE
-
-/obj/item/gun/projectile/shotgun/pump/boltaction/attackby(obj/item/W, mob/user)
-	. = ..()
-	if(istype(W, /obj/item/material/sword/combat_knife) && can_have_bayonet)
-		user.visible_message("[user] attaches a bayonet to the [src].","You attach a bayonet to the [src].")
-		user.remove_from_mob(W)
-		qdel(W)
-		add_bayonet()
-
-
-/obj/item/gun/projectile/shotgun/pump/boltaction/shitty/bayonet/New()
-	..()
-	add_bayonet()
+	starts_with_bayonet = TRUE
 
 //Now THIS is real gun, rare 5 in 100 gun spawn as soldier
 /obj/item/gun/projectile/shotgun/pump/boltaction/good
@@ -85,12 +70,6 @@
 	can_have_bayonet = TRUE
 
 
-//Paryying.
-/obj/item/gun/projectile/shotgun/pump/boltaction/handle_shield(mob/living/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
-	if(default_sword_parry(user, damage, damage_source, attacker, def_zone, attack_text))
-		return 1
-	return 0
-
 //AMMO
 /obj/item/ammo_casing/brifle
 	desc = "An old worn out looking bullet casing."
@@ -133,20 +112,6 @@
 	empty_icon = "winchester-e"
 	can_have_bayonet = TRUE
 
-/obj/item/gun/projectile/shotgun/pump/shitty/attackby(obj/item/W, mob/user)
-	. = ..()
-	if(istype(W, /obj/item/material/sword/combat_knife) && can_have_bayonet)
-		user.visible_message("[user] attaches a bayonet to the [src].","You attach a bayonet to the [src].")
-		user.remove_from_mob(W)
-		qdel(W)
-		add_bayonet()
-
-/obj/item/gun/projectile/shotgun/pump/handle_shield(mob/living/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
-	if(default_sword_parry(user, damage, damage_source, attacker, def_zone, attack_text))
-		return 1
-	return 0
-
-
 /obj/item/gun/projectile/shotgun/pump/shitty/sawn
 	name = "\improper Sawn Off WTX Frontier Special"
 	desc = "Purposely cut down and made shorter, it still packs the same punch as its longer brother but in a more compact package. I can’t help but wonder if it’s even reliable."
@@ -173,21 +138,13 @@
 	sharp = 1
 	attack_verb = list ("stabbed", "sliced")
 	hitsound = "bayonet_stab"
-
-/obj/item/gun/projectile/shotgun/pump/shitty/bayonet/New()
-	..()
-	add_bayonet()
-	desc += " This one has a bayonet."
+	starts_with_bayonet = TRUE
+	desc = "\improper WTX Frontier Special. This one has a bayonet."
 
 
 
 /obj/item/gun/projectile/automatic
 	screen_shake = 2
-
-/obj/item/gun/projectile/automatic/handle_shield(mob/living/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
-	if(default_sword_parry(user, damage, damage_source, attacker, def_zone, attack_text))
-		return 1
-	return 0
 
 /obj/item/gun/projectile/automatic/m22/warmonger
 	name = "Mk.3 Warmonger"
@@ -212,14 +169,6 @@
 	gun_type = GUN_SEMIAUTO
 	//can_have_bayonet = TRUE
 
-
-/obj/item/gun/projectile/automatic/m22/warmonger/attackby(obj/item/W, mob/user)
-	. = ..()
-	if(istype(W, /obj/item/material/sword/combat_knife) && can_have_bayonet)
-		user.visible_message("[user] attaches a bayonet to the [src].","You attach a bayonet to the [src].")
-		user.remove_from_mob(W)
-		qdel(W)
-		add_bayonet()
 
 /obj/item/gun/projectile/automatic/m22/warmonger/fully_auto
 	name = "Mk.5 Warmonger"
@@ -310,14 +259,6 @@
 	magazine_type = /obj/item/ammo_magazine/a762/m14
 	allowed_magazines = /obj/item/ammo_magazine/a762/m14
 	gun_type = GUN_SEMIAUTO
-
-/obj/item/gun/projectile/automatic/m22/warmonger/m14/attackby(obj/item/W, mob/user)
-	. = ..()
-	if(istype(W, /obj/item/material/sword/combat_knife) && can_have_bayonet)
-		user.visible_message("[user] attaches a bayonet to the [src].","You attach a bayonet to the [src].")
-		user.remove_from_mob(W)
-		qdel(W)
-		add_bayonet()
 
 /obj/item/ammo_magazine/a762/m14
 	name = "M41 magazine"
@@ -753,15 +694,6 @@
 	wielded_unloaded_icon = "machinepistol-e"
 
 	gun_type = GUN_SMG
-
-/obj/item/gun/projectile/automatic/machinepistol/attackby(obj/item/W, mob/user)
-	. = ..()
-	if(istype(W, /obj/item/material/sword/combat_knife) && can_have_bayonet)
-		user.visible_message("[user] attaches a bayonet to the [src].","You attach a bayonet to the [src].")
-		user.remove_from_mob(W)
-		qdel(W)
-		add_bayonet()
-
 
 /obj/item/gun/projectile/automatic/machinepistol/wooden
 	name = "Mk.1 Soulburn SMG"

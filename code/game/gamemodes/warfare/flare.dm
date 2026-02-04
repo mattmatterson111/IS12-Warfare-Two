@@ -4,7 +4,7 @@
 	name = "warflare"
 	desc = "A standard-issue warflare. There are instructions on the side reading 'pull cord, make light'."
 	w_class = ITEM_SIZE_TINY
-	var/brightness_on = 8 // Pretty bright.
+	var/brightness_on = 12 // Pretty bright.
 	light_power = 3
 	light_color = COLOR_RED_LIGHT
 	icon = 'icons/obj/lighting.dmi'
@@ -58,7 +58,7 @@
 	on = TRUE
 	update_icon()
 	
-	addtimer(CALLBACK(src, .turn_off), rand(6 MINUTE, 10 MINUTES) )
+	addtimer(CALLBACK(src, .proc/turn_off), rand(6 MINUTE, 10 MINUTES) )
 	used = 1
 	return 1
 

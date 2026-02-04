@@ -136,33 +136,74 @@ proc/secondaryexplosion(turf/epicenter, range)
 		tile.ex_act(2)
 
 
+/proc/add_crater(turf/T, scale = 1.0)
+	if(!T)
+		return
+	var/image/crater = image(icon='icons/turf/crater64.dmi', icon_state="dirt_shell_alt", dir=pick(GLOB.cardinal), layer = BASE_ABOVE_OBJ_LAYER, pixel_x = rand(-14,-16), pixel_y = rand(-14,-16))
+	crater.transform = matrix() * scale
+	T.overlays += crater
+	
+	if(scale >= 1.1)
+		if(!locate(/obj/effect/crater_cover) in T)
+			var/obj/effect/crater_cover/CC = new(T)
+			CC.cover_strength = Clamp(30 * scale, 30, 60)
+
 proc/drop_mortar(turf/dropped, mortar)
 	var/direction = pick(GLOB.cardinal)
 	var/turf/dropped_turf = get_step(dropped,direction)
-	var/thismortarnoise = pick('sound/effects/mortar_fallingalt.ogg', 'sound/effects/mortar_fallingalt2.ogg') // original: sound/effects/mortar_falling.ogg
+	var/thismortarnoise = pick('sound/effects/mortar_fallingalt.ogg', 'sound/effects/mortar_fallingalt2.ogg')
 	var/delay
 	playsound(dropped_turf, thismortarnoise, 100, FALSE)
-	var/obj/effect/shadow/S = new(dropped_turf)//Create a cool shadow effect for the bomb.
+	var/obj/effect/shadow/S = new(dropped_turf)
+	
 	switch(thismortarnoise)
-		if('sound/effects/mortar_fallingalt.ogg') delay=3.9
-		if('sound/effects/mortar_fallingalt2.ogg') delay=2.25
+		if('sound/effects/mortar_fallingalt.ogg') delay = 3.9
+		if('sound/effects/mortar_fallingalt2.ogg') delay = 2.25
+
+	var/is_ballistic = (mortar == "bunker-buster")
+	if(is_ballistic)
+		delay += 3.0
+
 	spawn(delay SECONDS)
 		qdel(S)
-		if(mortar == "rflare") //They don't hit the ground.
-			new /obj/mortar/flare(dropped_turf)
+		if(mortar == "rflare" || mortar == "bflare")
+			if(mortar == "rflare") new /obj/mortar/flare(dropped_turf)
+			else new /obj/mortar/flare/blue(dropped_turf)
 			return
-		if(mortar == "bflare")
-			new /obj/mortar/flare/blue(dropped_turf)
-			return
-		explosion(dropped_turf, 1,1,1,1, particles = TRUE, autosize = FALSE, sizeofboom = 1, large = TRUE, explosionsound = pick('sound/effects/farexplonewnew1.ogg','sound/effects/farexplonewnew2.ogg','sound/effects/farexplonewnew3.ogg','sound/effects/explosionfarnew.ogg','sound/effects/explosionfar2.ogg','sound/effects/explosionfar3.ogg','sound/effects/explosionfar4.ogg'))
+
+		var/power_factor = rand(8, 12) / 10
+		
+		explosion(dropped_turf, 1 * power_factor, 1 * power_factor, 1 * power_factor, 1 * power_factor, particles = TRUE, autosize = FALSE, sizeofboom = 1 * power_factor, large = TRUE, explosionsound = pick('sound/effects/farexplonewnew1.ogg','sound/effects/farexplonewnew2.ogg','sound/effects/farexplonewnew3.ogg','sound/effects/explosionfarnew.ogg','sound/effects/explosionfar2.ogg','sound/effects/explosionfar3.ogg','sound/effects/explosionfar4.ogg'))
+
+		var/crater_scale = 1.0 * power_factor
+		switch(mortar)
+			if("cluster") crater_scale *= 0.6
+			if("smoke") crater_scale *= 0.5
+			if("concussion") crater_scale *= 1.3
+			if("incendiary") crater_scale *= 0.8
+			if("bunker-buster") crater_scale *= 2.0
+
 		spawn(5)
-			dropped_turf.overlays += image(icon='icons/turf/crater64.dmi',icon_state="dirt_shell_alt", dir=pick(GLOB.cardinal), layer = BASE_ABOVE_OBJ_LAYER, pixel_x = rand(-14,-16), pixel_y = rand(-14,-16))
-		if(mortar == "shrapnel")
-			new /obj/mortar/frag(dropped_turf)
-		if(mortar == "gas")
-			new /obj/mortar/gas(dropped_turf)
-		if(mortar == "fire")
-			new /obj/mortar/fire(dropped_turf)
+			add_crater(dropped_turf, crater_scale)
+
+		new /obj/effect/lingering_haze(dropped_turf, 20)
+
+		switch(mortar)
+			if("shrapnel") new /obj/mortar/frag(dropped_turf)
+			if("gas") new /obj/mortar/gas(dropped_turf)
+			if("fire") new /obj/mortar/fire(dropped_turf)
+			if("smoke") new /obj/mortar/smoke(dropped_turf)
+			if("incendiary") new /obj/mortar/incendiary(dropped_turf)
+			if("cluster") new /obj/mortar/cluster(dropped_turf)
+			if("concussion") new /obj/mortar/concussion(dropped_turf)
+			if("bunker-buster") new /obj/mortar/ballistic(dropped_turf)
+
+		for(var/mob/living/carbon/human/H in range(2 * power_factor, dropped_turf))
+			if(H.stat == DEAD) continue
+			if(H.ear_damage != null)
+				H.ear_damage += rand(10, 20) * power_factor
+			to_chat(H, "<span class='danger'>Your ears are ringing!</span>")
+			shake_camera(H, 15 * power_factor, 3)
 
 /obj/effect/shadow
 	name = "Shadow"
@@ -171,11 +212,6 @@ proc/drop_mortar(turf/dropped, mortar)
 	density = FALSE
 
 
-/*==============
-ARTILLERY BARAGE
-==============*/
-//only works on no man land z level (2)
-//checks for valid spot within range.
 proc/artillery_barage(var/x, var/y, var/z, mortartype="shrapnel", bypass_restrictions = FALSE, maxamount = 10)
 
 	var/x_random = x
@@ -183,21 +219,18 @@ proc/artillery_barage(var/x, var/y, var/z, mortartype="shrapnel", bypass_restric
 	var/sleep_randomizer = 10
 	var/turf/turf_to_drop
 
-	for(var/i = 1, i< maxamount, i++)//value may need to tweak
+	for(var/i = 1, i< maxamount, i++)
 		x_random = x + (rand(0, 6) -3 )
 		y_random = y + (rand(0, 6) -3 )
-		//randomize sleep time to get more dynamic artillery
 		sleep_randomizer = rand(8, 25)
 		turf_to_drop = locate(x_random, y_random, z)
 		if(bypass_restrictions)
-			//bypass restrictions for testing
 			drop_mortar(turf_to_drop, mortartype)
 			sleep(sleep_randomizer)
 			continue
 		if(istype(turf_to_drop.loc, /area/warfare/battlefield/no_mans_land) || istype(turf_to_drop.loc, /area/warfare/battlefield/capture_point/mid))
 			drop_mortar(turf_to_drop, mortartype)
 		else
-			//if we fail to find a valid place just drop on the target
 			world.log << "Invalid landing zone. [x_random], [y_random]... defaulting to original position."
 			turf_to_drop = locate(x,y,2)
 			drop_mortar(turf_to_drop, mortartype)

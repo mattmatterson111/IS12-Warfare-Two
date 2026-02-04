@@ -46,7 +46,7 @@
 	return 1
 
 
-/proc/Get_Angle(atom/movable/start,atom/movable/end)//For beams.
+/proc/Get_Angle(atom/start, atom/end)//For beams.
 	if(!start || !end) return 0
 	var/dy
 	var/dx

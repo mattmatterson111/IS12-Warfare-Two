@@ -962,6 +962,12 @@ default behaviour is:
 			playsound(src,pick(GLOB.swing_hit_sound), 100, 1)
 			H.custom_pain("[pick("OW", "OUCH", "DANG")]!!! You hit your head on the bridge!",rand(5, 15),affecting = head)
 			return
+
+		// If in crater, remove from auto-crouch tracking since they're manually standing
+		if(locate(/obj/effect/crater_cover) in loc)
+			for(var/obj/effect/crater_cover/CC in loc)
+				CC.auto_crouched_mobs -= src
+
 		to_chat(src, "<span class='binfo'>You stand up.</span>")
 		if(istype(loc, /turf/simulated/floor/trench))
 			if(H.in_trench && !locate(/obj/structure/bridge, get_turf(src))) // Please do not stand up while you under bridge thank you.

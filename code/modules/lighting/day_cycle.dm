@@ -38,13 +38,15 @@
 /datum/weather_type/rainy
 	name = "rainy"
 	screenfilter_type = /obj/screenfilter/rain
-	looping_volume = 60
+	looping_sound = 'sound/weather/rainloop.ogg'
+	indoor_looping_sound = 'sound/weather/rainloop_inside.ogg'
+	looping_volume = 62
 
 /datum/weather_type/rainy/on_start()
-	return
+	IO_output("env_leak:Enable", null, SSday_cycle)
 
 /datum/weather_type/rainy/on_end()
-	return
+	IO_output("env_leak:Disable", null, SSday_cycle)
 
 /datum/weather_type/storming
 	name = "storming"
@@ -55,10 +57,10 @@
 	looping_volume = 80
 
 /datum/weather_type/storming/on_start()
-	return
+	IO_output("env_leak:Enable", null, SSday_cycle)
 
 /datum/weather_type/storming/on_end()
-	return
+	IO_output("env_leak:Disable", null, SSday_cycle)
 
 /datum/weather_type/snowing
 	name = "snowing"

@@ -95,6 +95,8 @@
 	var/gun_type = "generic"
 	var/bayonet_icon
 	var/misfire = FALSE //for guns with special checks like the PTSD41 and Harbinger
+	var/starts_with_bayonet = FALSE
+	var/can_have_bayonet = FALSE
 
 	var/next_fire_time = 0
 
@@ -120,6 +122,9 @@
 
 	if(isnull(scoped_accuracy))
 		scoped_accuracy = accuracy
+
+	if(starts_with_bayonet)
+		add_bayonet()
 
 
 /obj/item/gun/update_icon()
@@ -384,8 +389,11 @@
 	//Accuracy modifiers
 	P.accuracy = accuracy + acc_mod + dexToAccuracyModifier(user.my_stats[STAT(dex)].level)
 	P.dispersion = disp_mod + (user.recoil / 2)//Recoil gets added when you shoot. The faster we shoot our semi-auto gun the less accurate it is.
-	if(user.crouching || user.lying)//Blind firing out of the trench.
+	if(user.crouching || user.lying)//Blind firing out of the trench or crater.
 		if(istype(user.loc, /turf/simulated/floor/trench))
+			P.dispersion += 10
+			P.accuracy -= 5
+		else if(locate(/obj/effect/crater_cover) in user.loc)
 			P.dispersion += 10
 			P.accuracy -= 5
 
@@ -627,6 +635,20 @@
 	new_mode.apply_to(src)
 
 	return new_mode
+
+/obj/item/gun/attackby(obj/item/W, mob/user)
+	if(istype(W, /obj/item/material/sword/combat_knife) && can_have_bayonet)
+		user.visible_message("[user] attaches a bayonet to the [src].","You attach a bayonet to the [src].")
+		user.remove_from_mob(W)
+		qdel(W)
+		add_bayonet()
+		return
+	..()
+
+/obj/item/gun/handle_shield(mob/living/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
+	if(default_sword_parry(user, damage, damage_source, attacker, def_zone, attack_text))
+		return 1
+	return 0
 
 /obj/item/gun/attack_self(mob/user)
 	var/datum/firemode/new_mode = switch_firemodes(user)

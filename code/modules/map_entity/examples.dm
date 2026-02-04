@@ -116,3 +116,9 @@ MAPPING_AMBIENT_SOUND(blue_burn, "blue_burnspeaker", 'sound/effects/keypad/corre
 		"onBurn:choreo_blueburn:Start"
 	)
 	
+
+MAPPING_CHOREO(get_the_fuck_back_soldier, "goback", list(
+	CHOREO_EVENT(0,  "red_highcom", "SetOn",     null),
+	CHOREO_EVENT(20, "red_highcom", "Announce", "Get the fuck back into the fight, soldier!"),
+	CHOREO_EVENT(40, "red_highcom", "SetOff",     null),
+))

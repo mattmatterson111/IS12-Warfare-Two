@@ -722,6 +722,39 @@
 						result = PROJECTILE_FORCE_MISS //We cannot hit them. Because being able to lie down and shoot them is fucking stupid.
 						to_chat(firer, "<span class='warning'>I cannot hit them lying down like this.</span>")
 
+			// Crater cover protection - similar to trench mechanics
+			if(locate(/obj/effect/crater_cover) in target_mob.loc)
+				// Only protect if shot from outside the crater
+				if(get_dist(starting, target_mob.loc) > 1)
+					var/mob/living/carbon/human/victim = target_mob
+					var/msg = pick("THEY'RE TRYING TO KILL ME!",
+							"THAT WAS CLOSE!",
+							"THEY'RE SHOOTING AT ME!",
+							"TOO CLOSE!",
+							"FUCK, FUCK!")
+					if(original != target_mob)//We weren't shooting at them, so whizz past.
+						do_normal_check = FALSE
+						result = PROJECTILE_FORCE_MISS
+						to_chat(target_mob, "<span class='danger'>BULLETS WHIZZ PAST MY HEAD!</span>")
+						if(ishuman(target_mob) && prob(victim.STAT_LEVEL(end)))
+							to_chat(target_mob, "<span class='phobia'>[msg]</span>")
+							victim.make_adrenaline(damage/20)
+						shake_camera(target_mob, 3, 2)
+						target_mob.recoil += 15
+					else//We were actually shooting at them.
+						if(target_mob.lying || target_mob.crouching)//If the target is lying or crouching the bullets whizz right past them.
+							do_normal_check = FALSE
+							result = PROJECTILE_FORCE_MISS
+							to_chat(target_mob, "<span class='danger'>BULLETS WHIZZ PAST MY HEAD!</span>")
+							if(ishuman(target_mob) && prob(victim.STAT_LEVEL(end)))
+								to_chat(target_mob, "<span class='phobia'>[msg]</span>")
+								victim.make_adrenaline(damage/20)
+							shake_camera(target_mob, 3, 2)
+							target_mob.recoil += 15
+						else if(prob(rand(1,15)))//Chance to miss, minimum of 1, max of 15.
+							do_normal_check = FALSE
+							result = PROJECTILE_FORCE_MISS
+
 			if(do_normal_check)
 				result = target_mob.bullet_act(src, def_zone)//this returns mob's armor_check and another - see modules/mob/living/living_defense.dm
 

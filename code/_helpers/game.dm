@@ -130,6 +130,18 @@
 	var/turf/x2y2 = locate(((centre.x+rad)>world.maxx ? world.maxx : centre.x+rad),((centre.y+rad)>world.maxy ? world.maxy : centre.y+rad),centre.z)
 	return block(x1y1,x2y2)
 
+/proc/strange(rad = 0, turf/centre = null)
+	if(!centre)
+		return list()
+	var/list/turfs = list()
+	var/rsq = rad * (rad + 0.5)
+	for(var/turf/T in trange(rad, centre))
+		var/dx = T.x - centre.x
+		var/dy = T.y - centre.y
+		if(dx*dx + dy*dy <= rsq)
+			turfs += T
+	return turfs
+
 /proc/get_dist_euclidian(atom/Loc1 as turf|mob|obj,atom/Loc2 as turf|mob|obj)
 	var/dx = Loc1.x - Loc2.x
 	var/dy = Loc1.y - Loc2.y

@@ -314,6 +314,7 @@
 "hj" = (/obj/machinery/door/airlock/multi_tile/metal/maintenance/blue,/turf/simulated/floor/urban/cinder,/area/warfare/homebase/blue/stoneroom)
 "hk" = (/obj/structure/closet/crate/wooden/large{icon_closed = "meatball"; icon_state = "meatball"; pixel_x = -2; pixel_y = -2},/obj/effect/map_entity/weather_mask,/turf/simulated/floor/urban/concrete,/area/warfare/homebase/blue/trainyard)
 "hl" = (/obj/machinery/button/remote/blast_door/lever{id = "red"; pixel_x = -32},/turf/simulated/floor/concrete/random,/area/warfare/homebase/red/hallway)
+"hm" = (/obj/effect/floor_decal/industrial/outline/grey,/obj/effect/map_entity/weather_mask,/obj/effect/map_entity/cargo_spawner/random/defend,/turf/simulated/floor/urban/concrete,/area/warfare/homebase/red/trainyard)
 "hn" = (/obj/effect/landmark/start{name = "Red Soldier"},/obj/machinery/button/remote/blast_door/lever{id = "red"; pixel_y = 32},/turf/simulated/floor/concrete/random,/area/warfare/homebase/red/largeroom)
 "ho" = (/obj/effect/landmark/start{name = "Red Engineer"},/turf/simulated/floor/concrete/random,/area/warfare/homebase/red/largeroom)
 "hp" = (/obj/effect/landmark/start{name = "Red Sniper"},/turf/simulated/floor/concrete/random,/area/warfare/homebase/red/largeroom)
@@ -433,6 +434,7 @@
 "lB" = (/obj/effect/floor_decal/trench{dir = 4},/obj/machinery/light/caged{pixel_y = -1; dir = 1; pixel_x = 0},/obj/effect/map_entity/weather_mask,/turf/simulated/floor/trenches/underground{icon_state = "trench"; color = "#ffffff"},/area/warfare/battlefield/capture_point/red/one)
 "lE" = (/obj/effect/map_entity/logic_choreographed_scene/bluebase_burn,/turf/simulated/floor/urban/cinder,/area/warfare/homebase/blue/room)
 "lI" = (/obj/structure/trench_wall/innercorners{dir = 1; pixel_x = 32; pixel_y = 31},/obj/structure/trench_wall{dir = 8; pixel_x = 32; pixel_y = 0},/obj/structure/stairs/trenchstairs{dir = 1},/turf/simulated/floor/trenches/underground{icon_state = "trench"; color = "#ffffff"},/area/warfare/battlefield/capture_point/blue/one)
+"lJ" = (/obj/effect/map_entity/weather_mask,/obj/machinery/light/streetlamp/floodlamp/short/auto{pixel_y = -23},/turf/simulated/floor/urban/concrete,/area/warfare/homebase/blue/trainyard)
 "lK" = (/obj/structure/bed/chair/blue{dir = 1; pixel_x = 0; pixel_y = 11; buckle_pixel_shift = "x=0;y=11"},/obj/effect/landmark/start{name = "Red Soldier"},/turf/simulated/floor/urban/cinder,/area/warfare/homebase/red/largeroom)
 "lL" = (/turf/simulated/floor/concrete/random,/area/warfare/homebase/red/room)
 "lN" = (/obj/structure/announcementspeaker/red{pixel_x = 0; dir = 4},/obj/machinery/light/small/bunker{dir = 1},/turf/simulated/floor/concrete/random,/area/warfare/battlefield/trench_section/hallway)
@@ -445,6 +447,7 @@
 "mi" = (/obj/effect/map_entity/weather_mask,/obj/machinery/light/streetlamp/floodlamp/short/auto,/turf/simulated/floor/dirty/tough,/area/warfare/homebase/red)
 "ml" = (/obj/machinery/light/caged{pixel_y = -14; dir = 1; pixel_x = 0},/obj/item/device/compass,/obj/item/device/compass,/obj/structure/table/rack/nosmooth/wood,/turf/simulated/floor/stones,/area/warfare/homebase/red/room)
 "mo" = (/obj/structure/table/rack/holorack,/turf/simulated/floor/concrete/random,/area/warfare/homebase/blue/largeroom)
+"mp" = (/obj/effect/map_entity/weather_mask,/obj/effect/floor_decal/industrial/outline/grey,/obj/effect/map_entity/cargo_spawner/random/medical,/turf/simulated/floor/urban/concrete,/area/warfare/homebase/blue/trainyard)
 "mr" = (/obj/effect/map_entity/weather_mask,/obj/machinery/light/caged/auto{dir = 1},/turf/simulated/floor/dirty/indestructable,/area/warfare/battlefield/capture_point/blue/one)
 "ms" = (/obj/effect/landmark/start{name = "Blue Practitioner"},/turf/simulated/floor/urban/tiles/blue,/area/warfare/homebase/blue/room)
 "mu" = (/obj/structure/table/rack,/obj/item/storage/box/bodybags,/obj/item/storage/box/bodybags,/obj/item/storage/box/bodybags,/turf/simulated/floor/urban/tiles/blue,/area/warfare/homebase/blue/stoneroom)
@@ -579,6 +582,7 @@
 "rN" = (/obj/effect/landmark/start/redcoats,/obj/machinery/light/small,/obj/structure/bed/chair/gray{dir = 1},/turf/simulated/floor/ert/metal01,/area/train/red)
 "rO" = (/obj/structure/storage/cabinet{dir = 1; pixel_x = -8; pixel_y = 3},/turf/simulated/floor/wood,/area/warfare/homebase/red/largeroom)
 "rT" = (/obj/machinery/light/small/bunker{pixel_x = 0; pixel_y = 32},/turf/simulated/floor/concrete/random,/area/warfare/homebase/red/hallway)
+"rU" = (/obj/effect/floor_decal/industrial/outline/grey,/obj/effect/map_entity/weather_mask,/obj/effect/map_entity/cargo_spawner/random/medical,/turf/simulated/floor/urban/concrete,/area/warfare/homebase/red/trainyard)
 "rV" = (/obj/effect/floor_decal/urban/trim1,/turf/simulated/floor/urban/cinder,/area/warfare/battlefield/trench_section/underground/stormsystem/hall)
 "rZ" = (/turf/simulated/floor/urban/cinder,/area/warfare/homebase/blue/stoneroom)
 "sg" = (/obj/structure/table/rack/nosmooth/metal,/obj/machinery/light/small/bunker{dir = 8; pixel_x = 0; pixel_y = 15},/turf/simulated/floor/urban/tiles/blue,/area/warfare/homebase/blue/room)
@@ -616,6 +620,7 @@
 "tI" = (/obj/machinery/bodyscanner{dir = 4; icon_state = "body_scanner_0"},/turf/simulated/floor/urban/tiles/blue,/area/warfare/homebase/blue/room)
 "tN" = (/obj/machinery/light/small/bunker{dir = 4},/turf/simulated/floor/concrete/random,/area/warfare/homebase/red/largeroom)
 "tT" = (/obj/random/canned_food/red,/obj/random/canned_food/red,/obj/random/canned_food/red,/obj/structure/table/rack/shelf/red,/turf/simulated/floor/wood,/area/warfare/battlefield/trench_section/room)
+"tV" = (/obj/effect/map_entity/weather_mask,/obj/effect/floor_decal/industrial/outline/grey,/obj/effect/map_entity/cargo_spawner/random/light_blue,/turf/simulated/floor/urban/concrete,/area/warfare/homebase/blue/trainyard)
 "tW" = (/obj/structure/trench_wall{dir = 10},/obj/effect/map_entity/nodraw,/turf/simulated/mineral{health = 999999},/area/space)
 "tX" = (/obj/machinery/door/airlock/multi_tile/metal/maintenance/blue,/turf/simulated/floor/concrete/random,/area/warfare/battlefield/trench_section/stoneroom)
 "ua" = (/obj/machinery/door/blast/shutters{dir = 2},/turf/simulated/floor/urban/cinder,/area/warfare/homebase/blue/room)
@@ -780,10 +785,11 @@
 "Ag" = (/obj/effect/landmark/start{name = "Red Practitioner"},/turf/simulated/floor/urban/tiles,/area/warfare/homebase/red/room)
 "Ai" = (/turf/simulated/wall/perspecticrete,/area/warfare/homebase/blue/hallway)
 "Aj" = (/obj/effect/floor_decal/industrial/warning/dust{dir = 1},/obj/effect/floor_decal/train_deco/stripes{dir = 4},/obj/structure/train_deco/platform{pixel_y = 16; dir = 4},/obj/effect/darkout_teleporter/bluecoats,/obj/effect/landmark/train_marker/teleport/blue,/obj/effect/map_entity/weather_mask,/turf/simulated/floor/urban/concrete,/area/warfare/homebase/blue/trainyard)
-"Ak" = (/obj/machinery/camera{dir = 8; pixel_x = -2; pixel_y = 0},/obj/effect/map_entity/weather_mask,/turf/simulated/floor/urban/concrete,/area/warfare/homebase/blue/trainyard)
+"Ak" = (/obj/effect/map_entity/weather_mask,/obj/machinery/camera{dir = 8; pixel_x = -2; pixel_y = 0},/turf/simulated/floor/urban/concrete,/area/warfare/homebase/blue/trainyard)
 "Al" = (/obj/sound_emitter/periodic/env_leak,/turf/simulated/floor/urban/tiles/blue,/area/warfare/homebase/blue/hallway)
 "Ao" = (/obj/structure/announcementspeaker/red{pixel_y = 32},/turf/simulated/floor/urban/tiles,/area/warfare/homebase/red/room)
 "As" = (/obj/machinery/light/caged{pixel_y = -2; dir = 1; pixel_x = 16},/turf/simulated/floor/wood,/area/warfare/battlefield/trench_section/underground/indoors)
+"Az" = (/obj/effect/map_entity/weather_mask,/obj/effect/floor_decal/industrial/outline/grey,/obj/effect/map_entity/cargo_spawner/random/defend,/turf/simulated/floor/urban/concrete,/area/warfare/homebase/blue/trainyard)
 "AA" = (/obj/structure/curtain,/turf/simulated/floor/urban/cinder,/area/warfare/homebase/blue/room)
 "AB" = (/turf/simulated/floor/exoplanet/water/shallow/lightless/urban,/area/warfare/battlefield/trench_section/underground/stormsystem/hall)
 "AH" = (/obj/item/folder/envelope{name = "Dictates"; desc = "To pass thy dictates to thy chosen envoys. Or to dispatch reward."},/obj/structure/table/rack/nosmooth/wood/alt{dir = 9},/turf/simulated/floor/wood,/area/warfare/battlefield/trench_section/underground/indoors)
@@ -873,6 +879,7 @@
 "En" = (/obj/effect/map_entity/weather_mask,/turf/simulated/floor/urban/concrete,/area/warfare/homebase/blue/trainyard)
 "Eo" = (/obj/structure/cargo_pad/blue,/turf/simulated/floor/urban/cinder,/area/warfare/homebase/blue/largeroom)
 "Eu" = (/obj/effect/landmark/start{name = "Blue Soldier"},/turf/simulated/floor/stones,/area/warfare/homebase/blue/room)
+"Ev" = (/obj/effect/map_entity/weather_mask,/obj/effect/floor_decal/industrial/outline/grey,/turf/simulated/floor/urban/concrete,/area/warfare/homebase/blue/trainyard)
 "EC" = (/obj/effect/darkout_teleporter{id = "SUB_END"; entrance = 0; twoway = 1},/obj/effect/map_entity/nodraw/deco/shadowpaint{dir = 1},/turf/simulated/floor/trenches/underground{icon_state = "trench"; color = "#ffffff"},/area/space)
 "EI" = (/obj/structure/dirt_wall,/obj/machinery/light/caged{dir = 4; pixel_x = -17; pixel_y = 0},/obj/effect/map_entity/weather_mask,/turf/simulated/floor/dirty/indestructable,/area/warfare/battlefield/trench_section)
 "EM" = (/obj/structure/window/reinforced,/obj/structure/cargo_pad/red,/obj/structure/window/reinforced{dir = 4; icon_state = "rwindow"},/turf/simulated/floor/urban/cinder,/area/warfare/homebase/red/room)
@@ -963,6 +970,7 @@
 "Iw" = (/obj/structure/closet/crate/wooden/large{icon_closed = "meatball"; icon_state = "meatball"; pixel_x = 0; pixel_y = -15},/obj/effect/floor_decal/industrial/warning/dust{dir = 1},/obj/effect/map_entity/weather_mask,/turf/simulated/floor/urban/concrete,/area/warfare/homebase/blue/trainyard)
 "Iy" = (/obj/structure/trench_wall/innercorners{dir = 4},/obj/structure/trench_wall/innercorners{dir = 8; pixel_x = 32},/turf/simulated/mineral{health = 999999},/area/space)
 "Iz" = (/obj/structure/warfare_itemeater/red,/turf/simulated/wall/perspecticrete,/area/warfare/homebase/red/largeroom)
+"IB" = (/obj/effect/map_entity/weather_mask,/obj/effect/map_entity/logic_choreographed_scene/get_the_fuck_back_soldier,/turf/simulated/floor/urban/cinder,/area/warfare/homebase/red)
 "IF" = (/obj/structure/poster/red,/obj/effect/map_entity/nodraw,/turf/simulated/wall/perspecticrete,/area/warfare/homebase/red/hallway)
 "IK" = (/obj/effect/map_entity/nodraw/deco/bars,/turf/simulated/floor/dirty/indestructable,/area/space)
 "IN" = (/obj/effect/landmark/start{name = "Red Soldier"},/obj/structure/bed/chair/red{dir = 4; pixel_x = 6; pixel_y = 0; buckle_pixel_shift = "x=6;y=0"},/obj/machinery/light/small/bunker{dir = 8},/turf/simulated/floor/concrete/random,/area/warfare/homebase/red/largeroom)
@@ -994,6 +1002,7 @@
 "JX" = (/obj/effect/landmark/start{name = "Red Soldier"},/obj/structure/announcementspeaker/red{pixel_y = 32},/turf/simulated/floor/concrete/random,/area/warfare/homebase/red/largeroom)
 "Kg" = (/obj/effect/floor_decal/trench{dir = 8},/obj/effect/map_entity/weather_mask,/turf/simulated/floor/trenches/underground{icon_state = "trench"; color = "#ffffff"},/area/warfare/battlefield/capture_point/red/one)
 "Kh" = (/obj/machinery/light/streetlamp/floodlamp/auto,/turf/simulated/floor/dirty/indestructable,/area/warfare/battlefield/trench_section/hallway)
+"Kj" = (/obj/effect/map_entity/weather_mask,/obj/effect/map_entity/loudspeaker_announcement/red_highcom,/turf/simulated/floor/urban/cinder,/area/warfare/homebase/red)
 "Kk" = (/obj/machinery/light{pixel_x = 16},/turf/simulated/floor/urban/tiles,/area/warfare/homebase/red/room)
 "Km" = (/obj/effect/map_entity/nodraw,/turf/simulated/wall/perspecticrete,/area/warfare/homebase/red/largeroom)
 "Ku" = (/obj/structure/trench_wall{dir = 4},/turf/simulated/mineral{health = 999999},/area/warfare/battlefield/capture_point/red/one)
@@ -1169,6 +1178,7 @@
 "Sp" = (/obj/structure/trench_wall{dir = 1; pixel_y = -32},/obj/structure/closet/body_bag,/turf/simulated/floor/wood,/area/warfare/battlefield/trench_section/underground/indoors)
 "Sr" = (/obj/machinery/light/caged/auto{pixel_y = 32},/turf/simulated/floor/wood,/area/warfare/homebase/blue)
 "Sy" = (/obj/effect/floor_decal/trench{dir = 9},/turf/simulated/floor/trenches/underground{icon_state = "trench"; color = "#ffffff"},/area/warfare/battlefield/capture_point/red/two)
+"SB" = (/obj/effect/map_entity/weather_mask,/obj/machinery/light/streetlamp/floodlamp/short/auto,/turf/simulated/floor/urban/concrete,/area/warfare/homebase/red/trainyard)
 "SD" = (/obj/machinery/light/caged{pixel_y = -14; dir = 1; pixel_x = 0},/obj/structure/trench_wall{dir = 4; pixel_x = -32; pixel_y = 0},/obj/structure/trench_wall/innercorners{dir = 4; pixel_x = -32; pixel_y = -32},/obj/structure/trench_wall/sequel{dir = 5; pixel_x = 0; pixel_y = -32},/obj/structure/closet/crate,/turf/simulated/floor/wood,/area/warfare/battlefield/trench_section/room)
 "SI" = (/obj/structure/table/rack/nosmooth/metal,/obj/item/pen/blue{pixel_x = -12; pixel_y = 7},/obj/item/paper/crumpled{info = "///// ///// ///// //"; pixel_x = -1; pixel_y = 3; contents = "///// ///// ///// //"; name = "Tally"},/obj/item/storage/box/bodybags,/obj/machinery/light{dir = 1; pixel_y = 32},/turf/simulated/floor/urban/tiles/blue,/area/warfare/homebase/blue/room)
 "SN" = (/obj/structure/trench_wall{dir = 4},/turf/simulated/mineral{health = 999999},/area/warfare/battlefield/capture_point/blue/two)
@@ -1266,7 +1276,7 @@
 "WG" = (/obj/structure/trench_wall{dir = 4; pixel_x = -32; pixel_y = 0},/obj/structure/trench_wall/innercorners{pixel_x = -32; pixel_y = 31},/obj/structure/stairs/trenchstairs{dir = 1},/obj/effect/map_entity/weather_mask,/turf/simulated/floor/trenches/underground{icon_state = "trench"; color = "#ffffff"},/area/warfare/battlefield/capture_point/red/two)
 "WH" = (/obj/structure/train_deco/tracks01,/obj/effect/map_entity/nodraw/deco/shadowpaint{opacity = 1; dir = 4},/obj/effect/map_entity/weather_mask,/turf/simulated/floor/stones,/area/warfare/homebase/blue/trainyard)
 "WJ" = (/obj/structure/announcementspeaker/red{id = "Bluecoats"; pixel_y = 32},/turf/simulated/floor/urban/tiles/blue,/area/warfare/homebase/blue/hallway)
-"WL" = (/obj/machinery/camera{dir = 4; pixel_x = 2; pixel_y = 0},/obj/effect/map_entity/weather_mask,/turf/simulated/floor/urban/concrete,/area/warfare/homebase/blue/trainyard)
+"WL" = (/obj/effect/map_entity/weather_mask,/obj/machinery/camera{dir = 4; pixel_x = 2; pixel_y = 0},/turf/simulated/floor/urban/concrete,/area/warfare/homebase/blue/trainyard)
 "WR" = (/obj/machinery/optable{pixel_x = 4},/obj/machinery/light,/turf/simulated/floor/urban/tiles/blue,/area/warfare/homebase/blue/room)
 "WS" = (/obj/structure/trench_wall/innercorners{dir = 1},/obj/structure/trench_wall{dir = 1},/turf/simulated/mineral{health = 999999},/area/warfare/battlefield/trench_section/room)
 "WU" = (/obj/effect/floor_decal/trench{dir = 9},/obj/effect/map_entity/weather_mask,/turf/simulated/floor/trenches/underground{icon_state = "trench"; color = "#ffffff"},/area/warfare/battlefield/capture_point/red/one)
@@ -1304,6 +1314,7 @@
 "Yr" = (/obj/effect/floor_decal/stones,/obj/effect/map_entity/weather_mask,/turf/simulated/floor/dirty/indestructable,/area/warfare/battlefield/trench_section)
 "Yt" = (/obj/structure/cargo_pad/bue/captain,/obj/structure/warfare_itemeater/blue{pixel_y = 32},/turf/simulated/floor/wood,/area/warfare/homebase/blue/caproom)
 "Yu" = (/turf/unsimulated/wall/submarine/doors{dir = 4},/area/train/red)
+"Yv" = (/obj/effect/floor_decal/industrial/outline/grey,/obj/effect/map_entity/weather_mask,/obj/effect/map_entity/cargo_spawner/random/light_red,/turf/simulated/floor/urban/concrete,/area/warfare/homebase/red/trainyard)
 "Yy" = (/obj/machinery/door/airlock/multi_tile/metal/maintenance/red{locked = 1; maxhealth = 500000},/turf/simulated/floor/urban/tiles,/area/warfare/homebase/red/hallway)
 "Yz" = (/turf/simulated/floor/dirty/indestructable,/area/warfare/homebase/blue/trainyard)
 "YD" = (/obj/structure/table/rack,/turf/simulated/floor/urban/tiles,/area/warfare/homebase/red/stoneroom)
@@ -1670,9 +1681,9 @@ JjIaNfOCOCOCOCXjOCOCOCOCOCOCOCOCOCOCOCOCOCOCJQysysuXysOZOCOCOCOCOCOCOCOCOCOCOCOC
 JjRjRjRjRjRjRjRjRjRjRjxmxmxmxmxmxmxmxmxmxmxmMgdNBKRIAjDTxmxmxmxmxmxmxmxmxmxmxmRjRjRjRjRjRjRjRjRjRjJj
 JjRjRjRjRjRjRjRjRjRjRjSZSZSZSZxmxmxmxmxmNwxmXkEnEnEnEnjqwUxmxmxmxmxmxmSZSZSZSZRjRjRjRjRjRjRjRjRjRjJj
 JjRjRjRjRjRjRjRjRjRjBIIwCuCuHagjgjgjgjgjgjgjuiEnEnEnEnuOgjgjgjgjgjgjgjQNCuIwCuBIRjRjRjRjRjRjRjRjRjJj
-JjRjRjRjRjRjRjRjRjRjBIUDhkEnynpepepepepepepepeWLLNLNAkpepepepepepepepeenHSUDhkBIRjRjRjRjRjRjRjRjRjJj
-JjRjRjRjRjRjRjRjRjRjBIYUzVEnynpepepepepepepepeEnEnEnEnpepepepepepepepeenEnYezVBIRjRjRjRjRjRjRjRjRjJj
-JjRjRjRjRjRjRjRjRjRjBIRrdREnynEnEnEnEnEnEnEnEnEnEnEnEnEnEnEnEnEnEnEnEnenEnRrdRBIRjRjRjRjRjRjRjRjRjJj
+JjRjRjRjRjRjRjRjRjRjBIUDhkEnynpepepetVtVEvtVEvWLLNLNAkAzAzEvEvEvAzpepeenHSUDhkBIRjRjRjRjRjRjRjRjRjJj
+JjRjRjRjRjRjRjRjRjRjBIYUzVEnynpepepeEvEvmpEvEvEnEnEnEnEvEvEvAzEvEvpepeenEnYezVBIRjRjRjRjRjRjRjRjRjJj
+JjRjRjRjRjRjRjRjRjRjBIRrdREnynEnlJEnEnlJEnEnlJEnEnEnEnlJEnEnlJEnEnlJEnenEnRrdRBIRjRjRjRjRjRjRjRjRjJj
 JjaqaqaqaqaqaqaqaqNZbbiSiSbbbbbbbbbbbbbbbbbbbbbbluTxggggggggggggggagagagagezezagaqaqaqaqaqaqaqaqaqJj
 JjaqaqaqaqaqaqaqaqNZUYUYUYUYehwAmudLipipiprgelIVaPaPggbwJcbwJcbwrMaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqJj
 JjaqaqaqaqaqaqaqaqNZUYpVpVsYLtdtdtdtdtDXLtdtdtrZaPaPvHbwbwQBbwbwrMaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqJj
@@ -1886,7 +1897,7 @@ aaaaaaaaaaaaaaaaaaaaaaaagGgGgGgGgGgGgGgGgGgGgJgLgLgLgLgJgGgGgGgGgGgGgGgGgGgGaaaa
 aaaaaaaaaaaaaaaaaaaaaaaagLgLgLgLgLgLgLgLgLgLgLgLgLgLgLgLgLgLgLgLgLgLgLgLgLgLaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaabRbRbRgJgJgJgJgJgJgJgJgJgLgLgJgJgJgJgJgJgJgJgJgJgJgJaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaGfGfgMgMgMgMgMgMgMgMgMgMgMgMgMgMgMgMgMgMgMgMgMgMGfGfaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaVPVPVPVPVPVPVPVPgNgNgNgNgNgNgNgNgNgNgNgNgNgNgNgNgNgNgNgNgNgNgNgNgNgNVPVPVPVPVPVPVPVPaaaaaaaa
+aaaaaaaaVPVPVPVPVPVPVPVPgNgNgNgNgNgNgNgNgNgNgNgNKjIBgNgNgNgNgNgNgNgNgNgNgNgNVPVPVPVPVPVPVPVPaaaaaaaa
 aaaaaaaaVPVPVPVPVPVPVPVPmigOgOgOgOgOgOgOgOgOmigPgNgNgPmigOgOgOgOgOgOgOgOgOmiVPVPVPVPVPVPVPVPaaaaaaaa
 aaaaaaaaVPVPVPVPVPVPVPVPgQgQgQgQgQgQgQgQgQgQgQgQgNgNgQgQgQgQgQgQgQgQgQgQgQgQVPVPVPVPVPVPVPVPaaaaaaaa
 aaaaaaaaVPVPVPVPVPVPVPVPgSgSgSgSgSgSgSgSgSgSgSgSgNgNgSgSgSgSgSgSgSgSgSgSgSgSVPVPVPVPVPVPVPVPaaheaaaa
@@ -1917,9 +1928,9 @@ aaVPVPVPVPVPVPVPVPNqWwiAiAiipbvAihFrCBItFriuivFrtkJmabVPVPVPVPVPVPVPVPVPVPVPVPVP
 aaVPVPVPVPVPVPVPVPNqWwiAiAiiLsvAsmFrViHjFriuivFrtktkabVPVPVPVPVPVPVPVPVPVPVPVPVPVPVPVPVPVPVPVPVPVPaa
 aaVPVPVPVPVPVPVPabWwWwWwWwWwuKvAihFrKkItFPCAivFrXnrFabVPVPVPVPVPVPVPVPVPVPVPVPVPVPVPVPVPVPVPVPVPVPaa
 aaiEVPVPVPVPVPVPabWwWwbUbUWwWwWwWwFrFrFrFrFrFrFrleklabababababababababababzczcabVPVPVPVPVPVPVPVPVPaa
-aaNHNHNHNHNHNHNHNHNHngUKininzdininininininininininininininininininininUeinUKinngNHNHNHNHNHNHNHNHNHee
-aaNHNHNHNHNHNHNHNHNHnginininzdUMUMUMUMUMUMUMUMininininUMUMUMUMUMUMUMUMUeinGdedngNHNHNHNHNHNHNHNHNHee
-aaNHNHNHNHNHNHNHNHNHngRKBOinzdUMUMUMUMUMUMUMUMecrxrxTdUMUMUMUMUMUMUMUMUeQWRKBOngNHNHNHNHNHNHNHNHNHee
+aaNHNHNHNHNHNHNHNHNHngUKininzdinSBininSBininSBininininSBininSBininSBinUeinUKinngNHNHNHNHNHNHNHNHNHee
+aaNHNHNHNHNHNHNHNHNHnginininzdUMUMUMYvYvUMYvUMininininhmhmUMUMUMhmUMUMUeinGdedngNHNHNHNHNHNHNHNHNHee
+aaNHNHNHNHNHNHNHNHNHngRKBOinzdUMUMUMUMUMrUUMUMecrxrxTdUMUMUMhmUMUMUMUMUeQWRKBOngNHNHNHNHNHNHNHNHNHee
 aaNHNHNHNHNHNHNHNHNHngPqPqPqCWgkgkgkgkgkgkgkyfininininilgkgkgkgkgkgkgkdUPqPqPqngNHNHNHNHNHNHNHNHNHee
 aaNHNHNHNHNHNHNHNHNHNHQxQxQxiaiaiaiaiaiaHwiaXlcfcfcfcfQUdaiaiaiaiaiaiaiaQxQxQxNHNHNHNHNHNHNHNHNHNHee
 aaNHNHNHNHNHNHNHNHNHNHiaiaiaiaiaiaiaiaiaiaiahdibeByqIPryiaiaiaiaiaiaiaiaiaiaiaNHNHNHNHNHNHNHNHNHNHee

@@ -110,7 +110,6 @@
 
 	var/table_pickup_sound = null //Sound it makes when you take something off a table.
 
-
 /obj/item/New()
 	..()
 	originalstate = icon_state
@@ -487,6 +486,7 @@
 
 // apparently called whenever an item is removed from a slot, container, or anything else.
 /obj/item/proc/dropped(mob/user as mob)
+
 	if(randpixel)
 		pixel_z = randpixel //an idea borrowed from some of the older pixel_y randomizations. Intended to make items appear to drop at a character
 	if(zoom)
@@ -511,6 +511,7 @@
 
 // called just as an item is picked up (loc is not yet changed)
 /obj/item/proc/pickup(mob/user)
+
 	if(locate(/obj/structure/table) in loc)
 		if(table_pickup_sound)
 			playsound(src, table_pickup_sound, 50)
