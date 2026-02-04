@@ -45,15 +45,15 @@ CARGO_CRATE_PRODUCT(revolver_pack, "Trenchman Revolver Pack", 200, "Brass.Co Top
 CARGO_CRATE_PRODUCT(mortar_pack, "Mortar Pack", 500, "Brass.Co Top-Brass", list(/obj/item/mortar_launcher = 2, /obj/item/mortar_shell = 6), /obj/structure/closet/crate/secure/weapon, null)
 
 CARGO_CRATE_PRODUCT(barbwire_pack, "Barbwire Pack", 50, "Sil's Utility Corps", list(/obj/item/stack/barbwire = 5), /obj/structure/closet/crate/war_metal, null)
-CARGO_CRATE_PRODUCT(bodybag_pack, "Bodybag Pack", 5, "Daisy's Panacea", list(/obj/item/storage/box/bodybags = 3), /obj/structure/closet/crate/medical, null)
+CARGO_CRATE_PRODUCT(bodybag_pack, "Bodybag Pack", 5, "Daisy's Panacea", list(/obj/item/storage/box/bodybags = 3), /obj/structure/closet/crate/war_metal, null)
 CARGO_CRATE_PRODUCT(cigarette_pack, "Cigarette Pack", 50, "ChowField Provisions", list(/obj/item/storage/fancy/cigarettes = 10), /obj/structure/closet/crate/war_metal, null)
-CARGO_CRATE_PRODUCT(firstaid_pack, "First Aid Pack", 100, "Daisy's Panacea", list(/obj/item/storage/firstaid/regular = 5), /obj/structure/closet/crate/medical, null)
-CARGO_CRATE_PRODUCT(advfirstaid_pack, "Advanced First Aid Pack", 200, "Daisy's Panacea", list(/obj/item/storage/firstaid/adv = 5), /obj/structure/closet/crate/medical, null)
-CARGO_CRATE_PRODUCT(medbelt_pack, "Medical Belt Pack", 50, "Daisy's Panacea", list(/obj/item/storage/belt/medical/full = 10), /obj/structure/closet/crate/medical, null)
+CARGO_CRATE_PRODUCT(firstaid_pack, "First Aid Pack", 100, "Daisy's Panacea", list(/obj/item/storage/firstaid/regular = 5), /obj/structure/closet/crate/war_metal, null)
+CARGO_CRATE_PRODUCT(advfirstaid_pack, "Advanced First Aid Pack", 200, "Daisy's Panacea", list(/obj/item/storage/firstaid/adv = 5), /obj/structure/closet/crate/war_metal, null)
+CARGO_CRATE_PRODUCT(medbelt_pack, "Medical Belt Pack", 50, "Daisy's Panacea", list(/obj/item/storage/belt/medical/full = 10), /obj/structure/closet/crate/war_metal, null)
 CARGO_CRATE_PRODUCT(booze_pack, "Booze Pack", 100, "ChowField Provisions", list(/obj/random/drinkbottle = 8), /obj/structure/closet/crate/war_metal, null)
-CARGO_CRATE_PRODUCT(atepoine_pack, "Atepoine Pack", 50, "Daisy's Panacea", list(/obj/item/reagent_containers/hypospray/autoinjector/revive = 10), /obj/structure/closet/crate/medical, null)
+CARGO_CRATE_PRODUCT(atepoine_pack, "Atepoine Pack", 50, "Daisy's Panacea", list(/obj/item/reagent_containers/hypospray/autoinjector/revive = 10), /obj/structure/closet/crate/war_metal, null)
 CARGO_CRATE_PRODUCT(smoke_pack, "Smoke Grenade Pack", 150, "Sil's Utility Corps", list(/obj/item/grenade/smokebomb = 5), /obj/structure/closet/crate/war_metal, null)
-CARGO_CRATE_PRODUCT(prosthetic_pack, "Prosthetic Limbs Pack", 200, "Daisy's Panacea", list(/obj/item/organ/external/arm/robo_arm = 2, /obj/item/organ/external/arm/right/robo_arm = 2, /obj/item/organ/external/hand/robo_hand = 2, /obj/item/organ/external/hand/right/robo_hand = 2, /obj/item/organ/external/leg/robo_leg = 2, /obj/item/organ/external/leg/right/robo_leg = 2, /obj/item/organ/external/foot/robo_foot = 2, /obj/item/organ/external/foot/right/robo_foot = 2), /obj/structure/closet/crate/medical, null)
+CARGO_CRATE_PRODUCT(prosthetic_pack, "Prosthetic Limbs Pack", 200, "Daisy's Panacea", list(/obj/item/organ/external/arm/robo_arm = 2, /obj/item/organ/external/arm/right/robo_arm = 2, /obj/item/organ/external/hand/robo_hand = 2, /obj/item/organ/external/hand/right/robo_hand = 2, /obj/item/organ/external/leg/robo_leg = 2, /obj/item/organ/external/leg/right/robo_leg = 2, /obj/item/organ/external/foot/robo_foot = 2, /obj/item/organ/external/foot/right/robo_foot = 2), /obj/structure/closet/crate/war_metal, null)
 CARGO_CRATE_PRODUCT(blood_pack, "Blood Injector Pack", 50, "Daisy's Panacea", list(/obj/item/reagent_containers/hypospray/autoinjector/blood = 10), /obj/structure/closet/crate/war_metal, null)
 
 CARGO_JOB_PRODUCT(reinforcements, "Reinforcements", 750, "Units", "none", null)
@@ -95,7 +95,7 @@ CARGO_JOB_PRODUCT(sentry_blue, "Blue sentry", 750, "Units", /datum/job/soldier/b
 
 
 
-CARGO_TRAIN_PRODUCT(combat_medical, "Combat Medical Supplies", list(/obj/item/storage/firstaid/regular = 2, /obj/item/reagent_containers/hypospray/autoinjector/revive = 3), /obj/structure/closet/crate/medical)
+CARGO_TRAIN_PRODUCT(combat_medical, "Combat Medical Supplies", list(/obj/item/storage/firstaid/regular = 2, /obj/item/reagent_containers/hypospray/autoinjector/revive = 3), /obj/structure/closet/crate/war_metal)
 CARGO_TRAIN_PRODUCT(emergency_ammo, "Emergency Ammunitions", list(/obj/item/ammo_box/rifle = 3, /obj/item/ammo_box/shotgun = 3, /obj/item/ammo_box/ptsd = 1), /obj/structure/closet/crate/war_metal)
 CARGO_TRAIN_PRODUCT(lantern_pack, "Lantern Pack", list(/obj/item/device/flashlight/lantern = 5), /obj/structure/closet/crate/war_metal)
 CARGO_TRAIN_PRODUCT(industrial, "Industrial Supplies", list(/obj/item/stack/barbwire = 5, /obj/item/shovel = 3, /obj/item/defensive_barrier = 2), /obj/structure/closet/crate/war_metal)

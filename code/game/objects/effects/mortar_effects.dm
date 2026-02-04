@@ -52,25 +52,6 @@
 	auto_crouched_mobs.Cut()
 	. = ..()
 
-/obj/effect/crater_cover/CanPass(atom/movable/mover, turf/target)
-	if(istype(mover, /obj/item/projectile))
-		var/obj/item/projectile/P = mover
-		return check_projectile_blocking(P)
-	return ..()
-
-/obj/effect/crater_cover/proc/check_projectile_blocking(obj/item/projectile/P)
-	for(var/mob/living/L in loc)
-		if(L.stat == DEAD)
-			continue
-		if(!L.lying && !L.crouching)
-			continue
-		if(get_dist(P.starting, loc) <= 1)
-			continue
-		if(prob(cover_strength))
-			visible_message("<span class='warning'>The shot hits the crater's edge!</span>")
-			return FALSE
-	return TRUE
-
 /obj/effect/lingering_haze
 	name = "dust haze"
 	desc = "A cloud of dust and debris kicked up by an explosion."
