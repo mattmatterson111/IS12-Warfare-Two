@@ -1231,7 +1231,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 /obj/item/organ/external/proc/jostle_bone(force, var/forced = FALSE)
 	if(force && forced) //for wrench fails
 		owner.custom_pain("A piece of bone in your [encased ? encased : name] moves painfully!", 25, affecting = src) //less pain, still hurts
-		if(!internal_organs.len) return
+		if(!internal_organs.len) return //as it turns out hands and feet dont have internal organs
 		var/obj/item/organ/I = pick(internal_organs)
 		I.take_damage(force)
 		return
