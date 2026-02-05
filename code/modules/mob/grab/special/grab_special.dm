@@ -80,7 +80,8 @@
 
 /datum/grab/special/wrench/attack_self_act(var/obj/item/grab/G)
 	do_wrench(G)
-	G.assailant.setClickCooldown(DEFAULT_SLOW_COOLDOWN)
+	if(G.assailant) //if the grab gets broken before this finishes
+		G.assailant.setClickCooldown(DEFAULT_SLOW_COOLDOWN)
 
 /datum/grab/special/wrench/proc/do_wrench(var/obj/item/grab/G)
 	var/obj/item/organ/external/O = G.get_targeted_organ()
@@ -175,7 +176,8 @@
 
 /datum/grab/special/takedown/attack_self_act(var/obj/item/grab/G)
 	do_takedown(G)
-	G.assailant.setClickCooldown(DEFAULT_SLOW_COOLDOWN)
+	if(G.assailant) //if the grab gets broken before this finishes
+		G.assailant.setClickCooldown(DEFAULT_SLOW_COOLDOWN)
 
 /datum/grab/special/takedown/process_effect(var/obj/item/grab/G)
 	// Keeps those who are on the ground down
@@ -432,6 +434,6 @@
 
 	G.last_action = world.time
 
-	admin_attack_log(user, src, "Knifed their victim", "Was knifed", "knifed")
+	admin_attack_log(user, G.assailant, "Knifed their victim", "Was knifed", "knifed")
 	user.doing_something = FALSE
 	return 1
