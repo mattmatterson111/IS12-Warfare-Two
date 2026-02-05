@@ -1112,18 +1112,14 @@
 	icon_state = "soldiervend"
 	vend_delay = 6
 	vend_ready = 4
-	products = list(/obj/item/reagent_containers/food/snacks/donut/normal = 12, /obj/item/attachable/verticalgrip = 6,
-					/obj/item/attachable/holosight = 6, /obj/item/attachable/reddot = 6, /obj/item/attachable/lasersight = 6,
-					/obj/item/attachable/angledgrip = 6, /obj/item/material/sword/combat_knife = 4, /obj/item/melee/classic_baton/factionbanner/red = 1, /obj/item/storage/box/lights/bulbs = 2) // add weapon bayonets later please
+	products = list(/obj/item/reagent_containers/food/snacks/donut/normal = 12, /obj/item/material/sword/combat_knife = 4, /obj/item/melee/classic_baton/factionbanner/red = 1, /obj/item/storage/box/lights/bulbs = 2) // add weapon bayonets later please/ added :)
 	icon_vend = "soldiervend-vend"
 	icon_deny = "soldiervend-off"
 	rand_amount = FALSE
 
 /obj/machinery/vending/soldier/blue
 	desc = "A Blusnian vending machine powering their war machine."
-	products = list(/obj/item/reagent_containers/food/snacks/donut/normal = 12, /obj/item/attachable/verticalgrip = 6,
-					/obj/item/attachable/holosight = 6, /obj/item/attachable/reddot = 6, /obj/item/attachable/lasersight = 6,
-					/obj/item/attachable/angledgrip = 6, /obj/item/material/sword/combat_knife = 4, /obj/item/melee/classic_baton/factionbanner/blue = 1, /obj/item/storage/box/lights/bulbs = 2) // add weapon bayonets later please
+	products = list(/obj/item/reagent_containers/food/snacks/donut/normal = 12, /obj/item/material/sword/combat_knife = 4, /obj/item/melee/classic_baton/factionbanner/blue = 1, /obj/item/storage/box/lights/bulbs = 2) // add weapon bayonets later please/ added :)
 	icon_state = "soldiervendblue"
 	icon_vend = "soldiervendblue-vend"
 	icon_deny = "soldiervendblue-off"
