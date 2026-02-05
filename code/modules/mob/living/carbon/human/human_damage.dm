@@ -383,12 +383,13 @@ This function restores all organs.
 		damage *= blocked_mult(blocked)
 
 	if(damage > 15 && prob((damage*4) + src.STAT_LEVEL(end)))
-		var/msg = pick("THEY'RE TRYING TO KILL ME!",
-							"THAT FUCKING HURTS!",
-							"NOT LIKE THIS!",
-							"GODDAMIT!",
-							"IM NOT GOING DOWN HERE!")
-		to_chat(src, "<span class='phobia'>[msg]</span>")
+		if(src.stat == CONSCIOUS)
+			var/msg = pick("THEY'RE TRYING TO KILL ME!",
+								"THAT FUCKING HURTS!",
+								"NOT LIKE THIS!",
+								"GODDAMIT!",
+								"IM NOT GOING DOWN HERE!")
+			to_chat(src, "<span class='phobia'>[msg]</span>")
 		make_adrenaline(round(damage/10))
 	var/datum/wound/created_wound
 	damageoverlaytemp = 20
