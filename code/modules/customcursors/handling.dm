@@ -39,17 +39,16 @@
 	if(object.getCursor(mob, currenthand))
 		mouse_pointer_icon = object.getCursor(mob, currenthand)
 		
-/mob/living/carbon/human/verb/refresh_cursor_icon()  //sometimes the cursor doesn't show the current state properly
-    set name = "Refresh Cursor Icon"
-    set desc = "Fix me cursor goddamit"  
-    set category = "IC"  
-      
-    if(stat)  
-        return  
-      
-    if(client && client.hovered_obj)  
-        client.update_cursor(client.hovered_obj)  
-    else  
-        client?.update_cursor(null)  
-      
+/mob/living/carbon/human/verb/refresh_cursor_icon()  //sometimes the cursor doesn't show the current state properly  
+    set name = "Refresh Cursor Icon"  
+    set desc = "Fix me cursor goddamit"    
+    set category = "IC"    
+        
+    if(stat)    
+        return    
+        
+    if(client)  
+        client.mouse_pointer_icon = null  
+        client.update_cursor() //one more try  
+        
     to_chat(src, "<span class='notice'>Cursor refreshed!</span>")
