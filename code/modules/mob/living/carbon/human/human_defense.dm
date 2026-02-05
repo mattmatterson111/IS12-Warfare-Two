@@ -188,6 +188,9 @@ meteor_act
 	  
 	if(a_intent == I_GRAB) // Better chance on grab intent  
 		parry_chance += 25  
+		
+	if(lying) //stand up.
+		parry_chance -= 25
 	  
 	if(prob(parry_chance)) //we parried with our bare hand
 		visible_message("<span class='combat_success'>\The [src] parries [attack_text] with their bare hand!</span>")  
