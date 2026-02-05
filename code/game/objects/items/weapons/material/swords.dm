@@ -41,8 +41,16 @@
 
 	var/actual_block_chance = (block_chance + ((user.SKILL_LEVEL(melee) * 10) / 2))//Skills aren't base 100 anymore they're based 10 so I'm multiplying 100
 
-	if(user.a_intent == I_GRAB) //better chance to block if on grab intent
-		actual_block_chance += 50
+	var/zone_guessed_correctly = (def_zone == user.zone_sel.selecting) // Check if defender guessed the correct zone  
+	
+	if(zone_guessed_correctly)  
+		actual_block_chance += 25 // Bonus for correct zone guess
+	
+	if(user.a_intent == I_GRAB) //better chance to block if on grab intent, based on stats
+		actual_block_chance += user.STAT_LEVEL(end) + user.STAT_LEVEL(str)
+		
+	if(user.lying) //get up
+		actual_block_chance -= 25
 
 	if(default_parry_check(user, attacker, damage_source) && prob(actual_block_chance) && (user.get_active_hand() == src))//You gotta be holding onto that sheesh bro.
 		if(prob(user.STAT_LEVEL(end) + 10))

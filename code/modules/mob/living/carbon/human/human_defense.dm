@@ -179,7 +179,7 @@ meteor_act
 	var/zone_guessed_correctly = (def_zone == zone_sel.selecting) // Check if defender guessed the correct zone  
 	  
 	// Calculate parry chance based on melee skill and zone guess  
-	var/parry_chance = (SKILL_LEVEL(melee) * 5) + (my_stats[STAT(end)].level) // melee skill + end
+	var/parry_chance = (SKILL_LEVEL(melee) * 5) + (STAT_LEVEL(end)) // melee skill + end
 	
 	if(zone_guessed_correctly)  
 		parry_chance += 30 // Significant bonus for correct zone guess  
@@ -187,7 +187,10 @@ meteor_act
 		parry_chance -= 20 // Penalty for wrong zone guess  
 	  
 	if(a_intent == I_GRAB) // Better chance on grab intent  
-		parry_chance += 25  
+		parry_chance += STAT_LEVEL(str) * 2
+		
+	if(lying) //stand up.
+		parry_chance -= 25
 	  
 	if(prob(parry_chance)) //we parried with our bare hand
 		visible_message("<span class='combat_success'>\The [src] parries [attack_text] with their bare hand!</span>")  

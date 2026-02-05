@@ -8,7 +8,7 @@
 	var/dodge_modifier = 0
 	if(a_intent != I_HELP && defense_intent == I_DODGE && !lying)//check_shield_arc proc used where attempt_dodge procs are called
 		if(a_intent == I_DISARM)//Better chance to dodge on disarm intent
-			dodge_modifier += 30
+			dodge_modifier += STAT_LEVEL(dex) * 2
 		if(src.grabbed_by.len) //getting grabbed makes it harder to dodge ya know?
 			for(var/obj/item/grab/G in src.grabbed_by)
 				if(G.target_zone in list(BP_L_LEG, BP_R_LEG, BP_L_FOOT, BP_R_FOOT)) //oh shit someones grabbing our leg
