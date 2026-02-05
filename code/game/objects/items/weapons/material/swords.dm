@@ -46,8 +46,8 @@
 	if(zone_guessed_correctly)  
 		actual_block_chance += 25 // Bonus for correct zone guess
 	
-	if(user.a_intent == I_GRAB) //better chance to block if on grab intent
-		actual_block_chance += 25
+	if(user.a_intent == I_GRAB) //better chance to block if on grab intent, based on stats
+		actual_block_chance += user.STAT_LEVEL(end) + user.STAT_LEVEL(str)
 		
 	if(user.lying) //get up
 		actual_block_chance -= 25
