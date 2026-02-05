@@ -187,7 +187,7 @@ meteor_act
 		parry_chance -= 20 // Penalty for wrong zone guess  
 	  
 	if(a_intent == I_GRAB) // Better chance on grab intent  
-		parry_chance += STAT_LEVEL(end) + STAT_LEVEL(str)
+		parry_chance += STAT_LEVEL(str) * 2
 		
 	if(lying) //stand up.
 		parry_chance -= 25
