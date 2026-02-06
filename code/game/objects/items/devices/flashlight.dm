@@ -3,7 +3,6 @@
 	desc = "A hand-held emergency light."
 	icon = 'icons/obj/lighting.dmi'
 	icon_state = "flashlight"
-	item_state = "flashlight"
 	w_class = ITEM_SIZE_SMALL
 	obj_flags = OBJ_FLAG_CONDUCTIBLE
 	slot_flags = SLOT_BELT
@@ -24,6 +23,7 @@
 	overlays.Cut()
 	if(on)
 		icon_state = "[initial(icon_state)]-on"
+		worldicons = "[initial(worldicons)]-on"
 		var/image/I = image(icon=src.icon, icon_state = "[initial(icon_state)]-glow")
 		I.plane = GLOW_PLANE
 		overlays += I
@@ -33,6 +33,7 @@
 			set_light(brightness_on)
 	else
 		icon_state = "[initial(icon_state)]"
+		worldicons = "[initial(worldicons)]"
 		set_light(0)
 
 /obj/item/device/flashlight/attack_self(mob/user)
