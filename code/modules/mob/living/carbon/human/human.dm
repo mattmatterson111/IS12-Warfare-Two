@@ -1608,6 +1608,8 @@
 			status += "<span class='binfo'>SPLINTED</span>"
 		if(org.status & ORGAN_DEAD)
 			status += "<span class='danger'>NECROTIC</span>"
+		if(org.status & ORGAN_TENDON_CUT)
+			status += "<span class='danger'>TENDON CUT</span>"
 		if(org.is_dislocated()) //!org.is_usable() ||
 			status += "<span class='danger'>UNUSABLE</span>"
 		if(status.len)
