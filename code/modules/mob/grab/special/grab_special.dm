@@ -316,9 +316,10 @@
 		if(G.assailant.zone_sel.selecting == BP_THROAT)
 			return attack_throat(G, I, user)
 	else if(G.target_zone == G.assailant.zone_sel.selecting) //grab and target limb to sever tendon
-		return attack_tendons(G, I, user, G.assailant.zone_sel.selecting)
+		//return attack_tendons(G, I, user, G.assailant.zone_sel.selecting) //removed
+		return 0
 	else
-		return
+		return 0//normal attack
 			
 /datum/grab/special/proc/attack_tendons(var/obj/item/grab/G, var/obj/item/W, var/mob/living/carbon/human/user, var/target_zone)
 	var/mob/living/carbon/human/affecting = G.affecting
