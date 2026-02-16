@@ -154,10 +154,11 @@ meteor_act
 		if(!shield) continue
 		. = shield.handle_shield(src, damage, damage_source, attacker, def_zone, attack_text)
 		if(.) return
-	
+	/*
 	if(defense_intent == I_PARRY && !get_active_hand())
 		. = handle_barehand_parry(damage, damage_source, attacker, def_zone, attack_text)
 		if(.) return  
+	*/ //removed
 	return 0
 	
 /mob/living/carbon/human/proc/handle_barehand_parry(var/damage, var/atom/damage_source, var/mob/attacker, var/def_zone, var/attack_text)
