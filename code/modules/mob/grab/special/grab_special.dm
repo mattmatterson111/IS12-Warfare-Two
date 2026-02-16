@@ -315,9 +315,11 @@
 	if(G.target_zone == BP_THROAT || G.target_zone == BP_HEAD) //grab throat or head for throat slitting
 		if(G.assailant.zone_sel.selecting == BP_THROAT)
 			return attack_throat(G, I, user)
+	/*
 	else if(G.target_zone == G.assailant.zone_sel.selecting) //grab and target limb to sever tendon
-		//return attack_tendons(G, I, user, G.assailant.zone_sel.selecting) //removed
+		return attack_tendons(G, I, user, G.assailant.zone_sel.selecting)
 		return 0
+	*/ //removed
 	else
 		return 0//normal attack
 			
