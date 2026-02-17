@@ -1,16 +1,29 @@
+/obj/effect/map_entity/logic_relay/example_connections_string
+	io_targetname = "example_relay_string"
+	io_connections_string = "OnTrigger:periodic_announcement:Announce:0:Hello from connections_string"
 
+/obj/effect/map_entity/trigger/multiple/example_light_toggle_trigger
+	io_targetname = "example_light_toggle_trigger"
+	io_connections = list(
+		"OnTrigger:example_light_group:Toggle",
+		"OnTrigger:example_relay_string:Trigger"
+	)
 
+/obj/machinery/light/example_io_receiver
+	io_targetname = "example_light_group"
 
+/obj/machinery/button/switch/example_button_receiver
+	io_targetname = "example_button_group"
 
+/obj/machinery/button/toggle/switch/example_toggle_button_receiver
+	io_targetname = "example_toggle_button_group"
 
-
-
-
-
-
-
-
-
+/obj/effect/map_entity/logic_relay/example_button_relay
+	io_targetname = "example_button_relay"
+	io_connections = list(
+		"OnTrigger:example_button_group:Press",
+		"OnTrigger:example_toggle_button_group:Press"
+	)
 
 MAPPING_TRIGGER(alarm_zone, "alarm_trigger", list("OnTrigger:alarm_relay:Trigger"))
 
@@ -30,11 +43,11 @@ MAPPING_ANNOUNCEMENT(puzzle_announcement, "puzzle_announcement", "Congrats", "no
 
 /obj/effect/map_entity/trigger/faction/red/red_zone
 	name = "red_zone"
-	connections = list("OnTrigger:red_announcement:Announce")
+	io_connections = list("OnTrigger:red_announcement:Announce")
 
 /obj/effect/map_entity/trigger/faction/blue/blue_zone
 	name = "blue_zone"
-	connections = list("OnTrigger:blue_announcement:Announce")
+	io_connections = list("OnTrigger:blue_announcement:Announce")
 
 MAPPING_ANNOUNCEMENT(red_announcement, "red_announcement", "RED forces have entered the zone!", "danger", RED_TEAM)
 MAPPING_ANNOUNCEMENT(blue_announcement, "blue_announcement", "BLUE forces have entered the zone!", "danger", BLUE_TEAM)
@@ -50,7 +63,7 @@ MAPPING_ANNOUNCEMENT(periodic_announcement, "periodic_announcement", "Test", "wa
 MAPPING_SUN(sun_controller, "sun_controller", 2, 1, "#545484")
 
 /obj/effect/map_entity/round_events/example/round_start_events
-	connections = list(
+	io_connections = list(
 		"OnRoundStart:start_scenario:Start",
 		"OnRoundStart:global_siren:Play"
 	)
@@ -106,13 +119,13 @@ MAPPING_AMBIENT_SOUND(blue_burn, "blue_burnspeaker", 'sound/effects/keypad/corre
 
 /obj/effect/map_entity/fire_pit/redcoats
 	faction_id = RED_TEAM
-	connections = list(
+	io_connections = list(
 		"onBurn:choreo_redburn:Start"
 	)
 
 /obj/effect/map_entity/fire_pit/bluecoats
 	faction_id = BLUE_TEAM
-	connections = list(
+	io_connections = list(
 		"onBurn:choreo_blueburn:Start"
 	)
 
@@ -121,4 +134,13 @@ MAPPING_CHOREO(get_the_fuck_back_soldier, "goback", list(
 	CHOREO_EVENT(0,  "red_highcom", "SetOn",     null),
 	CHOREO_EVENT(20, "red_highcom", "Announce", "Get the fuck back into the fight, soldier!"),
 	CHOREO_EVENT(40, "red_highcom", "SetOff",     null),
+))
+
+MAPPING_CHOREO(world_end, "world_end", list(
+	CHOREO_EVENT(0,  "explode1", "trigger",     null),
+	CHOREO_EVENT(15,  "explode3", "trigger",     null),
+	CHOREO_EVENT(5,  "explode2", "trigger",     null),
+	CHOREO_EVENT(35,  "explode4", "trigger",     null),
+	CHOREO_EVENT(80,  "explode5", "trigger",     null),
+	CHOREO_EVENT(65,  "weatherent", "setweather",     "snowstorm"),
 ))

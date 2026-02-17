@@ -15,6 +15,7 @@
 	layer = 26.1 // I want this to be under crates and items. || It also means that you can throw grenades back if they land on dirt cover.
 	atom_flags = ATOM_FLAG_CLIMBABLE
 	var/health = 100
+	var/image/snow_overlay = null
 
 
 /obj/structure/dirt_wall/New()
@@ -37,6 +38,11 @@
 				junction |= get_dir(src,B)
 
 		icon_state = "brustwehr_[junction]"
+		if(snow_overlay)
+			overlays -= snow_overlay
+		snow_overlay = image('icons/obj/mounds_new_snow.dmi', icon_state, dir = dir)
+		snow_overlay.plane = WEATHER_MISC_PLANE_ABOVE_OBJ
+		overlays += snow_overlay
 
 /obj/structure/dirt_wall/Crossed(var/atom/M)
 	if(ismob(M))
@@ -371,6 +377,12 @@
 	plane = ABOVE_HUMAN_PLANE
 	layer = BASE_MOB_LAYER
 
+/obj/structure/barbwire/New()
+	..()
+	var/image/snow_overlay = image(icon, "barbwire_snow", dir = dir)
+	snow_overlay.plane = WEATHER_MISC_PLANE_ABOVE_HUMAN
+	overlays += snow_overlay
+
 /obj/structure/barbwire/ex_act(severity)
 	switch (severity)
 		if (3)
@@ -499,6 +511,12 @@
 	layer = BASE_MOB_LAYER
 	//atom_flags = ATOM_FLAG_CLIMBABLE //nein.
 
+/obj/structure/anti_tank/New()
+	..()
+	var/image/snow_overlay = image(icon, "anti-tank_snow", dir = dir)
+	snow_overlay.plane = WEATHER_MISC_PLANE_ABOVE_OBJ
+	overlays += snow_overlay
+
 /obj/structure/anti_tank/can_climb(var/mob/living/user, post_climb_check=0)
 	/*
 	if(!iswarfare())
@@ -594,6 +612,9 @@
 	var/image/I = image(icon=src.icon, icon_state=glow_state)
 	I.plane = BLOOM_PLANE
 	overlays += I
+	var/image/snow_overlay = image(icon=src.icon, icon_state="mine_snow", dir = dir)
+	snow_overlay.plane = WEATHER_MISC_PLANE_ABOVE_OBJ
+	overlays += snow_overlay
 	if(!can_be_armed)
 		overlays.Cut()
 		icon_state = "mine_disarmed"
@@ -632,20 +653,13 @@
 		var/mob/living/carbon/human/H = M
 		if(H.isChild())//Kids don't set off landmines.
 			return
+		if(M.throwing)
+			return
 		if(!armed && can_be_armed)
-			if(M.throwing)
-				sleep(3)
-				if(!locate(M) in src.loc)
-					return FALSE
-				to_chat(M, "<span class='danger'>You hear a sickening click!</span>")
-				playsound(src, 'sound/effects/mine_arm.ogg', 100, FALSE)
-				armed = TRUE
-				stepper = M
-			else
-				to_chat(M, "<span class='danger'>You hear a sickening click!</span>")
-				playsound(src, 'sound/effects/mine_arm.ogg', 100, FALSE)
-				armed = TRUE
-				stepper = M
+			to_chat(M, "<span class='danger'>You hear a sickening click!</span>")
+			playsound(src, 'sound/effects/mine_arm.ogg', 100, FALSE)
+			armed = TRUE
+			stepper = M
 
 /obj/structure/landmine/Uncrossed(var/mob/living/M as mob)
 	if(ishuman(M))//Type check your shit CEF. Woe, eternal damnation be upon you.

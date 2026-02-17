@@ -207,6 +207,10 @@
 	client.screen += plating_blur
 	client.screen += AT
 	client.screen += AOB
+	client.screen += WMB
+	client.screen += WMOB
+	client.screen += WMAOB
+	client.screen += WMAHB
 
 /mob/living/proc/remove_all_blur()
 	if(!client)
@@ -222,6 +226,10 @@
 	client.screen -= plating_blur
 	client.screen -= AT
 	client.screen -= AOB
+	client.screen -= WMB
+	client.screen -= WMOB
+	client.screen -= WMAOB
+	client.screen -= WMAHB
 
 /mob/living/proc/handle_vision()
 	update_sight()

@@ -1,4 +1,26 @@
 // List those floors that can appear next to trenches to make them climable
+
+/obj/effect/frosty
+	icon='icons/turf/snow.dmi'
+	icon_state="frosted_overlay"
+	mouse_opacity = FALSE
+	blend_mode = BLEND_ADD
+	plane = WEATHER_MISC_PLANE
+
+/obj/effect/frosty/New()
+	. = ..()
+	alpha = rand(35, 40)
+
+/turf/var/obj/frost = null
+
+/turf/simulated/floor/Destroy()
+	if(frost)
+		vis_contents -= frost
+		qdel(frost)
+	for(var/obj/effect/frosty/frosty in contents)
+		qdel(frosty) // FUCKS SAKE
+	. = ..()
+
 /turf/simulated/floor/plating
 	atom_flags = ATOM_FLAG_CLIMBABLE
 
@@ -21,12 +43,23 @@
 	var/has_light = TRUE
 	var/can_generate_water = TRUE
 	var/can_be_dug = TRUE
+	var/list/snow_footprint_overlays = list()
 
 /turf/simulated/floor/dirty/update_icon()
 	overlays.Cut()
+
+	var/image/dirt_underlay = image(icon='icons/turf/snow.dmi',icon_state="dirt_new")
+	dirt_underlay.plane = WEATHER_MISC_PLANE
+	overlays += dirt_underlay
+
+	var/image/overlay = image(icon='icons/turf/snow.dmi',icon_state=pick("snow_new2","snow_new3"))
+	overlay.plane = WEATHER_MISC_PLANE
+	overlay.layer = 3
+	overlays += overlay
+
 	for(var/direction in GLOB.cardinal)
 		var/turf/turf_to_check = get_step(src,direction)
-		if(istype(turf_to_check, /turf/simulated/floor/dirty) || istype(turf_to_check, /turf/simulated/floor/exoplanet/water/shallow))
+		if(!turf_to_check || istype(turf_to_check, /turf/simulated/floor/dirty) || istype(turf_to_check, /turf/simulated/floor/exoplanet/water/shallow) || istype(turf_to_check, /turf/simulated/wall) || istype(turf_to_check, /turf/simulated/open))
 			continue
 
 		else
@@ -35,8 +68,58 @@
 			dirt.layer = src.layer+2
 			//dirt.color = "#877a8b"
 			//dirt.alpha = 200
-
 			overlays += dirt
+			var/image/snow_inner = image('icons/turf/snow.dmi', "snow_innercorner_new", dir = turn(direction, 180))
+			snow_inner.plane = WEATHER_MISC_PLANE
+			overlays += snow_inner
+
+			if(istype(turf_to_check, /turf/simulated/floor/trench))
+				var/image/snow_outer = image('icons/turf/snow.dmi', "snow_outercorner_new", dir = direction)
+				snow_outer.plane = WEATHER_MISC_PLANE
+				turf_to_check.overlays += snow_outer // MICHAEL DONT LEAVE ME HERE
+
+	add_saved_snow_footprints()
+
+/turf/simulated/floor/dirty/proc/add_saved_snow_footprints()
+	if(!snow_footprint_overlays || !snow_footprint_overlays.len)
+		return
+	for(var/key in snow_footprint_overlays)
+		var/image/footprint = snow_footprint_overlays[key]
+		if(footprint)
+			overlays += footprint
+
+/turf/simulated/floor/dirty/proc/add_snow_footprint(direction)
+	if(!(direction in GLOB.cardinal))
+		return
+
+	if(!snow_footprint_overlays)
+		snow_footprint_overlays = list()
+
+	// Use associative keys so BYOND doesn't treat cardinal bitflags as positional list indexes.
+	var/dir_key = "[direction]"
+	if(snow_footprint_overlays[dir_key])
+		return
+
+	var/image/footprint = image('icons/turf/snow.dmi', "snow_footprints_new", dir = direction)
+	footprint.plane = WEATHER_MISC_PLANE
+	footprint.layer = 4
+	snow_footprint_overlays[dir_key] = footprint
+	overlays += footprint
+
+/turf/simulated/floor/dirty/Entered(atom/A, atom/OL)
+	. = ..()
+	if(!isliving(A))
+		return
+	var/mob/living/L = A
+	if(L.throwing)
+		return
+	if(!isturf(OL))
+		return
+	if(!(SSday_cycle?.active_weather?.name in list("snowing", "snowstorm")))
+		return
+
+	var/move_direction = get_dir(OL, src)
+	add_snow_footprint(move_direction)
 
 /turf/simulated/floor/dirty/alt
 	name = "dirt" //"snowy dirt"
@@ -189,33 +272,37 @@
 		for(var/p in list(50,25,10,3,1)) // run through probabilities, spreading water out
 			for(var/turf/water in waters)
 				for(var/turf/simulated/floor/possible_water in range(1, water))
-					if(prob(p) && !LAZYLEN(possible_water.contents) && !istype(possible_water, /turf/simulated/floor/exoplanet/water/shallow))
-						if(/obj/structure in possible_water)//If there's any objects here return.
-							return
+					if(prob(p) && istype(possible_water, /turf/simulated/floor/dirty) && !istype(possible_water, /turf/simulated/floor/exoplanet/water/shallow))
+						if(turf_contains_dense_objects(possible_water))
+							continue
+						if(/obj/structure in possible_water)//If there's any objects here skip this turf.
+							continue
 						if(istype(possible_water, /turf/simulated/floor/trench))//No trenches becoming water please.
-							return
+							continue
 						if(istype(possible_water, /turf/simulated/floor/dirty/fake))//Do not override the fake hacky dirt turfs please.
-							return
+							continue
 						possible_water.ChangeTurf(/turf/simulated/floor/exoplanet/water/shallow)
 						waters += possible_water
-/turf/simulated/floor/dirty/Initialize()
+
+/turf/simulated/floor/dirty/Initialize(mapload)
 	. = ..()
-	var/FUCKYOU
-	for(var/obj/structure/object in contents)
-		if(object)
-			FUCKYOU=TRUE
-			return
 	if(prob(35))
 		icon_state = "dirt1"
 		dir = pick(GLOB.alldirs)
 
-	if(prob(45) && !density && !FUCKYOU)
-		if(prob(85))
-			new /obj/structure/flora/wasteland/rock(src)
-		else if(prob(75))
-			new /obj/structure/flora/wasteland/misc(src)
-		else if(prob(65))
-			new /obj/structure/flora/wasteland/tree(src)
+	if(!mapload)
+		return
+
+	var/area/initializing_area = get_area(src)
+	if(!initializing_area || !initializing_area.turf_initializer)
+		return
+
+	if(!(initializing_area.turf_initializer == /decl/turf_initializer/warfare || initializing_area.turf_initializer == /decl/turf_initializer/warfare_flora_only || initializing_area.turf_initializer == /decl/turf_initializer/oldfare))
+		return
+
+	var/decl/turf_initializer/ti = decls_repository.get_decl(initializing_area.turf_initializer)
+	if(ti)
+		ti.InitializeTurf(src)
 
 /turf/simulated/floor/dirty/attackby(obj/O as obj, mob/living/user as mob)
 	if(istype(O, /obj/item/shovel))
@@ -420,6 +507,8 @@
 				qdel(fuck)
 			else if(istype(fuck, /obj/structure/barbwire))
 				qdel(fuck)
+			else if(istype(fuck, /obj/structure/dirt_wall))
+				qdel(fuck)
 	if(has_light && !(locate(/obj/effect/lighting_dummy/daylight) in src) && !(locate(/obj/effect/map_entity/environment_blocker) in src))
 		new /obj/effect/lighting_dummy/daylight(src)
 	//temperature = T0C - 80
@@ -445,6 +534,11 @@
 /turf/simulated/floor/exoplanet/water/shallow/update_icon()
 
 	overlays.Cut()
+	var/image/shallow_overlay = image('icons/turf/snow.dmi', "water")
+	shallow_overlay.plane = WEATHER_MISC_PLANE
+	shallow_overlay.layer = src.layer + 1
+	shallow_overlay.alpha = 175
+	overlays += shallow_overlay
 	for(var/direction in GLOB.cardinal)
 		var/turf/turf_to_check = get_step(src,direction)
 		if(istype(turf_to_check, /turf/simulated/floor/exoplanet/water/shallow))

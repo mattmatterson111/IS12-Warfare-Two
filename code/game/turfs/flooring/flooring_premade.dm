@@ -212,7 +212,20 @@
 
 			overlays += dirt
 
-
+	if(is_type_in_list(src, list(/turf/simulated/floor/trench, /turf/simulated/floor/dirty, /turf/simulated/open)))
+		return
+	if(!locate(/obj/effect/map_entity/weather_mask, src))
+		return
+	if(locate(/obj/effect/map_entity/environment_blocker, src))
+		return
+	for(var/obj/effect/frosty/F in contents)
+		if(F)
+			frost = F
+			break
+		
+	if(!frost)
+		frost = new /obj/effect/frosty(src)
+	vis_contents += frost
 
 
 

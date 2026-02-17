@@ -93,6 +93,8 @@ What is the naming convention for planes or layers?
     #define BASE_TURF_LAYER         -999
     #define TURF_DETAIL_LAYER       11
 
+#define WEATHER_MISC_PLANE                -154 // Weather misc overlays; above turf, below walls/objects.
+
 #define WALL_PLANE                   -150
 #define WET_PLANE                    -155
 
@@ -125,6 +127,7 @@ What is the naming convention for planes or layers?
     #define SIDE_WINDOW_LAYER       32
     #define FULL_WINDOW_LAYER       33
     #define ABOVE_WINDOW_LAYER      34
+#define WEATHER_MISC_PLANE_OBJ      -119 // Weather misc overlays in the object range.
 
 #define LYING_MOB_PLANE              -110
     #define LYING_MOB_LAYER         35
@@ -134,6 +137,8 @@ What is the naming convention for planes or layers?
 
 #define ABOVE_OBJ_PLANE              -90
     #define BASE_ABOVE_OBJ_LAYER    37
+
+#define WEATHER_MISC_PLANE_ABOVE_OBJ        -89 // For weather effects that should appear on top of objects but below humans.
 
 #define HUMAN_PLANE                  -80
     #define BASE_MOB_LAYER          38
@@ -146,6 +151,7 @@ What is the naming convention for planes or layers?
     #define ABOVE_HUMAN_LAYER       39
     #define VEHICLE_LOAD_LAYER      40
     #define CAMERA_LAYER            41
+#define WEATHER_MISC_PLANE_ABOVE_HUMAN -59 // Weather misc overlays above humans range.
 
 #define BLOB_PLANE                   -55
     #define BLOB_SHIELD_LAYER		42
@@ -166,6 +172,8 @@ What is the naming convention for planes or layers?
 
 #define OBSERVER_PLANE               -30  // For observers and ghosts
 
+#define FOG_CUTOUT_PLANE             -24 // Fog cutout/mask render target
+#define FOG_MASTER_PLANE             -23 // Fog effects (alpha masked by FOG_CUTOUT_PLANE)
 #define WEATHER_MASK_PLANE           -21 // Weather visibility mask (render target)
 #define WEATHER_PLANE                -22 // Weather effects (alpha masked by WEATHER_MASK_PLANE)
 
@@ -309,6 +317,18 @@ What is the naming convention for planes or layers?
 /obj/screen/plane_master/blur/effects_blur
 	plane = BLURRED_EFFECTS_PLANE
 
+/obj/screen/plane_master/blur/weather_misc_blur
+	plane = WEATHER_MISC_PLANE
+
+/obj/screen/plane_master/blur/weather_misc_obj_blur
+	plane = WEATHER_MISC_PLANE_OBJ
+
+/obj/screen/plane_master/blur/weather_misc_above_obj_blur
+	plane = WEATHER_MISC_PLANE_ABOVE_OBJ
+
+/obj/screen/plane_master/blur/weather_misc_above_human_blur
+	plane = WEATHER_MISC_PLANE_ABOVE_HUMAN
+
 /obj/screen/plane_master/ghost_dummy
 	// this avoids a bug which means plane masters which have nothing to control get angry and mess with the other plane masters out of spite
 	alpha = 0
@@ -404,13 +424,71 @@ GLOBAL_LIST_INIT(ghost_master, list(
 	name = "weather mask"
 	plane = WEATHER_MASK_PLANE
 	render_target = "*WEATHER_MASK_RT"
-	mouse_opacity = 0
 
 /obj/screen/plane_master/weather
 	name = "weather"
 	plane = WEATHER_PLANE
-	mouse_opacity = 0
 
 /obj/screen/plane_master/weather/Initialize()
+	. = ..()
+	filters += filter(type="alpha", render_source="*WEATHER_MASK_RT")
+
+/obj/screen/plane_master/fog_cutout
+	name = "fog cutout"
+	plane = FOG_CUTOUT_PLANE
+	render_target = "*FOG_CUTOUT_RT"
+	mouse_opacity = 0
+
+/obj/screen/plane_master/fog_cutout/Initialize()
+	. = ..()
+	filters += filter(type = "blur", size = 1)
+
+/obj/screen/plane_master/fog_master
+	name = "fog master"
+	plane = FOG_MASTER_PLANE
+	mouse_opacity = 0
+
+/obj/screen/plane_master/fog_master/Initialize()
+	. = ..()
+	filters += filter(type="alpha", render_source="*FOG_CUTOUT_RT", flags = MASK_INVERSE)
+	filters += filter(type="alpha", render_source="*WEATHER_MASK_RT")
+
+/obj/screen/plane_master/weather_misc
+	name = "weather misc bs"
+	plane = WEATHER_MISC_PLANE
+	mouse_opacity = 0
+	alpha = 0
+
+/obj/screen/plane_master/weather_misc/Initialize()
+	. = ..()
+	filters += filter(type="alpha", render_source="*WEATHER_MASK_RT")
+
+/obj/screen/plane_master/weather_misc_above_obj
+	name = "weather misc bs ABOVE OBJECTS"
+	plane = WEATHER_MISC_PLANE_ABOVE_OBJ
+	mouse_opacity = 0
+	alpha = 0
+
+/obj/screen/plane_master/weather_misc_above_obj/Initialize()
+	. = ..()
+	filters += filter(type="alpha", render_source="*WEATHER_MASK_RT")
+
+/obj/screen/plane_master/weather_misc_obj
+	name = "weather misc bs OBJECT RANGE"
+	plane = WEATHER_MISC_PLANE_OBJ
+	mouse_opacity = 0
+	alpha = 0
+
+/obj/screen/plane_master/weather_misc_obj/Initialize()
+	. = ..()
+	filters += filter(type="alpha", render_source="*WEATHER_MASK_RT")
+
+/obj/screen/plane_master/weather_misc_above_human
+	name = "weather misc bs ABOVE HUMANS"
+	plane = WEATHER_MISC_PLANE_ABOVE_HUMAN
+	mouse_opacity = 0
+	alpha = 0
+
+/obj/screen/plane_master/weather_misc_above_human/Initialize()
 	. = ..()
 	filters += filter(type="alpha", render_source="*WEATHER_MASK_RT")

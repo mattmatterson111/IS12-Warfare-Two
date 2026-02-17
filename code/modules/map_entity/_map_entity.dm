@@ -13,14 +13,11 @@ GLOBAL_LIST_EMPTY(map_entities_by_name)
 	icon_state = "landmark2"
 	anchored = TRUE
 	density = FALSE
-	var/targetname = ""
-	var/list/connections = list()
-	var/connections_string = ""
+	
 	var/enabled = TRUE
 	var/start_disabled = FALSE
 	var/is_brush = FALSE
 	var/list/brush_neighbors
-	var/list/parsed_connections
 
 /atom/proc/debug_flash(flash_color)
 #if MAP_ENTITY_DEBUG
@@ -31,7 +28,7 @@ GLOBAL_LIST_EMPTY(map_entities_by_name)
 
 /obj/effect/map_entity/proc/debug_log(message)
 #if MAP_ENTITY_DEBUG
-	message_admins("MapEntity [src] ([targetname]) [message]")
+	message_admins("MapEntity [src] ([io_targetname]) [message]")
 #endif
 
 
@@ -47,7 +44,7 @@ GLOBAL_LIST_EMPTY(map_entities_by_name)
 	. = ..()
 	if(!MAP_ENTITY_DEBUG && !is_type_in_list(src, list(/obj/effect/map_entity/weather_mask, /obj/effect/map_entity/fire_pit)))
 		invisibility = 101
-	if(targetname)
+	if(io_targetname)
 		register_entity()
 	parse_connections()
 	if(start_disabled)
@@ -59,7 +56,7 @@ GLOBAL_LIST_EMPTY(map_entities_by_name)
 		fire_output("OnSpawn", null, src)
 
 /obj/effect/map_entity/Destroy()
-	if(targetname)
+	if(io_targetname)
 		unregister_entity()
 	if(brush_neighbors)
 		for(var/obj/effect/map_entity/E in brush_neighbors)
@@ -68,12 +65,12 @@ GLOBAL_LIST_EMPTY(map_entities_by_name)
 	return ..()
 
 /obj/effect/map_entity/proc/register_entity()
-	var/key = lowertext(targetname)
+	var/key = lowertext(io_targetname)
 	LAZYINITLIST(GLOB.map_entities_by_name[key])
 	GLOB.map_entities_by_name[key] += src
 
 /obj/effect/map_entity/proc/unregister_entity()
-	var/key = lowertext(targetname)
+	var/key = lowertext(io_targetname)
 	if(GLOB.map_entities_by_name[key])
 		GLOB.map_entities_by_name[key] -= src
 		if(!length(GLOB.map_entities_by_name[key]))
@@ -88,15 +85,23 @@ GLOBAL_LIST_EMPTY(map_entities_by_name)
 		. += GLOB.map_entities_by_name[key]
 
 /obj/effect/map_entity/proc/parse_connections()
-	parsed_connections = list()
+	var/list/source_connections = list()
+	if(io_connections)
+		source_connections += io_connections
 
-	if(connections_string)
-		var/list/string_conns = splittext(connections_string, ";")
+	if(io_connections_string)
+		var/list/string_conns = splittext(io_connections_string, ";")
 		for(var/s in string_conns)
-			if(s) connections += s
+			if(s)
+				source_connections += s
 
-	for(var/conn in connections)
-		if(isnull(conn)) continue
+	io_connections = list()
+	if(!length(source_connections))
+		return
+
+	for(var/conn in source_connections)
+		if(isnull(conn))
+			continue
 
 		if(istext(conn))
 			var/list/parts = splittext(conn, ":")
@@ -106,8 +111,8 @@ GLOBAL_LIST_EMPTY(map_entities_by_name)
 				var/input_name = parts[3]
 				var/delay = length(parts) >= 4 ? text2num(parts[4]) : 0
 				var/param = length(parts) >= 5 ? parts[5] : null
-				LAZYINITLIST(parsed_connections[output_name])
-				parsed_connections[output_name] += list(list(
+				LAZYINITLIST(io_connections[output_name])
+				io_connections[output_name] += list(list(
 					"target" = target_name,
 					"input" = input_name,
 					"delay" = delay,
@@ -117,8 +122,8 @@ GLOBAL_LIST_EMPTY(map_entities_by_name)
 			var/list/C = conn
 			var/output_name = C["output"]
 			if(output_name)
-				LAZYINITLIST(parsed_connections[output_name])
-				parsed_connections[output_name] += list(list(
+				LAZYINITLIST(io_connections[output_name])
+				io_connections[output_name] += list(list(
 					"target" = C["target"],
 					"input" = C["input"],
 					"delay" = C["delay"] || 0,
@@ -126,10 +131,10 @@ GLOBAL_LIST_EMPTY(map_entities_by_name)
 				))
 
 /obj/effect/map_entity/proc/fire_output(output_name, atom/activator, atom/caller)
-	if(!enabled || !parsed_connections?[output_name])
+	if(!enabled || !io_connections?[output_name])
 		return
 
-	for(var/list/conn in parsed_connections[output_name])
+	for(var/list/conn in io_connections[output_name])
 		var/target_name = conn["target"]
 		var/input_name = conn["input"]
 		var/delay = conn["delay"]
@@ -154,21 +159,23 @@ GLOBAL_LIST_EMPTY(map_entities_by_name)
 			neighbor.fire_output_local(output_name, activator, caller)
 
 /obj/effect/map_entity/proc/fire_output_local(output_name, atom/activator, atom/caller)
-	if(!enabled || !parsed_connections?[output_name])
+	if(!enabled || !io_connections?[output_name])
 		return
 
-	for(var/list/conn in parsed_connections[output_name])
+	for(var/list/conn in io_connections[output_name])
 		var/target_name = conn["target"]
 		var/input_name = conn["input"]
 		var/delay = conn["delay"]
+		var/param = conn["param"]
+		var/list/params = param ? list("value" = param) : null
 		var/list/targets = find_io_targets(target_name)
 		for(var/atom/target in targets)
 			if(delay > 0)
 				spawn(delay)
 					if(target && !QDELETED(target))
-						send_io_input(target, input_name, activator, caller)
+						send_io_input(target, input_name, activator, caller, params)
 			else
-				send_io_input(target, input_name, activator, caller)
+				send_io_input(target, input_name, activator, caller, params)
 
 /obj/effect/map_entity/proc/receive_input(input_name, atom/activator, atom/caller, list/params)
 	if(input_name != "OnSpawn")
@@ -212,16 +219,17 @@ GLOBAL_LIST_EMPTY(map_entities_by_name)
 			E.brush_neighbors |= src
 
 /obj/effect/map_entity/proc/add_connection(output_name, target_name, input_name, delay = 0)
-	LAZYINITLIST(parsed_connections[output_name])
-	parsed_connections[output_name] += list(list(
+	LAZYINITLIST(io_connections)
+	LAZYINITLIST(io_connections[output_name])
+	io_connections[output_name] += list(list(
 		"target" = target_name,
 		"input" = input_name,
 		"delay" = delay
 	))
 
 /obj/effect/map_entity/proc/clear_connections(output_name)
-	if(parsed_connections)
-		parsed_connections -= output_name
+	if(io_connections)
+		io_connections -= output_name
 
 /obj/effect/map_entity/proc/get_entity_info()
-	return "[type] (targetname: [targetname], enabled: [enabled], brush: [is_brush])"
+	return "[type] (io_targetname: [io_targetname], enabled: [enabled], brush: [is_brush])"

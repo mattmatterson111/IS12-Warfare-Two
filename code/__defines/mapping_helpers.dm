@@ -66,24 +66,24 @@ MAPPING_DAY_LISTENER(base_path/##name) \
 
 #define MAPPING_RELAY(name, targetname_val, connections_val) \
 /obj/effect/map_entity/logic_relay/##name { \
-	targetname = targetname_val; \
-	connections = connections_val; \
+	io_targetname = targetname_val; \
+	io_connections = connections_val; \
 }
 
 
 #define MAPPING_COUNTER(name, targetname_val, threshold_val, connections_val) \
 /obj/effect/map_entity/logic_counter/##name { \
-	targetname = targetname_val; \
+	io_targetname = targetname_val; \
 	threshold = threshold_val; \
-	connections = connections_val; \
+	io_connections = connections_val; \
 }
 
 
 #define MAPPING_TIMER(name, targetname_val, interval_val, connections_val) \
 /obj/effect/map_entity/logic_timer/##name { \
-	targetname = targetname_val; \
+	io_targetname = targetname_val; \
 	interval = interval_val; \
-	connections = connections_val; \
+	io_connections = connections_val; \
 }
 
 
@@ -92,14 +92,14 @@ MAPPING_DAY_LISTENER(base_path/##name) \
 
 #define MAPPING_CHOREO(name, targetname_val, script_val) \
 /obj/effect/map_entity/logic_choreographed_scene/##name { \
-	targetname = targetname_val; \
+	io_targetname = targetname_val; \
 	events = script_val; \
 }
 
 
 #define MAPPING_EXPLOSION(name, targetname_val, dev_range, heavy_range, light_range, f_range) \
 /obj/effect/map_entity/env_explosion/##name { \
-	targetname = targetname_val; \
+	io_targetname = targetname_val; \
 	devastation_range = dev_range; \
 	heavy_impact_range = heavy_range; \
 	light_impact_range = light_range; \
@@ -109,7 +109,7 @@ MAPPING_DAY_LISTENER(base_path/##name) \
 
 #define MAPPING_SHAKE(name, targetname_val, duration_val, strength_val, global_val) \
 /obj/effect/map_entity/env_shake/##name { \
-	targetname = targetname_val; \
+	io_targetname = targetname_val; \
 	duration = duration_val; \
 	strength = strength_val; \
 	global_shake = global_val; \
@@ -118,7 +118,7 @@ MAPPING_DAY_LISTENER(base_path/##name) \
 
 #define MAPPING_FADE(name, targetname_val, mode_val, color_val, time_val) \
 /obj/effect/map_entity/env_fade/##name { \
-	targetname = targetname_val; \
+	io_targetname = targetname_val; \
 	mode = mode_val; \
 	fade_color = color_val; \
 	fade_time = time_val; \
@@ -127,14 +127,14 @@ MAPPING_DAY_LISTENER(base_path/##name) \
 
 #define MAPPING_PARTICLES(name, targetname_val, path_name) \
 /obj/effect/map_entity/env_particles/##name { \
-	targetname = targetname_val; \
+	io_targetname = targetname_val; \
 	particle_path_name = path_name; \
 }
 
 
 #define MAPPING_SUN(name, targetname_val, range_val, intensity_val, color_val) \
 /obj/effect/map_entity/env_sun/##name { \
-	targetname = targetname_val; \
+	io_targetname = targetname_val; \
 	current_range = range_val; \
 	current_intensity = intensity_val; \
 	current_color = color_val; \
@@ -143,7 +143,7 @@ MAPPING_DAY_LISTENER(base_path/##name) \
 
 #define MAPPING_COLOR_CORRECTION(name, targetname_val, matrix_val) \
 /obj/effect/map_entity/color_correction/##name { \
-	targetname = targetname_val; \
+	io_targetname = targetname_val; \
 	color_matrix = matrix_val; \
 }
 
@@ -158,7 +158,7 @@ MAPPING_DAY_LISTENER(base_path/##name) \
 
 #define MAPPING_AMBIENT_SOUND(name, targetname_val, file, range_val, vol) \
 /obj/effect/map_entity/ambient_sound/##name { \
-	targetname = targetname_val; \
+	io_targetname = targetname_val; \
 	sound_file = file; \
 	range = range_val; \
 	volume = vol; \
@@ -167,7 +167,7 @@ MAPPING_DAY_LISTENER(base_path/##name) \
 
 #define MAPPING_SOUNDSCAPE(name, targetname_val, sounds_list, min_int, max_int) \
 /obj/effect/map_entity/soundscape/##name { \
-	targetname = targetname_val; \
+	io_targetname = targetname_val; \
 	sounds = sounds_list; \
 	min_interval = min_int; \
 	max_interval = max_int; \
@@ -182,7 +182,7 @@ MAPPING_DAY_LISTENER(base_path/##name) \
 
 #define MAPPING_LOUDSPEAKER(name, targetname_val, decl_path, team_id) \
 /obj/effect/map_entity/loudspeaker_announcement/##name { \
-	targetname = targetname_val; \
+	io_targetname = targetname_val; \
 	speakercast_decl = decl_path; \
 	id = team_id; \
 }
@@ -190,7 +190,7 @@ MAPPING_DAY_LISTENER(base_path/##name) \
 
 #define MAPPING_ANNOUNCEMENT(name, targetname_val, msg, class_val, team_id) \
 /obj/effect/map_entity/announcement/##name { \
-	targetname = targetname_val; \
+	io_targetname = targetname_val; \
 	message = msg; \
 	message_class = class_val; \
 	filter_faction = team_id; \
@@ -215,7 +215,7 @@ MAPPING_DAY_LISTENER(base_path/##name) \
 /##base_path/##name { \
 	io_targetname = targetname_val; \
 } \
-/##base_path/##name/IO_receive_input(input_name, activator, caller) { \
+/##base_path/##name/IO_receive_input(input_name, activator, caller, params) { \
 	switch(lowertext(input_name)) { \
 		if("open") open(); \
 		if("close") close(); \
@@ -227,7 +227,7 @@ MAPPING_DAY_LISTENER(base_path/##name) \
 
 #define MAPPING_TELEPORTER(name, targetname_val, dest, filters) \
 /obj/effect/map_entity/teleporter/##name { \
-	targetname = targetname_val; \
+	io_targetname = targetname_val; \
 	destination = dest; \
 	allowed_types = filters; \
 }
@@ -235,8 +235,8 @@ MAPPING_DAY_LISTENER(base_path/##name) \
 
 #define MAPPING_TRIGGER(name, targetname_val, connections_val) \
 /obj/effect/map_entity/trigger/multiple/##name { \
-	targetname = targetname_val; \
-	connections = connections_val; \
+	io_targetname = targetname_val; \
+	io_connections = connections_val; \
 }
 
 
@@ -281,7 +281,7 @@ MAPPING_DAY_LISTENER(base_path/##name) \
 
 #define MAPPING_ARTILLERY(name, targetname_val, shell_type_val, count_val, dir_val) \
 /obj/effect/map_entity/artillery_controller/##name { \
-	targetname = targetname_val; \
+	io_targetname = targetname_val; \
 	shell_type = shell_type_val; \
 	shell_count = count_val; \
 	pattern_direction = dir_val; \

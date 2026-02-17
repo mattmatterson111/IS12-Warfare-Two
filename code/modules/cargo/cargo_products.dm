@@ -35,6 +35,7 @@ CARGO_CRATE_PRODUCT(pistol_pack, "Pistol Pack", 100, "Brass.Co Top-Brass", list(
 CARGO_CRATE_PRODUCT(harbinger_pack, "Harbinger Pack", 100, "Brass.Co Top-Brass", list(/obj/item/gun/projectile/automatic/mg08 = 2), /obj/structure/closet/crate/war_metal, null)
 CARGO_CRATE_PRODUCT(warmonger_pack, "Warmonger Pack", 100, "Brass.Co Top-Brass", list(/obj/item/gun/projectile/automatic/m22/warmonger = 10), /obj/structure/closet/crate/war_metal, null)
 CARGO_CRATE_PRODUCT(shovel_pack, "Shovel Pack", 35, "Tools", list(/obj/item/shovel = 5), /obj/structure/closet/crate/war_metal, null)
+CARGO_CRATE_PRODUCT(machete_pack, "Machete Pack", 50, "Tools", list(/obj/item/material/hatchet/machete = 4), /obj/structure/closet/crate/war_metal, null)
 CARGO_CRATE_PRODUCT(barrier_pack, "Defensive Barrier Pack", 50, "Sil's Utility Corps", list(/obj/item/defensive_barrier = 3), /obj/structure/closet/crate/war_metal, null)
 CARGO_CRATE_PRODUCT(doublebarrel_pack, "Doublebarrel Shotgun Pack", 100, "Brass.Co Top-Brass", list(/obj/item/gun/projectile/shotgun/doublebarrel = 5), /obj/structure/closet/crate/war_metal, null)
 CARGO_CRATE_PRODUCT(boltaction_pack, "Bolt Action Rifle Pack", 50, "Brass.Co Top-Brass", list(/obj/item/gun/projectile/shotgun/pump/boltaction/shitty/leverchester = 10), /obj/structure/closet/crate/war_metal, null)

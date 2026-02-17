@@ -72,3 +72,11 @@
 	category = "PLACE"
 	spawn_weight = 1
 */
+
+/datum/map_template/ruin/warfare_mid/astra
+	name = "Astra Fare"
+	id = "astra_fare"
+	description = "The astra experience."
+	suffixes = list("astrafare.dmm")
+	category = "PLACE"
+	spawn_weight = 1

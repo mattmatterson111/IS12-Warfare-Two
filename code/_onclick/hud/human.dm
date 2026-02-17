@@ -635,14 +635,8 @@
 	client.screen += new /obj/screen/plane_master/radial_filter
 	client.screen += new /obj/screen/plane_master/blur/effects_blur
 	client.screen += new /obj/screen/plane_master/exposure_filter
-	client.screen += new /obj/screen/plane_master/weather
-	client.screen += new /obj/screen/plane_master/weather_mask
+	client.screen += new /obj/screen/plane_master/fog_master
+	client.screen += new /obj/screen/plane_master/fog_cutout
 	client.screen += new /obj/screen/plane_master/reflective_cutter
 	client.screen += new /obj/screen/plane_master/reflective
 	client.screen += new /obj/screen/plane_master/wet
-	
-	wet_overlay = new /obj/screen/wet_overlay/ground
-	reflection_wet_overlay = new /obj/screen/wet_overlay/reflection
-	
-	client.screen += wet_overlay
-	client.screen += reflection_wet_overlay

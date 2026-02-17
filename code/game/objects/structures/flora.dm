@@ -35,6 +35,10 @@
 	icon = 'icons/obj/32x64.dmi'
 	icon_state = "red2"
 
+/obj/structure/dirt_wall/mushroom/New()
+	..()
+	update_icon()
+
 /obj/structure/flora/wasteland/misc/New()
 	..()
 	if(prob(50))
@@ -43,10 +47,12 @@
 	else if(prob(35))
 		icon_state = safepick(list("red1","red3"))
 		density = TRUE
+		snow_overlay()
 		return
 	else if(prob(15)) // biiig shroom
 		icon_state = safepick(list("bro1","bro2","bro3","bro4","bro5","dead"))
 		density = TRUE
+		snow_overlay()
 		return
 	else if(prob(20))
 		new /obj/structure/dirt_wall/mushroom(get_turf(src))
@@ -55,11 +61,23 @@
 	else
 		qdel(src) // rip
 
+/obj/structure/flora/wasteland/misc/proc/snow_overlay()
+	if(!(icon_state in list("red1", "red2", "bro1", "bro2", "bro3")))
+		return
+	var/image/snow_overlay = image(icon, "[icon_state]_snow", dir = dir)
+	snow_overlay.plane = WEATHER_MISC_PLANE_ABOVE_HUMAN
+	overlays += snow_overlay
+
 /obj/structure/dirt_wall/mushroom/update_nearby_icons()
 	return
 
 /obj/structure/dirt_wall/mushroom/update_icon()
-	return
+	if(snow_overlay)
+		overlays -= snow_overlay
+	snow_overlay = image(icon, "[icon_state]_snow", dir = dir)
+	snow_overlay.plane = WEATHER_MISC_PLANE_ABOVE_OBJ
+	snow_overlay.layer = layer + 0.01
+	overlays += snow_overlay
 
 /obj/structure/flora/wasteland/tree
 	icon = 'icons/obj/warfare.dmi'
@@ -70,16 +88,59 @@
 /obj/structure/flora/wasteland/rock/New()
 	..()
 	dir = pick(GLOB.alldirs)
+	var/image/snow_overlay = image(icon, "flora_snow", dir = dir)
+	snow_overlay.plane = WEATHER_MISC_PLANE_OBJ
+	overlays += snow_overlay
 
 /obj/structure/flora/wasteland/tree/New()
 	..()
 	dir = pick(GLOB.alldirs)
+	var/image/snow_overlay = image(icon, "tree_snow", dir = dir)
+	snow_overlay.plane = WEATHER_MISC_PLANE_OBJ
+	overlays += snow_overlay
 
 /obj/structure/flora/tree/CanPass(atom/A, turf/T)
 	if(ishuman(A))
 		return FALSE
 	else
 		return TRUE
+
+/obj/structure/flora/wasteland/tree_full
+	icon = 'icons/obj/64x96.dmi'
+	icon_state = "tree1"
+	plane = ABOVE_HUMAN_PLANE
+	pixel_x = -16
+	anchored = TRUE
+	density = TRUE
+
+/obj/structure/flora/wasteland/tree_full/New()
+	..()
+	icon_state = pick("tree1", "tree2", "tree3")
+	var/image/underlay = image(icon, "[icon_state]_shadow")
+	underlay.blend_mode = BLEND_MULTIPLY
+	underlay.alpha = 65
+	underlays += underlay
+
+/obj/structure/flora/wasteland/tree_full/attackby(obj/item/O, mob/user)
+	. = ..()
+	if(!istype(O, /obj/item/material/hatchet/machete))
+		return
+
+	if(user.doing_something)
+		return
+
+	user.doing_something = TRUE
+	playsound(src, 'sound/effects/ash_chop.ogg', 50, TRUE)
+	user.visible_message("<span class='info'>[user] begins to cut down [src].</span>")
+
+	if(do_after(user, 40, src))
+			playsound(src, 'sound/effects/ash_cut.ogg', 50, TRUE)
+			user.visible_message("<span class='info'>[user] cuts down [src].</span>")
+			qdel(src)
+	else
+		user.visible_message("<span class='info'>[user] stops cutting down [src].</span>")
+
+	user.doing_something = FALSE
 
 /obj/structure/flora/tree/pine
 	name = "pine tree"

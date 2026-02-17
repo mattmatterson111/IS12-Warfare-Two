@@ -415,17 +415,18 @@ GLOBAL_LIST_EMPTY(announcement_microphones)
 	broadcast_template.broadcast(text, broadcast_id, src.mob)
 
 /client/proc/nuke_server()
-	set name = "nuke server"
+	set name = "nuke_server"
 	set category = "roleplay"
 
 	if(!holder) return
 
-	var/text = input("Please enter the contents (NUKE)") as text
-	if(!text) return
+	var/how_long = input("How long should the sirens take?", "(In seconds) (Default: 60 Sec)") as num|null
 
-	var/sound/start_sound = sound('sound/effects/siren.ogg', repeat = 0, volume=90)
+	var/early = input("Should it end early?", "(It'll close the server when the explosion begins)") as num|null
 
-	for(var/mob/m in GLOB.player_list)
-		if(m.client)
-			sound_to(m, start_sound)
-			to_chat(m,"<h2><span class='boldannounce'>[text]</span></h2>")
+	var/confirm = input("Confirm? Type \"1\" to confirm.") as num
+	if(!confirm)
+		return
+
+
+	SetUniversalState(/datum/universal_state/nuclear_explosion, arguments=list(src.mob, how_long, early))

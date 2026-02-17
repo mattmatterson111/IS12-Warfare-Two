@@ -172,7 +172,7 @@
 /obj/effect/map_entity/logic_auto
 	name = "logic_auto"
 	icon_state = "world_events"
-	targetname = "game_events"
+	io_targetname = "game_events"
 
 /obj/effect/map_entity/logic_auto/receive_input(input_name, atom/activator, atom/caller, list/params)
 	. = ..()
@@ -212,7 +212,7 @@
 /obj/effect/map_entity/round_events
 	name = "round_events"
 	icon_state = "round_events"
-	targetname = "round_events"
+	io_targetname = "round_events"
 
 /obj/effect/map_entity/round_events/receive_input(input_name, atom/activator, atom/caller, list/params)
 	. = ..()

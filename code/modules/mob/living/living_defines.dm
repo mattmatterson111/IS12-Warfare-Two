@@ -74,3 +74,7 @@
 	var/obj/screen/plane_master/blur/effects_blur/EB = new
 	var/obj/screen/plane_master/blur/plating_blur/plating_blur = new
 	var/obj/screen/plane_master/blur/above_obj_blur/AOB = new
+	var/obj/screen/plane_master/blur/weather_misc_blur/WMB = new
+	var/obj/screen/plane_master/blur/weather_misc_obj_blur/WMOB = new
+	var/obj/screen/plane_master/blur/weather_misc_above_obj_blur/WMAOB = new
+	var/obj/screen/plane_master/blur/weather_misc_above_human_blur/WMAHB = new
