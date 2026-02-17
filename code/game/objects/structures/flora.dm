@@ -134,9 +134,9 @@
 	user.visible_message("<span class='info'>[user] begins to cut down [src].</span>")
 
 	if(do_after(user, 40, src))
-			playsound(src, 'sound/effects/ash_cut.ogg', 50, TRUE)
-			user.visible_message("<span class='info'>[user] cuts down [src].</span>")
-			qdel(src)
+		playsound(src, 'sound/effects/ash_cut.ogg', 50, TRUE)
+		user.visible_message("<span class='info'>[user] cuts down [src].</span>")
+		qdel(src)
 	else
 		user.visible_message("<span class='info'>[user] stops cutting down [src].</span>")
 
