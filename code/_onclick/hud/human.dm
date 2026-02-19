@@ -640,9 +640,11 @@
 	client.screen += new /obj/screen/plane_master/reflective_cutter
 	client.screen += new /obj/screen/plane_master/reflective
 	client.screen += new /obj/screen/plane_master/wet
-	
+
 	wet_overlay = new /obj/screen/wet_overlay/ground
 	reflection_wet_overlay = new /obj/screen/wet_overlay/reflection
-	
+
 	client.screen += wet_overlay
 	client.screen += reflection_wet_overlay
+
+	client.screen += new /obj/screen/fullscreen/nocheat

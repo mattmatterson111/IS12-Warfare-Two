@@ -230,3 +230,16 @@
 	screen_loc = "WEST,SOUTH to EAST,NORTH"
 	icon_state = "siege_fog"
 	alpha = 120
+
+/obj/screen/fullscreen/nocheat
+	name = "YOU ARE A CHEATER!!! YOU ARE A CHEATER!!! DONT DENY!!!"
+	icon = 'icons/mob/screen1.dmi'
+	icon_state = "cheater"
+	screen_loc = "WEST,SOUTH to EAST,NORTH"
+	plane = ABOVE_ALL_PLANE
+	render_source = "nocheatyou"
+
+/obj/screen/fullscreen/nocheat/New()
+	. = ..()
+
+	filters += filter(type="alpha", render_source = "nocheatyou") // just mask ourselves because lol

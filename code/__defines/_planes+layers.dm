@@ -220,6 +220,8 @@ What is the naming convention for planes or layers?
 #define REFLECTIVE_DISPLACEMENT_PLANE 120
 	#define HUD_ABOVE_ITEM_LAYER 3
 
+#define ABOVE_ALL_PLANE 6767
+
 //This is difference between highest and lowest visible
 #define PLANE_DIFFERENCE              22 // unused.
 /image
