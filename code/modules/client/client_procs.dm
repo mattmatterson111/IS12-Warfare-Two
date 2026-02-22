@@ -211,6 +211,12 @@
 		tooltip.alpha = 0
 
 	screen += tooltip
+	
+	if(mob && ishuman(mob)) //I would like my hud icons on reconnect please thank you
+		var/mob/living/carbon/human/H = mob
+		if(H.warfare_faction && SSwarfare && SSwarfare.battle_time)
+			H.set_squad_huds()
+			H.set_team_huds()
 
 /client
 	var/obj/hovered_obj = null
