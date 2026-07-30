@@ -49,6 +49,12 @@
 	fire_sound = 'sound/weapons/guns/fire/pistol_fire.ogg'
 	far_fire_sound = "far_fire"
 
+	var/allowgrenade_attachment = FALSE
+	var/obj/item/grenade_attachment/grenade_attachment = null
+	var/mutable_appearance/grenada = null
+	var/grenade_attachment_offset_x = 32
+	var/grenade_attachment_offset_y = 0
+
 /obj/item/gun/projectile/New()
 	..()
 
@@ -77,6 +83,12 @@
 
 
 	if (chambered)
+		if(chambered.BB && grenade_attachment && grenade_attachment.grenade)
+			var/obj/item/projectile/bb = grenade_attachment.fire(src)
+			qdel(grenade_attachment)
+			grenade_attachment = null
+			update_icon()
+			return bb
 		return chambered.BB
 	return null
 
@@ -113,6 +125,16 @@
 		set_loaded_icons()
 	else
 		set_unloaded_icons()
+
+	if(!grenade_attachment)
+		if(grenada)
+			overlays -= grenada
+			grenada = null
+	else if(!grenada)
+		grenada = image('icons/obj/grenade.dmi', src, "rifle")
+		grenada.pixel_x = grenade_attachment_offset_x
+		grenada.pixel_y = grenade_attachment_offset_y
+		overlays += grenada
 
 
 /obj/item/gun/projectile/proc/set_loaded_icons()
@@ -410,8 +432,41 @@
 		to_chat(user, "<span class='warning'>[src] is empty.</span>")
 	update_icon()
 
+/obj/item/gun/projectile/proc/attachthisshit(var/obj/item/A, var/mob/living/carbon/human/user)
+	if(grenade_attachment) return FALSE
+
+	if(user.get_inactive_hand() != src) return FALSE // fucking HOLD IT
+
+	user.remove_from_mob(A)
+	grenade_attachment = A
+	grenade_attachment.forceMove(src)
+	playsound(get_turf(src), 'sound/weapons/guns/interact/launcher_rack.ogg', 85, 1)
+	user.visible_message("[user] attaches \a [A] to [src].", "<span class='notice'>You attach \a [A] to [src].</span>")
+	update_icon()
+	return TRUE
+
+/obj/item/gun/projectile/proc/detachthisshit(var/mob/living/carbon/human/user)
+	if(!grenade_attachment) return FALSE
+
+	if(user.get_inactive_hand() != src) return FALSE
+
+	grenade_attachment.forceMove(get_turf(src))
+	user.put_in_hands(grenade_attachment)
+	user.visible_message("[user] detaches \a [grenade_attachment] from [src].", "<span class='notice'>You detach \a [grenade_attachment] from [src].</span>")
+	grenade_attachment = null
+	update_icon()
+	return TRUE
+
 /obj/item/gun/projectile/attackby(var/obj/item/A as obj, mob/user as mob)
+	if(istype(A, /obj/item/grenade_attachment) && allowgrenade_attachment)
+		return attachthisshit(A, user)
+
 	load_ammo(A, user)
+
+/obj/item/gun/projectile/attack_hand(mob/user)
+	if(detachthisshit(user))
+		return
+	. = ..()
 
 /obj/item/gun/projectile/attack_self(mob/user as mob)
 	if(firemodes.len > 1)

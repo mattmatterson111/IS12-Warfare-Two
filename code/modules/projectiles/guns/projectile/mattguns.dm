@@ -18,6 +18,7 @@
 	far_fire_sound = "sniper_fire"
 	gun_type = GUN_BOLTIE //So engineers can't shoot this shit.
 	can_have_bayonet = TRUE
+	allowgrenade_attachment = TRUE
 
 /obj/item/gun/projectile/shotgun/pump/boltaction/shitty/bayonet
 	name = "\improper Mark I Stormrider"
@@ -57,6 +58,7 @@
 	far_fire_sound = "sniper_fire"
 	gun_type = GUN_BOLTIE //So engineers can't shoot this shit.
 	can_have_bayonet = FALSE
+	allowgrenade_attachment = TRUE
 
 
 /obj/item/gun/projectile/shotgun/pump/boltaction/shitty/leverchester
@@ -934,9 +936,9 @@
 	embed = 0
 	sharp = 0
 	hitscan = FALSE
-	speed = 0.4
-	var/num_fragments = 200
-	var/explosion_size = 3
+	speed = 1
+	var/num_fragments = 50
+	var/explosion_size = 2
 	var/spread_range = 7 //leave as is, for some reason setting this higher makes the spread pattern have gaps close to the epicenter
 	var/list/fragment_types = list(/obj/item/projectile/bullet/pellet/fragment = 1)
 
