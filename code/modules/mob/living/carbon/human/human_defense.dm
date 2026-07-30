@@ -30,7 +30,14 @@ meteor_act
 
 	var/obj/item/organ/external/organ = get_organ(def_zone)
 	var/armor = getarmor_organ(organ, P.check_armour, P.damage)
-	var/penetrating_damage = ((P.damage + P.armor_penetration) * P.penetration_modifier) - armor
+	var/penetrating_damage = P.penetrating ? (P.damage * P.penetration_modifier) : (((P.damage + P.armor_penetration) * P.penetration_modifier) - armor)
+	var/obj/item/gear = get_covering_equipped_item(organ.body_part)
+	if(!P.penetrating && gear && gear.armor_durability > 0 && P.damage < gear.penetration_threshold)
+		penetrating_damage = 0
+
+	if(!P.penetrating && gear && gear.armor_durability > 0 && P.damage < gear.penetration_threshold)
+		P.sharp = FALSE
+		P.edge = FALSE
 
 	if(penetrating_damage > 0)
 		//Organ damage
