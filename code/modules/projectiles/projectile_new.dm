@@ -109,6 +109,9 @@
 	return
 
 /mob/living/carbon/human/visual_effect(var/obj/item/projectile/P)
+	var/blocked = run_armor_check(P.def_zone, P.check_armour, P.armor_penetration)
+	if(blocked_mult(blocked) <= 0.5)
+		return
 	var/obj/effect/abstract/particle_holder/bloodpuffs = new(src, /particles/bloodpuff)
 	var/x_component = sin(P.Angle) * 15
 	var/y_component = cos(P.Angle) * 15
@@ -136,8 +139,6 @@
 
 	var/list/mob_hit_sound = list('sound/effects/gore/bullethit1.ogg', 'sound/effects/gore/bullethit2.ogg', 'sound/effects/gore/bullethit3.ogg', 'sound/effects/gore/bullethit4.ogg') //Sound it makes when it hits a mob. It's a list so you can put multiple hit sounds there.
 	var/wall_hitsound = "hitwall"
-	var/list/armor_hit_sound = list('sound/effects/gore/armorhit1.ogg', 'sound/effects/gore/armorhit2.ogg','sound/effects/gore/armorhit3.ogg','sound/effects/gore/armorhit4.ogg')
-	var/list/helmet_hit_sound = list('sound/effects/gore/helmhit1.ogg', 'sound/effects/gore/helmhit2.ogg','sound/effects/gore/helmhit3.ogg','sound/effects/gore/helmhit4.ogg','sound/effects/gore/helmhit5.ogg')
 	var/fire_sound = 'sound/weapons/gunshot/gunshot.ogg'//Default gun sound.
 	var/def_zone = ""	//Aiming at
 	var/mob/firer = null//Who shot it
@@ -739,13 +740,6 @@
 		return 0
 
 	if(ishuman(target_mob))
-		var/mob/living/carbon/human/L = target_mob
-		if(istype(L.wear_suit, /obj/item/clothing/suit/armor) && parse_zone(def_zone) == BP_CHEST)
-			playsound(L,pick(armor_hit_sound), 100, 1)
-		if(istype(L.head, /obj/item/clothing/head/helmet) && parse_zone(def_zone) == BP_HEAD)
-			var/obj/item/clothing/head/helmet/helm = L.head
-			helm.take_damage(damage)
-			playsound(L, pick(helmet_hit_sound), 80, 1)
 		if(ishuman(firer))//Stuff that isn't a mob doesn't play well with achievements.
 			if(parse_zone(def_zone) == BP_HEAD)//Boom headshot bitch.
 				firer.unlock_achievement(new/datum/achievement/headshot())

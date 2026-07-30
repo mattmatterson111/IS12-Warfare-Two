@@ -48,7 +48,14 @@
 	var/slowdown_per_slot[slot_last] // How much clothing is slowing you down. This is an associative list: item slot - slowdown
 	var/slowdown_accessory // How much an accessory will slow you down when attached to a worn article of clothing.
 	var/canremove = 1 //Mostly for Ninja code at this point but basically will not allow the item to be removed if set to 0. /N
-	var/list/armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
+	var/list/armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, explosive = 0, bio = 0, rad = 0)
+	var/armor_durability = 100
+	var/max_armor_durability = 100
+	var/armor_material_type = ARMOR_SOFT
+	var/penetration_threshold = 10
+	var/list/armor_hit_sound = list('sound/effects/gore/armorhit1.ogg', 'sound/effects/gore/armorhit2.ogg', 'sound/effects/gore/armorhit3.ogg', 'sound/effects/gore/armorhit4.ogg')
+	var/image/armordmg_overlay = null
+	var/armor_condition_icon = 'icons/obj/gun.dmi'
 	var/list/allowed = null //suit storage stuff.
 	var/obj/item/device/uplink/hidden_uplink = null // All items can have an uplink hidden inside, just remember to add the triggers.
 	var/zoomdevicename = null //name used for message when binoculars/scope is used
@@ -365,7 +372,55 @@
 			size = "bulky"
 		if(ITEM_SIZE_HUGE + 1 to INFINITY)
 			size = "huge"
-	return ..(user, distance, "", SPAN_SIZE("<br>It is a [size] item."))
+
+	var/armor_text = ""
+	var/has_real_armor = FALSE
+	for(var/key in armor)
+		if(armor[key] > 0)
+			has_real_armor = TRUE
+			break
+
+	if(has_real_armor && max_armor_durability > 0)
+		var/pct = round((armor_durability / max_armor_durability) * 100)
+		switch(pct)
+			if(100 to INFINITY)
+				armor_text = "It's pristine."
+			if(75 to 99)
+				armor_text = "It's still rather good."
+			if(50 to 74)
+				armor_text = "It's rather worn."
+			if(25 to 49)
+				armor_text = "It won't last much longer."
+			if(0 to 24)
+				armor_text = "It's practically useless."
+
+	return ..(user, distance, "", SPAN_SIZE("<br>It is a [size] item.<br>[armor_text ? "It's <u>[armor_material_type]</u> armor, [armor_text]<br>" : ""]"))
+
+/obj/item/update_icon()
+	. = ..()
+	overlays -= armordmg_overlay
+	armordmg_overlay = null
+
+	if(max_armor_durability > 0)
+		var/pct = round((armor_durability / max_armor_durability) * 100)
+		var/cond_state = "condition_1"
+		switch(pct)
+			if(0 to 30) cond_state = "condition_8"
+			if(31 to 40) cond_state = "condition_7"
+			if(41 to 50) cond_state = "condition_6"
+			if(51 to 60) cond_state = "condition_5"
+			if(61 to 70) cond_state = "condition_4"
+			if(71 to 80) cond_state = "condition_3"
+			if(81 to 90) cond_state = "condition_2"
+			if(91 to INFINITY) cond_state = "condition_1"
+
+		var/icon/I = new/icon(icon, icon_state)
+		I.Blend(new /icon(armor_condition_icon, rgb(255,255,255)), ICON_MULTIPLY)
+		I.Blend(new /icon(armor_condition_icon, icon_state = cond_state), ICON_ADD)
+		armordmg_overlay = image(I)
+		armordmg_overlay.color = "#773d28"
+		armordmg_overlay.alpha = round(255 * (1 - (armor_durability / max_armor_durability)))
+		overlays += armordmg_overlay
 
 /obj/item/attack_hand(mob/user as mob)
 	if (!user) return
@@ -564,7 +619,7 @@
 
 	if(wielded)
 		unwield(user)
-	if(LAZYLEN(worldicons))
+	if(worldicons)
 		icon_state = originalstate
 
 

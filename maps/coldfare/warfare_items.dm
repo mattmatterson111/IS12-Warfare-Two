@@ -8,6 +8,11 @@
 	name = "Sentry Helmet"
 	desc = "Used for taking blows to the noggin without getting hurt."
 	armor = list(melee = 75, bullet = 75, laser = 55, energy = 40, bomb = 50, bio = 10, rad = 0)//proteck ya neck
+	armor_durability = 150
+	max_armor_durability = 150
+	armor_material_type = ARMOR_HARD
+	penetration_threshold = 120
+	armor_hit_sound = list('sound/effects/gore/helmhit1.ogg', 'sound/effects/gore/helmhit2.ogg', 'sound/effects/gore/helmhit3.ogg', 'sound/effects/gore/helmhit4.ogg', 'sound/effects/gore/helmhit5.ogg')
 	str_requirement = 18
 	force = 10
 
@@ -16,6 +21,11 @@
 	name = "Sentry Armor"
 	desc = "Protects you very well from getting smacked, and decently well from getting shot."
 	armor = list(melee = 75, bullet = 75, laser = 55, energy = 40, bomb = 50, bio = 10, rad = 0)//Beefy boys.
+	armor_durability = 500
+	max_armor_durability = 500
+	armor_material_type = ARMOR_HARD
+	penetration_threshold = 150
+	armor_hit_sound = list('sound/effects/gore/helmhit1.ogg', 'sound/effects/gore/helmhit2.ogg', 'sound/effects/gore/helmhit3.ogg', 'sound/effects/gore/helmhit4.ogg', 'sound/effects/gore/helmhit5.ogg')
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 	cold_protection = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
@@ -174,6 +184,11 @@
 	..()
 	name = "[RED_TEAM]'s jacket"
 	desc = "The proud jacket of the [RED_TEAM]."
+	armor_durability = 60
+	max_armor_durability = 60
+	armor_material_type = ARMOR_SOFT
+	penetration_threshold = 12
+	armor = list(melee = 25, bullet = 20, laser = 10, energy = 10, bomb = 10, bio = 0, rad = 0)
 
 /obj/item/clothing/suit/armor/redcoat/sl
 	icon_state = "redsl"
@@ -253,8 +268,22 @@
 	icon_state = "redhelmet"
 	warfare_team = RED_TEAM
 	worldicons = "redhelmet_world"
+	force = 5
 	can_be_damaged = TRUE
 	damaged_worldicons = "redhelmet_world_dam"
+	armor_durability = 100
+	max_armor_durability = 100
+	armor_material_type = ARMOR_HARD
+	penetration_threshold = 70
+	armor_hit_sound = list('sound/effects/gore/helmhit1.ogg', 'sound/effects/gore/helmhit2.ogg', 'sound/effects/gore/helmhit3.ogg', 'sound/effects/gore/helmhit4.ogg', 'sound/effects/gore/helmhit5.ogg')
+	item_icons = list(
+		slot_l_hand_str = 'icons/mob/onmob/items/lefthand.dmi',
+		slot_r_hand_str = 'icons/mob/onmob/items/righthand.dmi',
+	)
+
+/obj/item/clothing/head/helmet/redhelmet/New()
+	..()
+	armor_durability = rand(75, 100)
 
 /obj/item/clothing/head/helmet/redhelmet/medic
 	icon_state = "redhelmet_medic"
@@ -371,6 +400,11 @@
 	..()
 	name = "The [BLUE_TEAM]'s jacket"
 	desc = "The proud jacket of the [BLUE_TEAM]."
+	armor_durability = 60
+	max_armor_durability = 60
+	armor_material_type = "soft"
+	penetration_threshold = 12
+	armor = list(melee = 25, bullet = 20, laser = 10, energy = 10, bomb = 10, bio = 0, rad = 0)
 
 /obj/item/clothing/suit/armor/bluecoat/sl
 	item_state = "blue_prac"
@@ -459,20 +493,6 @@
 	warfare_team = BLUE_TEAM
 
 //Helmets
-/obj/item/clothing/head/helmet/redhelmet
-	name = "Red's Helmet"
-	desc = "Sometimes protects your head from bullets and blows."
-	icon_state = "redhelmet"
-	warfare_team = RED_TEAM
-	worldicons = "redhelmet_world"
-	force = 5
-	can_be_damaged = TRUE
-	damaged_worldicons = "redhelmet_world_dam"
-	item_icons = list(
-		slot_l_hand_str = 'icons/mob/onmob/items/lefthand.dmi',
-		slot_r_hand_str = 'icons/mob/onmob/items/righthand.dmi',
-	)
-
 /obj/item/clothing/head/helmet/bluehelmet
 	name = "Blue's Helmet"
 	desc = "Sometimes protects your head from bullets and blows."
@@ -482,10 +502,19 @@
 	force = 5
 	can_be_damaged = TRUE
 	damaged_worldicons = "bluehelmet_world_dam"
+	armor_durability = 100
+	max_armor_durability = 100
+	armor_material_type = ARMOR_HARD
+	penetration_threshold = 70
+	armor_hit_sound = list('sound/effects/gore/helmhit1.ogg', 'sound/effects/gore/helmhit2.ogg', 'sound/effects/gore/helmhit3.ogg', 'sound/effects/gore/helmhit4.ogg', 'sound/effects/gore/helmhit5.ogg')
 	item_icons = list(
 		slot_l_hand_str = 'icons/mob/onmob/items/lefthand.dmi',
 		slot_r_hand_str = 'icons/mob/onmob/items/righthand.dmi',
 	)
+
+/obj/item/clothing/head/helmet/bluehelmet/New()
+	..()
+	armor_durability = rand(75, 100)
 
 /obj/item/clothing/head/helmet/bluehelmet/medic
 	icon_state = "bluehelmet_medic"

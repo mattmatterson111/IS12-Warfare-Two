@@ -29,32 +29,32 @@ meteor_act
 			return 100
 
 	var/obj/item/organ/external/organ = get_organ(def_zone)
-	var/armor = getarmor_organ(organ, P.check_armour)
+	var/armor = getarmor_organ(organ, P.check_armour, P.damage)
 	var/penetrating_damage = ((P.damage + P.armor_penetration) * P.penetration_modifier) - armor
 
-	//Organ damage
-	if(organ.internal_organs.len && prob(35 + max(penetrating_damage, -12.5)))
-		var/damage_amt = min((P.damage * P.penetration_modifier), penetrating_damage) //So we don't factor in armor_penetration as additional damage
-		if(damage_amt > 0)
-		// Damage an internal organ
-			var/list/victims = list()
-			var/list/possible_victims = shuffle(organ.internal_organs.Copy())
-			for(var/obj/item/organ/internal/I in possible_victims)
-				if(I.damage < I.max_damage && (prob((I.relative_size) * (1 / max(1, victims.len)))))
-					victims += I
-			if(victims.len)
-				for(var/obj/item/organ/victim in victims)
-					damage_amt /= 2
-					victim.take_damage(damage_amt)
+	if(penetrating_damage > 0)
+		//Organ damage
+		if(organ.internal_organs.len && prob(35 + max(penetrating_damage, -12.5)))
+			var/damage_amt = min((P.damage * P.penetration_modifier), penetrating_damage) //So we don't factor in armor_penetration as additional damage
+			if(damage_amt > 0)
+			// Damage an internal organ
+				var/list/victims = list()
+				var/list/possible_victims = shuffle(organ.internal_organs.Copy())
+				for(var/obj/item/organ/internal/I in possible_victims)
+					if(I.damage < I.max_damage && (prob((I.relative_size) * (1 / max(1, victims.len)))))
+						victims += I
+				if(victims.len)
+					for(var/obj/item/organ/victim in victims)
+						damage_amt /= 2
+						victim.take_damage(damage_amt)
 
-
-	//Embed or sever artery
-	if(P.can_embed() && !(species.species_flags & SPECIES_FLAG_NO_EMBED) && prob(22.5 + max(penetrating_damage, -10)) && !(prob(50) && (organ.sever_artery())) && length(organ.implants) < 10)
-		var/obj/item/material/shard/shrapnel/SP = new()
-		SP.SetName((P.name != "shrapnel")? "[P.name] shrapnel" : "shrapnel")
-		SP.desc = "[SP.desc] It looks like it was fired from [P.shot_from]."
-		SP.loc = organ
-		organ.embed(SP, silent = TRUE)
+		//Embed or sever artery
+		if(P.can_embed() && !(species.species_flags & SPECIES_FLAG_NO_EMBED) && prob(22.5 + max(penetrating_damage, -10)) && !(prob(50) && (organ.sever_artery())) && length(organ.implants) < 10)
+			var/obj/item/material/shard/shrapnel/SP = new()
+			SP.SetName((P.name != "shrapnel")? "[P.name] shrapnel" : "shrapnel")
+			SP.desc = "[SP.desc] It looks like it was fired from [P.shot_from]."
+			SP.loc = organ
+			organ.embed(SP, silent = TRUE)
 
 	var/blocked = ..(P, def_zone)
 
@@ -112,22 +112,40 @@ meteor_act
 
 	return siemens_coefficient
 
-//this proc returns the armour value for a particular external organ.
-/mob/living/carbon/human/proc/getarmor_organ(var/obj/item/organ/external/def_zone, var/type)
+/mob/living/carbon/human/proc/getarmor_organ(var/def_zone, var/type, var/damage_amount = 0)
 	if(!type || !def_zone) return 0
-	if(!istype(def_zone))
-		def_zone = get_organ(check_zone(def_zone))
-	if(!def_zone)
+	var/obj/item/organ/external/affecting = istype(def_zone, /obj/item/organ/external) ? def_zone : get_organ(check_zone(def_zone))
+	if(!affecting)
 		return 0
+
 	var/protection = 0
 	var/list/protective_gear = list(head, wear_mask, wear_suit, w_uniform, gloves, shoes)
 	for(var/obj/item/clothing/gear in protective_gear)
-		if(gear.body_parts_covered & def_zone.body_part)
-			protection = add_armor(protection, gear.armor[type])
+		if(gear.body_parts_covered & affecting.body_part)
+			if(gear.armor_durability <= 0)
+				continue
+
+			var/gear_prot = gear.armor[type] || 0
+			if(damage_amount > 0)
+				if((type == CUT || type == PIERCE) && damage_amount < gear.penetration_threshold)
+					damage_amount *= 0.6
+					gear_prot = gear.armor[BRUISE] || gear_prot
+
+				gear_prot = min(damage_amount, gear_prot, gear.armor_durability)
+				var/loss = (gear.armor_material_type == ARMOR_HARD) ? gear_prot : round(gear_prot * 0.5)
+				gear.armor_durability = max(0, gear.armor_durability - loss)
+
+				gear.update_icon()
+				if(length(gear.armor_hit_sound))
+					playsound(src, pick(gear.armor_hit_sound), 50, 1)
+
+			protection = add_armor(protection, gear_prot)
+
 		if(gear.accessories.len)
 			for(var/obj/item/clothing/accessory/bling in gear.accessories)
-				if(bling.body_parts_covered & def_zone.body_part)
+				if(bling.body_parts_covered & affecting.body_part)
 					protection = add_armor(protection, bling.armor[type])
+
 	return protection
 
 /mob/living/carbon/human/proc/check_head_coverage()
@@ -301,6 +319,7 @@ meteor_act
 	if(aim_zone == BP_THROAT)
 		organ_hit = "throat"
 
+	getarmor_organ(affecting, "melee", effective_force)
 	var/blocked = run_armor_check(hit_zone, "melee", I.armor_penetration, "Your armor has protected your [affecting.name].", "Your armor has softened the blow to your [affecting.name].")
 
 
@@ -345,24 +364,29 @@ meteor_act
 	if(effective_force > 10 || effective_force >= 5 && prob(33))
 		forcesay(GLOB.hit_appends)	//forcesay checks stat already
 
-	//Ok this block of text handles cutting arteries, tendons, and limbs off.
-	//First we cut an artery, the reason for that, is that arteries are funninly enough, not that lethal, and don't have the biggest impact. They'll still make you bleed out, but they're less immediately lethal.
-	if(I.sharp && prob(I.sharpness * 2) && !(affecting.status & ORGAN_ARTERY_CUT))
-		affecting.sever_artery()
-		if(affecting.artery_name == "carotid artery")
-			src.visible_message("<span class='danger'>[user] slices [src]'s throat!</span>")
-		else
-			src.visible_message("<span class='danger'>[user] slices open [src]'s [affecting.artery_name] artery!</span>")
+	var/eff_damflags = I.damage_flags()
+	var/obj/item/gear = get_covering_equipped_item(affecting.body_part)
+	if(gear && gear.armor_durability > 0 && effective_force < gear.penetration_threshold)
+		eff_damflags &= ~(DAM_SHARP | DAM_EDGE)
+	else
+		//Ok this block of text handles cutting arteries, tendons, and limbs off.
+		//First we cut an artery, the reason for that, is that arteries are funninly enough, not that lethal, and don't have the biggest impact. They'll still make you bleed out, but they're less immediately lethal.
+		if(I.sharp && prob(I.sharpness * 2) && !(affecting.status & ORGAN_ARTERY_CUT))
+			affecting.sever_artery()
+			if(affecting.artery_name == "carotid artery")
+				src.visible_message("<span class='danger'>[user] slices [src]'s throat!</span>")
+			else
+				src.visible_message("<span class='danger'>[user] slices open [src]'s [affecting.artery_name] artery!</span>")
 
-	//Next tendon, which disables the limb, but does not remove it, making it easier to fix, and less lethal, than losing it.
-	else if(I.sharp && (I.sharpness * 2) && !(affecting.status & ORGAN_TENDON_CUT) && affecting.has_tendon)//Yes this is the same exactly probability again. But I'm running it seperate because I don't want the two to be exclusive.
-		affecting.sever_tendon()
-		src.visible_message("<span class='danger'>[user] slices open [src]'s [affecting.tendon_name] tendon!</span>")
+		//Next tendon, which disables the limb, but does not remove it, making it easier to fix, and less lethal, than losing it.
+		else if(I.sharp && (I.sharpness * 2) && !(affecting.status & ORGAN_TENDON_CUT) && affecting.has_tendon)//Yes this is the same exactly probability again. But I'm running it seperate because I don't want the two to be exclusive.
+			affecting.sever_tendon()
+			src.visible_message("<span class='danger'>[user] slices open [src]'s [affecting.tendon_name] tendon!</span>")
 
-	//Finally if we pass all that, we cut the limb off. This should reduce the number of one hit sword kills.
-	else if(I.sharp && I.edge)
-		if(prob(I.sharpness * strToDamageModifier(user.my_stats[STAT(str)].level)))
-			affecting.droplimb(0, DROPLIMB_EDGE)
+		//Finally if we pass all that, we cut the limb off. This should reduce the number of one hit sword kills.
+		else if(I.sharp && I.edge)
+			if(prob(I.sharpness * strToDamageModifier(user.my_stats[STAT(str)].level)))
+				affecting.droplimb(0, DROPLIMB_EDGE)
 
 	var/obj/item/organ/external/head/O = locate(/obj/item/organ/external/head) in src.organs
 
@@ -379,12 +403,12 @@ meteor_act
 					visible_message("<span class='danger'>[src] [species.knockout_message]</span>")
 					apply_effect(20, PARALYZE, blocked)
 			else
-				//Easier to score a stun but lasts less time
-				if(prob(effective_force + 10))
+				//Easier to score a stun but lasts less time, scaled down by target strength and armor block
+				if(prob(max(0, effective_force + 10 - (STAT_LEVEL(str) * 2)) * (1 - (blocked / 100))))
 					visible_message("<span class='danger'>[src] has been knocked down!</span>")
 					apply_effect(6, WEAKEN, blocked)
 		//Apply blood
-		attack_bloody(I, user, effective_force, hit_zone)
+		attack_bloody(I, user, effective_force, hit_zone, blocked)
 
 	//This was commented out because critical successes are OP as shit. Now they're back.
 	
@@ -402,14 +426,14 @@ meteor_act
 				II.disarm(src)
 				return
 
-	apply_damage(effective_force, I.damtype, hit_zone, blocked, I.damage_flags(), used_weapon=I)
+	apply_damage(effective_force, I.damtype, hit_zone, blocked, eff_damflags, used_weapon=I)
 
 	receive_damage()//The little animation that plays when someone gets hit.
 
 	return 1
 
-/mob/living/carbon/human/proc/attack_bloody(obj/item/W, mob/living/attacker, var/effective_force, var/hit_zone)
-	if(W.damtype != BRUTE)
+/mob/living/carbon/human/proc/attack_bloody(obj/item/W, mob/living/attacker, var/effective_force, var/hit_zone, var/blocked = 0)
+	if(W.damtype != BRUTE || blocked_mult(blocked) <= 0.5)
 		return
 
 	//make non-sharp low-force weapons less likely to be bloodied
