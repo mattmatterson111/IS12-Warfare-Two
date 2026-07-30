@@ -936,9 +936,9 @@
 	embed = 0
 	sharp = 0
 	hitscan = FALSE
-	speed = 1
-	var/num_fragments = 50
-	var/explosion_size = 2
+	speed = 1.25
+	var/num_fragments = 15
+	var/explosion_size = 1
 	var/spread_range = 7 //leave as is, for some reason setting this higher makes the spread pattern have gaps close to the epicenter
 	var/list/fragment_types = list(/obj/item/projectile/bullet/pellet/fragment = 1)
 
