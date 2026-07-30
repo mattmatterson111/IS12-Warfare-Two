@@ -1,6 +1,6 @@
 /obj/item/grenade_attachment
-	name = "grenade attachment"
-	desc = "A muzzle attachment."
+	name = "M88 'Kraken' Rifle Grenade"
+	desc = "A grenade that can be fired from your rifle. Attach to the front and fire like usual."
 	icon = 'icons/obj/grenade.dmi'
 	icon_state = "grenade_attachment"
 	w_class = ITEM_SIZE_SMALL
