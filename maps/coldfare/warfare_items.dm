@@ -1149,6 +1149,10 @@ obj/item/storage/backpack/satchel/warfare/chestrig/blue/oldlmg
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 	canremove = FALSE
 	armor = list(melee = 9999, bullet = 9999, laser = 9999, energy = 9999, bomb = 9999, bio = 9999, rad = 9999)
+	armor_durability = 999999
+	max_armor_durability = 999999
+	armor_material_type = ARMOR_HARD
+	penetration_threshold = 9999
 
 /obj/item/clothing/mask/gas/sniper/officer
 	icon_state = "sniper"
@@ -1166,6 +1170,11 @@ obj/item/storage/backpack/satchel/warfare/chestrig/blue/oldlmg
 	item_state = "redcaptain"
 	worldicons = list("captainhatworld1","captainhatworld2")
 	canremove = FALSE
+	armor = list(melee = 9999, bullet = 9999, laser = 9999, energy = 9999, bomb = 9999, bio = 9999, rad = 9999)
+	armor_durability = 999999
+	max_armor_durability = 999999
+	armor_material_type = ARMOR_HARD
+	penetration_threshold = 9999
 
 /obj/item/clothing/under/moraleofficer
 	name = "Morale Officer's Suit"
@@ -1188,6 +1197,10 @@ obj/item/storage/backpack/satchel/warfare/chestrig/blue/oldlmg
 	item_state = "prac_gloves"
 	canremove = FALSE
 	armor = list(melee = 9999, bullet = 9999, laser = 9999, energy = 9999, bomb = 9999, bio = 9999, rad = 9999)
+	armor_durability = 999999
+	max_armor_durability = 999999
+	armor_material_type = ARMOR_HARD
+	penetration_threshold = 9999
 
 /obj/item/device/radio/headset/moraleofficer
 	name = "PTB-CMMD '23 headset"
@@ -1538,3 +1551,20 @@ obj/item/storage/backpack/satchel/warfare/chestrig/blue/oldlmg
 	icon_state = "bluecoat_cf"
 	item_state = "bluecoat_cf"
 	worldicons = list("captaincoatworld1","captaincoatworld2","captaincoatworld3")
+
+/obj/item/clothing/suit/armor/metalvest
+	name = "Armor Vest"
+	desc = "Decent for protection, not so much for casual wearing."
+	icon_state = "armorvest"
+	worldicons = "armorvest_world"
+	armor = list(melee = 64, bullet = 64, laser = 55, energy = 40, bomb = 40, bio = 10, rad = 0)//Beefy boys.
+	armor_durability = 200
+	max_armor_durability = 200
+	armor_material_type = ARMOR_HARD
+	penetration_threshold = 90
+	armor_hit_sound = list('sound/effects/gore/helmhit1.ogg', 'sound/effects/gore/helmhit2.ogg', 'sound/effects/gore/helmhit3.ogg', 'sound/effects/gore/helmhit4.ogg', 'sound/effects/gore/helmhit5.ogg')
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO
+	cold_protection = UPPER_TORSO|LOWER_TORSO
+	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
+	str_requirement = 13
+	footstep = 1
