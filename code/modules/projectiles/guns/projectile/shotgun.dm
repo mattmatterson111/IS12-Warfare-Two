@@ -49,6 +49,12 @@
 	if(is_jammed)
 		return null
 	if(chambered)
+		if(chambered.BB && grenade_attachment && grenade_attachment.grenade)
+			var/obj/item/projectile/fuck = grenade_attachment.fire(src)
+			qdel(grenade_attachment)
+			grenade_attachment = null
+			update_icon()
+			return fuck
 		return chambered.BB
 	return null
 

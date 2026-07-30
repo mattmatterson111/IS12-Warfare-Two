@@ -65,6 +65,7 @@
 	engineering_skill = 4
 	auto_rifle_skill = 3
 	semi_rifle_skill = 10
+	boltie_skill = 4
 
 	squad_overlay = "medic"
 
@@ -86,7 +87,7 @@
 	//semi_rifle_skill = 5
 	smg_skill = 10
 	shotgun_skill = 10
-	//boltie_skill = 5
+	boltie_skill = 6
 
 	squad_overlay = "sapper"
 
@@ -364,8 +365,8 @@
 	l_pocket = /obj/item/wirecutters
 	//suit_store = /obj/item/gun/projectile/automatic/machinepistol
 	back = /obj/item/storage/backpack/warfare
-	belt = /obj/item/gun/projectile/warfare
-	backpack_contents = list(/obj/item/stack/barbwire = 1, /obj/item/shovel = 1, /obj/item/defensive_barrier = 3, /obj/item/storage/box/ifak = 1, /obj/item/ammo_magazine/c45m/warfare = 2)
+	belt = null
+	backpack_contents = list(/obj/item/stack/barbwire = 1, /obj/item/shovel = 1, /obj/item/defensive_barrier = 3, /obj/item/storage/box/ifak = 1)
 
 /decl/hierarchy/outfit/job/bluesoldier/engineer/equip()
 	if(prob(1))//Rare engineer spawn
@@ -373,24 +374,15 @@
 		r_pocket = /obj/item/shovel
 		belt = /obj/item/storage/belt/autoshotty
 		backpack_contents = list(/obj/item/stack/barbwire = 1, /obj/item/shovel = 1, /obj/item/defensive_barrier = 3, /obj/item/storage/box/ifak = 1, /obj/item/grenade/smokebomb = 1)
-	else if (prob(7)) //if(prob(50))
-		suit_store = /obj/item/gun/projectile/shotgun/pump/shitty
-		r_pocket = /obj/item/ammo_box/shotgun
-
-	else if (prob(15))
-		suit_store = /obj/item/gun/projectile/shotgun/pump/boltaction/good
-		r_pocket =  /obj/item/ammo_box/rifle/modern
-
-	else if(prob(25))
-		suit_store = /obj/item/gun/projectile/shotgun/pump/boltaction/shitty/leverchester
-		r_pocket = /obj/item/ammo_box/rifle
-
-	else if(prob(50))
-		suit_store = /obj/item/gun/projectile/shotgun/pump/boltaction/shitty/bayonet
+	else if(prob(15))
+		suit_store = pick(
+			/obj/item/gun/projectile/shotgun/pump/boltaction/shitty,
+			/obj/item/gun/projectile/shotgun/pump/boltaction/shitty/bayonet,
+			/obj/item/gun/projectile/shotgun/pump/boltaction/shitty/leverchester)
 		r_pocket = /obj/item/ammo_box/rifle
 
 	else
-		suit_store = /obj/item/gun/projectile/shotgun/pump/boltaction/shitty
+		suit_store = /obj/item/gun/projectile/shotgun/pump/boltaction/shitty/fieldpiece
 		r_pocket = /obj/item/ammo_box/rifle
 	/*
 	else
@@ -408,23 +400,14 @@
 
 /decl/hierarchy/outfit/job/bluesoldier/medic
 	suit = /obj/item/clothing/suit/armor/bluecoat/medic
-	belt = /obj/item/storage/belt/medical/full
-	r_pocket = /obj/item/ammo_magazine/c45rifle/akarabiner
+	belt = /obj/item/gun/projectile/warfare
+	r_pocket = /obj/item/ammo_magazine/c45m/warfare
 	l_pocket = /obj/item/stack/medical/bruise_pack
-	suit_store = /obj/item/gun/projectile/automatic/m22/warmonger
 	gloves = /obj/item/clothing/gloves/latex
 	head = /obj/item/clothing/head/helmet/bluehelmet/medic
+	backpack_contents = list(/obj/item/storage/belt/medical/full = 1, /obj/item/ammo_magazine/c45m/warfare = 2, /obj/item/grenade/smokebomb = 1)
 
 /decl/hierarchy/outfit/job/bluesoldier/medic/equip()
-	if(prob(50))
-		suit_store = /obj/item/gun/projectile/automatic/m22/warmonger
-		r_pocket = /obj/item/ammo_magazine/c45rifle/akarabiner
-		backpack_contents = list(/obj/item/ammo_magazine/c45rifle/akarabiner = 3, /obj/item/grenade/smokebomb = 1)
-
-	else
-		suit_store = /obj/item/gun/projectile/shotgun/pump/boltaction/shitty/bayonet
-		r_pocket = /obj/item/ammo_box/rifle
-		backpack_contents = list(/obj/item/grenade/smokebomb = 1)
 	if(aspect_chosen(/datum/aspect/nightfare))
 		backpack_contents += list(/obj/item/ammo_box/flares/blue = 1, /obj/item/torch/self_lit = 1)
 	if(aspect_chosen(/datum/aspect/trenchmas))
@@ -444,8 +427,6 @@
 /decl/hierarchy/outfit/job/bluesoldier/sniper/equip()
 	if(prob(50))
 		belt = /obj/item/gun/projectile/warfare
-	else
-		belt = /obj/item/gun/projectile/revolver/manual
 	if(aspect_chosen(/datum/aspect/nightfare))
 		backpack_contents += list(/obj/item/ammo_box/flares/blue = 1, /obj/item/torch/self_lit = 1)
 	if(aspect_chosen(/datum/aspect/trenchmas))

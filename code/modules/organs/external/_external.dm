@@ -431,14 +431,19 @@ This function completely restores a damaged organ to perfect condition.
 	//Brute damage can possibly trigger an internal wound, too.
 	var/local_damage = brute_dam + burn_dam + damage
 	if(!surgical && (type in list(CUT, PIERCE)) && damage > 15 && local_damage > 30)
+		var/can_cut = TRUE
+		var/obj/item/g = owner.get_covering_equipped_item(body_part)
+		if(g && g.armor_durability > 0 && damage < g.penetration_threshold)
+			can_cut = FALSE
 
-		var/internal_damage
-		if(prob(damage) && sever_artery())
-			internal_damage = TRUE
-		if(prob(ceil(damage/4)) && sever_tendon())
-			internal_damage = TRUE
-		if(internal_damage)
-			owner.custom_pain("You feel something rip in your [name]!", 50, affecting = src)
+		if(can_cut)
+			var/internal_damage
+			if(prob(damage) && sever_artery())
+				internal_damage = TRUE
+			if(prob(ceil(damage/4)) && sever_tendon())
+				internal_damage = TRUE
+			if(internal_damage)
+				owner.custom_pain("You feel something rip in your [name]!", 50, affecting = src)
 
 	//Burn damage can cause fluid loss due to blistering and cook-off
 	if((type in list(BURN, LASER)) && (damage > 5 || damage + burn_dam >= 15) && (robotic < ORGAN_ROBOT))

@@ -9,7 +9,9 @@
 	icon_state = "boltaction"
 	item_state = "boltaction"
 	wielded_item_state = "boltaction-wielded"
+	damage_multiplier = 1.1
 	condition = 75
+	accuracy = 1
 	fire_sound = "brifle"
 	caliber = "763"
 	ammo_type = /obj/item/ammo_casing/brifle
@@ -18,6 +20,26 @@
 	far_fire_sound = "sniper_fire"
 	gun_type = GUN_BOLTIE //So engineers can't shoot this shit.
 	can_have_bayonet = TRUE
+	allowgrenade_attachment = TRUE
+	aimed_dispersion_mult = 0.7
+
+/obj/item/gun/projectile/shotgun/pump/boltaction/shitty/fieldpiece
+	name = "\improper WTX Field Piece"
+	desc = "A bastardized farm gun that someone thought would make a decent combat weapon. Whoever assembled this couldn't be bothered to aim the sights properly either."
+	fire_delay = 15 // screw you
+	accuracy = -1
+	damage_multiplier = 0.9
+	icon_state = "fieldpiece"
+	item_state = "sks"
+	wielded_item_state = "sks-wielded"
+	condition = 75
+	ammo_type = /obj/item/ammo_casing/brifle
+	one_hand_penalty = 30
+	empty_icon = "fieldpiece-e"
+	can_have_bayonet = TRUE
+	gun_type = GUN_SHOTGUN // I want engineers to shoot this shit
+	aimed_dispersion_mult = 0.8
+	allowgrenade_attachment = FALSE
 
 /obj/item/gun/projectile/shotgun/pump/boltaction/shitty/bayonet
 	name = "\improper Mark I Stormrider"
@@ -57,6 +79,7 @@
 	far_fire_sound = "sniper_fire"
 	gun_type = GUN_BOLTIE //So engineers can't shoot this shit.
 	can_have_bayonet = FALSE
+	allowgrenade_attachment = TRUE
 
 
 /obj/item/gun/projectile/shotgun/pump/boltaction/shitty/leverchester
@@ -498,175 +521,6 @@
 		)
 
 
-/obj/item/gun/projectile/automatic/mg08
-	name = "LMG Harbinger"
-	desc = "Named for the death it brings."
-	//icon = 'icons/obj/gunx35.dmi'
-	icon_state = "hmg"
-	item_state = "hmg"
-	str_requirement = 18
-	w_class = ITEM_SIZE_HUGE
-	force = 10
-	slot_flags = SLOT_BACK|SLOT_S_STORE
-	max_shells = 50
-	caliber = "a556"
-	origin_tech = list(TECH_COMBAT = 6, TECH_MATERIAL = 1, TECH_ILLEGAL = 2)
-	ammo_type = /obj/item/ammo_casing/a556
-	load_method = MAGAZINE
-	magazine_type = /obj/item/ammo_magazine/box/a556/mg08
-	allowed_magazines = /obj/item/ammo_magazine/box/a556/mg08
-	one_hand_penalty = 50
-	wielded_item_state = "hmg-wielded"
-	fire_sound = 'sound/weapons/gunshot/harbinger.ogg'//fire_sound = 'sound/weapons/gunshot/hmg.ogg'
-	fire_volume = 55 // BIIG EVIL FUCKING GUUN
-	unload_sound 	= 'sound/weapons/guns/interact/ltrifle_magout.ogg'
-	reload_sound 	= 'sound/weapons/guns/interact/ltrifle_magin.ogg'
-	cock_sound 		= 'sound/weapons/guns/interact/ltrifle_cock.ogg'
-	loaded_icon = "hmg"
-	unwielded_loaded_icon = "hmg"
-	wielded_loaded_icon = "hmg-wielded"
-	unloaded_icon = "hmg-e"
-	unwielded_unloaded_icon = "hmg-e"
-	wielded_unloaded_icon = "hmg-wielded-e"
-	fire_delay=2
-	burst=1
-	move_delay=12
-	one_hand_penalty=8
-	automatic = 2
-	firemodes = list()
-	gun_type = GUN_LMG
-	condition = 300 //Enough for two clean mags.
-	var/deployed = FALSE
-
-/obj/item/gun/projectile/automatic/mg08/special_check(var/mob/user)
-	if(misfire)
-		return 1
-	if(length(GLOB.payloads)) return ..()
-	if(!deployed)//Can't fire.
-		to_chat(user, "<span class='danger'>I can't fire it if it's not deployed.</span>")
-		return 0
-	return ..()
-
-
-/obj/item/gun/projectile/automatic/mg08/attack_self(mob/user)
-	. = ..()
-	if(length(GLOB.payloads)) return
-	if(deployed)//If there's an mg deployed, then pack it up again.
-		pack_up_mg(user)
-	else
-		deploy_mg(user)//Otherwise, deploy that motherfucker.
-
-/obj/item/gun/projectile/automatic/mg08/proc/deploy_mg(mob/user)
-	if(user.doing_something)
-		return
-	for(var/obj/structure/mg08_structure/M in user.loc)//If there's already an mg there then don't deploy it. Dunno how that's possible but stranger things have happened.
-		if(M)
-			to_chat(user, "There is already an LMG here.")
-			return
-	user.visible_message("[user] starts to deploy the [src]")
-	user.doing_something = TRUE
-	if(!do_after(user,30))
-		user.doing_something = FALSE //Prevents Permanently being unable to deploy harbingers
-		return
-	user.doing_something = FALSE
-	var/obj/structure/mg08_structure/M = new(get_turf(user)) //Make a new one here.
-	M.dir = user.dir
-	switch(M.dir)
-		if(EAST)
-			user.pixel_x -= 5
-		if(WEST)
-			user.pixel_x += 5
-		if(NORTH)
-			user.pixel_y -= 5
-		if(SOUTH)
-			user.pixel_y += 5
-			M.plane = ABOVE_HUMAN_PLANE
-	deployed = TRUE
-	playsound(src, 'sound/weapons/mortar_deploy.ogg', 100, FALSE)
-	update_icon(user)
-
-/obj/item/gun/projectile/automatic/mg08/proc/pack_up_mg(mob/user)
-	user.visible_message("[user] packs up the [src]")
-	for(var/obj/structure/mg08_structure/M in user.loc)
-		switch(M.dir)//Set our offset back to normal.
-			if(EAST)
-				user.pixel_x += 5
-			if(WEST)
-				user.pixel_x -= 5
-			if(NORTH)
-				user.pixel_y += 5
-			if(SOUTH)
-				user.pixel_y -= 5
-		qdel(M) //Delete the mg structure.
-	deployed = FALSE
-	update_icon(user)
-
-/obj/item/gun/projectile/automatic/mg08/dropped(mob/user)
-	. = ..()
-	if(deployed)
-		pack_up_mg(user)
-
-/obj/item/gun/projectile/automatic/mg08/equipped(var/mob/user, var/slot)
-	..()
-	if((slot == slot_back) || (slot == slot_s_store))
-		. = ..()
-		if(deployed)
-			pack_up_mg(user)
-
-/obj/structure/mg08_structure //That thing that's created when you place down your mg, purely for looks.
-	name = "Deployed LMG Harbinger"
-	anchored = TRUE //No moving this around please.
-
-/obj/structure/mg08/CanPass(atom/movable/mover, turf/target, height, air_group)//Humans cannot pass cross this thing in any way shape or form.
-	if(ishuman(mover))
-		var/mob/living/carbon/human/H = mover
-		if(locate(/obj/item/gun/projectile/automatic/mg08) in H)//Locate the mg.
-			if(istype(H.l_hand, /obj/item/gun/projectile/automatic/mg08))
-				var/obj/item/gun/projectile/automatic/mg08/gun = H.l_hand
-				switch(gun.deployed)
-					if(TRUE) return FALSE
-					if(FALSE)
-						qdel(src)
-						return TRUE
-			if(istype(H.r_hand, /obj/item/gun/projectile/automatic/mg08))
-				var/obj/item/gun/projectile/automatic/mg08/gun = H.r_hand
-				switch(gun.deployed)
-					if(TRUE) return FALSE
-					if(FALSE)
-						qdel(src)
-						return TRUE
-		qdel(src)
-		return TRUE
-	else
-		return TRUE
-
-
-/obj/structure/mg08_structure/CheckExit(atom/movable/O, turf/target)//Humans can't leave this thing either.
-	if(ishuman(O))
-		var/mob/living/carbon/human/H = O
-		if(locate(/obj/item/gun/projectile/automatic/mg08) in H)//Locate the mg.
-			if(istype(H.l_hand, /obj/item/gun/projectile/automatic/mg08))
-				var/obj/item/gun/projectile/automatic/mg08/gun = H.l_hand
-				switch(gun.deployed)
-					if(TRUE) return FALSE
-					if(FALSE)
-						qdel(src)
-						return TRUE
-			if(istype(H.r_hand, /obj/item/gun/projectile/automatic/mg08))
-				var/obj/item/gun/projectile/automatic/mg08/gun = H.r_hand
-				switch(gun.deployed)
-					if(TRUE) return FALSE
-					if(FALSE)
-						qdel(src)
-						return TRUE
-		qdel(src)
-		return TRUE
-	else
-		return TRUE
-
-/obj/structure/mg08_structure/rotate/proc/rotate()//Can't rotate it.
-	return
-
 /obj/item/gun/projectile/automatic/gpmg
 	name = "GPMG Requiem"
 	desc = "A coveted LMG. Lighter than the Harbingers of the old war, but still just as deadly!"
@@ -934,9 +788,9 @@
 	embed = 0
 	sharp = 0
 	hitscan = FALSE
-	speed = 0.4
-	var/num_fragments = 200
-	var/explosion_size = 3
+	speed = 1.25
+	var/num_fragments = 15
+	var/explosion_size = 1
 	var/spread_range = 7 //leave as is, for some reason setting this higher makes the spread pattern have gaps close to the epicenter
 	var/list/fragment_types = list(/obj/item/projectile/bullet/pellet/fragment = 1)
 

@@ -39,12 +39,12 @@
 	//Ok this if looks like a bit of a mess, and it is. Basically you need to have the sword in your active hand, and pass the default parry check
 	//and also pass the prob which is your melee skill divided by two + the swords block chance. Complicated, I know, but hopefully it'll balance out.
 
-	var/actual_block_chance = (block_chance + ((user.SKILL_LEVEL(melee) * 10) / 2))//Skills aren't base 100 anymore they're based 10 so I'm multiplying 100
+	var/actual_block_chance = (block_chance + ((user.SKILL_LEVEL(melee) * 4) / 2))//Skills aren't base 100 anymore they're based 10 so I'm multiplying 100
 
 	var/zone_guessed_correctly = (def_zone == user.zone_sel.selecting) // Check if defender guessed the correct zone  
 	
 	if(zone_guessed_correctly)  
-		actual_block_chance += 25 // Bonus for correct zone guess
+		actual_block_chance += 10 // Bonus for correct zone guess
 	
 	if(user.a_intent == I_GRAB) //better chance to block if on grab intent, based on stats
 		actual_block_chance += user.STAT_LEVEL(end) + user.STAT_LEVEL(str)

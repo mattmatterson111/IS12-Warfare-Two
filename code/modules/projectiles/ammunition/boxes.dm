@@ -270,6 +270,12 @@
 	name = "LMG mag"
 	icon_state = "hmg"
 
+/obj/item/ammo_magazine/box/a556/mg08/perforator
+	name = "Perforator ammunition"
+	max_ammo = 35
+	icon_state = "50BMG"
+	multiple_sprites = 0
+
 /obj/item/ammo_magazine/c556
 	name = "magazine (5.56mm)"
 	icon_state = "c762"

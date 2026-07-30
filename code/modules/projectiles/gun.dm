@@ -78,7 +78,7 @@
 	var/fire_anim = null
 	var/screen_shake = 0 //shouldn't be greater than 2 unless zoomed
 	var/disp_buildup = 1.5
-	var/hipfire_accuracy = 2
+
 	var/silenced = 0
 	var/accuracy = 0   //accuracy is measured in tiles. +1 accuracy means that everything is effectively one tile closer for the purpose of miss chance, -1 means the opposite. launchers are not supported, at the moment.
 	var/scoped_accuracy = null
@@ -113,7 +113,14 @@
 	var/tmp/lock_time = -100
 	var/can_jam = TRUE
 
-	var/damage_modifier = 0
+	var/damage_multiplier = 1
+	var/obj/structure/standing_gun/standing_mount
+	var/big = FALSE
+	var/has_stand = FALSE
+	var/requires_standing_mount = FALSE
+	var/unmounted_accuracy_penalty = 0
+	var/unmounted_fire_delay = 0
+	var/aimed_dispersion_mult = 0.85
 
 /obj/item/gun/Initialize()
 	. = ..()
@@ -200,6 +207,16 @@
 	else
 		Fire(A,user,params) //Otherwise, fire normally.
 
+/obj/item/gun/attack_hand(mob/user)
+	if(big && !can_pick_up_big(user))
+		return
+	return ..()
+
+/obj/item/gun/hud_layerise()
+	. = ..()
+	if(big)
+		layer = HUD_ABOVE_ITEM_LAYER
+
 /obj/item/gun/proc/can_shoot() //This is just an abstract check to stop us from attempting to shoot an empty gun instead of doing a melee attack.
 	return TRUE
 
@@ -214,9 +231,10 @@
 		return ..() //Pistolwhippin'
 
 /obj/item/gun/proc/Fire(atom/target, mob/living/user, clickparams, pointblank=0, reflex=0)
-	if(!user || !target) return
-
-
+	if(!user || !target)
+		return
+	if(!standing_mount_check(user))
+		return
 	if(ticker.current_state == GAME_STATE_FINISHED)
 		to_chat(user, "<span class='warning'>The battle is over! There is no need to shoot!</span>")
 		return
@@ -241,10 +259,11 @@
 	//actually attempt to shoot
 	var/turf/targloc = get_turf(target) //cache this in case target gets deleted during shooting, e.g. if it was a securitron that got destroyed.
 	for(var/i in 1 to burst)
-		var/obj/projectile = consume_next_projectile(user)
+		var/obj/item/projectile/projectile = consume_next_projectile(user)
 		if(!projectile)
 			handle_click_empty(user)
 			break
+		projectile.damage *= damage_multiplier
 
 		process_accuracy(projectile, user, target, i, held_twohanded)
 
@@ -275,7 +294,7 @@
 		user.setClickCooldown(automatic)
 		user.recoil += disp_buildup - 1
 	user.setMoveCooldown(move_delay)
-	next_fire_time = world.time + fire_delay
+	next_fire_time = world.time + fire_delay + standing_fire_delay()
 	update_icon()
 
 //obtains the next projectile to fire
@@ -284,6 +303,8 @@
 
 //used by aiming code
 /obj/item/gun/proc/can_hit(atom/target as mob, var/mob/living/user as mob)
+	if(!standing_mount_check(user))
+		return 2
 	if(!special_check(user))
 		return 2
 	//just assume we can shoot through glass and stuff. No big deal, the player can just choose to not target someone
@@ -388,7 +409,11 @@
 
 	//Accuracy modifiers
 	P.accuracy = accuracy + acc_mod + dexToAccuracyModifier(user.my_stats[STAT(dex)].level)
+	if(!is_standing_mounted(user))
+		P.accuracy -= unmounted_accuracy_penalty
 	P.dispersion = disp_mod + (user.recoil / 2)//Recoil gets added when you shoot. The faster we shoot our semi-auto gun the less accurate it is.
+	if(!is_standing_mounted(user))
+		P.dispersion += unmounted_accuracy_penalty //unmounted guns also get worse dispersion
 	if(user.crouching || user.lying)//Blind firing out of the trench or crater.
 		if(istype(user.loc, /turf/simulated/floor/trench))
 			P.dispersion += 10
@@ -452,8 +477,8 @@
 
 	if(user.weapon_readied)
 		P.accuracy += 3
-
-	if(!user.weapon_readied)
+		P.dispersion = max(0, P.dispersion * aimed_dispersion_mult)
+	else
 		P.dispersion += mod
 
 	if(user.staminaloss >= (user.staminaexhaust/2))
@@ -795,6 +820,9 @@
 	update_icon()
 	..()
 /obj/item/gun/dropped(mob/user)
+	var/obj/structure/standing_gun/mount = standing_mount
+	if(big && wielded)
+		unwield(user, TRUE)
 	if(user.TALLYHOLADS) //just in case
 		user.TALLYHOLADS = FALSE
 		to_chat(H, "<span class='warning'>You lower your bayonet.</span>")
@@ -803,10 +831,15 @@
 		user.client.mouse_pointer_icon = 'icons/misc/pointer_cursor.dmi'
 	if(user.weapon_readied)
 		user.unready_weapon()
+	if(mount)
+		mount.weapon_dropped(src)
 	update_icon()
 
 /obj/item/gun/equipped(mob/user)
 	..()
+	if(big && user && user.r_hand == src)
+		user.hand = FALSE
+		wield(user, TRUE)
 	if(user.client)
 		user.client.mouse_pointer_icon = 'icons/misc/pointer_cursor.dmi'
 		user.unready_weapon()

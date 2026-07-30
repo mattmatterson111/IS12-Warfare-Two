@@ -53,6 +53,14 @@
 		worldicons = damaged_worldicons
 		icon_state = "[icon_state]_dam"
 
+/obj/item/clothing/head/helmet/update_icon()
+	if(can_be_damaged && max_armor_durability > 0 && (armor_durability / max_armor_durability) <= 0.25)
+		if(!findtext(icon_state, "_dam"))
+			icon_state = "[icon_state]_dam"
+			if(damaged_worldicons)
+				worldicons = damaged_worldicons
+	. = ..()
+
 /obj/item/clothing/head/helmet/nt
 	name = "\improper corporate security helmet"
 	desc = "A helmet with 'CORPORATE SECURITY' printed on the back in red lettering."
