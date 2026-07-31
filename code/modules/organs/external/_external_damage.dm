@@ -103,8 +103,10 @@
 		//	owner.emote("scream")	//getting hit on broken hand hurts
 
 	//If they aren't getting hit with a blunt object it shouldn't break their bones. If it's sharp enough to cut it off then it'll cut of it off, otherwise knives will shatter chests.
-	if(brute_dam > min_broken_damage && blunt)//prob(brute_dam + brute * (1+blunt)) ) //blunt damage is gud at fracturing
-		fracture()
+	if(brute_dam > min_broken_damage && blunt)
+		var/obj/item/g = owner ? owner.get_covering_equipped_item(body_part) : null
+		if(!g || g.armor_durability <= 0 || pure_brute >= g.penetration_threshold)
+			fracture()
 
 	// If the limbs can break, make sure we don't exceed the maximum damage a limb can take before breaking
 	var/datum/wound/created_wound
