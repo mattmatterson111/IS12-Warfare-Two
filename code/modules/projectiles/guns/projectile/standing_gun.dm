@@ -244,9 +244,9 @@
 	big = FALSE
 	has_stand = TRUE
 	//requires_standing_mount = TRUE
-	aimed_dispersion_mult = 0.9
-	unmounted_accuracy_penalty = 2
-	unmounted_fire_delay = 1.5
+	aimed_dispersion_mult = 0.88
+	unmounted_accuracy_penalty = 3
+	unmounted_fire_delay = 1.45
 	var/standing_gun_type = /obj/structure/standing_gun/harbinger
 
 /obj/item/gun/projectile/automatic/mg08/attack_self(mob/user)
