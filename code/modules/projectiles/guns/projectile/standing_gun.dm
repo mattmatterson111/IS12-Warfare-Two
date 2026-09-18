@@ -316,6 +316,7 @@
 
 /obj/structure/standing_gun/harbinger
 	name = "Deployed LMG Harbinger"
+	desc = "Right click me to pack me up!"
 	icon_state = "emplacement4_gun"
 	base_state = "emplacement4_"
 	weapon_type = /obj/item/gun/projectile/automatic/mg08

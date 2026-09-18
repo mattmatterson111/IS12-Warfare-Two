@@ -275,6 +275,7 @@
 	max_ammo = 35
 	icon_state = "50BMG"
 	multiple_sprites = 0
+	ammo_type = /obj/item/ammo_casing/a556/perforator
 
 /obj/item/ammo_magazine/c556
 	name = "magazine (5.56mm)"
