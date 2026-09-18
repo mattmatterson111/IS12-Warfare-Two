@@ -153,6 +153,14 @@
 	icon_state = "ar1"
 	spent_icon = "rifle-casing-spent"
 
+/obj/item/ammo_casing/a556/perforator
+	desc = "A 5.56mm bullet casing."
+	caliber = "a556"
+	projectile_type = /obj/item/projectile/bullet/rifle/a556
+	icon_state = "ar1"
+	spent_icon = "rifle-casing-spent"
+	armor_penetration = 20 // it's the perforator man it has to
+
 /obj/item/ammo_casing/a145
 	name = "shell casing"
 	desc = "A 14.5mm shell."

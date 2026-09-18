@@ -110,7 +110,7 @@
 	damage = 60
 	icon_state = "shot" //TODO: would be nice to have it's own icon state
 	range = 10 	//These disappear after a short distance.
-	var/pellets = 4			//number of pellets
+	var/pellets = 5			//number of pellets
 	var/range_step = 2		//projectile will lose a fragment each time it travels this distance. Can be a non-integer.
 	var/base_spread = 90	//lower means the pellets spread more across body parts. If zero then this is considered a shrapnel explosion instead of a shrapnel cone
 	var/spread_step = 10	//higher means the pellets spread more across body parts with distance
@@ -122,13 +122,13 @@
 /obj/item/projectile/bullet/pellet/shotgun/launch_projectile(atom/target, target_zone, mob/user, params, angle_override, forced_spread = 0)
 	for(var/x=1,x<pellets,x++)
 		var/obj/item/projectile/bullet/buckshot_pellet/P = new(get_turf(src))
-		P.dispersion += pick(-8,8)
+		P.dispersion += pick(-9,9)
 		P.launch_projectile(target, target_zone, user, params, angle_override, forced_spread)
 	qdel(src)
 	return
 
 /obj/item/projectile/bullet/buckshot_pellet
-	damage = 12 //There are 8 of these fired at a time usually.
+	damage = 9 //There are 8 of these fired at a time usually.
 	armor_penetration = 0
 
 /*
@@ -268,14 +268,14 @@
 /obj/item/projectile/bullet/rifle/a145
 	fire_sound = 'sound/weapons/gunshot/sniper.ogg'
 	damage = 100
-	armor_penetration = 80
+	armor_penetration = 130
 	//hitscan = 1 //so the PTR isn't useless as a sniper weapon
 	penetration_modifier = 1.25
 	penetrating = 1
 
 /obj/item/projectile/bullet/rifle/a145/apds
 	damage = 75
-	armor_penetration = 95
+	armor_penetration = 150
 	penetration_modifier = 1.5
 
 /* Miscellaneous */
@@ -355,14 +355,9 @@
 	name = "12 Gauge buck pellet"
 	range = 10
 	damage = 25
-	/// Wheter we are the initial buckshot pellet that should create the rest or not
 	var/isInitial = TRUE
-	/// Amount of pellets to create / replicate
 	var/pelletCount = 12
-	/// Minimum/maximum angle offset when firing.
-	var/angleOffset = 35
-	/// the projectile will lose a fragment of its damage each time it travels this distance. Scales exponentially.
-	/// /// This decreases how much it loses-
+	var/angleOffset = 43
 	var/falloff = 2
 
 /obj/item/projectile/bullet/shotgunBuckshot/nospread

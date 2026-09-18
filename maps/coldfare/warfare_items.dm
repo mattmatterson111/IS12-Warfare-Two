@@ -8,6 +8,11 @@
 	name = "Sentry Helmet"
 	desc = "Used for taking blows to the noggin without getting hurt."
 	armor = list(melee = 75, bullet = 75, laser = 55, energy = 40, bomb = 50, bio = 10, rad = 0)//proteck ya neck
+	armor_durability = 225
+	max_armor_durability = 225
+	armor_material_type = ARMOR_HARD
+	penetration_threshold = 120
+	armor_hit_sound = list('sound/effects/gore/helmhit1.ogg', 'sound/effects/gore/helmhit2.ogg', 'sound/effects/gore/helmhit3.ogg', 'sound/effects/gore/helmhit4.ogg', 'sound/effects/gore/helmhit5.ogg')
 	str_requirement = 18
 	force = 10
 
@@ -16,6 +21,11 @@
 	name = "Sentry Armor"
 	desc = "Protects you very well from getting smacked, and decently well from getting shot."
 	armor = list(melee = 75, bullet = 75, laser = 55, energy = 40, bomb = 50, bio = 10, rad = 0)//Beefy boys.
+	armor_durability = 650
+	max_armor_durability = 650
+	armor_material_type = ARMOR_HARD
+	penetration_threshold = 150
+	armor_hit_sound = list('sound/effects/gore/helmhit1.ogg', 'sound/effects/gore/helmhit2.ogg', 'sound/effects/gore/helmhit3.ogg', 'sound/effects/gore/helmhit4.ogg', 'sound/effects/gore/helmhit5.ogg')
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 	cold_protection = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
@@ -174,6 +184,11 @@
 	..()
 	name = "[RED_TEAM]'s jacket"
 	desc = "The proud jacket of the [RED_TEAM]."
+	armor_durability = 60
+	max_armor_durability = 60
+	armor_material_type = ARMOR_SOFT
+	penetration_threshold = 12
+	armor = list(melee = 25, bullet = 20, laser = 10, energy = 10, bomb = 10, bio = 0, rad = 0)
 
 /obj/item/clothing/suit/armor/redcoat/sl
 	icon_state = "redsl"
@@ -236,8 +251,13 @@
 	sprite_sheets = list(SPECIES_CHILD = 'icons/mob/species/child/suit.dmi')
 
 /obj/item/clothing/suit/armor/redcoat/medic
-	icon_state = "redcoat_medic"
+	icon_state = "redcoatnew"
 	item_state = "redcoat_medic"
+	item_state_slots = list(
+		slot_wear_suit_str = "redcoat_medic",
+		slot_l_hand_str = "cloth",
+		slot_r_hand_str = "cloth",
+	)
 
 /obj/item/clothing/head/warfare_officer/redofficer
 	name = "Red Officer\'s Cap"
@@ -253,11 +273,29 @@
 	icon_state = "redhelmet"
 	warfare_team = RED_TEAM
 	worldicons = "redhelmet_world"
-	can_be_damaged = TRUE
+	force = 5
+	can_be_damaged = FALSE
 	damaged_worldicons = "redhelmet_world_dam"
+	armor_durability = 100
+	max_armor_durability = 100
+	armor_material_type = ARMOR_HARD
+	penetration_threshold = 70
+	armor_hit_sound = list('sound/effects/gore/helmhit1.ogg', 'sound/effects/gore/helmhit2.ogg', 'sound/effects/gore/helmhit3.ogg', 'sound/effects/gore/helmhit4.ogg', 'sound/effects/gore/helmhit5.ogg')
+	item_icons = list(
+		slot_l_hand_str = 'icons/mob/onmob/items/lefthand.dmi',
+		slot_r_hand_str = 'icons/mob/onmob/items/righthand.dmi',
+	)
+
+/obj/item/clothing/head/helmet/redhelmet/New()
+	..()
+	armor_durability = rand(75, 100)
 
 /obj/item/clothing/head/helmet/redhelmet/medic
-	icon_state = "redhelmet_medic"
+	icon_state = "redhelmet"
+	item_state = "redhelmnam_medic"
+	item_state_slots = list(
+		slot_head_str = "redhelmnam_medic",
+	)
 	flags_inv = HIDEEARS|BLOCKHAIR
 
 /obj/item/clothing/head/helmet/redhelmet/leader
@@ -371,6 +409,11 @@
 	..()
 	name = "The [BLUE_TEAM]'s jacket"
 	desc = "The proud jacket of the [BLUE_TEAM]."
+	armor_durability = 60
+	max_armor_durability = 60
+	armor_material_type = "soft"
+	penetration_threshold = 12
+	armor = list(melee = 25, bullet = 20, laser = 10, energy = 10, bomb = 10, bio = 0, rad = 0)
 
 /obj/item/clothing/suit/armor/bluecoat/sl
 	item_state = "blue_prac"
@@ -408,8 +451,13 @@
 
 
 /obj/item/clothing/suit/armor/bluecoat/medic
-	icon_state = "bluecoat_medic"
+	icon_state = "bluecoatnew"
 	item_state = "bluecoat_medic"
+	item_state_slots = list(
+		slot_wear_suit_str = "bluecoat_medic",
+		slot_l_hand_str = "cloth",
+		slot_r_hand_str = "cloth",
+	)
 
 //Uniform.
 /obj/item/clothing/under/blue_uniform
@@ -459,20 +507,6 @@
 	warfare_team = BLUE_TEAM
 
 //Helmets
-/obj/item/clothing/head/helmet/redhelmet
-	name = "Red's Helmet"
-	desc = "Sometimes protects your head from bullets and blows."
-	icon_state = "redhelmet"
-	warfare_team = RED_TEAM
-	worldicons = "redhelmet_world"
-	force = 5
-	can_be_damaged = TRUE
-	damaged_worldicons = "redhelmet_world_dam"
-	item_icons = list(
-		slot_l_hand_str = 'icons/mob/onmob/items/lefthand.dmi',
-		slot_r_hand_str = 'icons/mob/onmob/items/righthand.dmi',
-	)
-
 /obj/item/clothing/head/helmet/bluehelmet
 	name = "Blue's Helmet"
 	desc = "Sometimes protects your head from bullets and blows."
@@ -480,15 +514,28 @@
 	warfare_team = BLUE_TEAM
 	worldicons = "bluehelmet_world"
 	force = 5
-	can_be_damaged = TRUE
+	can_be_damaged = FALSE
 	damaged_worldicons = "bluehelmet_world_dam"
+	armor_durability = 100
+	max_armor_durability = 100
+	armor_material_type = ARMOR_HARD
+	penetration_threshold = 70
+	armor_hit_sound = list('sound/effects/gore/helmhit1.ogg', 'sound/effects/gore/helmhit2.ogg', 'sound/effects/gore/helmhit3.ogg', 'sound/effects/gore/helmhit4.ogg', 'sound/effects/gore/helmhit5.ogg')
 	item_icons = list(
 		slot_l_hand_str = 'icons/mob/onmob/items/lefthand.dmi',
 		slot_r_hand_str = 'icons/mob/onmob/items/righthand.dmi',
 	)
 
+/obj/item/clothing/head/helmet/bluehelmet/New()
+	..()
+	armor_durability = rand(75, 100)
+
 /obj/item/clothing/head/helmet/bluehelmet/medic
-	icon_state = "bluehelmet_medic"
+	icon_state = "bluehelmet"
+	item_state = "blue_helmet_medic"
+	item_state_slots = list(
+		slot_head_str = "blue_helmet_medic",
+	)
 
 /obj/item/clothing/gloves/thick/swat/combat/warfare/blue
 	icon_state = "redgloves"
@@ -1120,6 +1167,10 @@ obj/item/storage/backpack/satchel/warfare/chestrig/blue/oldlmg
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 	canremove = FALSE
 	armor = list(melee = 9999, bullet = 9999, laser = 9999, energy = 9999, bomb = 9999, bio = 9999, rad = 9999)
+	armor_durability = 999999
+	max_armor_durability = 999999
+	armor_material_type = ARMOR_HARD
+	penetration_threshold = 9999
 
 /obj/item/clothing/mask/gas/sniper/officer
 	icon_state = "sniper"
@@ -1137,6 +1188,11 @@ obj/item/storage/backpack/satchel/warfare/chestrig/blue/oldlmg
 	item_state = "redcaptain"
 	worldicons = list("captainhatworld1","captainhatworld2")
 	canremove = FALSE
+	armor = list(melee = 9999, bullet = 9999, laser = 9999, energy = 9999, bomb = 9999, bio = 9999, rad = 9999)
+	armor_durability = 999999
+	max_armor_durability = 999999
+	armor_material_type = ARMOR_HARD
+	penetration_threshold = 9999
 
 /obj/item/clothing/under/moraleofficer
 	name = "Morale Officer's Suit"
@@ -1159,6 +1215,10 @@ obj/item/storage/backpack/satchel/warfare/chestrig/blue/oldlmg
 	item_state = "prac_gloves"
 	canremove = FALSE
 	armor = list(melee = 9999, bullet = 9999, laser = 9999, energy = 9999, bomb = 9999, bio = 9999, rad = 9999)
+	armor_durability = 999999
+	max_armor_durability = 999999
+	armor_material_type = ARMOR_HARD
+	penetration_threshold = 9999
 
 /obj/item/device/radio/headset/moraleofficer
 	name = "PTB-CMMD '23 headset"
@@ -1509,3 +1569,20 @@ obj/item/storage/backpack/satchel/warfare/chestrig/blue/oldlmg
 	icon_state = "bluecoat_cf"
 	item_state = "bluecoat_cf"
 	worldicons = list("captaincoatworld1","captaincoatworld2","captaincoatworld3")
+
+/obj/item/clothing/suit/armor/metalvest
+	name = "Armor Vest"
+	desc = "Decent for protection, not so much for casual wearing."
+	icon_state = "armorvest"
+	worldicons = "armorvest_world"
+	armor = list(melee = 64, bullet = 64, laser = 55, energy = 40, bomb = 40, bio = 10, rad = 0)//Beefy boys.
+	armor_durability = 200
+	max_armor_durability = 200
+	armor_material_type = ARMOR_HARD
+	penetration_threshold = 90
+	armor_hit_sound = list('sound/effects/gore/helmhit1.ogg', 'sound/effects/gore/helmhit2.ogg', 'sound/effects/gore/helmhit3.ogg', 'sound/effects/gore/helmhit4.ogg', 'sound/effects/gore/helmhit5.ogg')
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO
+	cold_protection = UPPER_TORSO|LOWER_TORSO
+	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
+	str_requirement = 13
+	footstep = 1

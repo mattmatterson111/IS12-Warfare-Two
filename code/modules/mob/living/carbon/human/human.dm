@@ -160,29 +160,17 @@
 			if (prob(50))
 				Paralyse(10)
 
-	// factor in armour
-	var/protection = blocked_mult(getarmor(null, "bomb"))
-	b_loss *= protection
-	f_loss *= protection
-
-	// focus most of the blast on one organ
-	var/obj/item/organ/external/take_blast = pick(organs)
-	take_blast.take_damage(b_loss * 0.7, f_loss * 0.7, used_weapon = "Explosive blast")
-
-	// distribute the remaining 30% on all limbs equally (including the one already dealt damage)
-	b_loss *= 0.3
-	f_loss *= 0.3
-
-	var/weapon_message = "Explosive Blast"
-	for(var/obj/item/organ/external/temp in organs)
-		var/loss_val
-		if(temp.organ_tag  == BP_HEAD)
-			loss_val = 0.2
-		else if(temp.organ_tag == BP_CHEST)
-			loss_val = 0.4
-		else
-			loss_val = 0.05
-		temp.take_damage(b_loss * loss_val, f_loss * loss_val, used_weapon = weapon_message)
+	var/list/external_organs = list()
+	for(var/obj/item/organ/external/organ in organs)
+		external_organs += organ
+	var/obj/item/organ/external/take_blast = pick(external_organs)
+	for(var/obj/item/organ/external/organ in external_organs)
+		var/damage_multiplier = organ == take_blast ? 0.7 : 0.3 * (organ.organ_tag == BP_HEAD ? 0.2 : (organ.organ_tag == BP_CHEST ? 0.4 : 0.05))
+		organ.take_damage(
+			b_loss * damage_multiplier * blocked_mult(getarmor_organ(organ, "bomb", b_loss * damage_multiplier)),
+			f_loss * damage_multiplier,
+			used_weapon = "Explosive blast"
+		)
 
 /mob/living/carbon/human/proc/implant_loyalty(mob/living/carbon/human/M, override = FALSE) // Won't override by default.
 	if(!config.use_loyalty_implants && !override) return // Nuh-uh.

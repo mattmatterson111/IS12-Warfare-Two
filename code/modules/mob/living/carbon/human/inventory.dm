@@ -65,7 +65,7 @@ This saves us from having to call add_fingerprint() any time something is put in
 
     if(ishuman(src))
         attack_ui(slot_chest)
-		
+
 /mob/living/carbon/human/verb/toggle_jump()
 	set name = "toggle-jump"
 	set hidden = 1
@@ -102,10 +102,18 @@ This saves us from having to call add_fingerprint() any time something is put in
 
 //Puts the item into our active hand if possible. returns 1 on success.
 /mob/living/carbon/human/put_in_active_hand(var/obj/item/W)
+	if(istype(W, /obj/item/gun))
+		var/obj/item/gun/G = W
+		if(G.big)
+			return put_in_r_hand(W)
 	return (hand ? put_in_l_hand(W) : put_in_r_hand(W))
 
 //Puts the item into our inactive hand if possible. returns 1 on success.
 /mob/living/carbon/human/put_in_inactive_hand(var/obj/item/W)
+	if(istype(W, /obj/item/gun))
+		var/obj/item/gun/G = W
+		if(G.big)
+			return put_in_r_hand(W)
 	return (hand ? put_in_r_hand(W) : put_in_l_hand(W))
 
 /mob/living/carbon/human/put_in_hands(var/obj/item/W)
@@ -119,6 +127,11 @@ This saves us from having to call add_fingerprint() any time something is put in
 /mob/living/carbon/human/put_in_l_hand(var/obj/item/W)
 	if(!..() || l_hand)
 		return 0
+	if(istype(W, /obj/item/gun))
+		var/obj/item/gun/G = W
+		if(G.big)
+			to_chat(src, "<span class='warning'>You can't hold [W] in your off hand.</span>")
+			return 0
 	var/obj/item/organ/external/hand = organs_by_name["l_hand"]
 	if(!hand || !hand.is_usable())
 		return 0
@@ -129,6 +142,10 @@ This saves us from having to call add_fingerprint() any time something is put in
 /mob/living/carbon/human/put_in_r_hand(var/obj/item/W)
 	if(!..() || r_hand)
 		return 0
+	if(istype(W, /obj/item/gun))
+		var/obj/item/gun/G = W
+		if(G.big && !G.can_pick_up_big(src))
+			return 0
 	var/obj/item/organ/external/hand = organs_by_name["r_hand"]
 	if(!hand || !hand.is_usable())
 		return 0
@@ -534,7 +551,7 @@ This saves us from having to call add_fingerprint() any time something is put in
 /mob/living/carbon/human/verb/defensive_combat_intent() //probably a better place to put this but oh well
 	set name = "defensive_combat_intent"
 	set hidden = 1
-	
+
 	if(ishuman(src))
 		if(usr.defense_intent == I_PARRY)
 			usr.defense_intent = I_DODGE
@@ -542,5 +559,5 @@ This saves us from having to call add_fingerprint() any time something is put in
 		else
 			usr.defense_intent = I_PARRY
 			usr.combat_intent_icon.icon_state = "parry"
-	
+
 #undef REMOVE_INTERNALS

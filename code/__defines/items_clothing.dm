@@ -1,5 +1,8 @@
 #define HUMAN_STRIP_DELAY        40   // Takes 40ds = 4s to strip someone.
 
+#define ARMOR_SOFT "soft"
+#define ARMOR_HARD "hard"
+
 #define CANDLE_LUM 3 // For how bright candles are.
 
 // Item inventory slot bitmasks.
