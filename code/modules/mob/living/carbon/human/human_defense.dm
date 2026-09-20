@@ -182,14 +182,14 @@ meteor_act
 	/*
 	if(defense_intent == I_PARRY && !get_active_hand())
 		. = handle_barehand_parry(damage, damage_source, attacker, def_zone, attack_text)
-		if(.) return  
+		if(.) return
 	*/ //removed
 	return 0
-	
+
 /mob/living/carbon/human/proc/handle_barehand_parry(var/damage, var/atom/damage_source, var/mob/attacker, var/def_zone, var/attack_text)
 	if(!default_parry_check(src, attacker, damage_source))
 		return 0
-		
+
 	var/obj/item/organ/external/activehand = null
 	var/obj/item/organ/external/activearm = null
 	if(hand)
@@ -198,61 +198,61 @@ meteor_act
 	else
 		activehand = organs_by_name[BP_R_HAND]
 		activearm = organs_by_name[BP_R_ARM]
-	
+
 	if(!activehand || !activehand.is_usable() || !activearm || !activearm.is_usable())
 		return 0 //we ain't parrying with a hand if it or the arm it's attached to is broken
-		
-	var/zone_guessed_correctly = (def_zone == zone_sel.selecting) // Check if defender guessed the correct zone  
-	  
-	// Calculate parry chance based on melee skill and zone guess  
+
+	var/zone_guessed_correctly = (def_zone == zone_sel.selecting) // Check if defender guessed the correct zone
+
+	// Calculate parry chance based on melee skill and zone guess
 	var/parry_chance = (SKILL_LEVEL(melee) * 5) + (STAT_LEVEL(end)) // melee skill + end
-	
-	if(zone_guessed_correctly)  
-		parry_chance += 30 // Significant bonus for correct zone guess  
-	else  
-		parry_chance -= 20 // Penalty for wrong zone guess  
-	  
-	if(a_intent == I_GRAB) // Better chance on grab intent  
+
+	if(zone_guessed_correctly)
+		parry_chance += 30 // Significant bonus for correct zone guess
+	else
+		parry_chance -= 20 // Penalty for wrong zone guess
+
+	if(a_intent == I_GRAB) // Better chance on grab intent
 		parry_chance += STAT_LEVEL(str) * 2
-		
+
 	if(lying) //stand up.
 		parry_chance -= 25
-	  
+
 	if(prob(parry_chance)) //we parried with our bare hand
-		visible_message("<span class='combat_success'>\The [src] parries [attack_text] with their bare hand!</span>")  
+		visible_message("<span class='combat_success'>\The [src] parries [attack_text] with their bare hand!</span>")
 		playsound(loc, 'sound/weapons/punchmiss.ogg', 50, 1)
 		adjustStaminaLoss(damage)
-		
-		if(prob(STAT_LEVEL(end) + 10))
-			to_chat(src, "<span class='combat_success'>As you parry, you feel a rush of adrenaline!</span>")
-			make_adrenaline((STAT_LEVEL(end)) / 21) //Get a little blood pumping
-		  
+
+		//if(prob(STAT_LEVEL(end) + 10))
+		//	to_chat(src, "<span class='combat_success'>As you parry, you feel a rush of adrenaline!</span>")
+		//	make_adrenaline((STAT_LEVEL(end)) / 21) //Get a little blood pumping
+
 		//attempt counter grab only if zone was guessed correctly
 		if(zone_guessed_correctly && a_intent == I_GRAB && prob(SKILL_LEVEL(melee) * 7))
 			var/prevzone = zone_sel.selecting
 			if(istype(damage_source, /mob/living/carbon/human) && attack_text == "the kick") //if someones trying to kick us
-				var/target_leg = pick(BP_L_LEG, BP_R_LEG)  
-				zone_sel.selecting = target_leg  
+				var/target_leg = pick(BP_L_LEG, BP_R_LEG)
+				zone_sel.selecting = target_leg
 			else //everything else
 				var/obj/item/attacker_hand = attacker.get_active_hand()
-				if(attacker_hand == attacker.l_hand) // Set target zone to the active hand  
+				if(attacker_hand == attacker.l_hand) // Set target zone to the active hand
 					zone_sel.selecting = BP_L_HAND
-				else  
+				else
 					zone_sel.selecting = BP_R_HAND
 			var/obj/item/organ/external/O = get_organ(zone_sel.selecting)
-			visible_message("<span class='combat_success'>[src] attempts to grabs [attacker]'s [O.name]!</span>")  
+			visible_message("<span class='combat_success'>[src] attempts to grabs [attacker]'s [O.name]!</span>")
 			attacker.attack_hand(src)
 			attacker.setClickCooldown(DEFAULT_SLOW_COOLDOWN)
 			zone_sel.selecting = prevzone
-		  
-		return 1  
-	  
+
+		return 1
+
 	return 0
 
 /mob/living/carbon/human/resolve_item_attack(obj/item/I, mob/living/carbon/human/user, var/target_zone, var/special = FALSE)
 	for (var/obj/item/grab/G in grabbed_by)
 		if(special == FALSE) //no heavy attack throat slit please
-			if(G.resolve_item_attack(user, I, target_zone)) 
+			if(G.resolve_item_attack(user, I, target_zone))
 				return null
 
 	if(user == src) // Attacking yourself can't miss
@@ -280,7 +280,7 @@ meteor_act
 	if(attempt_dodge())
 		return null
 	*/
-	
+
 	if(!hit_zone)
 		visible_message("<span class='danger'>\The [user] misses [src] with \the [I]!</span>")
 		return null
@@ -418,7 +418,7 @@ meteor_act
 		attack_bloody(I, user, effective_force, hit_zone, blocked)
 
 	//This was commented out because critical successes are OP as shit. Now they're back.
-	
+
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
 		if(H.statscheck(skills = H.SKILL_LEVEL(melee)) == CRIT_SUCCESS && user.a_intent == I_HURT)
@@ -614,7 +614,7 @@ meteor_act
 					visible_message("<span class='warning'>[src] catches [O]!</span>")
 					throw_mode_off()
 					return
-		
+
 		var/dtype = O.damtype
 		var/throw_damage = O.throwforce*(speed/THROWFORCE_SPEED_DIVISOR)
 
@@ -643,7 +643,7 @@ meteor_act
 			visible_message("<span class='notice'>\The [O] misses [src] narrowly!</span>")
 			playsound(loc, 'sound/weapons/punchmiss.ogg', 50, 1)
 			return
-			
+
 		var/bad_arc = reverse_direction(src.dir) //arc of directions from which we cannot block or dodge
 		if(check_shield_arc(src, bad_arc, null, AM)) //cant dodge from behind
 			if(attempt_dodge())
@@ -791,7 +791,7 @@ meteor_act
 	var/hit_zone = user.zone_sel.selecting
 	//var/too_high_message = "You can't reach that high."
 	var/obj/item/organ/external/affecting = get_organ(hit_zone)
-	
+
 	if(!affecting || affecting.is_stump())
 		to_chat(user, "<span class='danger'>They are missing that limb!</span>")
 		return
@@ -803,19 +803,19 @@ meteor_act
 				to_chat(attacker, "<big>[src] is on my side!</big>")
 				log_and_message_admins("[attacker] has kicked his teammate [src]!", attacker)
 				GLOB.ff_incidents++
-	
+
 	var/kickdam = rand(2,7)
 	var/armour = run_armor_check(hit_zone, "melee")
 	kickdam *= strToDamageModifier(user.my_stats[STAT(str)].level)
 	user.adjustStaminaLoss(rand(10,20))//Kicking someone is a *bigger* deal than before.
-	
+
 	if(prob(20 - user.my_stats[STAT(dex)].level) && !src.lying) //uh oh we fucked up
 		if(!user.lying)
 			to_chat(user, "<span class='danger'>As you try to kick [src], you lose your balance and fall!</span>")
 			user.Weaken(1)
 		user.visible_message("<span class=danger>[user] tried to kick [src] in the [affecting.name], but missed!<span>")
 		return
-	
+
 	var/bad_arc = reverse_direction(src.dir) //arc of directions from which we cannot block or dodge
 	if(check_shield_arc(src, bad_arc, null, user)) //cant dodge from behind
 		if(attempt_dodge())
@@ -824,14 +824,14 @@ meteor_act
 		else if(check_shields(kickdam, null, user, null, "the kick"))
 			user.visible_message("<span class=danger>[user] tried to kick [src] in the [affecting.name], but was parried!<span>")
 			return
-			
+
 	var/missed = !src.lying && !prob((user.SKILL_LEVEL(melee) * 10) + (user.my_stats[STAT(dex)].level) - (src.my_stats[STAT(dex)].level))	 //if true, you missed. Also made it so it can't whiff on a lying enemy (can still be parried though I think)
 	if(missed) //you missed dummy
 		missed_kick(user, src, affecting)
 		return
-		
+
 	var/specialkick = prob((user.SKILL_LEVEL(melee) * 5)) //you didn't miss and got lucky!
-			
+
 	switch(hit_zone) //now we get to the fun part
 
 		if(BP_HEAD, BP_EYES)
@@ -863,8 +863,8 @@ meteor_act
 				do_kick(user, src, hit_zone, kickdam, affecting)
 				user.visible_message("<span class=danger>[user] kicks [src] in the [affecting.name]!<span>")
 				return
-		
-		
+
+
 		if(BP_MOUTH)//If we aim for the mouth then we kick their teeth out.
 			if(user.lying && !lying && specialkick == FALSE) //you missed dummy
 				missed_kick(user, src, affecting)
@@ -888,7 +888,7 @@ meteor_act
 				do_kick(user, src, hit_zone, kickdam, affecting)
 				user.visible_message("<span class=danger>[user] kicks [src] in the [affecting.name]!<span>")
 				return
-		
+
 		if(BP_THROAT)
 			if(user.lying && !lying && specialkick == FALSE) //you missed dummy
 				missed_kick(user, src, affecting)
@@ -908,7 +908,7 @@ meteor_act
 				do_kick(user, src, hit_zone, kickdam, affecting)
 				user.visible_message("<span class=danger>[user] kicks [src] in the [affecting.name]!<span>")
 				return
-		
+
 		if(BP_CHEST) //knee in chest or kick back
 			if(user.lying && !lying && specialkick == FALSE) //your laying down while trying to kick someone standing up. or you missed.
 				missed_kick(user, src, affecting)
@@ -940,7 +940,7 @@ meteor_act
 				do_kick(user, src, hit_zone, kickdam, affecting)
 				user.visible_message("<span class=danger>[user] kicks [src] in the [affecting.name]!<span>")
 				return
-		
+
 		if(BP_L_ARM, BP_R_ARM)
 			if(user.lying && !lying && specialkick == FALSE) //you missed dummy
 				missed_kick(user, src, affecting)
@@ -960,7 +960,7 @@ meteor_act
 						//Urist McAssistant dropped the macguffin with a scream just sounds odd.
 						src.visible_message("<span class='danger'>\The [src.r_hand] falls out of [src]'s grasp!</span>")
 						src.drop_l_hand()
-				
+
 				return
 			else if(specialkick == TRUE && !user.lying && lying) //victim is lying, attacker is standing
 				var/mob/living/carbon/human/Attacker = user
@@ -973,7 +973,7 @@ meteor_act
 				do_kick(user, src, hit_zone, kickdam, affecting)
 				user.visible_message("<span class=danger>[user] kicks [src] in the [affecting.name]!<span>")
 				return
-				
+
 		if(BP_L_HAND, BP_R_HAND)
 			if(user.lying && !lying && specialkick == FALSE) //you missed dummy
 				missed_kick(user, src, affecting)
@@ -1007,7 +1007,7 @@ meteor_act
 				do_kick(user, src, hit_zone, kickdam, affecting)
 				user.visible_message("<span class=danger>[user] kicks [src] in the [affecting.name]!<span>")
 				return
-		
+
 		if(BP_GROIN)
 			if(specialkick == TRUE && !user.lying && !lying) //both are standing
 				do_kick(user, src, hit_zone, kickdam * 2, affecting) //DAMN THATS DIRTEH
@@ -1034,7 +1034,7 @@ meteor_act
 				do_kick(user, src, hit_zone, kickdam, affecting)
 				user.visible_message("<span class=danger>[user] kicks [src] in the [affecting.name]!<span>")
 				return
-		
+
 		if(BP_R_LEG, BP_L_LEG)
 			if(specialkick == TRUE && !user.lying && !lying) //you got lucky
 				do_kick(user, src, hit_zone, kickdam * 2, affecting) //that hurt a little more
@@ -1058,7 +1058,7 @@ meteor_act
 				do_kick(user, src, hit_zone, kickdam, affecting)
 				user.visible_message("<span class=danger>[user] kicks [src] in the [affecting.name]!<span>")
 				return
-		
+
 		if(BP_R_FOOT, BP_L_FOOT)
 			if(specialkick == TRUE && !user.lying) //you got lucky
 				var/mob/living/carbon/human/Attacker = user
@@ -1072,15 +1072,15 @@ meteor_act
 				do_kick(user, src, hit_zone, kickdam, affecting)
 				user.visible_message("<span class=danger>[user] kicks [src] in the [affecting.name]!<span>")
 				return
-		
+
 /mob/living/carbon/human/proc/do_kick(var/mob/living/user, var/mob/living/victim, var/hit_zone, var/kickdam, var/obj/item/organ/external/affecting) //easier for me
 	var/kicksound = pick('sound/effects/gore/smash1.ogg','sound/effects/gore/smash2.ogg','sound/effects/gore/smash3.ogg')
 	playsound(user.loc, kicksound, 65, 0.5)
 	victim.apply_damage(kickdam, BRUTE, hit_zone, run_armor_check(hit_zone, "melee"))
 	admin_attack_log(user, src, "Has kicked [victim]", "Has been kicked by [user].")
-	
-/mob/living/carbon/human/proc/missed_kick(var/mob/living/user, var/mob/living/victim, var/obj/item/organ/external/affecting)  
-    user.visible_message("<span class=danger>[user] tried to kick [victim] in the [affecting.name], but missed!<span>")  
+
+/mob/living/carbon/human/proc/missed_kick(var/mob/living/user, var/mob/living/victim, var/obj/item/organ/external/affecting)
+    user.visible_message("<span class=danger>[user] tried to kick [victim] in the [affecting.name], but missed!<span>")
     playsound(loc, 'sound/weapons/punchmiss.ogg', 50, 1)
 
 //We crit failed, let's see what happens to us.

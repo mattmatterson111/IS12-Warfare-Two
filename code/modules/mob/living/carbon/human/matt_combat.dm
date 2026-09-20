@@ -39,9 +39,9 @@
 	step(src,lol)//move them
 	visible_message("<b><big>[src.name] dodges out of the way!!</big></b>")//send a message
 	var/mob/living/carbon/human/H = src
-	if(prob(H.STAT_LEVEL(end) + 10))
-		to_chat(H, "<span class='combat_success'>As you dodge, you feel a rush of adrenaline!</span>")
-		H.make_adrenaline((H.STAT_LEVEL(end)) / 21) //Get a little blood pumping
+	//if(prob(H.STAT_LEVEL(end) + 10))
+	//	to_chat(H, "<span class='combat_success'>As you dodge, you feel a rush of adrenaline!</span>")
+	//	H.make_adrenaline((H.STAT_LEVEL(end)) / 21) //Get a little blood pumping
 	H.break_all_grabs(src)
 	//be on our way
 
