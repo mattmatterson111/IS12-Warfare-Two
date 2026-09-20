@@ -254,18 +254,20 @@
 								   0, 0, 0,  1)
 	width = 500
 	height = 500
-	count = 3000
-	spawning = 12
-	bound1 = list(-500,-256,-10)
+	count = 5000
+	spawning = 30
+	bound1 = list(-500,-420,-10)
 	bound2 = list(500,500,10)
-	lifespan = 600
+	lifespan = 900
 	fade = 30
 	color = "#ffffff"
-	position = generator("box", list(-500,-256,5), list(500,500,0))
-	spin = generator("num",-10,10)
-	gravity = list(0, -2, 0.1)
-	drift = generator("circle", 0, 3) // Some random movement for variation
-	friction = 0.3  // shed 30% of velocity and drift every 0.1s
+	position = generator("box", list(-500,-320,5), list(500,500,0))
+	spin = generator("num",-16,16)
+	scale = generator(GEN_NUM, 0.8, 2.1, NORMAL_RAND)
+	velocity = generator("vector", list(-4.8, -2.6, 0), list(4.8, 0.6, 0), NORMAL_RAND)
+	gravity = list(0, -2.4, 0.1)
+	drift = generator("vector", list(-5.4, -1.2, 0), list(5.4, 1.2, 0), NORMAL_RAND)
+	friction = 0.1
 
 /particles/snowstorm
 	icon = 'icons/effects/particles/particle.dmi'
@@ -277,18 +279,20 @@
 								   0, 0, 0,  1)
 	width = 500
 	height = 500
-	count = 4000
-	spawning = 20
-	bound1 = list(-500,-256,-10)
+	count = 7000
+	spawning = 44
+	bound1 = list(-500,-420,-10)
 	bound2 = list(500,500,10)
-	lifespan = 600
+	lifespan = 900
 	fade = 30
 	color = "#ffffff"
-	position = generator("box", list(-500,-256,5), list(500,500,0))
-	spin = generator("num",-10,10)
-	gravity = list(0, -2, 0.1)
-	drift = generator("circle", 0, 3.5)
-	friction = 0.3
+	position = generator("box", list(-500,-320,5), list(500,500,0))
+	spin = generator("num",-24,24)
+	scale = generator(GEN_NUM, 0.8, 2.1, NORMAL_RAND)
+	velocity = generator("vector", list(-6.4, -3.4, 0), list(6.4, 0.8, 0), NORMAL_RAND)
+	gravity = list(0, -3.2, 0.1)
+	drift = generator("vector", list(-7.2, -1.6, 0), list(7.2, 1.6, 0), NORMAL_RAND)
+	friction = 0.08
 
 /particles/dust
 	icon = 'icons/effects/particles/particle.dmi'

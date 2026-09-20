@@ -39,6 +39,9 @@
 	var/last_weather_sound = null
 	var/last_weather_volume = 0
 	var/last_weather_precooked_env = -1
+	var/list/weather_screenfilters = list()
+	var/list/weather_wet_overlays = list()
+	var/list/weather_modifier_overlays = list()
 
 		////////////
 		//SECURITY//

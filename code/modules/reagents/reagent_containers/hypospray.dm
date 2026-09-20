@@ -134,7 +134,15 @@
 	origin_tech = list(TECH_MATERIAL = 2, TECH_BIO = 2)
 	var/list/starts_with = list(/datum/reagent/inaprovaline = 5)
 
+/obj/item/reagent_containers/hypospray/autoinjector/Initialize(mapload)
+	. = ..()
+	if(type == /obj/item/reagent_containers/hypospray/autoinjector)
+		return INITIALIZE_HINT_QDEL
+
 /obj/item/reagent_containers/hypospray/autoinjector/New()
+	if(type == /obj/item/reagent_containers/hypospray/autoinjector)
+		qdel(src)
+		return
 	..()
 	for(var/T in starts_with)
 		reagents.add_reagent(T, starts_with[T])
@@ -203,6 +211,9 @@
 	volume = 500
 	var/blood_type = "O-"
 
+/obj/item/reagent_containers/hypospray/autoinjector/blood/can_accept_reagents()
+	return FALSE
+
 /obj/item/reagent_containers/hypospray/autoinjector/blood/New()
 	..()
 	if(blood_type)
@@ -266,6 +277,9 @@
 		return
 	if(istype(W, /obj/item/reagent_containers/hypospray/autoinjector))
 		var/obj/item/reagent_containers/hypospray/autoinjector/A = W
+		if(!A.can_accept_reagents())
+			to_chat(user, "<span class='notice'>\The [A] cannot be refilled.</span>")
+			return
 		if(src.reagents)
 			var/trans = reagents.trans_to_obj(A, amount_per_transfer_from_this)
 			to_chat(user, "<span class='notice'>[trans] units refilled into \the [A]. [reagents.total_volume] units remaining in \the [src].</span>")

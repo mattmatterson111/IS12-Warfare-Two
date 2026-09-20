@@ -202,7 +202,6 @@
 		return
 	to_chat(user, "There [(stored_ammo.len == 1)? "is" : "are"] [stored_ammo.len] round\s left!")
 
-
 /obj/item/ammo_magazine/attack_hand(mob/user)
 	if(user.get_inactive_hand() == src)
 		if(!stored_ammo.len)

@@ -2,6 +2,19 @@
 	icon = 'icons/turf/urban/urban_outside.dmi'
 	var/ex_turf = /turf/simulated/floor/urban/destroyed
 
+/turf/simulated/floor/urban/New()
+	. = ..()
+	spawn(1)
+		if(!locate(/obj/effect/map_entity/weather_mask, src))
+			return
+		if(locate(/obj/effect/map_entity/environment_blocker, src))
+			return
+		if(!frost)
+			frost = locate(/obj/effect/frosty) in src
+		if(!frost)
+			frost = new /obj/effect/frosty(src)
+		vis_contents += frost
+
 /turf/simulated/floor/urban/ex_act(severity)
 	// Shitty way to go about it but yeah.. ugh..
 	switch(severity)
@@ -162,6 +175,10 @@
 /turf/simulated/floor/exoplanet/water/shallow/lightless/urban/update_icon()
 
 	overlays.Cut()
+	var/image/shallow_overlay = image('icons/turf/snow.dmi', "water")
+	shallow_overlay.plane = WEATHER_MISC_PLANE
+	shallow_overlay.layer = src.layer + 1
+	overlays += shallow_overlay
 	for(var/direction in GLOB.cardinal)
 		var/turf/turf_to_check = get_step(src,direction)
 		if(istype(turf_to_check, /turf/simulated/floor/exoplanet/water/shallow))

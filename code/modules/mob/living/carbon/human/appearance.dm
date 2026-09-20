@@ -175,3 +175,35 @@
 	for(var/obj/item/organ/external/O in organs)
 		O.sync_colour_to_human(src)
 	update_body(0)
+
+/mob/living/carbon/human/proc/sanitize_team_hair_color(var/team)
+	var/modified = FALSE
+	if(team == BLUE_TEAM)
+		if(r_hair > 50)
+			var/old_red = r_hair
+			r_hair = min(b_hair, 50)
+			b_hair = old_red
+			modified = TRUE
+		if(r_facial > 50)
+			var/old_red = r_facial
+			r_facial = min(b_facial, 50)
+			b_facial = old_red
+			modified = TRUE
+	else if(team == RED_TEAM)
+		if(b_hair > 50)
+			var/old_blue = b_hair
+			b_hair = min(r_hair, 50)
+			r_hair = old_blue
+			modified = TRUE
+		if(b_facial > 50)
+			var/old_blue = b_facial
+			b_facial = min(r_facial, 50)
+			r_facial = old_blue
+			modified = TRUE
+
+	if(modified)
+		force_update_limbs()
+		update_hair()
+		update_dna()
+		to_chat(src, SPAN_WARNING("Your hair color has been sanitized.\nPlease don't try to cheat the team colors."))
+		log_admin("[client.ckey]/[client.mob] Tried to cheat team colors (?)")

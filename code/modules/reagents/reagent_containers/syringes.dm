@@ -70,6 +70,10 @@
 		to_chat(user, "<span class='warning'>This syringe is broken.</span>")
 		return
 
+	if(istype(target, /obj/item/reagent_containers/hypospray/autoinjector))
+		to_chat(user, "<span class='notice'>What?</span>")
+		return
+
 	if(istype(target, /obj/structure/closet/body_bag))
 		handleBodyBag(target, user)
 		return
@@ -270,7 +274,7 @@
 				user.visible_message("<span class='danger'>[user] tries to stab [target] in \the [hit_area] with [src.name], but the attack is parried!</span>")
 				return
 			else if(H.attempt_dodge())
-				return	
+				return
 
 		if (target != user && H.getarmor(target_zone, "melee") > 5 && prob(50))
 			for(var/mob/O in viewers(world.view, user))

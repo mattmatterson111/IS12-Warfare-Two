@@ -168,7 +168,7 @@
 				/obj/item/stack/medical/advanced/ointment = 2,
 				/obj/item/stack/medical/splint = 1,
 				/obj/item/bodybag/cryobag = 1,
-				/obj/item/reagent_containers/hypospray/autoinjector = 3,
+				/obj/item/reagent_containers/syringe/inaprovaline = 3,
 				/obj/item/storage/pill_bottle/kelotane = 2,
 				/obj/item/storage/pill_bottle/antitox = 2)
 

@@ -400,12 +400,12 @@
 
 /decl/hierarchy/outfit/job/bluesoldier/medic
 	suit = /obj/item/clothing/suit/armor/bluecoat/medic
-	belt = /obj/item/gun/projectile/warfare
-	r_pocket = /obj/item/ammo_magazine/c45m/warfare
+	belt = /obj/item/storage/belt/medical/full
+	r_pocket = /obj/item/storage/box/ifak
 	l_pocket = /obj/item/stack/medical/bruise_pack
 	gloves = /obj/item/clothing/gloves/latex
 	head = /obj/item/clothing/head/helmet/bluehelmet/medic
-	backpack_contents = list(/obj/item/storage/belt/medical/full = 1, /obj/item/ammo_magazine/c45m/warfare = 2, /obj/item/grenade/smokebomb = 1)
+	backpack_contents = list(/obj/item/gun/projectile/warfare = 1, /obj/item/ammo_magazine/c45m/warfare = 3, /obj/item/grenade/smokebomb = 1)
 
 /decl/hierarchy/outfit/job/bluesoldier/medic/equip()
 	if(aspect_chosen(/datum/aspect/nightfare))

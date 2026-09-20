@@ -112,6 +112,58 @@
 			return TRUE
 	return FALSE
 
+/obj/machinery/button/IO_receive_input(input_name, atom/activator, atom/caller, list/params)
+	debug_flash(MAP_ENTITY_COLOR_INPUT)
+	var/mob/living/user = null
+	if(istype(activator, /mob/living))
+		user = activator
+	switch(lowertext(input_name))
+		if("press", "activate", "trigger", "toggle")
+			activate(user)
+			return TRUE
+	return FALSE
+
+// Button variants that only implemented hand-interaction behavior need activate() for IO to work.
+/obj/machinery/button/windowtint/activate(mob/living/user)
+	toggle_tint()
+
+/obj/machinery/button/ignition/activate(mob/living/user)
+	use_power(5)
+	active = 1
+	icon_state = "launcheract"
+	for(var/obj/machinery/sparker/M in SSmachines.machinery)
+		if(M.id == id)
+			spawn(0)
+				M.ignite()
+	for(var/obj/machinery/igniter/M in SSmachines.machinery)
+		if(M.id == id)
+			M.ignite()
+	sleep(50)
+	icon_state = "launcherbtt"
+	active = 0
+
+/obj/machinery/button/flasher/activate(mob/living/user)
+	use_power(5)
+	active = 1
+	icon_state = "launcheract"
+	for(var/obj/machinery/flasher/M in SSmachines.machinery)
+		if(M.id == src.id)
+			spawn()
+				M.flash()
+	sleep(50)
+	icon_state = "launcherbtt"
+	active = 0
+
+/obj/machinery/button/holosign/activate(mob/living/user)
+	use_power(5)
+	active = !active
+	update_icon()
+	for(var/obj/machinery/holosign/M in SSmachines.machinery)
+		if(M.id == src.id)
+			spawn(0)
+				M.toggle()
+				return
+
 
 
 

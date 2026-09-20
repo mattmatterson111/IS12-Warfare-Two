@@ -180,16 +180,29 @@
 
 /turf/simulated/floor/proc/update_trench_layers()
 	vis_contents.Cut()
+	overlays.Cut()
+	var/image/snowii = image('icons/turf/snow.dmi', "trench_inside")
+	snowii.alpha = 150
+	snowii.color = "#bebebe"
+	snowii.plane = WEATHER_MISC_PLANE
+	overlays += snowii
+
+
 	for(var/direction in GLOB.cardinal)
 		var/turf/turf_to_check = get_step(src,direction)
 		if(istype(turf_to_check, /turf/simulated/floor/trench))
 			continue
 		if(istype(turf_to_check, /turf/space) || istype(turf_to_check, /turf/simulated/floor) || istype(turf_to_check, /turf/simulated/floor/exoplanet/water/shallow) || istype(turf_to_check, /turf/simulated/wall))
 			var/atom/movable/trench_side = new()
+			trench_side.plane = src.plane
+			trench_side.layer = 99
 			trench_side.icon = 'icons/obj/warfare.dmi'
 			trench_side.icon_state = "trench_side"
 			trench_side.dir = turn(direction, 180)
+			var/image/snowmaster = image('icons/turf/snow.dmi', "trench_north", dir=direction, layer=55)
 			trench_side.mouse_opacity = 0
+			snowmaster.plane = WEATHER_MISC_PLANE
+			snowmaster.alpha = 175
 			switch(direction)
 				if(NORTH)
 					trench_side.icon_state = "trench_side_but_north" // hacky..
@@ -197,19 +210,25 @@
 					trench_side.pixel_y += ((world.icon_size) - 22)
 					trench_side.plane = PLATING_PLANE
 					trench_side.layer = BELOW_DOOR_LAYER
+					snowmaster.pixel_y = 15
 				if(SOUTH)
 					trench_side.pixel_y -= ((world.icon_size) - 16)
-					trench_side.plane = ABOVE_OBJ_PLANE
+					trench_side.plane = PLATING_PLANE
 					trench_side.layer = BELOW_DOOR_LAYER
+					add_mask = TRUE
+					snowmaster.pixel_y = -32
 				if(EAST)
 					trench_side.pixel_x += (world.icon_size)
-					trench_side.plane = ABOVE_OBJ_PLANE
+					trench_side.plane = PLATING_PLANE
 					trench_side.layer = BASE_MOB_LAYER
+					snowmaster.pixel_x = 32
 				if(WEST)
 					trench_side.pixel_x -= (world.icon_size)
-					trench_side.plane = ABOVE_OBJ_PLANE
 					trench_side.layer = BASE_MOB_LAYER
+					trench_side.plane = PLATING_PLANE
+					snowmaster.pixel_x = -32
 			vis_contents += trench_side
+			overlays += snowmaster
 
 
 //Masks and overlays.

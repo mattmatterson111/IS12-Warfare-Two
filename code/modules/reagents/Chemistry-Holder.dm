@@ -395,6 +395,8 @@ GLOBAL_DATUM_INIT(temp_reagents_holder, /obj, new)
 /datum/reagents/proc/trans_to_obj(var/obj/target, var/amount = 1, var/multiplier = 1, var/copy = 0) // Objects may or may not; if they do, it's probably a beaker or something and we need to transfer properly; otherwise, just touch.
 	if(!target || !target.simulated)
 		return
+	if(!target.can_accept_reagents())
+		return
 
 	if(!target.reagents)
 		var/datum/reagents/R = new /datum/reagents(amount * multiplier, GLOB.temp_reagents_holder)
