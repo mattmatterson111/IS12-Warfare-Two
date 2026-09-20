@@ -321,15 +321,35 @@ What is the naming convention for planes or layers?
 
 /obj/screen/plane_master/blur/weather_misc_blur
 	plane = WEATHER_MISC_PLANE
+	alpha = 0
+
+/obj/screen/plane_master/blur/weather_misc_blur/New()
+	filters += filter(type="alpha", render_source="*WEATHER_MASK_RT")
+	..()
 
 /obj/screen/plane_master/blur/weather_misc_obj_blur
 	plane = WEATHER_MISC_PLANE_OBJ
+	alpha = 0
+
+/obj/screen/plane_master/blur/weather_misc_obj_blur/New()
+	filters += filter(type="alpha", render_source="*WEATHER_MASK_RT")
+	..()
 
 /obj/screen/plane_master/blur/weather_misc_above_obj_blur
 	plane = WEATHER_MISC_PLANE_ABOVE_OBJ
+	alpha = 0
+
+/obj/screen/plane_master/blur/weather_misc_above_obj_blur/New()
+	filters += filter(type="alpha", render_source="*WEATHER_MASK_RT")
+	..()
 
 /obj/screen/plane_master/blur/weather_misc_above_human_blur
 	plane = WEATHER_MISC_PLANE_ABOVE_HUMAN
+	alpha = 0
+
+/obj/screen/plane_master/blur/weather_misc_above_human_blur/New()
+	filters += filter(type="alpha", render_source="*WEATHER_MASK_RT")
+	..()
 
 /obj/screen/plane_master/ghost_dummy
 	// this avoids a bug which means plane masters which have nothing to control get angry and mess with the other plane masters out of spite

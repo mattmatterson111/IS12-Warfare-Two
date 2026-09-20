@@ -7,15 +7,15 @@ SUBSYSTEM_DEF(day_cycle)
 	flags = SS_BACKGROUND
 	runlevels = RUNLEVEL_GAME
 	init_order = INIT_ORDER_DAY_CYCLE
-	
-	
+
+
 	var/list/phases
 	var/total_duration = 0
 	var/current_phase_index = 0
 	var/current_color = "#000000"
 	var/datum/day_cycle_phase/current_active_phase
-	
-	
+
+
 	var/datum/weather_type/active_weather
 	var/list/weather_types = list()
 	var/list/modifier_types = list()
@@ -27,17 +27,17 @@ SUBSYSTEM_DEF(day_cycle)
 	var/wet_overlays_active = FALSE
 	var/weather_misc_visibility = 0
 	var/weather_fog_active = FALSE
-	
-	
+
+
 	var/next_lightning = 0
 	var/lightning_flashing = FALSE
-	
-	
+
+
 	var/speed = 1
 	var/current_time = 0
 	var/last_process_time = 0
-	
-	
+
+
 	var/wetness = 0
 
 /datum/controller/subsystem/day_cycle/Initialize()
@@ -49,14 +49,14 @@ SUBSYSTEM_DEF(day_cycle)
 		new /datum/day_cycle_phase("#a35520", 2 MINUTES,  "sunset"),
 		new /datum/day_cycle_phase("#110500", 2 MINUTES,  "dusk_end"),
 	)
-	
+
 	for(var/datum/day_cycle_phase/P in phases)
 		total_duration += P.duration
-	
+
 	setup_weather()
 	setup_modifiers()
 	setup_climates()
-	
+
 	last_process_time = world.time
 	current_time = rand(0, total_duration)
 	return ..()
@@ -66,22 +66,22 @@ SUBSYSTEM_DEF(day_cycle)
 
 /datum/controller/subsystem/day_cycle/proc/setup_weather()
 	var/datum/weather_type/W
-	
+
 	W = new /datum/weather_type/clear()
 	weather_types[W.name] = W
-	
+
 	W = new /datum/weather_type/rainy()
 	weather_types[W.name] = W
-	
+
 	W = new /datum/weather_type/storming()
 	weather_types[W.name] = W
-	
+
 	W = new /datum/weather_type/snowing()
 	weather_types[W.name] = W
-	
+
 	W = new /datum/weather_type/snowstorm()
 	weather_types[W.name] = W
-	
+
 	active_weather = weather_types["clear"]
 
 /datum/controller/subsystem/day_cycle/proc/setup_modifiers()
@@ -107,16 +107,16 @@ SUBSYSTEM_DEF(day_cycle)
 
 /datum/controller/subsystem/day_cycle/proc/setup_climates()
 	var/datum/climate/C
-	
+
 	C = new /datum/climate/temperate()
 	climates[C.name] = C
-	
+
 	C = new /datum/climate/cold()
 	climates[C.name] = C
-	
+
 	C = new /datum/climate/warm()
 	climates[C.name] = C
-	
+
 	active_climate = climates["temperate"]
 
 /datum/controller/subsystem/day_cycle/proc/update_cycle()
@@ -124,12 +124,12 @@ SUBSYSTEM_DEF(day_cycle)
 
 	var/dt = world.time - last_process_time
 	last_process_time = world.time
-	
+
 	current_time = (current_time + dt * speed)
-	
+
 	if(current_time >= total_duration)
 		current_time = current_time % total_duration
-	if(current_time < 0) 
+	if(current_time < 0)
 		current_time = total_duration + (current_time % total_duration)
 
 	var/accumulated_time = 0
@@ -137,25 +137,25 @@ SUBSYSTEM_DEF(day_cycle)
 	var/datum/day_cycle_phase/current_phase
 	var/datum/day_cycle_phase/next_phase
 	var/time_into_phase = 0
-	
+
 	for(var/i = 1 to phases.len)
 		var/datum/day_cycle_phase/P = phases[i]
 		if(current_time < accumulated_time + P.duration)
 			current_phase = P
 			found_index = i
 			time_into_phase = current_time - accumulated_time
-			
+
 			var/next_i = (i % phases.len) + 1
 			next_phase = phases[next_i]
 			break
 		accumulated_time += P.duration
-	
+
 	if(current_phase)
 		if(current_active_phase != current_phase)
 			if(current_active_phase)
 				current_active_phase.on_cycle_end()
 				fire_day_event("OnPhaseEnd", current_active_phase.output_channel)
-			
+
 			current_active_phase = current_phase
 			current_active_phase.on_cycle_start()
 			fire_day_event("OnPhaseStart", current_active_phase.output_channel)
@@ -166,47 +166,47 @@ SUBSYSTEM_DEF(day_cycle)
 				A.on_day_phase_change(current_active_phase.output_channel)
 
 			current_phase_index = found_index
-		
+
 		var/fraction = time_into_phase / current_phase.duration
 		var/target_color = BlendRGB(current_phase.color, next_phase.color, fraction)
-		
+
 		if(!current_phase.ignore_color_modifiers)
 			if(active_climate && active_climate.color_modifier)
-				target_color = BlendRGB(target_color, active_climate.color_modifier, 0.35) 
-			
-			if(active_weather && active_weather.color_modifier)
-				target_color = BlendRGB(target_color, active_weather.color_modifier, 0.75) 
+				target_color = BlendRGB(target_color, active_climate.color_modifier, 0.35)
 
-		
+			if(active_weather && active_weather.color_modifier)
+				target_color = BlendRGB(target_color, active_weather.color_modifier, 0.75)
+
+
 		if(current_phase.output_channel == "midnight")
 			if(active_weather?.name == "storming" || active_weather?.name == "snowstorm")
 				var/midnight_darkening = 1 - abs((fraction * 2) - 1)
 				target_color = BlendRGB(target_color, "#000000", 0.9 * midnight_darkening)
-			
+
 		set_color(target_color, 10)
-	
+
 	process_weather(dt)
 	update_weather_audio()
 
 /datum/controller/subsystem/day_cycle/proc/update_weather_audio()
 	var/sound_file = active_weather?.looping_sound
-	
+
 	for(var/P in GLOB.player_list)
 		var/mob/M = P
 		var/client/C = M.client
 		if(!C)
 			continue
-			
+
 		if(!sound_file)
 			if(C.last_weather_sound)
 				sound_to(C, sound(null, channel = CHANNEL_WEATHER))
 				C.last_weather_sound = null
 			continue
-			
+
 		var/turf/T = get_turf(M)
 		if(!T)
 			continue
-			
+
 		var/exposed = (locate(/obj/effect/map_entity/weather_mask) in T) && !(locate(/obj/effect/map_entity/environment_blocker) in T)
 		var/target_volume = active_weather.looping_volume
 		var/target_env = -1
@@ -217,7 +217,7 @@ SUBSYSTEM_DEF(day_cycle)
 			target_env = 1
 			if(active_weather.indoor_looping_sound)
 				active_sound = active_weather.indoor_looping_sound
-			
+
 		if(C.last_weather_sound != active_sound)
 			var/sound/S = sound(active_sound)
 			S.channel = CHANNEL_WEATHER
@@ -246,12 +246,12 @@ SUBSYSTEM_DEF(day_cycle)
 	ensure_weather_filters_attached()
 	sync_weather_driven_modifiers()
 	update_weather_misc_visibility(dt)
-	
+
 	if(active_weather.name == "storming")
 		if(world.time >= next_lightning)
 			strike_lightning()
-			next_lightning = world.time + rand(20, 160) 
-	
+			next_lightning = world.time + rand(20, 160)
+
 	var/target_wetness = 0
 	if(active_weather?.name in list("storming", "rainy"))
 		target_wetness = 200
@@ -259,7 +259,7 @@ SUBSYSTEM_DEF(day_cycle)
 		target_wetness = 90
 	else if(active_weather?.name == "snowing")
 		target_wetness = 80
-	
+
 	if(wetness < target_wetness)
 		var/wetness_rise_rate = 0.1
 		if(active_weather?.name in list("snowing", "snowstorm"))
@@ -357,19 +357,19 @@ SUBSYSTEM_DEF(day_cycle)
 		var/mob/M = P
 		var/client/C = M.client
 		if(!C) continue
-		
+
 		var/turf/T = get_turf(M)
 		var/exposed = T && (locate(/obj/effect/map_entity/weather_mask) in T) && !(locate(/obj/effect/map_entity/environment_blocker) in T)
-		
+
 		var/sound_file = (is_close && exposed) ? close_sound : distant_sound
 		var/sound/S = sound(sound_file)
 		S.volume = base_vol
 		S.environment = -1
-		
+
 		if(!exposed)
 			S.volume *=0.5
 			S.environment = 1
-			
+
 		sound_to(C, S)
 
 	if(is_close)
@@ -443,12 +443,12 @@ SUBSYSTEM_DEF(day_cycle)
 		weather_misc_visibility = min(target_visibility, weather_misc_visibility + (dt * ramp_rate))
 	else if(weather_misc_visibility > target_visibility)
 		weather_misc_visibility = max(target_visibility, weather_misc_visibility - (dt * ramp_rate))
-		
+
 /datum/controller/subsystem/day_cycle/proc/set_color(new_color, time = 10)
-	if(lightning_flashing && new_color != "#FFFFFF") 
-		current_color = new_color 
+	if(lightning_flashing && new_color != "#FFFFFF")
+		current_color = new_color
 		return
-		
+
 	current_color = new_color
 	for(var/obj/effect/lighting_dummy/daylight/D in GLOB.lighting_dummies)
 		animate(D, color = current_color, time = time, easing = SINE_EASING)
@@ -457,9 +457,9 @@ SUBSYSTEM_DEF(day_cycle)
 	var/datum/weather_type/new_weather = weather_types[weather_name]
 	if(!new_weather)
 		new_weather = weather_types["clear"]
-	
+
 	if(new_weather == active_weather) return
-	
+
 	if(active_climate && !(new_weather.name in active_climate.allowed_weather))
 		return FALSE
 
@@ -467,16 +467,16 @@ SUBSYSTEM_DEF(day_cycle)
 		active_weather.on_end()
 		fire_weather_event("OnWeatherEnd", active_weather.name)
 		fade_out_filter(active_weather.screenfilter_type)
-	
+
 	active_weather = new_weather
 	apply_weather_driven_fog_profile()
 	active_weather.on_start()
-	
+
 	fire_weather_event("OnWeatherStart", active_weather.name)
 	fire_weather_event("On[capitalize(active_weather.name)]")
 	fade_in_filter(active_weather.screenfilter_type)
 	update_weather_audio()
-	
+
 	for(var/O in GLOB.auto_day_cycle_listeners)
 		var/atom/A = O
 		A.on_day_phase_change(SSday_cycle.current_active_phase?.output_channel)
@@ -686,7 +686,7 @@ SUBSYSTEM_DEF(day_cycle)
 			if(filter_type in active_weather_filter_types)
 				return
 			C.screen -= F
-	
+
 
 /datum/controller/subsystem/day_cycle/proc/fire_weather_event(output_name, param)
 	for(var/obj/effect/map_entity/weather_events/E in GLOB.map_entities_by_name["weather_events"])
@@ -825,7 +825,11 @@ SUBSYSTEM_DEF(day_cycle)
 			istype(PM, /obj/screen/plane_master/weather_misc) \
 			|| istype(PM, /obj/screen/plane_master/weather_misc_obj) \
 			|| istype(PM, /obj/screen/plane_master/weather_misc_above_obj) \
-			|| istype(PM, /obj/screen/plane_master/weather_misc_above_human)
+			|| istype(PM, /obj/screen/plane_master/weather_misc_above_human) \
+			|| istype(PM, /obj/screen/plane_master/blur/weather_misc_blur) \
+			|| istype(PM, /obj/screen/plane_master/blur/weather_misc_obj_blur) \
+			|| istype(PM, /obj/screen/plane_master/blur/weather_misc_above_obj_blur) \
+			|| istype(PM, /obj/screen/plane_master/blur/weather_misc_above_human_blur)
 		)
 			planes += PM
 
