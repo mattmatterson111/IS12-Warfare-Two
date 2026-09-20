@@ -262,7 +262,7 @@ GLOBAL_LIST_EMPTY(announcement_microphones)
 	if(!(M in range(2, get_turf(src))))
 		return
 
-		speakercast_decl.broadcast(msg, id, M, speaking)
+	speakercast_decl.broadcast(msg, id, M, speaking)
 
 /obj/structure/announcementmicrophone/IO_receive_input(input_name, atom/activator, atom/caller, list/params)
 	switch(lowertext(input_name))
