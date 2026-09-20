@@ -25,17 +25,22 @@
 
 /obj/item/gun/attempt_wield(mob/user)
 	if(big)
-		return
+		if(!is_standing_mounted(user))
+			return
 	return ..()
 
 /obj/item/gun/unwield(mob/user, hidden = FALSE)
 	if(big && !hidden)
-		return
+		if(!is_standing_mounted(user))
+			return
 	return ..()
 
 /obj/item/gun/proc/standing_mount_check(mob/user)
 	if(!requires_standing_mount || is_standing_mounted(user))
-		return TRUE
+		if(!is_standing_mounted(user) || wielded)
+			return TRUE
+		to_chat(user, "<span class='danger'>You need both hands on [src] to fire it.</span>")
+		return FALSE
 
 	to_chat(user, "<span class='danger'>[src] must be mounted before it can fire.</span>")
 	return FALSE
@@ -81,19 +86,23 @@
 	icon_state = weapon ? "[base_state]gun" : base_state
 
 /obj/structure/standing_gun/attackby(obj/item/W, mob/living/user)
+	if(istype(W, /obj/item/ammo_magazine))
+		reload_magazine(W, user)
+		return
 	if(!allow_weapon_removal || weapon || buckled_mob || packing || !istype(W, weapon_type))
 		return ..()
 	if(!CanPhysicallyInteract(user))
 		return
-	if(istype(W, /obj/item/gun))
-		var/obj/item/gun/G = W
-		if(G.big && !G.can_pick_up_big(user))
-			return
 	user.remove_from_mob(W)
 	weapon = W
 	weapon.forceMove(src)
 	weapon.standing_mount = src
 	update_icon()
+
+/obj/structure/standing_gun/proc/reload_magazine(obj/item/ammo_magazine/magazine, mob/living/user)
+	if(!weapon || !CanPhysicallyInteract(user))
+		return
+	weapon.load_ammo(magazine, user)
 
 /obj/structure/standing_gun/Destroy()
 	if(buckled_mob)
@@ -152,7 +161,11 @@
 	user.forceMove(src.loc)
 	if(!user_buckle_mob(user, user))
 		user.forceMove(old_turf)
-		weapon.forceMove(src)
+		if(ismob(weapon.loc))
+			var/mob/M = weapon.loc
+			M.remove_from_mob(weapon, src)
+		else if(weapon.loc != src)
+			weapon.forceMove(src)
 		return FALSE
 	weapon.standing_mount = src
 	if(!weapon.wielded)
@@ -171,9 +184,13 @@
 /obj/structure/standing_gun/proc/dismount_weapon()
 	if(!weapon)
 		return
-	if(weapon.loc != src)
+	if(ismob(weapon.loc))
+		var/mob/M = weapon.loc
+		M.remove_from_mob(weapon, src)
+	else if(weapon.loc != src)
 		weapon.forceMove(src)
 	weapon.standing_mount = src
+	update_icon()
 
 /obj/structure/standing_gun/unbuckle_mob()
 	var/mob/living/old_occupant = buckled_mob
@@ -341,3 +358,10 @@
 	weapon_type = /obj/item/gun/projectile/automatic/mg08/perforator
 	allow_weapon_removal = TRUE
 	can_pack_up = FALSE
+
+/obj/item/gun/projectile/automatic/mg08/perforator/afterattack(atom/A, mob/living/user)
+	. = ..()
+	if(ammo_magazine && !ammo_magazine.stored_ammo.len)
+		qdel(ammo_magazine)
+		ammo_magazine = null
+		update_icon()

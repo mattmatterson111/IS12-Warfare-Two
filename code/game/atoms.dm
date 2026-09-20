@@ -104,6 +104,9 @@
 /atom/proc/is_open_container()
 	return atom_flags & ATOM_FLAG_OPEN_CONTAINER
 
+/atom/proc/can_accept_reagents()
+	return TRUE
+
 /*//Convenience proc to see whether a container can be accessed in a certain way.
 
 	proc/can_subract_container()

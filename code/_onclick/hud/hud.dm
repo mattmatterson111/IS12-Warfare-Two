@@ -40,6 +40,12 @@
 	client.screen += under
 	client.screen += gm
 	client.screen += BP
+	client.screen += new /obj/screen/plane_master/weather
+	client.screen += new /obj/screen/plane_master/weather_mask
+	client.screen += new /obj/screen/plane_master/weather_misc
+	client.screen += new /obj/screen/plane_master/weather_misc_obj
+	client.screen += new /obj/screen/plane_master/weather_misc_above_obj
+	client.screen += new /obj/screen/plane_master/weather_misc_above_human
 
 
 /datum/hud

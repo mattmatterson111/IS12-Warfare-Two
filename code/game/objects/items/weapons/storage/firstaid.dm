@@ -29,7 +29,7 @@
 
 	startswith = list(
 		/obj/item/device/healthanalyzer,
-		/obj/item/reagent_containers/hypospray/autoinjector,
+		/obj/item/reagent_containers/syringe/inaprovaline,
 		/obj/item/stack/medical/ointment,
 		/obj/item/storage/pill_bottle/kelotane,
 		/obj/item/storage/pill_bottle/paracetamol
@@ -75,7 +75,6 @@
 
 	startswith = list(
 		/obj/item/storage/pill_bottle/dexalin,
-		/obj/item/reagent_containers/hypospray/autoinjector,
 		/obj/item/reagent_containers/syringe/inaprovaline,
 		/obj/item/device/healthanalyzer,
 		)
@@ -87,7 +86,7 @@
 	item_state = "firstaid-advanced"
 
 	startswith = list(
-		/obj/item/reagent_containers/hypospray/autoinjector,
+		/obj/item/reagent_containers/syringe/inaprovaline,
 		/obj/item/stack/medical/advanced/bruise_pack = 3,
 		/obj/item/stack/medical/advanced/ointment = 2,
 		/obj/item/stack/medical/splint

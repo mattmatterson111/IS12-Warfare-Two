@@ -18,12 +18,12 @@
 /obj/effect/map_entity/weather_events
 	name = "weather_events"
 	icon_state = "round_events"
-	targetname = "weather_events"
+	io_targetname = "weather_events"
 
 /obj/effect/map_entity/weather_events/auto_leaks
 	name = "auto_leaks (auto-target env_leak)"
-	targetname = "weather_events"
-	connections = list(
+	io_targetname = "weather_events"
+	io_connections = list(
 		"OnRainy:env_leak:Enable",
 		"OnStorming:env_leak:Enable",
 		"OnClear:env_leak:Disable",
@@ -52,3 +52,28 @@
 			SSday_cycle.set_weather(new_type)
 		if("reset")
 			SSday_cycle.set_weather("clear")
+
+/obj/effect/map_entity/env_weather_modifier
+	name = "env_weather_modifier"
+	icon_state = "sun"
+	var/modifier_type = ""
+
+/obj/effect/map_entity/env_weather_modifier/receive_input(input_name, atom/activator, atom/caller, list/params)
+	. = ..()
+	if(.)
+		return TRUE
+
+	var/new_modifier = modifier_type
+	if(params && params["modifier_type"])
+		new_modifier = params["modifier_type"]
+
+	switch(lowertext(input_name))
+		if("addmodifier")
+			return SSday_cycle.add_modifier(new_modifier)
+		if("removemodifier")
+			return SSday_cycle.remove_modifier(new_modifier)
+		if("togglemodifier")
+			return SSday_cycle.toggle_modifier(new_modifier)
+		if("clearmodifiers")
+			SSday_cycle.clear_modifiers()
+			return TRUE

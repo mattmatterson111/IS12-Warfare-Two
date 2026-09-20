@@ -50,7 +50,7 @@ GLOBAL_LIST_EMPTY(mortar_areas) // = list()
 	sound_env = AUDITORIUM
 	icon_state = "nocoats"
 	can_pre_enter = TRUE
-	turf_initializer = null
+	turf_initializer = /decl/turf_initializer/warfare_flora_only
 
 /area/warfare/battlefield/trench_section/hallway
 	icon = 'icons/turf/urban/areas.dmi'
@@ -105,7 +105,7 @@ GLOBAL_LIST_EMPTY(mortar_areas) // = list()
 /area/warfare/battlefield/capture_point
 	name = "\improper Capture Point"
 	icon_state = "storage"
-	turf_initializer = null
+	turf_initializer = /decl/turf_initializer/warfare_flora_only
 	var/red_capture_points = 0
 	var/blue_capture_points = 0
 	var/list/blues = list()
@@ -196,6 +196,10 @@ GLOBAL_LIST_EMPTY(mortar_areas) // = list()
 /area/warfare/battlefield/capture_point/mid
 	name = "Middle Bunker"
 	icon_state = "start"
+	turf_initializer = /decl/turf_initializer/oldfare
+
+/area/warfare/battlefield/capture_point/mid/underground
+	turf_initializer = /decl/turf_initializer/oldfare
 
 /area/warfare/battlefield/capture_point/red
 	icon_state = "redcoats"
@@ -343,6 +347,7 @@ GLOBAL_LIST_EMPTY(mortar_areas) // = list()
 	name = "\improper Base"
 	icon_state = "start"
 	requires_power = FALSE
+	turf_initializer = /decl/turf_initializer/warfare_flora_only
 
 /area/warfare/homebase/red
 	name = "\improper Red Base"

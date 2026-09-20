@@ -329,16 +329,18 @@
 				if((ispath(allowed_magazines) && !istype(A, allowed_magazines)) || (islist(allowed_magazines) && !is_type_in_list(A, allowed_magazines)))
 					to_chat(user, "<span class='warning'>\The [A] won't fit into [src].</span>")
 					return
-				if(ammo_magazine)
-					to_chat(user, "<span class='warning'>[src] already has a magazine loaded.</span>")//already a magazine here
-					return
 				if(load_delay)
 					if(!do_after(user, load_delay, src))
 						return
+				var/obj/item/ammo_magazine/old_magazine = ammo_magazine
 				user.remove_from_mob(AM)
 				AM.loc = src
 				ammo_magazine = AM
-				user.visible_message("[user] inserts [AM] into [src].", "<span class='notice'>You insert [AM] into [src].</span>")
+				if(old_magazine)
+					user.put_in_active_hand(old_magazine)
+					user.visible_message("[user] swaps \the [old_magazine] in [src].", "<span class='notice'>You swap out the [old_magazine] in [src].</span>")
+				else
+					user.visible_message("[user] inserts [AM] into [src].", "<span class='notice'>You insert [AM] into [src].</span>")
 				if(reload_sound)
 					playsound(src.loc, reload_sound, 75, 1)
 				if(cock_sound && AM.stored_ammo.len)

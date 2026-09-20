@@ -108,6 +108,13 @@
 	containername = "\improper Weed control crate"
 	access = access_hydroponics
 
+/decl/hierarchy/supply_pack/hydroponics/machetes
+	name = "Machete crate"
+	contains = list(/obj/item/material/hatchet/machete = 4)
+	cost = 30
+	containername = "\improper Machete crate"
+	access = access_hydroponics
+
 /decl/hierarchy/supply_pack/hydroponics/exoticseeds
 	name = "Exotic seeds crate"
 	contains = list(/obj/item/seeds/replicapod = 2,
