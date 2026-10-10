@@ -738,7 +738,7 @@
 	grab_sound = 'sound/items/handle/axe_grab.ogg'
 	grab_sound_is_loud = TRUE
 	parry_sounds = list('sound/weapons/bladeparry1.ogg', 'sound/weapons/bladeparry2.ogg', 'sound/weapons/bladeparry3.ogg', 'sound/weapons/bladeparry4.ogg')
-	
+
 /obj/item/melee/trench_axe/handle_shield(mob/living/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
 	if(default_sword_parry(user, damage, damage_source, attacker, def_zone, attack_text))
 		return 1
@@ -1547,7 +1547,7 @@ obj/item/storage/backpack/satchel/warfare/chestrig/blue/oldlmg
 /obj/item/clothing/head/warfare_officer/redlogi
 	name = "Red Logistic Officer\'s Cap"
 	desc = "GREED."
-	icon_state = "redcaptain"
+	icon_state = "redlt"
 	item_state = "redcoat_cf"
 	worldicons = list("captainhatworld1","captainhatworld2")
 	warfare_team = RED_TEAM
@@ -1555,7 +1555,7 @@ obj/item/storage/backpack/satchel/warfare/chestrig/blue/oldlmg
 /obj/item/clothing/head/warfare_officer/bluelogi
 	name = "Blue Logistic Officer\'s Cap"
 	desc = "GREED."
-	icon_state = "redcaptain"
+	icon_state = "bluelt"
 	item_state = "bluecoat_cf"
 	worldicons = list("captainhatworld1","captainhatworld2")
 	warfare_team = BLUE_TEAM
