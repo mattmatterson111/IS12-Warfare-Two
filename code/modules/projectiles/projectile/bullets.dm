@@ -145,7 +145,7 @@
 /datum/shotgun_pellet_volley/proc/register_hit(mob/living/hit_mob, zone)
 	if(invalid)
 		return
-	if(hit_mob != target || !(zone in list(BP_L_ARM, BP_R_ARM, BP_L_HAND, BP_R_HAND, BP_L_LEG, BP_R_LEG, BP_L_FOOT, BP_R_FOOT)))
+	if(hit_mob != target || !(zone in list(BP_HEAD, BP_L_ARM, BP_R_ARM, BP_L_HAND, BP_R_HAND, BP_L_LEG, BP_R_LEG, BP_L_FOOT, BP_R_FOOT)))
 		invalid = TRUE
 		return
 	if(hit_zone && hit_zone != zone)
