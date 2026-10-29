@@ -376,7 +376,11 @@
 		belt = /obj/item/storage/belt/autoshotty
 		backpack_contents = list(/obj/item/stack/barbwire = 1, /obj/item/shovel = 1, /obj/item/defensive_barrier = 3, /obj/item/storage/box/ifak = 1, /obj/item/grenade/smokebomb = 1)
 
-	else if(prob(15))
+	else if(prob(85))
+		suit_store = /obj/item/gun/projectile/shotgun/pump/boltaction/shitty/fieldpiece
+		r_pocket = /obj/item/ammo_box/rifle
+
+	else if(prob(40))
 		suit_store = pick(
 			/obj/item/gun/projectile/shotgun/pump/boltaction/shitty,
 			/obj/item/gun/projectile/shotgun/pump/boltaction/shitty/bayonet,
@@ -384,8 +388,8 @@
 		r_pocket = /obj/item/ammo_box/rifle
 
 	else
-		suit_store = /obj/item/gun/projectile/shotgun/pump/boltaction/shitty/fieldpiece
-		r_pocket = /obj/item/ammo_box/rifle
+		suit_store = /obj/item/gun/projectile/shotgun/pump/shitty
+		r_pocket = /obj/item/ammo_box/shotgun
 	/*else
 		suit_store = /obj/item/gun/projectile/automatic/machinepistol
 		r_pocket = /obj/item/shovel
