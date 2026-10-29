@@ -120,16 +120,66 @@
 
 
 /obj/item/projectile/bullet/pellet/shotgun/launch_projectile(atom/target, target_zone, mob/user, params, angle_override, forced_spread = 0)
+	var/datum/shotgun_pellet_volley/volley
+	if(ishuman(target))
+		volley = new
+		volley.target = target
+		volley.pellet_count = pellets - 1
+		volley.remaining_pellets = pellets - 1
 	for(var/x=1,x<pellets,x++)
 		var/obj/item/projectile/bullet/buckshot_pellet/P = new(get_turf(src))
+		P.volley = volley
 		P.dispersion += pick(-9,9)
 		P.launch_projectile(target, target_zone, user, params, angle_override, forced_spread)
 	qdel(src)
 	return
 
+/datum/shotgun_pellet_volley
+	var/mob/living/carbon/human/target
+	var/pellet_count
+	var/remaining_pellets
+	var/hits = 0
+	var/hit_zone
+	var/invalid = FALSE
+
+/datum/shotgun_pellet_volley/proc/register_hit(mob/living/hit_mob, zone)
+	if(invalid)
+		return
+	if(hit_mob != target || !(zone in list(BP_HEAD, BP_L_ARM, BP_R_ARM, BP_L_HAND, BP_R_HAND, BP_L_LEG, BP_R_LEG, BP_L_FOOT, BP_R_FOOT)))
+		invalid = TRUE
+		return
+	if(hit_zone && hit_zone != zone)
+		invalid = TRUE
+		return
+	hit_zone = zone
+	hits++
+	if(hits == pellet_count)
+		var/obj/item/organ/external/hit_organ = target.get_organ(hit_zone)
+		if(hit_organ)
+			hit_organ.droplimb(0, DROPLIMB_EDGE)
+		invalid = TRUE
+
+/datum/shotgun_pellet_volley/proc/unregister_pellet()
+	remaining_pellets--
+	if(remaining_pellets <= 0)
+		qdel(src)
+
 /obj/item/projectile/bullet/buckshot_pellet
 	damage = 9 //There are 8 of these fired at a time usually.
 	armor_penetration = 0
+	var/datum/shotgun_pellet_volley/volley
+	var/registered_volley_hit = FALSE
+
+/obj/item/projectile/bullet/buckshot_pellet/attack_mob(var/mob/living/target_mob, var/distance, var/miss_modifier)
+	. = ..()
+	if(volley && . && !registered_volley_hit)
+		volley.register_hit(target_mob, def_zone)
+		registered_volley_hit = TRUE
+
+/obj/item/projectile/bullet/buckshot_pellet/Destroy()
+	if(volley)
+		volley.unregister_pellet()
+	return ..()
 
 /*
 /obj/item/projectile/bullet/pellet/Bumped()
