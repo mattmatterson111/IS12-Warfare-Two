@@ -1,11 +1,11 @@
 
 
 
-	
 
 
 
-/obj/structure/closet/crate/scuffedcargo/ 
+
+/obj/structure/closet/crate/scuffedcargo/
 	name = "TEST CRATE #1"
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "securecrate"
@@ -21,15 +21,16 @@ GLOBAL_LIST_EMPTY(faction_dosh)
 	icon_state = "cargo_machine"
 	anchored = TRUE
 	density = TRUE
-	var/credits 
+	var/credits
 	var/loggedin = FALSE
-	var/list/INPUTS = list("BROWSE CATALOG", "CHECK BALANCE", "CANCEL")
 	var/list/pads
 	var/id
 	var/withdraw_amount
 	var/line_input
 	var/cooldown
 	var/useable = TRUE
+	var/status_message = "READY"
+	var/status_error = FALSE
 	use_power = 1
 	idle_power_usage = 300
 	active_power_usage = 300
@@ -44,7 +45,7 @@ GLOBAL_LIST_EMPTY(faction_dosh)
 		var/decl/cargo_product/P = all_decls[type]
 		if(!istype(P) || istype(P, /decl/cargo_product/train))
 			continue
-		
+
 		if(P.type == /decl/cargo_product || P.type == /decl/cargo_product/job || P.type == /decl/cargo_product/crate)
 			continue
 		if(P.name == "Unknown Product")
@@ -61,7 +62,12 @@ GLOBAL_LIST_EMPTY(faction_dosh)
 	categories |= "Artillery"
 
 /obj/machinery/kaos/cargo_machine/RightClick(mob/user)
-	return 
+	return
+
+/obj/machinery/kaos/cargo_machine/proc/set_machine_status(message, is_error = FALSE)
+	status_message = message
+	status_error = is_error
+	SSnanoui.update_uis(src)
 
 /obj/machinery/kaos/cargo_machine/proc/pingpads()
 	for(var/obj/structure/cargo_pad/pad in pads)
@@ -73,35 +79,33 @@ GLOBAL_LIST_EMPTY(faction_dosh)
 
 /obj/machinery/kaos/cargo_machine/proc/playpadsequence(mob/user)
 	useable = FALSE
+	set_machine_status("RE-ESTABLISHING CARGO PAD CONNECTION...")
 	reconnectpads()
-	playsound(src.loc, "sound/machines/rpf/barotraumastuff/UI_labelselect.ogg", 75, 0.2) 
-	to_chat(user, "\icon[src]RE-ESTABLISHING CONNECTION... PLEASE WAIT..")
+	playsound(src.loc, "sound/machines/rpf/barotraumastuff/UI_labelselect.ogg", 75, 0.2)
 	spawn(2 SECONDS)
 		playsound(src.loc, 'sound/machines/rpf/beepsound1.ogg', 60, 0)
 		pinglight()
 		spawn(2 SECONDS)
 			useable = TRUE
 			set_light(3, 3,"#ebc683")
-			if (pads.len < 0 | pads.len == null | pads.len == 0) 
+			if (pads.len < 0 | pads.len == null | pads.len == 0)
 				set_light(3, 3,"#ebc683")
-				to_chat(src, "\icon[src]ERROR. NO CARGO PADS LOCATED. CONTACT YOUR SUPERIOR OFFICER.")
+				set_machine_status("ERROR: NO CARGO PADS LOCATED", TRUE)
 				playsound(src.loc, 'sound/machines/rpf/harshdeny.ogg', 250, 0.5)
-				to_chat(user, "\icon[src]AMOUNT OF LINKED PADS: [pads.len]")
 			else
 				playsound(src.loc, 'sound/machines/rpf/consolebeep.ogg', 250, 0.5)
-				to_chat(src, "\icon[src]LINK ESTABLISHED SUCCESSFULLY.")
-				to_chat(user, "\icon[src]AMOUNT OF LINKED PADS: [pads.len]")
+				set_machine_status("LINK ESTABLISHED: [pads.len] CARGO PADS")
 
 /obj/machinery/kaos/cargo_machine/proc/get_objects_on_turf(turf/T)
-	
+
 	var/list/objects_on_turf = list()
 
-	
+
 	for (var/obj/A in T)
-		
+
 		objects_on_turf += A
 
-	
+
 	return objects_on_turf
 
 /obj/machinery/kaos/cargo_machine/proc/pinglight()
@@ -118,15 +122,15 @@ GLOBAL_LIST_EMPTY(faction_dosh)
 			set_light(3, 3,"#ebc683")
 
 /obj/machinery/kaos/cargo_machine/proc/get_people_on_turf(turf/T)
-	
+
 	var/list/people_on_turf = list()
 
-	
+
 	for (var/mob/living/carbon/A in T)
-		
+
 		people_on_turf += A
 
-	
+
 	return people_on_turf
 
 /obj/machinery/kaos/cargo_machine/proc/reconnectpads()
@@ -135,9 +139,12 @@ GLOBAL_LIST_EMPTY(faction_dosh)
 		if (pad.id == src.id && !pad.broken)
 			pads += pad
 
-/obj/machinery/kaos/cargo_machine/New() 
+/obj/machinery/kaos/cargo_machine/New()
 	reconnectpads()
 	update_categories()
+	if(!pads.len)
+		status_message = "NO CARGO PADS LINKED"
+		status_error = TRUE
 	setup_sound()
 
 /obj/machinery/kaos/cargo_machine/setup_sound()
@@ -148,7 +155,7 @@ GLOBAL_LIST_EMPTY(faction_dosh)
 	audio.volume = 3
 	sound_emitter.add(audio, "idle")
 
-	sound_emitter.play("idle") 
+	sound_emitter.play("idle")
 
 /*
 /obj/machinery/kaos/cargo_machine/attackby(obj/item/O as obj, mob/user as mob)
@@ -165,7 +172,7 @@ GLOBAL_LIST_EMPTY(faction_dosh)
 	else if(istype(O, /obj/item/stack/teeth))
 		var/obj/item/stack/teeth/toof = O
 		if(toof.amount <= 0)
-			qdel(toof) 
+			qdel(toof)
 			return
 		var/to_grant = 0
 		for(var/i = 1, i <= toof.amount, i++)
@@ -174,37 +181,37 @@ GLOBAL_LIST_EMPTY(faction_dosh)
 		GLOB.faction_dosh[id] += to_grant
 		playsound(user.loc, 'sound/machines/rpf/audiotapein.ogg', 50, 0.4)
 		return
-	else if(istype(O, /obj/item/clothing/head/helmet/redhelmet) && id == BLUE_TEAM || istype(O, /obj/item/clothing/head/helmet/bluehelmet) && id == RED_TEAM ) 
+	else if(istype(O, /obj/item/clothing/head/helmet/redhelmet) && id == BLUE_TEAM || istype(O, /obj/item/clothing/head/helmet/bluehelmet) && id == RED_TEAM )
 		GLOB.faction_dosh[id] += 35
 		qdel(O)
 		playsound(user.loc, 'sound/machines/rpf/audiotapein.ogg', 50, 0.4)
 		return
 
-	else if(istype(O, /obj/item/card/id/dog_tag/red) && id == BLUE_TEAM || istype(O, /obj/item/card/id/dog_tag/blue) && id == RED_TEAM ) 
+	else if(istype(O, /obj/item/card/id/dog_tag/red) && id == BLUE_TEAM || istype(O, /obj/item/card/id/dog_tag/blue) && id == RED_TEAM )
 		GLOB.faction_dosh[id] += 40
 		qdel(O)
 		playsound(user.loc, 'sound/machines/rpf/audiotapein.ogg', 50, 0.4)
 		return
 
-	else if(istype(O, /obj/item/clothing/head/helmet/sentryhelm/red) && id == BLUE_TEAM || istype(O, /obj/item/clothing/head/helmet/sentryhelm/blue) && id == RED_TEAM ) 
+	else if(istype(O, /obj/item/clothing/head/helmet/sentryhelm/red) && id == BLUE_TEAM || istype(O, /obj/item/clothing/head/helmet/sentryhelm/blue) && id == RED_TEAM )
 		GLOB.faction_dosh[id] += 150
 		qdel(O)
 		playsound(user.loc, 'sound/machines/rpf/audiotapein.ogg', 50, 0.4)
 		return
 
-	else if(istype(O, /obj/item/clothing/head/helmet/redhelmet/fire) && id == BLUE_TEAM || istype(O, /obj/item/clothing/head/helmet/bluehelmet/fire) && id == RED_TEAM ) 
+	else if(istype(O, /obj/item/clothing/head/helmet/redhelmet/fire) && id == BLUE_TEAM || istype(O, /obj/item/clothing/head/helmet/bluehelmet/fire) && id == RED_TEAM )
 		GLOB.faction_dosh[id] += 250
 		qdel(O)
 		playsound(user.loc, 'sound/machines/rpf/audiotapein.ogg', 50, 0.4)
 		return
 
-	else if(istype(O, /obj/item/clothing/head/warfare_officer/redofficer) && id == BLUE_TEAM || istype(O, /obj/item/clothing/head/warfare_officer/blueofficer) && id == RED_TEAM ) 
+	else if(istype(O, /obj/item/clothing/head/warfare_officer/redofficer) && id == BLUE_TEAM || istype(O, /obj/item/clothing/head/warfare_officer/blueofficer) && id == RED_TEAM )
 		GLOB.faction_dosh[id] += 500
 		qdel(O)
 		playsound(user.loc, 'sound/machines/rpf/audiotapein.ogg', 50, 0.4)
 		return
 
-	else if(istype(O, /obj/item/melee/classic_baton/factionbanner/red) && id == BLUE_TEAM || istype(O, /obj/item/melee/classic_baton/factionbanner/blue) && id == RED_TEAM ) 
+	else if(istype(O, /obj/item/melee/classic_baton/factionbanner/red) && id == BLUE_TEAM || istype(O, /obj/item/melee/classic_baton/factionbanner/blue) && id == RED_TEAM )
 		GLOB.faction_dosh[id] += 750
 		qdel(O)
 		playsound(user.loc, 'sound/machines/rpf/audiotapein.ogg', 50, 0.4)
@@ -222,78 +229,143 @@ GLOBAL_LIST_EMPTY(faction_dosh)
 		return
 
 	if(!useable)
-		to_chat(user, "\icon[src]The machine is currently busy processing something..")
 		playsound(src.loc, 'sound/machines/rpf/denybeep.ogg', 100, 0.3)
 		return
 
 	set_light(3, 3, "#ebc683")
-	var/machine_input = input(user, "CARGO MACHINE.") as null|anything in INPUTS
-	if(!machine_input || !useable || !CanPhysicallyInteract(user))
+	ui_interact(user)
+
+/obj/machinery/kaos/cargo_machine/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 1)
+	if(!CanPhysicallyInteract(user))
 		return
 
-	switch(machine_input)
-		if("CHECK BALANCE")
+	user.set_machine(src)
+	reconnectpads()
+	update_categories()
+
+	var/list/data = list()
+	var/balance = GLOB.faction_dosh[id]
+	if(isnull(balance))
+		balance = 0
+	data["balance"] = balance
+	data["machine_name"] = name
+	data["accent"] = id == RED_TEAM ? "#d35b52" : "#6b9ed6"
+	data["pad_count"] = pads ? pads.len : 0
+	data["useable"] = useable
+	data["status_message"] = status_message
+	data["status_error"] = status_error
+	data["artillery_cost"] = 550
+
+	var/list/available = get_available_products()
+	var/list/listed_categories = list()
+	for(var/category in categories)
+		var/list/listed_products = list()
+		if(category != "Artillery")
+			for(var/product_index = 1 to available.len)
+				var/decl/cargo_product/P = available[product_index]
+				if(P.category != category)
+					continue
+				listed_products += list(list(
+					"index" = product_index,
+					"name" = P.name,
+					"price" = P.price
+				))
+		listed_categories += list(list(
+			"name" = category,
+			"products" = listed_products
+		))
+	data["categories"] = listed_categories
+
+	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
+	if(!ui)
+		ui = new(user, src, ui_key, "cargo_machine.tmpl", name, 500, 600)
+		ui.set_initial_data(data)
+		ui.open()
+
+/obj/machinery/kaos/cargo_machine/OnTopic(user, href_list)
+	if(!CanPhysicallyInteract(user))
+		return TOPIC_NOACTION
+
+	if(!useable)
+		playsound(src.loc, 'sound/machines/rpf/denybeep.ogg', 100, 0.3)
+		return TOPIC_REFRESH
+
+	switch(href_list["action"])
+		if("balance")
 			display_balance(user)
-		if("BROWSE CATALOG")
-			browse_catalog(user)
+		if("reconnect")
+			playpadsequence(user)
+		if("purchase")
+			if(!pads || !pads.len)
+				set_machine_status("ERROR: NO LINKED CARGO PADS", TRUE)
+				playsound(src.loc, 'sound/machines/rpf/denybeep.ogg', 100, 0.5)
+				return TOPIC_REFRESH
+
+			var/product_index = text2num(href_list["product"])
+			var/list/available = get_available_products()
+			if(product_index < 1 || product_index > available.len || round(product_index) != product_index)
+				return TOPIC_REFRESH
+
+			var/decl/cargo_product/P = available[product_index]
+			if(!P || P.category == "Artillery")
+				return TOPIC_REFRESH
+			purchase_product(user, P)
+		if("artillery")
+			if(!pads || !pads.len)
+				set_machine_status("ERROR: NO LINKED CARGO PADS", TRUE)
+				playsound(src.loc, 'sound/machines/rpf/denybeep.ogg', 100, 0.5)
+				return TOPIC_REFRESH
+			set_machine_status("ARTILLERY AUTHORIZATION REQUIRED")
+			handle_artillery_menu(user)
+		else
+			return TOPIC_NOACTION
+
+	return TOPIC_REFRESH
 
 /obj/machinery/kaos/cargo_machine/proc/display_balance(mob/user)
 	playsound(src, "keyboard_sound", 100, 1)
 	if(GLOB.faction_dosh[id] > 0)
-		to_chat(user, "\icon[src]The machine has [GLOB.faction_dosh[id]] credits.")
+		set_machine_status("ACCOUNT BALANCE: [GLOB.faction_dosh[id]] CREDITS")
 	else
-		to_chat(user, "\icon[src]The machine has no credits.")
+		set_machine_status("ACCOUNT BALANCE: NO CREDITS")
 	playsound(src.loc, 'sound/machines/rpf/consolebeep.ogg', 100, 0.5)
-
-/obj/machinery/kaos/cargo_machine/proc/browse_catalog(mob/user)
-	if(!pads || !pads.len)
-		to_chat(user, "\icon[src]ERROR. NO LINKED CARGO PADS. REESTABLISH CONNECTION AND TRY AGAIN.")
-		playsound(src.loc, 'sound/machines/rpf/denybeep.ogg', 100, 0.5)
-		return
-
-	update_categories()
-	var/list/CATEGORY_INPUTS = list()
-	for(var/category in categories)
-		CATEGORY_INPUTS["- [category]"] = category
-	
-	var/selected_category_text = input(user, "CHOOSE A CATEGORY TO BROWSE.") as null|anything in CATEGORY_INPUTS
-	if(!selected_category_text || !useable || !CanPhysicallyInteract(user))
-		return
-	
-	var/selected_category = CATEGORY_INPUTS[selected_category_text]
-
-	if(selected_category == "Artillery")
-		handle_artillery_menu(user)
-	else
-		purchase_product(user, selected_category)
 
 /obj/machinery/kaos/cargo_machine/proc/handle_artillery_menu(mob/user)
 	playsound(src.loc, "sound/machines/rpf/press1.ogg", 100, 0.7)
 	var/line_input = sanitize(input(user, "ENTER LOGIN.", "[name]", ""))
 	if(!line_input || !useable || !CanPhysicallyInteract(user))
+		if(useable)
+			set_machine_status("ARTILLERY REQUEST CANCELLED")
 		set_light(0)
 		return
 
 	if(line_input != GLOB.cargo_password)
-		to_chat(user, "\icon[src]Incorrect password provided.")
+		set_machine_status("ERROR: INCORRECT ARTILLERY PASSWORD", TRUE)
 		playsound(src.loc, 'sound/machines/rpf/denybeep.ogg', 100, 0.5)
 		set_light(0)
 		return
 
 	playsound(src, "switch_sound", 100, 1)
-	to_chat(user, "\icon[src]Welcome, <span class='warning'>Captain</span>.")
+	set_machine_status("AUTHORIZATION ACCEPTED: WELCOME CAPTAIN")
 	playsound(src.loc, 'sound/machines/rpf/consolebeep.ogg', 100, 0.5)
 
 	if(!useable || !CanPhysicallyInteract(user))
+		if(useable)
+			set_machine_status("ARTILLERY REQUEST CANCELLED")
 		return
 
 	var/x_input = input(user, "Please input the X coordinate.") as num
 	if(!x_input || !useable || !CanPhysicallyInteract(user))
+		if(useable)
+			set_machine_status("ARTILLERY REQUEST CANCELLED")
 		return
 
+	set_machine_status("ENTER TARGET Y COORDINATE")
 	playsound(src.loc, "sound/machines/rpf/press1.ogg", 100, 0.7)
 	var/y_input = input(user, "Please input the Y coordinate.") as num
 	if(!y_input || !useable || !CanPhysicallyInteract(user))
+		if(useable)
+			set_machine_status("ARTILLERY REQUEST CANCELLED")
 		return
 
 	var/target_x = x_input
@@ -304,22 +376,22 @@ GLOBAL_LIST_EMPTY(faction_dosh)
 
 	var/costofartillery = 550
 	if(GLOB.faction_dosh[id] < costofartillery)
-		to_chat(user, "\icon[src]You are unable to afford an artillery strike, <span class='warning'>Captain</span>.")
+		set_machine_status("ERROR: INSUFFICIENT FUNDS FOR ARTILLERY", TRUE)
 		playsound(src.loc, 'sound/machines/rpf/denybeep.ogg', 100, 0.5)
 		set_light(0)
 		return
 
 	var/turf/turf_to_drop = locate(target_x, target_y, 2)
 	if(!turf_to_drop || !(istype(turf_to_drop.loc, /area/warfare/battlefield/no_mans_land) || istype(turf_to_drop.loc, /area/warfare/battlefield/capture_point/mid)))
-		to_chat(user, "\icon[src]The coordinates were invalid, <span class='warning'>Captain</span>.")
+		set_machine_status("ERROR: INVALID ARTILLERY COORDINATES", TRUE)
 		playsound(src.loc, 'sound/machines/rpf/denybeep.ogg', 100, 0.5)
 		set_light(0)
 		return
 
 	playsound(src.loc, "sound/machines/rpf/press1.ogg", 100, 0.7)
-	to_chat(user, "\icon[src]<span class='danger'>ENGAGING ARTILLERY FIRE AT LOCATION: \n\icon[src]X coordinate [target_x], Y coordinate [target_y].\n")
+	set_machine_status("ARTILLERY DEPLOYED: X [target_x], Y [target_y]")
 	to_chat(world, uppertext("<font size=5><b>INCOMING!! NO MAN'S LAND!!</b></font>"))
-	
+
 	for(var/obj/machinery/light/l in GLOB.lights)
 		if(prob(7))
 			l.flicker()
@@ -330,50 +402,38 @@ GLOBAL_LIST_EMPTY(faction_dosh)
 			sleep(5 SECONDS)
 
 	GLOB.faction_dosh[id] -= costofartillery
+	SSnanoui.update_uis(src)
 	playsound(src.loc, 'sound/machines/rpf/sendmsgcargo.ogg', 100, 0)
-	
+
 	spawn(8 SECONDS)
 		artillery_barage(target_x, target_y, 2)
 
-/obj/machinery/kaos/cargo_machine/proc/purchase_product(mob/living/user, selected_category)
-	playsound(src.loc, "sound/machines/rpf/press1.ogg", 100, 0.7)
-	var/list/PRODUCT_INPUTS = list()
-	var/list/avail = get_available_products()
-	for(var/decl/cargo_product/P in avail)
-		if(P.category == selected_category)
-			PRODUCT_INPUTS["- [P.name] -- [P.price] credits"] = P
-
-	PRODUCT_INPUTS["-- Return --"] = null
-	var/selected_product_text = input(user, "CHOOSE A PRODUCT TO PURCHASE.") as null|anything in PRODUCT_INPUTS
-	
-	if(!selected_product_text || selected_product_text == "-- Return --" || !useable || !CanPhysicallyInteract(user))
-		return
-
-	var/decl/cargo_product/P = PRODUCT_INPUTS[selected_product_text]
-	if(!P)
+/obj/machinery/kaos/cargo_machine/proc/purchase_product(mob/living/user, decl/cargo_product/P)
+	if(!P || !CanPhysicallyInteract(user))
 		return
 
 	playsound(src.loc, "sound/machines/rpf/press1.ogg", 100, 0.7)
 
 	if(P.price > GLOB.faction_dosh[id])
-		to_chat(user, "\icon[src]You lack the required funding to purchase this product.")
+		set_machine_status("ERROR: INSUFFICIENT FUNDS FOR [uppertext(P.name)]", TRUE)
 		playsound(src.loc, 'sound/machines/rpf/denybeep.ogg', 100, 0.5)
 		return
 
 	if(istype(P, /decl/cargo_product/job))
 		if(P.name == "Reinforcements")
-			to_chat(user, SPAN_YELLOW("\icon[src]You have been barred from further purchases of reinforcements\n\n\icon[src]Please consult a technician if you believe this decision was made in error."))
+			set_machine_status("ERROR: REINFORCEMENTS PURCHASES ARE DISABLED", TRUE)
 			playsound(src.loc, 'sound/machines/rpf/denybeep.ogg', 100, 0.5)
 			return
-		
+
 		var/datum/job/team_job = SSjobs.GetJobByType(P.job_path)
 		if(team_job.total_positions < 1)
 			SSjobs.allow_one_more(team_job.title)
 			GLOB.faction_dosh[id] -= P.price
+			set_machine_status("[uppertext(P.name)] REQUESTED")
 			playsound(src.loc, 'sound/machines/rpf/sendmsgcargo.ogg', 100, 0)
 		else
+			set_machine_status("ERROR: NO UNITS AVAILABLE TO SEND", TRUE)
 			playsound(src.loc, 'sound/machines/rpf/denybeep.ogg', 100, 0.5)
-			to_chat(user, "\icon[src]There are no more units available to send at the moment.")
 		return
 
 	handle_purchase_spawn(user, P)
@@ -384,9 +444,9 @@ GLOBAL_LIST_EMPTY(faction_dosh)
 	for(var/obj/structure/cargo_pad/pad in pads)
 		if(get_dense_objects_on_turf(get_turf(pad)).len <= 0)
 			clear_turfs += pad
-	
+
 	if(!clear_turfs.len)
-		to_chat(user, "\icon[src]ERROR. ALL PADS OCCUPIED. MAKE SPACE AND TRY AGAIN.")
+		set_machine_status("ERROR: ALL CARGO PADS ARE OCCUPIED", TRUE)
 		playsound(src.loc, 'sound/machines/rpf/denybeep.ogg', 100, 0.5)
 		return
 
@@ -394,6 +454,7 @@ GLOBAL_LIST_EMPTY(faction_dosh)
 	var/turf/pickedloc = get_turf(pickedpad)
 
 	useable = FALSE
+	set_machine_status("TRANSPORTING [uppertext(P.name)]...")
 	playsound(src.loc, 'sound/machines/rpf/cargo_starttp.ogg', 100, 0)
 	spawn(2.2 SECONDS)
 		pickedpad.isselected()
@@ -404,7 +465,7 @@ GLOBAL_LIST_EMPTY(faction_dosh)
 			sparks.set_up(3, 0, pickedloc)
 			sparks.start()
 			pickedpad.isselectedbrighter()
-			
+
 			var/list/togib = get_people_on_turf(pickedloc)
 			var/spawn_gibs = FALSE
 			for(var/mob/gibthisguy in togib)
@@ -428,10 +489,11 @@ GLOBAL_LIST_EMPTY(faction_dosh)
 			A.name = "[P.name] crate"
 			if(P.contents)
 				create_objects_in_loc(A, P.contents)
-		
+
 		spawn(2.7 SECONDS)
 			pickedpad.isdeselected()
 			GLOB.faction_dosh[id] -= P.price
+			set_machine_status("[uppertext(P.name)] DELIVERED")
 			spawn(0.1 SECONDS)
 				qdel(glowobj)
 				pickedpad.isdeselected()
@@ -440,6 +502,7 @@ GLOBAL_LIST_EMPTY(faction_dosh)
 				resetlightping()
 				playsound(src.loc, 'sound/machines/rpf/ChatMsg.ogg', 100, 0)
 				useable = TRUE
+				SSnanoui.update_uis(src)
 
 /obj/machinery/kaos/cargo_machine/red
 	name = "R.E.D. Cargo Machine"
@@ -495,7 +558,7 @@ GLOBAL_LIST_EMPTY(cargo_pads)
 	audio.volume = 1
 	sound_emitter.add(audio, "idle")
 
-	sound_emitter.play("idle") 
+	sound_emitter.play("idle")
 
 proc/get_dense_objects_on_turf(turf/T)
 	var/list/dense_objects_on_turf = list()
