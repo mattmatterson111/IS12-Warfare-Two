@@ -9,6 +9,7 @@
 	fire_sound = null
 	no_attack_log = 1
 	muzzle_type = null
+	tracer_type = null
 	do_not_pass_trench = TRUE
 
 /obj/item/projectile/bullet/pellet/fragment/strong
