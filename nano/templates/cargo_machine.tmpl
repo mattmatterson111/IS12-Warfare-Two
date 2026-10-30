@@ -2,10 +2,10 @@
 	<div style="border-bottom:2px solid {{:data.accent}};padding-bottom:16px;margin-bottom:20px;">
 		<div style="font-size:11px;letter-spacing:2px;color:#788589;">FIELD LOGISTICS NETWORK</div>
 		<div style="font-size:20px;font-weight:bold;color:#d5dbdd;">{{:data.machine_name}}</div>
-		<div style="font-size:11px;color:#858f93;">SECURE SUPPLY TERMINAL // AUTHORIZED PERSONNEL ONLY</div>
+		<div style="font-size:11px;color:#788589;">SECURE SUPPLY TERMINAL // AUTHORIZED PERSONNEL ONLY</div>
 	</div>
 
-	<div style="background:#181f23;border:1px solid #9c9c9c;padding:8px;margin-bottom:10px;">
+	<div style="background:#2b2b2b;border:1px solid #788589;padding:8px;margin-bottom:10px;">
 		<div style="color:#788589;font-size:11px;">FACTION ACCOUNT</div>
 		<div style="font-size:20px;color:#c4a758;">{{:data.balance}} CREDITS</div>
 		<div style="margin-top:5px;">LINKED CARGO PADS: {{:data.pad_count}}</div>
@@ -23,7 +23,7 @@
 		AVAILABLE SUPPLIES
 	</div>
 	{{for data.categories :category:category_index}}
-		<div style="background:#181f23;padding:7px;margin:8px 0 4px;color:{{:data.accent}};font-weight:bold;">
+		<div style="background:#2b2b2b;border:1px solid;padding:7px;margin:8px 0 4px;color:{{:data.accent}};font-weight:bold;">
 			{{:category.name}}
 		</div>
 		{{if category.name == 'Artillery'}}
