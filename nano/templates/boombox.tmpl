@@ -1,0 +1,29 @@
+<H3><span class="white">Mode:</span> <span class="average">{{:data.youtube_mode ? 'YouTube' : 'Cassette'}}</span></H3>
+<div>
+    {{:helper.link(data.youtube_mode ? 'Switch to cassette mode' : 'Switch to YouTube mode', null, {'toggle_mode' : 1})}}
+</div>
+
+{{if data.youtube_mode}}
+    <H3><span class="white">YouTube:</span></H3>
+    {{if data.has_youtube_song}}
+        <div>An approved YouTube song is ready to play.</div>
+        {{:helper.link(data.playing ? 'Stop' : 'Play', null, {'toggle_play' : 1})}}
+    {{else}}
+        <div>No approved YouTube song is loaded.</div>
+    {{/if}}
+    {{if !data.request_status}}
+        {{:helper.link('Request a song', null, {'request_song' : 1})}}
+    {{/if}}
+{{else}}
+    <H3><span class="white">Cassette:</span></H3>
+    <div>{{:data.has_cassette ? 'A cassette is inserted.' : 'No cassette is inserted.'}}</div>
+    {{:helper.link(data.playing ? 'Stop' : 'Play', null, {'toggle_play' : 1}, !data.has_cassette ? 'disabled' : null)}}
+    {{if data.has_cassette}}
+        {{:helper.link('Eject cassette', null, {'eject' : 1})}}
+    {{/if}}
+{{/if}}
+
+{{if data.request_status}}
+    <H3><span class="white">YouTube request:</span></H3>
+    <div>Status: {{:data.request_status}}</div>
+{{/if}}
