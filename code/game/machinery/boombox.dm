@@ -252,7 +252,7 @@ var/global/obj/item/device/boombox/youtube_request_target
 		return
 
 	// Prefer YouTube's original-language track when the extractor identifies one.
-	var/command = "\"yt-dlp_x86.exe\" --no-playlist --force-overwrites --format \"bestaudio\" --format-sort \"lang\" --extract-audio --audio-format vorbis --audio-quality 9 --print-to-file \"after_move:%(duration)s\" \"[duration_file]\" --output \"[output_template]\" --batch-file \"[request_file]\""
+	var/command = "\"data/yt-dlp_x86.exe\" --no-playlist --force-overwrites --format \"bestaudio\" --format-sort \"lang\" --extract-audio --audio-format vorbis --audio-quality 9 --print-to-file \"after_move:%(duration)s\" \"[duration_file]\" --output \"[output_template]\" --batch-file \"[request_file]\""
 	shell(command)
 	fdel(request_file)
 
@@ -302,7 +302,7 @@ var/global/obj/item/device/boombox/youtube_request_target
 	if(duration_file)
 		fdel(duration_file)
 	if(youtube_request_target == src)
-		notify_song_request_result("The accepted YouTube song could not be downloaded as an identified original-language track. Dubbed audio is not used; check yt-dlp_x86.exe and FFmpeg if the video has an original track.")
+		notify_song_request_result("The accepted YouTube song could not be downloaded as an identified original-language track. Dubbed audio is not used; check data/yt-dlp_x86.exe and FFmpeg if the video has an original track.")
 		clear_youtube_request()
 		world.log << "Boombox YouTube download failed for [src]."
 		update_boombox_uis()
