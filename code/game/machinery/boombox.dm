@@ -309,7 +309,7 @@ var/global/obj/item/device/boombox/youtube_request_target
 	if(duration_file)
 		fdel(duration_file)
 	if(youtube_request_target == src)
-		notify_song_request_result("The accepted YouTube song could not be downloaded as an identified original-language track. Dubbed audio is not used; check data/yt-dlp_x86.exe and FFmpeg if the video has an original track.")
+		notify_song_request_result("Error downloading the requested YouTube link. Is FFmpeg installed?")
 		clear_youtube_request()
 		world.log << "Boombox YouTube download failed for [src]."
 		update_boombox_uis()
