@@ -259,7 +259,7 @@ var/global/obj/item/device/boombox/youtube_request_target
 		return
 
 	// Prefer YouTube's original-language track when the extractor identifies one.
-	var/command = "\"data/yt-dlp_x86.exe\" --no-playlist --force-overwrites --format \"bestaudio\" --format-sort \"lang\" --extract-audio --audio-format vorbis --audio-quality 9 --print-to-file \"after_move:%(duration)s\" \"[duration_file]\" --output \"[output_template]\" --batch-file \"[request_file]\""
+	var/command = "\"yt-dlp_x86.exe\" --no-playlist --force-overwrites --format \"bestaudio\" --format-sort \"lang\" --extract-audio --audio-format vorbis --audio-quality 9 --print-to-file \"after_move:%(duration)s\" \"[duration_file]\" --output \"[output_template]\" --batch-file \"[request_file]\""
 	shell(command)
 	fdel(request_file)
 
