@@ -100,3 +100,6 @@
 
 	if(!istype(src, /mob/new_player))
 		SSday_cycle.on_client_login(client)
+
+	spawn(0)
+		replay_boombox_audio(src)

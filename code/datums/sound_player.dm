@@ -27,12 +27,12 @@ var/decl/sound_player/sound_player = new()
 	taken_channels = list()
 	source_id_uses = list()
 
-/decl/sound_player/proc/PlayLoopingSound(var/atom/source, var/sound_id, var/sound, var/volume, var/range, var/falloff, var/prefer_mute, var/ignore_vis = FALSE)
+/decl/sound_player/proc/PlayLoopingSound(var/atom/source, var/sound_id, var/sound, var/volume, var/range, var/falloff, var/prefer_mute, var/ignore_vis = FALSE, var/synchronize_playback = FALSE, var/repeat_sound = TRUE)
 	var/channel = PrivGetChannel(sound_id)
 	if(!channel)
 		log_warning("All available sound channels are in active use.")
 		return
-	return new/datum/sound_token(source, sound_id, sound, volume, channel, range, falloff, prefer_mute, ignore_vis)
+	return new/datum/sound_token(source, sound_id, sound, volume, channel, range, falloff, prefer_mute, ignore_vis, synchronize_playback, repeat_sound)
 
 /decl/sound_player/proc/PrivStopSound(var/datum/sound_token/sound_token)
 	var/channel = sound_token.channel
@@ -83,8 +83,11 @@ var/decl/sound_player/sound_player = new()
 	var/datum/proximity_trigger/square/proxy_listener
 	var/list/can_be_heard_from
 	var/ignore_vis = FALSE
+	var/synchronize_playback = FALSE
+	var/repeat_sound = TRUE
+	var/playback_start_time
 
-/datum/sound_token/New(var/atom/source, var/sound_id, var/sound, var/volume, var/channel, var/range = 4, var/falloff = 1, var/prefer_mute = FALSE, var/ignore_vis = FALSE)
+/datum/sound_token/New(var/atom/source, var/sound_id, var/sound, var/volume, var/channel, var/range = 4, var/falloff = 1, var/prefer_mute = FALSE, var/ignore_vis = FALSE, var/synchronize_playback = FALSE, var/repeat_sound = TRUE)
 	..()
 	listeners = list()
 	listener_status = list()
@@ -98,6 +101,10 @@ var/decl/sound_player/sound_player = new()
 	src.source = source
 	src.volume = volume
 	src.ignore_vis = ignore_vis
+	src.synchronize_playback = synchronize_playback
+	src.repeat_sound = repeat_sound
+	if(synchronize_playback)
+		playback_start_time = world.time
 
 	GLOB.destroyed_event.register(source, src, /datum/sound_token/proc/Stop)
 
@@ -184,9 +191,11 @@ datum/sound_token/proc/PrivAddListener(var/atom/listener)
 	if(listener in listeners)
 		return
 
-	var/sound/S = new(sound, repeat = TRUE, volume = volume, channel = channel)
+	var/sound/S = new(sound, repeat = repeat_sound, volume = volume, channel = channel)
 	S.environment = 0 // Ensures a 3D effect even if x/y offset happens to be 0 the first time it's played
 	S.falloff = falloff
+	if(synchronize_playback)
+		S.offset = get_playback_offset()
 	listeners[listener] = S
 
 	GLOB.moved_event.register(listener, src, /datum/sound_token/proc/PrivUpdateListenerLoc)
@@ -246,6 +255,20 @@ datum/sound_token/proc/PrivAddListener(var/atom/listener)
 	if(update_sound)
 		S.status |= SOUND_UPDATE
 	sound_to(listener, S)
+	if(synchronize_playback && !update_sound)
+		S.offset = null
+
+/datum/sound_token/proc/get_playback_offset()
+	var/elapsed = max(world.time - playback_start_time, 0)
+	return elapsed / 10
+
+/datum/sound_token/proc/ReplayToListener(var/atom/listener)
+	if(status & SOUND_STOPPED || !source || !(listener in all_hearers(source, range, ignore_vis)))
+		return
+	if(listener in listeners)
+		PrivRemoveListener(listener)
+	listener_status -= listener
+	PrivAddListener(listener)
 
 /obj/sound_test
 	var/sound = 'sound/misc/TestLoop1.ogg'
