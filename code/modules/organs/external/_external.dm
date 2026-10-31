@@ -761,6 +761,13 @@ Note that amputating the affected organ does in fact remove the infection from t
 	if(cannot_amputate || !owner)
 		return
 
+	if(ishuman(owner))
+		var/mob/living/carbon/human/wearer = owner
+		if(istype(wearer.wear_suit, /obj/item/clothing/suit/armor/sentry/red) || istype(wearer.wear_suit, /obj/item/clothing/suit/armor/sentry/blue))
+			return
+		if(organ_tag == BP_HEAD && (istype(wearer.head, /obj/item/clothing/head/helmet/sentryhelm/red) || istype(wearer.head, /obj/item/clothing/head/helmet/sentryhelm/blue)))
+			return
+
 	owner.unlock_achievement(new/datum/achievement/lose_limb())//Get an achievement for losing your limb!
 
 	owner.Stun(1)//Makes them drop what they're holding.
