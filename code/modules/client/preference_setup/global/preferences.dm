@@ -102,6 +102,9 @@ var/list/_client_preferences_by_type
 	if(new_value == GLOB.PREF_NO)
 		sound_to(preference_mob, sound(null, repeat = 0, wait = 0, volume = 0, channel = 1))
 		sound_to(preference_mob, sound(null, repeat = 0, wait = 0, volume = 0, channel = 2))
+	if(istype(preference_mob, /mob/living))
+		var/mob/living/L = preference_mob
+		L.ambience_is_playing = FALSE
 
 /datum/client_preference/ghost_ears
 	description ="Ghost ears"

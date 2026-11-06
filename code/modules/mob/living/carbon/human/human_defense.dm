@@ -19,6 +19,8 @@ meteor_act
 	def_zone = check_zone(def_zone)
 	if(!has_organ(def_zone))
 		return PROJECTILE_FORCE_MISS //if they don't have the organ in question then the projectile just passes by.
+	if(istype(P, /obj/item/projectile/bullet))
+		add_event("bullet_injury", /datum/happiness_event/bullet_injury)
 	//Shields
 	var/shield_check = check_shields(P.damage, P, null, def_zone, "the [P.name]")
 	if(shield_check)

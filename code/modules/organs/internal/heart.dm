@@ -7,10 +7,16 @@
 	var/pulse = PULSE_NORM
 	var/heartbeat = 0
 	var/beat_sound = 'sound/effects/singlebeat.ogg'
+	var/tmp/unconscious_heartbeat_sound_active = FALSE
+	var/tmp/unconscious_heartbeat_sound_fast = FALSE
 	var/tmp/next_blood_squirt = 0
 	relative_size = 15
 	max_damage = 45
 	var/open
+
+/obj/item/organ/internal/heart/Destroy()
+	stop_unconscious_heartbeat_sound()
+	return ..()
 
 /obj/item/organ/internal/heart/die()
 	if(dead_icon)
@@ -24,6 +30,7 @@
 /obj/item/organ/internal/heart/Process()
 	if(owner)
 		handle_pulse()
+		update_unconscious_heartbeat_sound()
 		if(pulse)
 			handle_heartbeat()
 			if(pulse == PULSE_2FAST && prob(1))
@@ -32,6 +39,36 @@
 				take_damage(0.5)
 		handle_blood()
 	..()
+
+/obj/item/organ/internal/heart/proc/update_unconscious_heartbeat_sound()
+	if(!owner)
+		return
+
+	if(owner.stat != UNCONSCIOUS || pulse == PULSE_NONE)
+		stop_unconscious_heartbeat_sound()
+		return
+
+	var/play_fast = FALSE
+	if(ishuman(owner))
+		var/mob/living/carbon/human/H = owner
+		play_fast = H.reagents.has_reagent(/datum/reagent/atepoine) || H.reagents.has_reagent(/datum/reagent/tramadol/morphine)
+		play_fast = play_fast || H.ingested.has_reagent(/datum/reagent/atepoine) || H.ingested.has_reagent(/datum/reagent/tramadol/morphine)
+
+	if(unconscious_heartbeat_sound_active && unconscious_heartbeat_sound_fast == play_fast)
+		return
+
+	var/sound/heartbeat_sound = sound('sound/effects/Heart Beat.ogg', repeat = 1, wait = 0, volume = 50, channel = 77)
+	if(play_fast)
+		heartbeat_sound.frequency = 55000
+	sound_to(owner, heartbeat_sound)
+	unconscious_heartbeat_sound_active = TRUE
+	unconscious_heartbeat_sound_fast = play_fast
+
+/obj/item/organ/internal/heart/proc/stop_unconscious_heartbeat_sound()
+	if(unconscious_heartbeat_sound_active && owner)
+		sound_to(owner, sound(null, repeat = 1, wait = 0, volume = 50, channel = 77))
+	unconscious_heartbeat_sound_active = FALSE
+	unconscious_heartbeat_sound_fast = FALSE
 
 /obj/item/organ/internal/heart/proc/handle_pulse()
 	if(robotic >= ORGAN_ROBOT)

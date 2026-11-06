@@ -12,6 +12,7 @@
 		if(M.wear_mask && (M.wear_mask.item_flags & ITEM_FLAG_AIRTIGHT))
 			return
 		M.take_organ_damage(0, strength * 0.1)
+		M.add_event("mustard_gas", /datum/happiness_event/mustard_gas)
 		M.adjustToxLoss(strength)
 
 	M.take_overall_damage(0, rand(1,15))

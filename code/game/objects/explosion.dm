@@ -23,6 +23,13 @@ proc/explosion(turf/epicenter, devastation_range, heavy_impact_range, light_impa
 					explosion(GetBelow(epicenter), round(adj_dev), round(adj_heavy), round(adj_light), round(adj_flash), 0, DOWN, shaped)
 
 		var/max_range = max(devastation_range, heavy_impact_range, light_impact_range, flash_range)
+		if(max_range > 0)
+			var/mood_range = max(5, max_range + 2)
+			for(var/mob/living/carbon/M in range(mood_range, epicenter))
+				if(get_turf(M) == epicenter)
+					M.add_event("explosion_direct", /datum/happiness_event/explosion_direct)
+				else
+					M.add_event("explosion_nearby", /datum/happiness_event/explosion_nearby)
 
 		// Play sounds; we want sounds to be different depending on distance so we will manually do it ourselves.
 		// Stereo users will also hear the direction of the explosion!
@@ -150,7 +157,7 @@ proc/drop_mortar(turf/dropped, mortar)
 	var/delay
 	playsound(dropped_turf, thismortarnoise, 100, FALSE)
 	var/obj/effect/shadow/S = new(dropped_turf)
-	
+
 	switch(thismortarnoise)
 		if('sound/effects/mortar_fallingalt.ogg') delay = 3.9
 		if('sound/effects/mortar_fallingalt2.ogg') delay = 2.25
@@ -167,7 +174,7 @@ proc/drop_mortar(turf/dropped, mortar)
 			return
 
 		var/power_factor = rand(8, 12) / 10
-		
+
 		explosion(dropped_turf, 1 * power_factor, 1 * power_factor, 1 * power_factor, 1 * power_factor, particles = TRUE, autosize = FALSE, sizeofboom = 1 * power_factor, large = TRUE, explosionsound = pick('sound/effects/farexplonewnew1.ogg','sound/effects/farexplonewnew2.ogg','sound/effects/farexplonewnew3.ogg','sound/effects/explosionfarnew.ogg','sound/effects/explosionfar2.ogg','sound/effects/explosionfar3.ogg','sound/effects/explosionfar4.ogg'))
 
 		var/crater_scale = 1.0 * power_factor

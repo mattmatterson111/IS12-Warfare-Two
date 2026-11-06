@@ -67,7 +67,11 @@
 		sound_to(src, sound(null, repeat = 1, wait = 0, volume = 70, channel = 3))
 		slur_loop = FALSE
 
-	if(ear_deaf && !deaf_loop)
+	if(pulse() == PULSE_NONE)
+		if(deaf_loop)
+			sound_to(src, sound(null, repeat = 1, wait = 0, volume = 70, channel = 4))
+			deaf_loop = FALSE
+	else if(ear_deaf && !deaf_loop)
 		sound_to(src, sound('sound/effects/ear_ring.ogg', repeat = 1, wait = 0, volume = 5, channel = 4))
 		deaf_loop = TRUE
 
@@ -594,7 +598,7 @@
 
 		handle_happiness()
 
-		
+
 
 		if(get_shock() >= species.total_health + (STAT_LEVEL(end) - 10) + reagents.get_reagent_amount(/datum/reagent/adrenaline))
 			if(!stat) //for above, adrenaline and having above 10 endurance will let you stay in the fight a *little* longer
@@ -717,7 +721,7 @@
 					if(35 to 40)		severity = 5
 					if(40 to 45)		severity = 6
 					if(45 to INFINITY)	severity = 7
-				overlay_fullscreen("oxy", /obj/screen/fullscreen/oxy, severity)
+				overlay_fullscreen("oxy", /obj/screen/fullscreen/crit, severity)
 			else
 				clear_fullscreen("oxy")
 

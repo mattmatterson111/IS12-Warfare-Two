@@ -231,6 +231,7 @@
 	var/do_not_pass_trench = FALSE //For stuff you do not want to leave the trench.
 	var/cover_checked = FALSE
 	var/increments = 0
+	var/turf/last_near_miss_turf
 	var/trench_penetration_chance = 0 // silly for a special gun
 /obj/item/projectile/CanPass()
 	return TRUE
@@ -915,6 +916,7 @@
 				gun_smoke.particles.velocity = list(x_component, y_component)
 				QDEL_IN(gun_smoke, 0.4 SECONDS)
 	forceMove(starting)
+	last_near_miss_turf = starting
 	trajectory = new(starting.x, starting.y, starting.z, 0, 0, Angle, pixel_speed)
 	last_projectile_move = world.time
 	fired = TRUE
@@ -1205,6 +1207,28 @@
 	..()
 	increments++
 	check_for_cover()
+	if(!istype(src, /obj/item/projectile/bullet))
+		return
+
+	var/turf/current_turf = get_turf(src)
+	if(!current_turf)
+		return
+	if(!last_near_miss_turf)
+		last_near_miss_turf = current_turf
+		return
+	if(current_turf == last_near_miss_turf)
+		return
+	last_near_miss_turf = current_turf
+
+	for(var/mob/living/carbon/M in range(1, current_turf))
+		if(M == firer || get_dist(M, current_turf) != 1)
+			continue
+		if(ishuman(M) && ishuman(firer))
+			var/mob/living/carbon/human/nearby_human = M
+			var/mob/living/carbon/human/shooter = firer
+			if(nearby_human.warfare_faction && nearby_human.warfare_faction == shooter.warfare_faction)
+				continue
+		M.add_event("bullet_near_miss", /datum/happiness_event/bullet_near_miss)
 
 /obj/item/projectile/proc/check_for_cover()
 	if(!(increments > 3))//Bullet has moved at least three tiles by now.
