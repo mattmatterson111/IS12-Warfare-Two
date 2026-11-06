@@ -130,6 +130,9 @@
 	return paralysis
 
 /mob/living/proc/handle_ambience()
+	if(get_preference_value(/datum/client_preference/play_ambiance) != GLOB.PREF_YES)
+		return
+
 	if(deaf_loop)
 		sound_to(src, sound(null, repeat = 1, volume = 50, wait = 0, channel = 1))
 		ambience_is_playing = FALSE

@@ -134,6 +134,12 @@
 	return
 
 /mob/living/carbon/human/do_stress_effects()
+	if(!pulse())
+		if(horror_loop)
+			sound_to(src, sound(null, repeat = 1, wait = 0, volume = 50, channel = 6))
+			horror_loop = FALSE
+		return
+
 	if(!horror_loop)
 		freakout_emote()
 		sound_to(src, sound('sound/effects/losing_my_mind.ogg', repeat = 1, wait = 0, volume = 25, channel = 6))

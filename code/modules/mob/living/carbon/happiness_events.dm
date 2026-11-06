@@ -154,6 +154,36 @@
 	happiness = -10
 	timeout = 1800
 
+// Mustard gas in your lungs and face is not jolly
+/datum/happiness_event/mustard_gas
+	description = "<span class='danger'>MY LUNGS!!</span>\n"
+	happiness = -15
+	timeout = 10 MINUTES
+
+// 47 cruise missiles to redistani soldier
+/datum/happiness_event/explosion_direct
+	description = "<span class='danger'>AAAAAAHHH!!</span>\n"
+	happiness = -5
+	timeout = 7.5 MINUTES
+
+// 47 cruise missiles around redistani soldier
+/datum/happiness_event/explosion_nearby
+	description = "<span class='danger'>OH, FUCK!</span>\n"
+	happiness = -3
+	timeout = 5 MINUTES
+
+// pew pew
+/datum/happiness_event/bullet_injury
+	description = "<span class='danger'>OW!</span>\n"
+	happiness = -3
+	timeout = 3 MINUTES
+
+// Suppression
+/datum/happiness_event/bullet_near_miss
+	description = "<span class='warning'>That was close...</span>\n"
+	happiness = -2
+	timeout = 30 SECONDS
+
 //For when you see someone die and you're not hardcore.
 /datum/happiness_event/dead
 	description = "<span class='danger'>OH MY GOD THEY'RE DEAD!</span>\n"
@@ -187,7 +217,7 @@
 	description = "<span class='binfo'>I am proud to fight for my nation! This banner fills me with hope!</span>\n"
 	happiness = 16 // This only happens around the banner, and if your faction matches it.
 	// it can be cancelled out pretty easily so I feel like this amount is just?? /shrug
-	timeout = 2 MINUTES 
+	timeout = 2 MINUTES
 
 // Addiction Events
 
