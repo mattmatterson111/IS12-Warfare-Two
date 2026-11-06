@@ -721,7 +721,7 @@
 					if(35 to 40)		severity = 5
 					if(40 to 45)		severity = 6
 					if(45 to INFINITY)	severity = 7
-				overlay_fullscreen("oxy", /obj/screen/fullscreen/crit, severity)
+				overlay_fullscreen("oxy", /obj/screen/fullscreen/oxy, severity)
 			else
 				clear_fullscreen("oxy")
 
