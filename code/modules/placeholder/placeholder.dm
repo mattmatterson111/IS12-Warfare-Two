@@ -243,6 +243,17 @@ GLOBAL_LIST_EMPTY(faction_dosh)
 	reconnectpads()
 	update_categories()
 
+	if(ui_key == "product_details")
+		if(!ui || !islist(ui.initial_data))
+			return
+		var/detail_index = ui.initial_data["product_index"]
+		var/list/available_products = get_available_products()
+		if(detail_index < 1 || detail_index > available_products.len || round(detail_index) != detail_index)
+			SSnanoui.close_user_uis(user, src, "product_details")
+			return
+		show_product_details(user, available_products[detail_index], detail_index, ui)
+		return
+
 	var/list/data = list()
 	var/balance = GLOB.faction_dosh[id]
 	if(isnull(balance))
@@ -282,6 +293,29 @@ GLOBAL_LIST_EMPTY(faction_dosh)
 		ui.set_initial_data(data)
 		ui.open()
 
+/obj/machinery/kaos/cargo_machine/proc/show_product_details(mob/user, decl/cargo_product/P, product_index, datum/nanoui/ui = null)
+	var/balance = GLOB.faction_dosh[id]
+	if(isnull(balance))
+		balance = 0
+
+	var/list/data = list(
+		"machine_name" = name,
+		"product_name" = P.name,
+		"description" = P.description,
+		"price" = P.price,
+		"product_index" = product_index,
+		"balance" = balance,
+		"pad_count" = pads ? pads.len : 0,
+		"useable" = useable,
+		"accent" = id == RED_TEAM ? "#d35b52" : "#6b9ed6"
+	)
+
+	ui = SSnanoui.try_update_ui(user, src, "product_details", ui, data)
+	if(!ui)
+		ui = new(user, src, "product_details", "cargo_product.tmpl", "[P.name] Details", 420, 500)
+		ui.set_initial_data(data)
+		ui.open()
+
 /obj/machinery/kaos/cargo_machine/OnTopic(user, href_list)
 	if(!CanPhysicallyInteract(user))
 		return TOPIC_NOACTION
@@ -295,6 +329,16 @@ GLOBAL_LIST_EMPTY(faction_dosh)
 			display_balance(user)
 		if("reconnect")
 			playpadsequence(user)
+		if("review_purchase")
+			var/review_index = text2num(href_list["product"])
+			var/list/available = get_available_products()
+			if(review_index < 1 || review_index > available.len || round(review_index) != review_index)
+				return TOPIC_REFRESH
+
+			var/decl/cargo_product/review_product = available[review_index]
+			if(!review_product || review_product.category == "Artillery")
+				return TOPIC_REFRESH
+			show_product_details(user, review_product, review_index)
 		if("purchase")
 			if(!pads || !pads.len)
 				set_machine_status("ERROR: NO LINKED CARGO PADS", TRUE)
@@ -309,7 +353,10 @@ GLOBAL_LIST_EMPTY(faction_dosh)
 			var/decl/cargo_product/P = available[product_index]
 			if(!P || P.category == "Artillery")
 				return TOPIC_REFRESH
+			SSnanoui.close_user_uis(user, src, "product_details")
 			purchase_product(user, P)
+		if("cancel_purchase")
+			SSnanoui.close_user_uis(user, src, "product_details")
 		if("artillery")
 			if(!pads || !pads.len)
 				set_machine_status("ERROR: NO LINKED CARGO PADS", TRUE)
