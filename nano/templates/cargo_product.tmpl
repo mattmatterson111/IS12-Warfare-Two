@@ -1,0 +1,20 @@
+<div style="background:#000000;color:#FFFFFF;padding:20px;font-family:monospace;">
+	<div style="border-bottom:2px solid {{:data.accent}};padding-bottom:12px;margin-bottom:16px;">
+		<div style="font-size:11px;letter-spacing:2px;color:#788589;">FIELD LOGISTICS NETWORK</div>
+		<div style="font-size:18px;font-weight:bold;color:#d5dbdd;">{{:data.product_name}}</div>
+		<div style="font-size:11px;color:#788589;">{{:data.machine_name}}</div>
+	</div>
+
+	<div style="background:#2b2b2b;border:1px solid #788589;padding:12px;margin-bottom:12px;">
+		<div style="color:#788589;font-size:11px;margin-bottom:6px;">PRODUCT DESCRIPTION</div>
+		<div style="white-space:pre-line;">{{:data.description}}</div>
+	</div>
+
+	<div style="color:#c4a758;font-size:16px;margin:12px 0;">
+		PRICE: {{:data.price}} CREDITS
+	</div>
+	<div>
+		{{:helper.link('ORDER', 'cart', {'action' : 'purchase', 'product' : data.product_index}, data.useable && data.pad_count > 0 && data.balance >= data.price ? null : 'disabled')}}
+		{{:helper.link('CANCEL', 'refresh', {'action' : 'cancel_purchase'})}}
+	</div>
+</div>

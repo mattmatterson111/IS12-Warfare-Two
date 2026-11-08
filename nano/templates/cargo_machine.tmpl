@@ -28,7 +28,6 @@
 		</div>
 		{{if category.name == 'Artillery'}}
 			<div style="padding:6px 8px 10px;">
-				<div>Coordinate-targeted artillery barrage</div>
 				<div style="color:#858f93;">Cost: {{:data.artillery_cost}} credits</div>
 				{{:helper.link('AUTHORIZE ARTILLERY STRIKE', 'warning', {'action' : 'artillery'}, data.useable && data.pad_count > 0 && data.balance >= data.artillery_cost ? null : 'disabled')}}
 			</div>
@@ -37,7 +36,7 @@
 				<div style="border-bottom:1px solid #282f33;padding:6px 4px;">
 					<span>{{:product.name}}</span>
 					<span style="color:#c4a758;"> {{:product.price}} cr.</span>
-					{{:helper.link('ORDER', 'cart', {'action' : 'purchase', 'product' : product.index}, data.useable && data.pad_count > 0 && data.balance >= product.price ? null : 'disabled')}}
+					{{:helper.link('ORDER', 'cart', {'action' : 'review_purchase', 'product' : product.index}, data.useable && data.pad_count > 0 && data.balance >= product.price ? null : 'disabled')}}
 				</div>
 			{{empty}}
 				<div style="padding:6px 8px;color:#788589;">No supplies are currently listed in this category.</div>
