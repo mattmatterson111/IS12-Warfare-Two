@@ -312,7 +312,7 @@ GLOBAL_LIST_EMPTY(faction_dosh)
 
 	ui = SSnanoui.try_update_ui(user, src, "product_details", ui, data)
 	if(!ui)
-		ui = new(user, src, "product_details", "cargo_product.tmpl", "[P.name] Details", 420, 350)
+		ui = new(user, src, "product_details", "cargo_product.tmpl", "[P.name] Details", 420, 500)
 		ui.set_initial_data(data)
 		ui.open()
 
