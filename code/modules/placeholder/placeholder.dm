@@ -39,6 +39,10 @@ GLOBAL_LIST_EMPTY(faction_dosh)
 	var/list/categories = list()
 
 /obj/machinery/kaos/cargo_machine/proc/get_available_products()
+	if(istype(src, /obj/machinery/kaos/cargo_machine/csfare))
+		var/obj/machinery/kaos/cargo_machine/csfare/csfare_machine = src
+		return csfare_machine.get_csfare_available_products()
+
 	var/list/all_decls = decls_repository.get_decls_of_subtype(/decl/cargo_product)
 	var/list/available = list()
 	for(var/type in all_decls)
@@ -53,6 +57,18 @@ GLOBAL_LIST_EMPTY(faction_dosh)
 		if(!P.faction_id || P.faction_id == id)
 			available += P
 	return available
+
+/obj/machinery/kaos/cargo_machine/proc/get_product_price(decl/cargo_product/P)
+	if(istype(src, /obj/machinery/kaos/cargo_machine/csfare))
+		var/obj/machinery/kaos/cargo_machine/csfare/csfare_machine = src
+		return csfare_machine.get_csfare_product_price_override(P)
+	return P.price
+
+/obj/machinery/kaos/cargo_machine/proc/get_product_contents(decl/cargo_product/P)
+	if(istype(src, /obj/machinery/kaos/cargo_machine/csfare))
+		var/obj/machinery/kaos/cargo_machine/csfare/csfare_machine = src
+		return csfare_machine.get_csfare_product_contents_override(P)
+	return P.contents
 
 /obj/machinery/kaos/cargo_machine/proc/update_categories()
 	categories = list()
@@ -137,6 +153,8 @@ GLOBAL_LIST_EMPTY(faction_dosh)
 	pads = list()
 	for(var/obj/structure/cargo_pad/pad in world)
 		if (pad.id == src.id && !pad.broken)
+			if(istype(src, /obj/machinery/kaos/cargo_machine/csfare) && (!istype(pad, /obj/structure/cargo_pad/csfare) || pad.z != src.z))
+				continue
 			pads += pad
 
 /obj/machinery/kaos/cargo_machine/New()
@@ -279,7 +297,7 @@ GLOBAL_LIST_EMPTY(faction_dosh)
 				listed_products += list(list(
 					"index" = product_index,
 					"name" = P.name,
-					"price" = P.price
+					"price" = get_product_price(P)
 				))
 		listed_categories += list(list(
 			"name" = category,
@@ -302,7 +320,7 @@ GLOBAL_LIST_EMPTY(faction_dosh)
 		"machine_name" = name,
 		"product_name" = P.name,
 		"description" = P.description,
-		"price" = P.price,
+		"price" = get_product_price(P),
 		"product_index" = product_index,
 		"balance" = balance,
 		"pad_count" = pads ? pads.len : 0,
@@ -358,6 +376,9 @@ GLOBAL_LIST_EMPTY(faction_dosh)
 		if("cancel_purchase")
 			SSnanoui.close_user_uis(user, src, "product_details")
 		if("artillery")
+			if(istype(src, /obj/machinery/kaos/cargo_machine/csfare))
+				set_machine_status("ERROR: ARTILLERY IS UNAVAILABLE IN CSFARE", TRUE)
+				return TOPIC_REFRESH
 			if(!pads || !pads.len)
 				set_machine_status("ERROR: NO LINKED CARGO PADS", TRUE)
 				playsound(src.loc, 'sound/machines/rpf/denybeep.ogg', 100, 0.5)
@@ -459,9 +480,20 @@ GLOBAL_LIST_EMPTY(faction_dosh)
 	if(!P || !CanPhysicallyInteract(user))
 		return
 
+	var/product_price = get_product_price(P)
+
+	if(istype(src, /obj/machinery/kaos/cargo_machine/csfare))
+		var/obj/machinery/kaos/cargo_machine/csfare/csfare_machine = src
+		if(user.warfare_faction != id)
+			set_machine_status("ERROR: WRONG TEAM", TRUE)
+			return
+		if(!csfare_machine.is_csfare_product(P))
+			set_machine_status("ERROR: PRODUCT UNAVAILABLE IN CSFARE", TRUE)
+			return
+
 	playsound(src.loc, "sound/machines/rpf/press1.ogg", 100, 0.7)
 
-	if(P.price > GLOB.faction_dosh[id])
+	if(product_price > GLOB.faction_dosh[id])
 		set_machine_status("ERROR: INSUFFICIENT FUNDS FOR [uppertext(P.name)]", TRUE)
 		playsound(src.loc, 'sound/machines/rpf/denybeep.ogg', 100, 0.5)
 		return
@@ -475,7 +507,7 @@ GLOBAL_LIST_EMPTY(faction_dosh)
 		var/datum/job/team_job = SSjobs.GetJobByType(P.job_path)
 		if(team_job.total_positions < 1)
 			SSjobs.allow_one_more(team_job.title)
-			GLOB.faction_dosh[id] -= P.price
+			GLOB.faction_dosh[id] -= product_price
 			set_machine_status("[uppertext(P.name)] REQUESTED")
 			playsound(src.loc, 'sound/machines/rpf/sendmsgcargo.ogg', 100, 0)
 		else
@@ -530,16 +562,20 @@ GLOBAL_LIST_EMPTY(faction_dosh)
 			if(spawn_gibs)
 				new/obj/effect/gibspawner/human(pickedloc)
 
-			var/to_spawn = P.crate_type
-			var/obj/A = new to_spawn(pickedloc)
-			A.desc = "A [P.name] crate."
-			A.name = "[P.name] crate"
-			if(P.contents)
-				create_objects_in_loc(A, P.contents)
+			var/list/product_contents = get_product_contents(P)
+			if(istype(src, /obj/machinery/kaos/cargo_machine/csfare))
+				create_objects_in_loc(pickedloc, product_contents)
+			else
+				var/to_spawn = P.crate_type
+				var/obj/A = new to_spawn(pickedloc)
+				A.desc = "A [P.name] crate."
+				A.name = "[P.name] crate"
+				if(product_contents)
+					create_objects_in_loc(A, product_contents)
 
 		spawn(2.7 SECONDS)
 			pickedpad.isdeselected()
-			GLOB.faction_dosh[id] -= P.price
+			GLOB.faction_dosh[id] -= get_product_price(P)
 			set_machine_status("[uppertext(P.name)] DELIVERED")
 			spawn(0.1 SECONDS)
 				qdel(glowobj)

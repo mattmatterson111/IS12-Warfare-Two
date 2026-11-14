@@ -271,6 +271,14 @@ MAPPING_DAY_LISTENER(base_path/##name) \
 	faction_id = faction_val; \
 }
 
+#define CSFARE_PRODUCT(id_val, name_val, contents_val, crate_override, faction_val) \
+/decl/cargo_product/csfare/##id_val { \
+	name = name_val; \
+	contents = contents_val; \
+	crate_type = crate_override; \
+	faction_id = faction_val; \
+}
+
 #define CARGO_TRAIN_PRODUCT(id_val, name_val, contents_val, crate_override) \
 /decl/cargo_product/train/##id_val { \
 	name = name_val; \

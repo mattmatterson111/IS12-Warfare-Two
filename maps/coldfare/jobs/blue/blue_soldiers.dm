@@ -320,6 +320,23 @@
 		backpack_contents += list(/obj/item/gift/warfare = 1)
 	..()
 
+/decl/hierarchy/outfit/job/bluesoldier/unarmed
+	name = OUTFIT_JOB_NAME("Blue Terrorist")
+	head = null
+	uniform = /obj/item/clothing/under/blue_uniform/blurrorist
+	mask = /obj/item/clothing/mask/balaclava/blue
+	back = /obj/item/storage/backpack/satchel/warfare
+	shoes = /obj/item/clothing/shoes/jackboots/warfare/blue
+	l_ear = null
+	l_pocket = /obj/item/storage/box/ifak
+	suit = null
+	gloves = /obj/item/clothing/gloves/thick/swat/combat/warfare
+	neck = /obj/item/reagent_containers/food/drinks/canteen
+	pda_type = null
+	id_type = /obj/item/card/id/dog_tag/blue
+	flags = OUTFIT_NO_BACKPACK|OUTFIT_NO_SURVIVAL_GEAR
+	backpack_contents = list(/obj/item/gun/projectile/warfare = 1, /obj/item/ammo_magazine/c45m/warfare = 3, /obj/item/grenade/smokebomb = 1)
+
 /decl/hierarchy/outfit/job/bluesoldier/sgt
 	suit_store = /obj/item/gun/projectile/shotgun/pump/boltaction/shitty/leverchester
 	r_pocket = /obj/item/ammo_box/rifle
