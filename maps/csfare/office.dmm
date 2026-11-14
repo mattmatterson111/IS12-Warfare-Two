@@ -31,6 +31,7 @@
 /obj/machinery/light/caged{
 	dir = 1
 	},
+/obj/item/wirecutters,
 /turf/unsimulated/floor/hammereditor/dev2,
 /area/warfare/battlefield/no_mans_land/no_mine)
 "h" = (
