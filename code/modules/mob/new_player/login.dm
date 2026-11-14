@@ -71,7 +71,23 @@
 			to_lobby( "[key] has joined.")
 			if(!client.warfare_faction)
 				//Autobalance them by client, not by mob. This does mean that whoever joins first will always be red team, but that shouldn't be an issue.
-				if(issiegefare())
+				if(iscfare())
+					var/red_count = 0
+					var/blue_count = 0
+					for(var/client/connected_client in GLOB.clients)
+						if(connected_client.warfare_faction == RED_TEAM)
+							red_count++
+						else if(connected_client.warfare_faction == BLUE_TEAM)
+							blue_count++
+					if(red_count >= 5 && blue_count >= 5)
+						to_chat(src, "<span class='notice'>Both CSFare teams are full. You can observe from the lobby.</span>")
+					else if((red_count <= blue_count && red_count < 5) || blue_count >= 5)
+						client.warfare_faction = RED_TEAM
+						SSwarfare.red.team_clients |= client
+					else
+						client.warfare_faction = BLUE_TEAM
+						SSwarfare.blue.team_clients |= client
+				else if(issiegefare())
 					if(SSwarfare.blue.team_clients.len*1.5 < SSwarfare.red.team_clients.len)
 						client.warfare_faction = BLUE_TEAM
 						SSwarfare.blue.team_clients += src.client

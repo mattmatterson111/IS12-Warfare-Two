@@ -611,7 +611,6 @@ var/global/floorIsLava = 0
 
 	var/dat = {"<html><head></head><body>
 		<center><B>Game Panel</B></center><hr>\n
-		<A href='?src=\ref[src];c_mode=1'>Change Game Mode</A><br>
 		"}
 	if(master_mode == "secret")
 		dat += "<A href='?src=\ref[src];f_secret=1'>(Force Secret Mode)</A><br>"
@@ -686,6 +685,57 @@ var/global/floorIsLava = 0
 
 		sleep(50)
 		world.Reboot()
+
+/datum/admins/proc/change_game_mode()
+	set category = "Server"
+	set name = "Change Game Mode"
+	set desc = "Choose the game mode for the next round."
+	if(!check_rights(R_ADMIN))
+		return
+	if(ticker && ticker.mode)
+		to_chat(usr, "<span class='warning'>The game has already started.</span>")
+		return
+
+	var/list/mode_choices = list()
+	for(var/mode_tag in config.modes)
+		mode_choices[config.mode_names[mode_tag]] = mode_tag
+	mode_choices["Secret"] = "secret"
+	mode_choices["Random"] = "random"
+
+	var/choice = input(usr, "What mode do you want to force?", "Change Game Mode") as null|anything in mode_choices
+	if(!choice)
+		return
+	var/selected_mode = mode_choices[choice]
+	if(selected_mode != "secret" && selected_mode != "random" && !config.pick_mode(selected_mode))
+		to_chat(usr, "<span class='warning'>That game mode is not available.</span>")
+		return
+
+	master_mode = selected_mode
+	world.save_mode(master_mode)
+	log_and_message_admins("set the mode as [master_mode].")
+	to_world("<span class='notice'><b>The mode is now: [master_mode]</b></span>")
+
+/datum/admins/proc/change_csfare_map()
+	set category = "Server"
+	set name = "Change CSFare Map"
+	set desc = "Choose the DMM map for the next CSFare round."
+	if(!check_rights(R_ADMIN))
+		return
+	if(master_mode != "csfare" || (ticker && ticker.mode))
+		to_chat(usr, "<span class='warning'>Select CSFare as the game mode before choosing its map.</span>")
+		return
+
+	var/list/map_choices = get_csfare_map_files()
+	if(!map_choices.len)
+		to_chat(usr, "<span class='warning'>No .dmm maps were found in maps/csfare.</span>")
+		return
+
+	var/choice = input(usr, "Choose a map for the next CSFare round.", "Change CSFare Map") as null|anything in map_choices
+	if(!choice)
+		return
+	GLOB.csfare_selected_map = "maps/csfare/[choice]"
+	log_and_message_admins("selected [choice] for the next CSFare round.")
+	to_world("<span class='notice'><b>CSFare map selected: [choice]</b></span>")
 
 
 /datum/admins/proc/announce()

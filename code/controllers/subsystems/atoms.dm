@@ -32,6 +32,16 @@ SUBSYSTEM_DEF(atoms)
 	var/count
 	var/list/mapload_arg = list(TRUE)
 	if(atoms)
+		var/list/valid_atoms = list()
+		var/invalid_atom_count = 0
+		for(var/atom_entry in atoms)
+			if(istype(atom_entry, /atom))
+				valid_atoms += atom_entry
+			else
+				invalid_atom_count++
+		if(invalid_atom_count)
+			log_error("Map atom initialization received [invalid_atom_count] invalid entries; skipping them.")
+		atoms = valid_atoms
 		created_atoms = list()
 		count = atoms.len
 		for(var/I in atoms)

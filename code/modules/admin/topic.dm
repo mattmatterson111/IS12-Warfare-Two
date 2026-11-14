@@ -926,19 +926,6 @@
 
 		cmd_admin_mute(M, mute_type)
 
-	else if(href_list["c_mode"])
-		if(!check_rights(R_ADMIN))	return
-
-		if(ticker && ticker.mode)
-			return alert(usr, "The game has already started.", null, null, null, null)
-		var/dat = {"<B>What mode do you wish to play?</B><HR>"}
-		for(var/mode in config.modes)
-			dat += {"<A href='?src=\ref[src];c_mode2=[mode]'>[config.mode_names[mode]]</A><br>"}
-		dat += {"<A href='?src=\ref[src];c_mode2=secret'>Secret</A><br>"}
-		dat += {"<A href='?src=\ref[src];c_mode2=random'>Random</A><br>"}
-		dat += {"Now: [master_mode]"}
-		usr << browse(dat, "window=c_mode")
-
 	else if(href_list["f_secret"])
 		if(!check_rights(R_ADMIN))	return
 
@@ -952,18 +939,6 @@
 		dat += {"<A href='?src=\ref[src];f_secret2=secret'>Random (default)</A><br>"}
 		dat += {"Now: [secret_force_mode]"}
 		usr << browse(dat, "window=f_secret")
-
-	else if(href_list["c_mode2"])
-		if(!check_rights(R_ADMIN|R_SERVER))	return
-
-		if (ticker && ticker.mode)
-			return alert(usr, "The game has already started.", null, null, null, null)
-		master_mode = href_list["c_mode2"]
-		log_and_message_admins("set the mode as [master_mode].")
-		to_world("<span class='notice'><b>The mode is now: [master_mode]</b></span>")
-		Game() // updates the main game menu
-		world.save_mode(master_mode)
-		.(href, list("c_mode"=1))
 
 	else if(href_list["f_secret2"])
 		if(!check_rights(R_ADMIN|R_SERVER))	return

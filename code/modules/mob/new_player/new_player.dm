@@ -121,47 +121,17 @@
 			return
 
 		if(!config.respawn_delay || client.holder || alert(src,"Are you sure you wish to observe? You will have to wait [config.respawn_delay] minute\s before being able to respawn!","Player Setup","Yes","No") == "Yes")
-			if(!client)	return 1
-			var/mob/observer/ghost/observer = new()
-
-			spawning = 1
-			sound_to(src, sound(null, repeat = 0, wait = 0, volume = 85, channel = 1))// MAD JAMS cant last forever yo
-
-
-			observer.started_as_observer = 1
-			close_spawn_windows()
-			var/obj/O = locate("landmark*Observer-Start")
-			if(istype(O))
-				to_chat(src, "<span class='notice'>Now teleporting.</span>")
-				observer.forceMove(O.loc)
-			else
-				to_chat(src, "<span class='danger'>Could not locate an observer spawn point. Use the Teleport verb to jump to the map.</span>")
-			observer.timeofdeath = world.time // Set the time of death so that the respawn timer works correctly.
-
-			if(isnull(client.holder))
-				announce_ghost_joinleave(src)
-
-			var/mob/living/carbon/human/dummy/mannequin = new()
-			client.prefs.dress_preview_mob(mannequin)
-			observer.set_appearance(mannequin)
-			qdel(mannequin)
-
-			if(client.prefs.be_random_name)
-				client.prefs.real_name = random_name(client.prefs.gender)
-			observer.real_name = client.prefs.real_name
-			observer.SetName(observer.real_name)
-			if(!client.holder && !config.antag_hud_allowed)           // For new ghosts we remove the verb from even showing up if it's not allowed.
-				observer.verbs -= /mob/observer/ghost/verb/toggle_antagHUD        // Poor guys, don't know what they are missing!
-			observer.key = key
-			qdel(src)
-
-			return 1
+			return become_observer()
 
 	if(href_list["late_join"])
 
 		if(!ticker || ticker.current_state != GAME_STATE_PLAYING)
 			to_chat(usr, "<span class='warning'>The round is either not ready, or has already finished...</span>")
 			return
+		if(istype(ticker.mode, /datum/game_mode/csfare))
+			var/datum/game_mode/csfare/csfare_mode = ticker.mode
+			if(!csfare_mode.preparing)
+				return become_csfare_observer()
 		LateChoices() //show the latejoin job selection menu
 
 	if(href_list["manifest"])
@@ -325,12 +295,70 @@
 	if(client)
 		return client.prefs.char_rank
 
+/mob/new_player/proc/become_csfare_observer()
+	if(client)
+		if(client.warfare_faction == RED_TEAM)
+			SSwarfare.red.team_clients -= client
+		else if(client.warfare_faction == BLUE_TEAM)
+			SSwarfare.blue.team_clients -= client
+		client.warfare_faction = null
+	to_chat(src, "<span class='notice'>The match has started. You will observe until the next preparation phase.</span>")
+	return become_observer()
+
+/mob/new_player/proc/become_observer()
+	if(!client)
+		return 1
+
+	var/mob/observer/ghost/observer = new()
+	spawning = 1
+	sound_to(src, sound(null, repeat = 0, wait = 0, volume = 85, channel = 1))
+	observer.started_as_observer = 1
+	close_spawn_windows()
+
+	var/turf/observer_spawn
+	if(ticker && istype(ticker.mode, /datum/game_mode/csfare))
+		var/datum/game_mode/csfare/csfare_mode = ticker.mode
+		observer_spawn = csfare_mode.get_observer_spawn_turf()
+	else
+		var/obj/observer_start = locate("landmark*Observer-Start")
+		if(istype(observer_start))
+			observer_spawn = get_turf(observer_start)
+
+	if(observer_spawn)
+		to_chat(src, "<span class='notice'>Now teleporting.</span>")
+		observer.forceMove(observer_spawn)
+	else
+		to_chat(src, "<span class='danger'>Could not locate an observer spawn point. Use the Teleport verb to jump to the map.</span>")
+	observer.timeofdeath = world.time
+
+	if(isnull(client.holder))
+		announce_ghost_joinleave(src)
+
+	var/mob/living/carbon/human/dummy/mannequin = new()
+	client.prefs.dress_preview_mob(mannequin)
+	observer.set_appearance(mannequin)
+	qdel(mannequin)
+
+	if(client.prefs.be_random_name)
+		client.prefs.real_name = random_name(client.prefs.gender)
+	observer.real_name = client.prefs.real_name
+	observer.SetName(observer.real_name)
+	if(!client.holder && !config.antag_hud_allowed)
+		observer.verbs -= /mob/observer/ghost/verb/toggle_antagHUD
+	observer.key = key
+	qdel(src)
+	return 1
+
 /mob/new_player/proc/AttemptLateSpawn(var/datum/job/job, var/spawning_at)
 	if(src != usr)
 		return 0
 	if(!ticker || ticker.current_state != GAME_STATE_PLAYING)
 		to_chat(usr, "<span class='warning'>The round is either not ready, or has already finished...</span>")
 		return 0
+	if(istype(ticker.mode, /datum/game_mode/csfare))
+		var/datum/game_mode/csfare/csfare_mode = ticker.mode
+		if(!csfare_mode.preparing)
+			return become_csfare_observer()
 	if(!config.enter_allowed)
 		to_chat(usr, "<span class='notice'>There is an administrative lock on entering the game!</span>")
 		return 0

@@ -58,6 +58,8 @@ var/global/datum/controller/gameticker/ticker
 
 /datum/controller/gameticker/proc/setup()
 	//Create and announce mode
+	if(!master_mode)
+		master_mode = "extended"
 	if(master_mode=="secret")
 		src.hide_mode = 1
 	else
@@ -92,6 +94,7 @@ var/global/datum/controller/gameticker/ticker
 	src.mode.create_antagonists()
 	src.mode.pre_setup()
 	SSjobs.DivideOccupations() // Apparently important for new antagonist system to register specific job antags properly.
+	src.mode.post_job_assignment()
 
 	var/t = src.mode.startRequirements()
 	if(t)

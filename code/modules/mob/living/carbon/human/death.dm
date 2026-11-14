@@ -85,6 +85,9 @@
 	sound_to(src, sound(null, repeat = 1, wait = 0, volume = 50, channel = 6))
 	remove_coldbreath()
 	handle_warfare_death()
+	if(ticker && istype(ticker.mode, /datum/game_mode/csfare))
+		var/datum/game_mode/csfare/csfare_mode = ticker.mode
+		csfare_mode.handle_player_death(src)
 	GLOB.total_deaths++
 	handle_hud_list()
 	if(prob(1))
