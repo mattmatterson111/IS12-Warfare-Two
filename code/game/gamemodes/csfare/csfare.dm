@@ -780,6 +780,8 @@
 		/decl/cargo_product/crate/pistol_ammo = 5,
 		/decl/cargo_product/crate/warmonger_ammo = 5,
 		/decl/cargo_product/crate/firstaid_pack = 10,
+		/decl/cargo_product/crate/frag_pack = 5,
+		/decl/cargo_product/crate/smoke_pack = 5,
 		/decl/cargo_product/csfare/cs_redhelmet = 5,
 		/decl/cargo_product/csfare/cs_redarmor = 15,
 		/decl/cargo_product/csfare/cs_bluehelmet = 5,
@@ -794,7 +796,9 @@
 		/decl/cargo_product/crate/shotgun_ammo = list(/obj/item/ammo_box/shotgun = 3),
 		/decl/cargo_product/crate/pistol_ammo = list(/obj/item/ammo_magazine/c45m/warfare = 3, /obj/item/ammo_magazine/a50 = 3),
 		/decl/cargo_product/crate/warmonger_ammo = list(/obj/item/ammo_magazine/c45rifle/akarabiner = 3),
-		/decl/cargo_product/crate/firstaid_pack = list(/obj/item/storage/firstaid/regular = 3)
+		/decl/cargo_product/crate/firstaid_pack = list(/obj/item/storage/firstaid/regular = 3),
+		/decl/cargo_product/crate/frag_pack = list(/obj/item/grenade/frag/warfare = 1),
+		/decl/cargo_product/crate/smoke_pack = list(/obj/item/grenade/smokebomb = 1)
 	)
 
 	proc/get_csfare_available_products()
@@ -807,7 +811,9 @@
 			/decl/cargo_product/crate/shotgun_ammo,
 			/decl/cargo_product/crate/pistol_ammo,
 			/decl/cargo_product/crate/warmonger_ammo,
-			/decl/cargo_product/crate/firstaid_pack
+			/decl/cargo_product/crate/firstaid_pack,
+			/decl/cargo_product/crate/frag_pack,
+			/decl/cargo_product/crate/smoke_pack
 		)
 		if(id == RED_TEAM)
 			allowed_types += list(
