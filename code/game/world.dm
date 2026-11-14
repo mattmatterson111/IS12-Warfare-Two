@@ -519,14 +519,8 @@ var/world_topic_spam_protect_time = world.timeofday
 	return 1
 
 /world/proc/load_mode()
-	if(!fexists("data/mode.txt"))
-		return
-
-	var/list/Lines = file2list("data/mode.txt")
-	if(Lines.len)
-		if(Lines[1])
-			master_mode = Lines[1]
-			log_misc("Saved mode is '[master_mode]'")
+	master_mode = "extended"
+	log_misc("Defaulting to Extended mode; an admin may choose another mode before the round starts.")
 
 /world/proc/save_mode(var/the_mode)
 	var/F = file("data/mode.txt")

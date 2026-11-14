@@ -11,6 +11,7 @@
 /decl/cargo_product/job
 /decl/cargo_product/crate
 /decl/cargo_product/train
+/decl/cargo_product/csfare
 	price = 0
 
 
@@ -100,6 +101,11 @@ CARGO_JOB_PRODUCT(sentry_blue, "Blue sentry", 750, "Units", /datum/job/soldier/b
 CARGO_TRAIN_PRODUCT(combat_medical, "Combat Medical Supplies", list(/obj/item/storage/firstaid/regular = 2, /obj/item/reagent_containers/hypospray/autoinjector/revive = 3), /obj/structure/closet/crate/war_metal)
 CARGO_TRAIN_PRODUCT(emergency_ammo, "Emergency Ammunitions", list(/obj/item/ammo_box/rifle = 3, /obj/item/ammo_box/shotgun = 3, /obj/item/ammo_box/ptsd = 1), /obj/structure/closet/crate/war_metal)
 CARGO_TRAIN_PRODUCT(lantern_pack, "Lantern Pack", list(/obj/item/device/flashlight/lantern = 5), /obj/structure/closet/crate/war_metal)
+
+CSFARE_PRODUCT(cs_redhelmet, "RedHelmet", list(/obj/item/clothing/head/helmet/redhelmet = 1), /obj/structure/closet/crate/war_metal, RED_TEAM)
+CSFARE_PRODUCT(cs_redarmor, "RedHelmKevlar", list(/obj/item/clothing/head/helmet/redhelmet = 5, /obj/item/clothing/suit/armor/metalvest = 1), /obj/structure/closet/crate/war_metal, RED_TEAM)
+CSFARE_PRODUCT(cs_bluehelmet, "BlueHelmet", list(/obj/item/clothing/head/helmet/bluehelmet = 1), /obj/structure/closet/crate/war_metal, BLUE_TEAM)
+CSFARE_PRODUCT(cs_bluearmor, "BlueHelmKevlar", list(/obj/item/clothing/head/helmet/bluehelmet = 5, /obj/item/clothing/suit/armor/metalvest = 1), /obj/structure/closet/crate/war_metal, BLUE_TEAM)
 
 // Big ass descriptions down here
 
@@ -229,3 +235,12 @@ CARGO_TRAIN_PRODUCT(lantern_pack, "Lantern Pack", list(/obj/item/device/flashlig
 	description = "Contents: 7 units \nPrice per unit: 0 credits \nAAAAAAAA"
 /decl/cargo_product/train/lantern_pack
 	description = "Contents: 5 units \nPrice per unit: 0 credits \nAAAAAAAA"
+
+/decl/cargo_product/csfare/cs_redhelmet
+	description = "Protect ya noggin"
+/decl/cargo_product/csfare/cs_redarmor
+	description = "Protect ya orgins"
+/decl/cargo_product/csfare/cs_bluehelmet
+	description = "Protect ya noggin"
+/decl/cargo_product/csfare/cs_bluearmor
+	description = "Protect ya orgins"

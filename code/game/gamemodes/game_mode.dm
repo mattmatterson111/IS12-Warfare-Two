@@ -195,6 +195,8 @@ var/global/list/additional_antag_types = list()
 		if(antag.flags & ANTAG_OVERRIDE_JOB)
 			antag.attempt_spawn() //select antags to be spawned
 
+/datum/game_mode/proc/post_job_assignment()
+
 ///post_setup()
 /datum/game_mode/proc/post_setup()
 

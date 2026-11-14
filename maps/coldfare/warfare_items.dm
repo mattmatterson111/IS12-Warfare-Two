@@ -496,6 +496,19 @@
 			worn_state = "[initial(icon_state)]_child"
 	item_state_slots[slot_w_uniform_str] = worn_state
 
+/obj/item/clothing/under/blue_uniform/blurrorist
+	name = "blurrorist uniform"
+	desc = "An outfit to commit terroristic acts with."
+	icon_state = "blurrorist_s"
+	worn_state = "blurrorist_s"
+	can_down_pants = FALSE
+
+/obj/item/clothing/mask/balaclava/blue
+	name = "blue shemagh"
+	desc = "I'm starting to get really scared."
+	icon_state = "blurrorist"
+	item_state = "blurrorist"
+	down_icon_state = "blurrorist"
 
 //Hats
 /obj/item/clothing/head/warfare_officer/blueofficer
