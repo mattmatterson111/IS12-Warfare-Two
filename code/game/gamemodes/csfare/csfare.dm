@@ -793,7 +793,7 @@
 		/decl/cargo_product/crate/rifle_ammo = list(/obj/item/ammo_box/rifle = 3),
 		/decl/cargo_product/crate/shotgun_ammo = list(/obj/item/ammo_box/shotgun = 3),
 		/decl/cargo_product/crate/pistol_ammo = list(/obj/item/ammo_magazine/c45m/warfare = 3, /obj/item/ammo_magazine/a50 = 3),
-		/decl/cargo_product/crate/warmonger_ammo = list(/obj/item/ammo_magazine/c45rifle/akarabiner = 3)
+		/decl/cargo_product/crate/warmonger_ammo = list(/obj/item/ammo_magazine/c45rifle/akarabiner = 3),
 		/decl/cargo_product/crate/firstaid_pack = list(/obj/item/storage/firstaid/regular = 3)
 	)
 
