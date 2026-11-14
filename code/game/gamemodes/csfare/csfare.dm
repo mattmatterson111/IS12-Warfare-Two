@@ -789,7 +789,7 @@
 		/decl/cargo_product/crate/boltaction_pack = list(/obj/item/gun/projectile/shotgun/pump/boltaction/shitty/leverchester = 1),
 		/decl/cargo_product/crate/shotgun_pack = list(/obj/item/gun/projectile/shotgun/pump/shitty = 1),
 		/decl/cargo_product/crate/pistol_pack = list(/obj/item/gun/projectile/golt = 1, /obj/item/gun/projectile/warfare = 1),
-		/decl/cargo_product/crate/warmonger_pack = list(/obj/item/gun/projectile/automatic/m22/warmonger = 1)
+		/decl/cargo_product/crate/warmonger_pack = list(/obj/item/gun/projectile/automatic/m22/warmonger = 1),
 		/decl/cargo_product/crate/rifle_ammo = list(/obj/item/ammo_box/rifle = 3),
 		/decl/cargo_product/crate/shotgun_ammo = list(/obj/item/ammo_box/shotgun = 3),
 		/decl/cargo_product/crate/pistol_ammo = list(/obj/item/ammo_magazine/c45m/warfare = 3, /obj/item/ammo_magazine/a50 = 3),
