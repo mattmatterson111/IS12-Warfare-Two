@@ -47,7 +47,7 @@ GLOBAL_LIST_EMPTY(faction_dosh)
 	var/list/available = list()
 	for(var/type in all_decls)
 		var/decl/cargo_product/P = all_decls[type]
-		if(!istype(P) || istype(P, /decl/cargo_product/train))
+		if(!istype(P) || istype(P, /decl/cargo_product/train) || istype(P, /decl/cargo_product/csfare))
 			continue
 
 		if(P.type == /decl/cargo_product || P.type == /decl/cargo_product/job || P.type == /decl/cargo_product/crate)
@@ -478,6 +478,10 @@ GLOBAL_LIST_EMPTY(faction_dosh)
 
 /obj/machinery/kaos/cargo_machine/proc/purchase_product(mob/living/user, decl/cargo_product/P)
 	if(!P || !CanPhysicallyInteract(user))
+		return
+
+	if(!istype(src, /obj/machinery/kaos/cargo_machine/csfare) && istype(P, /decl/cargo_product/csfare))
+		set_machine_status("ERROR: PRODUCT UNAVAILABLE", TRUE)
 		return
 
 	var/product_price = get_product_price(P)
