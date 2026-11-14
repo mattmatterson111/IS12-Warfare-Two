@@ -373,7 +373,7 @@
 	preparing = TRUE
 	preparation_end_time = world.time + CSFARE_PREPARATION_TIME
 	set_preparation_grilles(TRUE)
-	to_world("<span class='notice'><b>Match [current_match]/[CSFARE_MATCHES_PER_ROUND] preparation begins. The next match starts in 45 seconds!</b></span>")
+	to_world("<span class='notice'><b>Match [current_match]/[CSFARE_MATCHES_PER_ROUND] preparation begins. The next match starts in 1 minute!</b></span>")
 
 /datum/game_mode/csfare/proc/handle_player_death(mob/living/carbon/human/victim)
 	if(!match_in_progress || !victim)
