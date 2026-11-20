@@ -1,4 +1,5 @@
 #define CHANNEL_WEATHER 1201
+#define NIGHT_MIN_PLAYERS 20
 GLOBAL_LIST_EMPTY(auto_day_cycle_listeners)
 
 SUBSYSTEM_DEF(day_cycle)
@@ -131,6 +132,12 @@ SUBSYSTEM_DEF(day_cycle)
 		current_time = current_time % total_duration
 	if(current_time < 0)
 		current_time = total_duration + (current_time % total_duration)
+
+	// Low pop: skip the dark phases (dusk_end -> midnight -> dawn_start) straight to sunrise.
+	if(GLOB.clients.len < NIGHT_MIN_PLAYERS)
+		var/sunrise_start = get_phase_start("sunrise")
+		if(current_time < sunrise_start || current_time >= get_phase_start("dusk_end"))
+			current_time = sunrise_start
 
 	var/accumulated_time = 0
 	var/found_index = 0
@@ -482,6 +489,14 @@ SUBSYSTEM_DEF(day_cycle)
 		A.on_day_phase_change(SSday_cycle.current_active_phase?.output_channel)
 
 	return TRUE
+
+/datum/controller/subsystem/day_cycle/proc/get_phase_start(phase_name)
+	var/accumulated_time = 0
+	for(var/datum/day_cycle_phase/P in phases)
+		if(P.output_channel == phase_name)
+			return accumulated_time
+		accumulated_time += P.duration
+	return 0
 
 /datum/controller/subsystem/day_cycle/proc/set_day_cycle_phase(phase_name)
 	if(!phase_name || !phases || !phases.len)
